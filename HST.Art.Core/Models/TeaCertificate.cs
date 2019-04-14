@@ -1,24 +1,14 @@
-﻿/**  版本信息模板在安装目录下，可自行修改。
-* TeaCertificate.cs
-*
-* 功 能： N/A
-* 类 名： TeaCertificate
-*
-* Ver    变更日期             负责人  变更内容
-* ───────────────────────────────────
-* V0.01  2019/4/14 19:04:38   N/A    初版
-*
-* Copyright (c) 2012 Maticsoft Corporation. All rights reserved.
-*┌──────────────────────────────────┐
-*│　此技术信息为本公司机密信息，未经本公司书面同意禁止向第三方披露．　│
-*│　版权所有：动软卓越（北京）科技有限公司　　　　　　　　　　　　　　│
-*└──────────────────────────────────┘
-*/
+﻿/*----------------------------------------------------------------
+// 文件名：TeaCertificate.cs
+// 功能描述：教师证书
+// 创建者：sysmenu
+// 创建时间：2019-4-14
+//----------------------------------------------------------------*/
 using System;
-namespace HST.Art.Model
+namespace HST.Art.Core
 {
 	/// <summary>
-	/// TeaCertificate:实体类(属性说明自动提取数据库字段的描述信息)
+	/// TeaCertificate
 	/// </summary>
 	[Serializable]
 	public partial class TeaCertificate
@@ -79,17 +69,17 @@ namespace HST.Art.Model
 			set{ _number=value;}
 			get{return _number;}
 		}
-		/// <summary>
-		/// 0:??
-	///   1:??
-		/// </summary>
-		public int State
+        /// <summary>
+        /// 0:下架
+        /// 1:上架
+        /// </summary>
+        public int State
 		{
 			set{ _state=value;}
 			get{return _state;}
 		}
 		/// <summary>
-		/// ????:?????
+		/// 类别：获奖证书、培训证书
 		/// </summary>
 		public int Category
 		{

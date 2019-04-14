@@ -1,107 +1,97 @@
-﻿/**  版本信息模板在安装目录下，可自行修改。
-* RotationChart.cs
-*
-* 功 能： N/A
-* 类 名： RotationChart
-*
-* Ver    变更日期             负责人  变更内容
-* ───────────────────────────────────
-* V0.01  2019/4/14 19:04:35   N/A    初版
-*
-* Copyright (c) 2012 Maticsoft Corporation. All rights reserved.
-*┌──────────────────────────────────┐
-*│　此技术信息为本公司机密信息，未经本公司书面同意禁止向第三方披露．　│
-*│　版权所有：动软卓越（北京）科技有限公司　　　　　　　　　　　　　　│
-*└──────────────────────────────────┘
-*/
+﻿/*----------------------------------------------------------------
+// 文件名：RotationChart.cs
+// 功能描述：轮播图信息
+// 创建者：sysmenu
+// 创建时间：2019-4-14
+//----------------------------------------------------------------*/
 using System;
-namespace HST.Art.Model
+namespace HST.Art.Core
 {
-	/// <summary>
-	/// RotationChart:实体类(属性说明自动提取数据库字段的描述信息)
-	/// </summary>
-	[Serializable]
-	public partial class RotationChart
-	{
-		public RotationChart()
-		{}
-		#region Model
-		private int _id;
-		private int _sort;
-		private string _imgsrc;
-		private string _weblink;
-		private int _state=0;
-		private int _type;
-		private DateTime _createdate= DateTime.Now;
-		private bool _isdeleted= false;
-		/// <summary>
-		/// 
-		/// </summary>
-		public int Id
-		{
-			set{ _id=value;}
-			get{return _id;}
-		}
-		/// <summary>
-		/// 
-		/// </summary>
-		public int Sort
-		{
-			set{ _sort=value;}
-			get{return _sort;}
-		}
-		/// <summary>
-		/// 
-		/// </summary>
-		public string ImgSrc
-		{
-			set{ _imgsrc=value;}
-			get{return _imgsrc;}
-		}
-		/// <summary>
-		/// 
-		/// </summary>
-		public string WebLink
-		{
-			set{ _weblink=value;}
-			get{return _weblink;}
-		}
-		/// <summary>
-		/// 0:??
-	///   1:??
-		/// </summary>
-		public int State
-		{
-			set{ _state=value;}
-			get{return _state;}
-		}
-		/// <summary>
-		/// 1:???
-	///   2:logo??
-		/// </summary>
-		public int Type
-		{
-			set{ _type=value;}
-			get{return _type;}
-		}
-		/// <summary>
-		/// 
-		/// </summary>
-		public DateTime CreateDate
-		{
-			set{ _createdate=value;}
-			get{return _createdate;}
-		}
-		/// <summary>
-		/// 
-		/// </summary>
-		public bool IsDeleted
-		{
-			set{ _isdeleted=value;}
-			get{return _isdeleted;}
-		}
-		#endregion Model
+    /// <summary>
+    /// RotationChart
+    /// </summary>
+    [Serializable]
+    public partial class RotationChart
+    {
+        public RotationChart()
+        { }
+        #region Model
+        private int _id;
+        private int _sort;
+        private string _imgsrc;
+        private string _weblink;
+        private int _state = 0;
+        private int _type;
+        private DateTime _createdate = DateTime.Now;
+        private bool _isdeleted = false;
+        /// <summary>
+        /// 
+        /// </summary>
+        public int Id
+        {
+            set { _id = value; }
+            get { return _id; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public int Sort
+        {
+            set { _sort = value; }
+            get { return _sort; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public string ImgSrc
+        {
+            set { _imgsrc = value; }
+            get { return _imgsrc; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public string WebLink
+        {
+            set { _weblink = value; }
+            get { return _weblink; }
+        }
+        /// <summary>
+        /// 0:下架
+        /// 1:上架
+        /// </summary>
+        public int State
+        {
+            set { _state = value; }
+            get { return _state; }
+        }
+        /// <summary>
+        /// 1:???
+        ///   2:logo??
+        /// </summary>
+        public int Type
+        {
+            set { _type = value; }
+            get { return _type; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public DateTime CreateDate
+        {
+            set { _createdate = value; }
+            get { return _createdate; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool IsDeleted
+        {
+            set { _isdeleted = value; }
+            get { return _isdeleted; }
+        }
+        #endregion Model
 
-	}
+    }
 }
 
