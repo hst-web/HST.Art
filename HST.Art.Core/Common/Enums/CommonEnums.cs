@@ -1,4 +1,6 @@
-﻿namespace HST.Art.Core
+﻿using System.ComponentModel;
+
+namespace HST.Art.Core
 {
     public class CommonEnums
     {
@@ -80,5 +82,27 @@
         Hour = 5,
         //按分钟
         Minute = 6
+    }
+
+    public enum PublishState
+    {
+        /// <summary>
+        /// 下架
+        /// </summary>
+        Lower,
+        /// <summary>
+        /// 上架
+        /// </summary>
+        Upper
+    }
+
+    public enum LoginType
+    {
+        [Description("UserName")]
+        UserName,
+        [Description("Telephone")]
+        Telephone,
+        [Description("Email")]
+        Email
     }
 }

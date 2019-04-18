@@ -8,13 +8,16 @@ using System;
 using System.Configuration;
 using HST.Utillity;
 using System.Data.Common;
+using HST.Art.Core.Models;
+using System.Collections.Generic;
+using System.Data.SqlClient;
 
 namespace HST.Art.Data
 {
     /// <summary>
     /// 实体数据提供者基类
     /// </summary>
-    public abstract class EntityProviderBase : IDisposable
+    public abstract class EntityProviderBase : IDisposable, IEntityBase
     {
         private string _connectionString = "";
         /// <summary>
@@ -40,7 +43,7 @@ namespace HST.Art.Data
             {
                 _connectionString = conn.ToString();
             }
-           
+
         }
 
         /// <summary>
@@ -55,7 +58,7 @@ namespace HST.Art.Data
         /// <returns></returns>
         public string SafeSqlLiteral(string inputSQL)
         {
-            inputSQL=inputSQL.Replace("'", "''");
+            inputSQL = inputSQL.Replace("'", "''");
             inputSQL = inputSQL.Replace("[", "[[]");
             inputSQL = inputSQL.Replace("%", "[%]");
             inputSQL = inputSQL.Replace("_", "[_]");
@@ -73,6 +76,16 @@ namespace HST.Art.Data
             dr.GetSchemaTable().DefaultView.RowFilter = "ColumnName= '" +
             columnName + "'";
             return (dr.GetSchemaTable().DefaultView.Count > 0);
+        }
+
+        public bool Update(FlagUpdHandle flagUpdHandle)
+        {
+            DBHelper dbHelper = new DBHelper(ConnectionString, DbProviderType.SqlServer);
+            string strSql = string.Format("update {0} set {1}={2} where Id=@Id", flagUpdHandle.TableName, flagUpdHandle.Key, flagUpdHandle.Value);
+
+            List<DbParameter> parametersList = new List<DbParameter>();
+            parametersList.Add(new SqlParameter("@Id", flagUpdHandle.Id));
+            return dbHelper.ExecuteNonQuery(strSql, parametersList) > 0;
         }
     }
 }

@@ -6,6 +6,7 @@
 //----------------------------------------------------------------*/
 
 using System.Collections.Generic;
+using System.Data;
 
 namespace HST.Art.Core
 {
@@ -60,5 +61,10 @@ namespace HST.Art.Core
         /// 例外字段
         /// </summary>
         public bool Exception { set; get; }
+
+        /// <summary>
+        /// 字段类型
+        /// </summary>
+        public SqlDbType FieldType { get; set; }
     }
 }

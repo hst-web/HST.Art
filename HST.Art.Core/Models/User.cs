@@ -5,6 +5,8 @@
 // 创建时间：2019-4-14
 //----------------------------------------------------------------*/
 using System;
+using System.Collections.Generic;
+
 namespace HST.Art.Core
 {
     /// <summary>
@@ -25,7 +27,7 @@ namespace HST.Art.Core
         private string _telephone;
         private string _headimg;
         private bool _isadmin = false;
-        private int _state;
+        private PublishState _state;
         private DateTime _createdate = DateTime.Now;
         private bool _isdeleted = false;
         /// <summary>
@@ -37,7 +39,7 @@ namespace HST.Art.Core
             get { return _id; }
         }
         /// <summary>
-        /// 
+        /// 用户名
         /// </summary>
         public string UserName
         {
@@ -45,7 +47,7 @@ namespace HST.Art.Core
             get { return _username; }
         }
         /// <summary>
-        /// 
+        /// 密码
         /// </summary>
         public string Password
         {
@@ -53,7 +55,7 @@ namespace HST.Art.Core
             get { return _password; }
         }
         /// <summary>
-        /// 
+        /// 盐
         /// </summary>
         public int Salt
         {
@@ -61,7 +63,7 @@ namespace HST.Art.Core
             get { return _salt; }
         }
         /// <summary>
-        /// 
+        /// 姓名
         /// </summary>
         public string Name
         {
@@ -69,7 +71,7 @@ namespace HST.Art.Core
             get { return _name; }
         }
         /// <summary>
-        /// 
+        /// 邮箱
         /// </summary>
         public string Email
         {
@@ -77,7 +79,7 @@ namespace HST.Art.Core
             get { return _email; }
         }
         /// <summary>
-        /// 
+        /// 手机号
         /// </summary>
         public string Telephone
         {
@@ -85,7 +87,7 @@ namespace HST.Art.Core
             get { return _telephone; }
         }
         /// <summary>
-        /// 
+        /// 头像
         /// </summary>
         public string HeadImg
         {
@@ -93,7 +95,7 @@ namespace HST.Art.Core
             get { return _headimg; }
         }
         /// <summary>
-        /// 
+        /// 是否为超级管理员
         /// </summary>
         public bool IsAdmin
         {
@@ -104,13 +106,13 @@ namespace HST.Art.Core
         /// 0:下架
         /// 1:上架
         /// </summary>
-        public int State
+        public PublishState State
         {
             set { _state = value; }
             get { return _state; }
         }
         /// <summary>
-        /// 
+        /// 创建时间
         /// </summary>
         public DateTime CreateDate
         {
@@ -118,14 +120,20 @@ namespace HST.Art.Core
             get { return _createdate; }
         }
         /// <summary>
-        /// 
+        /// 是否删除
         /// </summary>
         public bool IsDeleted
         {
             set { _isdeleted = value; }
             get { return _isdeleted; }
         }
+
+        /// <summary>
+        /// 角色集合
+        /// </summary>
+        public List<int> RoleList { get; set; }
         #endregion Model
+
 
     }
 }
