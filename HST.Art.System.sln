@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HST.Art.Core", "HST.Art.Cor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HST.Art.Data", "HST.Art.Data\HST.Art.Data.csproj", "{9489954D-CA71-422F-B18F-19AA5236CD7F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{F6DE9969-AA58-44BE-B213-21BF7075FACA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{9489954D-CA71-422F-B18F-19AA5236CD7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9489954D-CA71-422F-B18F-19AA5236CD7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9489954D-CA71-422F-B18F-19AA5236CD7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6DE9969-AA58-44BE-B213-21BF7075FACA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6DE9969-AA58-44BE-B213-21BF7075FACA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6DE9969-AA58-44BE-B213-21BF7075FACA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6DE9969-AA58-44BE-B213-21BF7075FACA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

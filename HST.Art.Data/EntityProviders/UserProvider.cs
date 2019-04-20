@@ -11,8 +11,6 @@ using System.Data.SqlClient;
 using HST.Art.Core;
 using HST.Utillity;
 using System.Text;
-using Newtonsoft.Json.Linq;
-using Newtonsoft.Json;
 using System.Linq;
 using System.Data;
 using HST.Art.Core.Models;
@@ -66,9 +64,9 @@ namespace HST.Art.Data
         }
 
         /// <summary>
-        /// 根据员工手机号码获取员工信息(待删除)
+        /// 获取会员信息
         /// </summary>
-        /// <param name="phone">员工手机号</param>
+        /// <param name="userQuery">查询实体</param>
         /// <returns>员工信息</returns>
         public User GetByQuery(UserQuery userQuery)
         {
@@ -98,7 +96,7 @@ namespace HST.Art.Data
             {
                 while (reader.Read())
                 {
-                    userInfo = GetUserFromReader(reader);                   
+                    userInfo = GetUserFromReader(reader);
                 }
             }
 
@@ -106,219 +104,112 @@ namespace HST.Art.Data
         }
 
         /// <summary>
-        /// 获取所有员工信息(待删除)
+        /// 获取所有会员信息
         /// </summary>
-        /// <param name="organizationID">组织id</param>
         /// <param name="condition">筛选条件</param>
-        /// <param name="totalNum">总条数</param>
         /// <returns>员工集合</returns>
-        public List<DataEntity> GetAll(string organizationID, Condition condition)
+        public List<User> GetAll(FilterEntityModel condition)
         {
-            string sort = string.IsNullOrEmpty(condition.Sort) ? "CreateTime asc" : condition.Sort + " " + condition.Direction;
-            string where = GetWhereStaffStr(condition.Where);
+            string whereSort = condition.Where + condition.OrderBy;
 
-            List<DataEntity> staffs = null;
+            List<User> userList = null;
             DBHelper dbHelper = new DBHelper(ConnectionString, DbProviderType.SqlServer);
-
-            string strSql = @"SELECT s.[ID]
-                                    ,s.[UserName]
-                                    ,s.[Password]
-                                    ,s.[OrganizationID]
-                                    ,o.[Name] OrganizationName
-                                    ,s.[IsAdmin]
-                                    ,s.[Name]
-                                    ,s.[Gender]
-                                    ,s.[Speciality]
-                                    ,s.[Titile]
-                                    ,s.[WeChat]
-                                    ,s.[Telephone]
-                                    ,s.[Email]
-                                    ,s.[HeadImg]
-                                    ,s.[Description]
-                                    ,s.[Profile]
-                                    ,s.[CreateTime]
-                                    ,s.[TelUpdateTime]
-                                    ,s.[IsPushVoice]
-                                    ,s.[IsReceivePush]
-                            FROM [Staff] s Left join Organization o on s.OrganizationID=o.ID  where s.OrganizationID=@OrganizationID and s.OrganizationID<>'' " + where + " order by s." + sort;
-
-            IList<DbParameter> parameList = new List<DbParameter>();
-            parameList.Add(new SqlParameter("@OrganizationID", organizationID));
-            using (DbDataReader reader = dbHelper.ExecuteReader(strSql, parameList))
-            {
-                staffs = new List<DataEntity>();
-                DataEntity staff = null;
-                while (reader.Read())
-                {
-                    staff = GetStaffFromReader(reader);
-                    staffs.Add(staff);
-                }
-                return staffs;
-
-            }
-        }
-
-        /// <summary>
-        /// 获取所有员工信息(待删除)
-        /// </summary>
-        /// <param name="organizationID">组织id</param>
-        /// <param name="condition">筛选条件</param>
-        /// <param name="totalNum">总条数</param>
-        /// <returns>员工集合</returns>
-        public List<DataEntity> GetPage(string organizationID, Condition condition, out int totalNum)
-        {
-            totalNum = 0;
-            string sort = string.IsNullOrEmpty(condition.Sort) ? "CreateTime asc" : condition.Sort + " " + condition.Direction;
-            string where = GetWhereStaffStr(condition.Where);
-
-            List<DataEntity> staffs = null;
-            DBHelper dbHelper = new DBHelper(ConnectionString, DbProviderType.SqlServer);
-            string strSqlQuery = @"select count(s.ID) from [Staff] s Left join Organization o on s.OrganizationID=o.ID  where s.OrganizationID='" + organizationID + "'  " + where;//查询有多少条记录
-            totalNum = Convert.ToInt32(dbHelper.ExecuteScalar(strSqlQuery, null));
 
             string strSql = @"SELECT [ID]
                                     ,[UserName]
-                                    ,[Password]
-                                    ,[OrganizationID]
-                                    ,[OrganizationName]
                                     ,[IsAdmin]
                                     ,[Name]
-                                    ,[Gender]
-                                    ,[Speciality]
-                                    ,[Titile]
-                                    ,[WeChat]
+                                    ,[State]
                                     ,[Telephone]
                                     ,[Email]
-                                    ,[HeadImg]
-                                    ,[Description]
-                                    ,[Profile]
                                     ,[CreateTime]
-                                    ,[TelUpdateTime]
-                            FROM (select top (@pageSize*@pageIndex)  s.[ID]
-                                    ,s.[UserName]
-                                    ,s.[Password]
-                                    ,s.[OrganizationID]
-                                    ,o.[Name] OrganizationName
-                                    ,s.[IsAdmin]
-                                    ,s.[Name]
-                                    ,s.[Gender]
-                                    ,s.[Speciality]
-                                    ,s.[Titile]
-                                    ,s.[WeChat]
-                                    ,s.[Telephone]
-                                    ,s.[Email]
-                                    ,s.[HeadImg]
-                                    ,s.[Description]
-                                    ,s.[Profile]
-                                    ,s.[CreateTime]
-                                    ,s.[TelUpdateTime]
-                                    ,ROW_NUMBER() over(order by s." + sort + ") as num  from [Staff] s Left join Organization o on s.OrganizationID=o.ID  where s.OrganizationID<>'' and s.OrganizationID='" + organizationID + "' " + where + ") as t where num between(@pageIndex - 1) * @pageSize + 1  and @pageIndex*@pageSize order by " + sort;
+                            FROM [user]  where 1=1 " + whereSort;
 
+            IList<DbParameter> parameList = new List<DbParameter>();
+            if (condition.SqlParList.Count > 0)
+            {
+                foreach (var item in condition.SqlParList)
+                {
+                    parameList.Add(new SqlParameter(item.Key, item.Value));
+                }
+            }
+
+            using (DbDataReader reader = dbHelper.ExecuteReader(strSql, parameList))
+            {
+                userList = new List<User>();
+                User userInfo = null;
+                while (reader.Read())
+                {
+                    userInfo = GetUserFromReader(reader);
+                    userList.Add(userInfo);
+                }
+            }
+
+            return userList;
+        }
+
+        /// <summary>
+        /// 获取会员分页信息
+        /// </summary>
+        /// <param name="condition">筛选条件</param>
+        /// <param name="totalNum">总条数</param>
+        /// <returns>员工集合</returns>
+        public List<User> GetPage(FilterEntityModel condition, out int totalNum)
+        {
+            totalNum = 0;
+            string sort = condition.OrderBy;
+            string where = condition.Where;
+
+            List<User> userList = null;
+            DBHelper dbHelper = new DBHelper(ConnectionString, DbProviderType.SqlServer);
+            string strSqlQuery = @"select count(ID) from [user] where 1=1 " + where;//查询有多少条记录
             IList<DbParameter> parameList = new List<DbParameter>();
             parameList.Add(new SqlParameter("@pageSize", condition.PageSize));
             parameList.Add(new SqlParameter("@pageIndex", condition.PageIndex));
 
-            using (DbDataReader reader = dbHelper.ExecuteReader(strSql, parameList))
+            if (condition.SqlParList.Count > 0)
             {
-                staffs = new List<DataEntity>();
-                DataEntity staff = null;
-                while (reader.Read())
+                foreach (var item in condition.SqlParList)
                 {
-                    staff = GetStaffFromReader(reader);
-                    staffs.Add(staff);
+                    parameList.Add(new SqlParameter(item.Key, item.Value));
                 }
-                return staffs;
-
             }
-        }
 
-        /// <summary>
-        /// 根据组织id获取所有员工信息(待删除)
-        /// </summary>
-        /// <param name="organizationID">组织id</param>
-        /// <returns>员工集合</returns>
-        public List<DataEntity> GetAll(string organizationID)
-        {
-            DataEntity staff = null;
-            DBHelper dbHelper = new DBHelper(ConnectionString, DbProviderType.SqlServer);
+            totalNum = Convert.ToInt32(dbHelper.ExecuteScalar(strSqlQuery, parameList));
+
             string strSql = @"SELECT [ID]
                                     ,[UserName]
-                                    ,[Password]
-                                    ,[OrganizationID]
                                     ,[IsAdmin]
                                     ,[Name]
-                                    ,[Gender]
-                                    ,[Speciality]
-                                    ,[Titile]
-                                    ,[WeChat]
+                                    ,[State]
                                     ,[Telephone]
                                     ,[Email]
-                                    ,[HeadImg]
-                                    ,[Description]
-                                    ,[Profile]
                                     ,[CreateTime]
-                                    ,[TelUpdateTime]
-                                    ,[IsPushVoice]
-                                    ,[IsReceivePush]
-                            FROM [Staff]
-                            Where [OrganizationID]=@OrganizationID ";
-            List<DbParameter> parametersList = new List<DbParameter>();
-            parametersList.Add(new SqlParameter("@OrganizationID", organizationID));
-            List<DataEntity> staffs = null;
-            using (DbDataReader reader = dbHelper.ExecuteReader(strSql, parametersList))
+                            FROM (select top (@pageSize*@pageIndex)  [ID]
+                                    ,[UserName]
+                                    ,[IsAdmin]
+                                    ,[Name]
+                                    ,[State]
+                                    ,[Telephone]
+                                    ,[Email]
+                                    ,[CreateTime]
+                                    ,ROW_NUMBER() over(" + sort + ") as num  from [user] where 1=1 " + where + ") as t where num between(@pageIndex - 1) * @pageSize + 1  and @pageIndex*@pageSize " + sort;
+            using (DbDataReader reader = dbHelper.ExecuteReader(strSql, parameList))
             {
-                staffs = new List<DataEntity>();
+                userList = new List<User>();
+                User userInfo = null;
                 while (reader.Read())
                 {
-                    staff = GetStaffFromReader(reader);
-                    staffs.Add(staff);
-                }
-            }
-            return staffs;
-        }
-
-        /// <summary>
-        /// 获取where条件语句(待删除)
-        /// </summary>
-        /// <param name="jsonStr">json字符串</param>
-        /// <returns></returns>
-        private string GetWhereStaffStr(string jsonStr)
-        {
-            if (string.IsNullOrEmpty(jsonStr))
-                return string.Empty;
-            StringBuilder whereBuilder = new StringBuilder();
-            JObject job = (JObject)JsonConvert.DeserializeObject(jsonStr);
-
-            if (job != null && job.Count > 0)
-            {
-                //员工姓名
-                if (job["name"] != null && !string.IsNullOrEmpty(job["name"].ToString()))
-                {
-                    whereBuilder.Append(string.Format(" and (s.name like '%{0}%' or dbo.f_GetPy(s.[name]) like '{0}%')", job["name"].ToString()));
-                }
-
-                //创建时间
-                if (job["startdate"] != null && !string.IsNullOrEmpty(job["startdate"].ToString()))
-                {
-                    whereBuilder.Append(" and CONVERT(varchar(10), s.createtime, 120)>='" + job["startdate"].ToString() + "'");
-                }
-                if (job["enddate"] != null && !string.IsNullOrEmpty(job["enddate"].ToString()))
-                {
-                    whereBuilder.Append(" and CONVERT(varchar(10), s.createtime, 120)<='" + job["enddate"].ToString() + "'");
-                }
-
-                //所属组织
-                if (job["organizationId"] != null && !string.IsNullOrEmpty(job["organizationId"].ToString()))
-                {
-                    whereBuilder.Append(" and s.organizationId ='" + job["organizationId"].ToString() + "'");
+                    userInfo = GetUserFromReader(reader);
+                    userList.Add(userInfo);
                 }
             }
 
-            return whereBuilder.ToString();
+            return userList;
         }
 
         /// <summary>
-        /// 从游标中读取数据(待删除)
+        /// 从游标中读取数据
         /// </summary>
         /// <param name="reader"></param>
         /// <returns></returns>
@@ -345,7 +236,7 @@ namespace HST.Art.Data
 
             userInfo.Name = reader["Name"].ToString();
             userInfo.Email = reader["Email"].ToString();
-            userInfo.Telephone = reader["Telephone"].ToString();           
+            userInfo.Telephone = reader["Telephone"].ToString();
             userInfo.IsAdmin = Convert.ToBoolean(reader["IsAdmin"]);
             userInfo.State = Convert.ToInt32(reader["State"]) < 1 ? PublishState.Lower : PublishState.Upper;
             userInfo.CreateDate = Convert.ToDateTime(reader["CreateDate"]);
@@ -358,191 +249,86 @@ namespace HST.Art.Data
         #region 编辑员工
 
         /// <summary>
-        /// 添加员工(待删除)
+        /// 添加会员
         /// </summary>
-        /// <param name="staff">员工信息</param>
+        /// <param name="userInfo">会员信息</param>
         /// <returns>添加成功标识</returns>
-        public bool Add(DataEntity staff)
+        public bool Add(User userInfo)
         {
             DBHelper dbHelper = new DBHelper(ConnectionString, DbProviderType.SqlServer);
-            string strSql = @"if exists(select Id from staff where userName=@UserName)
+            string strSql = @"if exists(select Id from user where userName=@UserName)
                                 begin
-                                    update staff set OrganizationID=@OrganizationID,Password=@Password,IsAdmin=@IsAdmin,Email=@Email,Name=@Name where userName=@UserName 
+                                    update user set Password=@Password,IsAdmin=@IsAdmin,Email=@Email,Name=@Name,Telephone=@Telephone,State=@State,HeadImg=@HeadImg,Salt=@Salt,CreateDate=getdate(),IsDeleted=0 where userName=@UserName 
                                 end
                                 else
                                 begin
-                                Insert Into Staff([ID],[UserName],[Password],[OrganizationID],[IsAdmin],[Name],[Telephone],[Email],[Description]) 
-                                   Values(@ID,@UserName,@Password,@OrganizationID,@IsAdmin,@Name,@Telephone,@Email,@Description) 
+                                Insert Into user(UserName, Password, Salt, Name, Email, Telephone, HeadImg, IsAdmin, State) 
+                                   Values(@UserName, @Password, @Salt, @Name, @Email, @Telephone, @HeadImg, @IsAdmin, @State) 
                                 end ";
 
             List<DbParameter> parametersList = new List<DbParameter>();
-            parametersList.Add(new SqlParameter("@ID", staff["ID"].Value));
-            parametersList.Add(new SqlParameter("@UserName", staff["UserName"].Value));
-            parametersList.Add(new SqlParameter("@Password", staff["Password"].Value));
-            parametersList.Add(new SqlParameter("@OrganizationID", staff["OrganizationID"].Value));
-            parametersList.Add(new SqlParameter("@IsAdmin", staff["IsAdmin"].Value));
-            parametersList.Add(new SqlParameter("@Name", staff["Name"].Value));
-            parametersList.Add(new SqlParameter("@Telephone", staff["Telephone"].Value));
-            parametersList.Add(new SqlParameter("@Email", staff["Email"].Value));
-            parametersList.Add(new SqlParameter("@Description", staff["Description"].Value));
+            parametersList.Add(new SqlParameter("@UserName", userInfo.UserName));
+            parametersList.Add(new SqlParameter("@Password", userInfo.Password));
+            parametersList.Add(new SqlParameter("@Salt", userInfo.Salt));
+            parametersList.Add(new SqlParameter("@IsAdmin", userInfo.IsAdmin));
+            parametersList.Add(new SqlParameter("@Name", userInfo.Name));
+            parametersList.Add(new SqlParameter("@Telephone", userInfo.Telephone));
+            parametersList.Add(new SqlParameter("@Email", userInfo.Email));
+            parametersList.Add(new SqlParameter("@HeadImg", userInfo.HeadImg));
+            parametersList.Add(new SqlParameter("@State", (int)userInfo.State));
             return dbHelper.ExecuteNonQuery(strSql, parametersList) > 0;
         }
 
         /// <summary>
-        /// 修改员工(待删除)
+        /// 修改会员
         /// </summary>
-        /// <param name="staff">员工信息</param>
+        /// <param name="userInfo">会员信息</param>
         /// <returns>修改成功标识</returns>
-        public bool Update(DataEntity staff)
+        public bool Update(User userInfo)
         {
             DBHelper dbHelper = new DBHelper(ConnectionString, DbProviderType.SqlServer);
-            string strSql = @"Update Staff
+            string strSql = @"Update user
                               Set [UserName]=@UserName
                                   ,[Password]=@Password
-                                  ,[OrganizationID]=@OrganizationID
-                                  ,[IsAdmin]=@IsAdmin
+                                  ,[Salt]=@Salt
                                   ,[Name]=@Name
-                                  ,[Gender]=@Gender
-                                  ,[Speciality]=@Speciality
-                                  ,[Titile]=@Titile
-                                  ,[WeChat]=@WeChat
-                                  ,[Telephone]=@Telephone
                                   ,[Email]=@Email
-                                  ,[HeadImg]=@HeadImg                                            
-                                  ,[Description]=@Description
-                                  ,[Profile]=@Profile
-                                  ,[TelUpdateTime]=@TelUpdateTime 
+                                  ,[Telephone]=@Telephone
+                                  ,[HeadImg]=@HeadImg 
+                                  ,[IsAdmin]=@IsAdmin                         
+                                  ,[State]=@State
                                   Where ID=@ID";
 
             List<DbParameter> parametersList = new List<DbParameter>();
-            parametersList.Add(new SqlParameter("@ID", staff["ID"].Value));
-            parametersList.Add(new SqlParameter("@UserName", staff["UserName"].Value));
-            parametersList.Add(new SqlParameter("@Password", staff["Password"].Value));
-            parametersList.Add(new SqlParameter("@OrganizationID", staff["OrganizationID"].Value));
-            parametersList.Add(new SqlParameter("@IsAdmin", staff["IsAdmin"].Value));
-            parametersList.Add(new SqlParameter("@Name", staff["Name"].Value));
-            parametersList.Add(new SqlParameter("@Gender", staff["Gender"].Value));
-            parametersList.Add(new SqlParameter("@Speciality", staff["Speciality"].Value));
-            parametersList.Add(new SqlParameter("@Titile", staff["Titile"].Value));
-            parametersList.Add(new SqlParameter("@WeChat", staff["WeChat"].Value));
-            parametersList.Add(new SqlParameter("@Telephone", staff["Telephone"].Value));
-            parametersList.Add(new SqlParameter("@Email", staff["Email"].Value));
-            parametersList.Add(new SqlParameter("@HeadImg", staff["HeadImg"].Value));
-            parametersList.Add(new SqlParameter("@Description", staff["Description"].Value));
-            parametersList.Add(new SqlParameter("@Profile", staff["Profile"].Value));
-            parametersList.Add(new SqlParameter("@TelUpdateTime", staff["TelUpdateTime"].Value));
+            parametersList.Add(new SqlParameter("@ID", userInfo.Id));
+            parametersList.Add(new SqlParameter("@UserName", userInfo.UserName));
+            parametersList.Add(new SqlParameter("@Password", userInfo.Password));
+            parametersList.Add(new SqlParameter("@Salt", userInfo.Salt));
+            parametersList.Add(new SqlParameter("@IsAdmin", userInfo.IsAdmin));
+            parametersList.Add(new SqlParameter("@Name", userInfo.Name));
+            parametersList.Add(new SqlParameter("@Telephone", userInfo.Telephone));
+            parametersList.Add(new SqlParameter("@Email", userInfo.Email));
+            parametersList.Add(new SqlParameter("@HeadImg", userInfo.HeadImg));
+            parametersList.Add(new SqlParameter("@State", (int)userInfo.State));
 
             return dbHelper.ExecuteNonQuery(strSql, parametersList) > 0;
         }
 
         /// <summary>
-        /// 删除员工(待删除)
-        /// </summary>
-        /// <param name="ids">员工id集合</param>
-        /// <returns></returns>
-        public bool Delete(string id)
-        {
-            bool isSuccess = false;
-            DBHelper dbHelper = new DBHelper(ConnectionString, DbProviderType.SqlServer);
-            string delServicePersonRole = "delete ServicePersonRole where ServicePersonID in (select ID from ServicePerson Where StaffID =@id)";
-            string delServicePerson = "delete ServicePerson Where StaffID=@id";
-            string delStaff = @"Update Staff Set [OrganizationID]='' Where ID=@id";
-            string delMessage = "delete BussinessMessage where UserID=@id";
-
-            List<DbParameter> parametersList = new List<DbParameter>();
-            parametersList.Add(new SqlParameter("id", id));
-
-
-            dbHelper.BeginTrans();//开启事务
-            dbHelper.ExecuteNonQueryInTrans(delServicePersonRole, parametersList);
-            dbHelper.ExecuteNonQueryInTrans(delServicePerson, parametersList);
-            dbHelper.ExecuteNonQueryInTrans(delMessage, parametersList);
-            isSuccess = dbHelper.ExecuteNonQueryInTrans(delStaff, parametersList) > 0;
-
-            if (isSuccess)
-            {
-                dbHelper.CommitTrans();//事务提交
-            }
-            else
-            {
-
-                dbHelper.RollBack();//事务回滚
-            }
-
-            return isSuccess;
-        }
-
-        /// <summary>
-        /// 更新推送状态(待删除)
-        /// </summary>
-        /// <param name="id">人员id</param>
-        /// <param name="isPushVoice">是否推送语音</param>
-        /// <returns></returns>
-        public bool UpdatePushState(string id, bool isPushVoice)
-        {
-            DBHelper dbHelper = new DBHelper(ConnectionString, DbProviderType.SqlServer);
-            string strSql = @"Update Staff
-                              Set  [IsPushVoice]=@IsPushVoice 
-                                  Where ID=@ID";
-
-            List<DbParameter> parametersList = new List<DbParameter>();
-            parametersList.Add(new SqlParameter("@ID", id));
-            parametersList.Add(new SqlParameter("@IsPushVoice", isPushVoice));
-
-            return dbHelper.ExecuteNonQuery(strSql, parametersList) > 0;
-        }
-
-        /// <summary>
-        /// 更改推送信息(待删除)
+        /// 删除会员
         /// </summary>
         /// <param name="id">id</param>
-        /// <param name="isReceivePush">是否推送信息</param>
         /// <returns></returns>
-        public bool UpdatePushReceive(string id, bool isReceivePush)
+        public bool Delete(int id)
         {
             DBHelper dbHelper = new DBHelper(ConnectionString, DbProviderType.SqlServer);
-            string strSql = @"Update Staff
-                              Set  [IsReceivePush]=@IsReceivePush 
-                                  Where ID=@ID";
+            string strSql = "delete user where id =@id";
 
             List<DbParameter> parametersList = new List<DbParameter>();
-            parametersList.Add(new SqlParameter("@ID", id));
-            parametersList.Add(new SqlParameter("@IsReceivePush", isReceivePush));
+            parametersList.Add(new SqlParameter("@id", id));
 
             return dbHelper.ExecuteNonQuery(strSql, parametersList) > 0;
         }
-
-        /// <summary>
-        /// 设置管理员(待删除)
-        /// </summary>
-        /// <param name="organizaionId">组织id</param>
-        /// <param name="adminId">管理员id</param>
-        /// <returns></returns>
-        public bool UpdateAdmin(string organizaionId, string adminId)
-        {
-            DBHelper dbHelper = new DBHelper(ConnectionString, DbProviderType.SqlServer);
-            dbHelper.BeginTrans();
-            string strSql = "Update [Staff] set IsAdmin=1 where OrganizationID=@OrganizationID and ID=@ID";
-            List<DbParameter> parametersList = new List<DbParameter>();
-            parametersList.Add(new SqlParameter("@OrganizationID", organizaionId));
-            parametersList.Add(new SqlParameter("@ID", adminId));
-            bool isSuccessed = dbHelper.ExecuteNonQueryInTrans(strSql, parametersList) > 0;
-            if (isSuccessed)
-            {
-                string strSqls = "Update [Staff] set IsAdmin=0 where OrganizationID=@OrganizationID and ID<>@ID";
-                isSuccessed = dbHelper.ExecuteNonQueryInTrans(strSqls, parametersList) > 0;
-            }
-            if (isSuccessed)
-            {
-                dbHelper.CommitTrans();
-            }
-            else
-            {
-                dbHelper.RollBack();
-            }
-            return isSuccessed;
-        }
-
         #endregion
     }
 }

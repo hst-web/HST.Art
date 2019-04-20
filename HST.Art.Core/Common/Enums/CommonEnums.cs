@@ -105,4 +105,25 @@ namespace HST.Art.Core
         [Description("Email")]
         Email
     }
+
+    public enum FieldType
+    {
+        String,
+        Int
+    }
+
+    public enum FilterType
+    {
+        And,
+        Or,
+        In,
+        Like,
+        Neq
+    }
+
+    public enum SortType
+    {
+        Asc,
+        Desc
+    }
 }

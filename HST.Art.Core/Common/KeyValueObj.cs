@@ -6,7 +6,6 @@
 //----------------------------------------------------------------*/
 
 using System.Collections.Generic;
-using System.Data;
 
 namespace HST.Art.Core
 {
@@ -43,28 +42,54 @@ namespace HST.Art.Core
             }
         }
 
-        private List<string> _objList = new List<string>();
-        public List<string> ObjList
+        private string _tbAsName = "";
+
+        public bool IsList
         {
             get
             {
-                return _objList;
-            }
-
-            set
-            {
-                _objList = value;
+                return (_value != null && _value.GetType().IsArray||_value.GetType() == typeof(List<string>) || _value.GetType() == typeof(List<int>));
             }
         }
+
+        private FieldType fieldType = FieldType.String;
 
         /// <summary>
         /// 例外字段
         /// </summary>
         public bool Exception { set; get; }
 
+        public FieldType FieldType
+        {
+            get
+            {
+                return fieldType;
+            }
+
+            set
+            {
+                fieldType = value;
+            }
+        }
+
         /// <summary>
-        /// 字段类型
+        /// 表简称
         /// </summary>
-        public SqlDbType FieldType { get; set; }
+        public string TbAsName
+        {
+            get
+            {
+                if (!string.IsNullOrEmpty(_tbAsName))
+                {
+                    return _tbAsName + ".";
+                }
+                return _tbAsName;
+            }
+
+            set
+            {
+                _tbAsName = value;
+            }
+        }
     }
 }

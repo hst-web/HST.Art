@@ -11,8 +11,6 @@ using System.Data.SqlClient;
 using HST.Art.Core;
 using HST.Utillity;
 using System.Text;
-using Newtonsoft.Json.Linq;
-using Newtonsoft.Json;
 
 namespace HST.Art.Data
 {
@@ -570,68 +568,68 @@ namespace HST.Art.Data
             if (string.IsNullOrEmpty(jsonStr))
                 return string.Empty;
             StringBuilder whereBuilder = new StringBuilder();
-            JObject job = (JObject)JsonConvert.DeserializeObject(jsonStr);
+            //JObject job = (JObject)JsonConvert.DeserializeObject(jsonStr);
 
-            if (job != null && job.Count > 0)
-            {
-                if (job["name"] != null && !string.IsNullOrEmpty(job["name"].ToString()))
-                {
-                    whereBuilder.Append(string.Format(" and (c.name like '%{0}%' or c.Mobile like '{0}%')", job["name"].ToString()));
-                }
+            //if (job != null && job.Count > 0)
+            //{
+            //    if (job["name"] != null && !string.IsNullOrEmpty(job["name"].ToString()))
+            //    {
+            //        whereBuilder.Append(string.Format(" and (c.name like '%{0}%' or c.Mobile like '{0}%')", job["name"].ToString()));
+            //    }
 
-                if (job["servicenetworkid"] != null && !string.IsNullOrEmpty(job["servicenetworkid"].ToString()))
-                {
-                    whereBuilder.Append(" and nc.servicenetworkid =('" + job["servicenetworkid"].ToString() + "')");
-                }
+            //    if (job["servicenetworkid"] != null && !string.IsNullOrEmpty(job["servicenetworkid"].ToString()))
+            //    {
+            //        whereBuilder.Append(" and nc.servicenetworkid =('" + job["servicenetworkid"].ToString() + "')");
+            //    }
 
-                if (job["area"] != null && !string.IsNullOrEmpty(job["area"].ToString()))
-                {
-                    whereBuilder.Append(string.Format(" and (c.Area like '%{0}%')", job["area"].ToString()));
-                }
+            //    if (job["area"] != null && !string.IsNullOrEmpty(job["area"].ToString()))
+            //    {
+            //        whereBuilder.Append(string.Format(" and (c.Area like '%{0}%')", job["area"].ToString()));
+            //    }
 
-                if (job["startdate"] != null && !string.IsNullOrEmpty(job["startdate"].ToString()))
-                {
-                    whereBuilder.Append(" and CONVERT(varchar(10), c.createtime, 120)>='" + job["startdate"].ToString() + "'");
-                }
+            //    if (job["startdate"] != null && !string.IsNullOrEmpty(job["startdate"].ToString()))
+            //    {
+            //        whereBuilder.Append(" and CONVERT(varchar(10), c.createtime, 120)>='" + job["startdate"].ToString() + "'");
+            //    }
 
-                if (job["enddate"] != null && !string.IsNullOrEmpty(job["enddate"].ToString()))
-                {
-                    whereBuilder.Append(" and CONVERT(varchar(10), c.createtime, 120)<='" + job["enddate"].ToString() + "'");
-                }
-                if (job["recentService"] != null && !string.IsNullOrEmpty(job["recentService"].ToString()))
-                {
-                    whereBuilder.Append(" and CONVERT(varchar(10), c.RecentService, 120)<>'" + job["recentService"].ToString() + "'");
-                }
-                if (job["startservicedate"] != null && !string.IsNullOrEmpty(job["startservicedate"].ToString()))
-                {
-                    if (job["startservicedate"].ToString() == "1900-01-01")
-                    {
-                        whereBuilder.Append(" and CONVERT(varchar(10), c.RecentService, 120)<>'" + job["startservicedate"].ToString() + "'");
-                    }
-                    else
-                    {
-                        whereBuilder.Append(" and CONVERT(varchar(10), c.RecentService, 120)>='" + job["startservicedate"].ToString() + "'");
-                    }
-                }
+            //    if (job["enddate"] != null && !string.IsNullOrEmpty(job["enddate"].ToString()))
+            //    {
+            //        whereBuilder.Append(" and CONVERT(varchar(10), c.createtime, 120)<='" + job["enddate"].ToString() + "'");
+            //    }
+            //    if (job["recentService"] != null && !string.IsNullOrEmpty(job["recentService"].ToString()))
+            //    {
+            //        whereBuilder.Append(" and CONVERT(varchar(10), c.RecentService, 120)<>'" + job["recentService"].ToString() + "'");
+            //    }
+            //    if (job["startservicedate"] != null && !string.IsNullOrEmpty(job["startservicedate"].ToString()))
+            //    {
+            //        if (job["startservicedate"].ToString() == "1900-01-01")
+            //        {
+            //            whereBuilder.Append(" and CONVERT(varchar(10), c.RecentService, 120)<>'" + job["startservicedate"].ToString() + "'");
+            //        }
+            //        else
+            //        {
+            //            whereBuilder.Append(" and CONVERT(varchar(10), c.RecentService, 120)>='" + job["startservicedate"].ToString() + "'");
+            //        }
+            //    }
 
-                if (job["endservicedate"] != null && !string.IsNullOrEmpty(job["endservicedate"].ToString()))
-                {
-                    if (job["endservicedate"].ToString() == "1900-01-01")
-                    {
-                        whereBuilder.Append(" and CONVERT(varchar(10), c.RecentService, 120)<>'" + job["endservicedate"].ToString() + "'");
-                    }
-                    else
-                    {
-                        whereBuilder.Append(" and CONVERT(varchar(10), c.RecentService, 120)<='" + job["endservicedate"].ToString() + "'");
-                    }
-                }
+            //    if (job["endservicedate"] != null && !string.IsNullOrEmpty(job["endservicedate"].ToString()))
+            //    {
+            //        if (job["endservicedate"].ToString() == "1900-01-01")
+            //        {
+            //            whereBuilder.Append(" and CONVERT(varchar(10), c.RecentService, 120)<>'" + job["endservicedate"].ToString() + "'");
+            //        }
+            //        else
+            //        {
+            //            whereBuilder.Append(" and CONVERT(varchar(10), c.RecentService, 120)<='" + job["endservicedate"].ToString() + "'");
+            //        }
+            //    }
 
-                //客户标签
-                if (job["label"] != null && !string.IsNullOrEmpty(job["label"].ToString()))
-                {
-                    whereBuilder.Append(" and c.labelids like '%" + job["label"].ToString() + "%'");
-                }
-            }
+            //    //客户标签
+            //    if (job["label"] != null && !string.IsNullOrEmpty(job["label"].ToString()))
+            //    {
+            //        whereBuilder.Append(" and c.labelids like '%" + job["label"].ToString() + "%'");
+            //    }
+            //}
 
             return whereBuilder.ToString();
         }

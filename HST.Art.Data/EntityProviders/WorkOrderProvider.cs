@@ -10,8 +10,6 @@ using System.Data.Common;
 using System.Data.SqlClient;
 using HST.Art.Core;
 using HST.Utillity;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System.Text;
 using System.Linq;
 using System.Data;
@@ -672,213 +670,213 @@ namespace HST.Art.Data
             if (string.IsNullOrEmpty(jsonStr))
                 return string.Empty;
             StringBuilder whereBuilder = new StringBuilder();
-            JObject job = (JObject)JsonConvert.DeserializeObject(jsonStr);
+            //JObject job = (JObject)JsonConvert.DeserializeObject(jsonStr);
+  
+            //if (job != null && job.Count > 0)
+            //{
+            //    //工单公有视图
+            //    if (job["publicfilter"] != null && !string.IsNullOrEmpty(job["publicfilter"].ToString()))
+            //    {
+            //        string publicfilter = job["publicfilter"].ToString();
+            //        string condition = GetViewCondition(publicfilter, true);
+            //        if (!string.IsNullOrEmpty(condition))
+            //        {
+            //            whereBuilder.Append(" and " + condition);
+            //        }
+            //    }
 
-            if (job != null && job.Count > 0)
-            {
-                //工单公有视图
-                if (job["publicfilter"] != null && !string.IsNullOrEmpty(job["publicfilter"].ToString()))
-                {
-                    string publicfilter = job["publicfilter"].ToString();
-                    string condition = GetViewCondition(publicfilter, true);
-                    if (!string.IsNullOrEmpty(condition))
-                    {
-                        whereBuilder.Append(" and " + condition);
-                    }
-                }
+            //    //工单私有视图
+            //    if (job["privatefilter"] != null && !string.IsNullOrEmpty(job["privatefilter"].ToString()))
+            //    {
+            //        string privatefilter = job["privatefilter"].ToString();
+            //        string condition = GetViewCondition(privatefilter, false);
+            //        if (!string.IsNullOrEmpty(condition))
+            //        {
+            //            whereBuilder.Append(" and " + condition);
+            //        }
+            //    }
 
-                //工单私有视图
-                if (job["privatefilter"] != null && !string.IsNullOrEmpty(job["privatefilter"].ToString()))
-                {
-                    string privatefilter = job["privatefilter"].ToString();
-                    string condition = GetViewCondition(privatefilter, false);
-                    if (!string.IsNullOrEmpty(condition))
-                    {
-                        whereBuilder.Append(" and " + condition);
-                    }
-                }
+            //    //搜索关键词工单编号或者客户名称
+            //    if (job["searchkey"] != null && !string.IsNullOrEmpty(job["searchkey"].ToString()))
+            //    {
+            //        whereBuilder.Append(" and (w.number like '" + job["searchkey"] + "%' or c.Name like '%" + job["searchkey"] + "%')");
+            //    }
+            //    //服务空间id
+            //    if (job["servicespaceid"] != null && !string.IsNullOrEmpty(job["servicespaceid"].ToString()))
+            //    {
+            //        whereBuilder.Append(" and w.servicespaceid ='" + job["servicespaceid"] + "'");
+            //    }
+            //    //服务网点id
+            //    if (job["servicenetworkid"] != null && !string.IsNullOrEmpty(job["servicenetworkid"].ToString()))
+            //    {
+            //        whereBuilder.Append(" and w.servicenetworkid ='" + job["servicenetworkid"] + "'");
+            //    }
+            //    //客户id
+            //    if (job["customerid"] != null && !string.IsNullOrEmpty(job["customerid"].ToString()))
+            //    {
+            //        whereBuilder.Append(" and w.customerid ='" + job["customerid"] + "'");
+            //    }
+            //    //评价标识
+            //    if (job["isevaluated"] != null)
+            //    {
+            //        whereBuilder.Append(" and w.isevaluated ='" + job["isevaluated"] + "'");
+            //    }
+            //    //产品id
+            //    if (job["productid"] != null && !string.IsNullOrEmpty(job["productid"].ToString()))
+            //    {
+            //        whereBuilder.Append(" and w.productID ='" + job["productid"] + "'");
+            //    }
 
-                //搜索关键词工单编号或者客户名称
-                if (job["searchkey"] != null && !string.IsNullOrEmpty(job["searchkey"].ToString()))
-                {
-                    whereBuilder.Append(" and (w.number like '" + job["searchkey"] + "%' or c.Name like '%" + job["searchkey"] + "%')");
-                }
-                //服务空间id
-                if (job["servicespaceid"] != null && !string.IsNullOrEmpty(job["servicespaceid"].ToString()))
-                {
-                    whereBuilder.Append(" and w.servicespaceid ='" + job["servicespaceid"] + "'");
-                }
-                //服务网点id
-                if (job["servicenetworkid"] != null && !string.IsNullOrEmpty(job["servicenetworkid"].ToString()))
-                {
-                    whereBuilder.Append(" and w.servicenetworkid ='" + job["servicenetworkid"] + "'");
-                }
-                //客户id
-                if (job["customerid"] != null && !string.IsNullOrEmpty(job["customerid"].ToString()))
-                {
-                    whereBuilder.Append(" and w.customerid ='" + job["customerid"] + "'");
-                }
-                //评价标识
-                if (job["isevaluated"] != null)
-                {
-                    whereBuilder.Append(" and w.isevaluated ='" + job["isevaluated"] + "'");
-                }
-                //产品id
-                if (job["productid"] != null && !string.IsNullOrEmpty(job["productid"].ToString()))
-                {
-                    whereBuilder.Append(" and w.productID ='" + job["productid"] + "'");
-                }
+            //    //工单状态
+            //    if (job["state"] != null && job["state"].Count() > 0)
+            //    {
+            //        whereBuilder.Append(" and w.State in('" + string.Join("','", job["state"]) + "')");
+            //    }
 
-                //工单状态
-                if (job["state"] != null && job["state"].Count() > 0)
-                {
-                    whereBuilder.Append(" and w.State in('" + string.Join("','", job["state"]) + "')");
-                }
+            //    //工单待处理状态
+            //    if (job["pendstate"] != null && job["pendstate"].Count() > 0)
+            //    {
+            //        whereBuilder.Append(" and w.pendstate in('" + string.Join("','", job["pendstate"]) + "')");
+            //    }
 
-                //工单待处理状态
-                if (job["pendstate"] != null && job["pendstate"].Count() > 0)
-                {
-                    whereBuilder.Append(" and w.pendstate in('" + string.Join("','", job["pendstate"]) + "')");
-                }
+            //    //工单渠道
+            //    if (job["channel"] != null && job["channel"].Count() > 0)
+            //    {
+            //        whereBuilder.Append(" and w.channel in('" + string.Join("','", job["channel"]) + "')");
+            //    }
 
-                //工单渠道
-                if (job["channel"] != null && job["channel"].Count() > 0)
-                {
-                    whereBuilder.Append(" and w.channel in('" + string.Join("','", job["channel"]) + "')");
-                }
+            //    //结算状态
+            //    if (job["statementstate"] != null && job["statementstate"].Count() > 0)
+            //    {
+            //        whereBuilder.Append(" and w.statementstate in('" + string.Join("','", job["statementstate"]) + "')");
+            //    }
 
-                //结算状态
-                if (job["statementstate"] != null && job["statementstate"].Count() > 0)
-                {
-                    whereBuilder.Append(" and w.statementstate in('" + string.Join("','", job["statementstate"]) + "')");
-                }
+            //    //工单类型
+            //    if (job["servicecategoryid"] != null && !string.IsNullOrEmpty(job["servicecategoryid"].ToString()))
+            //    {
+            //        whereBuilder.Append(" and w.servicecategoryid =('" + job["servicecategoryid"].ToString() + "')");
+            //    }
 
-                //工单类型
-                if (job["servicecategoryid"] != null && !string.IsNullOrEmpty(job["servicecategoryid"].ToString()))
-                {
-                    whereBuilder.Append(" and w.servicecategoryid =('" + job["servicecategoryid"].ToString() + "')");
-                }
+            //    //服务模式
+            //    if (job["servicemodeid"] != null && !string.IsNullOrEmpty(job["servicemodeid"].ToString()))
+            //    {
+            //        whereBuilder.Append(" and w.servicemodeid =('" + job["servicemodeid"].ToString() + "')");
+            //    }
 
-                //服务模式
-                if (job["servicemodeid"] != null && !string.IsNullOrEmpty(job["servicemodeid"].ToString()))
-                {
-                    whereBuilder.Append(" and w.servicemodeid =('" + job["servicemodeid"].ToString() + "')");
-                }
+            //    //创建时间
+            //    if (job["startdate"] != null && !string.IsNullOrEmpty(job["startdate"].ToString()))
+            //    {
+            //        whereBuilder.Append(" and CONVERT(varchar(10), w.createtime, 120)>='" + job["startdate"].ToString() + "'");
+            //    }
 
-                //创建时间
-                if (job["startdate"] != null && !string.IsNullOrEmpty(job["startdate"].ToString()))
-                {
-                    whereBuilder.Append(" and CONVERT(varchar(10), w.createtime, 120)>='" + job["startdate"].ToString() + "'");
-                }
+            //    if (job["enddate"] != null && !string.IsNullOrEmpty(job["enddate"].ToString()))
+            //    {
+            //        whereBuilder.Append(" and CONVERT(varchar(10), w.createtime, 120)<='" + job["enddate"].ToString() + "'");
+            //    }
+            //    //下一个处理者
+            //    if (job["nexthandlerid"] != null && !string.IsNullOrEmpty(job["nexthandlerid"].ToString()))
+            //    {
+            //        whereBuilder.Append(" and  w.nexthandlerid='" + job["nexthandlerid"].ToString() + "'");
+            //    }
+            //    //当前处理者
+            //    if (job["currenthandlerid"] != null && !string.IsNullOrEmpty(job["currenthandlerid"].ToString()))
+            //    {
+            //        whereBuilder.Append(" and  w.currenthandlerid='" + job["currenthandlerid"].ToString() + "'");
+            //    }
+            //    //服务人员
+            //    if (job["servicestaffid"] != null && !string.IsNullOrEmpty(job["servicestaffid"].ToString()))
+            //    {
+            //        whereBuilder.Append(" and  w.servicestaffid='" + job["servicestaffid"].ToString() + "'");
+            //    }
+            //    //删除标识
+            //    if (job["isdeleted"] != null && !string.IsNullOrEmpty(job["isdeleted"].ToString()))
+            //    {
+            //        whereBuilder.Append(" and  w.IsDeleted='" + job["isdeleted"].ToString() + "'");
+            //    }
 
-                if (job["enddate"] != null && !string.IsNullOrEmpty(job["enddate"].ToString()))
-                {
-                    whereBuilder.Append(" and CONVERT(varchar(10), w.createtime, 120)<='" + job["enddate"].ToString() + "'");
-                }
-                //下一个处理者
-                if (job["nexthandlerid"] != null && !string.IsNullOrEmpty(job["nexthandlerid"].ToString()))
-                {
-                    whereBuilder.Append(" and  w.nexthandlerid='" + job["nexthandlerid"].ToString() + "'");
-                }
-                //当前处理者
-                if (job["currenthandlerid"] != null && !string.IsNullOrEmpty(job["currenthandlerid"].ToString()))
-                {
-                    whereBuilder.Append(" and  w.currenthandlerid='" + job["currenthandlerid"].ToString() + "'");
-                }
-                //服务人员
-                if (job["servicestaffid"] != null && !string.IsNullOrEmpty(job["servicestaffid"].ToString()))
-                {
-                    whereBuilder.Append(" and  w.servicestaffid='" + job["servicestaffid"].ToString() + "'");
-                }
-                //删除标识
-                if (job["isdeleted"] != null && !string.IsNullOrEmpty(job["isdeleted"].ToString()))
-                {
-                    whereBuilder.Append(" and  w.IsDeleted='" + job["isdeleted"].ToString() + "'");
-                }
+            //    //是否结算
+            //    if (job["needstatemented"] != null && !string.IsNullOrEmpty(job["needstatemented"].ToString()))
+            //    {
+            //        whereBuilder.Append(" and  w.needstatemented='" + job["needstatemented"].ToString() + "'");
+            //    }
 
-                //是否结算
-                if (job["needstatemented"] != null && !string.IsNullOrEmpty(job["needstatemented"].ToString()))
-                {
-                    whereBuilder.Append(" and  w.needstatemented='" + job["needstatemented"].ToString() + "'");
-                }
+            //    //接收时间
+            //    if (job["receivestartdate"] != null && !string.IsNullOrEmpty(job["receivestartdate"].ToString()))
+            //    {
+            //        whereBuilder.Append(" and CONVERT(varchar(10), w.ReceivedTime, 120)>='" + job["receivestartdate"].ToString() + "'");
+            //    }
 
-                //接收时间
-                if (job["receivestartdate"] != null && !string.IsNullOrEmpty(job["receivestartdate"].ToString()))
-                {
-                    whereBuilder.Append(" and CONVERT(varchar(10), w.ReceivedTime, 120)>='" + job["receivestartdate"].ToString() + "'");
-                }
+            //    if (job["receiveenddate"] != null && !string.IsNullOrEmpty(job["receiveenddate"].ToString()))
+            //    {
+            //        whereBuilder.Append(" and CONVERT(varchar(10), w.ReceivedTime, 120)<='" + job["receiveenddate"].ToString() + "'");
+            //    }
 
-                if (job["receiveenddate"] != null && !string.IsNullOrEmpty(job["receiveenddate"].ToString()))
-                {
-                    whereBuilder.Append(" and CONVERT(varchar(10), w.ReceivedTime, 120)<='" + job["receiveenddate"].ToString() + "'");
-                }
+            //    //完成时间
+            //    if (job["finishstartdate"] != null && !string.IsNullOrEmpty(job["finishstartdate"].ToString()))
+            //    {
+            //        whereBuilder.Append(" and CONVERT(varchar(10), w.FinishTime, 120)>='" + job["finishstartdate"].ToString() + "'");
+            //    }
 
-                //完成时间
-                if (job["finishstartdate"] != null && !string.IsNullOrEmpty(job["finishstartdate"].ToString()))
-                {
-                    whereBuilder.Append(" and CONVERT(varchar(10), w.FinishTime, 120)>='" + job["finishstartdate"].ToString() + "'");
-                }
+            //    if (job["finishenddate"] != null && !string.IsNullOrEmpty(job["finishenddate"].ToString()))
+            //    {
+            //        whereBuilder.Append(" and CONVERT(varchar(10), w.FinishTime, 120)<='" + job["finishenddate"].ToString() + "'");
+            //    }
 
-                if (job["finishenddate"] != null && !string.IsNullOrEmpty(job["finishenddate"].ToString()))
-                {
-                    whereBuilder.Append(" and CONVERT(varchar(10), w.FinishTime, 120)<='" + job["finishenddate"].ToString() + "'");
-                }
+            //    //新增筛选集合条件
 
-                //新增筛选集合条件
-
-                //工单类型集合
-                if (job["categorylist"] != null && job["categorylist"].Count() > 0)
-                {
-                    whereBuilder.Append(" and w.ServiceCategoryID in('" + string.Join("','", job["categorylist"]) + "')");
-                }
-
-
-                //产品集合
-                if (job["prolist"] != null && job["prolist"].Count() > 0)
-                {
-                    whereBuilder.Append(" and w.productID in('" + string.Join("','", job["prolist"]) + "')");
-                }
+            //    //工单类型集合
+            //    if (job["categorylist"] != null && job["categorylist"].Count() > 0)
+            //    {
+            //        whereBuilder.Append(" and w.ServiceCategoryID in('" + string.Join("','", job["categorylist"]) + "')");
+            //    }
 
 
-                //服务网点集合
-                if (job["networklist"] != null && job["networklist"].Count() > 0)
-                {
-                    whereBuilder.Append(" and w.serviceNetworkId in('" + string.Join("','", job["networklist"]) + "')");
-                }
+            //    //产品集合
+            //    if (job["prolist"] != null && job["prolist"].Count() > 0)
+            //    {
+            //        whereBuilder.Append(" and w.productID in('" + string.Join("','", job["prolist"]) + "')");
+            //    }
 
-                //评价标识
-                if (job["isevaluated"] != null && !string.IsNullOrEmpty(job["isevaluated"].ToString()))
-                {
-                    whereBuilder.Append(" and  w.isevaluated='" + job["isevaluated"].ToString() + "'");
-                }
 
-                //服务网点集合
-                if (job["servicemodelist"] != null && job["servicemodelist"].Count() > 0)
-                {
-                    whereBuilder.Append(" and w.servicemodeid in('" + string.Join("','", job["servicemodelist"]) + "')");
-                }
+            //    //服务网点集合
+            //    if (job["networklist"] != null && job["networklist"].Count() > 0)
+            //    {
+            //        whereBuilder.Append(" and w.serviceNetworkId in('" + string.Join("','", job["networklist"]) + "')");
+            //    }
 
-                //服务人员集合
-                if (job["servicepersonlist"] != null && job["servicepersonlist"].Count() > 0)
-                {
-                    whereBuilder.Append(" and w.servicestaffid in('" + string.Join("','", job["servicepersonlist"]) + "')");
-                }
+            //    //评价标识
+            //    if (job["isevaluated"] != null && !string.IsNullOrEmpty(job["isevaluated"].ToString()))
+            //    {
+            //        whereBuilder.Append(" and  w.isevaluated='" + job["isevaluated"].ToString() + "'");
+            //    }
 
-                //服务结束标示
-                if (job["isserviceend"] != null && !string.IsNullOrEmpty(job["isserviceend"].ToString()))
-                {
-                    whereBuilder.Append(" and  w.isserviceend='" + job["isserviceend"].ToString() + "'");
-                }
+            //    //服务网点集合
+            //    if (job["servicemodelist"] != null && job["servicemodelist"].Count() > 0)
+            //    {
+            //        whereBuilder.Append(" and w.servicemodeid in('" + string.Join("','", job["servicemodelist"]) + "')");
+            //    }
 
-                //过滤
-                if (job["filter"] != null && !string.IsNullOrEmpty(job["filter"].ToString()))
-                {
-                    if (job["filter"].ToString() == "unfinished")
-                    {
-                        //whereBuilder.Append(" and  w.state <> " + (int)WorkOrderState.Canceled);
-                    }
-                }
-            }
+            //    //服务人员集合
+            //    if (job["servicepersonlist"] != null && job["servicepersonlist"].Count() > 0)
+            //    {
+            //        whereBuilder.Append(" and w.servicestaffid in('" + string.Join("','", job["servicepersonlist"]) + "')");
+            //    }
+
+            //    //服务结束标示
+            //    if (job["isserviceend"] != null && !string.IsNullOrEmpty(job["isserviceend"].ToString()))
+            //    {
+            //        whereBuilder.Append(" and  w.isserviceend='" + job["isserviceend"].ToString() + "'");
+            //    }
+
+            //    //过滤
+            //    if (job["filter"] != null && !string.IsNullOrEmpty(job["filter"].ToString()))
+            //    {
+            //        if (job["filter"].ToString() == "unfinished")
+            //        {
+            //            //whereBuilder.Append(" and  w.state <> " + (int)WorkOrderState.Canceled);
+            //        }
+            //    }
+           // }
 
             return whereBuilder.ToString();
         }
@@ -894,40 +892,40 @@ namespace HST.Art.Data
             if (string.IsNullOrEmpty(jsonStr))
                 return string.Empty;
             StringBuilder whereBuilder = new StringBuilder();
-            JObject job = (JObject)JsonConvert.DeserializeObject(jsonStr);
+            //JObject job = (JObject)JsonConvert.DeserializeObject(jsonStr);
 
-            if (job != null && job.Count > 0)
-            {
+            //if (job != null && job.Count > 0)
+            //{
 
-                //服务空间id
-                if (job["servicenetworkid"] != null && !string.IsNullOrEmpty(job["servicenetworkid"].ToString()))
-                {
-                    whereBuilder.Append(" and wp.servicenetworkid ='" + job["servicenetworkid"] + "'");
-                }
+            //    //服务空间id
+            //    if (job["servicenetworkid"] != null && !string.IsNullOrEmpty(job["servicenetworkid"].ToString()))
+            //    {
+            //        whereBuilder.Append(" and wp.servicenetworkid ='" + job["servicenetworkid"] + "'");
+            //    }
 
-                //当前处理人员Id
-                if (job["staffid"] != null && !string.IsNullOrEmpty(job["staffid"].ToString()))
-                {
-                    whereBuilder.Append(" and wp.staffid =('" + job["staffid"].ToString() + "')");
-                }
+            //    //当前处理人员Id
+            //    if (job["staffid"] != null && !string.IsNullOrEmpty(job["staffid"].ToString()))
+            //    {
+            //        whereBuilder.Append(" and wp.staffid =('" + job["staffid"].ToString() + "')");
+            //    }
 
-                //工单Id
-                if (job["workorderid"] != null && !string.IsNullOrEmpty(job["workorderid"].ToString()))
-                {
-                    whereBuilder.Append(" and wp.workorderid =('" + job["workorderid"].ToString() + "')");
-                }
+            //    //工单Id
+            //    if (job["workorderid"] != null && !string.IsNullOrEmpty(job["workorderid"].ToString()))
+            //    {
+            //        whereBuilder.Append(" and wp.workorderid =('" + job["workorderid"].ToString() + "')");
+            //    }
 
-                //服务时间
-                if (job["startdate"] != null && !string.IsNullOrEmpty(job["startdate"].ToString()))
-                {
-                    whereBuilder.Append(" and CONVERT(varchar(10), wp.HandedTime, 120)>='" + job["startdate"].ToString() + "'");
-                }
+            //    //服务时间
+            //    if (job["startdate"] != null && !string.IsNullOrEmpty(job["startdate"].ToString()))
+            //    {
+            //        whereBuilder.Append(" and CONVERT(varchar(10), wp.HandedTime, 120)>='" + job["startdate"].ToString() + "'");
+            //    }
 
-                if (job["enddate"] != null && !string.IsNullOrEmpty(job["enddate"].ToString()))
-                {
-                    whereBuilder.Append(" and CONVERT(varchar(10), wp.HandedTime, 120)<='" + job["enddate"].ToString() + "'");
-                }
-            }
+            //    if (job["enddate"] != null && !string.IsNullOrEmpty(job["enddate"].ToString()))
+            //    {
+            //        whereBuilder.Append(" and CONVERT(varchar(10), wp.HandedTime, 120)<='" + job["enddate"].ToString() + "'");
+            //    }
+            //}
 
             return whereBuilder.ToString();
         }
@@ -940,56 +938,56 @@ namespace HST.Art.Data
         /// <returns></returns>
         private string GetPendWhereStr(string jsonStr)
         {
-            if (string.IsNullOrEmpty(jsonStr))
-                return string.Empty;
-            StringBuilder whereBuilder = new StringBuilder();
-            JObject job = (JObject)JsonConvert.DeserializeObject(jsonStr);
+            //if (string.IsNullOrEmpty(jsonStr))
+            //    return string.Empty;
+            //StringBuilder whereBuilder = new StringBuilder();
+            //JObject job = (JObject)JsonConvert.DeserializeObject(jsonStr);
 
 
 
-            if (job != null && job.Count > 0)
-            {
+            //if (job != null && job.Count > 0)
+            //{
 
-                //服务空间id
-                if (job["servicespaceid"] != null && !string.IsNullOrEmpty(job["servicespaceid"].ToString()))
-                {
-                    whereBuilder.Append(" and pw.servicespaceid ='" + job["servicespaceid"] + "'");
-                }
+            //    //服务空间id
+            //    if (job["servicespaceid"] != null && !string.IsNullOrEmpty(job["servicespaceid"].ToString()))
+            //    {
+            //        whereBuilder.Append(" and pw.servicespaceid ='" + job["servicespaceid"] + "'");
+            //    }
 
-                //服务网点Id
-                if (job["servicenetworkid"] != null && !string.IsNullOrEmpty(job["servicenetworkid"].ToString()))
-                {
-                    whereBuilder.Append(" and servicenetworkid =('" + job["servicenetworkid"].ToString() + "')");
-                }
+            //    //服务网点Id
+            //    if (job["servicenetworkid"] != null && !string.IsNullOrEmpty(job["servicenetworkid"].ToString()))
+            //    {
+            //        whereBuilder.Append(" and servicenetworkid =('" + job["servicenetworkid"].ToString() + "')");
+            //    }
 
-                //工单Id
-                if (job["workorderid"] != null && !string.IsNullOrEmpty(job["workorderid"].ToString()))
-                {
-                    whereBuilder.Append(" and workorderid =('" + job["workorderid"].ToString() + "')");
-                }
+            //    //工单Id
+            //    if (job["workorderid"] != null && !string.IsNullOrEmpty(job["workorderid"].ToString()))
+            //    {
+            //        whereBuilder.Append(" and workorderid =('" + job["workorderid"].ToString() + "')");
+            //    }
 
-                //服务人员Id
-                if (job["servicestaffid"] != null && !string.IsNullOrEmpty(job["servicestaffid"].ToString()))
-                {
-                    whereBuilder.Append(" and servicestaffid =('" + job["servicestaffid"].ToString() + "')");
-                }
+            //    //服务人员Id
+            //    if (job["servicestaffid"] != null && !string.IsNullOrEmpty(job["servicestaffid"].ToString()))
+            //    {
+            //        whereBuilder.Append(" and servicestaffid =('" + job["servicestaffid"].ToString() + "')");
+            //    }
 
 
-                //工单状态
-                if (job["state"] != null && job["state"].Count() > 0)
-                {
-                    whereBuilder.Append(" and state in('" + string.Join("','", job["state"]) + "')");
-                }
+            //    //工单状态
+            //    if (job["state"] != null && job["state"].Count() > 0)
+            //    {
+            //        whereBuilder.Append(" and state in('" + string.Join("','", job["state"]) + "')");
+            //    }
 
-                //工单待处理状态
-                if (job["pendstate"] != null && job["pendstate"].Count() > 0)
-                {
-                    whereBuilder.Append(" and pendstate in('" + string.Join("','", job["pendstate"]) + "')");
-                }
+            //    //工单待处理状态
+            //    if (job["pendstate"] != null && job["pendstate"].Count() > 0)
+            //    {
+            //        whereBuilder.Append(" and pendstate in('" + string.Join("','", job["pendstate"]) + "')");
+            //    }
 
-            }
+            //}
 
-            return whereBuilder.ToString();
+            return "";// whereBuilder.ToString();
         }
 
         /// <summary>

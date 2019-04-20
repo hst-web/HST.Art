@@ -11,8 +11,6 @@ using System.Data.SqlClient;
 using HST.Art.Core;
 using HST.Utillity;
 using System.Text;
-using Newtonsoft.Json.Linq;
-using Newtonsoft.Json;
 using System.Linq;
 using System.Data;
 
@@ -342,32 +340,32 @@ namespace HST.Art.Data
             if (string.IsNullOrEmpty(jsonStr))
                 return string.Empty;
             StringBuilder whereBuilder = new StringBuilder();
-            JObject job = (JObject)JsonConvert.DeserializeObject(jsonStr);
+            //JObject job = (JObject)JsonConvert.DeserializeObject(jsonStr);
 
-            if (job != null && job.Count > 0)
-            {
-                //员工姓名
-                if (job["name"] != null && !string.IsNullOrEmpty(job["name"].ToString()))
-                {
-                    whereBuilder.Append(string.Format(" and (s.name like '%{0}%' or dbo.f_GetPy(s.[name]) like '{0}%')", job["name"].ToString()));
-                }
+            //if (job != null && job.Count > 0)
+            //{
+            //    //员工姓名
+            //    if (job["name"] != null && !string.IsNullOrEmpty(job["name"].ToString()))
+            //    {
+            //        whereBuilder.Append(string.Format(" and (s.name like '%{0}%' or dbo.f_GetPy(s.[name]) like '{0}%')", job["name"].ToString()));
+            //    }
 
-                //创建时间
-                if (job["startdate"] != null && !string.IsNullOrEmpty(job["startdate"].ToString()))
-                {
-                    whereBuilder.Append(" and CONVERT(varchar(10), s.createtime, 120)>='" + job["startdate"].ToString() + "'");
-                }
-                if (job["enddate"] != null && !string.IsNullOrEmpty(job["enddate"].ToString()))
-                {
-                    whereBuilder.Append(" and CONVERT(varchar(10), s.createtime, 120)<='" + job["enddate"].ToString() + "'");
-                }
+            //    //创建时间
+            //    if (job["startdate"] != null && !string.IsNullOrEmpty(job["startdate"].ToString()))
+            //    {
+            //        whereBuilder.Append(" and CONVERT(varchar(10), s.createtime, 120)>='" + job["startdate"].ToString() + "'");
+            //    }
+            //    if (job["enddate"] != null && !string.IsNullOrEmpty(job["enddate"].ToString()))
+            //    {
+            //        whereBuilder.Append(" and CONVERT(varchar(10), s.createtime, 120)<='" + job["enddate"].ToString() + "'");
+            //    }
 
-                //所属组织
-                if (job["organizationId"] != null && !string.IsNullOrEmpty(job["organizationId"].ToString()))
-                {
-                    whereBuilder.Append(" and s.organizationId ='" + job["organizationId"].ToString() + "'");
-                }
-            }
+            //    //所属组织
+            //    if (job["organizationId"] != null && !string.IsNullOrEmpty(job["organizationId"].ToString()))
+            //    {
+            //        whereBuilder.Append(" and s.organizationId ='" + job["organizationId"].ToString() + "'");
+            //    }
+            //}
 
             return whereBuilder.ToString();
         }

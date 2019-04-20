@@ -9,7 +9,6 @@ using System;
 using System.Security.Cryptography;
 using System.Text;
 
-
 namespace HST.Utillity
 {
     /// <summary>
