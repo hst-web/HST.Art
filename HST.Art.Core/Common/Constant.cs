@@ -21,5 +21,7 @@ namespace HST.Art.Core
         public static string ADMIN_NAME = "admin";
 
         public static string INIT_PASSWORD = "123456";
+
+        public static string INIT_ORG_NUMBER = "Z190001";
     }
 }

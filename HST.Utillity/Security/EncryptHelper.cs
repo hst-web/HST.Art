@@ -39,7 +39,7 @@ namespace HST.Utillity
         /// <param name="encryptString">待加密的字符串</param>
         /// <param name="encryptKey">加密密钥,要求为8位</param>
         /// <returns>加密成功返回加密后的字符串,失败返回源串</returns>
-        public static string Encode(string encryptString, string encryptKey = "sysmenu")
+        public static string Encode(string encryptString, string encryptKey = "fd61e1a059ebc8d6bf36a498c7f45142cca3b161")
         {
             encryptKey = encryptKey.Substring(0, 8);
             encryptKey = encryptKey.PadRight(8, ' ');
@@ -61,7 +61,7 @@ namespace HST.Utillity
         /// <param name="decryptString">待解密的字符串</param>
         /// <param name="decryptKey">解密密钥,要求为8位,和加密密钥相同</param>
         /// <returns>解密成功返回解密后的字符串,失败返源串</returns>
-        public static string Decode(string decryptString, string decryptKey = "sysmenu")
+        public static string Decode(string decryptString, string decryptKey = "fd61e1a059ebc8d6bf36a498c7f45142cca3b161")
         {
             try
             {

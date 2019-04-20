@@ -26,7 +26,7 @@ namespace HST.Art.Data
         /// 根据ID获取会员信息
         /// </summary>
         /// <param name="id">会员ID</param>
-        /// <returns>员工信息</returns>
+        /// <returns>会员信息</returns>
         public User Get(int id)
         {
             User userInfo = null;
@@ -66,7 +66,7 @@ namespace HST.Art.Data
         /// 获取会员信息
         /// </summary>
         /// <param name="userQuery">查询实体</param>
-        /// <returns>员工信息</returns>
+        /// <returns>会员信息</returns>
         public User GetByQuery(UserQuery userQuery)
         {
             User userInfo = null;
@@ -106,7 +106,7 @@ namespace HST.Art.Data
         /// 获取所有会员信息
         /// </summary>
         /// <param name="condition">筛选条件</param>
-        /// <returns>员工集合</returns>
+        /// <returns>会员集合</returns>
         public List<User> GetAll(FilterEntityModel condition)
         {
             string whereSort = condition == null ? "" : condition.Where + condition.OrderBy;
@@ -122,7 +122,7 @@ namespace HST.Art.Data
                                     ,[Telephone]
                                     ,[Email]
                                     ,[CreateTime]
-                            FROM [user]  where 1=1 " + whereSort;
+                            FROM [user]  where IsDeleted=0 " + whereSort;
 
             IList<DbParameter> parameList = null;
             if (condition != null && condition.SqlParList.Count > 0)
@@ -153,7 +153,7 @@ namespace HST.Art.Data
         /// </summary>
         /// <param name="condition">筛选条件</param>
         /// <param name="totalNum">总条数</param>
-        /// <returns>员工集合</returns>
+        /// <returns>会员集合</returns>
         public List<User> GetPage(FilterEntityModel condition, out int totalNum)
         {
             totalNum = 0;
@@ -162,7 +162,7 @@ namespace HST.Art.Data
 
             List<User> userList = null;
             DBHelper dbHelper = new DBHelper(ConnectionString, DbProviderType.SqlServer);
-            string strSqlQuery = @"select count(ID) from [user] where 1=1 " + where;//查询有多少条记录
+            string strSqlQuery = @"select count(ID) from [user] where IsDeleted=0 " + where;//查询有多少条记录
             IList<DbParameter> parameList = new List<DbParameter>();
             parameList.Add(new SqlParameter("@pageSize", condition.PageSize));
             parameList.Add(new SqlParameter("@pageIndex", condition.PageIndex));
@@ -193,7 +193,7 @@ namespace HST.Art.Data
                                     ,[Telephone]
                                     ,[Email]
                                     ,[CreateTime]
-                                    ,ROW_NUMBER() over(" + sort + ") as num  from [user] where 1=1 " + where + ") as t where num between(@pageIndex - 1) * @pageSize + 1  and @pageIndex*@pageSize " + sort;
+                                    ,ROW_NUMBER() over(" + sort + ") as num  from [user] where IsDeleted=0 " + where + ") as t where num between(@pageIndex - 1) * @pageSize + 1  and @pageIndex*@pageSize " + sort;
             using (DbDataReader reader = dbHelper.ExecuteReader(strSql, parameList))
             {
                 userList = new List<User>();
@@ -246,7 +246,7 @@ namespace HST.Art.Data
 
         #endregion
 
-        #region 编辑员工
+        #region 编辑会员
 
         /// <summary>
         /// 添加会员

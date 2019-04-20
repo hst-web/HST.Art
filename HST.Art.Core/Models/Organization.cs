@@ -106,8 +106,10 @@ namespace HST.Art.Core
 			set{ _createdate=value;}
 			get{return _createdate;}
 		}
-		#endregion Model
 
-	}
+        public string Number { get; set; }
+        #endregion Model
+
+    }
 }
 

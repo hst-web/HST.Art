@@ -1,6 +1,6 @@
 ﻿/*----------------------------------------------------------------
-// 文件名：CustomerService.cs
-// 功能描述：客户服务
+// 文件名：UserService.cs
+// 功能描述：会员服务
 // 创建者：sysmenu
 // 创建时间：2019-3-18
 //----------------------------------------------------------------*/
@@ -14,7 +14,7 @@ using HST.Art.Data;
 namespace HST.Art.Service
 {
     /// <summary>
-    /// 客户服务
+    /// 会员服务
     /// </summary>
     public class UserService : ServiceBase, IUserService
     {
@@ -32,7 +32,7 @@ namespace HST.Art.Service
         /// 获取根据条件获取所有会员集合
         /// </summary>
         /// <param name="filterModel">条件</param>
-        /// <returns>客户集合</returns>
+        /// <returns>会员集合</returns>
         public List<User> GetAll(FilterEntityModel filterModel = null)
         {
             List<User> userList = _userProvider.GetAll(filterModel);
@@ -44,7 +44,7 @@ namespace HST.Art.Service
         /// </summary>
         /// <param name="filterModel">条件</param>
         /// <param name="totalNum">总记录数</param>
-        /// <returns>客户集合</returns>
+        /// <returns>会员集合</returns>
         public List<User> GetPage(FilterEntityModel filterModel, out int totalNum)
         {
             totalNum = 0;
@@ -64,7 +64,7 @@ namespace HST.Art.Service
         /// 根据手机号获取会员信息
         /// </summary>
         /// <param name="phoneNum">手机号</param>
-        /// <returns>客户信息</returns>
+        /// <returns>会员信息</returns>
         public User GetByPhone(string phoneNum)
         {
             //参数验证
@@ -191,7 +191,7 @@ namespace HST.Art.Service
                 userInfo.Salt = salt;
             }
 
-            userInfo.Password = DesHelper.Encrypt(password, userInfo.Salt);
+            userInfo.Password = EncryptHelper.Encode(password, userInfo.Salt);
 
             return _userProvider.Update(userInfo);
         }
