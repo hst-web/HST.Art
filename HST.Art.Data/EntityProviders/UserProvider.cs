@@ -13,7 +13,6 @@ using HST.Utillity;
 using System.Text;
 using System.Linq;
 using System.Data;
-using HST.Art.Core.Models;
 
 namespace HST.Art.Data
 {
@@ -28,7 +27,7 @@ namespace HST.Art.Data
         /// </summary>
         /// <param name="id">会员ID</param>
         /// <returns>员工信息</returns>
-        public User Get(string id)
+        public User Get(int id)
         {
             User userInfo = null;
             DBHelper dbHelper = new DBHelper(ConnectionString, DbProviderType.SqlServer);
@@ -110,7 +109,7 @@ namespace HST.Art.Data
         /// <returns>员工集合</returns>
         public List<User> GetAll(FilterEntityModel condition)
         {
-            string whereSort = condition.Where + condition.OrderBy;
+            string whereSort = condition == null ? "" : condition.Where + condition.OrderBy;
 
             List<User> userList = null;
             DBHelper dbHelper = new DBHelper(ConnectionString, DbProviderType.SqlServer);
@@ -125,9 +124,10 @@ namespace HST.Art.Data
                                     ,[CreateTime]
                             FROM [user]  where 1=1 " + whereSort;
 
-            IList<DbParameter> parameList = new List<DbParameter>();
-            if (condition.SqlParList.Count > 0)
+            IList<DbParameter> parameList = null;
+            if (condition != null && condition.SqlParList.Count > 0)
             {
+                parameList = new List<DbParameter>();
                 foreach (var item in condition.SqlParList)
                 {
                     parameList.Add(new SqlParameter(item.Key, item.Value));
@@ -226,7 +226,7 @@ namespace HST.Art.Data
 
             if (ReaderExists(reader, "Salt") && DBNull.Value != reader["Salt"])
             {
-                userInfo.Salt = Convert.ToInt32(reader["Salt"]);
+                userInfo.Salt = reader["Salt"].ToString();
             }
 
             if (ReaderExists(reader, "HeadImg") && DBNull.Value != reader["HeadImg"])

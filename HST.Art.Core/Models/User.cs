@@ -21,7 +21,7 @@ namespace HST.Art.Core
         private int _id;
         private string _username;
         private string _password;
-        private int _salt;
+        private string _salt;
         private string _name;
         private string _email;
         private string _telephone;
@@ -57,7 +57,7 @@ namespace HST.Art.Core
         /// <summary>
         /// 盐
         /// </summary>
-        public int Salt
+        public string Salt
         {
             set { _salt = value; }
             get { return _salt; }

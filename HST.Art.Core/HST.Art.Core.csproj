@@ -77,6 +77,8 @@
     <Compile Include="Common\Constant.cs" />
     <Compile Include="Common\Enums\CommonEnums.cs" />
     <Compile Include="Common\KeyValueObj.cs" />
+    <Compile Include="IServices\IBaseService.cs" />
+    <Compile Include="IServices\IUserService.cs" />
     <Compile Include="Models\Article.cs" />
     <Compile Include="Models\CategoryDictionary.cs" />
     <Compile Include="Models\FileDownload.cs" />

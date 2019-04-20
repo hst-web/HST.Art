@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HST.Art.Core.Models
+namespace HST.Art.Core
 {
     public class FlagUpdHandle
     {
@@ -13,7 +13,6 @@ namespace HST.Art.Core.Models
         public string TableName { get; set; }
         public string Key { get; set; }
         public object Value { get; set; }
-        public SqlDbType FieldType { get; set; }
-       
+        public FieldType FieldType { get; set; }      
     }
 }

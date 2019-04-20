@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using HST.Art.Core.Models;
+using HST.Art.Core;
 
 namespace HST.Art.Data
 {

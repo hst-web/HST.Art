@@ -18,6 +18,8 @@ namespace HST.Art.Core
         public static string FEELITEM_TYPE_OTHER = "其他";
 
         //超级管理员
-        public static string ADMIN_NAME = "admin";        
+        public static string ADMIN_NAME = "admin";
+
+        public static string INIT_PASSWORD = "123456";
     }
 }

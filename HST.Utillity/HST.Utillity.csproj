@@ -136,6 +136,7 @@
     <Compile Include="Security\CommunicationCryptor.cs" />
     <Compile Include="Security\DesHelper.cs" />
     <Compile Include="Security\HashHelper.cs" />
+    <Compile Include="Security\RandomHelper.cs" />
     <Compile Include="Security\RsaHelper.cs" />
     <Compile Include="ValidCode\ValidateCoder.cs" />
     <Compile Include="ValidCode\ValidateCodeType.cs" />

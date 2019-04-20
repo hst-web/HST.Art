@@ -8,7 +8,7 @@ using System;
 using System.Configuration;
 using HST.Utillity;
 using System.Data.Common;
-using HST.Art.Core.Models;
+using HST.Art.Core;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 
