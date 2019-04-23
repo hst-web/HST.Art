@@ -46,6 +46,7 @@
     <Compile Include="EntityProviderBase\EntityProviderBase.cs" />
     <Compile Include="EntityProviderBase\IEntityBase.cs" />
     <Compile Include="EntityProviders\CustomerProvider.cs" />
+    <Compile Include="EntityProviders\MemberUnitProvider.cs" />
     <Compile Include="EntityProviders\OrganizationProvider.cs" />
     <Compile Include="EntityProviders\UserProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

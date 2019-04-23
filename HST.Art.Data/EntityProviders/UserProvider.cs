@@ -121,7 +121,7 @@ namespace HST.Art.Data
                                     ,[State]
                                     ,[Telephone]
                                     ,[Email]
-                                    ,[CreateTime]
+                                    ,[CreateDate]
                             FROM [user]  where IsDeleted=0 " + whereSort;
 
             IList<DbParameter> parameList = null;
@@ -184,7 +184,7 @@ namespace HST.Art.Data
                                     ,[State]
                                     ,[Telephone]
                                     ,[Email]
-                                    ,[CreateTime]
+                                    ,[CreateDate]
                             FROM (select top (@pageSize*@pageIndex)  [ID]
                                     ,[UserName]
                                     ,[IsAdmin]
@@ -192,8 +192,8 @@ namespace HST.Art.Data
                                     ,[State]
                                     ,[Telephone]
                                     ,[Email]
-                                    ,[CreateTime]
-                                    ,ROW_NUMBER() over(" + sort + ") as num  from [user] where IsDeleted=0 " + where + ") as t where num between(@pageIndex - 1) * @pageSize + 1  and @pageIndex*@pageSize " + sort;
+                                    ,[CreateDate]
+                                    ,ROW_NUMBER() over(" + sort + ") as num  from [user] where IsDeleted=0 " + where + ") as t where num between (@pageIndex - 1) * @pageSize + 1  and @pageIndex*@pageSize " + sort;
             using (DbDataReader reader = dbHelper.ExecuteReader(strSql, parameList))
             {
                 userList = new List<User>();

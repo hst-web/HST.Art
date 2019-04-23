@@ -10,9 +10,12 @@ namespace HST.Art.Core
         private FilterType _filterType;
         private string _where = "";
         private string _orderBy = "";
+        private string _asOrderBy = "";
         private int _pageIndex = 1;
         private int _pageSize = 10;
+        private SortType _defaultSort;
         private Dictionary<string, object> _sqlParList = new Dictionary<string, object>();
+        private string _sortTbAsName;
         public List<KeyValueObj> keyValueList { get; set; }
         public KeyValuePair<string, SortType> SortDict { get; set; }
         public KeyValuePair<string, SortType> ThenDict { get; set; }
@@ -69,6 +72,16 @@ namespace HST.Art.Core
                 return _sqlParList;
             }
         }
+
+        public bool IsHaveSort
+        {
+
+            get
+            {
+                return !string.IsNullOrEmpty(SortDict.Key);
+            }
+        }
+
         /// <summary>
         /// Where 条件
         /// </summary>
@@ -86,7 +99,7 @@ namespace HST.Art.Core
                         sBuilder.Append(GetWhereItemStr(item));
                     }
 
-                    return sBuilder.ToString();
+                    _where = sBuilder.ToString();
                 }
 
                 return _where;
@@ -109,12 +122,60 @@ namespace HST.Art.Core
                 }
                 else
                 {
-                    _orderBy = " order by Id asc";
+                    _orderBy =string.Format(" order by Id {0} ", _defaultSort);
                 }
 
                 return _orderBy;
             }
 
+        }
+
+        public string AsOrderBy
+        {
+            get
+            {
+                if (!string.IsNullOrEmpty(SortDict.Key) && !string.IsNullOrEmpty(_sortTbAsName))
+                {
+                    _asOrderBy = string.Format(" order by {2}{0} {1}", SortDict.Key, SortDict.Value.ToString(), _sortTbAsName);
+                    if (!string.IsNullOrEmpty(ThenDict.Key))
+                    {
+                        _asOrderBy += string.Format(" ,{2}{0} {1}", ThenDict.Key, ThenDict.Value.ToString(), _sortTbAsName);
+                    }
+                }
+                else
+                {
+                    _asOrderBy = string.Format(" order by {0}Id {1} ",_sortTbAsName, _defaultSort);
+                }
+
+                return _asOrderBy;
+            }
+
+        }
+
+        public string SortTbAsName
+        {
+            get
+            {
+                if (!string.IsNullOrEmpty(_sortTbAsName))
+                {
+                    _sortTbAsName = _sortTbAsName + ".";
+                }
+
+                return _sortTbAsName;
+            }
+
+            set
+            {
+                _sortTbAsName = value;
+            }
+        }
+
+        public SortType DefaultSort
+        {
+            set
+            {
+                _defaultSort = value;
+            }
         }
 
         private void ConvertKeyValueObj(KeyValueObj item)

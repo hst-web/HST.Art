@@ -81,7 +81,7 @@ namespace HST.Art.Core
             {
                 if (!string.IsNullOrEmpty(_tbAsName))
                 {
-                    return _tbAsName + ".";
+                    _tbAsName= _tbAsName + ".";
                 }
                 return _tbAsName;
             }

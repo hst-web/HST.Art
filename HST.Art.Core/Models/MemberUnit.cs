@@ -21,7 +21,7 @@ namespace HST.Art.Core
         private string _headimg;
         private int _star = 1;
         private string _number;
-        private int _state = 0;
+        private PublishState _state;
         private int _category;
         private string _description;
         private string _province;
@@ -73,7 +73,7 @@ namespace HST.Art.Core
         /// 0:下架
         /// 1:上架
         /// </summary>
-        public int State
+        public PublishState State
         {
             set { _state = value; }
             get { return _state; }
@@ -134,6 +134,8 @@ namespace HST.Art.Core
             set { _isdeleted = value; }
             get { return _isdeleted; }
         }
+
+        public string CategoryName { get; set; }
         #endregion Model
 
     }

@@ -20,8 +20,21 @@ namespace HST.Art.Core
         //超级管理员
         public static string ADMIN_NAME = "admin";
 
+        //初始化密码
         public static string INIT_PASSWORD = "123456";
 
+        //初始化企业编号
         public static string INIT_ORG_NUMBER = "Z190001";
+
+        //表简称
+        public static string USER_AS_NAME = "";
+        //public static string USER_AS_NAME = "";
+        //public static string USER_AS_NAME = "";
+        //public static string USER_AS_NAME = "";
+        //public static string USER_AS_NAME = "";
+        //public static string USER_AS_NAME = "";
+        //public static string USER_AS_NAME = "";
+        //public static string USER_AS_NAME = "";
+        //public static string USER_AS_NAME = "";
     }
 }
