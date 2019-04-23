@@ -27,14 +27,18 @@ namespace HST.Art.Core
         public static string INIT_ORG_NUMBER = "Z190001";
 
         //表简称
-        public static string USER_AS_NAME = "";
-        //public static string USER_AS_NAME = "";
-        //public static string USER_AS_NAME = "";
-        //public static string USER_AS_NAME = "";
-        //public static string USER_AS_NAME = "";
-        //public static string USER_AS_NAME = "";
-        //public static string USER_AS_NAME = "";
-        //public static string USER_AS_NAME = "";
-        //public static string USER_AS_NAME = "";
+        public static string USER_AS_NAME = "u";
+        public static string ARTICLE_AS_NAME = "a";
+        public static string CATEGORY_DICTIONARY_AS_NAME = "cd";
+        public static string FILE_DOWNLOAD_AS_NAME = "fd";
+        public static string MEMBER_UNIT_AS_NAME = "m";
+        public static string ORGANIZATION_AS_NAME = "o";
+        public static string PERMISSION_AS_NAME = "p";
+        public static string ROLE_AS_NAME = "r";
+        public static string ROTATION_CHART_AS_NAME = "rc";
+        public static string STU_CERTIFICATE_AS_NAME = "sc";
+        public static string TEA_CERTIFICATE_AS_NAME = "tc";
+        public static string FILE_RESOURCE_AS_NAME = "fr";
+        public static string SETTING_AS_NAME = "s";
     }
 }

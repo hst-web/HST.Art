@@ -14,7 +14,7 @@ namespace HST.Art.Data
     {
         #region 查询会员单位
         /// <summary>
-        /// 根据ID获取会员单位信息
+        /// 根据ID获取会员单位单位信息
         /// </summary>
         /// <param name="id">会员单位ID</param>
         /// <returns>会员单位信息</returns>
@@ -47,10 +47,10 @@ namespace HST.Art.Data
         {
             string whereSort = string.Empty;
 
-            if (condition!=null)
+            if (condition != null)
             {
                 condition.DefaultSort = SortType.Desc;
-                whereSort= condition.Where + condition.OrderBy;
+                whereSort = condition.Where + condition.OrderBy;
             }
 
             List<MemberUnit> MemberUnitList = null;
@@ -83,7 +83,7 @@ namespace HST.Art.Data
         }
 
         /// <summary>
-        /// 获取会员分页信息
+        /// 获取会员单位分页信息
         /// </summary>
         /// <param name="condition">筛选条件</param>
         /// <param name="totalNum">总条数</param>
@@ -91,8 +91,9 @@ namespace HST.Art.Data
         public List<MemberUnit> GetPage(FilterEntityModel condition, out int totalNum)
         {
             totalNum = 0;
-            string sort = condition.IsHaveSort ? condition.OrderBy : condition.OrderBy + " desc";
-            string asSort = condition.IsHaveSort ? condition.AsOrderBy : condition.AsOrderBy + " desc";
+            condition.DefaultSort = SortType.Desc;
+            string sort = condition.OrderBy;
+            string asSort = condition.AsOrderBy;
             string where = condition.Where;
 
             List<MemberUnit> MemberUnitList = null;
@@ -191,38 +192,39 @@ namespace HST.Art.Data
         #region 编辑会员单位
 
         /// <summary>
-        /// 添加会员
+        /// 添加会员单位
         /// </summary>
         /// <param name="MemberUnitInfo">会员单位信息</param>
         /// <returns>添加成功标识</returns>
         public bool Add(MemberUnit MemberUnitInfo)
         {
             DBHelper dbHelper = new DBHelper(ConnectionString, DbProviderType.SqlServer);
-            string strSql = @"if exists(select Id from MemberUnit where MemberUnitName=@MemberUnitName)
+            string strSql = @"if exists(select Id from MemberUnit where Number=@Number)
                                 begin
-                                    update MemberUnit set Password=@Password,IsAdmin=@IsAdmin,Email=@Email,Name=@Name,Telephone=@Telephone,State=@State,HeadImg=@HeadImg,Salt=@Salt,CreateDate=getdate(),IsDeleted=0 where MemberUnitName=@MemberUnitName 
+                                    update MemberUnit set Name=@Name,HeadImg=@HeadImg,Star=@Star,State=@State,Category=@Category,Description=@Description,Province=@Province,City=@City,County=@County,CreateDate=getdate(),IsDeleted=0 where Number=@Number 
                                 end
                                 else
                                 begin
-                                Insert Into MemberUnit(MemberUnitName, Password, Salt, Name, Email, Telephone, HeadImg, IsAdmin, State) 
-                                   Values(@MemberUnitName, @Password, @Salt, @Name, @Email, @Telephone, @HeadImg, @IsAdmin, @State) 
+                                Insert Into MemberUnit(Name, HeadImg, Star, Number, State, Category, Description, Province, City, County) 
+                                   Values(@Name, @HeadImg, @Star, @Number, @State, @Category, @Description, @Province, @City, @County) 
                                 end ";
 
             List<DbParameter> parametersList = new List<DbParameter>();
-            parametersList.Add(new SqlParameter("@MemberUnitName", MemberUnitInfo.MemberUnitName));
-            parametersList.Add(new SqlParameter("@Password", MemberUnitInfo.Password));
-            parametersList.Add(new SqlParameter("@Salt", MemberUnitInfo.Salt));
-            parametersList.Add(new SqlParameter("@IsAdmin", MemberUnitInfo.IsAdmin));
             parametersList.Add(new SqlParameter("@Name", MemberUnitInfo.Name));
-            parametersList.Add(new SqlParameter("@Telephone", MemberUnitInfo.Telephone));
-            parametersList.Add(new SqlParameter("@Email", MemberUnitInfo.Email));
             parametersList.Add(new SqlParameter("@HeadImg", MemberUnitInfo.HeadImg));
+            parametersList.Add(new SqlParameter("@Star", MemberUnitInfo.Star));
+            parametersList.Add(new SqlParameter("@Number", MemberUnitInfo.Number));
             parametersList.Add(new SqlParameter("@State", (int)MemberUnitInfo.State));
+            parametersList.Add(new SqlParameter("@Category", MemberUnitInfo.Category));
+            parametersList.Add(new SqlParameter("@Description", MemberUnitInfo.Description));
+            parametersList.Add(new SqlParameter("@Province", MemberUnitInfo.Province));
+            parametersList.Add(new SqlParameter("@City", MemberUnitInfo.City));
+            parametersList.Add(new SqlParameter("@County", MemberUnitInfo.County));
             return dbHelper.ExecuteNonQuery(strSql, parametersList) > 0;
         }
 
         /// <summary>
-        /// 修改会员
+        /// 修改会员单位
         /// </summary>
         /// <param name="MemberUnitInfo">会员单位信息</param>
         /// <returns>修改成功标识</returns>
@@ -231,33 +233,35 @@ namespace HST.Art.Data
             DBHelper dbHelper = new DBHelper(ConnectionString, DbProviderType.SqlServer);
             string strSql = @"Update MemberUnit
                               Set [Name]=@Name
-                                  ,[Password]=@Password
-                                  ,[Salt]=@Salt
-                                  ,[Name]=@Name
-                                  ,[Email]=@Email
-                                  ,[Telephone]=@Telephone
                                   ,[HeadImg]=@HeadImg 
-                                  ,[IsAdmin]=@IsAdmin                         
+                                  ,[Star]=@Star
+                                  ,[Number]=@Number
                                   ,[State]=@State
+                                  ,[Category]=@Category
+                                  ,[Description]=@Description
+                                  ,[Province]=@Province
+                                  ,[City]=@City
+                                  ,[County]=@County
                                   Where ID=@ID";
 
             List<DbParameter> parametersList = new List<DbParameter>();
             parametersList.Add(new SqlParameter("@ID", MemberUnitInfo.Id));
-            parametersList.Add(new SqlParameter("@MemberUnitName", MemberUnitInfo.MemberUnitName));
-            parametersList.Add(new SqlParameter("@Password", MemberUnitInfo.Password));
-            parametersList.Add(new SqlParameter("@Salt", MemberUnitInfo.Salt));
-            parametersList.Add(new SqlParameter("@IsAdmin", MemberUnitInfo.IsAdmin));
             parametersList.Add(new SqlParameter("@Name", MemberUnitInfo.Name));
-            parametersList.Add(new SqlParameter("@Telephone", MemberUnitInfo.Telephone));
-            parametersList.Add(new SqlParameter("@Email", MemberUnitInfo.Email));
             parametersList.Add(new SqlParameter("@HeadImg", MemberUnitInfo.HeadImg));
+            parametersList.Add(new SqlParameter("@Star", MemberUnitInfo.Star));
+            parametersList.Add(new SqlParameter("@Number", MemberUnitInfo.Number));
             parametersList.Add(new SqlParameter("@State", (int)MemberUnitInfo.State));
+            parametersList.Add(new SqlParameter("@Category", MemberUnitInfo.Category));
+            parametersList.Add(new SqlParameter("@Description", MemberUnitInfo.Description));
+            parametersList.Add(new SqlParameter("@Province", MemberUnitInfo.Province));
+            parametersList.Add(new SqlParameter("@City", MemberUnitInfo.City));
+            parametersList.Add(new SqlParameter("@County", MemberUnitInfo.County));
 
             return dbHelper.ExecuteNonQuery(strSql, parametersList) > 0;
         }
 
         /// <summary>
-        /// 删除会员
+        /// 删除会员单位
         /// </summary>
         /// <param name="id">id</param>
         /// <returns></returns>

@@ -227,7 +227,7 @@ namespace HST.Art.Service
                 FieldType = FieldType.Int,
                 Id = id,
                 Key = "State",
-                Value = 1,
+                Value = (int)PublishState.Upper,
                 TableName = "User"
             });
         }
@@ -246,7 +246,7 @@ namespace HST.Art.Service
                 FieldType = FieldType.Int,
                 Id = id,
                 Key = "State",
-                Value = 0,
+                Value = (int)PublishState.Lower,
                 TableName = "User"
             });
         }

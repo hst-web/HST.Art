@@ -79,6 +79,7 @@
     <Compile Include="Common\KeyValueObj.cs" />
     <Compile Include="IServices\IBaseService.cs" />
     <Compile Include="IServices\IOrganizationService.cs" />
+    <Compile Include="IServices\IMemberUnitService.cs" />
     <Compile Include="IServices\IUserService.cs" />
     <Compile Include="Models\Article.cs" />
     <Compile Include="Models\CategoryDictionary.cs" />
