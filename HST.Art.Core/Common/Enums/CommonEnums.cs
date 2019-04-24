@@ -126,4 +126,26 @@ namespace HST.Art.Core
         Asc,
         Desc
     }
+
+
+    public enum SectionType
+    {
+        UnKnow,
+        /// <summary>
+        /// 行业资讯
+        /// </summary>
+        Industry,
+        /// <summary>
+        /// 协会活动
+        /// </summary>
+        Association,
+        /// <summary>
+        /// 考级中心
+        /// </summary>
+        Examination,
+        /// <summary>
+        /// 社会公益
+        /// </summary>
+        Social
+    }
 }

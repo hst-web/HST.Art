@@ -228,7 +228,7 @@ namespace HST.Art.Service
                 Id = id,
                 Key = "State",
                 Value = (int)PublishState.Upper,
-                TableName = "User"
+                TableName = "[User]"
             });
         }
 
@@ -247,7 +247,7 @@ namespace HST.Art.Service
                 Id = id,
                 Key = "State",
                 Value = (int)PublishState.Lower,
-                TableName = "User"
+                TableName = "[User]"
             });
         }
 
@@ -266,7 +266,7 @@ namespace HST.Art.Service
                 Id = id,
                 Key = "IsDeleted",
                 Value = 1,
-                TableName = "User"
+                TableName = "[User]"
             });
         }
     }

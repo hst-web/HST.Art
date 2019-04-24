@@ -22,8 +22,8 @@ namespace HST.Art.Core
         private string _headimg;
         private string _content;
         private string _author;
-        private int _section;
-        private int _state = 0;
+        private SectionType _section;
+        private PublishState _state = 0;
         private int _parcategory;
         private int _category;
         private DateTime _updatedate;
@@ -78,9 +78,9 @@ namespace HST.Art.Core
             get { return _author; }
         }
         /// <summary>
-        /// 
+        /// 所属模块
         /// </summary>
-        public int Section
+        public SectionType Section
         {
             set { _section = value; }
             get { return _section; }
@@ -89,7 +89,7 @@ namespace HST.Art.Core
         /// 0:下架
         /// 1:上架
         /// </summary>
-        public int State
+        public PublishState State
         {
             set { _state = value; }
             get { return _state; }
@@ -134,6 +134,10 @@ namespace HST.Art.Core
             set { _isdeleted = value; }
             get { return _isdeleted; }
         }
+
+        public string UserName { get; set; }
+        public string CategoryName { get; set; }
+        public string ParCategoryName { get; set; }
         #endregion Model
 
     }

@@ -31,7 +31,7 @@ namespace HST.Art.Data
         {
             User userInfo = null;
             DBHelper dbHelper = new DBHelper(ConnectionString, DbProviderType.SqlServer);
-            string strSql = @"SELECT Id, UserName, Password, Salt, Name, Email, Telephone, HeadImg, IsAdmin, State, CreateDate  from user where id=@Id and IsDeleted=0";
+            string strSql = @"SELECT Id, UserName, Password, Salt, Name, Email, Telephone, HeadImg, IsAdmin, State, CreateDate  from [User] where id=@Id and IsDeleted=0";
             string strRole = "select * from UserRole where UserId=@UserId";
 
             List<DbParameter> parametersList = new List<DbParameter>();
@@ -72,7 +72,7 @@ namespace HST.Art.Data
             User userInfo = null;
             DBHelper dbHelper = new DBHelper(ConnectionString, DbProviderType.SqlServer);
             StringBuilder sBuilder = new StringBuilder();
-            sBuilder.Append("SELECT Id, UserName, Password, Salt, Name, Email, Telephone, HeadImg, IsAdmin, State, CreateDate  from user where IsDeleted=0 ");
+            sBuilder.Append("SELECT Id, UserName, Password, Salt, Name, Email, Telephone, HeadImg, IsAdmin, State, CreateDate  from [User] where IsDeleted=0 ");
 
             List<DbParameter> parametersList = new List<DbParameter>();
             switch (userQuery.Key)
@@ -256,13 +256,13 @@ namespace HST.Art.Data
         public bool Add(User userInfo)
         {
             DBHelper dbHelper = new DBHelper(ConnectionString, DbProviderType.SqlServer);
-            string strSql = @"if exists(select Id from user where userName=@UserName)
+            string strSql = @"if exists(select Id from [User] where userName=@UserName)
                                 begin
-                                    update user set Password=@Password,IsAdmin=@IsAdmin,Email=@Email,Name=@Name,Telephone=@Telephone,State=@State,HeadImg=@HeadImg,Salt=@Salt,CreateDate=getdate(),IsDeleted=0 where userName=@UserName 
+                                    update [User] set Password=@Password,IsAdmin=@IsAdmin,Email=@Email,Name=@Name,Telephone=@Telephone,State=@State,HeadImg=@HeadImg,Salt=@Salt,CreateDate=getdate(),IsDeleted=0 where userName=@UserName 
                                 end
                                 else
                                 begin
-                                Insert Into user(UserName, Password, Salt, Name, Email, Telephone, HeadImg, IsAdmin, State) 
+                                Insert Into [User] (UserName, Password, Salt, Name, Email, Telephone, HeadImg, IsAdmin, State) 
                                    Values(@UserName, @Password, @Salt, @Name, @Email, @Telephone, @HeadImg, @IsAdmin, @State) 
                                 end ";
 
@@ -287,7 +287,7 @@ namespace HST.Art.Data
         public bool Update(User userInfo)
         {
             DBHelper dbHelper = new DBHelper(ConnectionString, DbProviderType.SqlServer);
-            string strSql = @"Update user
+            string strSql = @"Update [User]
                               Set [UserName]=@UserName
                                   ,[Password]=@Password
                                   ,[Salt]=@Salt
@@ -322,7 +322,7 @@ namespace HST.Art.Data
         public bool Delete(int id)
         {
             DBHelper dbHelper = new DBHelper(ConnectionString, DbProviderType.SqlServer);
-            string strSql = "delete user where id =@id";
+            string strSql = "delete [User] where id =@id";
 
             List<DbParameter> parametersList = new List<DbParameter>();
             parametersList.Add(new SqlParameter("@id", id));
