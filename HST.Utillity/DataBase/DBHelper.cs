@@ -103,7 +103,7 @@ namespace HST.Utillity
             }
             catch(Exception ex)
             {
-                LogHelper.Info(LoggerType.ServiceExceptionLog, ex.Message, ex);
+                Logger.Info(this, ex.Message, ex);
             }
 
 

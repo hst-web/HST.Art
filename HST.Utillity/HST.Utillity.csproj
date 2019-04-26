@@ -115,7 +115,7 @@
     <Compile Include="IO\ExcelHelper.cs" />
     <Compile Include="IO\FtpHelper.cs" />
     <Compile Include="IO\HttpHelper.cs" />
-    <Compile Include="Log\LogOperator.cs" />
+    <Compile Include="Log\Logger.cs" />
     <Compile Include="Message\SMSHelper.cs" />
     <Compile Include="Net\FetchHeler.cs" />
     <Compile Include="IO\DirectoryHelper.cs" />
@@ -155,9 +155,7 @@
     <None Include="Scripts\jquery-3.3.1.min.map" />
     <None Include="Scripts\jquery-3.3.1.slim.min.map" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="WeChat\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Scripts\jquery-3.3.1-vsdoc.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />

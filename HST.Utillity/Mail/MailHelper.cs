@@ -100,7 +100,7 @@ namespace HST.Utillity
             }
             catch (Exception ex)
             {
-                LogHelper.Info(LoggerType.ServiceExceptionLog, ex.Message, ex);
+                Logger.Info("MailHelper:"+ex.Message, ex);
             }
         }
 
@@ -138,7 +138,7 @@ namespace HST.Utillity
             }
             catch (Exception ex)
             {
-                LogHelper.Info(LoggerType.ServiceExceptionLog, ex.Message, ex);
+                Logger.Info("MailHelper:" + ex.Message, ex);
             }
         }
 
@@ -198,7 +198,7 @@ namespace HST.Utillity
             }
             catch (Exception ex)
             {
-                LogHelper.Info(LoggerType.ServiceExceptionLog, ex.Message, ex);
+                Logger.Info("MailHelper:" + ex.Message, ex);
             }
         }
     }
