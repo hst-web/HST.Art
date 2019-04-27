@@ -1,0 +1,2 @@
+insert into [user] (UserName, Password, Salt, Name, Email, Telephone, HeadImg, IsAdmin, State) values ('admin','WAvPHVB3mX8=','dQBHcZJa','管理员','','','',1,1)
+insert into [Organization] (Number) values ('Z190001')
