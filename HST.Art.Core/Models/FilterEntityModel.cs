@@ -122,7 +122,7 @@ namespace HST.Art.Core
                 }
                 else
                 {
-                    _orderBy =string.Format(" order by Id {0} ", _defaultSort);
+                    _orderBy = string.Format(" order by Id {0} ", _defaultSort);
                 }
 
                 return _orderBy;
@@ -144,7 +144,7 @@ namespace HST.Art.Core
                 }
                 else
                 {
-                    _asOrderBy = string.Format(" order by {0}Id {1} ",_sortTbAsName, _defaultSort);
+                    _asOrderBy = string.Format(" order by {0}Id {1} ", _sortTbAsName, _defaultSort);
                 }
 
                 return _asOrderBy;
@@ -199,11 +199,11 @@ namespace HST.Art.Core
             {
                 case FilterType.And:
                     sBuilder.Append(string.Format(" and {2}{0}=@{1} ", item.Key, item.Key, item.TbAsName));
-                    _sqlParList.Add(string.Format("@{0}", item.Key), item.Value);
+                    FileSqlDic(string.Format("@{0}", item.Key), item.Value);
                     break;
                 case FilterType.Or:
                     sBuilder.Append(string.Format(" or {2}{0}=@{1} ", item.Key, item.Key, item.TbAsName));
-                    _sqlParList.Add(string.Format("@{0}", item.Key), item.Value);
+                    FileSqlDic(string.Format("@{0}", item.Key), item.Value);
                     break;
                 case FilterType.In:
                     if (item.IsList)
@@ -213,7 +213,7 @@ namespace HST.Art.Core
                     else
                     {
                         sBuilder.Append(string.Format(" and {2}{0}=@{1} ", item.Key, item.Key, item.TbAsName));
-                        _sqlParList.Add(string.Format("@{0}", item.Key), item.Value);
+                        FileSqlDic(string.Format("@{0}", item.Key), item.Value);
                     }
                     break;
                 case FilterType.Like:
@@ -221,7 +221,7 @@ namespace HST.Art.Core
                     break;
                 case FilterType.Neq:
                     sBuilder.Append(string.Format(" and {2}{0} <> @{1} ", item.Key, item.Key, item.TbAsName));
-                    _sqlParList.Add(string.Format("@{0}", item.Key), item.Value);
+                    FileSqlDic(string.Format("@{0}", item.Key), item.Value);
                     break;
                 default:
                     break;
@@ -230,12 +230,10 @@ namespace HST.Art.Core
             return sBuilder.ToString();
         }
 
-
-
-
-
-
-
-
+        private void FileSqlDic(string key, object value)
+        {
+            if (_sqlParList.Where(g => g.Key == key).Count() > 0) return;
+            _sqlParList.Add(key, value);
+        }
     }
 }

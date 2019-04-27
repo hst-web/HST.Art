@@ -16,15 +16,7 @@ namespace HST.Art.Service
 {
     public class MemberUnitService : ServiceBase, IMemberUnitService
     {
-        MemberUnitProvider _memberUnitProvider = null;
-        /// <summary>
-        /// 构造函数
-        /// </summary>
-        public MemberUnitService(MemberUnitProvider memberUnitProvider)
-        {
-            _memberUnitProvider = memberUnitProvider;
-            AddDisposableObject(memberUnitProvider);
-        }
+        MemberUnitProvider _memberUnitProvider = new MemberUnitProvider();
 
         public MemberUnit Get(int id)
         {

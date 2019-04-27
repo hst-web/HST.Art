@@ -35,8 +35,7 @@ namespace HST.Art.Data
             string strRole = "select * from UserRole where UserId=@UserId";
 
             List<DbParameter> parametersList = new List<DbParameter>();
-            parametersList.Add(new SqlParameter("@Id", id));
-            parametersList.Add(new SqlParameter("@UserId", id));
+            parametersList.Add(new SqlParameter("@Id", id));            
 
             using (DbDataReader reader = dbHelper.ExecuteReader(strSql, parametersList))
             {
@@ -48,6 +47,8 @@ namespace HST.Art.Data
 
             if (userInfo != null)
             {
+                parametersList = new List<DbParameter>();
+                parametersList.Add(new SqlParameter("@UserId", id));
                 DataTable dtRole = dbHelper.ExecuteDataTable(strRole, parametersList);
                 if (dtRole != null && dtRole.Rows != null && dtRole.Rows.Count > 0)
                 {

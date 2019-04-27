@@ -31,7 +31,7 @@ namespace HST.Art.Data
         {
             Organization orgInfo = null;
             DBHelper dbHelper = new DBHelper(ConnectionString, DbProviderType.SqlServer);
-            string strSql = @"SELECT Id,Number, Name, Logo, Telephone, Email, WeChat, Blog, Description, Framework, CreateDate  from Organization where id=@Id";
+            string strSql = @"SELECT Id,Number, Name, Logo, Telephone, Email, WeChat, Blog, Description, Framework,Detail, CreateDate  from Organization where id=@Id";
 
             List<DbParameter> parametersList = new List<DbParameter>();
             parametersList.Add(new SqlParameter("@Id", id));
@@ -51,7 +51,7 @@ namespace HST.Art.Data
         {
             Organization orgInfo = null;
             DBHelper dbHelper = new DBHelper(ConnectionString, DbProviderType.SqlServer);
-            string strSql = @"SELECT Id,Number, Name, Logo, Telephone, Email, WeChat, Blog, Description, Framework, CreateDate  from Organization where Number=@Number";
+            string strSql = @"SELECT Id,Number, Name, Logo, Telephone, Email, WeChat, Blog, Description, Framework,Detail, CreateDate  from Organization where Number=@Number";
 
             List<DbParameter> parametersList = new List<DbParameter>();
             parametersList.Add(new SqlParameter("@Number", number));
@@ -112,7 +112,10 @@ namespace HST.Art.Data
             {
                 orgInfo.Framework = reader["Framework"].ToString();
             }
-
+            if (ReaderExists(reader, "Detail") && DBNull.Value != reader["Detail"])
+            {
+                orgInfo.Detail = reader["Detail"].ToString();
+            }
             orgInfo.Number = reader["Number"].ToString();
             orgInfo.Name = reader["Name"].ToString();
             orgInfo.Email = reader["Email"].ToString();
@@ -138,12 +141,12 @@ namespace HST.Art.Data
             DBHelper dbHelper = new DBHelper(ConnectionString, DbProviderType.SqlServer);
             string strSql = @"if exists(select Id from Organization where Number=@Number)
                                 begin
-                                    update Organization set Name=@Name,Logo=@Logo,Email=@Email,Telephone=@Telephone,WeChat=@WeChat,Blog=@Blog,Description=@Description,Framework=@Framework where Number=@Number 
+                                    update Organization set Name=@Name,Logo=@Logo,Email=@Email,Telephone=@Telephone,WeChat=@WeChat,Blog=@Blog,Description=@Description,Framework=@Framework,Detail=@Detail  where Number=@Number 
                                 end
                                 else
                                 begin
-                                Insert Into Organization( Name, Logo, Number, Telephone, Email, WeChat, Blog, Description, Framework) 
-                                   Values(@Name, @Logo, @Number, @Telephone, @Email, @WeChat, @Blog, @Description, @Framework) 
+                                Insert Into Organization( Name, Logo, Number, Telephone, Email, WeChat, Blog, Description, Framework,Detail) 
+                                   Values(@Name, @Logo, @Number, @Telephone, @Email, @WeChat, @Blog, @Description, @Framework,@Detail) 
                                 end ";
 
             List<DbParameter> parametersList = new List<DbParameter>();
@@ -155,6 +158,7 @@ namespace HST.Art.Data
             parametersList.Add(new SqlParameter("@Blog", OrganizationInfo.Blog));
             parametersList.Add(new SqlParameter("@Description", OrganizationInfo.Description));
             parametersList.Add(new SqlParameter("@Framework", OrganizationInfo.Framework));
+            parametersList.Add(new SqlParameter("@Detail", OrganizationInfo.Detail));
             parametersList.Add(new SqlParameter("@Number", OrganizationInfo.Number));
             return dbHelper.ExecuteNonQuery(strSql, parametersList) > 0;
         }

@@ -16,15 +16,7 @@ namespace HST.Art.Service
 {
     public class ArticleService : ServiceBase, IArticleService
     {
-        ArticleProvider _ArticleProvider = null;
-        /// <summary>
-        /// 构造函数
-        /// </summary>
-        public ArticleService(ArticleProvider ArticleProvider)
-        {
-            _ArticleProvider = ArticleProvider;
-            AddDisposableObject(ArticleProvider);
-        }
+        ArticleProvider _ArticleProvider = new ArticleProvider();
 
         public Article Get(int id)
         {

@@ -108,6 +108,7 @@ namespace HST.Art.Core
 		}
 
         public string Number { get; set; }
+        public string Detail { get; set; }
         #endregion Model
 
     }

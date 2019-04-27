@@ -18,16 +18,7 @@ namespace HST.Art.Service
     /// </summary>
     public class UserService : ServiceBase, IUserService
     {
-        UserProvider _userProvider = null;
-        /// <summary>
-        /// 构造函数
-        /// </summary>
-        public UserService(UserProvider userProvider)
-        {
-            _userProvider = userProvider;
-            AddDisposableObject(userProvider);
-        }
-
+        UserProvider _userProvider = new UserProvider();
         /// <summary>
         /// 获取根据条件获取所有会员集合
         /// </summary>

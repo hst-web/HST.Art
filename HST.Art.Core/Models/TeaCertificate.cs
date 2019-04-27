@@ -5,6 +5,7 @@
 // 创建时间：2019-4-14
 //----------------------------------------------------------------*/
 using System;
+using HST.Utillity;
 namespace HST.Art.Core
 {
     /// <summary>
@@ -21,7 +22,7 @@ namespace HST.Art.Core
         private string _name;
         private Gender _gender;
         private string _number;
-        private int _state = 0;
+        private PublishState _state = 0;
         private CertificateType _category;
         private int _level;
         private string _province;
@@ -73,7 +74,7 @@ namespace HST.Art.Core
         /// 0:下架
         /// 1:上架
         /// </summary>
-        public int State
+        public PublishState State
         {
             set { _state = value; }
             get { return _state; }
@@ -89,7 +90,7 @@ namespace HST.Art.Core
         /// <summary>
         /// 
         /// </summary>
-        public int level
+        public int Level
         {
             set { _level = value; }
             get { return _level; }
@@ -137,6 +138,14 @@ namespace HST.Art.Core
 
 
         public string HeadImg { get; set; }
+        public string CategoryName
+        {
+            get
+            {
+                return _category.GetDescription();
+            }
+        }
+        public string UserName { get; set; }
         #endregion Model
 
     }

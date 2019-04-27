@@ -28,7 +28,7 @@ namespace HST.Art.Data
         {
             Article ArticleInfo = null;
             DBHelper dbHelper = new DBHelper(ConnectionString, DbProviderType.SqlServer);
-            string strSql = @"SELECT a.Id, a.UserId, a.Title, a.HeadImg, a.Content, a.Author, a.Section, a.State, a.ParCategory, a.Category,cd.Name as CategoryName,u.userName as UserName,pcd.Name as ParCategoryName, a.UpdateDate, a.CreateDate, a.IsDeleted  from Article a  inner join CategoryDictionary cd on a.category=cd.id left join CategoryDictionary pcd on a.ParCategory=pcd.id left join [User] u on a.userid=u.id where  a.IsDeleted=0 and a.id=@Id ";
+            string strSql = @"SELECT a.Id, a.UserId, a.Title, a.HeadImg, a.Content, a.Author, a.Section, a.State, a.ParCategory, a.Category,cd.Name as CategoryName,u.Name as UserName,pcd.Name as ParCategoryName, a.UpdateDate, a.CreateDate, a.IsDeleted  from Article a  inner join CategoryDictionary cd on a.category=cd.id left join CategoryDictionary pcd on a.ParCategory=pcd.id left join [User] u on a.userid=u.id where  a.IsDeleted=0 and a.id=@Id ";
 
             List<DbParameter> parametersList = new List<DbParameter>();
             parametersList.Add(new SqlParameter("@Id", id));
@@ -62,7 +62,7 @@ namespace HST.Art.Data
             List<Article> ArticleList = null;
             DBHelper dbHelper = new DBHelper(ConnectionString, DbProviderType.SqlServer);
 
-            string strSql = @"SELECT a.Id, a.UserId, a.Title, a.HeadImg, a.Content, a.Author, a.Section, a.State, a.ParCategory, a.Category,cd.Name as CategoryName,u.userName as UserName,pcd.Name as ParCategoryName, a.UpdateDate, a.CreateDate, a.IsDeleted  from Article a  inner join CategoryDictionary cd on a.category=cd.id left join CategoryDictionary pcd on a.ParCategory=pcd.id left join [User] u on a.userid=u.id where  a.IsDeleted=0 " + whereSort;
+            string strSql = @"SELECT a.Id, a.UserId, a.Title, a.HeadImg, a.Content, a.Author, a.Section, a.State, a.ParCategory, a.Category,cd.Name as CategoryName,u.Name as UserName,pcd.Name as ParCategoryName, a.UpdateDate, a.CreateDate, a.IsDeleted  from Article a  inner join CategoryDictionary cd on a.category=cd.id left join CategoryDictionary pcd on a.ParCategory=pcd.id left join [User] u on a.userid=u.id where  a.IsDeleted=0 " + whereSort;
 
             IList<DbParameter> parameList = null;
             if (condition != null && condition.SqlParList.Count > 0)
@@ -144,7 +144,7 @@ namespace HST.Art.Data
                                   ,a.[Category]
                                   ,a.[UpdateDate]
                                   ,a.[CreateDate]
-                                  ,u.[UserName] as UserName
+                                  ,u.[Name] as UserName
                                   ,cd.Name as [CategoryName]
                                   ,pcd.Name as [ParCategoryName]
                                     ,ROW_NUMBER() over(" + asSort + ") as num  from [Article] a  inner join CategoryDictionary cd on a.category=cd.id left join CategoryDictionary pcd on a.ParCategory=pcd.id left join [User] u on a.userid=u.id  where  a.IsDeleted=0 " + where + ") as t where num between (@pageIndex - 1) * @pageSize + 1  and @pageIndex*@pageSize " + sort;

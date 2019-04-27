@@ -18,16 +18,7 @@ namespace HST.Art.Service
     /// </summary>
     public class OrganizationService : ServiceBase, IOrganizationService
     {
-        OrganizationProvider _organizationProvider = null;
-        /// <summary>
-        /// 构造函数
-        /// </summary>
-        public OrganizationService(OrganizationProvider organizationProvider)
-        {
-            _organizationProvider = organizationProvider;
-            AddDisposableObject(organizationProvider);
-        }
-
+        OrganizationProvider _organizationProvider = new OrganizationProvider();
 
         /// <summary>
         /// 获取企业信息
