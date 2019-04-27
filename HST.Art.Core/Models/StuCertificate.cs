@@ -19,10 +19,10 @@ namespace HST.Art.Core
         private int _id;
         private int _userid;
         private string _name;
-        private bool _gender;
+        private Gender _gender;
         private string _number;
         private int _state = 0;
-        private int _category;
+        private CertificateType _category;
         private string _province;
         private string _city;
         private string _county;
@@ -53,9 +53,9 @@ namespace HST.Art.Core
             get { return _name; }
         }
         /// <summary>
-        /// 
+        /// 性别 0：女，1：男
         /// </summary>
-        public bool Gender
+        public Gender Gender
         {
             set { _gender = value; }
             get { return _gender; }
@@ -80,7 +80,7 @@ namespace HST.Art.Core
         /// <summary>
         /// 类别：获奖证书、培训证书
         /// </summary>
-        public int Category
+        public CertificateType Category
         {
             set { _category = value; }
             get { return _category; }
@@ -126,6 +126,8 @@ namespace HST.Art.Core
             get { return _isdeleted; }
         }
         #endregion Model
+
+        public string HeadImg { get; set; }
 
     }
 }

@@ -1,7 +1,7 @@
 /*==============================================================*/
 /* Database name:  ARTDB                                        */
 /* DBMS name:      Microsoft SQL Server 2012                    */
-/* Created on:     2019/4/27 13:44:27                           */
+/* Created on:     2019/4/27 13:59:15                           */
 /*==============================================================*/
 
 
@@ -319,7 +319,7 @@ create table StuCertificate (
    UserId               int                  null,
    Name                 nvarchar(20)         not null,
    HeadImg              varchar(128)         null,
-   Gender               bit                  null,
+   Gender               bit                  null default 1,
    Number               varchar(50)          not null,
    State                int                  null default 0,
    Category             int                  null,
@@ -378,7 +378,7 @@ create table TeaCertificate (
    Id                   int                  identity,
    UserId               int                  null,
    Name                 nvarchar(20)         not null,
-   Gender               bit                  null,
+   Gender               bit                  null default 1,
    HeadImg              varchar(128)         null,
    Number               varchar(50)          not null,
    State                int                  null default 0,

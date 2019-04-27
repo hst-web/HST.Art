@@ -38,14 +38,11 @@ namespace HST.Art.Core
     /// </summary>
     public enum Gender
     {
-        //未知
-        UnKnown = 0,
+        //女
+        Female = 0,
 
         //男
-        Male = 1,
-
-        //女
-        Female = 2
+        Male = 1
     }
 
     /// <summary>
@@ -130,7 +127,7 @@ namespace HST.Art.Core
 
     public enum SectionType
     {
-        UnKnow,
+        UnKnown,
         /// <summary>
         /// 行业资讯
         /// </summary>
@@ -151,5 +148,24 @@ namespace HST.Art.Core
         /// </summary>
         [Description("社会公益")]
         Social
+    }
+
+    /// <summary>
+    /// 证书类型
+    /// </summary>
+    public enum CertificateType
+    {
+        /// <summary>
+        /// 未知
+        /// </summary>
+        UnKnown,
+        /// <summary>
+        /// 获奖
+        /// </summary>
+        Prize,
+        /// <summary>
+        /// 培训
+        /// </summary>
+        Train
     }
 }
