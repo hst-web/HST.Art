@@ -1,21 +1,20 @@
 ﻿/*----------------------------------------------------------------
-// 文件名：MemberUnitService.cs
-// 功能描述：会员单位服务
+// 文件名：TeaCertificateService.cs
+// 功能描述：学生服务
 // 创建者：sysmenu
 // 创建时间：2019-4-18
 //----------------------------------------------------------------*/
 using HST.Art.Core;
 using System.Collections.Generic;
-using System.Linq;
 using HST.Art.Data;
 
 namespace HST.Art.Service
 {
-    public class MemberUnitService : ServiceBase, IMemberUnitService
+    public class TeaCertificateService : ServiceBase, ITeaCertificateService
     {
-        MemberUnitProvider _memberUnitProvider = new MemberUnitProvider();
+        CertificateProvider _certificateProvider = new CertificateProvider();
 
-        public MemberUnit Get(int id)
+        public TeaCertificate Get(int id)
         {
             //参数验证
             if (id < 1)
@@ -25,17 +24,17 @@ namespace HST.Art.Service
             }
 
             //数据获取
-            MemberUnit memberUnitInfo = _memberUnitProvider.Get(id);
-            return memberUnitInfo;
+            TeaCertificate teaInfo = _certificateProvider.GetTea(id);
+            return teaInfo;
         }
 
-        public List<MemberUnit> GetAll(FilterEntityModel filterModel = null)
+        public List<TeaCertificate> GetAll(FilterEntityModel filterModel = null)
         {
-            List<MemberUnit> memberUnitList = _memberUnitProvider.GetAll(filterModel);
-            return memberUnitList;
+            List<TeaCertificate> teaCertificateList = _certificateProvider.GetTeaAll(filterModel);
+            return teaCertificateList;
         }
 
-        public List<MemberUnit> GetPage(FilterEntityModel filterModel, out int totalNum)
+        public List<TeaCertificate> GetPage(FilterEntityModel filterModel, out int totalNum)
         {
             totalNum = 0;
             //参数验证
@@ -45,21 +44,21 @@ namespace HST.Art.Service
                 return null;
             }
             //获取数据
-            List<MemberUnit> memberUnitList = _memberUnitProvider.GetPage(filterModel, out totalNum);
+            List<TeaCertificate> teaCertificateList = _certificateProvider.GetTeaPage(filterModel, out totalNum);
 
-            return memberUnitList;
+            return teaCertificateList;
         }
 
-        public bool Add(MemberUnit MemberUnitInfo)
+        public bool Add(TeaCertificate teaInfo)
         {
             //参数验证
-            if (MemberUnitInfo == null)
+            if (teaInfo == null)
             {
                 ErrorMsg = ErrorCode.ParameterNull;
                 return false;
             }
 
-            return _memberUnitProvider.Add(MemberUnitInfo);
+            return _certificateProvider.AddTea(teaInfo);
         }
 
         public bool Delete(int id)
@@ -70,7 +69,7 @@ namespace HST.Art.Service
                 return false;
             }
 
-            return _memberUnitProvider.Delete(id);
+            return _certificateProvider.DeleteTea(id);
         }
 
         public bool LogicDelete(int id)
@@ -82,13 +81,13 @@ namespace HST.Art.Service
                 return false;
             }
 
-            return _memberUnitProvider.Update(new FlagUpdHandle()
+            return _certificateProvider.Update(new FlagUpdHandle()
             {
                 FieldType = FieldType.Int,
                 Id = id,
                 Key = "IsDeleted",
                 Value = 1,
-                TableName = "MemberUnit"
+                TableName = "TeaCertificate"
             });
         }
 
@@ -101,13 +100,13 @@ namespace HST.Art.Service
                 return false;
             }
 
-            return _memberUnitProvider.Update(new FlagUpdHandle()
+            return _certificateProvider.Update(new FlagUpdHandle()
             {
                 FieldType = FieldType.Int,
                 Id = id,
                 Key = "State",
                 Value = (int)PublishState.Upper,
-                TableName = "MemberUnit"
+                TableName = "TeaCertificate"
             });
         }
 
@@ -120,29 +119,29 @@ namespace HST.Art.Service
                 return false;
             }
 
-            return _memberUnitProvider.Update(new FlagUpdHandle()
+            return _certificateProvider.Update(new FlagUpdHandle()
             {
                 FieldType = FieldType.Int,
                 Id = id,
                 Key = "State",
                 Value = (int)PublishState.Lower,
-                TableName = "MemberUnit"
+                TableName = "TeaCertificate"
             });
         }
 
-        public bool Update(MemberUnit MemberUnitInfo)
+        public bool Update(TeaCertificate teaInfo)
         {
             //参数验证
-            if (MemberUnitInfo == null)
+            if (teaInfo == null)
             {
                 ErrorMsg = ErrorCode.ParameterNull;
                 return false;
             }
 
-            return _memberUnitProvider.Update(MemberUnitInfo);
+            return _certificateProvider.UpdatTea(teaInfo);
         }
 
-        public MemberUnit GetByNumber(string number)
+        public TeaCertificate GetByNumber(string number)
         {
             //参数验证
             if (string.IsNullOrEmpty(number))
@@ -151,18 +150,7 @@ namespace HST.Art.Service
                 return null;
             }
 
-            FilterEntityModel filterModel = new FilterEntityModel()
-            {
-                keyValueList = new List<KeyValueObj>() { new KeyValueObj() { Key = "Number", Value = number, TbAsName = Constant.MEMBER_UNIT_AS_NAME } }
-            };
-
-            List<MemberUnit> memberUnitList = _memberUnitProvider.GetAll(filterModel);
-            if (memberUnitList!=null&&memberUnitList.Count>0)
-            {
-                return memberUnitList.FirstOrDefault();
-            }
-
-            return null;
+            return _certificateProvider.GetTeaByNumber(number);
         }
     }
 }

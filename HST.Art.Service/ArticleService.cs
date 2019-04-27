@@ -1,15 +1,11 @@
-﻿using HST.Art.Core;
-using System;
-using System.Collections.Generic;
-/*----------------------------------------------------------------
+﻿/*----------------------------------------------------------------
 // 文件名：ArticleService.cs
 // 功能描述：文章服务
 // 创建者：sysmenu
 // 创建时间：2019-4-18
 //----------------------------------------------------------------*/
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using HST.Art.Core;
+using System.Collections.Generic;
 using HST.Art.Data;
 
 namespace HST.Art.Service
