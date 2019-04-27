@@ -177,9 +177,9 @@ namespace HST.Art.Data
             ArticleInfo.Section = (SectionType)reader["Section"];
             ArticleInfo.State = Convert.ToInt32(reader["State"]) < 1 ? PublishState.Lower : PublishState.Upper;
             ArticleInfo.Category = Convert.ToInt32(reader["Category"]);
-            ArticleInfo.ParCategory = Convert.ToInt32(reader["ParCategory"]);   
+            ArticleInfo.ParCategory = Convert.ToInt32(reader["ParCategory"]);
             ArticleInfo.CreateDate = Convert.ToDateTime(reader["CreateDate"]);
-           
+
             if (ReaderExists(reader, "CategoryName") && DBNull.Value != reader["CategoryName"])
             {
                 ArticleInfo.CategoryName = reader["CategoryName"].ToString();
@@ -207,11 +207,9 @@ namespace HST.Art.Data
 
             return ArticleInfo;
         }
-
         #endregion
 
         #region 编辑文章
-
         /// <summary>
         /// 添加文章
         /// </summary>
@@ -220,27 +218,19 @@ namespace HST.Art.Data
         public bool Add(Article ArticleInfo)
         {
             DBHelper dbHelper = new DBHelper(ConnectionString, DbProviderType.SqlServer);
-            string strSql = @"if exists(select Id from Article where Number=@Number)
-                                begin
-                                    update Article set Name=@Name,HeadImg=@HeadImg,Star=@Star,State=@State,Category=@Category,Description=@Description,Province=@Province,City=@City,County=@County,CreateDate=getdate(),IsDeleted=0 where Number=@Number 
-                                end
-                                else
-                                begin
-                                Insert Into Article(Name, HeadImg, Star, Number, State, Category, Description, Province, City, County) 
-                                   Values(@Name, @HeadImg, @Star, @Number, @State, @Category, @Description, @Province, @City, @County) 
-                                end ";
+            string strSql = @"Insert Into Article (UserId, Title, HeadImg, Content, Author, Section, State, ParCategory, Category) Values (@UserId, @Title, @HeadImg, @Content, @Author, @Section, @State,@ParCategory, @Category)";
 
             List<DbParameter> parametersList = new List<DbParameter>();
-            parametersList.Add(new SqlParameter("@Name", ArticleInfo.Name));
+            parametersList.Add(new SqlParameter("@UserId", ArticleInfo.UserId));
+            parametersList.Add(new SqlParameter("@Title", ArticleInfo.Title));
             parametersList.Add(new SqlParameter("@HeadImg", ArticleInfo.HeadImg));
-            parametersList.Add(new SqlParameter("@Star", ArticleInfo.Star));
-            parametersList.Add(new SqlParameter("@Number", ArticleInfo.Number));
-            parametersList.Add(new SqlParameter("@State", (int)ArticleInfo.State));
+            parametersList.Add(new SqlParameter("@Content", ArticleInfo.Content));
+            parametersList.Add(new SqlParameter("@Author", ArticleInfo.Author));
+            parametersList.Add(new SqlParameter("@Section", (int)ArticleInfo.Section));
             parametersList.Add(new SqlParameter("@Category", ArticleInfo.Category));
-            parametersList.Add(new SqlParameter("@Description", ArticleInfo.Description));
-            parametersList.Add(new SqlParameter("@Province", ArticleInfo.Province));
-            parametersList.Add(new SqlParameter("@City", ArticleInfo.City));
-            parametersList.Add(new SqlParameter("@County", ArticleInfo.County));
+            parametersList.Add(new SqlParameter("@Description", ArticleInfo.ParCategory));
+            parametersList.Add(new SqlParameter("@State", (int)ArticleInfo.State));
+
             return dbHelper.ExecuteNonQuery(strSql, parametersList) > 0;
         }
 
@@ -253,30 +243,29 @@ namespace HST.Art.Data
         {
             DBHelper dbHelper = new DBHelper(ConnectionString, DbProviderType.SqlServer);
             string strSql = @"Update Article
-                              Set [Name]=@Name
+                              Set [UserId]=@UserId
                                   ,[HeadImg]=@HeadImg 
-                                  ,[Star]=@Star
-                                  ,[Number]=@Number
+                                  ,[Title]=@Title
+                                  ,[Content]=@Content
                                   ,[State]=@State
                                   ,[Category]=@Category
-                                  ,[Description]=@Description
-                                  ,[Province]=@Province
-                                  ,[City]=@City
-                                  ,[County]=@County
+                                  ,[Author]=@Author
+                                  ,[Section]=@Section
+                                  ,[ParCategory]=@ParCategory
+                                  ,[UpdateDate]=getdate()
                                   Where ID=@ID";
 
             List<DbParameter> parametersList = new List<DbParameter>();
             parametersList.Add(new SqlParameter("@ID", ArticleInfo.Id));
-            parametersList.Add(new SqlParameter("@Name", ArticleInfo.Name));
+            parametersList.Add(new SqlParameter("@UserId", ArticleInfo.UserId));
+            parametersList.Add(new SqlParameter("@Title", ArticleInfo.Title));
             parametersList.Add(new SqlParameter("@HeadImg", ArticleInfo.HeadImg));
-            parametersList.Add(new SqlParameter("@Star", ArticleInfo.Star));
-            parametersList.Add(new SqlParameter("@Number", ArticleInfo.Number));
-            parametersList.Add(new SqlParameter("@State", (int)ArticleInfo.State));
+            parametersList.Add(new SqlParameter("@Content", ArticleInfo.Content));
+            parametersList.Add(new SqlParameter("@Author", ArticleInfo.Author));
+            parametersList.Add(new SqlParameter("@Section", (int)ArticleInfo.Section));
             parametersList.Add(new SqlParameter("@Category", ArticleInfo.Category));
-            parametersList.Add(new SqlParameter("@Description", ArticleInfo.Description));
-            parametersList.Add(new SqlParameter("@Province", ArticleInfo.Province));
-            parametersList.Add(new SqlParameter("@City", ArticleInfo.City));
-            parametersList.Add(new SqlParameter("@County", ArticleInfo.County));
+            parametersList.Add(new SqlParameter("@Description", ArticleInfo.ParCategory));
+            parametersList.Add(new SqlParameter("@State", (int)ArticleInfo.State));
 
             return dbHelper.ExecuteNonQuery(strSql, parametersList) > 0;
         }
@@ -295,6 +284,29 @@ namespace HST.Art.Data
             parametersList.Add(new SqlParameter("@id", id));
 
             return dbHelper.ExecuteNonQuery(strSql, parametersList) > 0;
+        }
+        #endregion
+
+        #region 统计
+        public List<ArticleStatistic> GetStatisticArticles()
+        {
+            string strSql = @"select Section,COUNT(*) as ArticleCount from Article where IsDeleted = 0 group by section";
+            List<ArticleStatistic> articleStatisticList = null;
+            DBHelper dbHelper = new DBHelper(ConnectionString, DbProviderType.SqlServer);
+
+            using (DbDataReader reader = dbHelper.ExecuteReader(strSql, null))
+            {
+                articleStatisticList = new List<ArticleStatistic>();
+                while (reader.Read())
+                {
+                    ArticleStatistic artStatistic = new ArticleStatistic();
+                    artStatistic.SectionType = (SectionType)reader["Section"];
+                    artStatistic.SectionCount = Convert.ToInt32(reader["ArticleCount"]);
+                    articleStatisticList.Add(artStatistic);
+                }
+            }
+
+            return articleStatisticList;
         }
         #endregion
     }

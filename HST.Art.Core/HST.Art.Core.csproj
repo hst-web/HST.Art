@@ -78,6 +78,7 @@
     <Compile Include="Common\Enums\CommonEnums.cs" />
     <Compile Include="Common\KeyValueObj.cs" />
     <Compile Include="IServices\IBaseService.cs" />
+    <Compile Include="IServices\IArticleService.cs" />
     <Compile Include="IServices\IOrganizationService.cs" />
     <Compile Include="IServices\IMemberUnitService.cs" />
     <Compile Include="IServices\IUserService.cs" />
@@ -106,7 +107,12 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\HST.Utillity\HST.Utillity.csproj">
+      <Project>{bfb4fc8a-9246-48df-98c6-18d690291d7a}</Project>
+      <Name>HST.Utillity</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

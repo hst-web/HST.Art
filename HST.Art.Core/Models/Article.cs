@@ -5,6 +5,7 @@
 // 创建时间：2019-4-14
 //----------------------------------------------------------------*/
 using System;
+using HST.Utillity;
 namespace HST.Art.Core
 {
     /// <summary>
@@ -140,6 +141,20 @@ namespace HST.Art.Core
         public string ParCategoryName { get; set; }
         #endregion Model
 
+    }
+
+
+    public class ArticleStatistic
+    {
+        public SectionType SectionType { get; set; }
+        public int SectionCount { get; set; }
+        public string SectionName
+        {
+            get
+            {
+                return SectionType.GetDescription();
+            }
+        }
     }
 }
 

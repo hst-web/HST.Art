@@ -109,6 +109,7 @@
     <Compile Include="Data\ConverterHelper.cs" />
     <Compile Include="Cookie\Cookiehelper.cs" />
     <Compile Include="DataBase\DBHelper.cs" />
+    <Compile Include="Net\EnumExtensions.cs" />
     <Compile Include="Security\EncryptHelper.cs" />
     <Compile Include="Data\MathHelper.cs" />
     <Compile Include="InviteCode\InviteCodeHelper.cs" />
