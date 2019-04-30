@@ -115,6 +115,7 @@ namespace HST.Art.Data
         {
             totalNum = 0;
             condition.DefaultSort = SortType.Desc;
+            condition.SortTbAsName = Constant.TEA_CERTIFICATE_AS_NAME;
             string sort = condition.OrderBy;
             string asSort = condition.AsOrderBy;
             string where = condition.Where;
@@ -370,6 +371,7 @@ namespace HST.Art.Data
             if (condition != null)
             {
                 condition.DefaultSort = SortType.Desc;
+                
                 whereSort = condition.Where + condition.OrderBy;
             }
 
@@ -406,6 +408,7 @@ namespace HST.Art.Data
         {
             totalNum = 0;
             condition.DefaultSort = SortType.Desc;
+            condition.SortTbAsName = Constant.STU_CERTIFICATE_AS_NAME;
             string sort = condition.OrderBy;
             string asSort = condition.AsOrderBy;
             string where = condition.Where;

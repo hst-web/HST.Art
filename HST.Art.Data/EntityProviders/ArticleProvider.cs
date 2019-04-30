@@ -98,6 +98,7 @@ namespace HST.Art.Data
         {
             totalNum = 0;
             condition.DefaultSort = SortType.Desc;
+            condition.SortTbAsName = Constant.ARTICLE_AS_NAME;
             string sort = condition.OrderBy;
             string asSort = condition.AsOrderBy;
             string where = condition.Where;

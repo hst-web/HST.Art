@@ -1,7 +1,7 @@
 /*==============================================================*/
 /* Database name:  ARTDB                                        */
 /* DBMS name:      Microsoft SQL Server 2012                    */
-/* Created on:     2019/4/27 13:59:15                           */
+/* Created on:     2019/4/30 13:58:43                           */
 /*==============================================================*/
 
 
@@ -203,6 +203,7 @@ create table Organization (
    WeChat               nvarchar(50)         null,
    Blog                 nvarchar(50)         null,
    Description          nvarchar(800)        null,
+   Detail               nvarchar(Max)        null,
    Framework            nvarchar(Max)        null,
    CreateDate           datetime             null default getdate(),
    constraint PK_ORGANIZATION primary key (Id)
@@ -383,7 +384,7 @@ create table TeaCertificate (
    Number               varchar(50)          not null,
    State                int                  null default 0,
    Category             int                  null,
-   level                int                  null,
+   Level                int                  null,
    Province             nvarchar(10)         null,
    City                 nvarchar(20)         null,
    County               nvarchar(30)         null,
