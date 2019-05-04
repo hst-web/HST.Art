@@ -13,7 +13,7 @@ namespace HST.Art.Service
 {
     public class ArticleService : ServiceBase, IArticleService
     {
-        ArticleProvider _ArticleProvider = new ArticleProvider();
+        ArticleProvider _articleProvider = new ArticleProvider();
 
         public Article Get(int id)
         {
@@ -25,14 +25,14 @@ namespace HST.Art.Service
             }
 
             //数据获取
-            Article ArticleInfo = _ArticleProvider.Get(id);
+            Article ArticleInfo = _articleProvider.Get(id);
             return ArticleInfo;
         }
 
         public List<Article> GetAll(FilterEntityModel filterModel = null)
         {
-            List<Article> ArticleList = _ArticleProvider.GetAll(filterModel);
-            return ArticleList;
+            List<Article> articleList = _articleProvider.GetAll(filterModel);
+            return articleList;
         }
 
         public List<Article> GetPage(FilterEntityModel filterModel, out int totalNum)
@@ -45,9 +45,9 @@ namespace HST.Art.Service
                 return null;
             }
             //获取数据
-            List<Article> ArticleList = _ArticleProvider.GetPage(filterModel, out totalNum);
+            List<Article> articleList = _articleProvider.GetPage(filterModel, out totalNum);
 
-            return ArticleList;
+            return articleList;
         }
 
         public bool Add(Article articleInfo)
@@ -61,7 +61,7 @@ namespace HST.Art.Service
 
             //文章简介处理
             DisposeArticle(articleInfo);
-            return _ArticleProvider.Add(articleInfo);
+            return _articleProvider.Add(articleInfo);
         }
 
         public bool Delete(int id)
@@ -72,7 +72,7 @@ namespace HST.Art.Service
                 return false;
             }
 
-            return _ArticleProvider.Delete(id);
+            return _articleProvider.Delete(id);
         }
 
         public bool LogicDelete(int id)
@@ -84,7 +84,7 @@ namespace HST.Art.Service
                 return false;
             }
 
-            return _ArticleProvider.Update(new FlagUpdHandle()
+            return _articleProvider.Update(new FlagUpdHandle()
             {
                 FieldType = FieldType.Int,
                 Id = id,
@@ -103,7 +103,7 @@ namespace HST.Art.Service
                 return false;
             }
 
-            return _ArticleProvider.Update(new FlagUpdHandle()
+            return _articleProvider.Update(new FlagUpdHandle()
             {
                 FieldType = FieldType.Int,
                 Id = id,
@@ -122,7 +122,7 @@ namespace HST.Art.Service
                 return false;
             }
 
-            return _ArticleProvider.Update(new FlagUpdHandle()
+            return _articleProvider.Update(new FlagUpdHandle()
             {
                 FieldType = FieldType.Int,
                 Id = id,
@@ -143,12 +143,12 @@ namespace HST.Art.Service
 
             //文章简介处理
             DisposeArticle(articleInfo);
-            return _ArticleProvider.Update(articleInfo);
+            return _articleProvider.Update(articleInfo);
         }
 
         public List<ArticleStatistic> GetStatistics()
         {
-            return _ArticleProvider.GetStatisticArticles();
+            return _articleProvider.GetStatisticArticles();
         }
 
         /// <summary>

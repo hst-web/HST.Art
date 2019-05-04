@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArticleService.cs" />
+    <Compile Include="FileDownloadService.cs" />
     <Compile Include="TeaCertificateService.cs" />
     <Compile Include="StuCertificateService.cs" />
     <Compile Include="MemberUnitService.cs" />

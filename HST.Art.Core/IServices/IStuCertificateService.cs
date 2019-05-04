@@ -12,7 +12,7 @@ namespace HST.Art.Core
         List<StuCertificate> GetAll(FilterEntityModel filterModel);
         StuCertificate Get(int id);
         StuCertificate GetByNumber(string number);
-        bool Update(StuCertificate StuInfo);
-        bool Add(StuCertificate StuInfo);
+        bool Update(StuCertificate stuInfo);
+        bool Add(StuCertificate stuInfo);
     }
 }

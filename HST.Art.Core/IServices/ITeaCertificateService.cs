@@ -12,7 +12,7 @@ namespace HST.Art.Core
         List<TeaCertificate> GetAll(FilterEntityModel filterModel);
         TeaCertificate Get(int id);
         TeaCertificate GetByNumber(string number);
-        bool Update(TeaCertificate TeaInfo);
-        bool Add(TeaCertificate TeaInfo);
+        bool Update(TeaCertificate teaInfo);
+        bool Add(TeaCertificate teaInfo);
     }
 }

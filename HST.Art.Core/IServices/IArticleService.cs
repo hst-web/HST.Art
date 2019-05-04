@@ -12,7 +12,7 @@ namespace HST.Art.Core
         List<Article> GetAll(FilterEntityModel filterModel);
         Article Get(int id);
         List<ArticleStatistic> GetStatistics();
-        bool Update(Article MemberUnitInfo);
-        bool Add(Article MemberUnitInfo);
+        bool Update(Article articleInfo);
+        bool Add(Article articleInfo);
     }
 }
