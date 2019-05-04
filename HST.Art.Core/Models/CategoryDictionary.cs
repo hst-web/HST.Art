@@ -80,6 +80,11 @@ namespace HST.Art.Core
             set { _isdeleted = value; }
             get { return _isdeleted; }
         }
+
+        /// <summary>
+        /// 类别类型
+        /// </summary>
+        private CategoryType Type { get; set; }
         #endregion Model
 
     }

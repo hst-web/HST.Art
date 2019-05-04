@@ -1,7 +1,7 @@
 /*==============================================================*/
 /* Database name:  ARTDB                                        */
 /* DBMS name:      Microsoft SQL Server 2012                    */
-/* Created on:     2019/4/30 13:58:43                           */
+/* Created on:     2019/5/4 12:30:55                            */
 /*==============================================================*/
 
 
@@ -26,6 +26,7 @@ create table Article (
    Title                nvarchar(50)         not null,
    HeadImg              varchar(128)         null,
    Content              nvarchar(Max)        null,
+   Synopsis             nvarchar(300)        null,
    Author               nvarchar(50)         null,
    Section              int                  not null,
    State                int                  null default 0,
@@ -66,6 +67,7 @@ create table CategoryDictionary (
    UserId               int                  null,
    Parent               int                  null,
    Name                 nvarchar(50)         null,
+   Type                 int                  null,
    State                int                  null,
    CreateDate           datetime             null default getdate(),
    IsDeleted            bit                  null default 0,

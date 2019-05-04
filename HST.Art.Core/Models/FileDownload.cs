@@ -21,9 +21,9 @@ namespace HST.Art.Core
         private string _name;
         private string _title;
         private int _category;
-        private int _type;
+        private FileFormat _type;
         private string _src;
-        private int _state;
+        private PublishState _state;
         private string _description;
         private string _headimg;
         private DateTime _createdate = DateTime.Now;
@@ -69,9 +69,9 @@ namespace HST.Art.Core
             get { return _category; }
         }
         /// <summary>
-        /// 
+        /// 文件类型(ppt、excel、word、txt等)
         /// </summary>
-        public int Type
+        public FileFormat Type
         {
             set { _type = value; }
             get { return _type; }
@@ -88,7 +88,7 @@ namespace HST.Art.Core
         /// 0:下架
         /// 1:上架
         /// </summary>
-        public int State
+        public PublishState State
         {
             set { _state = value; }
             get { return _state; }
@@ -125,6 +125,9 @@ namespace HST.Art.Core
             set { _isdeleted = value; }
             get { return _isdeleted; }
         }
+
+        public string CategoryName { get; set; }
+        public string UserName { get; set; }
         #endregion Model
 
     }

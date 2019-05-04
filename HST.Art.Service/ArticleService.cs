@@ -7,6 +7,7 @@
 using HST.Art.Core;
 using System.Collections.Generic;
 using HST.Art.Data;
+using System.Text.RegularExpressions;
 
 namespace HST.Art.Service
 {
@@ -49,16 +50,18 @@ namespace HST.Art.Service
             return ArticleList;
         }
 
-        public bool Add(Article ArticleInfo)
+        public bool Add(Article articleInfo)
         {
             //参数验证
-            if (ArticleInfo == null)
+            if (articleInfo == null)
             {
                 ErrorMsg = ErrorCode.ParameterNull;
                 return false;
             }
 
-            return _ArticleProvider.Add(ArticleInfo);
+            //文章简介处理
+            DisposeArticle(articleInfo);
+            return _ArticleProvider.Add(articleInfo);
         }
 
         public bool Delete(int id)
@@ -129,21 +132,51 @@ namespace HST.Art.Service
             });
         }
 
-        public bool Update(Article ArticleInfo)
+        public bool Update(Article articleInfo)
         {
             //参数验证
-            if (ArticleInfo == null)
+            if (articleInfo == null)
             {
                 ErrorMsg = ErrorCode.ParameterNull;
                 return false;
             }
 
-            return _ArticleProvider.Update(ArticleInfo);
+            //文章简介处理
+            DisposeArticle(articleInfo);
+            return _ArticleProvider.Update(articleInfo);
         }
 
         public List<ArticleStatistic> GetStatistics()
         {
             return _ArticleProvider.GetStatisticArticles();
+        }
+
+        /// <summary>
+        /// 文章处理（简介）
+        /// </summary>
+        private void DisposeArticle(Article articleInfo)
+        {
+            if (articleInfo == null) return;
+            if (string.IsNullOrWhiteSpace(articleInfo.Content)) return;
+            if (!string.IsNullOrWhiteSpace(articleInfo.Synopsis)) return;
+            articleInfo.Synopsis = GetLength(Regex.Replace(articleInfo.Content, "<[^>]+>", "", RegexOptions.Singleline), 100);
+        }
+
+        /// <summary>
+        /// 获取设定长度的字符串
+        /// </summary>
+        /// <param name="str">字符串</param>
+        /// <param name="length">截取长度</param>
+        /// <returns></returns>
+        private string GetLength(string str, int length)
+        {
+            if (string.IsNullOrWhiteSpace(str)) return string.Empty;
+            string strR = str;
+            if (str.Length > length)
+            {
+                strR = str.Substring(0, length).TrimEnd(',');
+            }
+            return strR;
         }
     }
 }

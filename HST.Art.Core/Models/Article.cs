@@ -140,9 +140,11 @@ namespace HST.Art.Core
         public string CategoryName { get; set; }
         public string ParCategoryName { get; set; }
         #endregion Model
-
+        /// <summary>
+        /// 简介
+        /// </summary>
+        public string Synopsis { get; set; }
     }
-
 
     public class ArticleStatistic
     {

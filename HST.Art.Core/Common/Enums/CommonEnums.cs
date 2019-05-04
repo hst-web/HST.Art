@@ -57,7 +57,45 @@ namespace HST.Art.Core
         //文档
         Document = 2,
         //图片
-        Picture = 3
+        Picture = 3,
+        //视频
+        Video = 4
+    }
+
+    public enum FileFormat
+    {
+        /// <summary>
+        /// 未知
+        /// </summary>
+        UnKnow = 0,
+        /// <summary>
+        /// word文档
+        /// </summary>
+        Word = 1,
+        /// <summary>
+        /// ppt文档
+        /// </summary>
+        PPT = 2,
+        /// <summary>
+        /// pdf文档
+        /// </summary>
+        PDF = 3,
+        /// <summary>
+        /// excel表格
+        /// </summary>
+        XLSX = 4,
+        /// <summary>
+        /// txt文本文档
+        /// </summary>
+        TXT = 5,
+        /// <summary>
+        /// 视频
+        /// </summary>
+        Video = 6,
+        /// <summary>
+        /// 音频
+        /// </summary>
+        Audio = 7
     }
 
     /// <summary>
@@ -148,6 +186,35 @@ namespace HST.Art.Core
         /// </summary>
         [Description("社会公益")]
         Social
+    }
+
+    public enum CategoryType
+    {
+        UnKnown,
+        /// <summary>
+        /// 行业资讯
+        /// </summary>
+        Industry,
+        /// <summary>
+        /// 协会活动
+        /// </summary>
+        Association,
+        /// <summary>
+        /// 考级中心
+        /// </summary>
+        Examination,
+        /// <summary>
+        /// 社会公益
+        /// </summary>
+        Social,
+        /// <summary>
+        /// 会员类别
+        /// </summary>
+        Member,
+        /// <summary>
+        /// 下载类别
+        /// </summary>
+        Download
     }
 
     /// <summary>

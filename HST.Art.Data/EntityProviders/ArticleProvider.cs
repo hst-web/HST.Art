@@ -26,9 +26,9 @@ namespace HST.Art.Data
         /// <returns>文章信息</returns>
         public Article Get(int id)
         {
-            Article ArticleInfo = null;
+            Article articleInfo = null;
             DBHelper dbHelper = new DBHelper(ConnectionString, DbProviderType.SqlServer);
-            string strSql = @"SELECT a.Id, a.UserId, a.Title, a.HeadImg, a.Content, a.Author, a.Section, a.State, a.ParCategory, a.Category,cd.Name as CategoryName,u.Name as UserName,pcd.Name as ParCategoryName, a.UpdateDate, a.CreateDate, a.IsDeleted  from Article a  inner join CategoryDictionary cd on a.category=cd.id left join CategoryDictionary pcd on a.ParCategory=pcd.id left join [User] u on a.userid=u.id where  a.IsDeleted=0 and a.id=@Id ";
+            string strSql = @"SELECT a.Id, a.UserId, a.Title, a.HeadImg, a.Content, a.Author, a.Section, a.State, a.ParCategory, a.Category,cd.Name as CategoryName,u.Name as UserName,pcd.Name as ParCategoryName, a.UpdateDate, a.CreateDate,a.Synopsis  from Article a  inner join CategoryDictionary cd on a.category=cd.id left join CategoryDictionary pcd on a.ParCategory=pcd.id left join [User] u on a.userid=u.id where  a.IsDeleted=0 and a.id=@Id ";
 
             List<DbParameter> parametersList = new List<DbParameter>();
             parametersList.Add(new SqlParameter("@Id", id));
@@ -37,11 +37,11 @@ namespace HST.Art.Data
             {
                 while (reader.Read())
                 {
-                    ArticleInfo = GetArticleFromReader(reader);
+                    articleInfo = GetArticleFromReader(reader);
                 }
             }
 
-            return ArticleInfo;
+            return articleInfo;
         }
 
         /// <summary>
@@ -59,10 +59,10 @@ namespace HST.Art.Data
                 whereSort = condition.Where + condition.OrderBy;
             }
 
-            List<Article> ArticleList = null;
+            List<Article> articleList = null;
             DBHelper dbHelper = new DBHelper(ConnectionString, DbProviderType.SqlServer);
 
-            string strSql = @"SELECT a.Id, a.UserId, a.Title, a.HeadImg, a.Content, a.Author, a.Section, a.State, a.ParCategory, a.Category,cd.Name as CategoryName,u.Name as UserName,pcd.Name as ParCategoryName, a.UpdateDate, a.CreateDate, a.IsDeleted  from Article a  inner join CategoryDictionary cd on a.category=cd.id left join CategoryDictionary pcd on a.ParCategory=pcd.id left join [User] u on a.userid=u.id where  a.IsDeleted=0 " + whereSort;
+            string strSql = @"SELECT a.Id, a.UserId, a.Title, a.HeadImg, a.Content, a.Author, a.Section, a.State, a.ParCategory, a.Category,cd.Name as CategoryName,u.Name as UserName,pcd.Name as ParCategoryName, a.UpdateDate, a.CreateDate, a.Synopsis  from Article a  inner join CategoryDictionary cd on a.category=cd.id left join CategoryDictionary pcd on a.ParCategory=pcd.id left join [User] u on a.userid=u.id where  a.IsDeleted=0 " + whereSort;
 
             IList<DbParameter> parameList = null;
             if (condition != null && condition.SqlParList.Count > 0)
@@ -76,16 +76,16 @@ namespace HST.Art.Data
 
             using (DbDataReader reader = dbHelper.ExecuteReader(strSql, parameList))
             {
-                ArticleList = new List<Article>();
-                Article ArticleInfo = null;
+                articleList = new List<Article>();
+                Article articleInfo = null;
                 while (reader.Read())
                 {
-                    ArticleInfo = GetArticleFromReader(reader);
-                    ArticleList.Add(ArticleInfo);
+                    articleInfo = GetArticleFromReader(reader);
+                    articleList.Add(articleInfo);
                 }
             }
 
-            return ArticleList;
+            return articleList;
         }
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace HST.Art.Data
             string asSort = condition.AsOrderBy;
             string where = condition.Where;
 
-            List<Article> ArticleList = null;
+            List<Article> articleList = null;
             DBHelper dbHelper = new DBHelper(ConnectionString, DbProviderType.SqlServer);
             string strSqlQuery = @"select count(a.ID) from [Article] a inner join CategoryDictionary cd on a.Category=cd.id where  a.IsDeleted=0 " + where;//查询有多少条记录
             IList<DbParameter> parameList = new List<DbParameter>();
@@ -123,6 +123,7 @@ namespace HST.Art.Data
             string strSql = @"SELECT [ID]
                                   ,[UserId]
                                   ,[Title]
+                                  ,Synopsis
                                   ,[HeadImg]
                                   ,[Author]
                                   ,[Section]
@@ -137,6 +138,7 @@ namespace HST.Art.Data
                             FROM (select top (@pageSize*@pageIndex)  a.[ID]
                                   ,a.[UserId]
                                   ,a.[Title]
+                                  ,a.Synopsis
                                   ,a.[HeadImg]
                                   ,a.[Author]
                                   ,a.[Section]
@@ -151,16 +153,16 @@ namespace HST.Art.Data
                                     ,ROW_NUMBER() over(" + asSort + ") as num  from [Article] a  inner join CategoryDictionary cd on a.category=cd.id left join CategoryDictionary pcd on a.ParCategory=pcd.id left join [User] u on a.userid=u.id  where  a.IsDeleted=0 " + where + ") as t where num between (@pageIndex - 1) * @pageSize + 1  and @pageIndex*@pageSize " + sort;
             using (DbDataReader reader = dbHelper.ExecuteReader(strSql, parameList))
             {
-                ArticleList = new List<Article>();
-                Article ArticleInfo = null;
+                articleList = new List<Article>();
+                Article articleInfo = null;
                 while (reader.Read())
                 {
-                    ArticleInfo = GetArticleFromReader(reader);
-                    ArticleList.Add(ArticleInfo);
+                    articleInfo = GetArticleFromReader(reader);
+                    articleList.Add(articleInfo);
                 }
             }
 
-            return ArticleList;
+            return articleList;
         }
 
         /// <summary>
@@ -170,43 +172,47 @@ namespace HST.Art.Data
         /// <returns></returns>
         private Article GetArticleFromReader(DbDataReader reader)
         {
-            Article ArticleInfo = new Article();
-            ArticleInfo.Id = Convert.ToInt32(reader["Id"]);
-            ArticleInfo.UserId = Convert.ToInt32(reader["UserId"]);
-            ArticleInfo.Title = reader["Title"].ToString();
-            ArticleInfo.Author = reader["Author"].ToString();
-            ArticleInfo.Section = (SectionType)reader["Section"];
-            ArticleInfo.State = Convert.ToInt32(reader["State"]) < 1 ? PublishState.Lower : PublishState.Upper;
-            ArticleInfo.Category = Convert.ToInt32(reader["Category"]);
-            ArticleInfo.ParCategory = Convert.ToInt32(reader["ParCategory"]);
-            ArticleInfo.CreateDate = Convert.ToDateTime(reader["CreateDate"]);
+            Article articleInfo = new Article();
+            articleInfo.Id = Convert.ToInt32(reader["Id"]);
+            articleInfo.UserId = Convert.ToInt32(reader["UserId"]);
+            articleInfo.Title = reader["Title"].ToString();
+            articleInfo.Author = reader["Author"].ToString();
+            articleInfo.Section = (SectionType)reader["Section"];
+            articleInfo.State = Convert.ToInt32(reader["State"]) < 1 ? PublishState.Lower : PublishState.Upper;
+            articleInfo.Category = Convert.ToInt32(reader["Category"]);
+            articleInfo.ParCategory = Convert.ToInt32(reader["ParCategory"]);
+            articleInfo.CreateDate = Convert.ToDateTime(reader["CreateDate"]);
 
             if (ReaderExists(reader, "CategoryName") && DBNull.Value != reader["CategoryName"])
             {
-                ArticleInfo.CategoryName = reader["CategoryName"].ToString();
+                articleInfo.CategoryName = reader["CategoryName"].ToString();
+            }
+            if (ReaderExists(reader, "Synopsis") && DBNull.Value != reader["Synopsis"])
+            {
+                articleInfo.Synopsis = reader["Synopsis"].ToString();
             }
             if (ReaderExists(reader, "ParCategoryName") && DBNull.Value != reader["ParCategoryName"])
             {
-                ArticleInfo.ParCategoryName = reader["ParCategoryName"].ToString();
+                articleInfo.ParCategoryName = reader["ParCategoryName"].ToString();
             }
             if (ReaderExists(reader, "UserName") && DBNull.Value != reader["UserName"])
             {
-                ArticleInfo.UserName = reader["UserName"].ToString();
+                articleInfo.UserName = reader["UserName"].ToString();
             }
             if (ReaderExists(reader, "HeadImg") && DBNull.Value != reader["HeadImg"])
             {
-                ArticleInfo.HeadImg = reader["HeadImg"].ToString();
+                articleInfo.HeadImg = reader["HeadImg"].ToString();
             }
             if (ReaderExists(reader, "Content") && DBNull.Value != reader["Content"])
             {
-                ArticleInfo.Content = reader["Content"].ToString();
+                articleInfo.Content = reader["Content"].ToString();
             }
             if (ReaderExists(reader, "UpdateDate") && DBNull.Value != reader["UpdateDate"])
             {
-                ArticleInfo.UpdateDate = Convert.ToDateTime(reader["UpdateDate"]);
+                articleInfo.UpdateDate = Convert.ToDateTime(reader["UpdateDate"]);
             }
 
-            return ArticleInfo;
+            return articleInfo;
         }
         #endregion
 
@@ -214,23 +220,24 @@ namespace HST.Art.Data
         /// <summary>
         /// 添加文章
         /// </summary>
-        /// <param name="ArticleInfo">文章信息</param>
+        /// <param name="articleInfo">文章信息</param>
         /// <returns>添加成功标识</returns>
-        public bool Add(Article ArticleInfo)
+        public bool Add(Article articleInfo)
         {
             DBHelper dbHelper = new DBHelper(ConnectionString, DbProviderType.SqlServer);
-            string strSql = @"Insert Into Article (UserId, Title, HeadImg, Content, Author, Section, State, ParCategory, Category) Values (@UserId, @Title, @HeadImg, @Content, @Author, @Section, @State,@ParCategory, @Category)";
+            string strSql = @"Insert Into Article (UserId, Title, HeadImg, Content, Author, Section, State, ParCategory, Category,Synopsis) Values (@UserId, @Title, @HeadImg, @Content, @Author, @Section, @State,@ParCategory, @Category,@Synopsis)";
 
             List<DbParameter> parametersList = new List<DbParameter>();
-            parametersList.Add(new SqlParameter("@UserId", ArticleInfo.UserId));
-            parametersList.Add(new SqlParameter("@Title", ArticleInfo.Title));
-            parametersList.Add(new SqlParameter("@HeadImg", ArticleInfo.HeadImg));
-            parametersList.Add(new SqlParameter("@Content", ArticleInfo.Content));
-            parametersList.Add(new SqlParameter("@Author", ArticleInfo.Author));
-            parametersList.Add(new SqlParameter("@Section", (int)ArticleInfo.Section));
-            parametersList.Add(new SqlParameter("@Category", ArticleInfo.Category));
-            parametersList.Add(new SqlParameter("@Description", ArticleInfo.ParCategory));
-            parametersList.Add(new SqlParameter("@State", (int)ArticleInfo.State));
+            parametersList.Add(new SqlParameter("@UserId", articleInfo.UserId));
+            parametersList.Add(new SqlParameter("@Title", articleInfo.Title));
+            parametersList.Add(new SqlParameter("@HeadImg", articleInfo.HeadImg));
+            parametersList.Add(new SqlParameter("@Content", articleInfo.Content));
+            parametersList.Add(new SqlParameter("@Author", articleInfo.Author));
+            parametersList.Add(new SqlParameter("@Section", (int)articleInfo.Section));
+            parametersList.Add(new SqlParameter("@Category", articleInfo.Category));
+            parametersList.Add(new SqlParameter("@ParCategory", articleInfo.ParCategory));
+            parametersList.Add(new SqlParameter("@State", (int)articleInfo.State));
+            parametersList.Add(new SqlParameter("@Synopsis", articleInfo.Synopsis));
 
             return dbHelper.ExecuteNonQuery(strSql, parametersList) > 0;
         }
@@ -238,9 +245,9 @@ namespace HST.Art.Data
         /// <summary>
         /// 修改文章
         /// </summary>
-        /// <param name="ArticleInfo">文章信息</param>
+        /// <param name="articleInfo">文章信息</param>
         /// <returns>修改成功标识</returns>
-        public bool Update(Article ArticleInfo)
+        public bool Update(Article articleInfo)
         {
             DBHelper dbHelper = new DBHelper(ConnectionString, DbProviderType.SqlServer);
             string strSql = @"Update Article
@@ -253,20 +260,22 @@ namespace HST.Art.Data
                                   ,[Author]=@Author
                                   ,[Section]=@Section
                                   ,[ParCategory]=@ParCategory
+                                  ,[Synopsis]=@Synopsis
                                   ,[UpdateDate]=getdate()
                                   Where ID=@ID";
 
             List<DbParameter> parametersList = new List<DbParameter>();
-            parametersList.Add(new SqlParameter("@ID", ArticleInfo.Id));
-            parametersList.Add(new SqlParameter("@UserId", ArticleInfo.UserId));
-            parametersList.Add(new SqlParameter("@Title", ArticleInfo.Title));
-            parametersList.Add(new SqlParameter("@HeadImg", ArticleInfo.HeadImg));
-            parametersList.Add(new SqlParameter("@Content", ArticleInfo.Content));
-            parametersList.Add(new SqlParameter("@Author", ArticleInfo.Author));
-            parametersList.Add(new SqlParameter("@Section", (int)ArticleInfo.Section));
-            parametersList.Add(new SqlParameter("@Category", ArticleInfo.Category));
-            parametersList.Add(new SqlParameter("@Description", ArticleInfo.ParCategory));
-            parametersList.Add(new SqlParameter("@State", (int)ArticleInfo.State));
+            parametersList.Add(new SqlParameter("@ID", articleInfo.Id));
+            parametersList.Add(new SqlParameter("@UserId", articleInfo.UserId));
+            parametersList.Add(new SqlParameter("@Title", articleInfo.Title));
+            parametersList.Add(new SqlParameter("@HeadImg", articleInfo.HeadImg));
+            parametersList.Add(new SqlParameter("@Content", articleInfo.Content));
+            parametersList.Add(new SqlParameter("@Author", articleInfo.Author));
+            parametersList.Add(new SqlParameter("@Section", (int)articleInfo.Section));
+            parametersList.Add(new SqlParameter("@Category", articleInfo.Category));
+            parametersList.Add(new SqlParameter("@ParCategory", articleInfo.ParCategory));
+            parametersList.Add(new SqlParameter("@State", (int)articleInfo.State));
+            parametersList.Add(new SqlParameter("@Synopsis", articleInfo.Synopsis));
 
             return dbHelper.ExecuteNonQuery(strSql, parametersList) > 0;
         }
