@@ -20,8 +20,8 @@ namespace HST.Art.Core
         private int _sort;
         private string _imgsrc;
         private string _weblink;
-        private int _state = 0;
-        private int _type;
+        private PublishState _state = 0;
+        private RotationType _type;
         private DateTime _createdate = DateTime.Now;
         private bool _isdeleted = false;
         /// <summary>
@@ -60,16 +60,16 @@ namespace HST.Art.Core
         /// 0:下架
         /// 1:上架
         /// </summary>
-        public int State
+        public PublishState State
         {
             set { _state = value; }
             get { return _state; }
         }
         /// <summary>
-        /// 1:???
-        ///   2:logo??
+        /// 1:banner
+        /// 2:logo
         /// </summary>
-        public int Type
+        public RotationType Type
         {
             set { _type = value; }
             get { return _type; }

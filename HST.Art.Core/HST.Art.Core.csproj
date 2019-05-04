@@ -77,6 +77,7 @@
     <Compile Include="Common\Constant.cs" />
     <Compile Include="Common\Enums\CommonEnums.cs" />
     <Compile Include="Common\KeyValueObj.cs" />
+    <Compile Include="IServices\IRotationChartService.cs" />
     <Compile Include="IServices\IFileDownloadService.cs" />
     <Compile Include="IServices\IBaseService.cs" />
     <Compile Include="IServices\IArticleService.cs" />

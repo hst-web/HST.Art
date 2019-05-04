@@ -237,4 +237,21 @@ namespace HST.Art.Core
         [Description("培训证书")]
         Train
     }
+
+    public enum RotationType
+    {
+        /// <summary>
+        /// 未知
+        /// </summary>
+        UnKnown = 0,
+        /// <summary>
+        /// 首页Banner
+        /// </summary>
+        Banner = 1,
+        /// <summary>
+        /// 首页logo
+        /// </summary>
+        Logo = 2
+
+    }
 }
