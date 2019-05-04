@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="EntityProviderBase\EntityProviderBase.cs" />
     <Compile Include="EntityProviderBase\IEntityBase.cs" />
+    <Compile Include="EntityProviders\CategoryDictionaryProvider.cs" />
     <Compile Include="EntityProviders\RotationChartProvider.cs" />
     <Compile Include="EntityProviders\FileDownloadProvider.cs" />
     <Compile Include="EntityProviders\MemberUnitProvider.cs" />

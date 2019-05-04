@@ -1,5 +1,5 @@
 ﻿/*----------------------------------------------------------------
-// 文件名：RotationChartService.cs
+// 文件名：CategoryDictionaryService.cs
 // 功能描述：轮播服务
 // 创建者：sysmenu
 // 创建时间：2019-4-18
@@ -12,11 +12,11 @@ using System;
 
 namespace HST.Art.Service
 {
-    public class RotationChartService : ServiceBase, IRotationChartService
+    public class CategoryDictionaryService : ServiceBase, ICategoryDictionaryService
     {
-        RotationChartProvider _rotationChartProvider = new RotationChartProvider();
+        CategoryDictionaryProvider _categoryDictionaryProvider = new CategoryDictionaryProvider();
 
-        public RotationChart Get(int id)
+        public CategoryDictionary Get(int id)
         {
             //参数验证
             if (id < 1)
@@ -26,37 +26,36 @@ namespace HST.Art.Service
             }
 
             //数据获取
-            RotationChart rotationChartInfo = _rotationChartProvider.Get(id);
-            return rotationChartInfo;
+            CategoryDictionary categoryInfo = _categoryDictionaryProvider.Get(id);
+            return categoryInfo;
         }
 
-        public List<RotationChart> GetAll(RotationType rotationType)
+        public List<CategoryDictionary> GetAll(CategoryType categoryType)
         {
             FilterEntityModel filterModel = new FilterEntityModel();
-            filterModel.SortDict = new KeyValuePair<string, SortType>("Sort", SortType.Asc);
 
-            if (rotationType != RotationType.UnKnown)
+            if (categoryType != CategoryType.UnKnown)
             {
                 filterModel.keyValueList = new List<KeyValueObj>()
                 {
-                    new KeyValueObj() {Key="Type",Value=(int)rotationType,FieldType= FieldType.Int }
+                    new KeyValueObj() {Key="Type",Value=(int)categoryType,FieldType= FieldType.Int }
                 };
             }
 
-            List<RotationChart> rotationChartList = _rotationChartProvider.GetAll(filterModel);
-            return rotationChartList;
+            List<CategoryDictionary> categoryList = _categoryDictionaryProvider.GetAll(filterModel);
+            return categoryList;
         }
 
-        public bool Add(RotationChart rotationChartInfo)
+        public bool Add(CategoryDictionary categoryInfo)
         {
             //参数验证
-            if (rotationChartInfo == null)
+            if (categoryInfo == null)
             {
                 ErrorMsg = ErrorCode.ParameterNull;
                 return false;
             }
 
-            return _rotationChartProvider.Add(rotationChartInfo);
+            return _categoryDictionaryProvider.Add(categoryInfo);
         }
 
         public bool Delete(int id)
@@ -67,7 +66,7 @@ namespace HST.Art.Service
                 return false;
             }
 
-            return _rotationChartProvider.Delete(id);
+            return _categoryDictionaryProvider.Delete(id);
         }
 
         public bool LogicDelete(int id)
@@ -79,13 +78,13 @@ namespace HST.Art.Service
                 return false;
             }
 
-            return _rotationChartProvider.Update(new FlagUpdHandle()
+            return _categoryDictionaryProvider.Update(new FlagUpdHandle()
             {
                 FieldType = FieldType.Int,
                 Id = id,
                 Key = "IsDeleted",
                 Value = 1,
-                TableName = "RotationChart"
+                TableName = "CategoryDictionary"
             });
         }
 
@@ -98,13 +97,13 @@ namespace HST.Art.Service
                 return false;
             }
 
-            return _rotationChartProvider.Update(new FlagUpdHandle()
+            return _categoryDictionaryProvider.Update(new FlagUpdHandle()
             {
                 FieldType = FieldType.Int,
                 Id = id,
                 Key = "State",
                 Value = (int)PublishState.Upper,
-                TableName = "RotationChart"
+                TableName = "CategoryDictionary"
             });
         }
 
@@ -117,37 +116,26 @@ namespace HST.Art.Service
                 return false;
             }
 
-            return _rotationChartProvider.Update(new FlagUpdHandle()
+            return _categoryDictionaryProvider.Update(new FlagUpdHandle()
             {
                 FieldType = FieldType.Int,
                 Id = id,
                 Key = "State",
                 Value = (int)PublishState.Lower,
-                TableName = "RotationChart"
+                TableName = "CategoryDictionary"
             });
         }
 
-        public bool Update(RotationChart rotationChartInfo)
+        public bool Update(CategoryDictionary categoryInfo)
         {
             //参数验证
-            if (rotationChartInfo == null)
+            if (categoryInfo == null)
             {
                 ErrorMsg = ErrorCode.ParameterNull;
                 return false;
             }
 
-            return _rotationChartProvider.Update(rotationChartInfo);
-        }
-
-        public bool Update(List<RotationChart> rotations)
-        {
-            if (rotations == null || rotations.Count <= 0)
-            {
-                ErrorMsg = ErrorCode.ParameterNull;
-                return false;
-            }
-
-            return _rotationChartProvider.Update(rotations);
+            return _categoryDictionaryProvider.Update(categoryInfo);
         }
     }
 }

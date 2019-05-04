@@ -20,7 +20,7 @@ namespace HST.Art.Core
         private int _userid;
         private int _parent;
         private string _name;
-        private int _state;
+        private PublishState _state;
         private DateTime _createdate = DateTime.Now;
         private bool _isdeleted = false;
         /// <summary>
@@ -59,7 +59,7 @@ namespace HST.Art.Core
         /// 0:下架
         /// 1:上架
         /// </summary>
-        public int State
+        public PublishState State
         {
             set { _state = value; }
             get { return _state; }
@@ -81,12 +81,13 @@ namespace HST.Art.Core
             get { return _isdeleted; }
         }
 
+        #endregion Model
         /// <summary>
         /// 类别类型
         /// </summary>
-        private CategoryType Type { get; set; }
-        #endregion Model
-
+        public CategoryType Type { get; set; }
+        public string UserName { get; set; }
+        public string ParentName { get; set; }
     }
 }
 
