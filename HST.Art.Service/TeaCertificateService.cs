@@ -30,6 +30,7 @@ namespace HST.Art.Service
 
         public List<TeaCertificate> GetAll(FilterEntityModel filterModel = null)
         {
+            if(filterModel!=null) filterModel.FillWhereTbAsName(Constant.TEA_CERTIFICATE_AS_NAME);//筛选器添加表别名
             List<TeaCertificate> teaCertificateList = _certificateProvider.GetTeaAll(filterModel);
             return teaCertificateList;
         }
@@ -43,6 +44,8 @@ namespace HST.Art.Service
                 ErrorMsg = ErrorCode.ParameterNull;
                 return null;
             }
+
+            filterModel.FillWhereTbAsName(Constant.TEA_CERTIFICATE_AS_NAME);//筛选器添加表别名
             //获取数据
             List<TeaCertificate> teaCertificateList = _certificateProvider.GetTeaPage(filterModel, out totalNum);
 

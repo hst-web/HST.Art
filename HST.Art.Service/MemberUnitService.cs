@@ -31,6 +31,7 @@ namespace HST.Art.Service
 
         public List<MemberUnit> GetAll(FilterEntityModel filterModel = null)
         {
+            if(filterModel!=null) filterModel.FillWhereTbAsName(Constant.MEMBER_UNIT_AS_NAME);//筛选器添加表别名
             List<MemberUnit> memberUnitList = _memberUnitProvider.GetAll(filterModel);
             return memberUnitList;
         }
@@ -44,6 +45,8 @@ namespace HST.Art.Service
                 ErrorMsg = ErrorCode.ParameterNull;
                 return null;
             }
+
+            filterModel.FillWhereTbAsName(Constant.MEMBER_UNIT_AS_NAME);//筛选器添加表别名
             //获取数据
             List<MemberUnit> memberUnitList = _memberUnitProvider.GetPage(filterModel, out totalNum);
 

@@ -31,6 +31,7 @@ namespace HST.Art.Service
 
         public List<FileDownload> GetAll(FilterEntityModel filterModel = null)
         {
+            if (filterModel != null) filterModel.FillWhereTbAsName(Constant.FILE_DOWNLOAD_AS_NAME);//筛选器添加表别名
             List<FileDownload> fileDownloadList = _fileDownloadProvider.GetAll(filterModel);
             return fileDownloadList;
         }
@@ -44,6 +45,8 @@ namespace HST.Art.Service
                 ErrorMsg = ErrorCode.ParameterNull;
                 return null;
             }
+
+            filterModel.FillWhereTbAsName(Constant.FILE_DOWNLOAD_AS_NAME);//筛选器添加表别名
             //获取数据
             List<FileDownload> fileDownloadList = _fileDownloadProvider.GetPage(filterModel, out totalNum);
 
@@ -140,6 +143,6 @@ namespace HST.Art.Service
             }
 
             return _fileDownloadProvider.Update(fileDownloadInfo);
-        }       
+        }
     }
 }

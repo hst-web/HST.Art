@@ -235,5 +235,15 @@ namespace HST.Art.Core
             if (_sqlParList.Where(g => g.Key == key).Count() > 0) return;
             _sqlParList.Add(key, value);
         }
+
+        public void FillWhereTbAsName(string tbAsName)
+        {
+            if (string.IsNullOrWhiteSpace(tbAsName)) return;
+            if (keyValueList == null || keyValueList.Count <= 0) return;
+            foreach (KeyValueObj item in keyValueList)
+            {
+                item.TbAsName = tbAsName;
+            }
+        }
     }
 }

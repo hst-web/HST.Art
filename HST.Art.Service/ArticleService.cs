@@ -31,6 +31,7 @@ namespace HST.Art.Service
 
         public List<Article> GetAll(FilterEntityModel filterModel = null)
         {
+            if (filterModel != null) filterModel.FillWhereTbAsName(Constant.ARTICLE_AS_NAME);//筛选器添加表别名
             List<Article> articleList = _articleProvider.GetAll(filterModel);
             return articleList;
         }
@@ -44,6 +45,8 @@ namespace HST.Art.Service
                 ErrorMsg = ErrorCode.ParameterNull;
                 return null;
             }
+
+            filterModel.FillWhereTbAsName(Constant.ARTICLE_AS_NAME);//筛选器添加表别名
             //获取数据
             List<Article> articleList = _articleProvider.GetPage(filterModel, out totalNum);
 

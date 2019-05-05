@@ -38,7 +38,7 @@ namespace HST.Art.Service
             {
                 filterModel.keyValueList = new List<KeyValueObj>()
                 {
-                    new KeyValueObj() {Key="Type",Value=(int)categoryType,FieldType= FieldType.Int }
+                    new KeyValueObj() {Key="Type",Value=(int)categoryType,FieldType= FieldType.Int,TbAsName=Constant.CATEGORY_DICTIONARY_AS_NAME }
                 };
             }
 
