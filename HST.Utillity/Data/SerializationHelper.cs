@@ -15,6 +15,7 @@ using System.Text;
 using System.Web.Script.Serialization;
 using System.Xml;
 using System.Xml.Serialization;
+using Newtonsoft.Json;
 
 namespace HST.Utillity
 {
@@ -240,47 +241,14 @@ namespace HST.Utillity
         /// </summary>
         /// <param name="obj">要转化的数据实体</param>
         /// <returns>JSON格式字符串</returns>
-        public static string JsonSerialize<T>(T obj)
-        {
-            return JsonSerialize(obj, Encoding.UTF8);
-        }
-
-        public static List<T>JSONStringToList<T>(this string JsonStr)
-        {
-            JavaScriptSerializer Serializer = new JavaScriptSerializer();
-            List<T> objs = null;
-            try
-            {
-                objs = Serializer.Deserialize<List<T>>(JsonStr);
-            }
-            catch { }
-           
-            return objs;
-        }
-        
-
-        /// <summary>
-        /// 将C#数据实体转化为JSON数据
-        /// </summary>
-        /// <param name="obj">要转化的数据实体</param>
-        /// <returns>JSON格式字符串</returns>
-        public static string JsonSerialize(object obj, Encoding encoding)
+        public static string JsonSerialize(object obj)
         {
             if (obj == null)
             {
                 return null;
             }
-            DataContractJsonSerializer serializer = new DataContractJsonSerializer(obj.GetType());
-            MemoryStream stream = new MemoryStream();
-            serializer.WriteObject(stream, obj);
-            stream.Position = 0;
 
-            StreamReader sr = new StreamReader(stream, encoding);
-            string resultStr = sr.ReadToEnd();
-            sr.Close();
-            stream.Close();
-
-            return resultStr;
+            return JsonConvert.SerializeObject(obj);
         }
 
 
@@ -291,34 +259,8 @@ namespace HST.Utillity
         /// <returns>T类型的对象</returns>
         public static T JsonDeserialize<T>(string json)
         {
-            return (T)JsonDeserialize(typeof(T), json);
+            if (string.IsNullOrEmpty(json)) return default(T);
+            return JsonConvert.DeserializeObject<T>(json);
         }
-
-        /// <summary>
-        /// 将JSON数据转化为C#数据实体
-        /// </summary>
-        /// <param name="json">符合JSON格式的字符串</param>
-        /// <returns>T类型的对象</returns>
-        public static object JsonDeserialize(Type type, string json)
-        {
-            if (json == null)
-            {
-                return null;
-            }
-
-            try
-            {
-                //json 必须为 {name:"value",name:"value"} 的格式(要符合JSON格式要求)
-                DataContractJsonSerializer serializer = new DataContractJsonSerializer(type);
-                MemoryStream ms = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(json.ToCharArray()));
-                object obj = serializer.ReadObject(ms);
-                ms.Close();
-
-                return obj;
-            }
-            catch { }
-            return null;
-        }
-
     }
 }

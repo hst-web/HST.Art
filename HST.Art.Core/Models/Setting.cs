@@ -5,6 +5,8 @@
 // 创建时间：2019-4-14
 //----------------------------------------------------------------*/
 using System;
+using HST.Utillity;
+
 namespace HST.Art.Core
 {
     /// <summary>
@@ -61,10 +63,24 @@ namespace HST.Art.Core
             set { _isenabled = value; }
             get { return _isenabled; }
         }
+
+        public Attestation AttestationVal
+        {
+            get
+            {
+                if (!string.IsNullOrWhiteSpace(_val))
+                {
+                    return SerializationHelper.JsonDeserialize<Attestation>(EncryptHelper.Decode(_val));
+                }
+
+                return null;
+            }
+        }
         #endregion Model
 
     }
 
+    [Serializable]
     public class Attestation
     {
         public DateTime ExpireDate { get; set; }

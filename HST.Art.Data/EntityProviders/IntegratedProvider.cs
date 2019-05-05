@@ -24,7 +24,7 @@ namespace HST.Art.Data
         /// </summary>
         /// <param name="id">设置ID</param>
         /// <returns>设置信息</returns>
-        public Setting GetSet(SettingType setType)
+        public Setting GetSetting(SettingType setType)
         {
             Setting settingInfo = null;
             DBHelper dbHelper = new DBHelper(ConnectionString, DbProviderType.SqlServer);
