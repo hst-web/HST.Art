@@ -252,6 +252,21 @@ namespace HST.Art.Core
         /// 首页logo
         /// </summary>
         Logo = 2
+    }
 
+    public enum SettingType
+    {
+        /// <summary>
+        /// 未知
+        /// </summary>
+        UnKnown = 0,
+        /// <summary>
+        /// 首页Banner
+        /// </summary>
+        Attestation = 1,
+        /// <summary>
+        /// 首页logo
+        /// </summary>
+        Other = 2
     }
 }

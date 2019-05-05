@@ -7,62 +7,68 @@
 using System;
 namespace HST.Art.Core
 {
-	/// <summary>
-	/// Setting
-	/// </summary>
-	[Serializable]
-	public partial class Setting
-	{
-		public Setting()
-		{}
-		#region Model
-		private int _id;
-		private int _type;
-		private string _val;
-		private DateTime _createdate= DateTime.Now;
-		private bool _isenabled= false;
-		/// <summary>
-		/// 
-		/// </summary>
-		public int Id
-		{
-			set{ _id=value;}
-			get{return _id;}
-		}
-		/// <summary>
-		/// 
-		/// </summary>
-		public int Type
-		{
-			set{ _type=value;}
-			get{return _type;}
-		}
-		/// <summary>
-		/// 
-		/// </summary>
-		public string Val
-		{
-			set{ _val=value;}
-			get{return _val;}
-		}
-		/// <summary>
-		/// 
-		/// </summary>
-		public DateTime CreateDate
-		{
-			set{ _createdate=value;}
-			get{return _createdate;}
-		}
-		/// <summary>
-		/// 
-		/// </summary>
-		public bool IsEnabled
-		{
-			set{ _isenabled=value;}
-			get{return _isenabled;}
-		}
-		#endregion Model
+    /// <summary>
+    /// Setting
+    /// </summary>
+    [Serializable]
+    public partial class Setting
+    {
+        public Setting()
+        { }
+        #region Model
+        private int _id;
+        private SettingType _type;
+        private string _val;
+        private DateTime _createdate = DateTime.Now;
+        private bool _isenabled = false;
+        /// <summary>
+        /// 
+        /// </summary>
+        public int Id
+        {
+            set { _id = value; }
+            get { return _id; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public SettingType Type
+        {
+            set { _type = value; }
+            get { return _type; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public string Val
+        {
+            set { _val = value; }
+            get { return _val; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public DateTime CreateDate
+        {
+            set { _createdate = value; }
+            get { return _createdate; }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool IsEnabled
+        {
+            set { _isenabled = value; }
+            get { return _isenabled; }
+        }
+        #endregion Model
 
-	}
+    }
+
+    public class Attestation
+    {
+        public DateTime ExpireDate { get; set; }
+        public bool IsInfinite { get; set; }
+    }
 }
 
