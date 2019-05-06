@@ -1,0 +1,186 @@
+﻿@{
+    Layout = "";
+}
+
+@using cncbk_resource.Models
+@using CNCBK_Res_Domain.Repositories
+@model  ResAdminViewModel
+
+@Scripts.Render("~/bundles/saos")
+@Scripts.Render("~/bundles/ajaxAsync")
+@Scripts.Render("~/bundles/validate")
+@Styles.Render("~/appcss")
+<style type="text/css">
+    .form-horizontal .form-label {
+        text-align: right;
+    }
+</style>
+<article class="page-container">
+    @using (Ajax.BeginForm("Update", "ResAdmin", new AjaxOptions() { HttpMethod = "Post", OnSuccess = "formSuccess(data)", OnBegin = "disSubmit('sub_btn')", OnComplete = "enSubmit('sub_btn')" }, new { id = "form-good-add", @class = "form form-horizontal" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(m => m.Id)
+        @Html.HiddenFor(m => m.Remark)
+        <div class="row cl">
+            <label class="form-label col-xs-3 "><span class="c-red">*</span>用户名：</label>
+            <div class="formControls col-xs-6 ">
+                @if (Model.IsSupAdmin)
+                {
+                    <input type="text" disabled class="input-text" value="@Model.UserName" />
+                    @Html.HiddenFor(m => m.UserName)
+                }
+                else
+                {   @Html.TextBoxFor(m => m.UserName, new { placeholder = "请输入用户名", @class = "input-text" })
+                    @Html.ValidationMessageFor(m => m.UserName, null, new { @class = "error-lable" })
+                }
+
+            </div>
+            @if (ViewBag.IsSupAdmin)
+            {
+                <div class="col-xs-3">
+                    <button class="btn btn-default radius" style="height:auto;padding:6px 10px;font-size:12px" onclick="initPwd()" type="button">初始化密码</button>
+                </div>
+            }
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-3 "><span class="c-red">*</span>手机号：</label>
+            <div class="formControls col-xs-6 ">
+                @Html.TextBoxFor(m => m.Phone, new { placeholder = "请输入手机号", @class = "input-text" })
+                @Html.ValidationMessageFor(m => m.Phone, null, new { @class = "error-lable" })
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-3 ">邮箱：</label>
+            <div class="formControls col-xs-6 ">
+                @Html.TextBoxFor(m => m.Email, new { placeholder = "请输入邮箱", @class = "input-text" })
+                @Html.ValidationMessageFor(m => m.Email, null, new { @class = "error-lable" })
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-3 "><span class="c-red">*</span>角色：</label>
+            <div class="formControls col-xs-6 ">
+                @if (Model.IsSupAdmin)
+                {
+                    <input class="input-text" disabled value="超级管理员" />
+                }
+                else
+                {
+                    <select class="select select-box" id="sel_role">
+                        @if (Model.RoleList == null || Model.RoleList.Count <= 0)
+                        {
+                            <option value="">请选择角色</option>
+                        }
+                        else
+                        {
+                            foreach (var item in Model.RoleList)
+                            {
+                                if (Model.RoleId == item.Id.ToString())
+                                {
+                                    <option value="@item.Id" selected="selected">@item.RoleName</option>
+                                }
+                                else
+                                {
+                                    <option value="@item.Id">@item.RoleName</option>
+                                }
+                            }
+
+                        }
+                    </select>
+                }
+                @Html.TextBoxFor(m => m.RoleId, new { @class = "input-text input-hid" })
+                @Html.ValidationMessageFor(m => m.RoleId, null, new { @class = "error-lable" })
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-3 ">状态：</label>
+            <div class="formControls col-xs-6 ">
+                @if (Model.IsSupAdmin)
+                {
+                    <input type="text" disabled class="input-text" value="启用" />
+                    @Html.HiddenFor(m => m.State)
+                }
+                else
+                {
+                    <select class="select select-box" name="State">
+                        @{
+                            if (Model.State == 0)
+                            {
+                                <option value="0" selected="selected">启用</option>
+                            }
+                            else
+                            {
+                                <option value="0">启用</option>
+                            }
+                            if (Model.State == 1)
+                            {
+                                <option value="1" selected="selected">不启用</option>
+                            }
+                            else
+                            {
+                                <option value="1">不启用</option>
+                            }
+                        }
+                    </select>
+                            }
+
+            </div>
+
+        </div>
+
+        <div class="row cl">
+            <div id="btn_submit" class="col-xs-6  col-xs-offset-3 col-sm-offset-2 mt-10">
+
+                <button class="btn btn-primary radius" type="submit" id="sub_btn"><i class="Hui-iconfont">&#xe632;</i> 保存并提交</button>
+                <input name="" type="button" onclick="layer_close();" class="btn btn-default radius " value="&nbsp;取&nbsp;&nbsp;&nbsp;&nbsp;消&nbsp;">
+            </div>
+        </div>
+                            }
+</article>
+<script type="text/javascript">
+    $(function () {
+        $("#sel_role").change(function () {
+            $("#RoleId").val($(this).val()).blur();
+        })
+
+    })
+
+    function initPwd() {
+        layer.confirm('初始化密码为123456，您确定要初始化吗？', function (e) {
+            $.ajax({
+                url: "@Url.Action("InitPwd")",
+                type: "post",
+                data: { uid: @Model.Id },
+                success: function (data) {
+                    if (data == "ok") {
+                        layer.alert('初始化成功！', { icon: 6 });
+                    } else if (data == "error") {
+                        layer.alert('操作失败！', { icon: 5 });
+                    }
+                    else {
+                        layer.alert(data, { icon: 7 });
+                    }
+                },
+                error: function (data) { layer.alert('操作失败！', { icon: 5 }); }
+            })
+        })
+    }
+
+    function formSuccess(result) {
+        if (result != null) {
+            if (result.isSuccess) {
+                var index = parent.layer.getFrameIndex(window.name);
+                layer.alert('保存成功！', {
+                    icon: 6,
+                    closeBtn: 0,
+                    yes: function () {
+                        parent.table1.ajax.reload();
+                        parent.layer.close(index);
+                    }
+                });
+            } else
+                layer.alert('保存失败！', { icon: 5 });//icon:6为开心图
+        } else
+            layer.alert('保存失败！', { icon: 5 });//icon:6为开心图
+    }
+
+</script>

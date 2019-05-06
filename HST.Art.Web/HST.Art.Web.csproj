@@ -1,0 +1,1925 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.3.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.3.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8E118A92-61F5-4B0B-A2F0-9C4327A7807E}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HST.Art.Web</RootNamespace>
+    <AssemblyName>HST.Art.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>1.8</TypeScriptToolsVersion>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.2\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.2\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.4.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.4.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.4.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.4.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.4.0.1\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.4.0.1\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.4.0.1\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.4.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.4.0.1\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Interception, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Unity.Interception.4.0.1\lib\Net45\Microsoft.Practices.Unity.Interception.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Interception.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\shop_admin\packages\Unity.Interception.4.0.1\lib\Net45\Microsoft.Practices.Unity.Interception.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.RegistrationByConvention, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="RazorGenerator.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\RazorGenerator.Mvc.2.4.9\lib\net40\RazorGenerator.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System">
+      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard1.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Abstractions, Version=4.1.3.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.10.3\lib\net45\Unity.Abstractions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Unity.Container, Version=5.10.3.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.10.3\lib\net45\Unity.Container.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Unity.Mvc5, Version=1.3.0.0, Culture=neutral, PublicKeyToken=43da31bc42a85347, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.Mvc5.1.3.0\lib\net45\Unity.Mvc5.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivatorEx.2.2.0\lib\net40\WebActivatorEx.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\JSBundleConfig.cs" />
+    <Compile Include="App_Start\RazorGeneratorMvcStart.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Common\ApplicationBase.cs" />
+    <Compile Include="Common\PageHtmlhelper.cs" />
+    <Compile Include="Common\Rand.cs" />
+    <Compile Include="Content\lib\ueditor\1.4.3\net\App_Code\Config.cs" />
+    <Compile Include="Content\lib\ueditor\1.4.3\net\App_Code\ConfigHandler.cs" />
+    <Compile Include="Content\lib\ueditor\1.4.3\net\App_Code\CrawlerHandler.cs" />
+    <Compile Include="Content\lib\ueditor\1.4.3\net\App_Code\Handler.cs" />
+    <Compile Include="Content\lib\ueditor\1.4.3\net\App_Code\ListFileHandler.cs" />
+    <Compile Include="Content\lib\ueditor\1.4.3\net\App_Code\NotSupportedHandler.cs" />
+    <Compile Include="Content\lib\ueditor\1.4.3\net\App_Code\PathFormater.cs" />
+    <Compile Include="Content\lib\ueditor\1.4.3\net\App_Code\UploadHandler.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ResourceController.cs" />
+    <Compile Include="Controllers\UploadController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FilterViewModel.cs" />
+    <Compile Include="Models\KeyValueViewModel.cs" />
+    <Compile Include="Models\LoginViewModel.cs" />
+    <Compile Include="Models\MemberTypeViewModel.cs" />
+    <Compile Include="Models\PageListViewModel.cs" />
+    <Compile Include="Models\ResAdminViewModel.cs" />
+    <Compile Include="Models\ResourcePackageViewModel.cs" />
+    <Compile Include="Models\ResourceViewModel.cs" />
+    <Compile Include="Models\ResRoleViewModel.cs" />
+    <Compile Include="Models\ResultRetrun.cs" />
+    <Compile Include="Models\SreachDataTable.cs" />
+    <Compile Include="Models\UploadViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\Shared\_Layout.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_Layout.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\_ViewStart.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_ViewStart.cshtml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-grid.css" />
+    <Content Include="Content\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-reboot.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\image\no-data.png" />
+    <Content Include="Content\image\video_load.png" />
+    <Content Include="Content\image\video_load_error.png" />
+    <Content Include="Content\js\jquery.unobtrusive-ajax.js" />
+    <Content Include="Content\js\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Content\js\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Content\lib\bootstrap-select\bootstrap-select.css" />
+    <Content Include="Content\lib\bootstrap-select\bootstrap-select.js" />
+    <Content Include="Content\lib\bootstrap-select\bootstrap-select.min.css" />
+    <Content Include="Content\lib\bootstrap-select\bootstrap-select.min.js" />
+    <Content Include="Content\lib\bootstrap-select\i18n\defaults-zh_CN.js" />
+    <Content Include="Content\lib\bootstrap-select\i18n\defaults-zh_CN.min.js" />
+    <Content Include="Content\lib\Bootstrap\bootstrap.js" />
+    <Content Include="Content\lib\Bootstrap\bootstrap.min.js" />
+    <Content Include="Content\lib\Bootstrap\css\bootstrap-theme.css" />
+    <Content Include="Content\lib\Bootstrap\css\bootstrap-theme.min.css" />
+    <Content Include="Content\lib\Bootstrap\css\bootstrap.css" />
+    <Content Include="Content\lib\Bootstrap\css\bootstrap.min.css" />
+    <Content Include="Content\lib\Bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\lib\C-D3\c3.min.js" />
+    <Content Include="Content\lib\C-D3\d3.min.js" />
+    <Content Include="Content\lib\ckplayer.js" />
+    <Content Include="Content\lib\datatables\1.10.0\jquery.dataTables.min.js" />
+    <Content Include="Content\lib\DD_belatedPNG_0.0.8a-min.js" />
+    <Content Include="Content\lib\echarts\3.4.0\echarts.common.min.js" />
+    <Content Include="Content\lib\expressInstall.swf" />
+    <Content Include="Content\lib\h-ui.admin\css\H-ui.admin.css" />
+    <Content Include="Content\lib\h-ui.admin\css\H-ui.login.css" />
+    <Content Include="Content\lib\h-ui.admin\css\style.css" />
+    <Content Include="Content\lib\h-ui.admin\images\acrossTab\acrossTab-2.png" />
+    <Content Include="Content\lib\h-ui.admin\images\admin-login-b2g.png" />
+    <Content Include="Content\lib\h-ui.admin\images\admin-login-bg.png" />
+    <Content Include="Content\lib\h-ui.admin\images\admin-loginform-bg.png" />
+    <Content Include="Content\lib\h-ui.admin\images\cn.gif" />
+    <Content Include="Content\lib\h-ui.admin\images\loading.gif" />
+    <Content Include="Content\lib\h-ui.admin\images\logo.png" />
+    <Content Include="Content\lib\h-ui.admin\images\um.gif" />
+    <Content Include="Content\lib\h-ui.admin\images\webwxgetmsgimg.png" />
+    <Content Include="Content\lib\h-ui.admin\js\custom.js" />
+    <Content Include="Content\lib\h-ui.admin\js\de_DE.txt" />
+    <Content Include="Content\lib\h-ui.admin\js\H-ui.admin.js" />
+    <Content Include="Content\lib\h-ui.admin\skin\blue\acrossTab-bg.png" />
+    <Content Include="Content\lib\h-ui.admin\skin\blue\acrossTab.png" />
+    <Content Include="Content\lib\h-ui.admin\skin\blue\icon_arrow.png" />
+    <Content Include="Content\lib\h-ui.admin\skin\blue\skin.css" />
+    <Content Include="Content\lib\h-ui.admin\skin\default\acrossTab-bg.png" />
+    <Content Include="Content\lib\h-ui.admin\skin\default\acrossTab.png" />
+    <Content Include="Content\lib\h-ui.admin\skin\default\icon_arrow.png" />
+    <Content Include="Content\lib\h-ui.admin\skin\default\skin.css" />
+    <Content Include="Content\lib\h-ui.admin\skin\green\acrossTab-bg.png" />
+    <Content Include="Content\lib\h-ui.admin\skin\green\acrossTab.png" />
+    <Content Include="Content\lib\h-ui.admin\skin\green\icon_arrow.png" />
+    <Content Include="Content\lib\h-ui.admin\skin\green\skin.css" />
+    <Content Include="Content\lib\h-ui.admin\skin\orange\acrossTab-bg.png" />
+    <Content Include="Content\lib\h-ui.admin\skin\orange\acrossTab.png" />
+    <Content Include="Content\lib\h-ui.admin\skin\orange\icon_arrow.png" />
+    <Content Include="Content\lib\h-ui.admin\skin\orange\skin.css" />
+    <Content Include="Content\lib\h-ui.admin\skin\red\acrossTab-bg.png" />
+    <Content Include="Content\lib\h-ui.admin\skin\red\acrossTab.png" />
+    <Content Include="Content\lib\h-ui.admin\skin\red\icon_arrow.png" />
+    <Content Include="Content\lib\h-ui.admin\skin\red\skin.css" />
+    <Content Include="Content\lib\h-ui.admin\skin\yellow\acrossTab-bg.png" />
+    <Content Include="Content\lib\h-ui.admin\skin\yellow\acrossTab.png" />
+    <Content Include="Content\lib\h-ui.admin\skin\yellow\icon_arrow.png" />
+    <Content Include="Content\lib\h-ui.admin\skin\yellow\skin.css" />
+    <Content Include="Content\lib\h-ui\css\H-ui.css" />
+    <Content Include="Content\lib\h-ui\css\H-ui.ie.css" />
+    <Content Include="Content\lib\h-ui\css\H-ui.min.css" />
+    <Content Include="Content\lib\h-ui\css\H-ui.reset.css" />
+    <Content Include="Content\lib\h-ui\images\acrossTab\acrossTab-bg.png" />
+    <Content Include="Content\lib\h-ui\images\acrossTab\acrossTab-close.png" />
+    <Content Include="Content\lib\h-ui\images\acrossTab\acrossTab.png" />
+    <Content Include="Content\lib\h-ui\images\dataTable\sort_asc.png" />
+    <Content Include="Content\lib\h-ui\images\dataTable\sort_both.png" />
+    <Content Include="Content\lib\h-ui\images\dataTable\sort_desc.png" />
+    <Content Include="Content\lib\h-ui\images\dropDown\icon-jt.png" />
+    <Content Include="Content\lib\h-ui\images\face\201.gif" />
+    <Content Include="Content\lib\h-ui\images\face\202.gif" />
+    <Content Include="Content\lib\h-ui\images\face\203.gif" />
+    <Content Include="Content\lib\h-ui\images\face\204.gif" />
+    <Content Include="Content\lib\h-ui\images\face\205.gif" />
+    <Content Include="Content\lib\h-ui\images\face\206.gif" />
+    <Content Include="Content\lib\h-ui\images\face\207.gif" />
+    <Content Include="Content\lib\h-ui\images\face\208.gif" />
+    <Content Include="Content\lib\h-ui\images\face\209.gif" />
+    <Content Include="Content\lib\h-ui\images\face\210.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\0.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\1.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\10.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\100.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\101.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\102.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\103.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\104.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\105.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\106.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\11.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\12.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\13.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\14.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\15.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\16.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\18.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\19.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\2.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\20.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\21.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\22.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\23.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\24.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\25.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\26.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\27.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\28.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\29.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\3.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\30.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\31.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\32.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\33.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\34.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\35.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\36.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\37.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\38.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\39.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\4.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\40.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\41.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\42.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\43.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\44.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\45.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\46.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\47.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\48.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\49.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\5.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\50.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\51.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\52.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\53.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\54.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\55.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\56.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\57.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\58.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\59.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\6.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\60.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\61.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\62.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\63.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\64.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\65.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\66.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\67.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\68.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\69.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\7.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\70.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\71.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\72.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\73.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\74.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\75.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\76.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\77.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\78.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\79.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\8.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\80.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\81.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\82.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\83.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\84.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\85.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\86.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\87.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\88.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\89.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\9.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\90.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\91.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\92.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\93.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\94.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\95.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\96.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\97.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\98.gif" />
+    <Content Include="Content\lib\h-ui\images\face\QQ\99.gif" />
+    <Content Include="Content\lib\h-ui\images\Hui-tags\empty.png" />
+    <Content Include="Content\lib\h-ui\images\iCheck\aero%402x.png" />
+    <Content Include="Content\lib\h-ui\images\iCheck\aero.png" />
+    <Content Include="Content\lib\h-ui\images\iCheck\blue%402x.png" />
+    <Content Include="Content\lib\h-ui\images\iCheck\blue.png" />
+    <Content Include="Content\lib\h-ui\images\iCheck\green%402x.png" />
+    <Content Include="Content\lib\h-ui\images\iCheck\green.png" />
+    <Content Include="Content\lib\h-ui\images\iCheck\grey%402x.png" />
+    <Content Include="Content\lib\h-ui\images\iCheck\grey.png" />
+    <Content Include="Content\lib\h-ui\images\iCheck\minimal%402x.png" />
+    <Content Include="Content\lib\h-ui\images\iCheck\minimal.png" />
+    <Content Include="Content\lib\h-ui\images\iCheck\orange%402x.png" />
+    <Content Include="Content\lib\h-ui\images\iCheck\orange.png" />
+    <Content Include="Content\lib\h-ui\images\iCheck\pink%402x.png" />
+    <Content Include="Content\lib\h-ui\images\iCheck\pink.png" />
+    <Content Include="Content\lib\h-ui\images\iCheck\purple%402x.png" />
+    <Content Include="Content\lib\h-ui\images\iCheck\purple.png" />
+    <Content Include="Content\lib\h-ui\images\iCheck\red%402x.png" />
+    <Content Include="Content\lib\h-ui\images\iCheck\red.png" />
+    <Content Include="Content\lib\h-ui\images\iCheck\yellow%402x.png" />
+    <Content Include="Content\lib\h-ui\images\iCheck\yellow.png" />
+    <Content Include="Content\lib\h-ui\images\iconpic-arrow.png" />
+    <Content Include="Content\lib\h-ui\images\jselect\iconpic-arrow-down2.png" />
+    <Content Include="Content\lib\h-ui\images\loading\loading-b.gif" />
+    <Content Include="Content\lib\h-ui\images\loading\loading-s.gif" />
+    <Content Include="Content\lib\h-ui\images\rollpic\unslider-arrow.png" />
+    <Content Include="Content\lib\h-ui\images\star\iconpic-star-S-default.png" />
+    <Content Include="Content\lib\h-ui\images\star\iconpic-star-S.png" />
+    <Content Include="Content\lib\h-ui\images\steps\step_arrow-active.png" />
+    <Content Include="Content\lib\h-ui\images\steps\step_arrow.png" />
+    <Content Include="Content\lib\h-ui\images\steps\step_bg-active.png" />
+    <Content Include="Content\lib\h-ui\images\steps\step_bg.png" />
+    <Content Include="Content\lib\h-ui\images\ucnter\avatar-default-S.gif" />
+    <Content Include="Content\lib\h-ui\images\ucnter\avatar-default.jpg" />
+    <Content Include="Content\lib\h-ui\images\ucnter\avatar.png" />
+    <Content Include="Content\lib\h-ui\images\ucnter\noavatar_small.gif" />
+    <Content Include="Content\lib\h-ui\images\validform\iconpic-error.png" />
+    <Content Include="Content\lib\h-ui\images\validform\iconpic-right.png" />
+    <Content Include="Content\lib\h-ui\images\validform\iconpic-warning.png" />
+    <Content Include="Content\lib\h-ui\images\verticalTab\tabNav-active.png" />
+    <Content Include="Content\lib\h-ui\images\verticalTab\tabNav-hover.png" />
+    <Content Include="Content\lib\h-ui\images\verticalTab\tabNav.png" />
+    <Content Include="Content\lib\h-ui\images\verticalTab\tabNav_right-active.png" />
+    <Content Include="Content\lib\h-ui\images\verticalTab\tabNav_right-hover.png" />
+    <Content Include="Content\lib\h-ui\images\verticalTab\tabNav_right.png" />
+    <Content Include="Content\lib\h-ui\images\verticalTab\tab_bg.png" />
+    <Content Include="Content\lib\h-ui\js\H-ui.js" />
+    <Content Include="Content\lib\h-ui\js\H-ui.min.js" />
+    <Content Include="Content\lib\hcharts\Highcharts\5.0.6\js\highcharts-3d.js" />
+    <Content Include="Content\lib\hcharts\Highcharts\5.0.6\js\highcharts-more.js" />
+    <Content Include="Content\lib\hcharts\Highcharts\5.0.6\js\highcharts.js" />
+    <Content Include="Content\lib\hcharts\Highcharts\5.0.6\js\modules\accessibility.js" />
+    <Content Include="Content\lib\hcharts\Highcharts\5.0.6\js\modules\accessibility.src.js" />
+    <Content Include="Content\lib\hcharts\Highcharts\5.0.6\js\modules\annotations.js" />
+    <Content Include="Content\lib\hcharts\Highcharts\5.0.6\js\modules\annotations.src.js" />
+    <Content Include="Content\lib\hcharts\Highcharts\5.0.6\js\modules\boost.js" />
+    <Content Include="Content\lib\hcharts\Highcharts\5.0.6\js\modules\boost.src.js" />
+    <Content Include="Content\lib\hcharts\Highcharts\5.0.6\js\modules\broken-axis.js" />
+    <Content Include="Content\lib\hcharts\Highcharts\5.0.6\js\modules\broken-axis.src.js" />
+    <Content Include="Content\lib\hcharts\Highcharts\5.0.6\js\modules\data.js" />
+    <Content Include="Content\lib\hcharts\Highcharts\5.0.6\js\modules\data.src.js" />
+    <Content Include="Content\lib\hcharts\Highcharts\5.0.6\js\modules\drilldown.js" />
+    <Content Include="Content\lib\hcharts\Highcharts\5.0.6\js\modules\drilldown.src.js" />
+    <Content Include="Content\lib\hcharts\Highcharts\5.0.6\js\modules\exporting.js" />
+    <Content Include="Content\lib\hcharts\Highcharts\5.0.6\js\modules\exporting.src.js" />
+    <Content Include="Content\lib\hcharts\Highcharts\5.0.6\js\modules\funnel.js" />
+    <Content Include="Content\lib\hcharts\Highcharts\5.0.6\js\modules\funnel.src.js" />
+    <Content Include="Content\lib\hcharts\Highcharts\5.0.6\js\modules\gantt.js" />
+    <Content Include="Content\lib\hcharts\Highcharts\5.0.6\js\modules\gantt.src.js" />
+    <Content Include="Content\lib\hcharts\Highcharts\5.0.6\js\modules\grid-axis.js" />
+    <Content Include="Content\lib\hcharts\Highcharts\5.0.6\js\modules\grid-axis.src.js" />
+    <Content Include="Content\lib\hcharts\Highcharts\5.0.6\js\modules\heatmap.js" />
+    <Content Include="Content\lib\hcharts\Highcharts\5.0.6\js\modules\heatmap.src.js" />
+    <Content Include="Content\lib\hcharts\Highcharts\5.0.6\js\modules\no-data-to-display.js" />
+    <Content Include="Content\lib\hcharts\Highcharts\5.0.6\js\modules\no-data-to-display.src.js" />
+    <Content Include="Content\lib\hcharts\Highcharts\5.0.6\js\modules\offline-exporting.js" />
+    <Content Include="Content\lib\hcharts\Highcharts\5.0.6\js\modules\offline-exporting.src.js" />
+    <Content Include="Content\lib\hcharts\Highcharts\5.0.6\js\modules\overlapping-datalabels.js" />
+    <Content Include="Content\lib\hcharts\Highcharts\5.0.6\js\modules\overlapping-datalabels.src.js" />
+    <Content Include="Content\lib\hcharts\Highcharts\5.0.6\js\modules\series-label.js" />
+    <Content Include="Content\lib\hcharts\Highcharts\5.0.6\js\modules\series-label.src.js" />
+    <Content Include="Content\lib\hcharts\Highcharts\5.0.6\js\modules\solid-gauge.js" />
+    <Content Include="Content\lib\hcharts\Highcharts\5.0.6\js\modules\solid-gauge.src.js" />
+    <Content Include="Content\lib\hcharts\Highcharts\5.0.6\js\modules\treemap.js" />
+    <Content Include="Content\lib\hcharts\Highcharts\5.0.6\js\modules\treemap.src.js" />
+    <Content Include="Content\lib\hcharts\Highcharts\5.0.6\js\modules\xrange-series.js" />
+    <Content Include="Content\lib\hcharts\Highcharts\5.0.6\js\modules\xrange-series.src.js" />
+    <Content Include="Content\lib\hcharts\Highcharts\5.0.6\js\themes\dark-blue.js" />
+    <Content Include="Content\lib\hcharts\Highcharts\5.0.6\js\themes\dark-green.js" />
+    <Content Include="Content\lib\hcharts\Highcharts\5.0.6\js\themes\dark-unica.js" />
+    <Content Include="Content\lib\hcharts\Highcharts\5.0.6\js\themes\gray.js" />
+    <Content Include="Content\lib\hcharts\Highcharts\5.0.6\js\themes\grid-light.js" />
+    <Content Include="Content\lib\hcharts\Highcharts\5.0.6\js\themes\grid.js" />
+    <Content Include="Content\lib\hcharts\Highcharts\5.0.6\js\themes\sand-signika.js" />
+    <Content Include="Content\lib\hcharts\Highcharts\5.0.6\js\themes\skies.js" />
+    <Content Include="Content\lib\hcharts\Highcharts\5.0.6\readme.txt" />
+    <Content Include="Content\lib\html5shiv.js" />
+    <Content Include="Content\lib\Hui-iconfont\1.0.8\demo.html" />
+    <Content Include="Content\lib\Hui-iconfont\1.0.8\iconfont.css" />
+    <Content Include="Content\lib\Hui-iconfont\1.0.8\iconfont.min.css" />
+    <Content Include="Content\lib\Hui-iconfont\1.0.8\iconfont.svg" />
+    <Content Include="Content\lib\jquery.contextmenu\jquery.contextmenu.r2.js" />
+    <Content Include="Content\lib\jquery.matchHeight\jquery.matchHeight.js" />
+    <Content Include="Content\lib\jquery.media.js" />
+    <Content Include="Content\lib\jquery.SuperSlide\2.1.1\jquery.SuperSlide.min.js" />
+    <Content Include="Content\lib\jquery.validation\1.14.0\additional-methods.js" />
+    <Content Include="Content\lib\jquery.validation\1.14.0\jquery.validate.js" />
+    <Content Include="Content\lib\jquery.validation\1.14.0\messages_zh.js" />
+    <Content Include="Content\lib\jquery.validation\1.14.0\validate-methods.js" />
+    <Content Include="Content\lib\jquery\1.9.1\jquery.js" />
+    <Content Include="Content\lib\jquery\1.9.1\jquery.min.js" />
+    <Content Include="Content\lib\jselect-1.0.js" />
+    <Content Include="Content\lib\layer\2.4\layer.js" />
+    <Content Include="Content\lib\layer\2.4\skin\default\icon-ext.png" />
+    <Content Include="Content\lib\layer\2.4\skin\default\icon.png" />
+    <Content Include="Content\lib\layer\2.4\skin\default\loading-0.gif" />
+    <Content Include="Content\lib\layer\2.4\skin\default\loading-1.gif" />
+    <Content Include="Content\lib\layer\2.4\skin\default\loading-2.gif" />
+    <Content Include="Content\lib\layer\2.4\skin\layer.css" />
+    <Content Include="Content\lib\laypage\1.2\laypage.js" />
+    <Content Include="Content\lib\laypage\1.2\skin\laypage.css" />
+    <Content Include="Content\lib\lightbox2\2.8.1\css\lightbox.css" />
+    <Content Include="Content\lib\lightbox2\2.8.1\examples.html" />
+    <Content Include="Content\lib\lightbox2\2.8.1\images\close.png" />
+    <Content Include="Content\lib\lightbox2\2.8.1\images\loading.gif" />
+    <Content Include="Content\lib\lightbox2\2.8.1\images\next.png" />
+    <Content Include="Content\lib\lightbox2\2.8.1\images\prev.png" />
+    <Content Include="Content\lib\lightbox2\2.8.1\js\lightbox-plus-jquery.js" />
+    <Content Include="Content\lib\lightbox2\2.8.1\js\lightbox-plus-jquery.min.js" />
+    <Content Include="Content\lib\lightbox2\2.8.1\js\lightbox.js" />
+    <Content Include="Content\lib\lightbox2\2.8.1\js\lightbox.min.js" />
+    <Content Include="Content\lib\My97DatePicker\4.8\calendar.js" />
+    <Content Include="Content\lib\My97DatePicker\4.8\lang\en.js" />
+    <Content Include="Content\lib\My97DatePicker\4.8\lang\zh-cn.js" />
+    <Content Include="Content\lib\My97DatePicker\4.8\lang\zh-tw.js" />
+    <Content Include="Content\lib\My97DatePicker\4.8\skin\datePicker.gif" />
+    <Content Include="Content\lib\My97DatePicker\4.8\skin\default\datepicker.css" />
+    <Content Include="Content\lib\My97DatePicker\4.8\skin\default\img.gif" />
+    <Content Include="Content\lib\My97DatePicker\4.8\skin\twoer\datepicker-dev.css" />
+    <Content Include="Content\lib\My97DatePicker\4.8\skin\twoer\datepicker.css" />
+    <Content Include="Content\lib\My97DatePicker\4.8\skin\twoer\img.gif" />
+    <Content Include="Content\lib\My97DatePicker\4.8\skin\twoer\img.png" />
+    <Content Include="Content\lib\My97DatePicker\4.8\skin\WdatePicker.css" />
+    <Content Include="Content\lib\My97DatePicker\4.8\skin\whyGreen\bg.jpg" />
+    <Content Include="Content\lib\My97DatePicker\4.8\skin\whyGreen\datepicker.css" />
+    <Content Include="Content\lib\My97DatePicker\4.8\skin\whyGreen\img.gif" />
+    <Content Include="Content\lib\My97DatePicker\4.8\WdatePicker.js" />
+    <Content Include="Content\lib\nprogress\0.2.0\nprogress.css" />
+    <Content Include="Content\lib\nprogress\0.2.0\nprogress.js" />
+    <Content Include="Content\lib\nprogress\0.2.0\nprogress.min.css" />
+    <Content Include="Content\lib\nprogress\0.2.0\nprogress.min.js" />
+    <Content Include="Content\lib\patternfly\css\patternfly-additions.css" />
+    <Content Include="Content\lib\patternfly\css\patternfly-additions.min.css" />
+    <Content Include="Content\lib\patternfly\css\patternfly.css" />
+    <Content Include="Content\lib\patternfly\css\patternfly.min.css" />
+    <Content Include="Content\lib\patternfly\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\lib\patternfly\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\lib\patternfly\fonts\OpenSans-Bold-webfont.svg" />
+    <Content Include="Content\lib\patternfly\fonts\OpenSans-BoldItalic-webfont.svg" />
+    <Content Include="Content\lib\patternfly\fonts\OpenSans-ExtraBold-webfont.svg" />
+    <Content Include="Content\lib\patternfly\fonts\OpenSans-ExtraBoldItalic-webfont.svg" />
+    <Content Include="Content\lib\patternfly\fonts\OpenSans-Italic-webfont.svg" />
+    <Content Include="Content\lib\patternfly\fonts\OpenSans-Light-webfont.svg" />
+    <Content Include="Content\lib\patternfly\fonts\OpenSans-LightItalic-webfont.svg" />
+    <Content Include="Content\lib\patternfly\fonts\OpenSans-Regular-webfont.svg" />
+    <Content Include="Content\lib\patternfly\fonts\OpenSans-Semibold-webfont.svg" />
+    <Content Include="Content\lib\patternfly\fonts\OpenSans-SemiboldItalic-webfont.svg" />
+    <Content Include="Content\lib\patternfly\fonts\PatternFlyIcons-webfont.svg" />
+    <Content Include="Content\lib\patternfly\img\apple-touch-icon-precomposed-114.png" />
+    <Content Include="Content\lib\patternfly\img\apple-touch-icon-precomposed-144.png" />
+    <Content Include="Content\lib\patternfly\img\apple-touch-icon-precomposed-152.png" />
+    <Content Include="Content\lib\patternfly\img\apple-touch-icon-precomposed-180.png" />
+    <Content Include="Content\lib\patternfly\img\apple-touch-icon-precomposed-57.png" />
+    <Content Include="Content\lib\patternfly\img\apple-touch-icon-precomposed-72.png" />
+    <Content Include="Content\lib\patternfly\img\apple-touch-icon-precomposed-76.png" />
+    <Content Include="Content\lib\patternfly\img\bg-login.jpg" />
+    <Content Include="Content\lib\patternfly\img\bg-modal-about-pf.png" />
+    <Content Include="Content\lib\patternfly\img\bg-navbar-pf-alt.svg" />
+    <Content Include="Content\lib\patternfly\img\brand-alt.svg" />
+    <Content Include="Content\lib\patternfly\img\brand.svg" />
+    <Content Include="Content\lib\patternfly\img\favicon.ico" />
+    <Content Include="Content\lib\patternfly\img\kubernetes-Logo.svg" />
+    <Content Include="Content\lib\patternfly\img\kubernetes.svg" />
+    <Content Include="Content\lib\patternfly\img\logo-alt.svg" />
+    <Content Include="Content\lib\patternfly\img\logo.svg" />
+    <Content Include="Content\lib\patternfly\img\OpenShift-Logo-NoText.svg" />
+    <Content Include="Content\lib\patternfly\img\OpenShift-Logo-Text.svg" />
+    <Content Include="Content\lib\patternfly\img\OpenShift-logo.svg" />
+    <Content Include="Content\lib\patternfly\img\RH_Atomic-Logo-NoText.svg" />
+    <Content Include="Content\lib\patternfly\img\RH_Atomic-Logo-Text.svg" />
+    <Content Include="Content\lib\patternfly\img\RH_atomic.svg" />
+    <Content Include="Content\lib\patternfly\img\spinner-inverse-lg.gif" />
+    <Content Include="Content\lib\patternfly\img\spinner-inverse-sm.gif" />
+    <Content Include="Content\lib\patternfly\img\spinner-inverse-xs.gif" />
+    <Content Include="Content\lib\patternfly\img\spinner-inverse.gif" />
+    <Content Include="Content\lib\patternfly\img\spinner-lg.gif" />
+    <Content Include="Content\lib\patternfly\img\spinner-sm.gif" />
+    <Content Include="Content\lib\patternfly\img\spinner-xs.gif" />
+    <Content Include="Content\lib\patternfly\img\spinner.gif" />
+    <Content Include="Content\lib\patternfly\js\patternfly-functions-charts.js" />
+    <Content Include="Content\lib\patternfly\js\patternfly-functions-charts.min.js" />
+    <Content Include="Content\lib\patternfly\js\patternfly-functions-colors.js" />
+    <Content Include="Content\lib\patternfly\js\patternfly-functions-colors.min.js" />
+    <Content Include="Content\lib\patternfly\js\patternfly-functions-count-chars.js" />
+    <Content Include="Content\lib\patternfly\js\patternfly-functions-count-chars.min.js" />
+    <Content Include="Content\lib\patternfly\js\patternfly-functions-data-tables.js" />
+    <Content Include="Content\lib\patternfly\js\patternfly-functions-data-tables.min.js" />
+    <Content Include="Content\lib\patternfly\js\patternfly-functions-fixed-heights.js" />
+    <Content Include="Content\lib\patternfly\js\patternfly-functions-fixed-heights.min.js" />
+    <Content Include="Content\lib\patternfly\js\patternfly-functions-list.js" />
+    <Content Include="Content\lib\patternfly\js\patternfly-functions-list.min.js" />
+    <Content Include="Content\lib\patternfly\js\patternfly-functions-navigation.js" />
+    <Content Include="Content\lib\patternfly\js\patternfly-functions-navigation.min.js" />
+    <Content Include="Content\lib\patternfly\js\patternfly-functions-popovers.js" />
+    <Content Include="Content\lib\patternfly\js\patternfly-functions-popovers.min.js" />
+    <Content Include="Content\lib\patternfly\js\patternfly-functions-sidebar.js" />
+    <Content Include="Content\lib\patternfly\js\patternfly-functions-sidebar.min.js" />
+    <Content Include="Content\lib\patternfly\js\patternfly-functions-tree-grid.js" />
+    <Content Include="Content\lib\patternfly\js\patternfly-functions-tree-grid.min.js" />
+    <Content Include="Content\lib\patternfly\js\patternfly-functions-vertical-nav.js" />
+    <Content Include="Content\lib\patternfly\js\patternfly-functions-vertical-nav.min.js" />
+    <Content Include="Content\lib\patternfly\js\patternfly-functions.js" />
+    <Content Include="Content\lib\patternfly\js\patternfly-functions.min.js" />
+    <Content Include="Content\lib\patternfly\js\patternfly-settings-charts.js" />
+    <Content Include="Content\lib\patternfly\js\patternfly-settings-charts.min.js" />
+    <Content Include="Content\lib\patternfly\js\patternfly-settings-colors.js" />
+    <Content Include="Content\lib\patternfly\js\patternfly-settings-colors.min.js" />
+    <Content Include="Content\lib\patternfly\js\patternfly-settings.js" />
+    <Content Include="Content\lib\patternfly\js\patternfly-settings.min.js" />
+    <Content Include="Content\lib\patternfly\js\patternfly.dataTables.pfColVis.js" />
+    <Content Include="Content\lib\patternfly\js\patternfly.dataTables.pfEmpty.js" />
+    <Content Include="Content\lib\patternfly\js\patternfly.dataTables.pfEmpty.min.js" />
+    <Content Include="Content\lib\patternfly\js\patternfly.dataTables.pfFilter.js" />
+    <Content Include="Content\lib\patternfly\js\patternfly.dataTables.pfFilter.min.js" />
+    <Content Include="Content\lib\patternfly\js\patternfly.dataTables.pfPagination.js" />
+    <Content Include="Content\lib\patternfly\js\patternfly.dataTables.pfPagination.min.js" />
+    <Content Include="Content\lib\patternfly\js\patternfly.dataTables.pfResize.js" />
+    <Content Include="Content\lib\patternfly\js\patternfly.dataTables.pfResize.min.js" />
+    <Content Include="Content\lib\patternfly\js\patternfly.dataTables.pfSelect.js" />
+    <Content Include="Content\lib\patternfly\js\patternfly.dataTables.pfSelect.min.js" />
+    <Content Include="Content\lib\patternfly\js\patternfly.js" />
+    <Content Include="Content\lib\patternfly\js\patternfly.min.js" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap-touchspin\jquery.bootstrap-touchspin.css" />
+    <Content Include="Content\lib\patternfly\less\dependencies\c3\c3.css" />
+    <Content Include="Content\lib\patternfly\tests\about-modal.html" />
+    <Content Include="Content\lib\patternfly\tests\accordions.html" />
+    <Content Include="Content\lib\patternfly\tests\alerts.html" />
+    <Content Include="Content\lib\patternfly\tests\area-charts.html" />
+    <Content Include="Content\lib\patternfly\tests\badges.html" />
+    <Content Include="Content\lib\patternfly\tests\bar-charts.html" />
+    <Content Include="Content\lib\patternfly\tests\basic.html" />
+    <Content Include="Content\lib\patternfly\tests\blank-slate.html" />
+    <Content Include="Content\lib\patternfly\tests\bootstrap-combobox.html" />
+    <Content Include="Content\lib\patternfly\tests\bootstrap-datepicker.html" />
+    <Content Include="Content\lib\patternfly\tests\bootstrap-select.html" />
+    <Content Include="Content\lib\patternfly\tests\bootstrap-switch.html" />
+    <Content Include="Content\lib\patternfly\tests\bootstrap-switch.js" />
+    <Content Include="Content\lib\patternfly\tests\bootstrap-touchspin.html" />
+    <Content Include="Content\lib\patternfly\tests\bootstrap-treeview-2.html" />
+    <Content Include="Content\lib\patternfly\tests\bootstrap-treeview.html" />
+    <Content Include="Content\lib\patternfly\tests\breadcrumbs.html" />
+    <Content Include="Content\lib\patternfly\tests\buttons.html" />
+    <Content Include="Content\lib\patternfly\tests\card-view-card-variations.html" />
+    <Content Include="Content\lib\patternfly\tests\card-view-multi-select.html" />
+    <Content Include="Content\lib\patternfly\tests\card-view-single-select.html" />
+    <Content Include="Content\lib\patternfly\tests\cards.html" />
+    <Content Include="Content\lib\patternfly\tests\code.html" />
+    <Content Include="Content\lib\patternfly\tests\dashboard.html" />
+    <Content Include="Content\lib\patternfly\tests\donut-charts.html" />
+    <Content Include="Content\lib\patternfly\tests\dropdowns.html" />
+    <Content Include="Content\lib\patternfly\tests\form.html" />
+    <Content Include="Content\lib\patternfly\tests\forms.html" />
+    <Content Include="Content\lib\patternfly\tests\horizontal-navigation.html" />
+    <Content Include="Content\lib\patternfly\tests\icons.html" />
+    <Content Include="Content\lib\patternfly\tests\img\dashboard-3.png" />
+    <Content Include="Content\lib\patternfly\tests\index.html" />
+    <Content Include="Content\lib\patternfly\tests\infotip.html" />
+    <Content Include="Content\lib\patternfly\tests\labels.html" />
+    <Content Include="Content\lib\patternfly\tests\line-charts.html" />
+    <Content Include="Content\lib\patternfly\tests\list-group.html" />
+    <Content Include="Content\lib\patternfly\tests\list-pf.html" />
+    <Content Include="Content\lib\patternfly\tests\list-view-compound-expansion.html" />
+    <Content Include="Content\lib\patternfly\tests\list-view-rows.html" />
+    <Content Include="Content\lib\patternfly\tests\list-view-simple-expansion.html" />
+    <Content Include="Content\lib\patternfly\tests\list-view.html" />
+    <Content Include="Content\lib\patternfly\tests\login.html" />
+    <Content Include="Content\lib\patternfly\tests\modals.html" />
+    <Content Include="Content\lib\patternfly\tests\navbar.html" />
+    <Content Include="Content\lib\patternfly\tests\notification-drawer-horizontal-nav.html" />
+    <Content Include="Content\lib\patternfly\tests\notification-drawer-vertical-nav.html" />
+    <Content Include="Content\lib\patternfly\tests\pagination-card-view.html" />
+    <Content Include="Content\lib\patternfly\tests\pagination-list-view.html" />
+    <Content Include="Content\lib\patternfly\tests\pagination-table-view.html" />
+    <Content Include="Content\lib\patternfly\tests\pagination.html" />
+    <Content Include="Content\lib\patternfly\tests\panels.html" />
+    <Content Include="Content\lib\patternfly\tests\pie-charts.html" />
+    <Content Include="Content\lib\patternfly\tests\popovers.html" />
+    <Content Include="Content\lib\patternfly\tests\progress-bars.html" />
+    <Content Include="Content\lib\patternfly\tests\search.html" />
+    <Content Include="Content\lib\patternfly\tests\spinner.html" />
+    <Content Include="Content\lib\patternfly\tests\tab.html" />
+    <Content Include="Content\lib\patternfly\tests\table-view-columns.html" />
+    <Content Include="Content\lib\patternfly\tests\table-view-navbar.html" />
+    <Content Include="Content\lib\patternfly\tests\table-view.html" />
+    <Content Include="Content\lib\patternfly\tests\tables.html" />
+    <Content Include="Content\lib\patternfly\tests\tabs.html" />
+    <Content Include="Content\lib\patternfly\tests\tests.css" />
+    <Content Include="Content\lib\patternfly\tests\time-picker.html" />
+    <Content Include="Content\lib\patternfly\tests\toast.html" />
+    <Content Include="Content\lib\patternfly\tests\toolbar.html" />
+    <Content Include="Content\lib\patternfly\tests\tooltip.html" />
+    <Content Include="Content\lib\patternfly\tests\typography-2.css" />
+    <Content Include="Content\lib\patternfly\tests\typography-2.html" />
+    <Content Include="Content\lib\patternfly\tests\typography.html" />
+    <Content Include="Content\lib\patternfly\tests\utilization-bar-charts.html" />
+    <Content Include="Content\lib\patternfly\tests\vertical-navigation-primary-only.html" />
+    <Content Include="Content\lib\patternfly\tests\vertical-navigation-with-badges.html" />
+    <Content Include="Content\lib\patternfly\tests\vertical-navigation-with-secondary.html" />
+    <Content Include="Content\lib\patternfly\tests\vertical-navigation-with-tertiary-no-icons.html" />
+    <Content Include="Content\lib\patternfly\tests\vertical-navigation-with-tertiary-pins.html" />
+    <Content Include="Content\lib\patternfly\tests\wizard.html" />
+    <Content Include="Content\lib\respond.min.js" />
+    <Content Include="Content\lib\squid.js" />
+    <Content Include="Content\lib\swfobject.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\anchor\anchor.html" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\attachment\attachment.css" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\attachment\attachment.html" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\attachment\attachment.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\attachment\fileTypeImages\icon_chm.gif" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\attachment\fileTypeImages\icon_default.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\attachment\fileTypeImages\icon_doc.gif" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\attachment\fileTypeImages\icon_exe.gif" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\attachment\fileTypeImages\icon_jpg.gif" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\attachment\fileTypeImages\icon_mp3.gif" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\attachment\fileTypeImages\icon_mv.gif" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\attachment\fileTypeImages\icon_pdf.gif" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\attachment\fileTypeImages\icon_ppt.gif" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\attachment\fileTypeImages\icon_psd.gif" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\attachment\fileTypeImages\icon_rar.gif" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\attachment\fileTypeImages\icon_txt.gif" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\attachment\fileTypeImages\icon_xls.gif" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\attachment\images\alignicon.gif" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\attachment\images\alignicon.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\attachment\images\bg.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\attachment\images\file-icons.gif" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\attachment\images\file-icons.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\attachment\images\icons.gif" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\attachment\images\icons.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\attachment\images\image.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\attachment\images\progress.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\attachment\images\success.gif" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\attachment\images\success.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\background\background.css" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\background\background.html" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\background\background.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\background\images\bg.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\background\images\success.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\charts\chart.config.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\charts\charts.css" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\charts\charts.html" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\charts\charts.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\charts\images\charts0.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\charts\images\charts1.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\charts\images\charts2.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\charts\images\charts3.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\charts\images\charts4.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\charts\images\charts5.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\emotion\emotion.css" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\emotion\emotion.html" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\emotion\emotion.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\emotion\images\0.gif" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\emotion\images\bface.gif" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\emotion\images\cface.gif" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\emotion\images\fface.gif" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\emotion\images\jxface2.gif" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\emotion\images\neweditor-tab-bg.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\emotion\images\tface.gif" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\emotion\images\wface.gif" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\emotion\images\yface.gif" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\gmap\gmap.html" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\help\help.css" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\help\help.html" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\help\help.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\image\image.css" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\image\image.html" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\image\image.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\image\images\alignicon.jpg" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\image\images\bg.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\image\images\icons.gif" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\image\images\icons.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\image\images\image.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\image\images\progress.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\image\images\success.gif" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\image\images\success.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\insertframe\insertframe.html" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\internal.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\link\link.html" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\map\map.html" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\map\show.html" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\music\music.css" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\music\music.html" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\music\music.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\preview\preview.html" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\scrawl\images\addimg.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\scrawl\images\brush.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\scrawl\images\delimg.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\scrawl\images\delimgH.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\scrawl\images\empty.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\scrawl\images\emptyH.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\scrawl\images\eraser.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\scrawl\images\redo.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\scrawl\images\redoH.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\scrawl\images\scale.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\scrawl\images\scaleH.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\scrawl\images\size.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\scrawl\images\undo.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\scrawl\images\undoH.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\scrawl\scrawl.css" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\scrawl\scrawl.html" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\scrawl\scrawl.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\searchreplace\searchreplace.html" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\searchreplace\searchreplace.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\snapscreen\snapscreen.html" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\spechars\spechars.html" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\spechars\spechars.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\table\dragicon.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\table\edittable.css" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\table\edittable.html" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\table\edittable.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\table\edittd.html" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\table\edittip.html" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\template\config.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\template\images\bg.gif" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\template\images\pre0.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\template\images\pre1.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\template\images\pre2.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\template\images\pre3.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\template\images\pre4.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\template\template.css" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\template\template.html" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\template\template.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\video\images\bg.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\video\images\center_focus.jpg" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\video\images\file-icons.gif" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\video\images\file-icons.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\video\images\icons.gif" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\video\images\icons.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\video\images\image.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\video\images\left_focus.jpg" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\video\images\none_focus.jpg" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\video\images\progress.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\video\images\right_focus.jpg" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\video\images\success.gif" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\video\images\success.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\video\video.css" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\video\video.html" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\video\video.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\webapp\webapp.html" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\wordimage\fClipboard_ueditor.swf" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\wordimage\imageUploader.swf" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\wordimage\tangram.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\wordimage\wordimage.html" />
+    <Content Include="Content\lib\ueditor\1.4.3\dialogs\wordimage\wordimage.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\index.html" />
+    <Content Include="Content\lib\ueditor\1.4.3\jsp\lib\commons-codec-1.9.jar" />
+    <Content Include="Content\lib\ueditor\1.4.3\jsp\lib\commons-fileupload-1.3.1.jar" />
+    <Content Include="Content\lib\ueditor\1.4.3\jsp\lib\commons-io-2.4.jar" />
+    <Content Include="Content\lib\ueditor\1.4.3\jsp\lib\json.jar" />
+    <Content Include="Content\lib\ueditor\1.4.3\jsp\lib\ueditor-1.1.1.jar" />
+    <Content Include="Content\lib\ueditor\1.4.3\jsp\src\com\baidu\ueditor\ActionEnter.java" />
+    <Content Include="Content\lib\ueditor\1.4.3\jsp\src\com\baidu\ueditor\ConfigManager.java" />
+    <Content Include="Content\lib\ueditor\1.4.3\jsp\src\com\baidu\ueditor\define\ActionMap.java" />
+    <Content Include="Content\lib\ueditor\1.4.3\jsp\src\com\baidu\ueditor\define\ActionState.java" />
+    <Content Include="Content\lib\ueditor\1.4.3\jsp\src\com\baidu\ueditor\define\AppInfo.java" />
+    <Content Include="Content\lib\ueditor\1.4.3\jsp\src\com\baidu\ueditor\define\BaseState.java" />
+    <Content Include="Content\lib\ueditor\1.4.3\jsp\src\com\baidu\ueditor\define\FileType.java" />
+    <Content Include="Content\lib\ueditor\1.4.3\jsp\src\com\baidu\ueditor\define\MIMEType.java" />
+    <Content Include="Content\lib\ueditor\1.4.3\jsp\src\com\baidu\ueditor\define\MultiState.java" />
+    <Content Include="Content\lib\ueditor\1.4.3\jsp\src\com\baidu\ueditor\define\State.java" />
+    <Content Include="Content\lib\ueditor\1.4.3\jsp\src\com\baidu\ueditor\Encoder.java" />
+    <Content Include="Content\lib\ueditor\1.4.3\jsp\src\com\baidu\ueditor\hunter\FileManager.java" />
+    <Content Include="Content\lib\ueditor\1.4.3\jsp\src\com\baidu\ueditor\hunter\ImageHunter.java" />
+    <Content Include="Content\lib\ueditor\1.4.3\jsp\src\com\baidu\ueditor\PathFormat.java" />
+    <Content Include="Content\lib\ueditor\1.4.3\jsp\src\com\baidu\ueditor\upload\Base64Uploader.java" />
+    <Content Include="Content\lib\ueditor\1.4.3\jsp\src\com\baidu\ueditor\upload\BinaryUploader.java" />
+    <Content Include="Content\lib\ueditor\1.4.3\jsp\src\com\baidu\ueditor\upload\StorageManager.java" />
+    <Content Include="Content\lib\ueditor\1.4.3\jsp\src\com\baidu\ueditor\upload\Uploader.java" />
+    <Content Include="Content\lib\ueditor\1.4.3\lang\en\en.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\lang\en\images\addimage.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\lang\en\images\alldeletebtnhoverskin.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\lang\en\images\alldeletebtnupskin.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\lang\en\images\background.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\lang\en\images\button.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\lang\en\images\copy.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\lang\en\images\deletedisable.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\lang\en\images\deleteenable.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\lang\en\images\listbackground.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\lang\en\images\localimage.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\lang\en\images\music.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\lang\en\images\rotateleftdisable.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\lang\en\images\rotateleftenable.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\lang\en\images\rotaterightdisable.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\lang\en\images\rotaterightenable.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\lang\en\images\upload.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\lang\zh-cn\images\copy.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\lang\zh-cn\images\localimage.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\lang\zh-cn\images\music.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\lang\zh-cn\images\upload.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\lang\zh-cn\zh-cn.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\net\Bin\Newtonsoft.Json.dll" />
+    <Content Include="Content\lib\ueditor\1.4.3\net\Bin\Newtonsoft.Json.pdb" />
+    <Content Include="Content\lib\ueditor\1.4.3\net\Bin\Newtonsoft.Json.xml" />
+    <Content Include="Content\lib\ueditor\1.4.3\net\net.sln" />
+    <Content Include="Content\lib\ueditor\1.4.3\themes\default\css\ueditor.css" />
+    <Content Include="Content\lib\ueditor\1.4.3\themes\default\css\ueditor.min.css" />
+    <Content Include="Content\lib\ueditor\1.4.3\themes\default\dialogbase.css" />
+    <Content Include="Content\lib\ueditor\1.4.3\themes\default\images\anchor.gif" />
+    <Content Include="Content\lib\ueditor\1.4.3\themes\default\images\arrow.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\themes\default\images\arrow_down.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\themes\default\images\arrow_up.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\themes\default\images\button-bg.gif" />
+    <Content Include="Content\lib\ueditor\1.4.3\themes\default\images\cancelbutton.gif" />
+    <Content Include="Content\lib\ueditor\1.4.3\themes\default\images\charts.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\themes\default\images\cursor_h.gif" />
+    <Content Include="Content\lib\ueditor\1.4.3\themes\default\images\cursor_h.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\themes\default\images\cursor_v.gif" />
+    <Content Include="Content\lib\ueditor\1.4.3\themes\default\images\cursor_v.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\themes\default\images\dialog-title-bg.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\themes\default\images\filescan.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\themes\default\images\highlighted.gif" />
+    <Content Include="Content\lib\ueditor\1.4.3\themes\default\images\icons-all.gif" />
+    <Content Include="Content\lib\ueditor\1.4.3\themes\default\images\icons.gif" />
+    <Content Include="Content\lib\ueditor\1.4.3\themes\default\images\icons.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\themes\default\images\loaderror.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\themes\default\images\loading.gif" />
+    <Content Include="Content\lib\ueditor\1.4.3\themes\default\images\lock.gif" />
+    <Content Include="Content\lib\ueditor\1.4.3\themes\default\images\neweditor-tab-bg.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\themes\default\images\pagebreak.gif" />
+    <Content Include="Content\lib\ueditor\1.4.3\themes\default\images\scale.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\themes\default\images\sortable.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\themes\default\images\spacer.gif" />
+    <Content Include="Content\lib\ueditor\1.4.3\themes\default\images\sparator_v.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\themes\default\images\table-cell-align.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\themes\default\images\tangram-colorpicker.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\themes\default\images\toolbar_bg.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\themes\default\images\unhighlighted.gif" />
+    <Content Include="Content\lib\ueditor\1.4.3\themes\default\images\upload.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\themes\default\images\videologo.gif" />
+    <Content Include="Content\lib\ueditor\1.4.3\themes\default\images\word.gif" />
+    <Content Include="Content\lib\ueditor\1.4.3\themes\default\images\wordpaste.png" />
+    <Content Include="Content\lib\ueditor\1.4.3\themes\iframe.css" />
+    <Content Include="Content\lib\ueditor\1.4.3\third-party\codemirror\codemirror.css" />
+    <Content Include="Content\lib\ueditor\1.4.3\third-party\codemirror\codemirror.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\third-party\highcharts\adapters\mootools-adapter.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\third-party\highcharts\adapters\mootools-adapter.src.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\third-party\highcharts\adapters\prototype-adapter.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\third-party\highcharts\adapters\prototype-adapter.src.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\third-party\highcharts\adapters\standalone-framework.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\third-party\highcharts\adapters\standalone-framework.src.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\third-party\highcharts\highcharts-more.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\third-party\highcharts\highcharts-more.src.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\third-party\highcharts\highcharts.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\third-party\highcharts\highcharts.src.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\third-party\highcharts\modules\annotations.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\third-party\highcharts\modules\annotations.src.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\third-party\highcharts\modules\canvas-tools.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\third-party\highcharts\modules\canvas-tools.src.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\third-party\highcharts\modules\data.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\third-party\highcharts\modules\data.src.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\third-party\highcharts\modules\drilldown.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\third-party\highcharts\modules\drilldown.src.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\third-party\highcharts\modules\exporting.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\third-party\highcharts\modules\exporting.src.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\third-party\highcharts\modules\funnel.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\third-party\highcharts\modules\funnel.src.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\third-party\highcharts\modules\heatmap.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\third-party\highcharts\modules\heatmap.src.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\third-party\highcharts\modules\map.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\third-party\highcharts\modules\map.src.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\third-party\highcharts\modules\no-data-to-display.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\third-party\highcharts\modules\no-data-to-display.src.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\third-party\highcharts\themes\dark-blue.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\third-party\highcharts\themes\dark-green.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\third-party\highcharts\themes\gray.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\third-party\highcharts\themes\grid.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\third-party\highcharts\themes\skies.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\third-party\jquery-1.10.2.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\third-party\jquery-1.10.2.min.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\third-party\snapscreen\UEditorSnapscreen.exe" />
+    <Content Include="Content\lib\ueditor\1.4.3\third-party\SyntaxHighlighter\shCore.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\third-party\SyntaxHighlighter\shCoreDefault.css" />
+    <Content Include="Content\lib\ueditor\1.4.3\third-party\video-js\font\vjs.svg" />
+    <Content Include="Content\lib\ueditor\1.4.3\third-party\video-js\video-js.css" />
+    <Content Include="Content\lib\ueditor\1.4.3\third-party\video-js\video-js.min.css" />
+    <Content Include="Content\lib\ueditor\1.4.3\third-party\video-js\video-js.swf" />
+    <Content Include="Content\lib\ueditor\1.4.3\third-party\video-js\video.dev.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\third-party\video-js\video.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\third-party\webuploader\Uploader.swf" />
+    <Content Include="Content\lib\ueditor\1.4.3\third-party\webuploader\webuploader.css" />
+    <Content Include="Content\lib\ueditor\1.4.3\third-party\webuploader\webuploader.custom.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\third-party\webuploader\webuploader.custom.min.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\third-party\webuploader\webuploader.flashonly.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\third-party\webuploader\webuploader.flashonly.min.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\third-party\webuploader\webuploader.html5only.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\third-party\webuploader\webuploader.html5only.min.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\third-party\webuploader\webuploader.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\third-party\webuploader\webuploader.min.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\third-party\webuploader\webuploader.withoutimage.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\third-party\webuploader\webuploader.withoutimage.min.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\third-party\zeroclipboard\ZeroClipboard.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\third-party\zeroclipboard\ZeroClipboard.min.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\third-party\zeroclipboard\ZeroClipboard.swf" />
+    <Content Include="Content\lib\ueditor\1.4.3\ueditor.all.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\ueditor.all.min.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\ueditor.config.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\ueditor.parse.js" />
+    <Content Include="Content\lib\ueditor\1.4.3\ueditor.parse.min.js" />
+    <Content Include="Content\lib\uniform\css\uniform.default.css" />
+    <Content Include="Content\lib\uniform\css\uniform.default.min.css" />
+    <Content Include="Content\lib\uniform\images\bg-input-focus.png" />
+    <Content Include="Content\lib\uniform\images\bg-input.png" />
+    <Content Include="Content\lib\uniform\images\sprite.png" />
+    <Content Include="Content\lib\uniform\images\sprite_original.png" />
+    <Content Include="Content\lib\uniform\jquery.uniform.js" />
+    <Content Include="Content\lib\uniform\jquery.uniform.min.js" />
+    <Content Include="Content\lib\vue\vue-resource.common.js" />
+    <Content Include="Content\lib\vue\vue-resource.es2015.js" />
+    <Content Include="Content\lib\vue\vue-resource.js" />
+    <Content Include="Content\lib\vue\vue-resource.min.js" />
+    <Content Include="Content\lib\vue\vue.common.js" />
+    <Content Include="Content\lib\vue\vue.esm.js" />
+    <Content Include="Content\lib\vue\vue.js" />
+    <Content Include="Content\lib\vue\vue.min.js" />
+    <Content Include="Content\lib\vue\vue.runtime.common.js" />
+    <Content Include="Content\lib\vue\vue.runtime.esm.js" />
+    <Content Include="Content\lib\vue\vue.runtime.js" />
+    <Content Include="Content\lib\vue\vue.runtime.min.js" />
+    <Content Include="Content\lib\webuploader\0.1.5\cropper\cropper.js" />
+    <Content Include="Content\lib\webuploader\0.1.5\cropper\index.html" />
+    <Content Include="Content\lib\webuploader\0.1.5\cropper\uploader.js" />
+    <Content Include="Content\lib\webuploader\0.1.5\expressInstall.swf" />
+    <Content Include="Content\lib\webuploader\0.1.5\image-upload\index.html" />
+    <Content Include="Content\lib\webuploader\0.1.5\image-upload\upload.js" />
+    <Content Include="Content\lib\webuploader\0.1.5\images\bg.png" />
+    <Content Include="Content\lib\webuploader\0.1.5\images\icons.png" />
+    <Content Include="Content\lib\webuploader\0.1.5\images\image.png" />
+    <Content Include="Content\lib\webuploader\0.1.5\images\progress.png" />
+    <Content Include="Content\lib\webuploader\0.1.5\images\success.png" />
+    <Content Include="Content\lib\webuploader\0.1.5\md5-demo\index.html" />
+    <Content Include="Content\lib\webuploader\0.1.5\md5-demo\script.js" />
+    <Content Include="Content\lib\webuploader\0.1.5\requirejs\app.js" />
+    <Content Include="Content\lib\webuploader\0.1.5\requirejs\index.html" />
+    <Content Include="Content\lib\webuploader\0.1.5\requirejs\require.js" />
+    <Content Include="Content\lib\webuploader\0.1.5\server\crossdomain.xml" />
+    <Content Include="Content\lib\webuploader\0.1.5\Uploader.swf" />
+    <Content Include="Content\lib\webuploader\0.1.5\webuploader.css" />
+    <Content Include="Content\lib\webuploader\0.1.5\webuploader.custom.js" />
+    <Content Include="Content\lib\webuploader\0.1.5\webuploader.custom.min.js" />
+    <Content Include="Content\lib\webuploader\0.1.5\webuploader.fis.js" />
+    <Content Include="Content\lib\webuploader\0.1.5\webuploader.flashonly.js" />
+    <Content Include="Content\lib\webuploader\0.1.5\webuploader.flashonly.min.js" />
+    <Content Include="Content\lib\webuploader\0.1.5\webuploader.html5only.js" />
+    <Content Include="Content\lib\webuploader\0.1.5\webuploader.html5only.min.js" />
+    <Content Include="Content\lib\webuploader\0.1.5\webuploader.js" />
+    <Content Include="Content\lib\webuploader\0.1.5\webuploader.min.js" />
+    <Content Include="Content\lib\webuploader\0.1.5\webuploader.noimage.js" />
+    <Content Include="Content\lib\webuploader\0.1.5\webuploader.noimage.min.js" />
+    <Content Include="Content\lib\webuploader\0.1.5\webuploader.nolog.js" />
+    <Content Include="Content\lib\webuploader\0.1.5\webuploader.nolog.min.js" />
+    <Content Include="Content\lib\webuploader\0.1.5\webuploader.withoutimage.js" />
+    <Content Include="Content\lib\webuploader\0.1.5\webuploader.withoutimage.min.js" />
+    <Content Include="Content\lib\zTree\v3\api\apiCss\api.js" />
+    <Content Include="Content\lib\zTree\v3\api\apiCss\common.css" />
+    <Content Include="Content\lib\zTree\v3\api\apiCss\common_ie6.css" />
+    <Content Include="Content\lib\zTree\v3\api\apiCss\img\apiMenu.gif" />
+    <Content Include="Content\lib\zTree\v3\api\apiCss\img\apiMenu.png" />
+    <Content Include="Content\lib\zTree\v3\api\apiCss\img\background.jpg" />
+    <Content Include="Content\lib\zTree\v3\api\apiCss\img\chinese.png" />
+    <Content Include="Content\lib\zTree\v3\api\apiCss\img\close.png" />
+    <Content Include="Content\lib\zTree\v3\api\apiCss\img\contact-bg.png" />
+    <Content Include="Content\lib\zTree\v3\api\apiCss\img\english.png" />
+    <Content Include="Content\lib\zTree\v3\api\apiCss\img\header-bg.png" />
+    <Content Include="Content\lib\zTree\v3\api\apiCss\img\lightbulb.png" />
+    <Content Include="Content\lib\zTree\v3\api\apiCss\img\overlay_arrow.gif" />
+    <Content Include="Content\lib\zTree\v3\api\apiCss\img\overlay_arrow.png" />
+    <Content Include="Content\lib\zTree\v3\api\apiCss\img\overlay_bg.png" />
+    <Content Include="Content\lib\zTree\v3\api\apiCss\img\overlay_close_IE6.gif" />
+    <Content Include="Content\lib\zTree\v3\api\apiCss\img\zTreeStandard.gif" />
+    <Content Include="Content\lib\zTree\v3\api\apiCss\img\zTreeStandard.png" />
+    <Content Include="Content\lib\zTree\v3\api\apiCss\jquery-1.6.2.min.js" />
+    <Content Include="Content\lib\zTree\v3\api\apiCss\jquery.ztree.core-3.5.js" />
+    <Content Include="Content\lib\zTree\v3\api\apiCss\zTreeStyleForApi.css" />
+    <Content Include="Content\lib\zTree\v3\api\API_cn.html" />
+    <Content Include="Content\lib\zTree\v3\api\API_en.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\fn.zTree.destroy.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\fn.zTree.getZTreeObj.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\fn.zTree.init.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\fn.zTree._z.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.async.autoParam.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.async.contentType.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.async.dataFilter.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.async.dataType.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.async.enable.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.async.otherParam.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.async.type.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.async.url.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.callback.beforeAsync.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.callback.beforeCheck.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.callback.beforeClick.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.callback.beforeCollapse.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.callback.beforeDblClick.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.callback.beforeDrag.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.callback.beforeDragOpen.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.callback.beforeDrop.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.callback.beforeEditName.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.callback.beforeExpand.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.callback.beforeMouseDown.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.callback.beforeMouseUp.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.callback.beforeRemove.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.callback.beforeRename.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.callback.beforeRightClick.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.callback.onAsyncError.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.callback.onAsyncSuccess.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.callback.onCheck.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.callback.onClick.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.callback.onCollapse.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.callback.onDblClick.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.callback.onDrag.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.callback.onDragMove.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.callback.onDrop.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.callback.onExpand.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.callback.onMouseDown.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.callback.onMouseUp.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.callback.onNodeCreated.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.callback.onRemove.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.callback.onRename.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.callback.onRightClick.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.check.autoCheckTrigger.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.check.chkboxType.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.check.chkDisabledInherit.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.check.chkStyle.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.check.enable.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.check.nocheckInherit.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.check.radioType.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.data.keep.leaf.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.data.keep.parent.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.data.key.checked.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.data.key.children.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.data.key.name.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.data.key.title.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.data.key.url.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.data.simpleData.enable.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.data.simpleData.idKey.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.data.simpleData.pIdKey.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.data.simpleData.rootPId.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.edit.drag.autoExpandTrigger.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.edit.drag.autoOpenTime.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.edit.drag.borderMax.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.edit.drag.borderMin.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.edit.drag.inner.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.edit.drag.isCopy.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.edit.drag.isMove.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.edit.drag.maxShowNodeNum.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.edit.drag.minMoveSize.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.edit.drag.next.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.edit.drag.prev.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.edit.editNameSelectAll.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.edit.enable.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.edit.removeTitle.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.edit.renameTitle.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.edit.showRemoveBtn.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.edit.showRenameBtn.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.treeId.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.treeObj.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.view.addDiyDom.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.view.addHoverDom.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.view.autoCancelSelected.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.view.dblClickExpand.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.view.expandSpeed.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.view.fontCss.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.view.nameIsHTML.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.view.removeHoverDom.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.view.selectedMulti.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.view.showIcon.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.view.showLine.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.view.showTitle.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\setting.view.txtSelectedEnable.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\treeNode.checked.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\treeNode.checkedOld.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\treeNode.check_Child_State.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\treeNode.check_Focus.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\treeNode.children.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\treeNode.chkDisabled.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\treeNode.click.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\treeNode.diy.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\treeNode.editNameFlag.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\treeNode.getCheckStatus.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\treeNode.getNextNode.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\treeNode.getParentNode.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\treeNode.getPreNode.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\treeNode.halfCheck.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\treeNode.icon.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\treeNode.iconClose.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\treeNode.iconOpen.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\treeNode.iconSkin.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\treeNode.isAjaxing.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\treeNode.isFirstNode.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\treeNode.isHidden.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\treeNode.isHover.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\treeNode.isLastNode.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\treeNode.isParent.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\treeNode.level.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\treeNode.name.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\treeNode.nocheck.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\treeNode.open.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\treeNode.parentTId.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\treeNode.target.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\treeNode.tId.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\treeNode.url.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\treeNode.zAsync.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\zTreeObj.addNodes.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\zTreeObj.cancelEditName.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\zTreeObj.cancelSelectedNode.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\zTreeObj.checkAllNodes.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\zTreeObj.checkNode.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\zTreeObj.copyNode.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\zTreeObj.destroy.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\zTreeObj.editName.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\zTreeObj.expandAll.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\zTreeObj.expandNode.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\zTreeObj.getChangeCheckedNodes.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\zTreeObj.getCheckedNodes.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\zTreeObj.getNodeByParam.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\zTreeObj.getNodeByTId.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\zTreeObj.getNodeIndex.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\zTreeObj.getNodes.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\zTreeObj.getNodesByFilter.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\zTreeObj.getNodesByParam.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\zTreeObj.getNodesByParamFuzzy.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\zTreeObj.getSelectedNodes.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\zTreeObj.hideNode.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\zTreeObj.hideNodes.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\zTreeObj.moveNode.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\zTreeObj.reAsyncChildNodes.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\zTreeObj.refresh.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\zTreeObj.removeChildNodes.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\zTreeObj.removeNode.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\zTreeObj.selectNode.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\zTreeObj.setChkDisabled.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\zTreeObj.setEditable.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\zTreeObj.setting.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\zTreeObj.showNode.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\zTreeObj.showNodes.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\zTreeObj.transformToArray.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\zTreeObj.transformTozTreeNodes.html" />
+    <Content Include="Content\lib\zTree\v3\api\cn\zTreeObj.updateNode.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\fn.zTree.destroy.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\fn.zTree.getZTreeObj.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\fn.zTree.init.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\fn.zTree._z.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.async.autoParam.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.async.contentType.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.async.dataFilter.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.async.dataType.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.async.enable.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.async.otherParam.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.async.type.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.async.url.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.callback.beforeAsync.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.callback.beforeCheck.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.callback.beforeClick.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.callback.beforeCollapse.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.callback.beforeDblClick.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.callback.beforeDrag.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.callback.beforeDragOpen.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.callback.beforeDrop.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.callback.beforeEditName.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.callback.beforeExpand.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.callback.beforeMouseDown.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.callback.beforeMouseUp.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.callback.beforeRemove.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.callback.beforeRename.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.callback.beforeRightClick.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.callback.onAsyncError.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.callback.onAsyncSuccess.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.callback.onCheck.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.callback.onClick.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.callback.onCollapse.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.callback.onDblClick.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.callback.onDrag.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.callback.onDragMove.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.callback.onDrop.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.callback.onExpand.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.callback.onMouseDown.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.callback.onMouseUp.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.callback.onNodeCreated.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.callback.onRemove.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.callback.onRename.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.callback.onRightClick.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.check.autoCheckTrigger.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.check.chkboxType.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.check.chkDisabledInherit.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.check.chkStyle.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.check.enable.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.check.nocheckInherit.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.check.radioType.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.data.keep.leaf.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.data.keep.parent.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.data.key.checked.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.data.key.children.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.data.key.name.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.data.key.title.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.data.key.url.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.data.simpleData.enable.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.data.simpleData.idKey.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.data.simpleData.pIdKey.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.data.simpleData.rootPId.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.edit.drag.autoExpandTrigger.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.edit.drag.autoOpenTime.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.edit.drag.borderMax.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.edit.drag.borderMin.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.edit.drag.inner.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.edit.drag.isCopy.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.edit.drag.isMove.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.edit.drag.maxShowNodeNum.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.edit.drag.minMoveSize.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.edit.drag.next.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.edit.drag.prev.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.edit.editNameSelectAll.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.edit.enable.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.edit.removeTitle.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.edit.renameTitle.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.edit.showRemoveBtn.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.edit.showRenameBtn.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.treeId.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.treeObj.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.view.addDiyDom.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.view.addHoverDom.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.view.autoCancelSelected.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.view.dblClickExpand.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.view.expandSpeed.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.view.fontCss.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.view.nameIsHTML.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.view.removeHoverDom.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.view.selectedMulti.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.view.showIcon.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.view.showLine.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.view.showTitle.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\setting.view.txtSelectedEnable.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\treeNode.checked.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\treeNode.checkedOld.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\treeNode.check_Child_State.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\treeNode.check_Focus.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\treeNode.children.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\treeNode.chkDisabled.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\treeNode.click.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\treeNode.diy.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\treeNode.editNameFlag.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\treeNode.getCheckStatus.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\treeNode.getNextNode.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\treeNode.getParentNode.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\treeNode.getPreNode.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\treeNode.halfCheck.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\treeNode.icon.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\treeNode.iconClose.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\treeNode.iconOpen.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\treeNode.iconSkin.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\treeNode.isAjaxing.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\treeNode.isFirstNode.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\treeNode.isHidden.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\treeNode.isHover.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\treeNode.isLastNode.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\treeNode.isParent.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\treeNode.level.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\treeNode.name.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\treeNode.nocheck.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\treeNode.open.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\treeNode.parentTId.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\treeNode.target.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\treeNode.tId.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\treeNode.url.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\treeNode.zAsync.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\zTreeObj.addNodes.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\zTreeObj.cancelEditName.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\zTreeObj.cancelSelectedNode.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\zTreeObj.checkAllNodes.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\zTreeObj.checkNode.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\zTreeObj.copyNode.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\zTreeObj.destroy.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\zTreeObj.editName.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\zTreeObj.expandAll.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\zTreeObj.expandNode.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\zTreeObj.getChangeCheckedNodes.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\zTreeObj.getCheckedNodes.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\zTreeObj.getNodeByParam.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\zTreeObj.getNodeByTId.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\zTreeObj.getNodeIndex.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\zTreeObj.getNodes.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\zTreeObj.getNodesByFilter.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\zTreeObj.getNodesByParam.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\zTreeObj.getNodesByParamFuzzy.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\zTreeObj.getSelectedNodes.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\zTreeObj.hideNode.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\zTreeObj.hideNodes.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\zTreeObj.moveNode.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\zTreeObj.reAsyncChildNodes.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\zTreeObj.refresh.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\zTreeObj.removeChildNodes.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\zTreeObj.removeNode.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\zTreeObj.selectNode.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\zTreeObj.setChkDisabled.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\zTreeObj.setEditable.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\zTreeObj.setting.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\zTreeObj.showNode.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\zTreeObj.showNodes.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\zTreeObj.transformToArray.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\zTreeObj.transformTozTreeNodes.html" />
+    <Content Include="Content\lib\zTree\v3\api\en\zTreeObj.updateNode.html" />
+    <Content Include="Content\lib\zTree\v3\css\metroStyle\img\line_conn.png" />
+    <Content Include="Content\lib\zTree\v3\css\metroStyle\img\loading.gif" />
+    <Content Include="Content\lib\zTree\v3\css\metroStyle\img\metro.gif" />
+    <Content Include="Content\lib\zTree\v3\css\metroStyle\img\metro.png" />
+    <Content Include="Content\lib\zTree\v3\css\metroStyle\metroStyle.css" />
+    <Content Include="Content\lib\zTree\v3\css\zTreeStyle\img\diy\1_close.png" />
+    <Content Include="Content\lib\zTree\v3\css\zTreeStyle\img\diy\1_open.png" />
+    <Content Include="Content\lib\zTree\v3\css\zTreeStyle\img\diy\2.png" />
+    <Content Include="Content\lib\zTree\v3\css\zTreeStyle\img\diy\3.png" />
+    <Content Include="Content\lib\zTree\v3\css\zTreeStyle\img\diy\4.png" />
+    <Content Include="Content\lib\zTree\v3\css\zTreeStyle\img\diy\5.png" />
+    <Content Include="Content\lib\zTree\v3\css\zTreeStyle\img\diy\6.png" />
+    <Content Include="Content\lib\zTree\v3\css\zTreeStyle\img\diy\7.png" />
+    <Content Include="Content\lib\zTree\v3\css\zTreeStyle\img\diy\8.png" />
+    <Content Include="Content\lib\zTree\v3\css\zTreeStyle\img\diy\9.png" />
+    <Content Include="Content\lib\zTree\v3\css\zTreeStyle\img\line_conn.gif" />
+    <Content Include="Content\lib\zTree\v3\css\zTreeStyle\img\loading.gif" />
+    <Content Include="Content\lib\zTree\v3\css\zTreeStyle\img\zTreeStandard.gif" />
+    <Content Include="Content\lib\zTree\v3\css\zTreeStyle\img\zTreeStandard.png" />
+    <Content Include="Content\lib\zTree\v3\css\zTreeStyle\zTreeStyle.css" />
+    <Content Include="Content\lib\zTree\v3\js\jquery.ztree.all-3.5.js" />
+    <Content Include="Content\lib\zTree\v3\js\jquery.ztree.all-3.5.min.js" />
+    <Content Include="Content\lib\zTree\v3\js\jquery.ztree.core-3.5.js" />
+    <Content Include="Content\lib\zTree\v3\js\jquery.ztree.core-3.5.min.js" />
+    <Content Include="Content\lib\zTree\v3\js\jquery.ztree.excheck-3.5.js" />
+    <Content Include="Content\lib\zTree\v3\js\jquery.ztree.excheck-3.5.min.js" />
+    <Content Include="Content\lib\zTree\v3\js\jquery.ztree.exedit-3.5.js" />
+    <Content Include="Content\lib\zTree\v3\js\jquery.ztree.exedit-3.5.min.js" />
+    <Content Include="Content\lib\zTree\v3\js\jquery.ztree.exedit.js" />
+    <Content Include="Content\lib\zTree\v3\js\jquery.ztree.exhide-3.5.js" />
+    <Content Include="Content\lib\zTree\v3\js\jquery.ztree.exhide-3.5.min.js" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\lib\Bootstrap\css\bootstrap-theme.css.map" />
+    <Content Include="Content\lib\Bootstrap\css\bootstrap-theme.min.css.map" />
+    <Content Include="Content\lib\Bootstrap\css\bootstrap.css.map" />
+    <Content Include="Content\lib\Bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="Content\lib\Bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\lib\Bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\lib\Bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\lib\Bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\lib\hcharts\Highcharts\5.0.6\license.pdf" />
+    <Content Include="Content\lib\Hui-iconfont\1.0.8\iconfont.eot" />
+    <Content Include="Content\lib\Hui-iconfont\1.0.8\iconfont.ttf" />
+    <Content Include="Content\lib\Hui-iconfont\1.0.8\iconfont.woff" />
+    <Content Include="Content\lib\lightbox2\2.8.1\js\lightbox-plus-jquery.min.map" />
+    <Content Include="Content\lib\lightbox2\2.8.1\js\lightbox.min.map" />
+    <Content Include="Content\lib\patternfly\css\patternfly-additions.css.map" />
+    <Content Include="Content\lib\patternfly\css\patternfly-additions.min.css.map" />
+    <Content Include="Content\lib\patternfly\css\patternfly.css.map" />
+    <Content Include="Content\lib\patternfly\css\patternfly.min.css.map" />
+    <Content Include="Content\lib\patternfly\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\lib\patternfly\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\lib\patternfly\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\lib\patternfly\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\lib\patternfly\fonts\FontAwesome.otf" />
+    <Content Include="Content\lib\patternfly\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\lib\patternfly\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\lib\patternfly\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\lib\patternfly\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\lib\patternfly\fonts\OpenSans-Bold-webfont.eot" />
+    <Content Include="Content\lib\patternfly\fonts\OpenSans-Bold-webfont.ttf" />
+    <Content Include="Content\lib\patternfly\fonts\OpenSans-Bold-webfont.woff" />
+    <Content Include="Content\lib\patternfly\fonts\OpenSans-Bold-webfont.woff2" />
+    <Content Include="Content\lib\patternfly\fonts\OpenSans-BoldItalic-webfont.eot" />
+    <Content Include="Content\lib\patternfly\fonts\OpenSans-BoldItalic-webfont.ttf" />
+    <Content Include="Content\lib\patternfly\fonts\OpenSans-BoldItalic-webfont.woff" />
+    <Content Include="Content\lib\patternfly\fonts\OpenSans-BoldItalic-webfont.woff2" />
+    <Content Include="Content\lib\patternfly\fonts\OpenSans-ExtraBold-webfont.eot" />
+    <Content Include="Content\lib\patternfly\fonts\OpenSans-ExtraBold-webfont.ttf" />
+    <Content Include="Content\lib\patternfly\fonts\OpenSans-ExtraBold-webfont.woff" />
+    <Content Include="Content\lib\patternfly\fonts\OpenSans-ExtraBold-webfont.woff2" />
+    <Content Include="Content\lib\patternfly\fonts\OpenSans-ExtraBoldItalic-webfont.eot" />
+    <Content Include="Content\lib\patternfly\fonts\OpenSans-ExtraBoldItalic-webfont.ttf" />
+    <Content Include="Content\lib\patternfly\fonts\OpenSans-ExtraBoldItalic-webfont.woff" />
+    <Content Include="Content\lib\patternfly\fonts\OpenSans-ExtraBoldItalic-webfont.woff2" />
+    <Content Include="Content\lib\patternfly\fonts\OpenSans-Italic-webfont.eot" />
+    <Content Include="Content\lib\patternfly\fonts\OpenSans-Italic-webfont.ttf" />
+    <Content Include="Content\lib\patternfly\fonts\OpenSans-Italic-webfont.woff" />
+    <Content Include="Content\lib\patternfly\fonts\OpenSans-Italic-webfont.woff2" />
+    <Content Include="Content\lib\patternfly\fonts\OpenSans-Light-webfont.eot" />
+    <Content Include="Content\lib\patternfly\fonts\OpenSans-Light-webfont.ttf" />
+    <Content Include="Content\lib\patternfly\fonts\OpenSans-Light-webfont.woff" />
+    <Content Include="Content\lib\patternfly\fonts\OpenSans-Light-webfont.woff2" />
+    <Content Include="Content\lib\patternfly\fonts\OpenSans-LightItalic-webfont.eot" />
+    <Content Include="Content\lib\patternfly\fonts\OpenSans-LightItalic-webfont.ttf" />
+    <Content Include="Content\lib\patternfly\fonts\OpenSans-LightItalic-webfont.woff" />
+    <Content Include="Content\lib\patternfly\fonts\OpenSans-LightItalic-webfont.woff2" />
+    <Content Include="Content\lib\patternfly\fonts\OpenSans-Regular-webfont.eot" />
+    <Content Include="Content\lib\patternfly\fonts\OpenSans-Regular-webfont.ttf" />
+    <Content Include="Content\lib\patternfly\fonts\OpenSans-Regular-webfont.woff" />
+    <Content Include="Content\lib\patternfly\fonts\OpenSans-Regular-webfont.woff2" />
+    <Content Include="Content\lib\patternfly\fonts\OpenSans-Semibold-webfont.eot" />
+    <Content Include="Content\lib\patternfly\fonts\OpenSans-Semibold-webfont.ttf" />
+    <Content Include="Content\lib\patternfly\fonts\OpenSans-Semibold-webfont.woff" />
+    <Content Include="Content\lib\patternfly\fonts\OpenSans-Semibold-webfont.woff2" />
+    <Content Include="Content\lib\patternfly\fonts\OpenSans-SemiboldItalic-webfont.eot" />
+    <Content Include="Content\lib\patternfly\fonts\OpenSans-SemiboldItalic-webfont.ttf" />
+    <Content Include="Content\lib\patternfly\fonts\OpenSans-SemiboldItalic-webfont.woff" />
+    <Content Include="Content\lib\patternfly\fonts\OpenSans-SemiboldItalic-webfont.woff2" />
+    <Content Include="Content\lib\patternfly\fonts\PatternFlyIcons-webfont.eot" />
+    <Content Include="Content\lib\patternfly\fonts\PatternFlyIcons-webfont.ttf" />
+    <Content Include="Content\lib\patternfly\fonts\PatternFlyIcons-webfont.woff" />
+    <Content Include="Content\lib\patternfly\less\about-modal.less" />
+    <Content Include="Content\lib\patternfly\less\alerts.less" />
+    <Content Include="Content\lib\patternfly\less\badges.less" />
+    <Content Include="Content\lib\patternfly\less\blank-slate.less" />
+    <Content Include="Content\lib\patternfly\less\bootstrap-combobox.less" />
+    <Content Include="Content\lib\patternfly\less\bootstrap-datepicker.less" />
+    <Content Include="Content\lib\patternfly\less\bootstrap-select.less" />
+    <Content Include="Content\lib\patternfly\less\bootstrap-switch.less" />
+    <Content Include="Content\lib\patternfly\less\bootstrap-touchspin.less" />
+    <Content Include="Content\lib\patternfly\less\bootstrap-treeview.less" />
+    <Content Include="Content\lib\patternfly\less\breadcrumbs.less" />
+    <Content Include="Content\lib\patternfly\less\buttons.less" />
+    <Content Include="Content\lib\patternfly\less\card-view.less" />
+    <Content Include="Content\lib\patternfly\less\cards.less" />
+    <Content Include="Content\lib\patternfly\less\charts.less" />
+    <Content Include="Content\lib\patternfly\less\close.less" />
+    <Content Include="Content\lib\patternfly\less\color-variables.less" />
+    <Content Include="Content\lib\patternfly\less\datatables.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap-combobox\combobox.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap-datepicker\datepicker.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap-datepicker\datepicker3.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap-select\bootstrap-select.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap-select\variables.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap\alerts.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap\badges.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap\bootstrap.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap\breadcrumbs.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap\button-groups.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap\buttons.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap\carousel.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap\close.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap\code.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap\component-animations.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap\dropdowns.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap\forms.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap\glyphicons.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap\grid.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap\input-groups.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap\jumbotron.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap\labels.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap\list-group.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap\media.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap\mixins.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap\mixins\alerts.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap\mixins\background-variant.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap\mixins\border-radius.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap\mixins\buttons.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap\mixins\center-block.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap\mixins\clearfix.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap\mixins\forms.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap\mixins\gradients.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap\mixins\grid-framework.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap\mixins\grid.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap\mixins\hide-text.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap\mixins\image.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap\mixins\labels.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap\mixins\list-group.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap\mixins\nav-divider.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap\mixins\nav-vertical-align.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap\mixins\opacity.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap\mixins\pagination.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap\mixins\panels.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap\mixins\progress-bar.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap\mixins\reset-filter.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap\mixins\reset-text.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap\mixins\resize.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap\mixins\responsive-visibility.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap\mixins\size.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap\mixins\tab-focus.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap\mixins\table-row.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap\mixins\text-emphasis.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap\mixins\text-overflow.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap\mixins\vendor-prefixes.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap\modals.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap\navbar.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap\navs.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap\normalize.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap\pager.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap\pagination.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap\panels.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap\popovers.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap\print.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap\progress-bars.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap\responsive-embed.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap\responsive-utilities.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap\scaffolding.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap\tables.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap\theme.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap\thumbnails.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap\tooltip.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap\type.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap\utilities.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap\variables.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\bootstrap\wells.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\font-awesome\animated.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\font-awesome\bordered-pulled.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\font-awesome\core.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\font-awesome\fixed-width.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\font-awesome\font-awesome.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\font-awesome\icons.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\font-awesome\larger.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\font-awesome\list.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\font-awesome\mixins.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\font-awesome\path.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\font-awesome\rotated-flipped.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\font-awesome\screen-reader.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\font-awesome\stacked.less" />
+    <Content Include="Content\lib\patternfly\less\dependencies\font-awesome\variables.less" />
+    <Content Include="Content\lib\patternfly\less\dropdowns.less" />
+    <Content Include="Content\lib\patternfly\less\fonts.less" />
+    <Content Include="Content\lib\patternfly\less\footer.less" />
+    <Content Include="Content\lib\patternfly\less\forms.less" />
+    <Content Include="Content\lib\patternfly\less\icons.less" />
+    <Content Include="Content\lib\patternfly\less\infotip.less" />
+    <Content Include="Content\lib\patternfly\less\labels.less" />
+    <Content Include="Content\lib\patternfly\less\layouts.less" />
+    <Content Include="Content\lib\patternfly\less\links.less" />
+    <Content Include="Content\lib\patternfly\less\list-group.less" />
+    <Content Include="Content\lib\patternfly\less\list-pf.less" />
+    <Content Include="Content\lib\patternfly\less\list-view-dnd.less" />
+    <Content Include="Content\lib\patternfly\less\list-view.less" />
+    <Content Include="Content\lib\patternfly\less\login.less" />
+    <Content Include="Content\lib\patternfly\less\mixins.less" />
+    <Content Include="Content\lib\patternfly\less\modals.less" />
+    <Content Include="Content\lib\patternfly\less\nav-vertical-alt.less" />
+    <Content Include="Content\lib\patternfly\less\navbar-alt.less" />
+    <Content Include="Content\lib\patternfly\less\navbar-vertical.less" />
+    <Content Include="Content\lib\patternfly\less\navbar.less" />
+    <Content Include="Content\lib\patternfly\less\notifications-drawer.less" />
+    <Content Include="Content\lib\patternfly\less\pager.less" />
+    <Content Include="Content\lib\patternfly\less\pagination.less" />
+    <Content Include="Content\lib\patternfly\less\panels.less" />
+    <Content Include="Content\lib\patternfly\less\patternfly-additions.less" />
+    <Content Include="Content\lib\patternfly\less\patternfly.less" />
+    <Content Include="Content\lib\patternfly\less\popovers.less" />
+    <Content Include="Content\lib\patternfly\less\progress-bars.less" />
+    <Content Include="Content\lib\patternfly\less\search.less" />
+    <Content Include="Content\lib\patternfly\less\sidebar.less" />
+    <Content Include="Content\lib\patternfly\less\spinner.less" />
+    <Content Include="Content\lib\patternfly\less\syntax-highlighting.less" />
+    <Content Include="Content\lib\patternfly\less\table-view.less" />
+    <Content Include="Content\lib\patternfly\less\tables.less" />
+    <Content Include="Content\lib\patternfly\less\tabs.less" />
+    <Content Include="Content\lib\patternfly\less\time-picker.less" />
+    <Content Include="Content\lib\patternfly\less\toast.less" />
+    <Content Include="Content\lib\patternfly\less\toolbar.less" />
+    <Content Include="Content\lib\patternfly\less\tooltip.less" />
+    <Content Include="Content\lib\patternfly\less\type.less" />
+    <Content Include="Content\lib\patternfly\less\variables.less" />
+    <Content Include="Content\lib\patternfly\less\vertical-nav.less" />
+    <Content Include="Content\lib\patternfly\less\wizard.less" />
+    <Content Include="Content\lib\ueditor\1.4.3\jsp\config.json" />
+    <Content Include="Content\lib\ueditor\1.4.3\jsp\controller.jsp" />
+    <Content Include="Content\lib\ueditor\1.4.3\net\config.json" />
+    <Content Include="Content\lib\ueditor\1.4.3\net\controller.ashx" />
+    <Content Include="Content\lib\ueditor\1.4.3\net\README.md" />
+    <Content Include="Content\lib\ueditor\1.4.3\net\Web.config" />
+    <Content Include="Content\lib\ueditor\1.4.3\php\action_crawler.php" />
+    <Content Include="Content\lib\ueditor\1.4.3\php\action_list.php" />
+    <Content Include="Content\lib\ueditor\1.4.3\php\action_upload.php" />
+    <Content Include="Content\lib\ueditor\1.4.3\php\config.json" />
+    <Content Include="Content\lib\ueditor\1.4.3\php\controller.php" />
+    <Content Include="Content\lib\ueditor\1.4.3\php\Uploader.class.php" />
+    <Content Include="Content\lib\ueditor\1.4.3\third-party\jquery-1.10.2.min.map" />
+    <Content Include="Content\lib\ueditor\1.4.3\third-party\video-js\font\vjs.eot" />
+    <Content Include="Content\lib\ueditor\1.4.3\third-party\video-js\font\vjs.ttf" />
+    <Content Include="Content\lib\ueditor\1.4.3\third-party\video-js\font\vjs.woff" />
+    <Content Include="Content\lib\vue\README.md" />
+    <Content Include="Content\lib\webuploader\0.1.5\images\icons.psd" />
+    <Content Include="Content\lib\webuploader\0.1.5\images\progress.psd" />
+    <Content Include="Content\lib\webuploader\0.1.5\README.md" />
+    <Content Include="Content\lib\webuploader\0.1.5\server\fileupload.php" />
+    <Content Include="Content\lib\webuploader\0.1.5\server\fileupload2.php" />
+    <Content Include="Content\lib\webuploader\0.1.5\server\preview.php" />
+    <Content Include="Content\lib\bootstrap-select\bootstrap-select.css.map" />
+    <Content Include="Content\lib\bootstrap-select\bootstrap-select.js.map" />
+    <Content Include="Content\lib\uniform\css\uniform.default.scss" />
+    <None Include="Properties\PublishProfiles\resource.pubxml" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\popper-utils.js" />
+    <Content Include="Scripts\popper-utils.min.js" />
+    <Content Include="Scripts\popper.js" />
+    <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.matchmedia.addListener.js" />
+    <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <None Include="Views\Web.config">
+      <Generator>RazorGenerator</Generator>
+    </None>
+    <None Include="Views\_ViewStart.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_ViewStart.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Views\Account\Login.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Login.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Views\Home\Index.cshtml">
+      <LastGenOutput>Index.generated.cs</LastGenOutput>
+      <Generator>RazorGenerator</Generator>
+    </None>
+    <None Include="Views\Home\welcome.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>welcome.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Views\Shared\_Layout.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_Layout.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Views\Resource\Add.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Add.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Views\Resource\Detail.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Detail.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Views\Resource\Edit.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Edit.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Views\Resource\List.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>List.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Views\Resource\Preview.cshtml">
+      <LastGenOutput>Preview.generated.cs</LastGenOutput>
+      <Generator>RazorGenerator</Generator>
+    </None>
+    <None Include="Views\User\Index.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Index.generated.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Content\css\" />
+    <Folder Include="Views\Manage\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HST.Art.Core\HST.Art.Core.csproj">
+      <Project>{d2ab1e5e-2829-4663-8f57-2b640661ab47}</Project>
+      <Name>HST.Art.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HST.Art.Service\HST.Art.Service.csproj">
+      <Project>{49ed4d83-4592-493f-84a2-239985ed1a5b}</Project>
+      <Name>HST.Art.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HST.Utillity\HST.Utillity.csproj">
+      <Project>{bfb4fc8a-9246-48df-98c6-18d690291d7a}</Project>
+      <Name>HST.Utillity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>57344</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:57344/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.3.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.3.0.0\build\Microsoft.Net.Compilers.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

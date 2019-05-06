@@ -1,0 +1,118 @@
+﻿@{
+    Layout = "";
+}
+
+@using HST.Art.Web
+@using HST.Art.Core
+
+@model  ResourceViewModel
+
+@Scripts.Render("~/bundles/saos")
+@Scripts.Render("~/bundles/ajaxAsync")
+@Scripts.Render("~/bundles/validate")
+@Styles.Render("~/appcss")
+<style type="text/css">
+    .form-horizontal .form-label {
+        text-align: right;
+    }
+</style>
+<article class="page-container">
+    <div class="form form-horizontal">
+        <div class="row cl">
+            <label class="form-label col-xs-3 ">标题：</label>
+            <div class="col-xs-8 form-text">
+                <p>@Model.Title</p>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-3 ">所属资料包：</label>
+            <div class="col-xs-8 form-text">
+                <p>@Model.PackageName</p>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-3 ">文件格式：</label>
+            <div class="col-xs-8 form-text">
+                <p>@Model.FormatStr</p>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-3 ">@(Model.Original > 0 ? "链接地址：" : "本地上传：")</label>
+            <div class="col-xs-8 form-text">
+                <div class="res-pre">
+                    <div class="float-left">
+                        @*<span class="title">@(Model.Title + Model.ResFile.Extension)</span>
+                        <span class="tip">@(Model.Original == 0 ? Model.ResFile.Size + "MB" : "")</span>*@
+                    </div>
+                    <div class="group">
+                        @if (Model.Original == 0)
+                        {
+                            <button class="btn btn-primary radius" onclick="PrivewRes(this)" data-bind="">预览</button>
+                            @*<a class="btn btn-primary radius" href="@Model.FileUrl">下载</a>*@
+                            @Html.ActionLink("下载", "DownloadFile", new { id = Model.Id }, new { @class = "btn btn-primary radius" })
+                        }
+                        else
+                        {
+                            <a href="@Model.FileUrl" target="_blank" class="btn btn-primary radius">预览</a>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row cl">
+            <label class="form-label col-xs-3 ">简介：</label>
+            <div class="col-xs-8 form-text">
+                <p>@Model.Description</p>
+            </div>
+        </div>
+
+        <div class="row cl">
+            <label class="form-label col-xs-3 ">展示时间：</label>
+            <div class="col-xs-8 form-text">
+                <p>@Model.ShowTimeRange</p>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-3 ">查看权限：</label>
+            <div class="col-xs-8 form-text">
+                <p>@(string.IsNullOrEmpty(Model.MemberTypeName)?"无": Model.MemberTypeName)</p>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-3 ">状态：</label>
+            <div class="col-xs-8 form-text">
+                <p>@(Model.State == 1 ? "启用" : "禁用")</p>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-3 ">文件浏览数据：</label>
+            <div class="col-xs-8 form-text">
+                <p class="icon-group">
+                    <span title="浏览量"><i class="Hui-iconfont Hui-iconfont-yanjing"></i>@Model.PvSum &nbsp;次</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span title="下载量"> <i class="Hui-iconfont Hui-iconfont-yundown"></i>@Model.DownloadSum &nbsp;次</span>
+                </p>
+            </div>
+        </div>
+        <div class="row cl">
+            <div class="col-xs-6  col-xs-offset-3 mt-20" style="padding-left:0px">
+                <input name="" type="button" onclick="layer_close();" class="btn btn-default radius " value="&nbsp;关&nbsp;&nbsp;闭&nbsp;">
+            </div>
+        </div>
+
+    </div>
+</article>
+
+<script type="text/javascript">
+    $(function () {
+    });
+
+    function PrivewRes(obj) {
+
+        if ('@Model.Format' == '@((int)FileFormat.PDF)' || '@Model.Format' == '@((int)FileFormat.Video)' || '@Model.Format' == '@((int)FileFormat.Audio)') {
+            window.open("@Url.Action("Preview",new {id=Model.FileId,format=Model.Format})");
+        } else {
+            layer.msg('该文件类型不支持浏览');
+        }
+    }
+</script>

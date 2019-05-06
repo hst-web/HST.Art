@@ -1,0 +1,121 @@
+﻿@{
+    Layout = "";
+}
+
+@using HST.Art.Web
+@using HST.Art.Core
+
+@model  FileDownload
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="Shortcut Icon" href="/favicon.ico" />
+    <title>预览</title>
+    <style type="text/css">
+        body {
+            box-sizing: border-box;
+            position: relative;
+            font-family: "Microsoft Yahei","Hiragino Sans GB","Helvetica Neue",Helvetica,tahoma,arial,"WenQuanYi Micro Hei",Verdana,sans-serif,"\5B8B\4F53";
+            margin: 0px;
+            padding: 0px;
+            display: block;
+            background-color: #f0f0f0;
+        }
+
+        article, aside, section, div, iframe {
+            display: block;
+            margin: 0px;
+            padding: 0px;
+            border: none;
+        }
+
+        .page-container {
+            position: relative;
+            width: 1024px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            margin: 20px auto;
+            text-align: center;
+            font-size: 1.8em;
+        }
+
+        #per_video {
+            margin-top: 10%;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-container">
+        <div class="res-view">
+
+
+            @if (ViewBag.format == (int)FileFormat.PDF)
+            {
+                <a class="pre_media" href="@Model.Src"></a>
+            }
+            else if (ViewBag.format == (int)FileFormat.Video)
+            {
+                <div id="per_video">
+                </div>
+            }
+            else
+            {
+                <audio controls="controls" style="width:100%;margin-top:20%">
+                    <source src="@Model.Src" type="audio/mpeg">
+                    您当前的浏览器不支持音频播放
+                </audio>
+            }
+
+        </div>
+    </div>
+    <script src="/Content/lib/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/Content/lib/ckplayer.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/Content/lib/jquery.media.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            if ('@ViewBag.format' == '@((int)FileFormat.PDF)') {
+                loadPdf();
+            } else {
+                loadMedia('@Model.Src')
+            }
+        });
+
+        function loadPdf() {
+
+            var docH = $(window).height();
+            $('a.pre_media').media({ width: 1024, height: docH });
+        }
+
+        function loadMedia(obj) {
+            var flashvars = {
+                f: "'" + obj + "'",
+                c: 0,
+                i: "/Content/image/video_load.png",
+                p: 3,
+                j: 1
+            };
+            var params = { bgcolor: '#FFF', allowFullScreen: true, allowScriptAccess: 'always', wmode: 'transparent' };
+            var video = [obj + '->video/mp4'];
+            CKobject.embed('', 'per_video', 'ckplayer_a1', '100%', '450', true, flashvars, video, params);
+
+            var video1 = document.getElementById("ckplayer_a1");
+
+            video1.onclick = function () {
+                if (video1.paused) {
+                    video1.play();
+                } else {
+                    video1.pause();
+                }
+            }
+        }
+    </script>
+</body>
+</html>

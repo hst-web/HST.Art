@@ -1,0 +1,444 @@
+﻿@{
+    Layout = "";
+}
+
+@using HST.Art.Web
+@using HST.Art.Core
+
+@model  ResourceViewModel
+
+@Scripts.Render("~/bundles/saos")
+@Scripts.Render("~/bundles/ajaxAsync")
+@Scripts.Render("~/bundles/validate")
+@Styles.Render("~/appcss")
+<script src="~/Content/lib/webuploader/0.1.5/webuploader.min.js" type="text/javascript"></script>
+<style type="text/css">
+    .form-horizontal .form-label {
+        text-align: right;
+    }
+</style>
+<article class="page-container">
+    @using (Ajax.BeginForm("Edit", "Resource", new AjaxOptions() { HttpMethod = "Post", OnSuccess = "formSuccess(data)", OnBegin = "disSubmit('sub_btn')", OnComplete = "enSubmit('sub_btn')" }, new { id = "form-good-add", @class = "form form-horizontal" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(m => m.Id)
+        <input type="hidden" name="name" id="test123" value="" />
+        <div class="row cl">
+            <label class="form-label col-xs-3 "><span class="c-red">*</span>标题：</label>
+            <div class="formControls col-xs-6 ">
+                @Html.TextBoxFor(m => m.Title, new { placeholder = "请输入标题", @class = "input-text" })
+                @Html.ValidationMessageFor(m => m.Title, null, new { @class = "error-lable" })
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-3 ">所属资料包：</label>
+            <div class="formControls col-xs-6 ">
+                <select name="PackageId" class="select select-box" id="sel_package">
+                    @foreach (KeyValueViewModel item in ViewBag.packges)
+                    {
+                        <option value="@item.Key" @(item.Key == Model.PackageId ? "selected" : "")>@item.Value</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-3 ">文件格式：</label>
+            <div class="formControls col-xs-6 ">
+                <select name="Format" class="select select-box" id="sel_format">
+                    <option value="@((int)FileFormat.Word)" @(Model.Format == (int)FileFormat.Word ? "selected" : "")>WORD文档</option>
+                    <option value="@((int)FileFormat.PPT)" @(Model.Format == (int)FileFormat.PPT ? "selected" : "")>PPT文档</option>
+                    <option value="@((int)FileFormat.PDF)" @(Model.Format == (int)FileFormat.PDF ? "selected" : "")>PDF文档</option>
+                    <option value="@((int)FileFormat.Video)" @(Model.Format == (int)FileFormat.Video ? "selected" : "")>视频</option>
+                    <option value="@((int)FileFormat.Audio)" @(Model.Format == (int)FileFormat.Audio ? "selected" : "")>音频</option>
+                </select>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-3 "><span class="c-red">*</span>文件来源：</label>
+            <div class="formControls col-xs-8 ">
+                <div class="check-list file-sel check">
+                    <label class="check-block">
+                        @Html.RadioButtonFor(m => m.Original, 0, new { id = "", onclick = "setRes(this)" }) 上传文件
+                    </label>
+                    <label class="check-block" style="margin-top:10px">
+                        @Html.RadioButtonFor(m => m.Original, 1, new { id = "", onclick = "setRes(this)" }) 链接地址
+                    </label>
+                </div>
+                <div class="form-group ml-5 " id="loc_upload">
+                    <div id="upfile" style="float:left">
+                        本地上传
+                    </div>
+                    <span class="help-block help-tip" style="top:8px;position:absolute;@(Model.Original==0?"display:none;":"")" >请上传指定类型文件</span>
+                    <div class="formControls file-up">
+                        <ul id="filelist" class="">
+                            @*<li><span>@(Model.Original==0? Model.ResFile.RealName:"")</span></li>*@
+                        </ul>
+                        @*<input type="hidden" id="loc_temp_inp" value="@(Model.Original==0?Model.ResFile.Url:"")" />*@
+                        <input type="hidden" id="accept_type" value="" />
+                    </div>
+                </div>
+                <div class="file-sel web-link hidden" id="web_upload">
+                    @*<input type="text" name="name" id="file_link" class="input-text" placeholder="请输入网络链接地址" value="@(Model.Original>0?Model.ResFile.Url:"")" />*@
+                </div>
+                <div class="hidden">
+                    @*@Html.HiddenFor(m => m.ResFile.FileName)
+                    @Html.HiddenFor(m => m.ResFile.RealName)
+                    @Html.HiddenFor(m => m.ResFile.Url)
+                    @Html.HiddenFor(m => m.ResFile.Size)
+                    @Html.HiddenFor(m => m.ResFile.Extension)*@
+                </div>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-3 ">简介：</label>
+            <div class="formControls col-xs-8 ">
+                @Html.TextAreaFor(m => m.Description, new { placeholder = "请输入简介（200字以内）", row = 3, @class = "textarea" })
+                @Html.ValidationMessageFor(m => m.Description, null, new { @class = "error-lable" })
+            </div>
+        </div>
+        <div class="row c1 clearfix">
+            <label class="form-label col-xs-3 ">展示时间：</label>
+            <div class="formControls col-xs-8 ">
+                <div class="link-group a-btn float-left" id="sel_link_group">
+                    <a href="javascript:void(0)" class="active" data-bind="default">设置默认</a>
+                    <a href="javascript:void(0)" data-bind="date">设置时间</a>
+                </div>
+                <div class="date-group hidden" id="sel_date_grop">
+                    @Html.TextBoxFor(m => m.ShowTimeStart, new { @class = "input-text Wdate", placeholder = "开始时间", onClick = "WdatePicker({dateFmt:'yyyy-MM-dd HH:00'})" })
+                    @Html.TextBoxFor(m => m.ShowTimeEnd, new { @class = "input-text Wdate", placeholder = "结束时间", onClick = "WdatePicker({dateFmt:'yyyy-MM-dd HH:00'})" })
+                </div>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-3 ">查看权限：</label>
+            <div class="formControls col-xs-9 ">
+                <div class="check-list">
+                    @for (int i = 0; i < ViewBag.memberTypes.Count; i++)
+                    {
+                        <label class="check-inline">
+                            <input type="checkbox" name="MemberTypeIds" value="@ViewBag.memberTypes[i].Key" @(Model.MemberTypeIds.Where(g=>g==ViewBag.memberTypes[i].Key).Count()>0? "checked" : "") />@ViewBag.memberTypes[i].Value
+                        </label>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="row cl">
+            <label class="form-label col-xs-3 ">状态：</label>
+            <div class="formControls col-xs-6 ">
+                <select class="select select-box" name="State">
+                    <option value="1" @(Model.State==1?"selected":"")>启用</option>
+                    <option value="0" @(Model.State==0?"selected":"")>禁用</option>
+                </select>
+            </div>
+        </div>
+        <div class="row cl">
+            <div id="btn_submit" class="col-xs-6  col-xs-offset-3 col-sm-offset-2 mt-10">
+                <button class="btn btn-primary radius" type="button" id="sub_btn" onclick="subForm(this)"><i class="Hui-iconfont">&#xe632;</i> 保存并提交</button>
+                <input name="" type="button" onclick="layer_close();" class="btn btn-default radius " value="&nbsp;取&nbsp;&nbsp;&nbsp;&nbsp;消&nbsp;">
+            </div>
+        </div>
+    }
+</article>
+<script type="text/javascript">
+    $(function () {
+        initUniform();
+        initEvent();     
+    });
+
+    //初始化方法
+    function initEvent()
+    {
+        getFileAcceptStr($("#sel_format").val());
+
+        var endtime = $('#ShowTimeEnd').val();
+        var starttime = $('#ShowTimeStart').val();
+        if (starttime.length > 0 && endtime.length > 0) {
+            $("#sel_link_group a[data-bind=date]").addClass("active").siblings().removeClass("active");
+            $("#sel_date_grop").removeClass("hidden");
+        }
+
+        if (@Model.Original==0) {
+            $("#loc_upload").removeClass("block-hid");
+            $("#web_upload").addClass("hidden");
+        }else{
+            $("#loc_upload").addClass("block-hid");
+            $("#web_upload").removeClass("hidden");
+        }
+
+        $("#sel_package").change(function () {
+            var a = $("#Title").val();
+            if (a.length > 0) {
+                $("#Title").val("1").blur().val(a).blur();
+            }
+        })
+
+        $("#sel_format").change(function () {
+            var a = $("#Title").val();
+            if (a.length > 0) {
+                $("#Title").val("1").blur().val(a).blur();
+            }
+
+            getFileAcceptStr($(this).val());
+        })
+
+        $(".link-group a").click(function () {
+            var a = $(this).attr("data-bind");
+            $(this).addClass("active").siblings().removeClass("active");
+
+            if (a == "default") {
+                $("#sel_date_grop").addClass("hidden");
+                $("#ShowTimeStart,#ShowTimeEnd").val("");
+            } else {
+                $("#sel_date_grop").removeClass("hidden");
+                $("#ShowTimeStart").val('@Model.ShowTimeStart');
+                $("#ShowTimeEnd").val('@Model.ShowTimeEnd');
+            }
+        });
+
+        $("#file_link").change(function () {
+            $("#ResFile_Url").val($(this).val());
+        })
+    }
+
+    function subForm(obj) {
+        if ($("#ResFile_Url").val().length<=0) {
+            layer.msg('请上传文件来源或输入网络链接');
+            return false;
+        }
+        if ($("#sel_package").val().length<=0) {
+            layer.msg("请选择所属资料包");
+            return false;
+        }
+
+        var radioVal = $('input:radio[name="Original"]:checked').val();
+        if (radioVal==1) {
+            var linkVal = $("#file_link").val();
+            if (linkVal.length > 0 && !IsURL(linkVal)) { layer.msg('输入的web网络地址不正确'); return false; }
+        }
+
+        if ($("#sel_link_group a.active").attr("data-bind") == "date") {
+            if (ckdate()) {
+                $(obj).submit();
+            }
+        } else {
+            $(obj).submit();
+        }
+
+    }
+
+    function ckdate() {
+        var endtime = $('#ShowTimeEnd').val();
+        var starttime = $('#ShowTimeStart').val();
+        if (starttime.length <= 0) { layer.msg('开始日期不能为空'); return false }
+        if (endtime.length <= 0) { layer.msg('结束日期不能为空'); return false }
+        var start = new Date(starttime.replace("-", "/").replace("-", "/"));
+        var end = new Date(endtime.replace("-", "/").replace("-", "/"));
+        if (end < start) {
+            layer.msg('结束日期不能小于开始日期');
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+
+    function setRes(obj) {
+        if ($(obj).val()==0) {
+            $("#loc_upload").removeClass("hidden block-hid");
+            $("#web_upload").addClass("hidden");
+            $("#ResFile_Url").val($("#loc_temp_inp").val());
+        } else {
+            $("#web_upload").removeClass("hidden");
+            $("#loc_upload").addClass("hidden");
+            $("#ResFile_Url").val($("#file_link").val());
+        }
+    }
+
+    function formSuccess(result) {
+        if (result == "ok") {
+            var index = parent.layer.getFrameIndex(window.name);
+            layer.alert('保存成功！', {
+                icon: 6,
+                closeBtn: 0,
+                yes: function () {
+                    parent.table1.ajax.reload();
+                    parent.layer.close(index);
+                }
+            });
+        } else {
+            layer.alert('保存失败！', { icon: 5 });//icon:6为开心图
+        }
+    }
+
+    //获取类型文件提示信息
+    function getFileAcceptStr(file_type) {
+        var res = "";
+        switch (file_type)
+        {
+            case '@((int)FileFormat.Word)':$("#accept_type").val("doc,docx");res="请上传 "+$("#accept_type").val().replace(",","、")+" 类型文件";break;
+            case '@((int)FileFormat.PPT)':$("#accept_type").val("ppt,pptx");res="请上传 "+$("#accept_type").val().replace(",","、")+" 类型文件";break;
+            case '@((int)FileFormat.PDF)':$("#accept_type").val("pdf");res="请上传 "+$("#accept_type").val().replace(",","、")+" 类型文件";break;
+            case '@((int)FileFormat.Video)':$("#accept_type").val("mp4");res="请上传 "+$("#accept_type").val().replace(",","、")+" 类型文件，单个文件大小不超过500M";break;
+            case '@((int)FileFormat.Audio)': $("#accept_type").val("mp3"); res = "请上传 " + $("#accept_type").val().replace(",", "、") + " 类型文件，单个文件大小不超过10M"; break;
+        }
+
+        $(".help-tip").html(res);
+    }
+</script>
+<script type="text/javascript">
+    var maxcount = 8;
+    //上传参数
+    var jq_uploadFormData = { BidFileDomain: ' ', uploadQueryData: { Suffix: 1 } };
+    if (!WebUploader.Uploader.support()) {
+        $(".FJsp2").html("说明：当前浏览器不支持附件上传");
+        $("#upfile").hide();
+        //alert( 'Web Uploader 不支持您的浏览器！如果你使用的是IE浏览器，请尝试升级 flash 播放器');
+        alert("当前浏览器不支持附件上传，如果你使用的是IE浏览器，请尝试升级 flash 播放器");
+        throw new Error('WebUploader does not support the browser you are using.');
+    }
+    var BASE_URL = "/content/webuploader-0.1.5";
+    var file_ids = []; //已上传文件的路径
+    var file_info = []; //记录文件的GUID和存储路径
+    var isfilesuping = false;
+    // 文件上传
+    jQuery(function () {
+        var id = "upfile";
+        var $ = jQuery,
+    state = 'pending',
+    $probar = $("#" + id).siblings("div").find(".pros"),
+    uploader;
+        uploader = WebUploader.create({
+            // 不压缩image
+            resize: false,
+            //发送后台时参数
+            formData: jq_uploadFormData.uploadQueryData,
+            fileVal: jq_uploadFormData.BidFileDomain,
+            method: "POST",
+            //是否分块（大文件上传）
+            chunked: true,
+            //设置文件上传域名称
+            fileVal: 'file',
+            //每块最大限制（默认5M 因为是.net 所以设置2M）
+            chunkSize: 2097152,
+            // swf文件路径
+            swf: BASE_URL + '/Uploader.swf',
+            // 文件接收服务端。
+            server: jq_uploadFormData.BidFileDomain + '@Url.Action("Upload", "Upload")',
+            //创建选择文件按钮
+            pick: { id: "#" + id, innerHTML: "", multiple: false },
+            //选择文件自动上传
+            auto: true,
+            //accept:{title:"只能上传rar,zip文件",extensions :'rar,zip',mimeTypes:'application/x-zip-compressed'},
+            fileNumLimit: maxcount
+        });
+
+        //文件大小限制,超过则不加入队列
+        uploader.on('beforeFileQueued', function (file, han, msg) {
+            if (file.size > (1024 * 1024 * 500)) {
+                layer.alert("文件大小超过单个文件最大限制", 0);
+                return false;
+            }
+            var xzlist = ("doc,docx,ppt,pptx,pdf,mp4,mp3").split(",");
+            if ($("#accept_type").val().length>0) {
+                xzlist = $("#accept_type").val().split(",");
+            }
+            var filenamelist = file.name.split('.');
+            var filehz = filenamelist[filenamelist.length - 1];
+
+            if (xzlist.indexOf(filehz) < 0) {
+                layer.alert("请上传 " + $("#accept_type").val().replace(",", "、") + " 格式的文件", 0);
+                return false;
+            }
+
+            var filelen = $("#filelist>li").length;
+            if (filelen >= maxcount) {
+                layer.alert("超出最大张数", 0);
+                return false;
+            }
+        });
+        //某个文件开始上传前触发，一个文件只会触发一次。
+        uploader.on('uploadStart', function (file) {
+            uploader.options.formData.guid = WebUploader.Base.guid();
+        });
+        // 当有文件添加进来的时候
+        uploader.on('fileQueued', function (file) {
+            $(".help-block").hide();
+            $(".yangli").hide()
+            $(".yulan").show();
+            uploader.makeThumb(file, function (error, ret) {
+                var file_list = [];
+                file_list.push("<li id='" + file.id + "'>");
+                file_list.push("<em class='rar'></em>");
+                file_list.push("<span class='title'><span/>");
+                file_list.push("<div class='percent_small'>");
+                file_list.push("<div class='per_pic2'>");
+                file_list.push("<div class='change_per2' style='width:1%'></div>");
+                file_list.push("</div>");
+                file_list.push("<span class='showtitle'>正准备上传…</span></div>");
+                file_list.push("</div></li>");
+                $("#filelist").empty().append(file_list.join(''));
+            });
+        });
+        //重置
+        uploader.on('reset', function (file) {
+
+        });
+        // 文件上传过程中创建进度条实时显示。
+        uploader.on('uploadProgress', function (file, percentage) {
+            var jd = parseInt(percentage * 100);
+            if (jd > 1) {
+                $("#" + file.id).find(".change_per2").css("width", jd + '%');
+                $("#" + file.id).find(".per_pic2,.showtitle").attr("title", '已上传' + jd + '%');
+                $("#" + file.id).find(".showtitle").text('已上传' + jd + '%');
+            }
+            if (jd >= 100) {
+                $("#" + file.id).find(".per_pic2,.showtitle").attr("title", "处理中...");
+            }
+            isfilesuping = uploader.getStats().progressNum != 0;
+        });
+
+        uploader.on('uploadSuccess', function (file, obj) {
+            isfilesuping = uploader.getStats().progressNum != 0;
+            var jsonresult = obj._raw;
+            jsonresult = eval('(' + jsonresult + ')');
+            if (jsonresult.FilePath) {
+                $("#" + file.id).find(".showtitle").text("");
+                $("#ResFile_FileName").val(jsonresult.FileGuidName);
+                $("#ResFile_RealName").val(jsonresult.FileName);
+                $("#ResFile_Url,#loc_temp_inp").val(jsonresult.FilePath);
+                $("#ResFile_Size").val(parseFloat(file.size / 1048576).toFixed(2));
+                $("#ResFile_Extension").val(jsonresult.Extension);
+                $("#" + file.id).find("span.title").html(jsonresult.FileName);
+            }
+            else {
+                layer.msg(jsonresult.Message);
+            }
+
+            uploader.reset();
+        });
+
+        uploader.on('uploadError', function (file, reason) {
+            layer.msg(reason);
+        });
+        uploader.on('error', function (handler) {
+            if (handler == "Q_EXCEED_NUM_LIMIT") {
+                layer.alert("超出最大张数");
+            }
+            if (handler == "F_DUPLICATE") {
+                layer.alert("该文件已在上传列表", 3);
+            }
+
+            if (handler == "Q_TYPE_DENIED") {
+                layer.alert("该文件不满足上传要求，可能您上传的文件为0KB");
+            }
+        });
+        uploader.on('uploadComplete', function (file) {
+            $('#' + file.id).find('.percent_small').fadeOut();
+
+
+        });
+
+    });
+
+</script>

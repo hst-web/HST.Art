@@ -1,0 +1,72 @@
+﻿@{
+    Layout = "";
+}
+
+@using cncbk_resource.Models
+@model  ResourcePackageViewModel
+
+@Scripts.Render("~/bundles/saos")
+@Scripts.Render("~/bundles/ajaxAsync")
+@Scripts.Render("~/bundles/validate")
+@Styles.Render("~/appcss")
+<style type="text/css">
+    .form-horizontal .form-label {
+        text-align: right;
+    }
+</style>
+<article class="page-container">
+    @using (Ajax.BeginForm("Add", "ResPackge", new AjaxOptions() { HttpMethod = "Post", OnSuccess = "formSuccess(data)", OnBegin = "disSubmit('sub_btn')", OnComplete = "enSubmit('sub_btn')" }, new { id = "form-good-add", @class = "form form-horizontal" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(m => m.Id)
+        <div class="row cl">
+            <label class="form-label col-xs-3 "><span class="c-red">*</span>资料包名：</label>
+            <div class="formControls col-xs-6 ">
+                @Html.TextBoxFor(m => m.Name, new { placeholder = "资料包名称", @class = "input-text" })
+                @Html.ValidationMessageFor(m => m.Name, null, new { @class = "error-lable" })
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-3 "><span class="c-red">*</span>排序：</label>
+            <div class="formControls col-xs-6 ">
+                <input type="number" value="1" min="1" name="Sort" class="input-text" onchange="changecount(this,1,1)" style="width:100%" />
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-3 ">状态：</label>
+            <div class="formControls col-xs-6 ">
+                <select class="select select-box" name="State">
+                    <option value="1">启用</option>
+                    <option value="0">禁用</option>
+                </select>
+            </div>
+        </div>
+        <div class="row cl">
+            <div id="btn_submit" class="col-xs-6  col-xs-offset-3 col-sm-offset-2 mt-10">
+                <button class="btn btn-primary radius" type="submit" id="sub_btn"><i class="Hui-iconfont">&#xe632;</i> 保存并提交</button>
+                <input name="" type="button" onclick="layer_close();" class="btn btn-default radius " value="&nbsp;取&nbsp;&nbsp;&nbsp;&nbsp;消&nbsp;">
+            </div>
+        </div>
+    }
+</article>
+<script type="text/javascript">
+
+    $(function () {
+    });
+
+    function formSuccess(result) {
+        if (result == "ok") {
+            var index = parent.layer.getFrameIndex(window.name);
+            layer.alert('保存成功！', {
+                icon: 6,
+                closeBtn: 0,
+                yes: function () {
+                    parent.table1.ajax.reload();
+                    parent.layer.close(index);
+                }
+            });
+        } else {
+            layer.alert('保存失败！', { icon: 5 });//icon:6为开心图
+        }
+    }
+</script>
