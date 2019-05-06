@@ -233,6 +233,7 @@
     <Compile Include="App_Start\RazorGeneratorMvcStart.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\manage\manageAreaRegistration.cs" />
     <Compile Include="Common\ApplicationBase.cs" />
     <Compile Include="Common\PageHtmlhelper.cs" />
     <Compile Include="Common\Rand.cs" />
@@ -1857,6 +1858,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\manage\Controllers\" />
+    <Folder Include="Areas\manage\Models\" />
+    <Folder Include="Areas\manage\Views\Shared\" />
     <Folder Include="Content\css\" />
     <Folder Include="Views\Manage\" />
   </ItemGroup>
