@@ -2,7 +2,7 @@
 using System;
 using System.Web.Mvc;
 
-namespace HST.Art.Web.Controllers
+namespace HST.Art.Web.Areas.manage.Controllers
 {
     public class UserController : ApplicationBase
     {

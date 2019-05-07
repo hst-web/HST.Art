@@ -13,18 +13,18 @@
     <script type="text/javascript" src="/Content/lib/html5shiv.js"></script>
     <script type="text/javascript" src="/Content/lib/respond.min.js"></script>
     <![endif]-->
-    @*@Scripts.Render("~/bundles/saos")
-    @Styles.Render("~/appcss")*@
+    @Scripts.Render("~/bundles/saos")
+    @Styles.Render("~/appcss")
     <!--[if IE 6]>
     <script type="text/javascript" src="/Content/lib/DD_belatedPNG_0.0.8a-min.js" ></script>
     <script>DD_belatedPNG.fix('*');</script>
     <![endif]-->
-    @*<title>@ViewBag.Title</title>*@
+    <title>@ViewBag.Title</title>
 </head>
 <body>
 
 
-    @*@RenderBody()
-    @RenderSection("Scripts", required: false)*@
+    @RenderBody()
+    @RenderSection("Scripts", required: false)
 </body>
 </html>

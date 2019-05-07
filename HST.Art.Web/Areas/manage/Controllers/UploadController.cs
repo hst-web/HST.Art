@@ -4,7 +4,7 @@ using System.Web.Mvc;
 using System.IO;
 using System.Web.Configuration;
 
-namespace HST.Art.Web.Controllers
+namespace HST.Art.Web.Areas.manage.Controllers
 {
     public class UploadController : ApplicationBase
     {
