@@ -5,6 +5,7 @@
 // 创建时间：2019-3-18
 //----------------------------------------------------------------*/
 using System;
+using System.Collections;
 using System.Web;
 using System.Web.Caching;
 
@@ -33,6 +34,19 @@ namespace HST.Utillity
         {
             if (HttpRuntime.Cache[name] != null)
                 HttpRuntime.Cache.Remove(name);
+        }
+
+        /// <summary>
+        /// 删除所有缓存
+        /// </summary>
+        public static void RemoveAll()
+        {
+            Cache _cache = HttpRuntime.Cache;
+            IDictionaryEnumerator CacheEnum = _cache.GetEnumerator();
+            while (CacheEnum.MoveNext())
+            {
+                _cache.Remove(CacheEnum.Key.ToString());
+            }
         }
 
         /// <summary>

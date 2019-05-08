@@ -2,9 +2,8 @@
 
 @model List<User>
 @{
-    ViewBag.Title = "用户学习资料平台";
-    bool hasResMenu = (Model.Where(g => g.Name == "资料包管理").Count() > 0 || Model.Where(g => g.Name == "资料管理").Count() > 0 || Model.Where(g => g.Name == "用户权限").Count() > 0);
-    bool hasAdminMenu = (Model.Where(g => g.Name == "后台管理员").Count() > 0 || Model.Where(g => g.Name == "角色权限").Count() > 0);
+    ViewBag.Title = "网站后台管理";
+
 }
 
 <link rel="stylesheet" type="text/css" href="/Content/lib/h-ui.admin/skin/default/skin.css" id="skin" />
@@ -22,8 +21,9 @@
                         <a href="#" class="dropDown_A">管理 <i class="Hui-iconfont">&#xe6d5;</i></a>
                         <ul class="dropDown-menu menu radius box-shadow">
                             <li><a href="javascript:void(0)" onclick="user_show()">个人信息</a></li>
-                            @if(ViewBag.IsSuperAdmin){
-                            <li><a href="javascript:void(0)" onclick="showDialog()">日志导出</a></li>
+                            @if (ViewBag.IsSuperAdmin)
+                            {
+                                <li><a href="javascript:void(0)" onclick="showDialog()">日志导出</a></li>
                             }
                             <li><a href="/Account/LoginOut" data-title="退出">退出</a></li>
                         </ul>
@@ -35,46 +35,36 @@
 </header>
 <aside class="Hui-aside" id="main-aside">
     <div class="menu_dropdown bk_2">
-        @if (hasResMenu)
-        {
-            <dl id="menu-article">
-                <dt class="selected"><i class="Hui-iconfont">&#xe616;</i> 用户学习资料<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
-                <dd style="display:block">
-                    <ul>
-                        @if (Model.Where(g => g.Name == "资料包管理").Count() > 0)
-                        {
-                            <li><a data-href="@Url.Action("List","ResPackge")" data-title="资料包管理" href="javascript:void(0)">资料包管理</a></li>
-                        }
-                        @if (Model.Where(g => g.Name == "资料管理").Count() > 0)
-                        {
-                            <li><a data-href="@Url.Action("List","Resource")" data-title="资料管理" href="javascript:void(0)">资料管理</a></li>
-                        }
-                        @if (Model.Where(g => g.Name == "用户权限").Count() > 0)
-                        {
-                            <li><a data-href="@Url.Action("Index","ResPermission")" data-title="用户权限" href="javascript:void(0)">用户权限</a></li>
-                        }
-                    </ul>
-                </dd>
-            </dl>
-        }
-        @if (hasAdminMenu)
-        {
-            <dl id="menu-picture">
-                <dt class="@(hasResMenu?"":"selected")"><i class="Hui-iconfont">&#xe62d;</i> 系统管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
-                <dd @(hasResMenu ? "" : "style=\"display:block\"")>
-                    <ul>
-                        @if (Model.Where(g => g.Name == "后台管理员").Count() > 0)
-                        {
-                            <li><a data-href="@Url.Action("List", "ResAdmin")" data-title="后台管理员" href="javascript:void(0)">后台管理员</a></li>
-                        }
-                        @if (Model.Where(g => g.Name == "角色权限").Count() > 0)
-                        {
-                            <li><a data-href="@Url.Action("List", "ResRole")" data-title="角色权限" href="javascript:void(0)">角色权限</a></li>
-                        }
-                    </ul>
-                </dd>
-            </dl>
-        }
+
+        <dl id="menu-article">
+            <dt class="selected"><i class="Hui-iconfont">&#xe616;</i> 用户学习资料<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+            <dd style="display:block">
+                <ul>
+                    <li><a data-href="@Url.Action("List","ResPackge")" data-title="资料包管理" href="javascript:void(0)">资料包管理</a></li>
+                    <li><a data-href="@Url.Action("List","Resource")" data-title="资料管理" href="javascript:void(0)">资料管理</a></li>
+                    <li><a data-href="@Url.Action("Index","ResPermission")" data-title="用户权限" href="javascript:void(0)">用户权限</a></li>
+
+                </ul>
+            </dd>
+        </dl>
+
+
+        <dl id="menu-picture">
+            <dt class=""><i class="Hui-iconfont">&#xe62d;</i> 系统管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+            <dd>
+                <ul>
+                    @if (Model.Where(g => g.Name == "后台管理员").Count() > 0)
+                    {
+                        <li><a data-href="@Url.Action("List", "ResAdmin")" data-title="后台管理员" href="javascript:void(0)">后台管理员</a></li>
+                    }
+                    @if (Model.Where(g => g.Name == "角色权限").Count() > 0)
+                    {
+                        <li><a data-href="@Url.Action("List", "ResRole")" data-title="角色权限" href="javascript:void(0)">角色权限</a></li>
+                    }
+                </ul>
+            </dd>
+        </dl>
+
         <dl class="hidden">
             <dd><ul><li class="hidden"><a data-href="@Url.Action("Index","User")" href="javascript:void(0)" data-title="个人信息" id="userHid">个人信息</a></li></ul></dd>
         </dl>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HST.Art.Core;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -11,9 +12,10 @@ namespace HST.Art.Web.Areas.manage.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            var tmp = GetAccount();
-            ViewBag.UserName = tmp.UserName;
-            //ViewBag.IsSuperAdmin = tmp.IsSuperAdmin;
+            Account account = GetAccount();
+            ViewBag.UserName = account.UserName;
+            ViewBag.IsSuperAdmin = account.IsAdmin;
+
             //List<ResourceMenu> menuList = new List<ResourceMenu>();
             //ResourceMember resMem = new ResourceMemberController().GetModelById(Convert.ToInt16(GetAccount().Id));
             //if (resMem.ResRole != null && resMem.ResRole.RmList != null && resMem.ResRole.RmList.Count > 0)
@@ -27,7 +29,7 @@ namespace HST.Art.Web.Areas.manage.Controllers
             //    }
             //}
 
-            // ViewBag.RoleName = resMem.ResRole == null ? "管理员" : resMem.ResRole.RoleName;
+            //ViewBag.RoleName = resMem.ResRole == null ? "管理员" : resMem.ResRole.RoleName;
 
             return null;// View(menuList);
         }
@@ -86,7 +88,7 @@ namespace HST.Art.Web.Areas.manage.Controllers
             string fileName = SearchDate.Replace("-", "") + ".txt";
             string downFilePath = AppDomain.CurrentDomain.BaseDirectory + @"\log\" + fileName;
             FileStream fs = new FileStream(downFilePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
-            
+
             return File(fs, "text/plain", Url.Encode(fileName));
         }
     }

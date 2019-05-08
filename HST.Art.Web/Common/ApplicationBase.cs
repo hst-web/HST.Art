@@ -4,6 +4,8 @@ using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using Newtonsoft.Json;
+using HST.Utillity;
+using HST.Art.Service;
 
 namespace HST.Art.Web
 {
@@ -17,11 +19,11 @@ namespace HST.Art.Web
             if (string.IsNullOrEmpty(cookieStr))
             {
                 string tmpRouteName = RouteData.GetRequiredString("controller");
-                if (!tmpRouteName.Equals("Account"))
+                if (!tmpRouteName.Equals("Account",StringComparison.InvariantCultureIgnoreCase))
                 {
                     //filterContext.Result = new RedirectResult("/Account/Login");
                     filterContext.Result = new EmptyResult();
-                    filterContext.HttpContext.Response.Write("<script>top.location ='/Account/Login';</script>");
+                    filterContext.HttpContext.Response.Write("<script>top.location ='/manage/account/login';</script>");
                     filterContext.HttpContext.Response.End();
                 }
             }
@@ -37,23 +39,21 @@ namespace HST.Art.Web
 
         public bool LoginBase(string username, string pwd)
         {
-            // ResourceMemberController rm = new ResourceMemberController();
-            object model = null; //rm.GetSingleMember(username, pwd);  object->var
+            AccountService accountService = new AccountService();
+            Account model = accountService.GetSingleMember(username, pwd); 
             if (model != null)
             {
-                //bool isSupAdmin = model.ResRole != null && model.ResRole.RoleType == 1;
-                //Account account = new Account() { Id = model.Id.ToString(), UserName = System.Web.HttpUtility.UrlEncode(model.UserName.ToString()), IsAdmin = isSupAdmin };
-                //HttpCookie cookie = new HttpCookie("userInfo");
-                //cookie.Value = Base64Generate(JsonConvert.SerializeObject(account));
-                //cookie.Expires = DateTime.Now.AddHours(MAX_COOKIESTIME);
+                HttpCookie cookie = new HttpCookie("accountInfo");
+                cookie.Value = Base64Generate(JsonConvert.SerializeObject(model));
+                cookie.Expires = DateTime.Now.AddHours(MAX_COOKIESTIME);
 
                 if (Response != null)
                 {
-                   // Response.Cookies.Add(cookie);
+                    Response.Cookies.Add(cookie);
                 }
                 else
                 {
-                    //System.Web.HttpContext.Current.Response.Cookies.Add(cookie);
+                    System.Web.HttpContext.Current.Response.Cookies.Add(cookie);
                 }
 
                 return true;
@@ -68,13 +68,13 @@ namespace HST.Art.Web
         /// <returns></returns>
         public Account GetAccount()
         {
-            //string cookieStr = CookiesEvent.GetCookies(SetCurrentCookies, "userInfo");
-            //if (!string.IsNullOrEmpty(cookieStr))
-            //{
-            //    Account account = JsonMethod.JsonDeserialize<Account>(GetBase64Generate(cookieStr));
-            //    account.UserName = System.Web.HttpUtility.UrlDecode(account.UserName);
-            //    return account;
-            //}
+            string cookieStr = CookiesEvent.GetCookies(SetCurrentCookies, "accountInfo");
+            if (!string.IsNullOrEmpty(cookieStr))
+            {
+                Account account = JsonConvert.DeserializeObject<Account>(GetBase64Generate(cookieStr));
+                account.UserName = System.Web.HttpUtility.UrlDecode(account.UserName);
+                return account;
+            }
 
             return null;
         }
@@ -107,13 +107,13 @@ namespace HST.Art.Web
         {
             if (this.HttpContext != null)
             {
-               // CommonMethod.ClearCookiesAll(this.HttpContext);
+                CookiesEvent.ClearCookiesAll(this.HttpContext);
             }
             else
             {
-                //CommonMethod.ClearCookies(System.Web.HttpContext.Current, "userInfo");
+                CookiesEvent.ClearCookies(System.Web.HttpContext.Current, "accountInfo");
             }
-            //CacheHelper.RemoveAllCache();
+            CacheHelper.RemoveAll();
         }
 
         /// <summary>
@@ -122,7 +122,8 @@ namespace HST.Art.Web
         /// <returns></returns>
         private string GetCookieStr()
         {
-            return "";//CookiesEvent.GetCookies(SetCurrentCookies, "userInfo");
+
+            return CookiesEvent.GetCookies(SetCurrentCookies, "accountInfo");
         }
 
         /// <summary>
@@ -132,7 +133,7 @@ namespace HST.Art.Web
         /// <returns></returns>
         private string Base64Generate(string encryptStr)
         {
-            return "";// encryption.EncodeBase64(Encoding.ASCII, encryptStr + "|" + "ee7018a6AA5b53e50");
+            return EncryptHelper.Encode(encryptStr + "|" + "ee7018a6AA5b53e50");          
         }
 
         /// <summary>
@@ -142,7 +143,7 @@ namespace HST.Art.Web
         /// <returns></returns>
         private string GetBase64Generate(string decryptStr)
         {
-            string result = null;// encryption.DecodeBase64(Encoding.ASCII, decryptStr);
+            string result = EncryptHelper.Decode(decryptStr);
 
             if (!string.IsNullOrEmpty(result))
             {

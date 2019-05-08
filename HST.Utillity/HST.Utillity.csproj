@@ -140,6 +140,7 @@
     <Compile Include="Security\RsaHelper.cs" />
     <Compile Include="ValidCode\ValidateCoder.cs" />
     <Compile Include="ValidCode\ValidateCodeType.cs" />
+    <Compile Include="ValidCode\ValidateHelper.cs" />
     <Compile Include="Web\UserAgentHelper.cs" />
     <Compile Include="Windows\RegistryBaseKey.cs" />
     <Compile Include="Windows\RegistryHelper.cs" />
