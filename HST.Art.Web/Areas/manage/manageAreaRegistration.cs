@@ -14,10 +14,10 @@ namespace HST.Art.Web.Areas.manage
 
         public override void RegisterArea(AreaRegistrationContext context) 
         {
-            context.MapRoute(
+            context.MapLowerCaseUrlRoute(
                 "manage_default",
                 "manage/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
+                new { action = "Index", id = UrlParameter.Optional }, new string[] { "HST.Art.Web.Areas.manage.Controllers" }
             );
         }
     }

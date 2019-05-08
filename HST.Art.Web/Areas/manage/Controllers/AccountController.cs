@@ -5,10 +5,6 @@ namespace HST.Art.Web.Areas.manage.Controllers
     public class AccountController : ApplicationBase
     {
         // GET: Account
-        public ActionResult Index()
-        {
-            return View();
-        }
         public ActionResult Login()
         {
             return View();
@@ -38,14 +34,5 @@ namespace HST.Art.Web.Areas.manage.Controllers
             LogoutBase();
             return RedirectLogin();
         }
-        [AllowAnonymous]
-        public ActionResult GetValidateCode()
-        {
-            YZMHelper yzm = new YZMHelper();
-            yzm.CreateImage();
-            Session["ValidateCode"] = yzm.Text;
-            return File(yzm.ImageByte, @"image/jpeg");
-        }
-
     }
 }

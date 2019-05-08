@@ -233,7 +233,6 @@
     <Compile Include="App_Start\RazorGeneratorMvcStart.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Areas\manage\Controllers\testController.cs" />
     <Compile Include="Areas\manage\manageAreaRegistration.cs" />
     <Compile Include="Areas\manage\Views\Shared\_Layout.generated.cs">
       <DependentUpon>_Layout.cshtml</DependentUpon>
@@ -1870,7 +1869,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\manage\Models\" />
-    <Folder Include="Areas\manage\Views\test\" />
     <Folder Include="Content\css\" />
     <Folder Include="Controllers\" />
   </ItemGroup>
