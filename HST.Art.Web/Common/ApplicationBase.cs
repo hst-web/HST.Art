@@ -97,7 +97,7 @@ namespace HST.Art.Web
         /// <returns></returns>
         public ActionResult RedirectLogin()
         {
-            return Redirect("~/Home/Index");
+            return Redirect("~/manage/home/index");
         }
 
         /// <summary>

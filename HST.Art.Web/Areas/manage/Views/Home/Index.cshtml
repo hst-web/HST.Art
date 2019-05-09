@@ -1,9 +1,8 @@
 ﻿@using HST.Art.Core
+@model Account
 
-@model List<User>
 @{
     ViewBag.Title = "网站后台管理";
-
 }
 
 <link rel="stylesheet" type="text/css" href="/Content/lib/h-ui.admin/skin/default/skin.css" id="skin" />
@@ -21,10 +20,6 @@
                         <a href="#" class="dropDown_A">管理 <i class="Hui-iconfont">&#xe6d5;</i></a>
                         <ul class="dropDown-menu menu radius box-shadow">
                             <li><a href="javascript:void(0)" onclick="user_show()">个人信息</a></li>
-                            @if (ViewBag.IsSuperAdmin)
-                            {
-                                <li><a href="javascript:void(0)" onclick="showDialog()">日志导出</a></li>
-                            }
                             <li><a href="/Account/LoginOut" data-title="退出">退出</a></li>
                         </ul>
                     </li>

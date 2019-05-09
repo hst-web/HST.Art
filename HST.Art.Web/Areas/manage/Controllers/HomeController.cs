@@ -14,22 +14,7 @@ namespace HST.Art.Web.Areas.manage.Controllers
         {
             Account account = GetAccount();
             ViewBag.UserName = account.UserName;
-            ViewBag.IsSuperAdmin = account.IsAdmin;
-
-            //List<ResourceMenu> menuList = new List<ResourceMenu>();
-            //ResourceMember resMem = new ResourceMemberController().GetModelById(Convert.ToInt16(GetAccount().Id));
-            //if (resMem.ResRole != null && resMem.ResRole.RmList != null && resMem.ResRole.RmList.Count > 0)
-            //{
-            //    foreach (var item in resMem.ResRole.RmList)
-            //    {
-            //        ResourceMenu menu = new ResourceMenu();
-            //        menu.Id = item.Menuid;
-            //        menu.Name = item.ResMenu.Name;
-            //        menuList.Add(menu);
-            //    }
-            //}
-
-            //ViewBag.RoleName = resMem.ResRole == null ? "管理员" : resMem.ResRole.RoleName;
+            //ViewBag.RoleName = account.IsAdmin ? "管理员" : resMem.ResRole.RoleName;
 
             return null;// View(menuList);
         }
