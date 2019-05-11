@@ -11,69 +11,10 @@ namespace HST.Art.Web.Areas.manage.Controllers
     public class UserController : ApplicationBase
     {
         UserService uService = new UserService();
-        // GET: User
-        public ActionResult Index()
-        {
-            Account account = GetAccount();
-            //ResourceMember model = new ResourceMemberController().GetModelById(Convert.ToInt16(account.Id));
-            return null;// View(model);
-        }
-
-        /// <summary>
-        /// 修改密码
-        /// </summary>                                          
-        /// <param name="oldPwd">原密码</param>
-        /// <param name="newPwd">新密码</param>
-        /// <param name="renewPwd">确认新密码</param>
-        /// <returns></returns>
-        [HttpPost]
-        public string Update(string oldPwd, string newPwd, string renewPwd)
-        {
-            bool isSuccess = false;
-            //var model = new ResourceMemberController().GetModelById(Convert.ToInt16(GetAccount().Id));
-            //if (model == null) return "error";
-            //string hashPwd = string.Empty;
-            //if (model.SaltPassword > 0)
-            //    hashPwd = encryption.Md5Hash(oldPwd + model.SaltPassword);
-            //else
-            //    hashPwd = encryption.Md5Hash(oldPwd);
-
-            //if (!string.Equals(hashPwd, model.Password))
-            //{
-            //    return "旧密码输入错误";
-            //}
-
-            //model.Password = model.SaltPassword > 0 ? encryption.Md5Hash(newPwd + model.SaltPassword) : encryption.Md5Hash(newPwd);
-            //isSuccess = new ResourceMemberController().Update(model);
-
-            if (isSuccess)
-            {
-                RemoveStoredData();
-                return "ok";
-            }
-            return "error";
-        }
 
         public ActionResult List()
         {
-            //InitData();
             return View();
-        }
-
-        private void InitData()
-        {
-            List<KeyValueViewModel> packges = new List<KeyValueViewModel>();
-            List<KeyValueViewModel> memberTypes = new List<KeyValueViewModel>();
-
-            //List<ResourcePackage> packgeList = new ResourcePackageController().GetAll();
-            //if (packgeList != null && packgeList.Count > 0)
-            //    packges = packgeList.Select(g => (new KeyValueViewModel() { Key = g.Id, Value = g.Name })).ToList();
-            //List<MemberType> memberTypeList = new ResourceMemberController().GetMemberTypes();
-            //if (memberTypeList != null && memberTypeList.Count > 0)
-            //    memberTypes = memberTypeList.Select(g => new KeyValueViewModel() { Key = g.Id, Value = g.MemberName }).ToList();
-            //ViewBag.memberTypes = memberTypes;
-            //ViewBag.packges = packges;
-
         }
 
         [HttpPost]
@@ -121,6 +62,111 @@ namespace HST.Art.Web.Areas.manage.Controllers
 
         }
 
+
+        #region 更新
+        /// <summary>
+        /// 更新
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public ActionResult Update(int id)
+        {
+            User data = uService.Get(id);
+            if (data != null)
+                return View(new UserViewModel
+                {
+                    Id = data.Id,
+                    UserName = data.UserName,
+                    Phone = data.Telephone,
+                    Email = data.Email,
+                    State = (int)data.State,
+                    RealName = data.Name,
+                    IsSupAdmin = data.IsAdmin
+                });
+            else
+                return View();
+        }   
+
+        [HttpPost]
+        public JsonResult Update(UserViewModel model)
+        {
+            ResultRetrun rmodel = new ResultRetrun();
+            if (ModelState.IsValid)
+            {
+                User data = uService.Get(model.Id);
+                data.Name = model.RealName;
+                data.Telephone = model.Phone;
+                data.Email = model.Email;
+                data.State = (PublishState)model.State;
+
+                rmodel.isSuccess = uService.Update(data);
+            }
+
+            return Json(rmodel);
+        }
+
+        /// <summary>
+        /// 初始化密码
+        /// </summary>
+        /// <param name="uid">id</param>
+        /// <returns></returns>
+        [HttpPost]
+        public string InitPwd(int uid)
+        {
+            bool isSuccess = uService.UpdatePassword(uid);
+            return isSuccess ? "ok" : "error";
+        }
+        #endregion
+
+        #region 新增
+        /// <summary>
+        /// 更新
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public ActionResult Add()
+        {
+            return View();
+        }
+        [HttpPost]
+        public JsonResult Add(UserViewModel model)
+        {
+            ResultRetrun rmodel = new ResultRetrun();
+            if (ModelState.IsValid)
+            {
+                User userModel = new User()
+                {
+                    Email = model.Email,
+                    Name = model.RealName,
+                    Password = model.Password,
+                    Telephone = model.Phone,
+                    State = (PublishState)model.State,
+                    UserName = model.UserName
+                };
+                rmodel.isSuccess = uService.Add(userModel);
+            }
+
+            return Json(rmodel);
+        }
+        #endregion
+
+        #region 删除
+        public JsonResult Delete(int id)
+        {
+            ResultRetrun rmodel = new ResultRetrun();
+            try
+            {
+                rmodel.isSuccess = uService.LogicDelete(id);
+            }
+            catch (Exception ex)
+            {
+                rmodel.message = "删除失败，原因：" + ex.Message;
+            }
+            return Json(rmodel, JsonRequestBehavior.AllowGet);
+        }
+        #endregion
+
+
         #region 验证方法
         [HttpGet]
         public JsonResult CheckUserName(int id, string username)
@@ -166,7 +212,7 @@ namespace HST.Art.Web.Areas.manage.Controllers
             }
 
             List<User> userList = uService.GetAll(filterModel);
-            if (userList != null && userList.Count > 0 && id > 0)
+            if (userList != null && userList.Count > 0)
             {
                 if (userList.Where(g => !g.Id.Equals(id)).Count() > 0)
                     rmodel.message = nameTemp + "已经存在";

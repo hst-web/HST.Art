@@ -1776,14 +1776,20 @@
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>_Layout.generated.cs</LastGenOutput>
     </Content>
-    <Content Include="Areas\manage\Views\Home\Index.cshtml" />
+    <None Include="Areas\manage\Views\Home\Index.cshtml">
+      <Generator>RazorGenerator</Generator>
+    </None>
     <Content Include="Areas\manage\Views\Account\Index.cshtml" />
     <Content Include="Areas\manage\Views\Resource\Add.cshtml" />
     <Content Include="Areas\manage\Views\Resource\Detail.cshtml" />
     <Content Include="Areas\manage\Views\Resource\Edit.cshtml" />
     <Content Include="Areas\manage\Views\Resource\List.cshtml" />
     <Content Include="Areas\manage\Views\Resource\Preview.cshtml" />
-    <Content Include="Areas\manage\Views\User\List.cshtml" />
+    <None Include="Areas\manage\Views\User\List.cshtml">
+      <Generator>RazorGenerator</Generator>
+    </None>
+    <Content Include="Areas\manage\Views\User\Add.cshtml" />
+    <Content Include="Areas\manage\Views\User\Update.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -1824,10 +1830,10 @@
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>Login.generated.cs</LastGenOutput>
     </None>
-    <None Include="Areas\manage\Views\Home\welcome.cshtml">
+    <Content Include="Areas\manage\Views\Home\welcome.cshtml">
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>welcome.generated.cs</LastGenOutput>
-    </None>
+    </Content>
     <None Include="Views\Shared\_Layout.cshtml">
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>_Layout.generated.cs</LastGenOutput>

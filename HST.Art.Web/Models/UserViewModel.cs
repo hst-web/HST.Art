@@ -7,7 +7,8 @@ namespace HST.Art.Web
 {
     public class UserViewModel
     {
-        public int Id { get; set; }
+        public int Id { get; set; }        
+
         [StringLength(20, MinimumLength = 2, ErrorMessage = "{0}长度{2}-{1}个字符")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "用户名不能为空")]
         [RegularExpression(@"^[^\s]+$", ErrorMessage = "用户名不能包含空字符")]
@@ -41,5 +42,7 @@ namespace HST.Art.Web
         public string CreateTime { get; set; }
 
         public bool IsSupAdmin { get; set; }
+
+       
     }
 }
