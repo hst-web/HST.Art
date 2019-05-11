@@ -18,7 +18,7 @@ namespace HST.Art.Service
         public MemberUnit Get(int id)
         {
             //参数验证
-            if (id < 1)
+            if (id < 1)sdfsdfsd
             {
                 ErrorMsg = ErrorCode.ParameterNull;
                 return null;
