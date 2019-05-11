@@ -48,7 +48,7 @@ namespace HST.Art.Core
         {
             get
             {
-                return (_value != null && _value.GetType().IsArray||_value.GetType() == typeof(List<string>) || _value.GetType() == typeof(List<int>));
+                return (_value != null && (_value.GetType().IsArray || _value.GetType() == typeof(List<string>) || _value.GetType() == typeof(List<int>)));
             }
         }
 
@@ -81,7 +81,7 @@ namespace HST.Art.Core
             {
                 if (!string.IsNullOrEmpty(_tbAsName))
                 {
-                    _tbAsName= _tbAsName + ".";
+                    _tbAsName = _tbAsName + ".";
                 }
                 return _tbAsName;
             }

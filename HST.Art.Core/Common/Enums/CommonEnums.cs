@@ -133,11 +133,11 @@ namespace HST.Art.Core
 
     public enum LoginType
     {
-        [Description("UserName")]
+        [Description("用户名")]
         UserName,
-        [Description("Telephone1")]
+        [Description("手机号")]
         Telephone,
-        [Description("Email")]
+        [Description("邮箱")]
         Email
     }
 

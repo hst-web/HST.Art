@@ -1,11 +1,16 @@
 ﻿using HST.Art.Core;
+using HST.Art.Service;
 using System;
 using System.Web.Mvc;
+using HST.Utillity;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace HST.Art.Web.Areas.manage.Controllers
 {
     public class UserController : ApplicationBase
     {
+        UserService uService = new UserService();
         // GET: User
         public ActionResult Index()
         {
@@ -48,5 +53,64 @@ namespace HST.Art.Web.Areas.manage.Controllers
             }
             return "error";
         }
+
+
+        #region 验证方法
+        [HttpGet]
+        public JsonResult CheckUserName(int id, string username)
+        {
+            return CheckIsExist(id, username, LoginType.UserName);
+        }
+        [HttpGet]
+        public JsonResult CheckPhone(int id, string phone)
+        {
+            return CheckIsExist(id, phone, LoginType.Telephone);
+        }
+
+        [HttpGet]
+        public JsonResult CheckEmail(int id, string email)
+        {
+            return CheckIsExist(id, email, LoginType.Email);
+        }
+
+        /// <summary>
+        /// 检查是否存在
+        /// </summary>
+        /// <param name="value">名称</param>
+        /// <param name="type">id</param>
+        /// <returns></returns>
+        private JsonResult CheckIsExist(int id, string value, LoginType loginType)
+        {
+            ResultRetrun rmodel = new ResultRetrun();
+            string nameTemp = loginType.GetDescription();
+            FilterEntityModel filterModel = new FilterEntityModel();
+            filterModel.keyValueList = new List<KeyValueObj>();
+
+            switch (loginType)
+            {
+                case LoginType.UserName:
+                    filterModel.keyValueList.Add(new KeyValueObj() { Key = "UserName", Value = value, FieldType = FieldType.String });
+                    break;
+                case LoginType.Telephone:
+                    filterModel.keyValueList.Add(new KeyValueObj() { Key = "Telephone", Value = value, FieldType = FieldType.String });
+                    break;
+                case LoginType.Email:
+                    filterModel.keyValueList.Add(new KeyValueObj() { Key = "Email", Value = value, FieldType = FieldType.String });
+                    break;
+            }
+
+            List<User> userList = uService.GetAll(filterModel);
+            if (userList != null && userList.Count > 0 && id > 0)
+            {
+                if (userList.Where(g => !g.Id.Equals(id)).Count() > 0)
+                    rmodel.message = nameTemp + "已经存在";
+                else
+                    rmodel.isSuccess = true;
+            }
+            else
+                rmodel.isSuccess = true;
+            return Json(rmodel.isSuccess, JsonRequestBehavior.AllowGet);
+        }
+        #endregion
     }
 }

@@ -56,7 +56,7 @@ namespace HST.Utillity
                     _connection.Open();
                 }
                 _trans = _connection.BeginTransaction(IsolationLevel.ReadUncommitted);
-                
+
             }
         }
 
@@ -94,14 +94,14 @@ namespace HST.Utillity
                 }
                 affectedRows = command.ExecuteNonQuery();
 
-                if (affectedRows<=0)
+                if (affectedRows <= 0)
                 {
                     affectedRows = 1;
                 }
 
                 command.Parameters.Clear();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Logger.Info(this, ex.Message, ex);
             }
@@ -173,7 +173,7 @@ namespace HST.Utillity
             }
         }
 
-       
+
         /// <summary>   
         /// 执行一个查询语句，返回一个关联的DataReader实例   
         /// </summary>   
@@ -283,6 +283,7 @@ namespace HST.Utillity
             {
                 foreach (DbParameter parameter in parameters)
                 {
+                    parameter.Value = parameter.Value == null ? "" : parameter.Value;
                     if (!command.Parameters.Contains(parameter))
                     {
                         command.Parameters.Add(parameter);
