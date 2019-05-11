@@ -13,10 +13,8 @@ namespace HST.Art.Web.Areas.manage.Controllers
         public ActionResult Index()
         {
             Account account = GetAccount();
-            ViewBag.UserName = account.UserName;
-            //ViewBag.RoleName = account.IsAdmin ? "管理员" : resMem.ResRole.RoleName;
 
-            return null;// View(menuList);
+            return  View(account);
         }
         public ActionResult welcome()
         {

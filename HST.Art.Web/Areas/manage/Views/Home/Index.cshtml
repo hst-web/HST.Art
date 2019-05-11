@@ -15,7 +15,7 @@
             <a aria-hidden="false" class="nav-toggle Hui-iconfont visible-xs" href="/Account/LoginOut" style="right:60px;">&#xe726;</a>
             <nav id="Hui-userbar" class="nav navbar-nav navbar-userbar ">
                 <ul class="cl">
-                    <li class="hidden-xs">@ViewBag.UserName&nbsp;&nbsp;@ViewBag.RoleName</li>
+                    <li class="hidden-xs">@Model.UserName&nbsp;&nbsp;@(Model.IsAdmin?"超级管理员":"管理员")</li>
                     <li class="dropDown right dropDown_hover">
                         <a href="#" class="dropDown_A">管理 <i class="Hui-iconfont">&#xe6d5;</i></a>
                         <ul class="dropDown-menu menu radius box-shadow">
@@ -35,7 +35,7 @@
             <dt class="selected"><i class="Hui-iconfont">&#xe616;</i> 用户学习资料<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
             <dd style="display:block">
                 <ul>
-                    <li><a data-href="@Url.Action("List","ResPackge")" data-title="资料包管理" href="javascript:void(0)">资料包管理</a></li>
+                    <li><a data-href="@Url.Action("welcome","Home")" data-title="测试1" href="javascript:void(0)">测试1</a></li>
                     <li><a data-href="@Url.Action("List","Resource")" data-title="资料管理" href="javascript:void(0)">资料管理</a></li>
                     <li><a data-href="@Url.Action("Index","ResPermission")" data-title="用户权限" href="javascript:void(0)">用户权限</a></li>
 
@@ -48,14 +48,12 @@
             <dt class=""><i class="Hui-iconfont">&#xe62d;</i> 系统管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
             <dd>
                 <ul>
-                    @if (Model.Where(g => g.Name == "后台管理员").Count() > 0)
-                    {
+                    
                         <li><a data-href="@Url.Action("List", "ResAdmin")" data-title="后台管理员" href="javascript:void(0)">后台管理员</a></li>
-                    }
-                    @if (Model.Where(g => g.Name == "角色权限").Count() > 0)
-                    {
+                    
+                   
                         <li><a data-href="@Url.Action("List", "ResRole")" data-title="角色权限" href="javascript:void(0)">角色权限</a></li>
-                    }
+                   
                 </ul>
             </dd>
         </dl>
@@ -71,7 +69,7 @@
         <div class="Hui-tabNav-wp">
             <ul id="min_title_list" class="acrossTab cl">
                 <li class="active">
-                    <span title="我的桌面" data-href="welcome">我的桌面</span>
+                    <span title="我的桌面1" data-href="welcome">我的桌面2</span>
                     <em></em>
                 </li>
             </ul>
@@ -81,7 +79,7 @@
     <div id="iframe_box" class="Hui-article">
         <div class="show_iframe">
             <div style="display:none" class="loading"></div>
-            <iframe scrolling="yes" frameborder="0" src="/Home/welcome"></iframe>
+            <iframe scrolling="yes" frameborder="0" src="@Url.Action("welcome", "home")"></iframe>
         </div>
     </div>
 </section>
