@@ -256,12 +256,13 @@
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\MemberTypeViewModel.cs" />
     <Compile Include="Models\PageListViewModel.cs" />
-    <Compile Include="Models\ResAdminViewModel.cs" />
+    <Compile Include="Models\ReturnPageResultIList.cs" />
+    <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="Models\ResourcePackageViewModel.cs" />
     <Compile Include="Models\ResourceViewModel.cs" />
     <Compile Include="Models\ResRoleViewModel.cs" />
     <Compile Include="Models\ResultRetrun.cs" />
-    <Compile Include="Models\SreachDataTable.cs" />
+    <Compile Include="Models\SearchDataTable.cs" />
     <Compile Include="Models\UploadViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -1777,6 +1778,12 @@
     </Content>
     <Content Include="Areas\manage\Views\Home\Index.cshtml" />
     <Content Include="Areas\manage\Views\Account\Index.cshtml" />
+    <Content Include="Areas\manage\Views\Resource\Add.cshtml" />
+    <Content Include="Areas\manage\Views\Resource\Detail.cshtml" />
+    <Content Include="Areas\manage\Views\Resource\Edit.cshtml" />
+    <Content Include="Areas\manage\Views\Resource\List.cshtml" />
+    <Content Include="Areas\manage\Views\Resource\Preview.cshtml" />
+    <Content Include="Areas\manage\Views\User\List.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />

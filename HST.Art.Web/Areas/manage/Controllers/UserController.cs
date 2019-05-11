@@ -54,6 +54,72 @@ namespace HST.Art.Web.Areas.manage.Controllers
             return "error";
         }
 
+        public ActionResult List()
+        {
+            //InitData();
+            return View();
+        }
+
+        private void InitData()
+        {
+            List<KeyValueViewModel> packges = new List<KeyValueViewModel>();
+            List<KeyValueViewModel> memberTypes = new List<KeyValueViewModel>();
+
+            //List<ResourcePackage> packgeList = new ResourcePackageController().GetAll();
+            //if (packgeList != null && packgeList.Count > 0)
+            //    packges = packgeList.Select(g => (new KeyValueViewModel() { Key = g.Id, Value = g.Name })).ToList();
+            //List<MemberType> memberTypeList = new ResourceMemberController().GetMemberTypes();
+            //if (memberTypeList != null && memberTypeList.Count > 0)
+            //    memberTypes = memberTypeList.Select(g => new KeyValueViewModel() { Key = g.Id, Value = g.MemberName }).ToList();
+            //ViewBag.memberTypes = memberTypes;
+            //ViewBag.packges = packges;
+
+        }
+
+        [HttpPost]
+        public ActionResult GetJsonData(SearchDataTable dt, SearchViewModel svm)
+        {
+            int totalNum = 0;
+            FilterEntityModel fillter = new FilterEntityModel();
+            fillter.PageIndex = dt.pageIndex;
+            fillter.PageSize = dt.length;
+            fillter.keyValueList = new List<KeyValueObj>();
+            if (svm != null && !string.IsNullOrEmpty(svm.FilterKey) && !string.IsNullOrEmpty(svm.FilterVal))
+            {
+                string fkey = string.Empty;
+                SearchType ftype = (SearchType)Convert.ToInt16(svm.FilterKey);
+
+                switch (ftype)
+                {
+                    case SearchType.Name:
+                        fkey = "Name";
+                        break;
+                    case SearchType.State:
+                        fkey = "State";
+                        break;
+                    case SearchType.Number:
+                        fkey = "Telephone";
+                        break;
+                }
+
+                fillter.keyValueList.Add(new KeyValueObj() { Key = fkey, Value = svm.FilterVal });
+            }
+
+            List<User> userList = uService.GetPage(fillter, out totalNum);
+            ReturnPageResultIList<User> data = new ReturnPageResultIList<Core.User>(userList, totalNum);
+            IList<UserViewModel> gmList = new List<UserViewModel>();
+
+            if (data != null && data.DataT != null)
+                gmList = data.DataT.Select(g => new UserViewModel() { Id = g.Id, RealName = g.Name, UserName = g.UserName, Phone = g.Telephone, State = (int)g.State, CreateTime = g.CreateDate.ToString("yyyy-MM-dd HH:00"), Email = g.Email, IsSupAdmin = g.IsAdmin }).ToList();
+
+            return Json(new
+            {
+                recordsFiltered = data.totalRecords,
+                recordsTotal = data.totalPages,
+                data = gmList
+            }, JsonRequestBehavior.AllowGet);
+
+        }
 
         #region 验证方法
         [HttpGet]

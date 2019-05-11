@@ -9,7 +9,7 @@ namespace HST.Art.Web
      /// <summary>
      /// JqueryDataTable插件交互的DT格式的数据(DT参数区分大小写)
      /// </summary>
-    public class SreachDataTable
+    public class SearchDataTable
     {
         /// <summary>
          /// 请求次数（前端==》后端）
@@ -45,5 +45,26 @@ namespace HST.Art.Web
          /// 集合分页数据（前端《==后端）
          /// </summary>
          public IList data { get; set; }
+    }
+
+    public class SearchViewModel
+    {
+        public string FilterKey { get; set; }
+        public string FilterVal { get; set; }
+    }
+
+    /// <summary>
+    /// 筛选类别
+    /// </summary>
+    public enum SearchType
+    {
+        UnKnown,
+        Name,
+        Title,
+        Type,
+        State,
+        Number,
+        Area,
+        Date
     }
 }

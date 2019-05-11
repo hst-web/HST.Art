@@ -9,7 +9,7 @@
 <header class="navbar-wrapper">
     <div class="navbar navbar-fixed-top">
         <div class="container-fluid cl">
-            <span style="padding-left:20px;"><a class="logo navbar-logo f-l mr-10" href="">用户学习资料平台</a></span>
+            <span style="padding-left:20px;"><a class="logo navbar-logo f-l mr-10" href="">网站后台管理</a></span>
             <span class="logo navbar-slogan f-l mr-10">v0.1</span>
             <a aria-hidden="false" class="nav-toggle Hui-iconfont visible-xs" href="javascript:;">&#xe667;</a>
             <a aria-hidden="false" class="nav-toggle Hui-iconfont visible-xs" href="/Account/LoginOut" style="right:60px;">&#xe726;</a>
@@ -43,17 +43,12 @@
             </dd>
         </dl>
 
-
-        <dl id="menu-picture">
-            <dt class=""><i class="Hui-iconfont">&#xe62d;</i> 系统管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+        <dl>
+            <dt class=""><i class="Hui-iconfont">&#xe62d;</i> 系统设置<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
             <dd>
                 <ul>
-                    
-                        <li><a data-href="@Url.Action("List", "ResAdmin")" data-title="后台管理员" href="javascript:void(0)">后台管理员</a></li>
-                    
-                   
-                        <li><a data-href="@Url.Action("List", "ResRole")" data-title="角色权限" href="javascript:void(0)">角色权限</a></li>
-                   
+                    <li><a data-href="@Url.Action("", "")" data-title="类别设置" href="javascript:void(0)">类别设置</a></li>
+                    <li><a data-href="@Url.Action("List", "User")" data-title="账号管理" href="javascript:void(0)">账号管理</a></li>
                 </ul>
             </dd>
         </dl>
@@ -69,7 +64,7 @@
         <div class="Hui-tabNav-wp">
             <ul id="min_title_list" class="acrossTab cl">
                 <li class="active">
-                    <span title="我的桌面1" data-href="welcome">我的桌面2</span>
+                    <span title="我的桌面" data-href="welcome">我的桌面</span>
                     <em></em>
                 </li>
             </ul>

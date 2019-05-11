@@ -1,12 +1,4 @@
 /*-----------H-ui前端框架-------------
-* H-ui.js v3.1.3
-* http://www.h-ui.net/
-* Created & Modified by guojunhui
-* Date modified 2017.05.26
-*
-* Copyright 2013-2017 北京颖杰联创科技有限公司 All rights reserved.
-* Licensed under MIT license.
-* http://opensource.org/licenses/MIT
 */
 /*
 Includes：
@@ -2770,8 +2762,8 @@ function stopDefault(e) {
  * Date modified 2017.06.26
  *
  * Copyright 2017 北京颖杰联创科技有限公司 All rights reserved.
- * Licensed under MIT license.
- * http://opensource.org/licenses/MIT
+ 
+ 
  * ========================================================================*/
 !function($) {	
 	$.fn.Huispinner = function(options, callback) {
@@ -4330,8 +4322,8 @@ function displaynavbar(obj){
  * Date modified 2017.05.05
  *
  * Copyright 2017 北京颖杰联创科技有限公司 All rights reserved.
- * Licensed under MIT license.
- * http://opensource.org/licenses/MIT
+ 
+ 
  * ========================================================================*/
 !function($) {
 	$.fn.Huihover = function(options){
@@ -4358,8 +4350,8 @@ function displaynavbar(obj){
  * Date modified 2017.05.09
  *
  * Copyright 2017 北京颖杰联创科技有限公司 All rights reserved.
- * Licensed under MIT license.
- * http://opensource.org/licenses/MIT
+ 
+ 
  * ========================================================================*/
 !function($) {
 	$.fn.Huifocusblur = function(options){
@@ -4409,8 +4401,8 @@ function displaynavbar(obj){
  * Date modified 2017.05.05
  *
  * Copyright 2017 北京颖杰联创科技有限公司 All rights reserved.
- * Licensed under MIT license.
- * http://opensource.org/licenses/MIT
+ 
+ 
  * ========================================================================*/
 !function($) {
 	$.fn.Huitab = function(options){
@@ -4447,8 +4439,8 @@ function displaynavbar(obj){
  * Date modified 2017.05.05
  *
  * Copyright 2017 北京颖杰联创科技有限公司 All rights reserved.
- * Licensed under MIT license.
- * http://opensource.org/licenses/MIT
+ 
+ 
  * ========================================================================*/
 !function($) {
 	$.fn.Huifold = function(options){
@@ -4504,8 +4496,8 @@ function displaynavbar(obj){
  * Date modified 2017.05.10
  *
  * Copyright 2017 北京颖杰联创科技有限公司 All rights reserved.
- * Licensed under MIT license.
- * http://opensource.org/licenses/MIT
+ 
+ 
  * ========================================================================*/
 !function($) {
 	$.fn.Huitags = function(options) {
@@ -4673,8 +4665,8 @@ function displaynavbar(obj){
  * Date modified 2017.05.12
  *
  * Copyright 2017 北京颖杰联创科技有限公司 All rights reserved.
- * Licensed under MIT license.
- * http://opensource.org/licenses/MIT
+ 
+ 
  * ========================================================================*/
 !function($) {
 	$.fn.Huitextarealength = function(options){
@@ -4723,8 +4715,8 @@ function displaynavbar(obj){
  * Date modified 2017.05.05
  *
  * Copyright 2017 北京颖杰联创科技有限公司 All rights reserved.
- * Licensed under MIT license.
- * http://opensource.org/licenses/MIT
+ 
+ 
  * ========================================================================*/
 !function($) {
 	$.fn.Huipreview = function(options){
@@ -4837,8 +4829,8 @@ function displaynavbar(obj){
  * Date modified 2017.05.05
  *
  * Copyright 2017 北京颖杰联创科技有限公司 All rights reserved.
- * Licensed under MIT license.
- * http://opensource.org/licenses/MIT
+ 
+ 
  * ========================================================================*/
 !function($) {
 	//bottom 距离底部高度

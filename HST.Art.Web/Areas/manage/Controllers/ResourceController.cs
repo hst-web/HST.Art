@@ -24,7 +24,7 @@ namespace HST.Art.Web.Areas.manage.Controllers
         /// <param name="upgradetime"></param>
         /// <returns></returns>
         [HttpPost]
-        public ActionResult GetJsonData(SreachDataTable dt, string name, int packgeId, int format, int memberTypeId, int sort)
+        public ActionResult GetJsonData(SearchDataTable dt, string name, int packgeId, int format, int memberTypeId, int sort)
         {
             //ResourceFilterModel fillter = new ResourceFilterModel()
             //{
