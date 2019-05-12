@@ -17,22 +17,16 @@
     }
 </style>
 <article class="page-container">
-    @using (Ajax.BeginForm("Update", "User", new AjaxOptions() { HttpMethod = "Post", OnSuccess = "formSuccess(data)", OnBegin = "disSubmit('sub_btn')", OnComplete = "enSubmit('sub_btn')" }, new { id = "form-good-add", @class = "form form-horizontal" }))
+    @using (Ajax.BeginForm("Edit", "User", new AjaxOptions() { HttpMethod = "Post", OnSuccess = "formSuccess(data)", OnBegin = "disSubmit('sub_btn')", OnComplete = "enSubmit('sub_btn')" }, new { id = "form-good-add", @class = "form form-horizontal" }))
     {
         @Html.AntiForgeryToken()
         @Html.HiddenFor(m => m.Id)
+        @Html.HiddenFor(m => m.UserName)
+        @Html.HiddenFor(m => m.Password)
         <div class="row cl">
             <label class="form-label col-xs-3 "><span class="c-red">*</span>用户名：</label>
             <div class="formControls col-xs-6 ">
-                @if (Model.IsSupAdmin)
-                {
-                    <input type="text" disabled class="input-text" value="@Model.UserName" />
-                    @Html.HiddenFor(m => m.UserName)
-                }
-                else
-                {   @Html.TextBoxFor(m => m.UserName, new { placeholder = "请输入用户名", @class = "input-text" })
-                    @Html.ValidationMessageFor(m => m.UserName, null, new { @class = "error-lable" })
-                }
+                <input type="text" disabled class="input-text" value="@Model.UserName" />
 
             </div>
             @if (ViewBag.IsSupAdmin)
@@ -41,6 +35,13 @@
                     <button class="btn btn-default radius" style="height:auto;padding:6px 10px;font-size:12px" onclick="initPwd()" type="button">初始化密码</button>
                 </div>
             }
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-3 "><span class="c-red">*</span>姓名：</label>
+            <div class="formControls col-xs-6 ">
+                @Html.TextBoxFor(m => m.RealName, new { placeholder = "请输入姓名", @class = "input-text" })
+                @Html.ValidationMessageFor(m => m.RealName, null, new { @class = "error-lable" })
+            </div>
         </div>
         <div class="row cl">
             <label class="form-label col-xs-3 "><span class="c-red">*</span>手机号：</label>
@@ -60,9 +61,9 @@
         <div class="row cl">
             <label class="form-label col-xs-3 ">状态：</label>
             <div class="formControls col-xs-6 ">
-                @if (Model.IsSupAdmin)
+                @if (Model.IsSupAdmin|| ViewBag.IsSelf)
                 {
-                    <input type="text" disabled class="input-text" value="启用" />
+                    <input type="text" disabled class="input-text" value="已上架" />
                     @Html.HiddenFor(m => m.State)
                 }
                 else
@@ -79,22 +80,18 @@
         <div class="row cl">
             <div id="btn_submit" class="col-xs-6  col-xs-offset-3 col-sm-offset-2 mt-10">
 
-                <button class="btn btn-primary radius" type="submit" id="sub_btn"><i class="Hui-iconfont">&#xe632;</i> 保存并提交</button>
-                <input name="" type="button" onclick="layer_close();" class="btn btn-default radius " value="&nbsp;取&nbsp;&nbsp;&nbsp;&nbsp;消&nbsp;">
+                <button class="btn btn-primary radius" type="submit" id="sub_btn">保存</button>
+                <input name="" type="button" onclick="layer_close();" class="btn btn-default radius " value="取消">
             </div>
         </div>
     }
 </article>
 <script type="text/javascript">
     $(function () {
-        $("#sel_role").change(function () {
-            $("#RoleId").val($(this).val()).blur();
-        })
-
     })
 
     function initPwd() {
-        layer.confirm('初始化密码为123456，您确定要初始化吗？', function (e) {
+        layer.confirm('初始化密码为手机号后6位，您确定要初始化吗？', function (e) {
             $.ajax({
                 url: "@Url.Action("InitPwd")",
                 type: "post",
@@ -122,7 +119,7 @@
                     icon: 6,
                     closeBtn: 0,
                     yes: function () {
-                        parent.table1.ajax.reload();
+                        parent[1].table1.ajax.reload();
                         parent.layer.close(index);
                     }
                 });

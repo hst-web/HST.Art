@@ -117,28 +117,107 @@ function showException() {
     layer.alert('操作数据请求失败，请稍后再试', { icon: 2 });
 }
 
-   function disSubmit(id,title) {
-        title = title || "正在提交...";
-        var obj = $("#" + id);
-        var hisVal = "";
-        if (obj[0].tagName.toLowerCase()=="input") {
-            hisVal = obj.val();
-            obj.val(title).css("opacity", "0.7").attr("disabled", "disabled");
-        } else {
-            hisVal = obj.html();
-            obj.html(title).css("opacity", "0.7").attr("disabled", "disabled");
-        }
-
-        obj.attr("data-bind", hisVal);
+function disSubmit(id, title) {
+    title = title || "正在提交...";
+    var obj = $("#" + id);
+    var hisVal = "";
+    if (obj[0].tagName.toLowerCase() == "input") {
+        hisVal = obj.val();
+        obj.val(title).css("opacity", "0.7").attr("disabled", "disabled");
+    } else {
+        hisVal = obj.html();
+        obj.html(title).css("opacity", "0.7").attr("disabled", "disabled");
     }
 
-    function enSubmit(id,title) {
-        var obj = $("#" + id);
-        var hisVal=obj.attr("data-bind");
-        title = title || hisVal;
-        if (obj[0].tagName.toLowerCase()=="input") {
-            obj.val(title).removeAttr("style").removeAttr("disabled");
-        } else {
-            obj.html(title).removeAttr("style").removeAttr("disabled");
-        }
+    obj.attr("data-bind", hisVal);
+}
+
+function enSubmit(id, title) {
+    var obj = $("#" + id);
+    var hisVal = obj.attr("data-bind");
+    title = title || hisVal;
+    if (obj[0].tagName.toLowerCase() == "input") {
+        obj.val(title).removeAttr("style").removeAttr("disabled");
+    } else {
+        obj.html(title).removeAttr("style").removeAttr("disabled");
     }
+}
+
+/*删除*/
+function obj_del(title,action,id ) {
+    layer.confirm('确认要删除该'+title+'吗？', function (e) {
+        $.ajax({
+            url: action,
+            type: "post",
+            data: { id: id },
+            success: function (data) {
+                if (data.isSuccess) {
+                    layer.alert('操作成功！', {
+                        icon: 6,
+                        closeBtn: 0,
+                        yes: function () {
+                            table1.ajax.reload();
+                            layer.closeAll();
+                        }
+                    });
+                } else {
+                    layer.alert('操作失败！', { icon: 5 });
+                }
+            },
+            error: function (data) { layer.alert('操作失败！', { icon: 5 }); }
+        })
+    });
+}
+
+
+/*上架*/
+function obj_publish(action,id ) {
+    layer.confirm('确认要上架吗？', function (e) {
+        $.ajax({
+            url: action,
+            type: "post",
+            data: { id: id },
+            success: function (data) {
+                if (data.isSuccess) {
+                    layer.alert('操作成功！', {
+                        icon: 6,
+                        closeBtn: 0,
+                        yes: function () {
+                            table1.ajax.reload();
+                            layer.closeAll();
+                        }
+                    });
+                } else {
+                    layer.alert('操作失败！', { icon: 5 });
+                }
+            },
+            error: function (data) { layer.alert('操作失败！', { icon: 5 }); }
+        })
+    });
+}
+
+/*下架*/
+function obj_shelves(action, id) {
+    layer.confirm('确认要下架吗？', function (e) {
+        $.ajax({
+            url: action,
+            type: "post",
+            data: { id: id },
+            success: function (data) {
+                if (data.isSuccess) {
+                    layer.alert('操作成功！', {
+                        icon: 6,
+                        closeBtn: 0,
+                        yes: function () {
+                            table1.ajax.reload();
+                            layer.closeAll();
+                        }
+                    });
+                } else {
+                    layer.alert('操作失败！', { icon: 5 });
+                }
+            },
+            error: function (data) { layer.alert('操作失败！', { icon: 5 }); }
+        })
+    });
+}

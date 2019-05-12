@@ -26,7 +26,12 @@
             <option value="@((int)PublishState.Lower)">已下架</option>
         </select>
         <button name="search" id="search" class="btn btn-success ml-20" type="button"><i class="Hui-iconfont">&#xe665;</i> 查询</button>
-        <button class="btn btn-warning" onclick="user_add('新建账户','@Url.Action("Add")')" type="button">新建账户</button>
+        @if (ViewBag.IsSupAdmin)
+        {
+            <button class="btn btn-warning" onclick="user_add('新建账户','@Url.Action("Add")')" type="button">新建账户</button>
+        }
+        <input type="hidden" id="is_admin" value="@ViewBag.IsSupAdmin" />
+        <input type="hidden" id="user_id" value="@ViewBag.UserId" />
     </div>
     <div class="mt-10">
         <table id="tbTable" class="table table-border table-bordered table-bg table-sort">
@@ -79,10 +84,10 @@
 
         /*编辑*/
         function user_deit(title, url, id) {
-            var index = layer.open({
+            var index = top.layer.open({
                 type: 2,
                 title: title,
-                area: ['750px', '520px'],
+                area: ['750px', '480px'],
                 content: url + "?id=" + id
             });
         }
@@ -97,40 +102,36 @@
             });
         }
 
-        function getFilterVal() {
-            if ($("#sel_filType").val() == '@((int)SearchType.State)') {
-                return $("#sel_state").val();
-            } else {
-                return  $("#sel_filVal").val();
-            }
-
-        }
-
-        /*删除*/
-        function user_del(id, title) {
-            layer.confirm('确认要删除该账户吗？', function (e) {
+        function initPwd(id) {
+            layer.confirm('初始化密码为手机号后6位，您确定要初始化吗？', function (e) {
                 $.ajax({
-                    url: "@Url.Action("Delete")",
+                    url: "@Url.Action("InitPwd")",
                     type: "post",
-                    data: { id: id, name: title },
+                    data: { uid: id },
                     success: function (data) {
                         if (data == "ok") {
-                            layer.alert('操作成功！', {
-                                icon: 6,
-                                closeBtn: 0,
-                                yes: function () {
-                                    table1.ajax.reload();
-                                    layer.closeAll();
-                                }
-                            });
-                        } else {
+                            layer.alert('初始化成功！', { icon: 6 });
+                        } else if (data == "error") {
                             layer.alert('操作失败！', { icon: 5 });
+                        }
+                        else {
+                            layer.alert(data, { icon: 7 });
                         }
                     },
                     error: function (data) { layer.alert('操作失败！', { icon: 5 }); }
                 })
-            });
+            })
         }
+
+        function getFilterVal() {
+            if ($("#sel_filType").val() == '@((int)SearchType.State)') {
+                return $("#sel_state").val();
+            } else {
+                return $("#sel_filVal").val();
+            }
+
+        }
+
         function initializeTable() {
             var dataTable = $('#tbTable').DataTable({
                 "serverSide": true,
@@ -173,9 +174,25 @@
                     "targets": [-1],
                     "data": "Id",
                     "render": function (data, type, full) {
-                        var tmpString = "<a style=\"text-decoration:none\" onClick=\"res_detail('查看资料','@Url.Action("Detail")'," + data + ")\" href=\"javascript:;\" title=\"查看\">查看</a>";
-                        tmpString += "<a style=\"text-decoration:none\" onClick=\"user_deit('修改资料','@Url.Action("Edit")'," + data + ")\" href=\"javascript:;\" title=\"编辑\">编辑</a>";
-                        tmpString += "<a href=\"javascript:;\" onClick=\"user_del(" + data + ",'" + full.Title + "')\"  title=\"删除\">删除</a>";
+                        var isAdmin = $("#is_admin").val();
+                        var tmpString = "<a style=\"text-decoration:none\" onClick=\"user_deit('修改资料','@Url.Action("Edit")'," + data + ")\" href=\"javascript:;\" title=\"编辑\">编辑</a>";
+                        if (isAdmin) {
+                            if ($("#user_id").val() == data) {
+                                tmpString += "<a href=\"javascript:;\" onClick=\"initPwd(" + data + ")\"  title=\"初始化密码\">初始化密码</a>";
+                            } else {
+                                if (full.State == 0)
+                                    tmpString += "<a href=\"javascript:;\" onClick=\"obj_publish('@Url.Action("Publish")'," + data + ")\"  title=\"上架\">上架</a>";
+                                else
+                                    tmpString += "<a href=\"javascript:;\" onClick=\"obj_shelves('@Url.Action("Shelves")'," + data + ")\"  title=\"下架\">下架</a>";
+                                tmpString += "<a href=\"javascript:;\" onClick=\"initPwd(" + data + ")\"  title=\"初始化密码\">初始化密码</a>";
+                                tmpString += "<a href=\"javascript:;\" onClick=\"obj_del('账户','@Url.Action("Delete")'," + data + ")\"  title=\"删除\">删除</a>";
+                            }
+                        } else {
+                            if ($("#user_id").val() != data) {
+                                tmpString = "不可操作";
+                            } 
+                        }
+
                         return tmpString;
                     }
                 }

@@ -1789,7 +1789,7 @@
       <Generator>RazorGenerator</Generator>
     </None>
     <Content Include="Areas\manage\Views\User\Add.cshtml" />
-    <Content Include="Areas\manage\Views\User\Update.cshtml" />
+    <Content Include="Areas\manage\Views\User\Edit.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />

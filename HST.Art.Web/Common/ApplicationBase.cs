@@ -19,7 +19,7 @@ namespace HST.Art.Web
             if (string.IsNullOrEmpty(cookieStr))
             {
                 string tmpRouteName = RouteData.GetRequiredString("controller");
-                if (!tmpRouteName.Equals("Account",StringComparison.InvariantCultureIgnoreCase))
+                if (!tmpRouteName.Equals("Account", StringComparison.InvariantCultureIgnoreCase))
                 {
                     //filterContext.Result = new RedirectResult("/Account/Login");
                     filterContext.Result = new EmptyResult();
@@ -40,7 +40,7 @@ namespace HST.Art.Web
         public bool LoginBase(string username, string pwd)
         {
             AccountService accountService = new AccountService();
-            Account model = accountService.GetSingleMember(username, pwd); 
+            Account model = accountService.GetSingleMember(username, pwd);
             if (model != null)
             {
                 HttpCookie cookie = new HttpCookie("accountInfo");
@@ -133,7 +133,7 @@ namespace HST.Art.Web
         /// <returns></returns>
         private string Base64Generate(string encryptStr)
         {
-            return EncryptHelper.Encode(encryptStr + "|" + "ee7018a6AA5b53e50");          
+            return EncryptHelper.Encode(encryptStr + "|" + "ee7018a6AA5b53e50");
         }
 
         /// <summary>
@@ -154,9 +154,22 @@ namespace HST.Art.Web
             return string.Empty;
         }
 
+        #region 虚方法
 
+        public virtual JsonResult Delete(int id)   
+        {        
+            throw new ArgumentNullException("Calling methods requires overriding base classes");
+        }
 
+        public virtual JsonResult Publish(int id)
+        {
+            throw new ArgumentNullException("Calling methods requires overriding base classes");
+        }
 
-
+        public virtual JsonResult Shelves(int id)
+        {
+            throw new ArgumentNullException("Calling methods requires overriding base classes");
+        }
+        #endregion
     }
 }

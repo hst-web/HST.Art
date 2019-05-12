@@ -22,6 +22,7 @@ namespace HST.Art.Core
 
         //初始化密码
         public static string INIT_PASSWORD = "123456";
+        public static string INIT_MARKET_PASSWORD = "********";
 
         //初始化企业编号
         public static string INIT_ORG_NUMBER = "Z190001";

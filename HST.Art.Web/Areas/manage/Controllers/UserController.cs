@@ -14,6 +14,9 @@ namespace HST.Art.Web.Areas.manage.Controllers
 
         public ActionResult List()
         {
+            Account accouont = GetAccount();
+            ViewBag.IsSupAdmin = accouont.IsAdmin;
+            ViewBag.UserId = accouont.Id;
             return View();
         }
 
@@ -51,7 +54,7 @@ namespace HST.Art.Web.Areas.manage.Controllers
             IList<UserViewModel> gmList = new List<UserViewModel>();
 
             if (data != null && data.DataT != null)
-                gmList = data.DataT.Select(g => new UserViewModel() { Id = g.Id, RealName = g.Name, UserName = g.UserName, Phone = g.Telephone, State = (int)g.State, CreateTime = g.CreateDate.ToString("yyyy-MM-dd HH:00"), Email = g.Email, IsSupAdmin = g.IsAdmin }).ToList();
+                gmList = data.DataT.Select(g => new UserViewModel() { Id = g.Id, RealName = g.Name, UserName = g.UserName, Phone = g.Telephone, State = (int)g.State, CreateTime = g.CreateDate.ToString("yyyy-MM-dd HH:MM"), Email = g.Email, IsSupAdmin = g.IsAdmin }).ToList();
 
             return Json(new
             {
@@ -69,9 +72,13 @@ namespace HST.Art.Web.Areas.manage.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public ActionResult Update(int id)
+        public ActionResult Edit(int id)
         {
             User data = uService.Get(id);
+            Account account = GetAccount();
+            ViewBag.IsSupAdmin = account.IsAdmin;
+            ViewBag.IsSelf = id == account.Id;
+
             if (data != null)
                 return View(new UserViewModel
                 {
@@ -81,14 +88,15 @@ namespace HST.Art.Web.Areas.manage.Controllers
                     Email = data.Email,
                     State = (int)data.State,
                     RealName = data.Name,
-                    IsSupAdmin = data.IsAdmin
+                    IsSupAdmin = data.IsAdmin,
+                    Password = Constant.INIT_MARKET_PASSWORD
                 });
             else
                 return View();
-        }   
+        }
 
         [HttpPost]
-        public JsonResult Update(UserViewModel model)
+        public JsonResult Edit(UserViewModel model)
         {
             ResultRetrun rmodel = new ResultRetrun();
             if (ModelState.IsValid)
@@ -150,8 +158,8 @@ namespace HST.Art.Web.Areas.manage.Controllers
         }
         #endregion
 
-        #region 删除
-        public JsonResult Delete(int id)
+        #region 状态操作
+        public override JsonResult Delete(int id)
         {
             ResultRetrun rmodel = new ResultRetrun();
             try
@@ -160,12 +168,39 @@ namespace HST.Art.Web.Areas.manage.Controllers
             }
             catch (Exception ex)
             {
-                rmodel.message = "删除失败，原因：" + ex.Message;
+                rmodel.message = "操作失败，原因：" + ex.Message;
+            }
+            return Json(rmodel, JsonRequestBehavior.AllowGet);
+        }
+
+        public override JsonResult Publish(int id)
+        {
+            ResultRetrun rmodel = new ResultRetrun();
+            try
+            {
+                rmodel.isSuccess = uService.Publish(id);
+            }
+            catch (Exception ex)
+            {
+                rmodel.message = "操作失败，原因：" + ex.Message;
+            }
+            return Json(rmodel, JsonRequestBehavior.AllowGet);
+        }
+
+        public override JsonResult Shelves(int id)
+        {
+            ResultRetrun rmodel = new ResultRetrun();
+            try
+            {
+                rmodel.isSuccess = uService.Recovery(id);
+            }
+            catch (Exception ex)
+            {
+                rmodel.message = "操作失败，原因：" + ex.Message;
             }
             return Json(rmodel, JsonRequestBehavior.AllowGet);
         }
         #endregion
-
 
         #region 验证方法
         [HttpGet]
