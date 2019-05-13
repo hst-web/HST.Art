@@ -27,20 +27,21 @@ namespace ASP
     using System.Web.Security;
     using System.Web.UI;
     using System.Web.WebPages;
+    using HST.Art.Web;
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
-    [System.Web.WebPages.PageVirtualPathAttribute("~/Views/_ViewStart.cshtml")]
-    public partial class _Views__ViewStart_cshtml : System.Web.Mvc.ViewStartPage
+    [System.Web.WebPages.PageVirtualPathAttribute("~/Areas/manage/Views/_ViewStart.cshtml")]
+    public partial class _Areas_manage_Views__ViewStart_cshtml : System.Web.Mvc.ViewStartPage
     {
-        public _Views__ViewStart_cshtml()
+        public _Areas_manage_Views__ViewStart_cshtml()
         {
         }
         public override void Execute()
         {
             
-            #line 1 "..\..\Views\_ViewStart.cshtml"
+            #line 1 "..\..\Areas\manage\Views\_ViewStart.cshtml"
   
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Areas/manage/Views/Shared/_Layout.cshtml";
 
             
             #line default

@@ -6,11 +6,14 @@ using System.Web.Mvc;
 using Newtonsoft.Json;
 using HST.Utillity;
 using HST.Art.Service;
+using System.Collections.Generic;
 
 namespace HST.Art.Web
 {
     public class ApplicationBase : Controller
     {
+        private Dictionary<int, string> _cityDic;
+        private Dictionary<int, string> _provinceDic;
         private const int MAX_COOKIESTIME = 4;//最大cookies储存时间
         protected override void OnAuthorization(AuthorizationContext filterContext)
         {
@@ -35,6 +38,26 @@ namespace HST.Art.Web
         public HttpCookieCollection SetCurrentCookies
         {
             get; set;
+        }
+
+        public Dictionary<int, string> City
+        {
+            get
+            {
+                Dictionary<int, string> dicCity = JsonConvert.DeserializeObject<Dictionary<int, string>>(Constant.AREA_CITY);
+                if (dicCity != null) _cityDic = dicCity;
+                return _cityDic;
+            }        
+        }
+
+        public Dictionary<int, string> Province
+        {
+            get
+            {
+                Dictionary<int, string> dicProvince = JsonConvert.DeserializeObject<Dictionary<int, string>>(Constant.AREA_PROVINCE);
+                if (dicProvince != null) _provinceDic = dicProvince;
+                return _provinceDic;
+            }
         }
 
         public bool LoginBase(string username, string pwd)
@@ -78,8 +101,6 @@ namespace HST.Art.Web
 
             return null;
         }
-
-
 
         /// <summary>
         /// 退出登录
@@ -156,8 +177,8 @@ namespace HST.Art.Web
 
         #region 虚方法
 
-        public virtual JsonResult Delete(int id)   
-        {        
+        public virtual JsonResult Delete(int id)
+        {
             throw new ArgumentNullException("Calling methods requires overriding base classes");
         }
 

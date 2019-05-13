@@ -221,11 +221,17 @@
     <Compile Include="App_Start\RazorGeneratorMvcStart.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\manage\Controllers\TeacherController.cs" />
     <Compile Include="Areas\manage\manageAreaRegistration.cs" />
     <Compile Include="Areas\manage\Views\Shared\_Layout.generated.cs">
       <DependentUpon>_Layout.cshtml</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Areas\manage\Views\_ViewStart.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_ViewStart.cshtml</DependentUpon>
     </Compile>
     <Compile Include="Common\ApplicationBase.cs" />
     <Compile Include="Common\CookiesEvent.cs" />
@@ -1768,28 +1774,25 @@
     <Content Include="Content\lib\bootstrap-select\bootstrap-select.js.map" />
     <Content Include="Content\lib\uniform\css\uniform.default.scss" />
     <Content Include="Areas\manage\Views\web.config" />
-    <Content Include="Areas\manage\Views\_ViewStart.cshtml">
-      <Generator>RazorGenerator</Generator>
+    <None Include="Areas\manage\Views\_ViewStart.cshtml">
       <LastGenOutput>_ViewStart.generated.cs</LastGenOutput>
-    </Content>
-    <Content Include="Areas\manage\Views\Shared\_Layout.cshtml">
-      <Generator>RazorGenerator</Generator>
-      <LastGenOutput>_Layout.generated.cs</LastGenOutput>
-    </Content>
-    <None Include="Areas\manage\Views\Home\Index.cshtml">
       <Generator>RazorGenerator</Generator>
     </None>
-    <Content Include="Areas\manage\Views\Account\Index.cshtml" />
+    <None Include="Areas\manage\Views\Shared\_Layout.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_Layout.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Areas\manage\Views\Home\Index.cshtml" />
+    <None Include="Areas\manage\Views\Account\Index.cshtml" />
     <Content Include="Areas\manage\Views\Resource\Add.cshtml" />
     <Content Include="Areas\manage\Views\Resource\Detail.cshtml" />
     <Content Include="Areas\manage\Views\Resource\Edit.cshtml" />
     <Content Include="Areas\manage\Views\Resource\List.cshtml" />
     <Content Include="Areas\manage\Views\Resource\Preview.cshtml" />
-    <None Include="Areas\manage\Views\User\List.cshtml">
-      <Generator>RazorGenerator</Generator>
-    </None>
-    <Content Include="Areas\manage\Views\User\Add.cshtml" />
-    <Content Include="Areas\manage\Views\User\Edit.cshtml" />
+    <None Include="Areas\manage\Views\Teacher\List.cshtml" />
+    <None Include="Areas\manage\Views\User\List.cshtml" />
+    <None Include="Areas\manage\Views\User\Add.cshtml" />
+    <None Include="Areas\manage\Views\User\Edit.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -1827,11 +1830,9 @@
       <LastGenOutput>_ViewStart.generated.cs</LastGenOutput>
     </None>
     <None Include="Areas\manage\Views\Account\Login.cshtml">
-      <Generator>RazorGenerator</Generator>
       <LastGenOutput>Login.generated.cs</LastGenOutput>
     </None>
     <Content Include="Areas\manage\Views\Home\welcome.cshtml">
-      <Generator>RazorGenerator</Generator>
       <LastGenOutput>welcome.generated.cs</LastGenOutput>
     </Content>
     <None Include="Views\Shared\_Layout.cshtml">
@@ -1839,7 +1840,6 @@
       <LastGenOutput>_Layout.generated.cs</LastGenOutput>
     </None>
     <None Include="Areas\manage\Views\User\Index.cshtml">
-      <Generator>RazorGenerator</Generator>
       <LastGenOutput>Index.generated.cs</LastGenOutput>
     </None>
   </ItemGroup>
