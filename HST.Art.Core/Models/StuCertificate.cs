@@ -136,6 +136,14 @@ namespace HST.Art.Core
                 return _category.GetDescription();
             }
         }
+
+        public string GenderName
+        {
+            get
+            {
+                return _gender.GetDescription();
+            }
+        }
         public string UserName { get; set; }
     }
 }

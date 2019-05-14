@@ -10,7 +10,7 @@
 <script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js" ></script>
 <script>DD_belatedPNG.fix('*');</script>
 <![endif]-->
-<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 用户学习资料 <span class="c-gray en">&gt;</span> 资料管理 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新"><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 用户学习资料 <span class="c-gray en">&gt;</span> 账户管理 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新"><i class="Hui-iconfont">&#xe68f;</i></a></nav>
 <div class="page-container">
     <div class="cl pd-10 bg-1 bk-gray mt-10 search-wrap">
         <span class="label-inline">筛选：</span>
@@ -41,10 +41,10 @@
                     <th width="12%">用户名</th>
                     <th width="12%">姓名</th>
                     <th width="12%">手机号</th>
-                    <th width="12%">邮箱</th>
-                    <th width="15%">创建时间</th>
+                    <th width="12%">邮箱</th>                
                     <th width="8%">状态</th>
-                    <th width="15%">管理</th>
+                    <th width="15%">创建时间</th>
+                    <th width="15%">操作</th>
                 </tr>
             </thead>
         </table>
@@ -149,15 +149,15 @@
                       { "mDataProp": "UserName" },
                     { "mDataProp": "RealName" },
                       { "mDataProp": "Phone" },
-                      { "mDataProp": "Email" },
-                       { "mDataProp": "CreateTime" },
+                      { "mDataProp": "Email" },                  
                        { "mDataProp": "State" },
+                       { "mDataProp": "CreateTime" },
                       { "defaultContent": "" }
 
                 ],
                 "columnDefs": [
                  {
-                     "targets": [6],
+                     "targets": [5],
                      "data": "State",
                      "render": function (data, type, full) {
                          var result = data;
@@ -175,7 +175,7 @@
                     "data": "Id",
                     "render": function (data, type, full) {
                         var isAdmin = $("#is_admin").val();
-                        var tmpString = "<a style=\"text-decoration:none\" onClick=\"user_deit('修改资料','@Url.Action("Edit")'," + data + ")\" href=\"javascript:;\" title=\"编辑\">编辑</a>";
+                        var tmpString = "<a style=\"text-decoration:none\" onClick=\"user_deit('修改账户','@Url.Action("Edit")'," + data + ")\" href=\"javascript:;\" title=\"编辑\">编辑</a>";
                         if (isAdmin) {
                             if ($("#user_id").val() == data) {
                                 tmpString += "<a href=\"javascript:;\" onClick=\"initPwd(" + data + ")\"  title=\"初始化密码\">初始化密码</a>";
@@ -206,7 +206,7 @@
                 },
                 "rowCallback": function (row, data, displayIndex) {
                     $(row).attr("class", "text-c");
-                    $(row).children('td').eq(6).attr("class", "td-status");
+                    $(row).children('td').eq(5).attr("class", "td-status");
                     $(row).children('td').eq(7).attr("class", "td-manage");
                 },
                 "initComplete": function (settings, json) {

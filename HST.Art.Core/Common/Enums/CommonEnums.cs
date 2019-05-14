@@ -38,10 +38,16 @@ namespace HST.Art.Core
     /// </summary>
     public enum Gender
     {
-        //女
+        /// <summary>
+        /// 女
+        /// </summary>
+        [Description("女")]
         Female = 0,
 
-        //男
+        /// <summary>
+        /// 男
+        /// </summary>
+        [Description("男")]
         Male = 1
     }
 
@@ -188,6 +194,31 @@ namespace HST.Art.Core
         Social
     }
 
+    public enum LevelType
+    {
+        UnKnown,
+        /// <summary>
+        /// 普通教师
+        /// </summary>
+        [Description("普通教师")]
+        General,
+        /// <summary>
+        /// 高级教师
+        /// </summary>
+        [Description("高级教师")]
+        Senior,
+        /// <summary>
+        /// 特级教师
+        /// </summary>
+        [Description("特级教师")]
+        Super,
+        /// <summary>
+        /// 金牌教师
+        /// </summary>
+        [Description("金牌教师")]
+        Gold
+    }
+
     public enum CategoryType
     {
         UnKnown,
@@ -261,11 +292,11 @@ namespace HST.Art.Core
         /// </summary>
         UnKnown = 0,
         /// <summary>
-        /// 首页Banner
+        /// 认证
         /// </summary>
         Attestation = 1,
         /// <summary>
-        /// 首页logo
+        /// 其他
         /// </summary>
         Other = 2
     }

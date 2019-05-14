@@ -195,7 +195,7 @@ namespace HST.Art.Data
             teaInfo.Gender = (Gender)reader["Gender"];
             teaInfo.State = (PublishState)reader["State"];
             teaInfo.Category = (CertificateType)reader["Category"];
-            teaInfo.Level = (int)reader["Level"];
+            teaInfo.Level = (LevelType)reader["Level"];
             teaInfo.UserName = reader["UserName"].ToString();
 
             if (ReaderExists(reader, "HeadImg") && DBNull.Value != reader["HeadImg"])
@@ -247,7 +247,7 @@ namespace HST.Art.Data
             parametersList.Add(new SqlParameter("@Number", teaInfo.Number));
             parametersList.Add(new SqlParameter("@State", (int)teaInfo.State));
             parametersList.Add(new SqlParameter("@Category", (int)teaInfo.Category));
-            parametersList.Add(new SqlParameter("@Level", teaInfo.Level));
+            parametersList.Add(new SqlParameter("@Level", (int)teaInfo.Level));
             parametersList.Add(new SqlParameter("@Province", teaInfo.Province));
             parametersList.Add(new SqlParameter("@City", teaInfo.City));
             parametersList.Add(new SqlParameter("@County", teaInfo.County));
@@ -288,7 +288,7 @@ namespace HST.Art.Data
             parametersList.Add(new SqlParameter("@Province", teaInfo.Province));
             parametersList.Add(new SqlParameter("@City", teaInfo.City));
             parametersList.Add(new SqlParameter("@County", teaInfo.County));
-            parametersList.Add(new SqlParameter("@Level", teaInfo.Level));
+            parametersList.Add(new SqlParameter("@Level", (int)teaInfo.Level));
 
             return dbHelper.ExecuteNonQuery(strSql, parametersList) > 0;
         }

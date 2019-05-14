@@ -154,19 +154,9 @@ namespace HST.Art.Core
 
         public string SortTbAsName
         {
-            get
-            {
-                if (!string.IsNullOrEmpty(_sortTbAsName))
-                {
-                    _sortTbAsName = _sortTbAsName + ".";
-                }
-
-                return _sortTbAsName;
-            }
-
             set
             {
-                _sortTbAsName = value;
+                _sortTbAsName = !string.IsNullOrWhiteSpace(value) ? value + "." : value;
             }
         }
 

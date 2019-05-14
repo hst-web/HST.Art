@@ -14,9 +14,9 @@ namespace HST.Art.Web.Areas.manage.Controllers
 
         public ActionResult List()
         {
-            Account accouont = GetAccount();
-            ViewBag.IsSupAdmin = accouont.IsAdmin;
-            ViewBag.TeaCertificateId = accouont.Id;
+            ViewBag.AreaCity = City;
+            ViewBag.AreaProvince = Province;
+
             return View();
         }
 
@@ -38,11 +38,14 @@ namespace HST.Art.Web.Areas.manage.Controllers
                     case SearchType.Name:
                         fkey = "Name";
                         break;
-                    case SearchType.State:
-                        fkey = "State";
+                    case SearchType.Type:
+                        fkey = "Category";
                         break;
                     case SearchType.Number:
-                        fkey = "Telephone";
+                        fkey = "Number";
+                        break;
+                    case SearchType.Area:
+                        fkey = "City";
                         break;
                 }
 
@@ -51,16 +54,16 @@ namespace HST.Art.Web.Areas.manage.Controllers
 
             List<TeaCertificate> userList = teaService.GetPage(fillter, out totalNum);
             ReturnPageResultIList<TeaCertificate> data = new ReturnPageResultIList<Core.TeaCertificate>(userList, totalNum);
-            //IList<TeaCertificateViewModel> gmList = new List<TeaCertificateViewModel>();
+            IList<TeaViewModel> gmList = new List<TeaViewModel>();
 
-            //if (data != null && data.DataT != null)
-            //    gmList = data.DataT.Select(g => new TeaCertificateViewModel() { Id = g.Id, RealName = g.Name, TeaCertificateName = g.TeaCertificateName, Phone = g.Telephone, State = (int)g.State, CreateTime = g.CreateDate.ToString("yyyy-MM-dd HH:MM"), Email = g.Email, IsSupAdmin = g.IsAdmin }).ToList();
+            if (data != null && data.DataT != null)
+                gmList = data.DataT.Select(g => new TeaViewModel() { Id = g.Id, UserId = g.UserId, TeacherName = g.Name, Number = g.Number, Gender = g.Gender, State = (int)g.State, CreateTime = g.CreateDate.ToString("yyyy-MM-dd HH:MM"), Category = g.Category, Level = g.Level, Province = Convert.ToInt32(g.Province), City = Convert.ToInt32(g.City), CategoryName = g.CategoryName, LevelName = g.LevelName, UserName = g.UserName, Area = GetAreaStr(g.Province, g.City), GenderName = g.GenderName }).ToList();
 
             return Json(new
             {
                 recordsFiltered = data.totalRecords,
                 recordsTotal = data.totalPages,
-               // data = gmList
+                data = gmList
             }, JsonRequestBehavior.AllowGet);
 
         }
@@ -80,17 +83,17 @@ namespace HST.Art.Web.Areas.manage.Controllers
             ViewBag.IsSelf = id == account.Id;
 
             if (data != null) { return null; }
-                //return View(new TeaCertificateViewModel
-                //{
-                //    Id = data.Id,
-                //    TeaCertificateName = data.TeaCertificateName,
-                //    Phone = data.Telephone,
-                //    Email = data.Email,
-                //    State = (int)data.State,
-                //    RealName = data.Name,
-                //    IsSupAdmin = data.IsAdmin,
-                //    Password = Constant.INIT_MARKET_PASSWORD
-                //});
+            //return View(new TeaCertificateViewModel
+            //{
+            //    Id = data.Id,
+            //    TeaCertificateName = data.TeaCertificateName,
+            //    Phone = data.Telephone,
+            //    Email = data.Email,
+            //    State = (int)data.State,
+            //    RealName = data.Name,
+            //    IsSupAdmin = data.IsAdmin,
+            //    Password = Constant.INIT_MARKET_PASSWORD
+            //});
             else
                 return View();
         }
@@ -103,8 +106,8 @@ namespace HST.Art.Web.Areas.manage.Controllers
             {
                 TeaCertificate data = teaService.Get(model.Id);
                 data.Name = model.RealName;
-               // data.Telephone = model.Phone;
-               // data.Email = model.Email;
+                // data.Telephone = model.Phone;
+                // data.Email = model.Email;
                 data.State = (PublishState)model.State;
 
                 rmodel.isSuccess = teaService.Update(data);
@@ -191,5 +194,14 @@ namespace HST.Art.Web.Areas.manage.Controllers
             return Json(rmodel, JsonRequestBehavior.AllowGet);
         }
         #endregion
+
+        private string GetAreaStr(string province, string city)
+        {
+            string proStr = Province.Where(g => g.Key == Convert.ToInt32(province)).FirstOrDefault().Value;
+            string cityStr = City.Where(g => g.Key == Convert.ToInt32(city)).FirstOrDefault().Value;
+
+            return proStr + "-" + cityStr;
+
+        }
     }
 }

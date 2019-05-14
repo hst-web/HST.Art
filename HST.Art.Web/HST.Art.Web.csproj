@@ -263,6 +263,7 @@
     <Compile Include="Models\MemberTypeViewModel.cs" />
     <Compile Include="Models\PageListViewModel.cs" />
     <Compile Include="Models\ReturnPageResultIList.cs" />
+    <Compile Include="Models\TeaViewModel.cs" />
     <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="Models\ResourcePackageViewModel.cs" />
     <Compile Include="Models\ResourceViewModel.cs" />

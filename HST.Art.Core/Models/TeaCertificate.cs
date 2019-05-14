@@ -24,7 +24,7 @@ namespace HST.Art.Core
         private string _number;
         private PublishState _state = 0;
         private CertificateType _category;
-        private int _level;
+        private LevelType _level;
         private string _province;
         private string _city;
         private string _county;
@@ -90,7 +90,7 @@ namespace HST.Art.Core
         /// <summary>
         /// 
         /// </summary>
-        public int Level
+        public LevelType Level
         {
             set { _level = value; }
             get { return _level; }
@@ -143,6 +143,22 @@ namespace HST.Art.Core
             get
             {
                 return _category.GetDescription();
+            }
+        }
+
+        public string LevelName
+        {
+            get
+            {
+                return _level.GetDescription();
+            }
+        }
+
+        public string GenderName
+        {
+            get
+            {
+                return _gender.GetDescription();
             }
         }
         public string UserName { get; set; }
