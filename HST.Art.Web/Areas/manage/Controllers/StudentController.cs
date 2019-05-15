@@ -8,9 +8,9 @@ using System.Linq;
 
 namespace HST.Art.Web.Areas.manage.Controllers
 {
-    public class TeacherController : ApplicationBase
+    public class StudentController : ApplicationBase
     {
-        TeaCertificateService teaService = new TeaCertificateService();
+        StuCertificateService stuService = new StuCertificateService();
 
         public ActionResult List()
         {
@@ -52,12 +52,12 @@ namespace HST.Art.Web.Areas.manage.Controllers
                 fillter.keyValueList.Add(new KeyValueObj() { Key = fkey, Value = svm.FilterVal });
             }
 
-            List<TeaCertificate> teaList = teaService.GetPage(fillter, out totalNum);
-            ReturnPageResultIList<TeaCertificate> data = new ReturnPageResultIList<Core.TeaCertificate>(teaList, totalNum);
-            IList<TeaViewModel> gmList = new List<TeaViewModel>();
+            List<StuCertificate> stuList = stuService.GetPage(fillter, out totalNum);
+            ReturnPageResultIList<StuCertificate> data = new ReturnPageResultIList<Core.StuCertificate>(stuList, totalNum);
+            IList<StuViewModel> gmList = new List<StuViewModel>();
 
             if (data != null && data.DataT != null)
-                gmList = data.DataT.Select(g => new TeaViewModel() { Id = g.Id, UserId = g.UserId, TeacherName = g.Name, Number = g.Number, Gender = g.Gender, State = (int)g.State, CreateTime = g.CreateDate.ToString("yyyy-MM-dd HH:MM"), Category = g.Category, Level = g.Level, Province = Convert.ToInt32(g.Province), City = Convert.ToInt32(g.City), UserName = g.UserName, Area = GetAreaStr(g.Province, g.City) }).ToList();
+                gmList = data.DataT.Select(g => new StuViewModel() { Id = g.Id, UserId = g.UserId, StudentName = g.Name, Number = g.Number, Gender = g.Gender, State = (int)g.State, CreateTime = g.CreateDate.ToString("yyyy-MM-dd HH:MM"), Category = g.Category, Province = Convert.ToInt32(g.Province), City = Convert.ToInt32(g.City), UserName = g.UserName, Area = GetAreaStr(g.Province, g.City) }).ToList();
 
             return Json(new
             {
@@ -77,21 +77,20 @@ namespace HST.Art.Web.Areas.manage.Controllers
         /// <returns></returns>
         public ActionResult Edit(int id)
         {
-            TeaCertificate data = teaService.Get(id);
+            StuCertificate data = stuService.Get(id);
             ViewBag.AreaCity = City;
             ViewBag.AreaProvince = Province;
 
             if (data != null)
-                return View(new TeaViewModel
+                return View(new StuViewModel
                 {
                     Id = data.Id,
-                    TeacherName = data.Name,
+                    StudentName = data.Name,
                     Number = data.Number,
                     City = string.IsNullOrEmpty(data.City) ? 0 : Convert.ToInt32(data.City),
                     Province = string.IsNullOrEmpty(data.Province) ? 0 : Convert.ToInt32(data.Province),
                     State = (int)data.State,
                     Category = data.Category,
-                    Level = data.Level,
                     Gender = data.Gender,
                     HeadImg = data.HeadImg
                 });
@@ -100,15 +99,14 @@ namespace HST.Art.Web.Areas.manage.Controllers
         }
 
         [HttpPost]
-        public JsonResult Edit(TeaViewModel model)
+        public JsonResult Edit(StuViewModel model)
         {
             ResultRetrun rmodel = new ResultRetrun();
             if (ModelState.IsValid)
             {
-                TeaCertificate data = teaService.Get(model.Id);
+                StuCertificate data = stuService.Get(model.Id);
                 data.Number = model.Number;
-                data.Name = model.TeacherName;
-                data.Level = model.Level;
+                data.Name = model.StudentName;
                 data.Category = model.Category;
                 data.State = (PublishState)model.State;
                 data.Gender = model.Gender;
@@ -116,7 +114,7 @@ namespace HST.Art.Web.Areas.manage.Controllers
                 data.Province = model.Province < 1 ? Constant.DEFAULT_PROVINCE : model.Province.ToString();
                 data.HeadImg = model.HeadImg;
 
-                rmodel.isSuccess = teaService.Update(data);
+                rmodel.isSuccess = stuService.Update(data);
             }
 
             return Json(rmodel);
@@ -138,16 +136,15 @@ namespace HST.Art.Web.Areas.manage.Controllers
             return View();
         }
         [HttpPost]
-        public JsonResult Add(TeaViewModel model)
+        public JsonResult Add(StuViewModel model)
         {
             ResultRetrun rmodel = new ResultRetrun();
             if (ModelState.IsValid)
             {
-                TeaCertificate teaModel = new TeaCertificate()
+                StuCertificate stuModel = new StuCertificate()
                 {
                     Number = model.Number,
-                    Name = model.TeacherName,
-                    Level = model.Level,
+                    Name = model.StudentName,
                     Category = model.Category,
                     State = (PublishState)model.State,
                     Gender = model.Gender,
@@ -156,7 +153,7 @@ namespace HST.Art.Web.Areas.manage.Controllers
                     UserId = GetAccount().Id,
                     HeadImg = model.HeadImg
                 };
-                rmodel.isSuccess = teaService.Add(teaModel);
+                rmodel.isSuccess = stuService.Add(stuModel);
             }
 
             return Json(rmodel);
@@ -169,7 +166,7 @@ namespace HST.Art.Web.Areas.manage.Controllers
             ResultRetrun rmodel = new ResultRetrun();
             try
             {
-                rmodel.isSuccess = teaService.LogicDelete(id);
+                rmodel.isSuccess = stuService.LogicDelete(id);
             }
             catch (Exception ex)
             {
@@ -183,7 +180,7 @@ namespace HST.Art.Web.Areas.manage.Controllers
             ResultRetrun rmodel = new ResultRetrun();
             try
             {
-                rmodel.isSuccess = teaService.Publish(id);
+                rmodel.isSuccess = stuService.Publish(id);
             }
             catch (Exception ex)
             {
@@ -197,7 +194,7 @@ namespace HST.Art.Web.Areas.manage.Controllers
             ResultRetrun rmodel = new ResultRetrun();
             try
             {
-                rmodel.isSuccess = teaService.Recovery(id);
+                rmodel.isSuccess = stuService.Recovery(id);
             }
             catch (Exception ex)
             {
@@ -208,17 +205,17 @@ namespace HST.Art.Web.Areas.manage.Controllers
         #endregion
 
         [HttpGet]
-        public JsonResult CheckTeaNumber(int id, string number)
+        public JsonResult CheckStuNumber(int id, string number)
         {
             ResultRetrun rmodel = new ResultRetrun();
             FilterEntityModel filterModel = new FilterEntityModel();
             filterModel.keyValueList = new List<KeyValueObj>();
             filterModel.keyValueList.Add(new KeyValueObj() { Key = "number", Value = number, FieldType = FieldType.String });
 
-            List<TeaCertificate> teaList = teaService.GetAll(filterModel);
-            if (teaList != null && teaList.Count > 0)
+            List<StuCertificate> stuList = stuService.GetAll(filterModel);
+            if (stuList != null && stuList.Count > 0)
             {
-                if (teaList.Where(g => !g.Id.Equals(id)).Count() > 0)
+                if (stuList.Where(g => !g.Id.Equals(id)).Count() > 0)
                     rmodel.message = "证书编号已经存在";
                 else
                     rmodel.isSuccess = true;

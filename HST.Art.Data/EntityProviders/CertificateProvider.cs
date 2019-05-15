@@ -483,7 +483,7 @@ namespace HST.Art.Data
             stuInfo.UserId = Convert.ToInt32(reader["UserId"]);
             stuInfo.Number = reader["Number"].ToString();
             stuInfo.Name = reader["Name"].ToString();
-            stuInfo.Gender = (Gender)reader["Gender"];
+            stuInfo.Gender = (Gender)Convert.ToInt32(reader["Gender"]);
             stuInfo.State = (PublishState)reader["State"];
             stuInfo.Category = (CertificateType)reader["Category"];
             stuInfo.UserName = reader["UserName"].ToString();
