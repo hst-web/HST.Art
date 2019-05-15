@@ -85,7 +85,11 @@
                     icon: 6,
                     closeBtn: 0,
                     yes: function () {
-                        parent[1].table1.ajax.reload();
+                        if (parent[1] != null) {
+                            parent[1].table1.ajax.reload();
+                        } else {
+                            parent.table1.ajax.reload();
+                        }
                         parent.layer.close(index);
                     }
                 });

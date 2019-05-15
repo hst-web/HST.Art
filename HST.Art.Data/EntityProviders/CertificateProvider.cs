@@ -192,7 +192,7 @@ namespace HST.Art.Data
             teaInfo.UserId = Convert.ToInt32(reader["UserId"]);
             teaInfo.Number = reader["Number"].ToString();
             teaInfo.Name = reader["Name"].ToString();
-            teaInfo.Gender = (Gender)reader["Gender"];
+            teaInfo.Gender = (Gender)Convert.ToInt32(reader["Gender"]);
             teaInfo.State = (PublishState)reader["State"];
             teaInfo.Category = (CertificateType)reader["Category"];
             teaInfo.Level = (LevelType)reader["Level"];
@@ -208,11 +208,11 @@ namespace HST.Art.Data
             }
             if (ReaderExists(reader, "City") && DBNull.Value != reader["City"])
             {
-                teaInfo.Province = reader["City"].ToString();
+                teaInfo.City = reader["City"].ToString();
             }
             if (ReaderExists(reader, "County") && DBNull.Value != reader["County"])
             {
-                teaInfo.Province = reader["County"].ToString();
+                teaInfo.County = reader["County"].ToString();
             }
 
             teaInfo.CreateDate = Convert.ToDateTime(reader["CreateDate"]);
@@ -498,11 +498,11 @@ namespace HST.Art.Data
             }
             if (ReaderExists(reader, "City") && DBNull.Value != reader["City"])
             {
-                stuInfo.Province = reader["City"].ToString();
+                stuInfo.City = reader["City"].ToString();
             }
             if (ReaderExists(reader, "County") && DBNull.Value != reader["County"])
             {
-                stuInfo.Province = reader["County"].ToString();
+                stuInfo.County = reader["County"].ToString();
             }
 
             stuInfo.CreateDate = Convert.ToDateTime(reader["CreateDate"]);

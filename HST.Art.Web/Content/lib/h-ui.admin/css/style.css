@@ -116,3 +116,11 @@
 
 .block-hid{display:block;overflow:hidden;height:1px;visibility:hidden}
 .input-hid{width:1px;height:1px;visibility:hidden;position:absolute}
+
+input[type="radio"], input[type="checkbox"] {
+    line-height: normal;
+    margin-top: -1px;
+    margin-right: 5px;
+}
+.radio-list{padding-top:2px}
+.radio-inline:not(:first-child){padding-left:15px}

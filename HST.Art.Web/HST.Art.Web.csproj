@@ -1775,6 +1775,8 @@
     <Content Include="Content\lib\bootstrap-select\bootstrap-select.js.map" />
     <Content Include="Content\lib\uniform\css\uniform.default.scss" />
     <Content Include="Areas\manage\Views\web.config" />
+    <Content Include="Areas\manage\Views\Teacher\Add.cshtml" />
+    <Content Include="Areas\manage\Views\Teacher\Edit.cshtml" />
     <None Include="Areas\manage\Views\_ViewStart.cshtml">
       <LastGenOutput>_ViewStart.generated.cs</LastGenOutput>
       <Generator>RazorGenerator</Generator>

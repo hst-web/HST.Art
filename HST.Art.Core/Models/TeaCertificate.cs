@@ -138,29 +138,7 @@ namespace HST.Art.Core
 
 
         public string HeadImg { get; set; }
-        public string CategoryName
-        {
-            get
-            {
-                return _category.GetDescription();
-            }
-        }
-
-        public string LevelName
-        {
-            get
-            {
-                return _level.GetDescription();
-            }
-        }
-
-        public string GenderName
-        {
-            get
-            {
-                return _gender.GetDescription();
-            }
-        }
+     
         public string UserName { get; set; }
         #endregion Model
 

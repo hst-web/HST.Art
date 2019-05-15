@@ -3,6 +3,7 @@ using System.Web.Mvc;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using HST.Art.Core;
+using HST.Utillity;
 
 namespace HST.Art.Web
 {
@@ -24,22 +25,49 @@ namespace HST.Art.Web
         public CertificateType Category { get; set; }
         public LevelType Level { get; set; }
 
-        public string LevelName { get; set; }
-
         public int Province { get; set; }
 
         public int City { get; set; }
 
         public string Area { get; set; }
 
-        public string CategoryName { get; set; }
-
         public string UserName { get; set; }
 
         public int State { get; set; }
-
+        public string HeadImg { get; set; }
         public string CreateTime { get; set; }
 
-        public string GenderName { get; set; }
+        public string CategoryName
+        {
+            get
+            {
+                switch (Category)
+                {
+                    case CertificateType.Prize:
+                        return "获奖证书";
+                    case CertificateType.Train:
+                        return "师资认证";
+                }
+
+                return string.Empty;
+            }
+        }
+
+        public string LevelName
+        {
+            get
+            {
+                return Level.GetDescription();
+            }
+        }
+
+        public string GenderName
+        {
+            get
+            {
+                return Gender.GetDescription();
+            }
+        }
+
     }
 }

@@ -260,12 +260,10 @@ namespace HST.Art.Core
         /// <summary>
         /// 获奖
         /// </summary>
-        [Description("获奖证书")]
         Prize,
         /// <summary>
         /// 培训
         /// </summary>
-        [Description("培训证书")]
         Train
     }
 

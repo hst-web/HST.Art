@@ -23,11 +23,13 @@
             <option value="@((int)SearchType.Type)">证书类别</option>
         </select>
         <input type="text" id="sel_filVal" placeholder="请输入筛选关键字" class="input-text lg inline" />
-        <select name="sel_orderstate" id="sel_type" class="select select-box sm inline hidden">
-            <option value="@((int)CertificateType.Prize)">@(CertificateType.Prize.GetDescription())</option>
-            <option value="@((int)CertificateType.Train)">@(CertificateType.Train.GetDescription())</option>
+        <select name="sel_orderstate" id="sel_type" class="select select-box sm inline hidden" style="width:150px">
+            <option value="">请选择证书类别</option>
+            <option value="@((int)CertificateType.Prize)">获奖证书</option>
+            <option value="@((int)CertificateType.Train)">师资认证</option>
         </select>
-        <select name="sel_orderstate" id="sel_area" class="select select-box sm inline hidden">
+        <select name="sel_orderstate" id="sel_area" class="select select-box sm inline hidden" style="width:150px">
+            <option value="">请选择所在地区</option>
             @foreach (KeyValuePair<int, string> item in ViewBag.AreaCity)
             {
                 <option value="@item.Key">@item.Value</option>
@@ -99,7 +101,7 @@
             var index = top.layer.open({
                 type: 2,
                 title: title,
-                area: ['750px', '480px'],
+                area: ['750px', '510px'],
                 content: url + "?id=" + id
             });
         }
@@ -109,7 +111,7 @@
             var index = top.layer.open({
                 type: 2,
                 title: title,
-                area: ['750px', '520px'],
+                area: ['750px', '510px'],
                 content: url
             });
         }
@@ -117,7 +119,7 @@
         function getFilterVal() {
             if ($("#sel_filType").val() == '@((int)SearchType.Type)') {
                 return $("#sel_type").val();
-            } else if ($("#sel_filType").val() == '@((int)SearchType.Type)') {
+            } else if ($("#sel_filType").val() == '@((int)SearchType.Area)') {
                 return $("#sel_area").val();
             } else {
                 return $("#sel_filVal").val();

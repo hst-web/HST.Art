@@ -57,7 +57,7 @@ namespace HST.Art.Web.Areas.manage.Controllers
             IList<TeaViewModel> gmList = new List<TeaViewModel>();
 
             if (data != null && data.DataT != null)
-                gmList = data.DataT.Select(g => new TeaViewModel() { Id = g.Id, UserId = g.UserId, TeacherName = g.Name, Number = g.Number, Gender = g.Gender, State = (int)g.State, CreateTime = g.CreateDate.ToString("yyyy-MM-dd HH:MM"), Category = g.Category, Level = g.Level, Province = Convert.ToInt32(g.Province), City = Convert.ToInt32(g.City), CategoryName = g.CategoryName, LevelName = g.LevelName, UserName = g.UserName, Area = GetAreaStr(g.Province, g.City), GenderName = g.GenderName }).ToList();
+                gmList = data.DataT.Select(g => new TeaViewModel() { Id = g.Id, UserId = g.UserId, TeacherName = g.Name, Number = g.Number, Gender = g.Gender, State = (int)g.State, CreateTime = g.CreateDate.ToString("yyyy-MM-dd HH:MM"), Category = g.Category, Level = g.Level, Province = Convert.ToInt32(g.Province), City = Convert.ToInt32(g.City), UserName = g.UserName, Area = GetAreaStr(g.Province, g.City) }).ToList();
 
             return Json(new
             {
@@ -78,37 +78,43 @@ namespace HST.Art.Web.Areas.manage.Controllers
         public ActionResult Edit(int id)
         {
             TeaCertificate data = teaService.Get(id);
-            Account account = GetAccount();
-            ViewBag.IsSupAdmin = account.IsAdmin;
-            ViewBag.IsSelf = id == account.Id;
+            ViewBag.AreaCity = City;
+            ViewBag.AreaProvince = Province;
 
-            if (data != null) { return null; }
-            //return View(new TeaCertificateViewModel
-            //{
-            //    Id = data.Id,
-            //    TeaCertificateName = data.TeaCertificateName,
-            //    Phone = data.Telephone,
-            //    Email = data.Email,
-            //    State = (int)data.State,
-            //    RealName = data.Name,
-            //    IsSupAdmin = data.IsAdmin,
-            //    Password = Constant.INIT_MARKET_PASSWORD
-            //});
+            if (data != null)
+                return View(new TeaViewModel
+                {
+                    Id = data.Id,
+                    TeacherName = data.Name,
+                    Number = data.Number,
+                    City = string.IsNullOrEmpty(data.City) ? 0 : Convert.ToInt32(data.City),
+                    Province = string.IsNullOrEmpty(data.Province) ? 0 : Convert.ToInt32(data.Province),
+                    State = (int)data.State,
+                    Category = data.Category,
+                    Level = data.Level,
+                    Gender = data.Gender,
+                    HeadImg = data.HeadImg
+                });
             else
                 return View();
         }
 
         [HttpPost]
-        public JsonResult Edit(UserViewModel model)
+        public JsonResult Edit(TeaViewModel model)
         {
             ResultRetrun rmodel = new ResultRetrun();
             if (ModelState.IsValid)
             {
                 TeaCertificate data = teaService.Get(model.Id);
-                data.Name = model.RealName;
-                // data.Telephone = model.Phone;
-                // data.Email = model.Email;
+                data.Number = model.Number;
+                data.Name = model.TeacherName;
+                data.Level = model.Level;
+                data.Category = model.Category;
                 data.State = (PublishState)model.State;
+                data.Gender = model.Gender;
+                data.City = model.City.ToString();
+                data.Province = model.Province < 1 ? Constant.DEFAULT_PROVINCE : model.Province.ToString();
+                data.HeadImg = model.HeadImg;
 
                 rmodel.isSuccess = teaService.Update(data);
             }
@@ -127,28 +133,34 @@ namespace HST.Art.Web.Areas.manage.Controllers
         /// <returns></returns>
         public ActionResult Add()
         {
+            ViewBag.AreaCity = City;
+            ViewBag.AreaProvince = Province;
             return View();
         }
         [HttpPost]
-        //public JsonResult Add(TeaCertificateViewModel model)
-        //{
-        //    ResultRetrun rmodel = new ResultRetrun();
-        //    if (ModelState.IsValid)
-        //    {
-        //        TeaCertificate userModel = new TeaCertificate()
-        //        {
-        //            Email = model.Email,
-        //            Name = model.RealName,
-        //            Password = model.Password,
-        //            Telephone = model.Phone,
-        //            State = (PublishState)model.State,
-        //            TeaCertificateName = model.TeaCertificateName
-        //        };
-        //        rmodel.isSuccess = teaService.Add(userModel);
-        //    }
+        public JsonResult Add(TeaViewModel model)
+        {
+            ResultRetrun rmodel = new ResultRetrun();
+            if (ModelState.IsValid)
+            {
+                TeaCertificate teaModel = new TeaCertificate()
+                {
+                    Number = model.Number,
+                    Name = model.TeacherName,
+                    Level = model.Level,
+                    Category = model.Category,
+                    State = (PublishState)model.State,
+                    Gender = model.Gender,
+                    City = model.City.ToString(),
+                    Province = model.Province.ToString(),
+                    UserId = GetAccount().Id,
+                    HeadImg = model.HeadImg
+                };
+                rmodel.isSuccess = teaService.Add(teaModel);
+            }
 
-        //    return Json(rmodel);
-        //}
+            return Json(rmodel);
+        }
         #endregion
 
         #region 状态操作
@@ -194,6 +206,27 @@ namespace HST.Art.Web.Areas.manage.Controllers
             return Json(rmodel, JsonRequestBehavior.AllowGet);
         }
         #endregion
+
+        [HttpGet]
+        public JsonResult CheckTeaNumber(int id, string number)
+        {
+            ResultRetrun rmodel = new ResultRetrun();
+            FilterEntityModel filterModel = new FilterEntityModel();
+            filterModel.keyValueList = new List<KeyValueObj>();
+            filterModel.keyValueList.Add(new KeyValueObj() { Key = "number", Value = number, FieldType = FieldType.String });
+
+            List<TeaCertificate> userList = teaService.GetAll(filterModel);
+            if (userList != null && userList.Count > 0)
+            {
+                if (userList.Where(g => !g.Id.Equals(id)).Count() > 0)
+                    rmodel.message = "证书编号已经存在";
+                else
+                    rmodel.isSuccess = true;
+            }
+            else
+                rmodel.isSuccess = true;
+            return Json(rmodel.isSuccess, JsonRequestBehavior.AllowGet);
+        }
 
         private string GetAreaStr(string province, string city)
         {
