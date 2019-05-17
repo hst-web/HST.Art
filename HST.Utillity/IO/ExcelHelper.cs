@@ -112,7 +112,7 @@ namespace HST.Utillity
             ISheet sheet = workbook.CreateSheet("Sheet1");
             //标题
             IRow rowTitle = sheet.CreateRow(0);
-            ICell celltitle = rowTitle.CreateCell(0, CellType.STRING);
+            ICell celltitle = rowTitle.CreateCell(0, CellType.String);
             celltitle.SetCellValue(titleName);
             rowTitle.Cells.Add(celltitle);
 
@@ -210,7 +210,7 @@ namespace HST.Utillity
 
             //标题
             IRow rowTitle = sheet.CreateRow(0);
-            ICell celltitle = rowTitle.CreateCell(0, CellType.STRING);
+            ICell celltitle = rowTitle.CreateCell(0, CellType.String);
             celltitle.SetCellValue(titleName);
             rowTitle.Cells.Add(celltitle);
 
@@ -412,21 +412,21 @@ namespace HST.Utillity
             if (cell == null) return value;
             switch (cell.CellType)
             {
-                case CellType.BLANK:
+                case CellType.Blank:
                     break;
-                case CellType.BOOLEAN:
+                case CellType.Boolean:
                     value = cell.BooleanCellValue;
                     break;
-                case CellType.ERROR:
+                case CellType.Error:
                     value = cell.ErrorCellValue;
                     break;
-                case CellType.FORMULA:
+                case CellType.Formula:
                     value = cell.CellFormula;
                     break;
-                case CellType.NUMERIC:
+                case CellType.Numeric:
                     value = cell.NumericCellValue;
                     break;
-                case CellType.STRING:
+                case CellType.String:
                     value = cell.StringCellValue;
                     break;
                 case CellType.Unknown:
