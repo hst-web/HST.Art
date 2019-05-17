@@ -10,6 +10,7 @@ using HST.Utillity;
 using HST.Art.Data;
 using System;
 
+
 namespace HST.Art.Service
 {
     public class AccountService : ServiceBase
@@ -46,23 +47,9 @@ namespace HST.Art.Service
                 bool isAllow = true;
                 Setting setInfo = new IntegratedProvider().GetSetting(SettingType.Attestation);
 
-
-                //                public Attestation AttestationVal
-                //{
-                //    get
-                //    {
-                //        if (!string.IsNullOrWhiteSpace(_val))
-                //        {
-                //            return SerializationHelper.JsonDeserialize<Attestation>(EncryptHelper.Decode(_val));
-                //        }
-
-                //        return null;
-                //    }
-                //}
-
-                if (setInfo != null && !string.IsNullOrEmpty(setInfo.Val))
+                if (setInfo != null && setInfo.AttestationVal != null)
                 {
-                    isAllow = true;// JsonConvert.DeserializeObject<Attestation>(setInfo.Val).ExpireDate > DateTime.Now;
+                    isAllow = setInfo.AttestationVal.ExpireDate > DateTime.Now;
                 }
 
                 if (!isAllow)

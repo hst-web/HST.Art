@@ -6,6 +6,7 @@
 //----------------------------------------------------------------*/
 using System;
 using HST.Utillity;
+using Newtonsoft.Json;
 
 namespace HST.Art.Core
 {
@@ -62,6 +63,20 @@ namespace HST.Art.Core
         {
             set { _isenabled = value; }
             get { return _isenabled; }
+        }
+
+
+        public Attestation AttestationVal
+        {
+            get
+            {
+                if (!string.IsNullOrWhiteSpace(_val))
+                {
+                    return JsonConvert.DeserializeObject<Attestation>(EncryptHelper.Decode(_val));
+                }
+
+                return null;
+            }
         }
         #endregion Model
     }
