@@ -45,5 +45,9 @@ namespace HST.Art.Core
         public static string AREA_CITY = "{ 1993: '济南市', 2006: '青岛市', 2019: '聊城市', 2029: '德州市', 2047: '东营市', 2056: '淄博市', 2068: '潍坊市', 2081: '烟台市', 2095: '威海市', 2100: '日照市', 2107: '临沂市', 2129: '枣庄市', 2136: '济宁市', 2154: '泰安市', 2163: '莱芜市', 2166: '滨州市', 2179: '菏泽市' }";
         public static string AREA_PROVINCE = "{1992:'山东省'}";
         public static string DEFAULT_PROVINCE = "1992";
+
+        public static string USER_PASSWORD_ERROR = "用户名或密码错误";
+        public static string USER_ALLOW_ERROR = "当前系统已过期，请与管理员联系";
+        public static string USER_STATE_ERROR = "当前账户已禁用，请与管理员联系";
     }
 }

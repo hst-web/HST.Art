@@ -222,6 +222,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\manage\Controllers\StudentController.cs" />
+    <Compile Include="Areas\manage\Controllers\DownloadController.cs" />
     <Compile Include="Areas\manage\Controllers\TeacherController.cs" />
     <Compile Include="Areas\manage\manageAreaRegistration.cs" />
     <Compile Include="Areas\manage\Views\Shared\_Layout.generated.cs">
@@ -261,15 +262,14 @@
     <Compile Include="Models\FilterViewModel.cs" />
     <Compile Include="Models\KeyValueViewModel.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
-    <Compile Include="Models\MemberTypeViewModel.cs" />
     <Compile Include="Models\PageListViewModel.cs" />
     <Compile Include="Models\ReturnPageResultIList.cs" />
+    <Compile Include="Models\DownloadViewModel.cs" />
     <Compile Include="Models\StuViewModel.cs" />
     <Compile Include="Models\TeaViewModel.cs" />
     <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="Models\ResourcePackageViewModel.cs" />
     <Compile Include="Models\ResourceViewModel.cs" />
-    <Compile Include="Models\ResRoleViewModel.cs" />
     <Compile Include="Models\ResultRetrun.cs" />
     <Compile Include="Models\SearchDataTable.cs" />
     <Compile Include="Models\UploadViewModel.cs" />
@@ -1782,6 +1782,7 @@
     <Content Include="Areas\manage\Views\Student\List.cshtml" />
     <Content Include="Areas\manage\Views\Student\Edit.cshtml" />
     <Content Include="Areas\manage\Views\Student\Add.cshtml" />
+    <Content Include="Areas\manage\Views\Download\List.cshtml" />
     <None Include="Areas\manage\Views\_ViewStart.cshtml">
       <LastGenOutput>_ViewStart.generated.cs</LastGenOutput>
       <Generator>RazorGenerator</Generator>

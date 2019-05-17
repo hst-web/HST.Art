@@ -5,6 +5,7 @@ using cn.jpush.api.push.notification;
 using cn.jpush.api.common.resp;
 using cn.jpush.api;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace HST.Utillity
 {
@@ -84,7 +85,7 @@ namespace HST.Utillity
                 return;
             }
 
-            string extraData = SerializationHelper.JsonSerialize(extra);
+            string extraData =JsonConvert.SerializeObject(extra);
             JPushClient client = new JPushClient(appKey, masterSecret);
             PushPayload pushPayload = new PushPayload();
             pushPayload.platform = Platform.ios();
@@ -132,12 +133,12 @@ namespace HST.Utillity
                 if (item.IsPushVoice)
                 {
                     msg.IsPushVoice = true;
-                    pushPayload.message = Message.content(SerializationHelper.JsonSerialize(msg));
+                    pushPayload.message = Message.content(JsonConvert.SerializeObject(msg));
                 }
                 else
                 {
                     msg.IsPushVoice = false;
-                    pushPayload.message = Message.content(SerializationHelper.JsonSerialize(msg));
+                    pushPayload.message = Message.content(JsonConvert.SerializeObject(msg));
                 }
                   
                 try

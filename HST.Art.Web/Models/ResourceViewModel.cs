@@ -69,7 +69,7 @@ namespace HST.Art.Web
 
         public List<int> MemberTypeIds { get; set; }
 
-        public List<MemberTypeViewModel> MemberTypes { get; set; }
+       // public List<MemberTypeViewModel> MemberTypes { get; set; }
 
        // public ResourceFile ResFile { get; set; }
     }

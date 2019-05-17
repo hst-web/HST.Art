@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using HST.Art.Core;
 using HST.Utillity;
 using HST.Art.Data;
+using System;
 
 namespace HST.Art.Service
 {
@@ -19,8 +20,9 @@ namespace HST.Art.Service
         /// </summary>
         /// <param name="filterModel">条件</param>
         /// <returns>会员集合</returns>
-        public Account GetSingleMember(string userName, string password)
+        public Account GetSingleMember(string userName, string password, out string msg)
         {
+            msg = Constant.USER_PASSWORD_ERROR;
             if (string.IsNullOrWhiteSpace(userName) || string.IsNullOrWhiteSpace(password))
             {
                 ErrorMsg = ErrorCode.ParameterNull;
@@ -30,16 +32,51 @@ namespace HST.Art.Service
             //数据获取
             User userInfo = _userProvider.GetByQuery(new UserQuery() { Key = GetLoginType(userName), Value = userName });
 
-
             if (userInfo == null) return null;
+
             string valPassword = EncryptHelper.Encode(password, userInfo.Salt);
             if (userInfo.Password.Equals(valPassword))
             {
+                if (userInfo.State == PublishState.Lower)
+                {
+                    msg = Constant.USER_STATE_ERROR;
+                    return null;
+                }
+
+                bool isAllow = true;
+                Setting setInfo = new IntegratedProvider().GetSetting(SettingType.Attestation);
+
+
+                //                public Attestation AttestationVal
+                //{
+                //    get
+                //    {
+                //        if (!string.IsNullOrWhiteSpace(_val))
+                //        {
+                //            return SerializationHelper.JsonDeserialize<Attestation>(EncryptHelper.Decode(_val));
+                //        }
+
+                //        return null;
+                //    }
+                //}
+
+                if (setInfo != null && !string.IsNullOrEmpty(setInfo.Val))
+                {
+                    isAllow = true;// JsonConvert.DeserializeObject<Attestation>(setInfo.Val).ExpireDate > DateTime.Now;
+                }
+
+                if (!isAllow)
+                {
+                    msg = Constant.USER_ALLOW_ERROR;// "当前系统已过期，请与管理员联系";
+                    return null;
+                }
+
+                msg = string.Empty;
                 return new Account()
                 {
                     Id = userInfo.Id,
                     UserName = userInfo.UserName,
-                    IsAdmin = userInfo.IsAdmin
+                    IsAdmin = userInfo.IsAdmin,
                 };
             }
 

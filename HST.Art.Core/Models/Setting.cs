@@ -63,21 +63,7 @@ namespace HST.Art.Core
             set { _isenabled = value; }
             get { return _isenabled; }
         }
-
-        public Attestation AttestationVal
-        {
-            get
-            {
-                if (!string.IsNullOrWhiteSpace(_val))
-                {
-                    return SerializationHelper.JsonDeserialize<Attestation>(EncryptHelper.Decode(_val));
-                }
-
-                return null;
-            }
-        }
         #endregion Model
-
     }
 
     [Serializable]

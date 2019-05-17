@@ -15,6 +15,7 @@ namespace HST.Art.Web
         private Dictionary<int, string> _cityDic;
         private Dictionary<int, string> _provinceDic;
         private const int MAX_COOKIESTIME = 4;//最大cookies储存时间
+        public string ErrorMsg = string.Empty;
         protected override void OnAuthorization(AuthorizationContext filterContext)
         {
             SetCurrentCookies = filterContext.RequestContext.HttpContext.Request.Cookies;
@@ -47,7 +48,7 @@ namespace HST.Art.Web
                 Dictionary<int, string> dicCity = JsonConvert.DeserializeObject<Dictionary<int, string>>(Constant.AREA_CITY);
                 if (dicCity != null) _cityDic = dicCity;
                 return _cityDic;
-            }        
+            }
         }
 
         public Dictionary<int, string> Province
@@ -63,7 +64,7 @@ namespace HST.Art.Web
         public bool LoginBase(string username, string pwd)
         {
             AccountService accountService = new AccountService();
-            Account model = accountService.GetSingleMember(username, pwd);
+            Account model = accountService.GetSingleMember(username, pwd, out ErrorMsg);
             if (model != null)
             {
                 HttpCookie cookie = new HttpCookie("accountInfo");

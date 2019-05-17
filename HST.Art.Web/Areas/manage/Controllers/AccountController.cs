@@ -28,11 +28,11 @@ namespace HST.Art.Web.Areas.manage.Controllers
             }
             else
             {
-                ModelState.AddModelError("ErrorMessage", "密码或用户名错误！");
+                ModelState.AddModelError("ErrorMessage", ErrorMsg);
                 return View(model);
             }
         }
-       
+
         public ActionResult LoginOut()
         {
             LogoutBase();
@@ -44,14 +44,15 @@ namespace HST.Art.Web.Areas.manage.Controllers
             Account account = GetAccount();
             User userInfo = uService.Get(account.Id);
 
-            AccountViewModel accountModel = new AccountViewModel() {
-                Id= userInfo.Id,
-                UserName=userInfo.UserName,
-                Email=userInfo.Email,
-                Phone=userInfo.Telephone,
-                RealName=userInfo.Name,
-                IsSupAdmin=userInfo.IsAdmin,
-                CreateTime=userInfo.CreateDate
+            AccountViewModel accountModel = new AccountViewModel()
+            {
+                Id = userInfo.Id,
+                UserName = userInfo.UserName,
+                Email = userInfo.Email,
+                Phone = userInfo.Telephone,
+                RealName = userInfo.Name,
+                IsSupAdmin = userInfo.IsAdmin,
+                CreateTime = userInfo.CreateDate
             };
 
             return View(accountModel);

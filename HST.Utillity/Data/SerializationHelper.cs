@@ -10,12 +10,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Runtime.Serialization.Json;
-using System.Text;
-using System.Web.Script.Serialization;
 using System.Xml;
 using System.Xml.Serialization;
-using Newtonsoft.Json;
 
 namespace HST.Utillity
 {
@@ -236,31 +232,5 @@ namespace HST.Utillity
 
         #endregion
 
-        /// <summary>
-        /// 将C#数据实体转化为JSON数据
-        /// </summary>
-        /// <param name="obj">要转化的数据实体</param>
-        /// <returns>JSON格式字符串</returns>
-        public static string JsonSerialize(object obj)
-        {
-            if (obj == null)
-            {
-                return null;
-            }
-
-            return JsonConvert.SerializeObject(obj);
-        }
-
-
-        /// <summary>
-        /// 将JSON数据转化为C#数据实体
-        /// </summary>
-        /// <param name="json">符合JSON格式的字符串</param>
-        /// <returns>T类型的对象</returns>
-        public static T JsonDeserialize<T>(string json)
-        {
-            if (string.IsNullOrEmpty(json)) return default(T);
-            return JsonConvert.DeserializeObject<T>(json);
-        }
     }
 }
