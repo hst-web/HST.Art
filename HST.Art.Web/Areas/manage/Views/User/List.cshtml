@@ -176,7 +176,7 @@
                     "data": "Id",
                     "render": function (data, type, full) {
                         var isAdmin = $("#is_admin").val();
-                        var tmpString = "<a style=\"text-decoration:none\" onClick=\"user_deit('修改账户','@Url.Action("Edit")'," + data + ")\" href=\"javascript:;\" title=\"编辑\">编辑</a>";
+                        var tmpString = "<a  onClick=\"user_deit('修改账户','@Url.Action("Edit")'," + data + ")\" href=\"javascript:;\" title=\"编辑\">编辑</a>";
                         if (isAdmin) {
                             if ($("#user_id").val() == data) {
                                 tmpString += "<a href=\"javascript:;\" onClick=\"initPwd(" + data + ")\"  title=\"初始化密码\">初始化密码</a>";

@@ -116,7 +116,7 @@
         function getFilterVal() {
             if ($("#sel_filType").val() == '@((int)SearchType.Type)') {
                 return $("#sel_type").val();
-            } else if ($("#sel_filType").val() == '@((int)SearchType.Area)') {
+            } else if ($("#sel_filType").val() == '@((int)SearchType.State)') {
                 return $("#sel_state").val();
             } else {
                 return $("#sel_filVal").val();
@@ -168,7 +168,7 @@
                      "targets": [7],
                      "data": "Id",
                      "render": function (data, type, full) {
-                         var result = "<a style=\"text-decoration:none\"  href=\"@Url.Action("Detail")\" title=\"编辑\">编辑</a>";
+                         var result = "<a   href=\"@Url.Action("Detail")\" title=\"查看详情\">查看详情</a>";
                          return result;
                      }
 
@@ -178,7 +178,7 @@
                     "targets": [-1],
                     "data": "Id",
                     "render": function (data, type, full) {
-                        var tmpString = "<a style=\"text-decoration:none\" onClick=\"down_edit('修改文件','@Url.Action("Edit")'," + data + ")\" href=\"javascript:;\" title=\"编辑\">编辑</a>";
+                        var tmpString = "<a  onClick=\"down_edit('修改文件','@Url.Action("Edit")'," + data + ")\" href=\"javascript:;\" title=\"编辑\">编辑</a>";
                         if (full.State == 0)
                             tmpString += "<a href=\"javascript:;\" onClick=\"obj_publish('@Url.Action("Publish")'," + data + ")\"  title=\"上架\">上架</a>";
                         else

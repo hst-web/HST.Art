@@ -42,6 +42,30 @@ namespace HST.Utillity
         //Center           //中心
     }
 
+    public enum ThumbnailModel
+    {
+        /// <summary>
+        /// 指定高宽缩放（可能变形）
+        /// </summary>
+        HW,
+        /// <summary>
+        /// 指定宽，高按比例
+        /// </summary>
+        W,
+        /// <summary>
+        /// 指定高，宽按比例
+        /// </summary>
+        H,
+        /// <summary>
+        /// 指定高宽裁减（不变形）
+        /// </summary>
+        Cut,
+        /// <summary>
+        /// 不超出尺寸，比它小就不截了，不留白，大就缩小到最佳尺寸，主要为手机用
+        /// </summary>
+        Fit
+    }
+
     /// <summary>
     /// 图片 帮助类。
     /// </summary>
@@ -67,7 +91,7 @@ namespace HST.Utillity
         /// <param name="mode">生成缩略图的方式</param>	
         /// <param name="isaddwatermark">是否添加水印</param>	
         /// <param name="quality">图片品质</param>	
-        public static void MakeThumbnail(string originalImagePath, string thumbnailPath, int width, int height, string mode = "Cut", bool isaddwatermark = false, int quality = 75)
+        public static void MakeThumbnail(string originalImagePath, string thumbnailPath, int width, int height, ThumbnailModel mode = ThumbnailModel.Cut, bool isaddwatermark = false, int quality = 75)
         {
             MakeThumbnail(originalImagePath, thumbnailPath, width, height, mode, isaddwatermark, ImagePosition.Default, null, quality);
         }
@@ -84,7 +108,7 @@ namespace HST.Utillity
         /// <param name="quality">图片品质</param>	
         /// <param name="imagePosition">水印位置</param>	
         /// <param name="waterImage">水印图片名称</param>	
-        public static void MakeThumbnail(string originalImagePath, string thumbnailPath, int width, int height, string mode, bool isaddwatermark, ImagePosition imagePosition, string waterImage = null, int quality = 75)
+        public static void MakeThumbnail(string originalImagePath, string thumbnailPath, int width, int height, ThumbnailModel mode, bool isaddwatermark, ImagePosition imagePosition, string waterImage = null, int quality = 75)
         {
             Image originalImage = Image.FromFile(originalImagePath);
 
@@ -98,15 +122,15 @@ namespace HST.Utillity
 
             switch (mode)
             {
-                case "HW"://指定高宽缩放（可能变形）				
+                case ThumbnailModel.HW://指定高宽缩放（可能变形）				
                     break;
-                case "W"://指定宽，高按比例					
+                case ThumbnailModel.W://指定宽，高按比例					
                     toheight = originalImage.Height * width / originalImage.Width;
                     break;
-                case "H"://指定高，宽按比例
+                case ThumbnailModel.H://指定高，宽按比例
                     towidth = originalImage.Width * height / originalImage.Height;
                     break;
-                case "Cut"://指定高宽裁减（不变形）				
+                case ThumbnailModel.Cut://指定高宽裁减（不变形）				
                     if (originalImage.Width >= towidth && originalImage.Height >= toheight)
                     {
                         if ((double)originalImage.Width / (double)originalImage.Height > (double)towidth / (double)toheight)
@@ -132,7 +156,7 @@ namespace HST.Utillity
                         oh = toheight;
                     }
                     break;
-                case "Fit"://不超出尺寸，比它小就不截了，不留白，大就缩小到最佳尺寸，主要为手机用
+                case ThumbnailModel.Fit://不超出尺寸，比它小就不截了，不留白，大就缩小到最佳尺寸，主要为手机用
                     if (originalImage.Width > towidth && originalImage.Height > toheight)
                     {
                         if ((double)originalImage.Width / (double)originalImage.Height > (double)towidth / (double)toheight)

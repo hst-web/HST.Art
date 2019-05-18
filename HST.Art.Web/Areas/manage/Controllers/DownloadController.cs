@@ -15,6 +15,9 @@ namespace HST.Art.Web.Areas.manage.Controllers
 
         public ActionResult List()
         {
+
+            //ImagHelper.MakeThumbnail("", "", 1, 1);
+
             InitData();
             return View();
         }

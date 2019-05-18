@@ -170,7 +170,7 @@
                     "targets": [-1],
                     "data": "Id",
                     "render": function (data, type, full) {
-                        var tmpString = "<a style=\"text-decoration:none\" onClick=\"stu_edit('修改证书','@Url.Action("Edit")'," + data + ")\" href=\"javascript:;\" title=\"编辑\">编辑</a>";
+                        var tmpString = "<a  onClick=\"stu_edit('修改证书','@Url.Action("Edit")'," + data + ")\" href=\"javascript:;\" title=\"编辑\">编辑</a>";
                         if (full.State == 0)
                             tmpString += "<a href=\"javascript:;\" onClick=\"obj_publish('@Url.Action("Publish")'," + data + ")\"  title=\"上架\">上架</a>";
                         else
