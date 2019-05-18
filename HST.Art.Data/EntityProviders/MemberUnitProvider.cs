@@ -202,12 +202,12 @@ namespace HST.Art.Data
             DBHelper dbHelper = new DBHelper(ConnectionString, DbProviderType.SqlServer);
             string strSql = @"if exists(select Id from MemberUnit where Number=@Number)
                                 begin
-                                    update MemberUnit set Name=@Name,HeadImg=@HeadImg,Star=@Star,State=@State,Category=@Category,Description=@Description,Province=@Province,City=@City,County=@County,CreateDate=getdate(),IsDeleted=0 where Number=@Number 
+                                    update MemberUnit set Name=@Name,HeadImg=@HeadImg,Star=@Star,State=@State,Category=@Category,Description=@Description,Province=@Province,City=@City,County=@County,UserId=@UserId,CreateDate=getdate(),IsDeleted=0 where Number=@Number 
                                 end
                                 else
                                 begin
-                                Insert Into MemberUnit(Name, HeadImg, Star, Number, State, Category, Description, Province, City, County) 
-                                   Values(@Name, @HeadImg, @Star, @Number, @State, @Category, @Description, @Province, @City, @County) 
+                                Insert Into MemberUnit(Name, HeadImg, Star, Number, State, Category, Description, Province, City, County,UserId) 
+                                   Values(@Name, @HeadImg, @Star, @Number, @State, @Category, @Description, @Province, @City, @County,@UserId) 
                                 end ";
 
             List<DbParameter> parametersList = new List<DbParameter>();
@@ -221,6 +221,7 @@ namespace HST.Art.Data
             parametersList.Add(new SqlParameter("@Province", MemberUnitInfo.Province));
             parametersList.Add(new SqlParameter("@City", MemberUnitInfo.City));
             parametersList.Add(new SqlParameter("@County", MemberUnitInfo.County));
+            parametersList.Add(new SqlParameter("@UserId", MemberUnitInfo.UserId));
             return dbHelper.ExecuteNonQuery(strSql, parametersList) > 0;
         }
 
@@ -243,6 +244,7 @@ namespace HST.Art.Data
                                   ,[Province]=@Province
                                   ,[City]=@City
                                   ,[County]=@County
+                                  ,[UserId]=@UserId
                                   Where ID=@ID";
 
             List<DbParameter> parametersList = new List<DbParameter>();
@@ -257,6 +259,7 @@ namespace HST.Art.Data
             parametersList.Add(new SqlParameter("@Province", MemberUnitInfo.Province));
             parametersList.Add(new SqlParameter("@City", MemberUnitInfo.City));
             parametersList.Add(new SqlParameter("@County", MemberUnitInfo.County));
+            parametersList.Add(new SqlParameter("@UserId", MemberUnitInfo.UserId));
 
             return dbHelper.ExecuteNonQuery(strSql, parametersList) > 0;
         }

@@ -259,12 +259,12 @@ namespace HST.Art.Data
             DBHelper dbHelper = new DBHelper(ConnectionString, DbProviderType.SqlServer);
             string strSql = @"if exists(select Id from [User] where userName=@UserName)
                                 begin
-                                    update [User] set Password=@Password,IsAdmin=@IsAdmin,Email=@Email,Name=@Name,Telephone=@Telephone,State=@State,HeadImg=@HeadImg,Salt=@Salt,CreateDate=getdate(),IsDeleted=0 where userName=@UserName 
+                                    update [User] set Password=@Password,IsAdmin=@IsAdmin,Email=@Email,Name=@Name,Telephone=@Telephone,State=@State,UserId=@UserId,HeadImg=@HeadImg,Salt=@Salt,CreateDate=getdate(),IsDeleted=0 where userName=@UserName 
                                 end
                                 else
                                 begin
-                                Insert Into [User] (UserName, Password, Salt, Name, Email, Telephone, HeadImg, IsAdmin, State) 
-                                   Values(@UserName, @Password, @Salt, @Name, @Email, @Telephone, @HeadImg, @IsAdmin, @State) 
+                                Insert Into [User] (UserName, Password, Salt, Name, Email, Telephone, HeadImg, IsAdmin, State,UserId) 
+                                   Values(@UserName, @Password, @Salt, @Name, @Email, @Telephone, @HeadImg, @IsAdmin, @State,@UserId) 
                                 end ";
 
             List<DbParameter> parametersList = new List<DbParameter>();
@@ -277,6 +277,7 @@ namespace HST.Art.Data
             parametersList.Add(new SqlParameter("@Email", userInfo.Email));
             parametersList.Add(new SqlParameter("@HeadImg", userInfo.HeadImg));
             parametersList.Add(new SqlParameter("@State", (int)userInfo.State));
+            parametersList.Add(new SqlParameter("@UserId", userInfo.UserId));
             return dbHelper.ExecuteNonQuery(strSql, parametersList) > 0;
         }
 
@@ -298,6 +299,7 @@ namespace HST.Art.Data
                                   ,[HeadImg]=@HeadImg 
                                   ,[IsAdmin]=@IsAdmin                         
                                   ,[State]=@State
+                                  ,[UserId]=@UserId
                                   Where ID=@ID";
 
             List<DbParameter> parametersList = new List<DbParameter>();
@@ -311,6 +313,7 @@ namespace HST.Art.Data
             parametersList.Add(new SqlParameter("@Email", userInfo.Email));
             parametersList.Add(new SqlParameter("@HeadImg", userInfo.HeadImg));
             parametersList.Add(new SqlParameter("@State", (int)userInfo.State));
+            parametersList.Add(new SqlParameter("@UserId", userInfo.UserId));
 
             return dbHelper.ExecuteNonQuery(strSql, parametersList) > 0;
         }

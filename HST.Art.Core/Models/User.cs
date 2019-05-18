@@ -134,7 +134,8 @@ namespace HST.Art.Core
         public List<int> RoleList { get; set; }
         #endregion Model
 
-
+        public int UserId { get; set; }
+        public string Author { get; set; }
     }
 }
 

@@ -1,7 +1,7 @@
 /*==============================================================*/
 /* Database name:  ARTDB                                        */
 /* DBMS name:      Microsoft SQL Server 2012                    */
-/* Created on:     2019/5/4 12:30:55                            */
+/* Created on:     2019/5/18 19:09:07                           */
 /*==============================================================*/
 
 
@@ -107,7 +107,7 @@ create table FileDownload (
    Type                 int                  not null,
    Src                  varchar(128)         not null,
    State                int                  null,
-   Description          nvarchar(800)        null,
+   Description          nvarchar(max)        null,
    HeadImg              varchar(128)         null,
    CreateDate           datetime             null default getdate(),
    IsDeleted            bit                  null default 0,
@@ -156,6 +156,7 @@ go
 /*==============================================================*/
 create table MemberUnit (
    Id                   int                  identity,
+   UserId               int                  null,
    Name                 nvarchar(50)         not null,
    HeadImg              varchar(128)         null,
    Star                 int                  not null default 1,
@@ -440,6 +441,7 @@ go
 /*==============================================================*/
 create table "User" (
    Id                   int                  identity,
+   UserId               int                  null,
    UserName             varchar(50)          not null,
    Password             varchar(50)          not null,
    Salt                 varchar(20)          null,
