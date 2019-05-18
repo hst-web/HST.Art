@@ -221,6 +221,7 @@
     <Compile Include="App_Start\RazorGeneratorMvcStart.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\manage\Controllers\CategoryController.cs" />
     <Compile Include="Areas\manage\Controllers\StudentController.cs" />
     <Compile Include="Areas\manage\Controllers\DownloadController.cs" />
     <Compile Include="Areas\manage\Controllers\TeacherController.cs" />
@@ -1466,6 +1467,7 @@
     <Content Include="Areas\manage\Views\Student\Edit.cshtml" />
     <Content Include="Areas\manage\Views\Student\Add.cshtml" />
     <Content Include="Areas\manage\Views\Download\List.cshtml" />
+    <Content Include="Areas\manage\Views\Category\Index.cshtml" />
     <None Include="Areas\manage\Views\_ViewStart.cshtml">
       <LastGenOutput>_ViewStart.generated.cs</LastGenOutput>
       <Generator>RazorGenerator</Generator>
