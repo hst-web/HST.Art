@@ -35,7 +35,7 @@
             <option value="@((int)PublishState.Lower)">已下架</option>
         </select>
         <button name="search" id="search" class="btn btn-success ml-20" type="button"><i class="Hui-iconfont">&#xe665;</i> 查询</button>
-        <button class="btn btn-warning" onclick="down_add('新建下载','@Url.Action("Add")')" type="button">新建下载</button>
+        @Html.ActionLink("新建下载", "Add", null, new { @class = "btn btn-warning" })
     </div>
     <div class="mt-10">
         <table id="tbTable" class="table table-border table-bordered table-bg table-sort">
@@ -93,23 +93,13 @@
             })
         });
 
-        /*编辑*/
-        function down_edit(title, url, id) {
+        /*详情*/
+        function down_detail(title, url, id) {
             var index = top.layer.open({
                 type: 2,
                 title: title,
-                area: ['750px', '510px'],
+                area: ['800px', '600px'],
                 content: url + "?id=" + id
-            });
-        }
-
-        /*添加*/
-        function down_add(title, url) {
-            var index = top.layer.open({
-                type: 2,
-                title: title,
-                area: ['750px', '510px'],
-                content: url
             });
         }
 
@@ -168,17 +158,15 @@
                      "targets": [7],
                      "data": "Id",
                      "render": function (data, type, full) {
-                         var result = "<a   href=\"@Url.Action("Detail")\" title=\"查看详情\">查看详情</a>";
+                         var result = "<a href=\"javascript:;\" onClick=\"down_detail('查看详情','@Url.Action("Detail")'," + data + ")\"  title=\"查看详情\">查看详情</a>";
                          return result;
                      }
-
-
                  },
                 {
                     "targets": [-1],
                     "data": "Id",
                     "render": function (data, type, full) {
-                        var tmpString = "<a  onClick=\"down_edit('修改文件','@Url.Action("Edit")'," + data + ")\" href=\"javascript:;\" title=\"编辑\">编辑</a>";
+                        var tmpString = '<a href="@Url.Action("Edit")?id=' + data + '" title="编辑">编辑</a>';
                         if (full.State == 0)
                             tmpString += "<a href=\"javascript:;\" onClick=\"obj_publish('@Url.Action("Publish")'," + data + ")\"  title=\"上架\">上架</a>";
                         else

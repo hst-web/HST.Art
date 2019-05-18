@@ -101,7 +101,8 @@ namespace HST.Art.Core
         /// <summary>
         /// 音频
         /// </summary>
-        Audio = 7
+        Audio = 7,
+        Img = 8
     }
 
     /// <summary>

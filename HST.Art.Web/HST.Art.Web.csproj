@@ -1466,6 +1466,9 @@
     <Content Include="Areas\manage\Views\Student\Edit.cshtml" />
     <Content Include="Areas\manage\Views\Student\Add.cshtml" />
     <Content Include="Areas\manage\Views\Download\List.cshtml" />
+    <Content Include="Areas\manage\Views\Download\Edit.cshtml" />
+    <Content Include="Areas\manage\Views\Download\Add.cshtml" />
+    <Content Include="Areas\manage\Views\Download\Detail.cshtml" />
     <None Include="Areas\manage\Views\_ViewStart.cshtml">
       <LastGenOutput>_ViewStart.generated.cs</LastGenOutput>
       <Generator>RazorGenerator</Generator>
@@ -1505,6 +1508,7 @@
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Upload\test1.jpg" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

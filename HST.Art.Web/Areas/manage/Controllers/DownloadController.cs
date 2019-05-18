@@ -5,6 +5,7 @@ using System.Web.Mvc;
 using HST.Utillity;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web.Configuration;
 
 namespace HST.Art.Web.Areas.manage.Controllers
 {
@@ -77,9 +78,7 @@ namespace HST.Art.Web.Areas.manage.Controllers
         public ActionResult Edit(int id)
         {
             FileDownload data = downService.Get(id);
-            ViewBag.AreaCity = City;
-            ViewBag.AreaProvince = Province;
-
+            InitData();
             if (data != null)
                 return View(new DownloadViewModel
                 {
@@ -93,6 +92,7 @@ namespace HST.Art.Web.Areas.manage.Controllers
                     UserId = data.UserId,
                     Description = data.Description,
                     FileImg = data.HeadImg,
+                    SmallFileImg = GetThumb(data.HeadImg),
                     FileType = data.Type,
                     Src = data.Src
                 });
@@ -114,7 +114,7 @@ namespace HST.Art.Web.Areas.manage.Controllers
                 data.State = (PublishState)model.State;
                 data.HeadImg = model.FileImg;
                 data.Src = model.Src;
-                data.Type = model.FileType;
+                data.Type = string.IsNullOrEmpty(model.Extension) ? model.FileType : getFileFormat(model.Extension);
 
                 rmodel.isSuccess = downService.Update(data);
             }
@@ -133,6 +133,7 @@ namespace HST.Art.Web.Areas.manage.Controllers
         /// <returns></returns>
         public ActionResult Add()
         {
+            InitData();
             return View();
         }
         [HttpPost]
@@ -150,7 +151,7 @@ namespace HST.Art.Web.Areas.manage.Controllers
                     State = (PublishState)model.State,
                     HeadImg = model.FileImg,
                     Src = model.Src,
-                    Type = model.FileType,
+                    Type = getFileFormat(model.Extension),
                     UserId = GetAccount().Id
                 };
                 rmodel.isSuccess = downService.Add(downModel);
@@ -204,6 +205,31 @@ namespace HST.Art.Web.Areas.manage.Controllers
         }
         #endregion
 
+        public ActionResult Detail(int id)
+        {
+            FileDownload data = downService.Get(id);
+
+            if (data != null)
+                return View(new DownloadViewModel
+                {
+                    Id = data.Id,
+                    FileName = data.Name,
+                    FileTitle = data.Title,
+                    CategoryName = data.CategoryName,
+                    UserName = data.UserName,
+                    State = (int)data.State,
+                    Category = data.Category,
+                    UserId = data.UserId,
+                    Description = data.Description,
+                    FileImg = data.HeadImg,
+                    FileType = data.Type,
+                    Src = data.Src,
+                    CreateTime = data.CreateDate.ToString("yyyy-MM-dd HH;MM")
+                });
+            else
+                return View();
+        }
+
         private void InitData()
         {
             List<CategoryDictionary> cdAllList = cdService.GetAll(CategoryType.Download);
@@ -215,6 +241,47 @@ namespace HST.Art.Web.Areas.manage.Controllers
 
             ViewBag.AllCategory = cdAllList;
             ViewBag.EnabledCategory = cdEnabledList;
+        }
+
+        private FileFormat getFileFormat(string extension)
+        {
+            if (string.IsNullOrEmpty(extension)) return FileFormat.UnKnow;
+
+            string imgList = ".jpg,.jpeg,.gif,.bmp,.png";
+            string wordList = ".doc,.docx";
+            string excelList = ".xlsx,.xls";
+            string pptList = ".ppt,.pptx";
+            if (extension.Equals(".txt", StringComparison.InvariantCulture))
+            {
+                return FileFormat.TXT;
+            }
+
+            if (extension.Equals(".pdf", StringComparison.InvariantCulture))
+            {
+                return FileFormat.PDF;
+            }
+
+            if (wordList.Split(',').Where(g => g.Equals(extension, StringComparison.InvariantCultureIgnoreCase)).Count() > 0)
+            {
+                return FileFormat.Word;
+            }
+
+            if (excelList.Split(',').Where(g => g.Equals(extension, StringComparison.InvariantCultureIgnoreCase)).Count() > 0)
+            {
+                return FileFormat.XLSX;
+            }
+
+            if (pptList.Split(',').Where(g => g.Equals(extension, StringComparison.InvariantCultureIgnoreCase)).Count() > 0)
+            {
+                return FileFormat.PPT;
+            }
+
+            if (imgList.Split(',').Where(g => g.Equals(extension, StringComparison.InvariantCultureIgnoreCase)).Count() > 0)
+            {
+                return FileFormat.Img;
+            }
+
+            return FileFormat.UnKnow;
         }
     }
 }

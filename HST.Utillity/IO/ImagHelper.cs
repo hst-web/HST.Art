@@ -91,7 +91,7 @@ namespace HST.Utillity
         /// <param name="mode">生成缩略图的方式</param>	
         /// <param name="isaddwatermark">是否添加水印</param>	
         /// <param name="quality">图片品质</param>	
-        public static void MakeThumbnail(string originalImagePath, string thumbnailPath, int width, int height, ThumbnailModel mode = ThumbnailModel.Cut, bool isaddwatermark = false, int quality = 75)
+        public static void MakeThumbnail(string originalImagePath, string thumbnailPath, int width, int height, ThumbnailModel mode = ThumbnailModel.Cut, bool isaddwatermark = false, int quality = 100)
         {
             MakeThumbnail(originalImagePath, thumbnailPath, width, height, mode, isaddwatermark, ImagePosition.Default, null, quality);
         }
@@ -108,7 +108,7 @@ namespace HST.Utillity
         /// <param name="quality">图片品质</param>	
         /// <param name="imagePosition">水印位置</param>	
         /// <param name="waterImage">水印图片名称</param>	
-        public static void MakeThumbnail(string originalImagePath, string thumbnailPath, int width, int height, ThumbnailModel mode, bool isaddwatermark, ImagePosition imagePosition, string waterImage = null, int quality = 75)
+        public static void MakeThumbnail(string originalImagePath, string thumbnailPath, int width, int height, ThumbnailModel mode, bool isaddwatermark, ImagePosition imagePosition, string waterImage = null, int quality = 100)
         {
             Image originalImage = Image.FromFile(originalImagePath);
 

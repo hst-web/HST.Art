@@ -3,6 +3,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.IO;
 using System.Web.Configuration;
+using HST.Utillity;
 
 namespace HST.Art.Web.Areas.manage.Controllers
 {
@@ -35,15 +36,24 @@ namespace HST.Art.Web.Areas.manage.Controllers
                 um_mod.Message = "该类型不允许上传";
             else
             {
+                //图片缩率图
+                string thumbFileName = string.Empty;
                 //文件后缀
                 string Suffixstr = Path.GetExtension(file.FileName);
                 um_mod.Extension = Suffixstr;
+                string fileNameGuid = Guid.NewGuid().ToString("N");
                 //生成新文件名称
-                string localFileName = "cncbk_" + Guid.NewGuid().ToString("N") + Suffixstr;
+                string localFileName = "art_" + userid + "_" + fileNameGuid + Suffixstr;
+
+                if (IsAllowedType(AllowedSuffix.IMG, Suffixstr))
+                {
+                    thumbFileName = string.Format("small_art_{0}_{1}", userid, fileNameGuid + Suffixstr);
+                }
+
                 //相对路径
-                string fielePath = string.Format("/uploadFiles/{0}/{1}/", DateTime.Now.ToString("yyyyMMdd"), userid);
+                string filePath = string.Format("/uploadFiles/{0}/", DateTime.Now.ToString("yyyyMM"));
                 //文件需要存储的路径
-                string localPath = locAddr + fielePath;// System.Web.Hosting.HostingEnvironment.MapPath(fielePath);
+                string localPath = locAddr + filePath;// System.Web.Hosting.HostingEnvironment.MapPath(fielePath);
                 if (!Directory.Exists(localPath))
                     Directory.CreateDirectory(localPath);
                 //文件全路径
@@ -59,7 +69,7 @@ namespace HST.Art.Web.Areas.manage.Controllers
                 }
                 try
                 {
-                    um_mod.FilePath = fielePath + localFileName;
+                    um_mod.FilePath = filePath + localFileName;
                     //储存文件
                     file.SaveAs(fullPath);
                     //返回是否上传成功
@@ -79,7 +89,7 @@ namespace HST.Art.Web.Areas.manage.Controllers
                     {
                         try
                         {
-                            um_mod.FilePath = fielePath + localFileName;
+                            um_mod.FilePath = filePath + localFileName;
                             //合并文件并生成新的文件
                             CombineFile(fileList, localPath + localFileName);
                             //删除临时文件
@@ -100,6 +110,20 @@ namespace HST.Art.Web.Areas.manage.Controllers
                     um_mod.FileName = file.FileName;
                     //返回文件GUID名称
                     um_mod.FileGuidName = localFileName;
+
+                    try
+                    {
+                        //生成图片缩略图
+                        if (!string.IsNullOrEmpty(thumbFileName) && Suffix == (int)AllowedSuffix.IMG)
+                        {
+                            string thumbFullPath = localPath + thumbFileName;
+                            ImagHelper.MakeThumbnail(fullPath, thumbFullPath, 150, 90, ThumbnailModel.Fit);
+                        }
+                    }
+                    catch
+                    {
+
+                    }
                 }
 
             }
@@ -123,7 +147,10 @@ namespace HST.Art.Web.Areas.manage.Controllers
                     SuffixList = ".jpg,.jpeg,.gif,.bmp,.png";
                     break;
                 case AllowedSuffix.File:
-                    SuffixList = ".chm,.pdf,.zip,.rar,.tar,.gz,.doc,.docx,.ppt,.pptx,.mp4,.mp3";
+                    SuffixList = ".chm,.pdf,.zip,.rar,.tar,.gz,.doc,.docx,.ppt,.pptx,.xlsx,.xls,.mp4,.txt,.mp3";
+                    break;
+                default:
+                    SuffixList = ".chm,.pdf,.zip,.rar,.tar,.gz,.doc,.docx,.ppt,.pptx,.xlsx,.xls,.mp4,.txt,.mp3,.jpg,.jpeg,.gif,.bmp,.png";
                     break;
             }
             if (!string.IsNullOrEmpty(SuffixStr))
@@ -135,6 +162,7 @@ namespace HST.Art.Web.Areas.manage.Controllers
         /// </summary>
         public enum AllowedSuffix
         {
+            All,
             /// <summary>
             /// 图片格式
             /// </summary>
@@ -151,7 +179,7 @@ namespace HST.Art.Web.Areas.manage.Controllers
         /// <returns></returns>
         private string GetFileTopStr(int currIndex)
         {
-            return "cncbk_" + (100000000 + currIndex).ToString();
+            return "art_" + (100000000 + currIndex).ToString();
         }
         /// <summary>
         /// 合并文件
@@ -175,7 +203,7 @@ namespace HST.Art.Web.Areas.manage.Controllers
                     }
                     catch (System.Exception ex)
                     {
-                        
+
                         //write log……
                     }
                     finally

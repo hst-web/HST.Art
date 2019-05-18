@@ -7,6 +7,8 @@ using Newtonsoft.Json;
 using HST.Utillity;
 using HST.Art.Service;
 using System.Collections.Generic;
+using System.Web.Configuration;
+using System.IO;
 
 namespace HST.Art.Web
 {
@@ -16,6 +18,8 @@ namespace HST.Art.Web
         private Dictionary<int, string> _provinceDic;
         private const int MAX_COOKIESTIME = 4;//最大cookies储存时间
         public string ErrorMsg = string.Empty;
+        string locAddr = WebConfigurationManager.AppSettings["WebUrl"].ToString() + "/";//图片上传地址
+
         protected override void OnAuthorization(AuthorizationContext filterContext)
         {
             SetCurrentCookies = filterContext.RequestContext.HttpContext.Request.Cookies;
@@ -193,5 +197,15 @@ namespace HST.Art.Web
             throw new ArgumentNullException("Calling methods requires overriding base classes");
         }
         #endregion
+
+        public string GetThumb(string imgSrc)
+        {
+            // 测试图片显示
+            return "../../upload/test1.jpg";
+            if (string.IsNullOrEmpty(imgSrc)) { return string.Empty; }
+            string fileName = Path.GetFileName(imgSrc);
+            string thumbFileName = "small_" + fileName;
+            return locAddr + imgSrc.Replace(fileName, thumbFileName);
+        }
     }
 }
