@@ -221,6 +221,8 @@
     <Compile Include="App_Start\RazorGeneratorMvcStart.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\manage\Controllers\AcademicianController.cs" />
+    <Compile Include="Areas\manage\Controllers\ArticleController.cs" />
     <Compile Include="Areas\manage\Controllers\CategoryController.cs" />
     <Compile Include="Areas\manage\Controllers\StudentController.cs" />
     <Compile Include="Areas\manage\Controllers\DownloadController.cs" />
@@ -251,6 +253,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ArticleViewModel.cs" />
     <Compile Include="Models\AccountViewModel.cs" />
     <Compile Include="Models\FilterViewModel.cs" />
     <Compile Include="Models\KeyValueViewModel.cs" />
@@ -259,6 +262,7 @@
     <Compile Include="Models\ReturnPageResultIList.cs" />
     <Compile Include="Models\DownloadViewModel.cs" />
     <Compile Include="Models\StuViewModel.cs" />
+    <Compile Include="Models\AcadeViewModel.cs" />
     <Compile Include="Models\TeaViewModel.cs" />
     <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="Models\ResourcePackageViewModel.cs" />
@@ -1468,6 +1472,8 @@
     <Content Include="Areas\manage\Views\Student\Add.cshtml" />
     <Content Include="Areas\manage\Views\Download\List.cshtml" />
     <Content Include="Areas\manage\Views\Category\Index.cshtml" />
+    <Content Include="Areas\manage\Views\Academician\List.cshtml" />
+    <Content Include="Areas\manage\Views\Article\List.cshtml" />
     <None Include="Areas\manage\Views\_ViewStart.cshtml">
       <LastGenOutput>_ViewStart.generated.cs</LastGenOutput>
       <Generator>RazorGenerator</Generator>
