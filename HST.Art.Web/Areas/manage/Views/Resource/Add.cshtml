@@ -250,7 +250,7 @@
                 icon: 6,
                 closeBtn: 0,
                 yes: function () {
-                    parent[1].table1.ajax.reload();
+                    parent[pageIndex()].table1.ajax.reload();
                     parent.layer.close(index);
                 }
             });

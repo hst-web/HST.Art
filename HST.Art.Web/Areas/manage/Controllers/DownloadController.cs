@@ -101,6 +101,7 @@ namespace HST.Art.Web.Areas.manage.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         public JsonResult Edit(DownloadViewModel model)
         {
             ResultRetrun rmodel = new ResultRetrun();
@@ -137,6 +138,7 @@ namespace HST.Art.Web.Areas.manage.Controllers
             return View();
         }
         [HttpPost]
+        [ValidateInput(false)]
         public JsonResult Add(DownloadViewModel model)
         {
             ResultRetrun rmodel = new ResultRetrun();

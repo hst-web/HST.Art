@@ -20,9 +20,9 @@
 </style>
 <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span>@Html.ActionLink("下载管理", "List") <span class="c-gray en">&gt;</span><a href="javascript:void(0)" onclick="location.reload()">编辑下载</a> </nav>
 <article class="page-container">
-    @using (Ajax.BeginForm("Edit","Download", new AjaxOptions { }, new AjaxOptions() { HttpMethod = "Post", OnSuccess = "formSuccess(data)", OnBegin = "disSubmit('sub_btn')", OnComplete = "enSubmit('sub_btn')" }, new { id = "", @class = "form form-horizontal" }))
+    @using (Ajax.BeginForm("Edit","Download", new { }, new AjaxOptions() { HttpMethod = "Post", OnSuccess = "formSuccess(data)", OnBegin = "disSubmit('sub_btn')", OnComplete = "enSubmit('sub_btn')" }, new { id = "", @class = "form form-horizontal" }))
     {
-        @*@Html.AntiForgeryToken()*@
+        @Html.AntiForgeryToken()
         @Html.HiddenFor(m => m.Id)
         <div class="row cl">
             <label class="form-label col-xs-2 "><span class="c-red">*</span>文件头图：</label>
@@ -87,8 +87,8 @@
         <div class="row cl">
             <label class="form-label col-xs-2 ">附件详情：</label>
             <div class="formControls col-xs-6 ">
-                @*@Html.TextAreaFor(m => m.Description, new { placeholder = "请输入附件详情", @class = "textarea", rows = "5" })ckeditor*@
-                @Html.TextAreaFor(m => m.Description, new { @class = " textarea", rows = "10", placeholder = "请输入附件详情..." })
+                @*@Html.TextAreaFor(m => m.Description, new { placeholder = "请输入附件详情", @class = "textarea", rows = "5" })*@
+                @Html.TextAreaFor(m => m.Description, new { @class = "ckeditor textarea", rows = "10", placeholder = "请输入附件详情..." })
             </div>
         </div>
         <div class="row cl">
@@ -117,12 +117,12 @@
 
 <script type="text/javascript">
     $(function () {
-        @*var editor = CKEDITOR.replace('Description',
+        var editor = CKEDITOR.replace('Description',
           {
               height: 260,
               toolbar: 'Basic',
               filebrowserImageUploadUrl: "@Url.Action("UploadEditer", "Upload")"
-          });*@
+          });
 
         $("#sel_type").change(function () {
             $("#Category").val($(this).val()).blur();

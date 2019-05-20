@@ -17,7 +17,7 @@
     }
 </style>
 <article class="page-container">
-    @using (Ajax.BeginForm("Edit", "Teacher", new AjaxOptions() { HttpMethod = "Post", OnSuccess = "formSuccess(data)", OnBegin = "disSubmit('sub_btn')", OnComplete = "enSubmit('sub_btn')" }, new { id = "", @class = "form form-horizontal" }))
+    @using (Ajax.BeginForm("Edit", "Teacher", new { }, new AjaxOptions() { HttpMethod = "Post", OnSuccess = "formSuccess(data)", OnBegin = "disSubmit('sub_btn')", OnComplete = "enSubmit('sub_btn')" }, new { id = "", @class = "form form-horizontal" }))
     {
         @Html.AntiForgeryToken()
         @Html.HiddenFor(m => m.Id)
@@ -127,7 +127,7 @@
                     closeBtn: 0,
                     yes: function () {
                         if (parent[1] != null) {
-                            parent[1].table1.ajax.reload();
+                            parent[pageIndex()].table1.ajax.reload();
                         } else {
                             parent.table1.ajax.reload();
                         }
