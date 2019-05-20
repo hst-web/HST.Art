@@ -58,6 +58,8 @@ namespace HST.Art.Web.Areas.manage.Controllers
                     Directory.CreateDirectory(localPath);
                 //文件全路径
                 string fullPath = localPath + localFileName;
+
+                #region 分片上传功能
                 //临时文件路径
                 string tempPath = localPath + "/temp_" + guid + "/";
                 //如果文件分片，那么路径就需要转换为临时文件存储的路径
@@ -104,6 +106,8 @@ namespace HST.Art.Web.Areas.manage.Controllers
                         }
                     }
                 }
+                #endregion
+
                 if (um_mod.IsSuccess)
                 {
                     //返回源文件名称
@@ -135,6 +139,40 @@ namespace HST.Art.Web.Areas.manage.Controllers
             //}
 
             return Json(um_mod);
+        }
+
+
+        [HttpPost]
+        public ActionResult UploadEditer(HttpPostedFileBase upload)
+        {
+            var url = "";
+            if (upload != null)
+            {
+                int userid = Convert.ToInt16(GetAccount().Id);
+                //文件后缀
+                string Suffixstr = Path.GetExtension(upload.FileName);
+                string fileNameGuid = Guid.NewGuid().ToString("N");
+                string localFileName = "art_" + userid + "_" + fileNameGuid + Suffixstr;
+                string locAddr = WebConfigurationManager.AppSettings["FileAddr"].ToString();//图片上传地址
+                //相对路径
+                string filePath = string.Format("/uploadFiles/{0}/", DateTime.Now.ToString("yyyyMM"));
+                //文件需要存储的路径
+                string localPath = string.IsNullOrEmpty(locAddr) ? System.Web.Hosting.HostingEnvironment.MapPath(filePath) : locAddr + filePath;
+                if (!Directory.Exists(localPath))
+                    Directory.CreateDirectory(localPath);
+                //文件全路径
+                string fullPath = localPath + localFileName;
+                //guid重命名
+                string fileName = System.Guid.NewGuid().ToString() + System.IO.Path.GetFileName(upload.FileName);
+                //储存文件
+                upload.SaveAs(fullPath);
+                url = filePath + localFileName;
+            }
+
+            var CKEditorFuncNum = System.Web.HttpContext.Current.Request["CKEditorFuncNum"];
+
+            //上传成功后，我们还需要通过以下的一个脚本把图片返回到第一个tab选项
+            return Content("<script>window.parent.CKEDITOR.tools.callFunction(" + CKEditorFuncNum + ", \"" + url + "\");</script>");
         }
 
         #region 方法

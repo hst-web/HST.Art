@@ -19,7 +19,7 @@
 </style>
 <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span>@Html.ActionLink("下载管理", "List") <span class="c-gray en">&gt;</span><a href="javascript:void(0)" onclick="location.reload()">新建下载</a> </nav>
 <article class="page-container">
-    @using (Ajax.BeginForm("Add", "Download", new AjaxOptions() { HttpMethod = "Post", OnSuccess = "formSuccess(data)", OnBegin = "disSubmit('sub_btn')", OnComplete = "enSubmit('sub_btn')" }, new { id = "form-good-add", @class = "form form-horizontal" }))
+    @using (Ajax.BeginForm("Add", "Download", new AjaxOptions() { HttpMethod = "Post", OnSuccess = "formSuccess(data)", OnBegin = "disSubmit('sub_btn')", OnComplete = "enSubmit('sub_btn')" }, new { id = "", @class = "form form-horizontal" }))
     {
         @Html.AntiForgeryToken()
         @Html.HiddenFor(m => m.Id, new { @Value = 0 })

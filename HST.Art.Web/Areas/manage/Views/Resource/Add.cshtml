@@ -18,7 +18,7 @@
     }
 </style>
 <article class="page-container">
-    @using (Ajax.BeginForm("Add", "Resource", new AjaxOptions() { HttpMethod = "Post", OnSuccess = "formSuccess(data)", OnBegin = "disSubmit('sub_btn')", OnComplete = "enSubmit('sub_btn')" }, new { id = "form-good-add", @class = "form form-horizontal" }))
+    @using (Ajax.BeginForm("Add", "Resource", new AjaxOptions() { HttpMethod = "Post", OnSuccess = "formSuccess(data)", OnBegin = "disSubmit('sub_btn')", OnComplete = "enSubmit('sub_btn')" }, new { id = "", @class = "form form-horizontal" }))
     {
         @Html.AntiForgeryToken()
         @Html.HiddenFor(m => m.Id)
