@@ -27,12 +27,13 @@ namespace ASP
     using System.Web.Security;
     using System.Web.UI;
     using System.Web.WebPages;
+    using HST.Art.Web;
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("RazorGenerator", "2.0.0.0")]
-    [System.Web.WebPages.PageVirtualPathAttribute("~/Views/Shared/_Layout.cshtml")]
-    public partial class _Views_Shared__Layout_cshtml : System.Web.Mvc.WebViewPage<dynamic>
+    [System.Web.WebPages.PageVirtualPathAttribute("~/Areas/manage/Views/Shared/_Layout.cshtml")]
+    public partial class _Areas_manage_Views_Shared__Layout_cshtml : System.Web.Mvc.WebViewPage<dynamic>
     {
-        public _Views_Shared__Layout_cshtml()
+        public _Areas_manage_Views_Shared__Layout_cshtml()
         {
         }
         public override void Execute()
@@ -85,7 +86,7 @@ WriteLiteral(" />\r\n    <!--[if lt IE 9]>\r\n    <script type=\"text/javascript
 WriteLiteral("    ");
 
             
-            #line 16 "..\..\Views\Shared\_Layout.cshtml"
+            #line 16 "..\..\Areas\manage\Views\Shared\_Layout.cshtml"
 Write(Scripts.Render("~/bundles/saos"));
 
             
@@ -96,7 +97,7 @@ WriteLiteral("\r\n");
 WriteLiteral("    ");
 
             
-            #line 17 "..\..\Views\Shared\_Layout.cshtml"
+            #line 17 "..\..\Areas\manage\Views\Shared\_Layout.cshtml"
 Write(Styles.Render("~/appcss"));
 
             
@@ -107,18 +108,18 @@ WriteLiteral("\r\n    <!--[if IE 6]>\r\n    <script type=\"text/javascript\" src
 "\n    <![endif]-->\r\n    <title>");
 
             
-            #line 22 "..\..\Views\Shared\_Layout.cshtml"
+            #line 22 "..\..\Areas\manage\Views\Shared\_Layout.cshtml"
       Write(ViewBag.Title);
 
             
             #line default
             #line hidden
-WriteLiteral("</title>\r\n</head>\r\n<body>\r\n\r\n\r\n");
+WriteLiteral("</title>\r\n</head>\r\n<body>\r\n");
 
 WriteLiteral("    ");
 
             
-            #line 27 "..\..\Views\Shared\_Layout.cshtml"
+            #line 25 "..\..\Areas\manage\Views\Shared\_Layout.cshtml"
 Write(RenderBody());
 
             
@@ -129,7 +130,7 @@ WriteLiteral("\r\n");
 WriteLiteral("    ");
 
             
-            #line 28 "..\..\Views\Shared\_Layout.cshtml"
+            #line 26 "..\..\Areas\manage\Views\Shared\_Layout.cshtml"
 Write(RenderSection("Scripts", required: false));
 
             

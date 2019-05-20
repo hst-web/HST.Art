@@ -208,7 +208,7 @@ namespace HST.Art.Web.Areas.manage.Controllers
                         while ((b = fileIn[i].ReadByte()) != -1)
                             fileOut.WriteByte((byte)b);
                     }
-                    catch (System.Exception ex)
+                    catch
                     {
 
                         //write log……

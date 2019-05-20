@@ -119,27 +119,27 @@ namespace HST.Utillity
         /// <param name="body">内容</param>
         private static void SendEmailQQ(string host, string strFrom, string strTo, string username, string passwd, string subject, string body,bool isAynce=true)
         {
-           System.Web.Mail.MailMessage mail = new System.Web.Mail.MailMessage();
-            try
-            {
-                mail.To = strTo;
-                mail.From = strFrom;
-                mail.Subject = subject;
-                mail.BodyFormat = System.Web.Mail.MailFormat.Html;
-                mail.Body = body;
+           //System.Web.Mail.MailMessage mail = new System.Web.Mail.MailMessage();
+           // try
+           // {
+           //     mail.To = strTo;
+           //     mail.From = strFrom;
+           //     mail.Subject = subject;
+           //     mail.BodyFormat = System.Web.Mail.MailFormat.Html;
+           //     mail.Body = body;
 
-                mail.Fields.Add("http://schemas.microsoft.com/cdo/configuration/smtpauthenticate", "1"); //身份验证  
-                mail.Fields.Add("http://schemas.microsoft.com/cdo/configuration/sendusername", mail.From); //邮箱登录账号，这里跟前面的发送账号一样就行  
-                mail.Fields.Add("http://schemas.microsoft.com/cdo/configuration/sendpassword", passwd); //这个密码要注意：如果是一般账号，要用授权码；企业账号用登录密码  
-                mail.Fields.Add("http://schemas.microsoft.com/cdo/configuration/smtpserverport", 465);//端口  
-                mail.Fields.Add("http://schemas.microsoft.com/cdo/configuration/smtpusessl", "true");//SSL加密  
-                System.Web.Mail.SmtpMail.SmtpServer = host; //邮件服务器
-                System.Web.Mail.SmtpMail.Send(mail);
-            }
-            catch (Exception ex)
-            {
-                Logger.Info("MailHelper:" + ex.Message, ex);
-            }
+           //     mail.Fields.Add("http://schemas.microsoft.com/cdo/configuration/smtpauthenticate", "1"); //身份验证  
+           //     mail.Fields.Add("http://schemas.microsoft.com/cdo/configuration/sendusername", mail.From); //邮箱登录账号，这里跟前面的发送账号一样就行  
+           //     mail.Fields.Add("http://schemas.microsoft.com/cdo/configuration/sendpassword", passwd); //这个密码要注意：如果是一般账号，要用授权码；企业账号用登录密码  
+           //     mail.Fields.Add("http://schemas.microsoft.com/cdo/configuration/smtpserverport", 465);//端口  
+           //     mail.Fields.Add("http://schemas.microsoft.com/cdo/configuration/smtpusessl", "true");//SSL加密  
+           //     System.Web.Mail.SmtpMail.SmtpServer = host; //邮件服务器
+           //     System.Web.Mail.SmtpMail.Send(mail);
+           // }
+           // catch (Exception ex)
+           // {
+           //     Logger.Info("MailHelper:" + ex.Message, ex);
+           // }
         }
 
         /// <summary>
