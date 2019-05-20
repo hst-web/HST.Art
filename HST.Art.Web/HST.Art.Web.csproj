@@ -1508,6 +1508,32 @@
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="uploadFiles\201905\art_1_1d19a08249dc46a88123f920990e3e48.jpg" />
+    <Content Include="uploadFiles\201905\art_1_34f417acda3443f8b97a6cd457824e11.jpg" />
+    <Content Include="uploadFiles\201905\art_1_3aac44e70f2f4fca943686a1e3334360.jpg" />
+    <Content Include="uploadFiles\201905\art_1_46958e3437a647398446291530f979a3.jpg" />
+    <Content Include="uploadFiles\201905\art_1_5ec4c9cc51a043d38c082d7adc62561c.jpg" />
+    <Content Include="uploadFiles\201905\art_1_714e96ce075f4e73a0ba4cc7edeab562.jpg" />
+    <Content Include="uploadFiles\201905\art_1_774021f1345c4b3c9d36038e9b5390ea.jpg" />
+    <Content Include="uploadFiles\201905\art_1_7d98ce58e4f4445f8de5dbb87ef98dda.jpg" />
+    <Content Include="uploadFiles\201905\art_1_84a94f3e11fb413db8e647aac03f0b00.txt" />
+    <Content Include="uploadFiles\201905\art_1_8ab2146fc7bd4ac593e3bb23c2011c0c.png" />
+    <Content Include="uploadFiles\201905\art_1_97141d9ab00749758a788510031aaaad.jpg" />
+    <Content Include="uploadFiles\201905\art_1_a56fadc1e44744549a6fe26facd19215.jpg" />
+    <Content Include="uploadFiles\201905\art_1_d0a5a1ccace24af89ea270c82e1d96a9.jpg" />
+    <Content Include="uploadFiles\201905\art_1_d829d2689da64596a6486c2e701f089c.png" />
+    <Content Include="uploadFiles\201905\art_1_f5585242e3f043d8af4d74ea66a1e397.txt" />
+    <Content Include="uploadFiles\201905\art_1_ffe951ef1f2d42e6bbc50593ad69c7b3.jpg" />
+    <Content Include="uploadFiles\201905\small_art_1_1743922738794626b4df68a6505fcca8.jpg" />
+    <Content Include="uploadFiles\201905\small_art_1_28e3e6523bbe49aeb20f57a484fbde20.jpg" />
+    <Content Include="uploadFiles\201905\small_art_1_34f417acda3443f8b97a6cd457824e11.jpg" />
+    <Content Include="uploadFiles\201905\small_art_1_4aca26eb087d411aa25a3a34d30c927b.jpg" />
+    <Content Include="uploadFiles\201905\small_art_1_5ec4c9cc51a043d38c082d7adc62561c.jpg" />
+    <Content Include="uploadFiles\201905\small_art_1_c7d070075a104189b13ddc069a8ec229.jpg" />
+    <Content Include="uploadFiles\201905\small_art_1_d829d2689da64596a6486c2e701f089c.png" />
+    <Content Include="uploadFiles\201905\small_art_1_dd78dd8002c94c1b84fd706e823b2760.jpg" />
+    <Content Include="uploadFiles\201905\small_art_1_f20727186c394f8fbb4f43c73999a4fe.png" />
+    <Content Include="uploadFiles\201905\small_art_1_ffe951ef1f2d42e6bbc50593ad69c7b3.jpg" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -1517,6 +1543,7 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
+    <Content Include="uploadFiles\201905\art_1_672a866d55a74ed39c84ea50733b418a.doc" />
     <None Include="Views\Web.config">
       <Generator>RazorGenerator</Generator>
     </None>
@@ -1544,7 +1571,6 @@
     <Folder Include="Content\css\" />
     <Folder Include="Controllers\" />
     <Folder Include="Properties\PublishProfiles\" />
-    <Folder Include="uploadFiles\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
