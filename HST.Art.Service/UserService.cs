@@ -156,9 +156,21 @@ namespace HST.Art.Service
                 return false;
             }
 
+            if (userInfo != null)
+            {
+                userInfo.Salt = RandomHelper.GetRandomString(8);
+                userInfo.Password = EncryptHelper.Encode(userInfo.Password, userInfo.Salt);
+            }
+
             return _userProvider.Add(userInfo);
         }
 
+        /// <summary>
+        /// 修改密码，密码为空时为初始化功能
+        /// </summary>
+        /// <param name="id">用户id</param>
+        /// <param name="password">密码</param>
+        /// <returns></returns>
         public bool UpdatePassword(int id, string password = "")
         {
             if (id < 0)
@@ -173,6 +185,7 @@ namespace HST.Art.Service
                 return false;
             }
 
+            // 密码为空时为密码初始化功能，盐值也会被重新初始化
             if (string.IsNullOrEmpty(password))
             {
                 string salt = RandomHelper.GetRandomString(8);

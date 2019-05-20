@@ -53,7 +53,7 @@ namespace HST.Art.Web.Areas.manage.Controllers
                 //相对路径
                 string filePath = string.Format("/uploadFiles/{0}/", DateTime.Now.ToString("yyyyMM"));
                 //文件需要存储的路径
-                string localPath = locAddr + filePath;// System.Web.Hosting.HostingEnvironment.MapPath(fielePath);
+                string localPath = string.IsNullOrEmpty(locAddr) ? System.Web.Hosting.HostingEnvironment.MapPath(filePath) : locAddr + filePath;
                 if (!Directory.Exists(localPath))
                     Directory.CreateDirectory(localPath);
                 //文件全路径
@@ -127,6 +127,13 @@ namespace HST.Art.Web.Areas.manage.Controllers
                 }
 
             }
+
+            // 额外处理逻辑，后续逻辑有变动可删除
+            //if (!string.IsNullOrEmpty(um_mod.FilePath))
+            //{
+            //    um_mod.FilePath = um_mod.FilePath.Replace("/uploadFiles", "");
+            //}
+
             return Json(um_mod);
         }
 

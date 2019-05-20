@@ -18,7 +18,7 @@ namespace HST.Art.Web
         private Dictionary<int, string> _provinceDic;
         private const int MAX_COOKIESTIME = 4;//最大cookies储存时间
         public string ErrorMsg = string.Empty;
-        string locAddr = WebConfigurationManager.AppSettings["WebUrl"].ToString() + "/";//图片上传地址
+        string locAddr = WebConfigurationManager.AppSettings["WebUrl"].ToString();//图片上传地址
 
         protected override void OnAuthorization(AuthorizationContext filterContext)
         {
@@ -200,8 +200,6 @@ namespace HST.Art.Web
 
         public string GetThumb(string imgSrc)
         {
-            // 测试图片显示
-            return "../../upload/test1.jpg";
             if (string.IsNullOrEmpty(imgSrc)) { return string.Empty; }
             string fileName = Path.GetFileName(imgSrc);
             string thumbFileName = "small_" + fileName;

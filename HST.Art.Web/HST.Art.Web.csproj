@@ -1508,7 +1508,6 @@
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Upload\test1.jpg" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -1545,6 +1544,7 @@
     <Folder Include="Content\css\" />
     <Folder Include="Controllers\" />
     <Folder Include="Properties\PublishProfiles\" />
+    <Folder Include="uploadFiles\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
