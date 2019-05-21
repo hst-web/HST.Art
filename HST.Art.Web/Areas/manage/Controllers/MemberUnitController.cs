@@ -9,16 +9,13 @@ using System.Web.Configuration;
 
 namespace HST.Art.Web.Areas.manage.Controllers
 {
-    public class DownloadController : ApplicationBase
+    public class MemberUnitController : ApplicationBase
     {
-        FileDownloadService downService = new FileDownloadService();
+        MemberUnitService muService = new MemberUnitService();
         CategoryDictionaryService cdService = new CategoryDictionaryService();
         List<CategoryDictionary> cdEnabledList = null;
         public ActionResult List()
         {
-
-            //ImagHelper.MakeThumbnail("", "", 1, 1);
-
             InitData();
             return View();
         }
@@ -38,26 +35,29 @@ namespace HST.Art.Web.Areas.manage.Controllers
 
                 switch (ftype)
                 {
-                    case SearchType.Title:
-                        fkey = "Title";
+                    case SearchType.Name:
+                        fkey = "Name";
+                        break;
+                    case SearchType.Number:
+                        fkey = "Number";
                         break;
                     case SearchType.Type:
                         fkey = "Category";
                         break;
-                    case SearchType.State:
-                        fkey = "State";
+                    case SearchType.Area:
+                        fkey = "City";
                         break;
                 }
 
                 fillter.keyValueList.Add(new KeyValueObj() { Key = fkey, Value = svm.FilterVal });
             }
 
-            List<FileDownload> downList = downService.GetPage(fillter, out totalNum);
-            ReturnPageResultIList<FileDownload> data = new ReturnPageResultIList<Core.FileDownload>(downList, totalNum);
-            IList<DownloadViewModel> gmList = new List<DownloadViewModel>();
+            List<MemberUnit> downList = muService.GetPage(fillter, out totalNum);
+            ReturnPageResultIList<MemberUnit> data = new ReturnPageResultIList<Core.MemberUnit>(downList, totalNum);
+            IList<MemberUnitViewModel> gmList = new List<MemberUnitViewModel>();
 
             if (data != null && data.DataT != null)
-                gmList = data.DataT.Select(g => new DownloadViewModel() { Id = g.Id, UserId = g.UserId, FileName = g.Name, CategoryName = g.CategoryName, State = (int)g.State, CreateTime = g.CreateDate.ToString("yyyy-MM-dd HH:MM"), Category = g.Category, FileType = g.Type, FileTitle = g.Title, UserName = g.UserName }).ToList();
+                gmList = data.DataT.Select(g => new MemberUnitViewModel() { Id = g.Id, UserId = g.UserId, MemberUnitName = g.Name, CategoryName = g.CategoryName, State = (int)g.State, CreateTime = g.CreateDate.ToString("yyyy-MM-dd HH:MM"), Category = g.Category, UserName = g.UserName, Number = g.Number, Star = g.Star, HeadImg = g.HeadImg, SmallHeadImg = GetThumb(g.HeadImg), Province = Convert.ToInt32(g.Province), City = Convert.ToInt32(g.City), Area = GetAreaStr(g.Province, g.City) }).ToList();
 
             return Json(new
             {
@@ -77,52 +77,54 @@ namespace HST.Art.Web.Areas.manage.Controllers
         /// <returns></returns>
         public ActionResult Edit(int id)
         {
-            FileDownload data = downService.Get(id);
+            MemberUnit data = muService.Get(id);
             InitData();
-            DownloadViewModel model = new DownloadViewModel();
             if (data != null)
             {
+                MemberUnitViewModel model = new MemberUnitViewModel();
                 model.Id = data.Id;
-                model.FileName = data.Name;
-                model.FileTitle = data.Title;
+                model.MemberUnitName = data.Name;
                 model.CategoryName = data.CategoryName;
                 model.UserName = data.UserName;
                 model.State = (int)data.State;
                 model.UserId = data.UserId;
                 model.Description = data.Description;
-                model.FileImg = data.HeadImg;
-                model.SmallFileImg = GetThumb(data.HeadImg);
-                model.FileType = data.Type;
-                model.Src = data.Src;
+                model.HeadImg = data.HeadImg;
+                model.SmallHeadImg = GetThumb(data.HeadImg);
+                model.Star = data.Star;
+                model.City = string.IsNullOrEmpty(data.City) ? 0 : Convert.ToInt32(data.City);
+                model.Province = string.IsNullOrEmpty(data.Province) ? 0 : Convert.ToInt32(data.Province);
+                model.Number = data.Number;
 
                 if (cdEnabledList != null && cdEnabledList.Count > 0 && cdEnabledList.Where(g => g.Id == data.Category).Count() > 0)
                 {
                     model.Category = data.Category;
                 }
-
                 return View(model);
             }
+
             return View();
         }
 
         [HttpPost]
         [ValidateInput(false)]
-        public JsonResult Edit(DownloadViewModel model)
+        public JsonResult Edit(MemberUnitViewModel model)
         {
             ResultRetrun rmodel = new ResultRetrun();
             if (ModelState.IsValid)
             {
-                FileDownload data = downService.Get(model.Id);
-                data.Title = model.FileTitle;
-                data.Name = model.FileName;
+                MemberUnit data = muService.Get(model.Id);
+                data.Name = model.MemberUnitName;
                 data.Description = !string.IsNullOrEmpty(model.Description) ? model.Description.Replace("\r\n", "") : string.Empty;
                 data.Category = model.Category;
                 data.State = (PublishState)model.State;
-                data.HeadImg = model.FileImg;
-                data.Src = model.Src;
-                data.Type = string.IsNullOrEmpty(model.Extension) ? model.FileType : getFileFormat(model.Extension);
+                data.HeadImg = model.HeadImg;
+                data.Star = model.Star;
+                data.City = model.City.ToString();
+                data.Province = model.Province < 1 ? Constant.DEFAULT_PROVINCE : model.Province.ToString();
+                data.Number = model.Number;
 
-                rmodel.isSuccess = downService.Update(data);
+                rmodel.isSuccess = muService.Update(data);
             }
 
             return Json(rmodel);
@@ -144,24 +146,25 @@ namespace HST.Art.Web.Areas.manage.Controllers
         }
         [HttpPost]
         [ValidateInput(false)]
-        public JsonResult Add(DownloadViewModel model)
+        public JsonResult Add(MemberUnitViewModel model)
         {
             ResultRetrun rmodel = new ResultRetrun();
             if (ModelState.IsValid)
             {
-                FileDownload downModel = new FileDownload()
+                MemberUnit downModel = new MemberUnit()
                 {
-                    Title = model.FileTitle,
-                    Name = model.FileName,
+                    Name = model.MemberUnitName,
                     Description = !string.IsNullOrEmpty(model.Description) ? model.Description.Replace("\r\n", "") : string.Empty,
                     Category = model.Category,
                     State = (PublishState)model.State,
-                    HeadImg = model.FileImg,
-                    Src = model.Src,
-                    Type = getFileFormat(model.Extension),
-                    UserId = GetAccount().Id
+                    HeadImg = model.HeadImg,
+                    Star = model.Star,
+                    UserId = GetAccount().Id,
+                    Number = model.Number,
+                    City = model.City.ToString(),
+                    Province = model.Province.ToString()
                 };
-                rmodel.isSuccess = downService.Add(downModel);
+                rmodel.isSuccess = muService.Add(downModel);
             }
 
             return Json(rmodel);
@@ -174,7 +177,7 @@ namespace HST.Art.Web.Areas.manage.Controllers
             ResultRetrun rmodel = new ResultRetrun();
             try
             {
-                rmodel.isSuccess = downService.LogicDelete(id);
+                rmodel.isSuccess = muService.LogicDelete(id);
             }
             catch (Exception ex)
             {
@@ -188,7 +191,7 @@ namespace HST.Art.Web.Areas.manage.Controllers
             ResultRetrun rmodel = new ResultRetrun();
             try
             {
-                rmodel.isSuccess = downService.Publish(id);
+                rmodel.isSuccess = muService.Publish(id);
             }
             catch (Exception ex)
             {
@@ -202,7 +205,7 @@ namespace HST.Art.Web.Areas.manage.Controllers
             ResultRetrun rmodel = new ResultRetrun();
             try
             {
-                rmodel.isSuccess = downService.Recovery(id);
+                rmodel.isSuccess = muService.Recovery(id);
             }
             catch (Exception ex)
             {
@@ -214,23 +217,25 @@ namespace HST.Art.Web.Areas.manage.Controllers
 
         public ActionResult Detail(int id)
         {
-            FileDownload data = downService.Get(id);
+            MemberUnit data = muService.Get(id);
 
             if (data != null)
-                return View(new DownloadViewModel
+                return View(new MemberUnitViewModel
                 {
                     Id = data.Id,
-                    FileName = data.Name,
-                    FileTitle = data.Title,
+                    MemberUnitName = data.Name,
                     CategoryName = data.CategoryName,
                     UserName = data.UserName,
                     State = (int)data.State,
                     Category = data.Category,
                     UserId = data.UserId,
                     Description = data.Description,
-                    FileImg = data.HeadImg,
-                    FileType = data.Type,
-                    Src = data.Src,
+                    HeadImg = data.HeadImg,
+                    SmallHeadImg = GetThumb(data.HeadImg),
+                    Star = data.Star,
+                    City = string.IsNullOrEmpty(data.City) ? 0 : Convert.ToInt32(data.City),
+                    Province = string.IsNullOrEmpty(data.Province) ? 0 : Convert.ToInt32(data.Province),
+                    Number = data.Number,
                     CreateTime = data.CreateDate.ToString("yyyy-MM-dd HH;MM")
                 });
             else
@@ -239,56 +244,38 @@ namespace HST.Art.Web.Areas.manage.Controllers
 
         private void InitData()
         {
-            List<CategoryDictionary> cdAllList = cdService.GetAll(CategoryType.Download);
+            List<CategoryDictionary> cdAllList = cdService.GetAll(CategoryType.Member);
             cdEnabledList = new List<CategoryDictionary>();
             if (cdAllList != null && cdAllList.Count > 0)
             {
                 cdEnabledList = cdAllList.FindAll(g => g.State == PublishState.Upper);
             }
 
+            ViewBag.AreaCity = City;
+            ViewBag.AreaProvince = Province;
             ViewBag.AllCategory = cdAllList;
             ViewBag.EnabledCategory = cdEnabledList;
         }
 
-        private FileFormat getFileFormat(string extension)
+        [HttpGet]
+        public JsonResult CheckNumber(int id, string number)
         {
-            if (string.IsNullOrEmpty(extension)) return FileFormat.UnKnow;
+            ResultRetrun rmodel = new ResultRetrun();
+            FilterEntityModel filterModel = new FilterEntityModel();
+            filterModel.keyValueList = new List<KeyValueObj>();
+            filterModel.keyValueList.Add(new KeyValueObj() { Key = "number", Value = number, FieldType = FieldType.String });
 
-            string imgList = ".jpg,.jpeg,.gif,.bmp,.png";
-            string wordList = ".doc,.docx";
-            string excelList = ".xlsx,.xls";
-            string pptList = ".ppt,.pptx";
-            if (extension.Equals(".txt", StringComparison.InvariantCulture))
+            List<MemberUnit> muList = muService.GetAll(filterModel);
+            if (muList != null && muList.Count > 0)
             {
-                return FileFormat.TXT;
+                if (muList.Where(g => !g.Id.Equals(id)).Count() > 0)
+                    rmodel.message = "会员单位编号已经存在";
+                else
+                    rmodel.isSuccess = true;
             }
-
-            if (extension.Equals(".pdf", StringComparison.InvariantCulture))
-            {
-                return FileFormat.PDF;
-            }
-
-            if (wordList.Split(',').Where(g => g.Equals(extension, StringComparison.InvariantCultureIgnoreCase)).Count() > 0)
-            {
-                return FileFormat.Word;
-            }
-
-            if (excelList.Split(',').Where(g => g.Equals(extension, StringComparison.InvariantCultureIgnoreCase)).Count() > 0)
-            {
-                return FileFormat.XLSX;
-            }
-
-            if (pptList.Split(',').Where(g => g.Equals(extension, StringComparison.InvariantCultureIgnoreCase)).Count() > 0)
-            {
-                return FileFormat.PPT;
-            }
-
-            if (imgList.Split(',').Where(g => g.Equals(extension, StringComparison.InvariantCultureIgnoreCase)).Count() > 0)
-            {
-                return FileFormat.Img;
-            }
-
-            return FileFormat.UnKnow;
+            else
+                rmodel.isSuccess = true;
+            return Json(rmodel.isSuccess, JsonRequestBehavior.AllowGet);
         }
     }
 }

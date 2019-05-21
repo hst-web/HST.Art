@@ -90,6 +90,21 @@ function StringBuffer(str) {
     }
 };
 
+function handleFancybox() {
+    if (!jQuery.fancybox) {
+        return;
+    }
+
+    if ($(".fancybox").size() > 0) {
+        $(".fancybox").fancybox({
+            buttons: [
+                'close',
+                'arrowLeft',
+                'arrowRight'
+            ]
+        });
+    }
+};
 
 //改变数量
 function changecount(input, type, min) {
@@ -233,6 +248,16 @@ function obj_shelves(action, id) {
             },
             error: function (data) { top.layer.alert('操作失败！', { icon: 5 }); }
         })
+    });
+}
+
+/*详情*/
+function obj_detail(title, url, id) {
+    var index = top.layer.open({
+        type: 2,
+        title: title,
+        area: ['800px', '600px'],
+        content: url + "?id=" + id
     });
 }
 

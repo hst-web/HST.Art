@@ -217,6 +217,7 @@
     <Compile Include="App_Start\RazorGeneratorMvcStart.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\manage\Controllers\MemberUnitController.cs" />
     <Compile Include="Areas\manage\Controllers\StudentController.cs" />
     <Compile Include="Areas\manage\Controllers\DownloadController.cs" />
     <Compile Include="Areas\manage\Controllers\TeacherController.cs" />
@@ -247,6 +248,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModel.cs" />
+    <Compile Include="Models\MemberUnitViewModel.cs" />
     <Compile Include="Models\FilterViewModel.cs" />
     <Compile Include="Models\KeyValueViewModel.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
@@ -637,6 +639,24 @@
     <Content Include="Content\lib\DD_belatedPNG_0.0.8a-min.js" />
     <Content Include="Content\lib\echarts\3.4.0\echarts.common.min.js" />
     <Content Include="Content\lib\expressInstall.swf" />
+    <Content Include="Content\lib\fancybox\dist\jquery.fancybox.css" />
+    <Content Include="Content\lib\fancybox\dist\jquery.fancybox.js" />
+    <Content Include="Content\lib\fancybox\dist\jquery.fancybox.min.css" />
+    <Content Include="Content\lib\fancybox\dist\jquery.fancybox.min.js" />
+    <Content Include="Content\lib\fancybox\src\css\core.css" />
+    <Content Include="Content\lib\fancybox\src\css\fullscreen.css" />
+    <Content Include="Content\lib\fancybox\src\css\share.css" />
+    <Content Include="Content\lib\fancybox\src\css\slideshow.css" />
+    <Content Include="Content\lib\fancybox\src\css\thumbs.css" />
+    <Content Include="Content\lib\fancybox\src\js\core.js" />
+    <Content Include="Content\lib\fancybox\src\js\fullscreen.js" />
+    <Content Include="Content\lib\fancybox\src\js\guestures.js" />
+    <Content Include="Content\lib\fancybox\src\js\hash.js" />
+    <Content Include="Content\lib\fancybox\src\js\media.js" />
+    <Content Include="Content\lib\fancybox\src\js\share.js" />
+    <Content Include="Content\lib\fancybox\src\js\slideshow.js" />
+    <Content Include="Content\lib\fancybox\src\js\thumbs.js" />
+    <Content Include="Content\lib\fancybox\src\js\wheel.js" />
     <Content Include="Content\lib\h-ui.admin\css\H-ui.admin.css" />
     <Content Include="Content\lib\h-ui.admin\css\H-ui.login.css" />
     <Content Include="Content\lib\h-ui.admin\css\style.css" />
@@ -1806,6 +1826,7 @@
     <Content Include="Areas\manage\Views\Download\Edit.cshtml" />
     <Content Include="Areas\manage\Views\Download\Add.cshtml" />
     <Content Include="Areas\manage\Views\Download\Detail.cshtml" />
+    <Content Include="Areas\manage\Views\MemberUnit\List.cshtml" />
     <None Include="Areas\manage\Views\_ViewStart.cshtml">
       <LastGenOutput>_ViewStart.generated.cs</LastGenOutput>
       <Generator>RazorGenerator</Generator>

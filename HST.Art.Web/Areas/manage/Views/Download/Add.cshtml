@@ -46,7 +46,7 @@
             <div class="formControls col-xs-6 ">
                 <select class="select select-box inline" style="min-width:250px" id="sel_type">
                     <option value="">请选择所属类别</option>
-                    @foreach (CategoryDictionary item in ViewBag.AllCategory)
+                    @foreach (CategoryDictionary item in ViewBag.EnabledCategory)
                     {
                         <option value="@item.Id">@item.Name</option>
                     }

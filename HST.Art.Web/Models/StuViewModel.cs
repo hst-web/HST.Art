@@ -18,6 +18,7 @@ namespace HST.Art.Web
         public string StudentName { get; set; }
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "证书编号不能为空")]
+        [RegularExpression(@"^[^\s]+$", ErrorMessage = "证书编号不能包含空字符")]
         [Remote("CheckStuNumber", "Student", AdditionalFields = "Id", ErrorMessage = "证书编号已存在")]
         public string Number { get; set; }
 

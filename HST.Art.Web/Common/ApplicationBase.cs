@@ -9,6 +9,7 @@ using HST.Art.Service;
 using System.Collections.Generic;
 using System.Web.Configuration;
 using System.IO;
+using System.Linq;
 
 namespace HST.Art.Web
 {
@@ -198,12 +199,20 @@ namespace HST.Art.Web
         }
         #endregion
 
-        public string GetThumb(string imgSrc)
+        protected string GetThumb(string imgSrc)
         {
             if (string.IsNullOrEmpty(imgSrc)) { return string.Empty; }
             string fileName = Path.GetFileName(imgSrc);
             string thumbFileName = "small_" + fileName;
             return locAddr + imgSrc.Replace(fileName, thumbFileName);
+        }
+
+        protected string GetAreaStr(string province, string city)
+        {
+            string proStr = Province.Where(g => g.Key == Convert.ToInt32(province)).FirstOrDefault().Value;
+            string cityStr = City.Where(g => g.Key == Convert.ToInt32(city)).FirstOrDefault().Value;
+
+            return proStr + "-" + cityStr;
         }
     }
 }

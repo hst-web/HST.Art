@@ -228,13 +228,5 @@ namespace HST.Art.Web.Areas.manage.Controllers
             return Json(rmodel.isSuccess, JsonRequestBehavior.AllowGet);
         }
 
-        private string GetAreaStr(string province, string city)
-        {
-            string proStr = Province.Where(g => g.Key == Convert.ToInt32(province)).FirstOrDefault().Value;
-            string cityStr = City.Where(g => g.Key == Convert.ToInt32(city)).FirstOrDefault().Value;
-
-            return proStr + "-" + cityStr;
-
-        }
     }
 }

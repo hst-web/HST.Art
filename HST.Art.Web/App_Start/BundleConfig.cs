@@ -13,6 +13,7 @@ namespace HST.Art.Web
                     "~/Content/lib/h-ui.admin/skin/default/skin.css", new CssRewriteUrlTransformWrapper()).Include(
                      "~/Content/lib/webuploader/0.1.5/webuploader.css", new CssRewriteUrlTransformWrapper()).Include(
                      "~/Content/lib/uniform/css/uniform.default.min.css", new CssRewriteUrlTransformWrapper()).Include(
+                     "~/Content/lib/fancybox/dist/jquery.fancybox.min.css", new CssRewriteUrlTransformWrapper()).Include(
                      "~/Content/lib/h-ui.admin/css/style.css"
                 ));
 

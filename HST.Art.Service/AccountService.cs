@@ -44,12 +44,19 @@ namespace HST.Art.Service
                     return null;
                 }
 
-                bool isAllow = true;
+                bool isAllow = false;
                 Setting setInfo = new IntegratedProvider().GetSetting(SettingType.Attestation);
 
                 if (setInfo != null && setInfo.AttestationVal != null)
                 {
-                    isAllow = setInfo.AttestationVal.ExpireDate > DateTime.Now;
+                    if (setInfo.AttestationVal.IsInfinite)
+                    {
+                        isAllow = true;
+                    }
+                    else
+                    {
+                        isAllow = setInfo.AttestationVal.ExpireDate > DateTime.Now;
+                    }
                 }
 
                 if (!isAllow)

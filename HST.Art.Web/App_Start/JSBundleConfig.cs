@@ -13,6 +13,7 @@ namespace HST.Art.Web
             bundles.Add(new ScriptBundle("~/bundles/saos").Include(
                  "~/Content/lib/jquery/1.9.1/jquery.min.js",
                  "~/Content/lib/uniform/jquery.uniform.js").Include(
+                 "~/Content/lib/fancybox/dist/jquery.fancybox.min.js", new CssRewriteUrlTransformWrapper()).Include(
                  "~/Content/lib/layer/2.4/layer.js", new CssRewriteUrlTransformWrapper()).Include(
                  "~/Content/lib/h-ui/js/H-ui.min.js", new CssRewriteUrlTransformWrapper()).Include(
                  "~/Content/lib/h-ui.admin/js/H-ui.admin.js", new CssRewriteUrlTransformWrapper()).Include(
