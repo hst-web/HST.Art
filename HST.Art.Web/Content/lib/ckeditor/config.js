@@ -38,6 +38,6 @@ CKEDITOR.editorConfig = function (config) {
 
     config.toolbar_Basic =
     [
-        ['Bold', 'Italic', 'Underline', '-', 'NumberedList', 'BulletedList', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'Font', 'FontSize', '-', 'TextColor', 'BGColor', '-', 'Image', 'Link', 'Unlink', '-', 'Maximize']
+        ['Bold', 'Italic', 'Underline', '-', 'NumberedList', 'BulletedList', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'Font', 'FontSize', '-', 'TextColor', 'BGColor', '-', 'Image', 'Link', 'Unlink', '-', 'Maximize','Source']
     ];
 };

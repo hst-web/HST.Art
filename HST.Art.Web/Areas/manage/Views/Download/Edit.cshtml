@@ -20,7 +20,7 @@
 </style>
 <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span>@Html.ActionLink("下载管理", "List") <span class="c-gray en">&gt;</span><a href="javascript:void(0)" onclick="location.reload()">编辑下载</a> </nav>
 <article class="page-container">
-    @using (Ajax.BeginForm("Edit","Download", new { }, new AjaxOptions() { HttpMethod = "Post", OnSuccess = "formSuccess(data)", OnBegin = "disSubmit('sub_btn')", OnComplete = "enSubmit('sub_btn')" }, new { id = "", @class = "form form-horizontal" }))
+    @using (Ajax.BeginForm("Edit", "Download", new { }, new AjaxOptions() { HttpMethod = "Post", OnSuccess = "formSuccess(data)", OnBegin = "disSubmit('sub_btn')", OnComplete = "enSubmit('sub_btn')" }, new { id = "", @class = "form form-horizontal" }))
     {
         @Html.AntiForgeryToken()
         @Html.HiddenFor(m => m.Id)
@@ -50,7 +50,7 @@
                     <option value="">请选择所属类别</option>
                     @foreach (CategoryDictionary item in ViewBag.AllCategory)
                     {
-                        <option @(item.Id == Model.Category? "selected":"") value="@item.Id">@item.Name</option>
+                        <option @(item.Id == Model.Category ? "selected" : "") value="@item.Id">@item.Name</option>
                     }
                 </select>
                 @Html.ValidationMessageFor(m => m.Category, null, new { @class = "error-lable" })
@@ -86,18 +86,25 @@
         </div>
         <div class="row cl">
             <label class="form-label col-xs-2 ">附件详情：</label>
-            <div class="formControls col-xs-6 ">
-                @*@Html.TextAreaFor(m => m.Description, new { placeholder = "请输入附件详情", @class = "textarea", rows = "5" })*@
+            <div class="formControls col-xs-8 ">
                 @Html.TextAreaFor(m => m.Description, new { @class = "ckeditor textarea", rows = "10", placeholder = "请输入附件详情..." })
             </div>
         </div>
         <div class="row cl">
             <label class="form-label col-xs-2 ">状态：</label>
             <div class="formControls col-xs-6 ">
-                <select class="select select-box" name="State">
-                    <option value="@((int)PublishState.Upper)">上架</option>
-                    <option value="@((int)PublishState.Lower)">下架</option>
-                </select>
+                <div class="radio-list">
+                    <label class="radio-inline">
+                        @Html.RadioButtonFor(m => m.State, (int)PublishState.Upper, new { id = "" })上架
+                    </label>
+                    <label class="radio-inline">
+                        @Html.RadioButtonFor(m => m.State, (int)PublishState.Lower, new { id = "" })下架
+                    </label>
+                </div>
+                @*<select class="select select-box" name="State">
+                        <option value="@((int)PublishState.Upper)">上架</option>
+                        <option value="@((int)PublishState.Lower)">下架</option>
+                    </select>*@
             </div>
         </div>
         <div class="row cl">

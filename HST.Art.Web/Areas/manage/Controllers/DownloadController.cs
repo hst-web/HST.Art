@@ -110,7 +110,7 @@ namespace HST.Art.Web.Areas.manage.Controllers
                 FileDownload data = downService.Get(model.Id);
                 data.Title = model.FileTitle;
                 data.Name = model.FileName;
-                data.Description = model.Description;
+                data.Description = !string.IsNullOrEmpty(model.Description) ? model.Description.Replace("\r\n", "") : string.Empty;
                 data.Category = model.Category;
                 data.State = (PublishState)model.State;
                 data.HeadImg = model.FileImg;
@@ -148,7 +148,7 @@ namespace HST.Art.Web.Areas.manage.Controllers
                 {
                     Title = model.FileTitle,
                     Name = model.FileName,
-                    Description = model.Description,
+                    Description = !string.IsNullOrEmpty(model.Description) ? model.Description.Replace("\r\n", "") : string.Empty,
                     Category = model.Category,
                     State = (PublishState)model.State,
                     HeadImg = model.FileImg,

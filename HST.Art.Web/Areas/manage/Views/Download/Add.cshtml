@@ -12,6 +12,7 @@
 @Scripts.Render("~/bundles/validate")
 @Styles.Render("~/appcss")
 <script src="~/Content/lib/webuploader/0.1.5/webuploader.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="~/Content/lib/ckeditor/ckeditor.js"></script>
 <style type="text/css">
     .form-horizontal .form-label {
         text-align: right;
@@ -81,17 +82,25 @@
         </div>
         <div class="row cl">
             <label class="form-label col-xs-2 ">附件详情：</label>
-            <div class="formControls col-xs-6 ">
+            <div class="formControls col-xs-8 ">
                @Html.TextAreaFor(m => m.Description, new { @class = "ckeditor textarea", rows = "10", placeholder = "请输入附件详情..." })
             </div>
         </div>
         <div class="row cl">
             <label class="form-label col-xs-2 ">状态：</label>
             <div class="formControls col-xs-6 ">
-                <select class="select select-box" name="State">
+                <div class="radio-list">
+                    <label class="radio-inline">
+                        @Html.RadioButtonFor(m => m.State, (int)PublishState.Upper, new { id = "", @checked = "checked" })上架
+                    </label>
+                    <label class="radio-inline">
+                        @Html.RadioButtonFor(m => m.State, (int)PublishState.Lower, new { id = "" })下架
+                    </label>
+                </div>
+                @*<select class="select select-box" name="State">
                     <option value="@((int)PublishState.Upper)">上架</option>
                     <option value="@((int)PublishState.Lower)">下架</option>
-                </select>
+                </select>*@
             </div>
         </div>
         <div class="row cl">
