@@ -14,6 +14,7 @@ CKEDITOR.editorConfig = function (config) {
     config.pasteFromWordRemoveFontStyles = false;
     config.pasteFromWordRemoveStyles = false;
     config.removeDialogTabs = 'image:advanced;image:Link';
+    config.AllowedExtensions='{zip}';
     //config.skin='office2003';
     //config.uiColor = '#fff';
     // config.toolbar = 'Basic';

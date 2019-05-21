@@ -145,7 +145,21 @@ namespace HST.Art.Web.Areas.manage.Controllers
         [HttpPost]
         public ActionResult UploadEditer(HttpPostedFileBase upload)
         {
-            var url = "";
+            string url = string.Empty;
+            string errorMsg = string.Empty;
+            string CKEditorFuncNum = System.Web.HttpContext.Current.Request["CKEditorFuncNum"];
+            if (upload == null || upload.ContentLength == 0)
+                errorMsg = "情选择文件";
+            else if (!IsAllowedType(AllowedSuffix.IMG, Path.GetExtension(upload.FileName)))
+                errorMsg = "只允许上传图片类型的文件";
+            else if (upload.ContentLength > 1024 * 1024 * 5)
+                errorMsg = "上传图片大小不可超过5M";
+
+            if (!string.IsNullOrEmpty(errorMsg))
+            {
+                return Content("<script>window.parent.CKEDITOR.tools.callFunction(" + CKEditorFuncNum + ", \"" + url + "\",\"" + errorMsg + "\");</script>");
+            }                
+           
             if (upload != null)
             {
                 int userid = Convert.ToInt16(GetAccount().Id);
@@ -169,7 +183,7 @@ namespace HST.Art.Web.Areas.manage.Controllers
                 url = filePath + localFileName;
             }
 
-            var CKEditorFuncNum = System.Web.HttpContext.Current.Request["CKEditorFuncNum"];
+           
 
             //上传成功后，我们还需要通过以下的一个脚本把图片返回到第一个tab选项
             return Content("<script>window.parent.CKEDITOR.tools.callFunction(" + CKEditorFuncNum + ", \"" + url + "\");</script>");
