@@ -31,7 +31,7 @@
                     <div id="upfileImg" class="up-img-left @(string.IsNullOrEmpty(Model.FileImg)?"":"up-imgBtn")">
                         @(string.IsNullOrEmpty(Model.FileImg) ? "上传图片" : "更改图片")
                     </div>
-                    <span class="help-block help-tip help-img @(string.IsNullOrEmpty(Model.FileImg)?"":"hidden")" style="top:8px;position:absolute">请上传jpg、jpeg、gif、,bmp、png等图片类型的文件</span>
+                    <span class="help-block help-tip help-img @(string.IsNullOrEmpty(Model.FileImg)?"":"hidden")" style="top:8px;position:absolute">请上传jpg、jpeg、gif、bmp、png等图片类型的文件</span>
                     <div class="formControls">
                         <ul id="imglist" class="">
                             <li><img src="@Model.SmallFileImg" /></li>
@@ -45,8 +45,8 @@
         </div>
         <div class="row cl">
             <label class="form-label col-xs-2 "><span class="c-red">*</span>所属类别：</label>
-            <div class="formControls col-xs-6 ">
-                <select class="select select-box inline" style="min-width:250px" id="sel_type">
+            <div class="formControls col-xs-3 ">
+                <select class="select select-box" id="sel_type">
                     <option value="">请选择所属类别</option>
                     @foreach (CategoryDictionary item in ViewBag.EnabledCategory)
                     {
@@ -203,7 +203,7 @@
 
         //文件大小限制,超过则不加入队列
         uploader.on('beforeFileQueued', function (file, han, msg) {
-            var xzlist = ("pdf,zip,rar,tar,gz,doc,docx,ppt,pptx,xlsx,xls,mp4,txt,mp3,jpg,jpeg,gif,bmp,png").split(",");
+            var xzlist = ("pdf,zip,rar,tar,gz,doc,docx,ppt,pptx,xlsx,xls,csv,mp4,txt,mp3,jpg,jpeg,gif,bmp,png").split(",");
             var imglist = ("jpg,jpeg,gif,bmp,png").split(",");
             var filenamelist = file.name.split('.');
             var filehz = filenamelist[filenamelist.length - 1];

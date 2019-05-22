@@ -1827,6 +1827,9 @@
     <Content Include="Areas\manage\Views\Download\Add.cshtml" />
     <Content Include="Areas\manage\Views\Download\Detail.cshtml" />
     <Content Include="Areas\manage\Views\MemberUnit\List.cshtml" />
+    <Content Include="Areas\manage\Views\MemberUnit\Add.cshtml" />
+    <Content Include="Areas\manage\Views\MemberUnit\Detail.cshtml" />
+    <Content Include="Areas\manage\Views\MemberUnit\Edit.cshtml" />
     <None Include="Areas\manage\Views\_ViewStart.cshtml">
       <LastGenOutput>_ViewStart.generated.cs</LastGenOutput>
       <Generator>RazorGenerator</Generator>

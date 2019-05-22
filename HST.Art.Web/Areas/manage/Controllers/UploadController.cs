@@ -206,10 +206,10 @@ namespace HST.Art.Web.Areas.manage.Controllers
                     SuffixList = ".jpg,.jpeg,.gif,.bmp,.png";
                     break;
                 case AllowedSuffix.File:
-                    SuffixList = ".chm,.pdf,.zip,.rar,.tar,.gz,.doc,.docx,.ppt,.pptx,.xlsx,.xls,.mp4,.txt,.mp3";
+                    SuffixList = ".chm,.pdf,.zip,.rar,.tar,.gz,.doc,.csv,.docx,.ppt,.pptx,.xlsx,.xls,.mp4,.txt,.mp3";
                     break;
                 default:
-                    SuffixList = ".chm,.pdf,.zip,.rar,.tar,.gz,.doc,.docx,.ppt,.pptx,.xlsx,.xls,.mp4,.txt,.mp3,.jpg,.jpeg,.gif,.bmp,.png";
+                    SuffixList = ".chm,.pdf,.zip,.rar,.tar,.gz,.doc,.docx,.csv,.ppt,.pptx,.xlsx,.xls,.mp4,.txt,.mp3,.jpg,.jpeg,.gif,.bmp,.png";
                     break;
             }
             if (!string.IsNullOrEmpty(SuffixStr))

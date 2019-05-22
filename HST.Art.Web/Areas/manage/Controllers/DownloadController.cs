@@ -258,7 +258,9 @@ namespace HST.Art.Web.Areas.manage.Controllers
             string wordList = ".doc,.docx";
             string excelList = ".xlsx,.xls";
             string pptList = ".ppt,.pptx";
-            if (extension.Equals(".txt", StringComparison.InvariantCulture))
+            string txtList = ".txt,.csv";
+
+            if (txtList.Split(',').Where(g => g.Equals(extension, StringComparison.InvariantCultureIgnoreCase)).Count() > 0)
             {
                 return FileFormat.TXT;
             }

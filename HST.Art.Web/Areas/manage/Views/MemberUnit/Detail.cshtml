@@ -1,0 +1,26 @@
+﻿@{
+    Layout = "";
+}
+
+@using HST.Art.Web
+@using HST.Art.Core
+
+@model  MemberUnitViewModel
+
+@Scripts.Render("~/bundles/saos")
+@Styles.Render("~/appcss")
+<style type="text/css">
+    .form-horizontal .form-label {
+        text-align: right;
+    }
+    p{font-size:14px}
+</style>
+<article class="page-container">
+    <div class="form-horizontal">
+        <div class="row cl">
+            <div class="col-xs-12">
+                @Html.Raw(Model.Description)
+            </div>
+        </div>
+    </div>
+</article>
