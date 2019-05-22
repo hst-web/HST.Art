@@ -2757,13 +2757,6 @@ function stopDefault(e) {
 
 /* =======================================================================
  * jQuery.Huispinner.js v2.1.2 微调器
- * http://www.h-ui.net/
- * Created & Modified by guojunhui
- * Date modified 2017.06.26
- *
- * Copyright 2017 北京颖杰联创科技有限公司 All rights reserved.
- 
- 
  * ========================================================================*/
 !function($) {	
 	$.fn.Huispinner = function(options, callback) {
@@ -4317,13 +4310,6 @@ function displaynavbar(obj){
 
 /* =======================================================================
  * jQuery.Huihover.js v2.0 Huihover
- * http://www.h-ui.net/
- * Created & Modified by guojunhui
- * Date modified 2017.05.05
- *
- * Copyright 2017 北京颖杰联创科技有限公司 All rights reserved.
- 
- 
  * ========================================================================*/
 !function($) {
 	$.fn.Huihover = function(options){
@@ -4345,13 +4331,6 @@ function displaynavbar(obj){
 
 /* =======================================================================
  * jQuery.Huifocusblur.js v2.0 得到失去焦点
- * http://www.h-ui.net/
- * Created & Modified by guojunhui
- * Date modified 2017.05.09
- *
- * Copyright 2017 北京颖杰联创科技有限公司 All rights reserved.
- 
- 
  * ========================================================================*/
 !function($) {
 	$.fn.Huifocusblur = function(options){
@@ -4396,13 +4375,6 @@ function displaynavbar(obj){
 
 /* =======================================================================
  * jQuery.Huitab.js v2.0 选项卡
- * http://www.h-ui.net/
- * Created & Modified by guojunhui
- * Date modified 2017.05.05
- *
- * Copyright 2017 北京颖杰联创科技有限公司 All rights reserved.
- 
- 
  * ========================================================================*/
 !function($) {
 	$.fn.Huitab = function(options){
@@ -4434,13 +4406,6 @@ function displaynavbar(obj){
 
 /* =======================================================================
  * jQuery.Huifold.js v2.0 折叠
- * http://www.h-ui.net/
- * Created & Modified by guojunhui
- * Date modified 2017.05.05
- *
- * Copyright 2017 北京颖杰联创科技有限公司 All rights reserved.
- 
- 
  * ========================================================================*/
 !function($) {
 	$.fn.Huifold = function(options){
@@ -4491,13 +4456,6 @@ function displaynavbar(obj){
 
 /* =======================================================================
  * jQuery.Huitags.js v2.0 标签
- * http://www.h-ui.net/
- * Created & Modified by guojunhui
- * Date modified 2017.05.10
- *
- * Copyright 2017 北京颖杰联创科技有限公司 All rights reserved.
- 
- 
  * ========================================================================*/
 !function($) {
 	$.fn.Huitags = function(options) {
@@ -4660,13 +4618,6 @@ function displaynavbar(obj){
 
 /* =======================================================================
  * jQuery.Huitextarealength.js v2.0 字数限制
- * http://www.h-ui.net/
- * Created & Modified by guojunhui
- * Date modified 2017.05.12
- *
- * Copyright 2017 北京颖杰联创科技有限公司 All rights reserved.
- 
- 
  * ========================================================================*/
 !function($) {
 	$.fn.Huitextarealength = function(options){
@@ -4710,13 +4661,6 @@ function displaynavbar(obj){
 
 /* =======================================================================
  * jQuery.Huipreview.js v2.0 图片预览
- * http://www.h-ui.net/
- * Created & Modified by guojunhui
- * Date modified 2017.05.05
- *
- * Copyright 2017 北京颖杰联创科技有限公司 All rights reserved.
- 
- 
  * ========================================================================*/
 !function($) {
 	$.fn.Huipreview = function(options){
@@ -4824,13 +4768,6 @@ function displaynavbar(obj){
 
 /* =======================================================================
  * jQuery.Huitotop.js v2.0 返回顶部
- * http://www.h-ui.net/
- * Created & Modified by guojunhui
- * Date modified 2017.05.05
- *
- * Copyright 2017 北京颖杰联创科技有限公司 All rights reserved.
- 
- 
  * ========================================================================*/
 !function($) {
 	//bottom 距离底部高度

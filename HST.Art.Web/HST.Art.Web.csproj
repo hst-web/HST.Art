@@ -217,6 +217,7 @@
     <Compile Include="App_Start\RazorGeneratorMvcStart.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\manage\Controllers\ArticleController.cs" />
     <Compile Include="Areas\manage\Controllers\MemberUnitController.cs" />
     <Compile Include="Areas\manage\Controllers\StudentController.cs" />
     <Compile Include="Areas\manage\Controllers\DownloadController.cs" />
@@ -248,6 +249,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModel.cs" />
+    <Compile Include="Models\ArticleViewModel.cs" />
     <Compile Include="Models\MemberUnitViewModel.cs" />
     <Compile Include="Models\FilterViewModel.cs" />
     <Compile Include="Models\KeyValueViewModel.cs" />
@@ -1912,6 +1914,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\manage\Models\" />
+    <Folder Include="Areas\manage\Views\Article\" />
     <Folder Include="Content\css\" />
     <Folder Include="Controllers\" />
     <Folder Include="uploadFiles\" />
