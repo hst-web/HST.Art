@@ -11,7 +11,7 @@ namespace HST.Art.Web.Areas.manage.Controllers
     {
         MemberUnitService muService = new MemberUnitService();
         CategoryDictionaryService cdService = new CategoryDictionaryService();
-        List<CategoryDictionary> cdEnabledList = null;
+        List<CategoryDictionary> cdEnabledList = new List<CategoryDictionary>();
         public ActionResult List()
         {
             InitData();
@@ -98,6 +98,7 @@ namespace HST.Art.Web.Areas.manage.Controllers
                 {
                     model.Category = data.Category;
                 }
+
                 return View(model);
             }
 
@@ -243,7 +244,6 @@ namespace HST.Art.Web.Areas.manage.Controllers
         private void InitData()
         {
             List<CategoryDictionary> cdAllList = cdService.GetAll(CategoryType.Member);
-            cdEnabledList = new List<CategoryDictionary>();
             if (cdAllList != null && cdAllList.Count > 0)
             {
                 cdEnabledList = cdAllList.FindAll(g => g.State == PublishState.Upper);
@@ -251,7 +251,7 @@ namespace HST.Art.Web.Areas.manage.Controllers
 
             ViewBag.AreaCity = City;
             ViewBag.AreaProvince = Province;
-            ViewBag.AllCategory = cdAllList;
+            ViewBag.AllCategory = cdAllList != null ? cdAllList : new List<CategoryDictionary>();
             ViewBag.EnabledCategory = cdEnabledList;
         }
 

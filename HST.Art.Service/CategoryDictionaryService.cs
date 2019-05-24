@@ -46,6 +46,24 @@ namespace HST.Art.Service
             return categoryList;
         }
 
+        public List<CategoryDictionary> GetAll(List<CategoryType> categoryTypes)
+        {
+            FilterEntityModel filterModel = new FilterEntityModel();
+            if (categoryTypes != null && categoryTypes.Count > 0)
+            {
+                filterModel.FilterType = FilterType.In;
+                filterModel.keyValueList = new List<KeyValueObj>();
+
+                foreach (var item in categoryTypes)
+                {
+                    filterModel.keyValueList.Add(new KeyValueObj() { Key = "Type", Value = (int)item, FieldType = FieldType.Int, TbAsName = Constant.CATEGORY_DICTIONARY_AS_NAME });
+                }
+            }
+
+            List<CategoryDictionary> categoryList = _categoryDictionaryProvider.GetAll(filterModel);
+            return categoryList;
+        }
+
         public bool Add(CategoryDictionary categoryInfo)
         {
             //参数验证
@@ -137,5 +155,7 @@ namespace HST.Art.Service
 
             return _categoryDictionaryProvider.Update(categoryInfo);
         }
+
+
     }
 }

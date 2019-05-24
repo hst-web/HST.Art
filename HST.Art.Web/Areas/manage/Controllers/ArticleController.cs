@@ -11,7 +11,8 @@ namespace HST.Art.Web.Areas.manage.Controllers
     {
         ArticleService articleService = new ArticleService();
         CategoryDictionaryService cdService = new CategoryDictionaryService();
-        List<CategoryDictionary> cdEnabledList = null;
+        List<CategoryDictionary> cdEnabledList = new List<CategoryDictionary>();
+        List<CategoryDictionary> cdAllList = new List<CategoryDictionary>();
         public ActionResult List()
         {
             InitData();
@@ -76,7 +77,6 @@ namespace HST.Art.Web.Areas.manage.Controllers
         public ActionResult Edit(int id)
         {
             Article data = articleService.Get(id);
-            InitData();
             if (data != null)
             {
                 ArticleViewModel model = new ArticleViewModel();
@@ -137,7 +137,6 @@ namespace HST.Art.Web.Areas.manage.Controllers
         /// <returns></returns>
         public ActionResult Add()
         {
-            InitData();
             return View();
         }
         [HttpPost]
@@ -212,6 +211,68 @@ namespace HST.Art.Web.Areas.manage.Controllers
         }
         #endregion
 
+        /// <summary>
+        /// 通过模块类别获取类别集合
+        /// </summary>
+        /// <param name="sectionType">模块类别</param>
+        /// <param name="searchType">筛选类型（0：所有类别，1：可用类别）</param>
+        /// <returns></returns>
+        public JsonResult GetCategoryList(SectionType sectionType, int searchType = 0)
+        {
+            List<KeyValueViewModel> rmodel = new List<KeyValueViewModel>();
+            if (sectionType <= 0) return Json(rmodel, JsonRequestBehavior.AllowGet);
+
+            if (cdAllList == null || cdAllList.Count <= 0)
+            {
+                InitData();
+            }
+
+            if (cdAllList != null && cdAllList.Count > 0)
+            {
+                if (searchType > 0)
+                {
+                    rmodel = cdEnabledList.FindAll(g => g.Type == (CategoryType)sectionType).Select(g => new KeyValueViewModel() { Key = g.Id, Value = g.Name }).ToList();
+                }
+                else
+                {
+                    rmodel = cdAllList.FindAll(g => g.Type == (CategoryType)sectionType).Select(g => new KeyValueViewModel() { Key = g.Id, Value = g.Name }).ToList();
+                }
+            }
+
+            return Json(rmodel, JsonRequestBehavior.AllowGet);
+        }
+
+        /// <summary>
+        /// 通过父级id获取类别集合
+        /// </summary>
+        /// <param name="parentId">父级id</param>
+        /// <param name="searchType">筛选类型（0：所有类别，1：可用类别）</param>
+        /// <returns></returns>
+        public JsonResult GetCategoryList(int parentId, int searchType = 0)
+        {
+            List<KeyValueViewModel> rmodel = new List<KeyValueViewModel>();
+            if (parentId <= 0) return Json(rmodel, JsonRequestBehavior.AllowGet);
+
+            if (cdAllList == null || cdAllList.Count <= 0)
+            {
+                InitData();
+            }
+
+            if (cdAllList != null && cdAllList.Count > 0)
+            {
+                if (searchType > 0)
+                {
+                    rmodel = cdEnabledList.FindAll(g => g.Parent == parentId).Select(g => new KeyValueViewModel() { Key = g.Id, Value = g.Name }).ToList();
+                }
+                else
+                {
+                    rmodel = cdAllList.FindAll(g => g.Parent == parentId).Select(g => new KeyValueViewModel() { Key = g.Id, Value = g.Name }).ToList();
+                }
+            }
+
+            return Json(rmodel, JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult Detail(int id)
         {
             Article data = articleService.Get(id);
@@ -219,7 +280,7 @@ namespace HST.Art.Web.Areas.manage.Controllers
             if (data != null)
                 return View(new ArticleViewModel
                 {
-                    Id = data.Id,           
+                    Id = data.Id,
                     CategoryName = data.CategoryName,
                     UserName = data.UserName,
                     State = (int)data.State,
@@ -235,17 +296,31 @@ namespace HST.Art.Web.Areas.manage.Controllers
 
         private void InitData()
         {
-            List<CategoryDictionary> cdAllList = cdService.GetAll(CategoryType.Social);//有问题
-            cdEnabledList = new List<CategoryDictionary>();
+            List<CategoryType> categoryList = new List<CategoryType>() {
+                 CategoryType.Association,
+                 CategoryType.Examination,
+                 CategoryType.Industry,
+                 CategoryType.Social
+            };
+
+            Dictionary<CategoryDictionary, List<CategoryDictionary>> dicCategorys = new Dictionary<CategoryDictionary, List<CategoryDictionary>>();
+            cdAllList = cdService.GetAll(categoryList);
             if (cdAllList != null && cdAllList.Count > 0)
             {
                 cdEnabledList = cdAllList.FindAll(g => g.State == PublishState.Upper);
+                List<CategoryDictionary> examList = cdAllList.FindAll(g => g.Type == CategoryType.Examination);
+
+                if (examList.Count > 0)
+                {
+                    List<CategoryDictionary> parList = examList.FindAll(g => g.Parent == 0);
+                    foreach (CategoryDictionary item in parList)
+                    {
+                        dicCategorys.Add(item, examList.FindAll(g => g.Parent == item.Id));
+                    }
+                }
             }
 
-            ViewBag.AreaCity = City;
-            ViewBag.AreaProvince = Province;
-            ViewBag.AllCategory = cdAllList;
-            ViewBag.EnabledCategory = cdEnabledList;
+            ViewBag.ExamCategory = dicCategorys;
         }
     }
 }

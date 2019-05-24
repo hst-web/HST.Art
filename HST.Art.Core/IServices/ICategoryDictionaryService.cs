@@ -9,6 +9,7 @@ namespace HST.Art.Core
     public interface ICategoryDictionaryService : IBaseService
     {
         List<CategoryDictionary> GetAll(CategoryType categoryType);
+        List<CategoryDictionary> GetAll(List<CategoryType> categoryTypes);
         CategoryDictionary Get(int id);
         bool Update(CategoryDictionary categoryInfo);
         bool Add(CategoryDictionary categoryInfo);

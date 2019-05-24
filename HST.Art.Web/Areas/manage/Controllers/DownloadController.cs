@@ -13,7 +13,7 @@ namespace HST.Art.Web.Areas.manage.Controllers
     {
         FileDownloadService downService = new FileDownloadService();
         CategoryDictionaryService cdService = new CategoryDictionaryService();
-        List<CategoryDictionary> cdEnabledList = null;
+        List<CategoryDictionary> cdEnabledList = new List<CategoryDictionary>();
         public ActionResult List()
         {
 
@@ -240,13 +240,12 @@ namespace HST.Art.Web.Areas.manage.Controllers
         private void InitData()
         {
             List<CategoryDictionary> cdAllList = cdService.GetAll(CategoryType.Download);
-            cdEnabledList = new List<CategoryDictionary>();
             if (cdAllList != null && cdAllList.Count > 0)
             {
                 cdEnabledList = cdAllList.FindAll(g => g.State == PublishState.Upper);
             }
 
-            ViewBag.AllCategory = cdAllList;
+            ViewBag.AllCategory = cdAllList != null ? cdAllList : new List<CategoryDictionary>();
             ViewBag.EnabledCategory = cdEnabledList;
         }
 
