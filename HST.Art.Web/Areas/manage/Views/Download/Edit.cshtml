@@ -48,7 +48,7 @@
             <div class="formControls col-xs-3 ">
                 <select class="select select-box" id="sel_type">
                     <option value="">请选择所属类别</option>
-                    @foreach (CategoryDictionary item in ViewBag.EnabledCategory)
+                    @foreach (CategoryDictionary item in ViewBag.AllCategory)
                     {
                         <option @(item.Id == Model.Category ? "selected" : "") value="@item.Id">@item.Name</option>
                     }

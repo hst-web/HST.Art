@@ -90,14 +90,18 @@ namespace HST.Art.Web.Areas.manage.Controllers
                 model.HeadImg = data.HeadImg;
                 model.SmallHeadImg = GetThumb(data.HeadImg);
                 model.Section = data.Section;
+                model.Category = data.Category;
+                model.ParCategory = data.ParCategory;
 
-                if (cdEnabledList != null && cdEnabledList.Count > 0)
-                {
-                    if (cdEnabledList.Where(g => g.Id == data.Category).Count() > 0)
-                        model.Category = data.Category;
-                    if (cdEnabledList.Where(g => g.Id == data.ParCategory).Count() > 0)
-                        model.ParCategory = data.ParCategory;
-                }
+                #region 类别可用判断  预留
+                //if (cdEnabledList != null && cdEnabledList.Count > 0)
+                //{
+                //    if (cdEnabledList.Where(g => g.Id == data.Category).Count() > 0)
+                //        model.Category = data.Category;
+                //    if (cdEnabledList.Where(g => g.Id == data.ParCategory).Count() > 0)
+                //        model.ParCategory = data.ParCategory;
+                //}
+                #endregion
 
                 return View(model);
             }

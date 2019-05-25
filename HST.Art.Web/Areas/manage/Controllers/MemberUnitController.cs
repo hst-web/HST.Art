@@ -93,11 +93,14 @@ namespace HST.Art.Web.Areas.manage.Controllers
                 model.City = string.IsNullOrEmpty(data.City) ? 0 : Convert.ToInt32(data.City);
                 model.Province = string.IsNullOrEmpty(data.Province) ? 0 : Convert.ToInt32(data.Province);
                 model.Number = data.Number;
+                model.Category = data.Category;
 
-                if (cdEnabledList != null && cdEnabledList.Count > 0 && cdEnabledList.Where(g => g.Id == data.Category).Count() > 0)
-                {
-                    model.Category = data.Category;
-                }
+                #region 类别可用判断  预留
+                //if (cdEnabledList != null && cdEnabledList.Count > 0 && cdEnabledList.Where(g => g.Id == data.Category).Count() > 0)
+                //{
+                //    model.Category = data.Category;
+                //}
+                #endregion
 
                 return View(model);
             }

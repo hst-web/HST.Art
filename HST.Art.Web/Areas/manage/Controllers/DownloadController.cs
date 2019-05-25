@@ -16,9 +16,6 @@ namespace HST.Art.Web.Areas.manage.Controllers
         List<CategoryDictionary> cdEnabledList = new List<CategoryDictionary>();
         public ActionResult List()
         {
-
-            //ImagHelper.MakeThumbnail("", "", 1, 1);
-
             InitData();
             return View();
         }
@@ -94,11 +91,14 @@ namespace HST.Art.Web.Areas.manage.Controllers
                 model.SmallFileImg = GetThumb(data.HeadImg);
                 model.FileType = data.Type;
                 model.Src = data.Src;
+                model.Category = data.Category;
 
-                if (cdEnabledList != null && cdEnabledList.Count > 0 && cdEnabledList.Where(g => g.Id == data.Category).Count() > 0)
-                {
-                    model.Category = data.Category;
-                }
+                #region 类别可用判断  预留
+                //if (cdEnabledList != null && cdEnabledList.Count > 0 && cdEnabledList.Where(g => g.Id == data.Category).Count() > 0)
+                //{
+                //    model.Category = data.Category;
+                //}
+                #endregion
 
                 return View(model);
             }
