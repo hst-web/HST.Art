@@ -151,7 +151,8 @@ namespace HST.Art.Core
     public enum FieldType
     {
         String,
-        Int
+        Int,
+        Date
     }
 
     public enum FilterType
@@ -160,7 +161,8 @@ namespace HST.Art.Core
         Or,
         In,
         Like,
-        Neq
+        Neq,
+        Between
     }
 
     public enum SortType

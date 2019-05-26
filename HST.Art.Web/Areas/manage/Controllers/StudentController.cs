@@ -27,7 +27,7 @@ namespace HST.Art.Web.Areas.manage.Controllers
             FilterEntityModel fillter = new FilterEntityModel();
             fillter.PageIndex = dt.pageIndex;
             fillter.PageSize = dt.length;
-            fillter.keyValueList = new List<KeyValueObj>();
+            fillter.KeyValueList = new List<KeyValueObj>();
             if (svm != null && !string.IsNullOrEmpty(svm.FilterKey) && !string.IsNullOrEmpty(svm.FilterVal))
             {
                 string fkey = string.Empty;
@@ -49,7 +49,7 @@ namespace HST.Art.Web.Areas.manage.Controllers
                         break;
                 }
 
-                fillter.keyValueList.Add(new KeyValueObj() { Key = fkey, Value = svm.FilterVal });
+                fillter.KeyValueList.Add(new KeyValueObj() { Key = fkey, Value = svm.FilterVal });
             }
 
             List<StuCertificate> stuList = stuService.GetPage(fillter, out totalNum);
@@ -209,8 +209,8 @@ namespace HST.Art.Web.Areas.manage.Controllers
         {
             ResultRetrun rmodel = new ResultRetrun();
             FilterEntityModel filterModel = new FilterEntityModel();
-            filterModel.keyValueList = new List<KeyValueObj>();
-            filterModel.keyValueList.Add(new KeyValueObj() { Key = "number", Value = number, FieldType = FieldType.String });
+            filterModel.KeyValueList = new List<KeyValueObj>();
+            filterModel.KeyValueList.Add(new KeyValueObj() { Key = "number", Value = number, FieldType = FieldType.String });
 
             List<StuCertificate> stuList = stuService.GetAll(filterModel);
             if (stuList != null && stuList.Count > 0)

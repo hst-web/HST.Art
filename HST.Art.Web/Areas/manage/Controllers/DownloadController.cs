@@ -27,7 +27,7 @@ namespace HST.Art.Web.Areas.manage.Controllers
             FilterEntityModel fillter = new FilterEntityModel();
             fillter.PageIndex = dt.pageIndex;
             fillter.PageSize = dt.length;
-            fillter.keyValueList = new List<KeyValueObj>();
+            fillter.KeyValueList = new List<KeyValueObj>();
             if (svm != null && !string.IsNullOrEmpty(svm.FilterKey) && !string.IsNullOrEmpty(svm.FilterVal))
             {
                 string fkey = string.Empty;
@@ -46,7 +46,7 @@ namespace HST.Art.Web.Areas.manage.Controllers
                         break;
                 }
 
-                fillter.keyValueList.Add(new KeyValueObj() { Key = fkey, Value = svm.FilterVal });
+                fillter.KeyValueList.Add(new KeyValueObj() { Key = fkey, Value = svm.FilterVal });
             }
 
             List<FileDownload> downList = downService.GetPage(fillter, out totalNum);

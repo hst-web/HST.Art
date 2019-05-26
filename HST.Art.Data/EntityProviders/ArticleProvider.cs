@@ -28,7 +28,7 @@ namespace HST.Art.Data
         {
             Article articleInfo = null;
             DBHelper dbHelper = new DBHelper(ConnectionString, DbProviderType.SqlServer);
-            string strSql = @"SELECT a.Id, a.UserId, a.Title, a.HeadImg, a.Content, a.Author, a.Section, a.State, a.ParCategory, a.Category,cd.Name as CategoryName,u.Name as UserName,pcd.Name as ParCategoryName, a.UpdateDate, a.CreateDate,a.Synopsis  from Article a  inner join CategoryDictionary cd on a.category=cd.id left join CategoryDictionary pcd on a.ParCategory=pcd.id left join [User] u on a.userid=u.id where  a.IsDeleted=0 and a.id=@Id ";
+            string strSql = @"SELECT a.Id, a.UserId, a.Title, a.HeadImg, a.Content, a.Author, a.Section, a.State, a.ParCategory, a.Category,cd.Name as CategoryName,u.Name as UserName,pcd.Name as ParCategoryName, a.UpdateDate, a.CreateDate,a.Synopsis,a.PublishDate  from Article a  inner join CategoryDictionary cd on a.category=cd.id left join CategoryDictionary pcd on a.ParCategory=pcd.id left join [User] u on a.userid=u.id where  a.IsDeleted=0 and a.id=@Id ";
 
             List<DbParameter> parametersList = new List<DbParameter>();
             parametersList.Add(new SqlParameter("@Id", id));
@@ -62,7 +62,7 @@ namespace HST.Art.Data
             List<Article> articleList = null;
             DBHelper dbHelper = new DBHelper(ConnectionString, DbProviderType.SqlServer);
 
-            string strSql = @"SELECT a.Id, a.UserId, a.Title, a.HeadImg, a.Content, a.Author, a.Section, a.State, a.ParCategory, a.Category,cd.Name as CategoryName,u.Name as UserName,pcd.Name as ParCategoryName, a.UpdateDate, a.CreateDate, a.Synopsis  from Article a  inner join CategoryDictionary cd on a.category=cd.id left join CategoryDictionary pcd on a.ParCategory=pcd.id left join [User] u on a.userid=u.id where  a.IsDeleted=0 " + whereSort;
+            string strSql = @"SELECT a.Id, a.UserId, a.Title, a.HeadImg, a.Content, a.Author, a.Section, a.State, a.ParCategory, a.Category,cd.Name as CategoryName,u.Name as UserName,pcd.Name as ParCategoryName, a.UpdateDate, a.CreateDate, a.Synopsis,a.PublishDate  from Article a  inner join CategoryDictionary cd on a.category=cd.id left join CategoryDictionary pcd on a.ParCategory=pcd.id left join [User] u on a.userid=u.id where  a.IsDeleted=0 " + whereSort;
 
             IList<DbParameter> parameList = null;
             if (condition != null && condition.SqlParList.Count > 0)
@@ -132,6 +132,7 @@ namespace HST.Art.Data
                                   ,[Category]
                                   ,[UpdateDate]
                                   ,[CreateDate]
+                                  ,[PublishDate]
                                   ,[UserName]
                                   ,[CategoryName]
                                   ,[ParCategoryName]
@@ -147,6 +148,7 @@ namespace HST.Art.Data
                                   ,a.[Category]
                                   ,a.[UpdateDate]
                                   ,a.[CreateDate]
+                                  ,a.[PublishDate]
                                   ,u.[Name] as UserName
                                   ,cd.Name as [CategoryName]
                                   ,pcd.Name as [ParCategoryName]
@@ -211,6 +213,10 @@ namespace HST.Art.Data
             {
                 articleInfo.UpdateDate = Convert.ToDateTime(reader["UpdateDate"]);
             }
+            if (ReaderExists(reader, "PublishDate") && DBNull.Value != reader["PublishDate"])
+            {
+                articleInfo.PublishDate = Convert.ToDateTime(reader["PublishDate"]);
+            }
 
             return articleInfo;
         }
@@ -225,7 +231,7 @@ namespace HST.Art.Data
         public bool Add(Article articleInfo)
         {
             DBHelper dbHelper = new DBHelper(ConnectionString, DbProviderType.SqlServer);
-            string strSql = @"Insert Into Article (UserId, Title, HeadImg, Content, Author, Section, State, ParCategory, Category,Synopsis) Values (@UserId, @Title, @HeadImg, @Content, @Author, @Section, @State,@ParCategory, @Category,@Synopsis)";
+            string strSql = @"Insert Into Article (UserId, Title, HeadImg, Content, Author, Section, State, ParCategory, Category,Synopsis,PublishDate) Values (@UserId, @Title, @HeadImg, @Content, @Author, @Section, @State,@ParCategory, @Category,@Synopsis,@PublishDate)";
 
             List<DbParameter> parametersList = new List<DbParameter>();
             parametersList.Add(new SqlParameter("@UserId", articleInfo.UserId));
@@ -238,6 +244,7 @@ namespace HST.Art.Data
             parametersList.Add(new SqlParameter("@ParCategory", articleInfo.ParCategory));
             parametersList.Add(new SqlParameter("@State", (int)articleInfo.State));
             parametersList.Add(new SqlParameter("@Synopsis", articleInfo.Synopsis));
+            parametersList.Add(new SqlParameter("@PublishDate", articleInfo.State == PublishState.Upper ? DateTime.Now.ToString() : ""));
 
             return dbHelper.ExecuteNonQuery(strSql, parametersList) > 0;
         }
@@ -262,6 +269,7 @@ namespace HST.Art.Data
                                   ,[ParCategory]=@ParCategory
                                   ,[Synopsis]=@Synopsis
                                   ,[UpdateDate]=getdate()
+                                  ,[PublishDate]=@PublishDate
                                   Where ID=@ID";
 
             List<DbParameter> parametersList = new List<DbParameter>();
@@ -276,6 +284,7 @@ namespace HST.Art.Data
             parametersList.Add(new SqlParameter("@ParCategory", articleInfo.ParCategory));
             parametersList.Add(new SqlParameter("@State", (int)articleInfo.State));
             parametersList.Add(new SqlParameter("@Synopsis", articleInfo.Synopsis));
+            parametersList.Add(new SqlParameter("@PublishDate", articleInfo.PublishDate != null ? articleInfo.PublishDate.ToString() : ""));
 
             return dbHelper.ExecuteNonQuery(strSql, parametersList) > 0;
         }
@@ -293,6 +302,21 @@ namespace HST.Art.Data
             List<DbParameter> parametersList = new List<DbParameter>();
             parametersList.Add(new SqlParameter("@id", id));
 
+            return dbHelper.ExecuteNonQuery(strSql, parametersList) > 0;
+        }
+
+        /// <summary>
+        /// 上架特殊处理
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public bool Publish(int id)
+        {
+            DBHelper dbHelper = new DBHelper(ConnectionString, DbProviderType.SqlServer);
+            string strSql = "update Article set state=1,PublishDate=getdate()  where Id=@Id";
+
+            List<DbParameter> parametersList = new List<DbParameter>();
+            parametersList.Add(new SqlParameter("@Id", id));
             return dbHelper.ExecuteNonQuery(strSql, parametersList) > 0;
         }
         #endregion

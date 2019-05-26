@@ -26,29 +26,40 @@ namespace HST.Art.Web.Areas.manage.Controllers
             FilterEntityModel fillter = new FilterEntityModel();
             fillter.PageIndex = dt.pageIndex;
             fillter.PageSize = dt.length;
-            fillter.keyValueList = new List<KeyValueObj>();
-            if (svm != null && !string.IsNullOrEmpty(svm.FilterKey) && !string.IsNullOrEmpty(svm.FilterVal))
-            {
-                string fkey = string.Empty;
-                SearchType ftype = (SearchType)Convert.ToInt16(svm.FilterKey);
+            fillter.KeyValueList = new List<KeyValueObj>();
 
-                switch (ftype)
+            if (svm != null)
+            {
+                if (!string.IsNullOrEmpty(svm.ReserveField))
                 {
-                    case SearchType.Name:
-                        fkey = "Name";
-                        break;
-                    case SearchType.Number:
-                        fkey = "Number";
-                        break;
-                    case SearchType.Type:
-                        fkey = "Category";
-                        break;
-                    case SearchType.Area:
-                        fkey = "City";
-                        break;
+                    fillter.KeyValueReserve = new KeyValueObj() { Key = "Section", Value = svm.ReserveField };
                 }
 
-                fillter.keyValueList.Add(new KeyValueObj() { Key = fkey, Value = svm.FilterVal });
+                if (!string.IsNullOrEmpty(svm.FilterKey) && !string.IsNullOrEmpty(svm.FilterVal))
+                {
+                    SearchType ftype = (SearchType)Convert.ToInt16(svm.FilterKey);
+                    KeyValueObj kvb = new KeyValueObj() { Value = svm.FilterVal };
+                    switch (ftype)
+                    {
+                        case SearchType.Title:
+                            kvb.Key = "Title";
+                            fillter.FilterType = FilterType.Like;
+                            break;
+                        case SearchType.State:
+                            kvb.Key = "State";
+                            break;
+                        case SearchType.Type:
+                            kvb.Key = "Category";
+                            break;
+                        case SearchType.Date:
+                            kvb.Key = "PublishDate";
+                            kvb.FieldType = FieldType.Date;
+                            break;
+                    }
+
+                    fillter.KeyValueList.Add(kvb);
+                }
+
             }
 
             List<Article> downList = articleService.GetPage(fillter, out totalNum);
@@ -56,7 +67,7 @@ namespace HST.Art.Web.Areas.manage.Controllers
             IList<ArticleViewModel> gmList = new List<ArticleViewModel>();
 
             if (data != null && data.DataT != null)
-                gmList = data.DataT.Select(g => new ArticleViewModel() { Id = g.Id, UserId = g.UserId, Title = g.Title, CategoryName = g.CategoryName, State = (int)g.State, CreateTime = g.CreateDate.ToString("yyyy-MM-dd HH:MM"), Category = g.Category, UserName = g.UserName, ParCategory = g.ParCategory, HeadImg = g.HeadImg, SmallHeadImg = GetThumb(g.HeadImg), Section = g.Section, ParCategoryName = g.ParCategoryName }).ToList();
+                gmList = data.DataT.Select(g => new ArticleViewModel() { Id = g.Id, UserId = g.UserId, Title = g.Title, CategoryName = g.CategoryName, State = (int)g.State, CreateTime = g.CreateDate.ToString("yyyy-MM-dd HH:MM"), PublishDate = g.PublishDate.ToString("yyyy-MM-dd HH:MM"), Category = g.Category, UserName = g.UserName, ParCategory = g.ParCategory, HeadImg = g.HeadImg, SmallHeadImg = GetThumb(g.HeadImg), Section = g.Section, ParCategoryName = g.ParCategoryName }).ToList();
 
             return Json(new
             {
@@ -117,6 +128,12 @@ namespace HST.Art.Web.Areas.manage.Controllers
             if (ModelState.IsValid)
             {
                 Article data = articleService.Get(model.Id);
+
+                if (data.State == PublishState.Lower && model.State == (int)PublishState.Upper)
+                {
+                    data.PublishDate = DateTime.Now;
+                }
+
                 data.Title = model.Title;
                 data.Content = !string.IsNullOrEmpty(model.Description) ? model.Description.Replace("\r\n", "") : string.Empty;
                 data.Category = model.Category;
@@ -124,6 +141,7 @@ namespace HST.Art.Web.Areas.manage.Controllers
                 data.HeadImg = model.HeadImg;
                 data.Section = model.Section;
                 data.ParCategory = model.ParCategory;
+
                 rmodel.isSuccess = articleService.Update(data);
             }
 

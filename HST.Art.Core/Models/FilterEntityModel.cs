@@ -16,7 +16,8 @@ namespace HST.Art.Core
         private SortType _defaultSort;
         private Dictionary<string, object> _sqlParList = new Dictionary<string, object>();
         private string _sortTbAsName;
-        public List<KeyValueObj> keyValueList { get; set; }
+        public KeyValueObj KeyValueReserve { get; set; }
+        public List<KeyValueObj> KeyValueList { get; set; }
         public KeyValuePair<string, SortType> SortDict { get; set; }
         public KeyValuePair<string, SortType> ThenDict { get; set; }
 
@@ -89,19 +90,22 @@ namespace HST.Art.Core
         {
             get
             {
-                if (keyValueList != null && keyValueList.Count > 0)
+                StringBuilder sBuilder = new StringBuilder();
+                if (KeyValueReserve != null)
                 {
-                    StringBuilder sBuilder = new StringBuilder();
+                    sBuilder.Append(GetWhereItemStr(KeyValueReserve));
+                }
 
-                    foreach (KeyValueObj item in keyValueList)
+                if (KeyValueList != null && KeyValueList.Count > 0)
+                {
+                    foreach (KeyValueObj item in KeyValueList)
                     {
                         ConvertKeyValueObj(item);
                         sBuilder.Append(GetWhereItemStr(item));
                     }
-
-                    _where = sBuilder.ToString();
                 }
 
+                _where = sBuilder.ToString();
                 return _where;
             }
         }
@@ -179,6 +183,13 @@ namespace HST.Art.Core
                 List<string> objList = item.Value as List<string>;
                 item.Value = objList.Select(g => g = string.Format("'{0}'", g)).ToList();
             }
+
+            if (item.FieldType == FieldType.Date)
+            {
+                item.Value = string.Format("{0} and {1}", Convert.ToDateTime(item.Value).ToShortDateString(), Convert.ToDateTime(item.Value).AddDays(1).ToShortDateString());
+            }
+
+
         }
 
         private string GetWhereItemStr(KeyValueObj item)
@@ -213,9 +224,21 @@ namespace HST.Art.Core
                     sBuilder.Append(string.Format(" and {2}{0} <> @{1} ", item.Key, item.Key, item.TbAsName));
                     FileSqlDic(string.Format("@{0}", item.Key), item.Value);
                     break;
+                case FilterType.Between:
+                    sBuilder.Append(string.Format(" and {2}{0} between {1} ", item.Key, item.Value, item.TbAsName));
+                    break;
                 default:
                     break;
             }
+
+            return sBuilder.ToString();
+        }
+
+        private string GetReserveWhereStr(KeyValueObj item)
+        {
+            StringBuilder sBuilder = new StringBuilder();
+            sBuilder.Append(string.Format(" and {2}{0}=@{1} ", item.Key, item.Key, item.TbAsName));
+            FileSqlDic(string.Format("@{0}", item.Key), item.Value);
 
             return sBuilder.ToString();
         }
@@ -229,8 +252,8 @@ namespace HST.Art.Core
         public void FillWhereTbAsName(string tbAsName)
         {
             if (string.IsNullOrWhiteSpace(tbAsName)) return;
-            if (keyValueList == null || keyValueList.Count <= 0) return;
-            foreach (KeyValueObj item in keyValueList)
+            if (KeyValueList == null || KeyValueList.Count <= 0) return;
+            foreach (KeyValueObj item in KeyValueList)
             {
                 item.TbAsName = tbAsName;
             }

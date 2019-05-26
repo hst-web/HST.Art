@@ -156,7 +156,7 @@ namespace HST.Art.Service
 
             FilterEntityModel filterModel = new FilterEntityModel()
             {
-                keyValueList = new List<KeyValueObj>() { new KeyValueObj() { Key = "Number", Value = number, TbAsName = Constant.MEMBER_UNIT_AS_NAME } }
+                KeyValueList = new List<KeyValueObj>() { new KeyValueObj() { Key = "Number", Value = number, TbAsName = Constant.MEMBER_UNIT_AS_NAME } }
             };
 
             List<MemberUnit> memberUnitList = _memberUnitProvider.GetAll(filterModel);

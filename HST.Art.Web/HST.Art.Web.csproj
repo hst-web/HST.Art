@@ -1832,6 +1832,7 @@
     <Content Include="Areas\manage\Views\MemberUnit\Add.cshtml" />
     <Content Include="Areas\manage\Views\MemberUnit\Detail.cshtml" />
     <Content Include="Areas\manage\Views\MemberUnit\Edit.cshtml" />
+    <Content Include="Areas\manage\Views\Article\List.cshtml" />
     <None Include="Areas\manage\Views\_ViewStart.cshtml">
       <LastGenOutput>_ViewStart.generated.cs</LastGenOutput>
       <Generator>RazorGenerator</Generator>
@@ -1914,7 +1915,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\manage\Models\" />
-    <Folder Include="Areas\manage\Views\Article\" />
     <Folder Include="Content\css\" />
     <Folder Include="Controllers\" />
     <Folder Include="uploadFiles\" />

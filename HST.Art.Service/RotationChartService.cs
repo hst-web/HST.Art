@@ -37,7 +37,7 @@ namespace HST.Art.Service
 
             if (rotationType != RotationType.UnKnown)
             {
-                filterModel.keyValueList = new List<KeyValueObj>()
+                filterModel.KeyValueList = new List<KeyValueObj>()
                 {
                     new KeyValueObj() {Key="Type",Value=(int)rotationType,FieldType= FieldType.Int }
                 };

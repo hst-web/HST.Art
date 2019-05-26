@@ -144,6 +144,8 @@ namespace HST.Art.Core
         /// 简介
         /// </summary>
         public string Synopsis { get; set; }
+
+        public DateTime PublishDate { get; set; }
     }
 
     public class ArticleStatistic

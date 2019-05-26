@@ -1,7 +1,7 @@
 /*==============================================================*/
 /* Database name:  ARTDB                                        */
 /* DBMS name:      Microsoft SQL Server 2012                    */
-/* Created on:     2019/5/18 19:09:07                           */
+/* Created on:     2019/5/26 11:09:50                           */
 /*==============================================================*/
 
 
@@ -35,6 +35,7 @@ create table Article (
    UpdateDate           datetime             null,
    CreateDate           datetime             null default getdate(),
    IsDeleted            bit                  null default 0,
+   PublishDate          datetime             null,
    constraint PK_ARTICLE primary key (Id)
 )
 go

@@ -106,14 +106,7 @@ namespace HST.Art.Service
                 return false;
             }
 
-            return _articleProvider.Update(new FlagUpdHandle()
-            {
-                FieldType = FieldType.Int,
-                Id = id,
-                Key = "State",
-                Value = (int)PublishState.Upper,
-                TableName = "Article"
-            });
+            return _articleProvider.Publish(id);
         }
 
         public bool Recovery(int id)

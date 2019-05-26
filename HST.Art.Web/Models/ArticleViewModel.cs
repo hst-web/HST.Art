@@ -46,5 +46,7 @@ namespace HST.Art.Web
             get; set;
         }
         public string ParCategoryName { get; set; }
+
+        public string PublishDate { get; set; }
     }
 }

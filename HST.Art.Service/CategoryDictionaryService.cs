@@ -36,7 +36,7 @@ namespace HST.Art.Service
 
             if (categoryType != CategoryType.UnKnown)
             {
-                filterModel.keyValueList = new List<KeyValueObj>()
+                filterModel.KeyValueList = new List<KeyValueObj>()
                 {
                     new KeyValueObj() {Key="Type",Value=(int)categoryType,FieldType= FieldType.Int,TbAsName=Constant.CATEGORY_DICTIONARY_AS_NAME }
                 };
@@ -52,12 +52,10 @@ namespace HST.Art.Service
             if (categoryTypes != null && categoryTypes.Count > 0)
             {
                 filterModel.FilterType = FilterType.In;
-                filterModel.keyValueList = new List<KeyValueObj>();
+                filterModel.KeyValueList = new List<KeyValueObj>();
+                int[] categoryArray = categoryTypes.Select(g => (int)g).ToArray();
 
-                foreach (var item in categoryTypes)
-                {
-                    filterModel.keyValueList.Add(new KeyValueObj() { Key = "Type", Value = (int)item, FieldType = FieldType.Int, TbAsName = Constant.CATEGORY_DICTIONARY_AS_NAME });
-                }
+                filterModel.KeyValueList.Add(new KeyValueObj() { Key = "Type", Value = categoryArray, FieldType = FieldType.Int, TbAsName = Constant.CATEGORY_DICTIONARY_AS_NAME });
             }
 
             List<CategoryDictionary> categoryList = _categoryDictionaryProvider.GetAll(filterModel);
