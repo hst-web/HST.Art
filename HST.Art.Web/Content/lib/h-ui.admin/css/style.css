@@ -405,3 +405,22 @@ input[type="radio"], input[type="checkbox"] {
 .up-img-left{
     float:left;
 }
+
+.dasboard{overflow:hidden}
+.dasboard .card{border:1px solid #eee;    border-radius: 2px;
+    background-color: #fff;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.05);}
+
+.card-header{position:relative;
+                 height: 42px;
+    line-height: 42px;
+    padding: 0 15px;
+    border-bottom: 1px solid #f6f6f6;
+    color: #333;
+    border-radius: 2px 2px 0 0;
+    font-size: 14px;
+}
+
+.card-header .badge{
+    border-radius:0px
+}

@@ -231,7 +231,12 @@ namespace HST.Art.Data
         public bool Add(Article articleInfo)
         {
             DBHelper dbHelper = new DBHelper(ConnectionString, DbProviderType.SqlServer);
-            string strSql = @"Insert Into Article (UserId, Title, HeadImg, Content, Author, Section, State, ParCategory, Category,Synopsis,PublishDate) Values (@UserId, @Title, @HeadImg, @Content, @Author, @Section, @State,@ParCategory, @Category,@Synopsis,@PublishDate)";
+            string strSql = @"Insert Into Article (UserId, Title, HeadImg, Content, Author, Section, State, ParCategory, Category,Synopsis) Values (@UserId, @Title, @HeadImg, @Content, @Author, @Section, @State,@ParCategory, @Category,@Synopsis)";
+
+            if (articleInfo.State == PublishState.Upper)
+            {
+               strSql = @"Insert Into Article (UserId, Title, HeadImg, Content, Author, Section, State, ParCategory, Category,Synopsis,PublishDate) Values (@UserId, @Title, @HeadImg, @Content, @Author, @Section, @State,@ParCategory, @Category,@Synopsis,getdate())";         
+            }
 
             List<DbParameter> parametersList = new List<DbParameter>();
             parametersList.Add(new SqlParameter("@UserId", articleInfo.UserId));
@@ -244,7 +249,6 @@ namespace HST.Art.Data
             parametersList.Add(new SqlParameter("@ParCategory", articleInfo.ParCategory));
             parametersList.Add(new SqlParameter("@State", (int)articleInfo.State));
             parametersList.Add(new SqlParameter("@Synopsis", articleInfo.Synopsis));
-            parametersList.Add(new SqlParameter("@PublishDate", articleInfo.State == PublishState.Upper ? DateTime.Now.ToString() : ""));
 
             return dbHelper.ExecuteNonQuery(strSql, parametersList) > 0;
         }

@@ -93,7 +93,7 @@ namespace HST.Art.Core
                 StringBuilder sBuilder = new StringBuilder();
                 if (KeyValueReserve != null)
                 {
-                    sBuilder.Append(GetWhereItemStr(KeyValueReserve));
+                    sBuilder.Append(GetReserveWhereStr(KeyValueReserve));
                 }
 
                 if (KeyValueList != null && KeyValueList.Count > 0)
@@ -183,13 +183,6 @@ namespace HST.Art.Core
                 List<string> objList = item.Value as List<string>;
                 item.Value = objList.Select(g => g = string.Format("'{0}'", g)).ToList();
             }
-
-            if (item.FieldType == FieldType.Date)
-            {
-                item.Value = string.Format("{0} and {1}", Convert.ToDateTime(item.Value).ToShortDateString(), Convert.ToDateTime(item.Value).AddDays(1).ToShortDateString());
-            }
-
-
         }
 
         private string GetWhereItemStr(KeyValueObj item)
@@ -209,7 +202,14 @@ namespace HST.Art.Core
                 case FilterType.In:
                     if (item.IsList)
                     {
-                        sBuilder.Append(string.Format(" and {2}{0} in ({1}) ", item.Key, string.Join(",", (List<string>)item.Value), item.TbAsName));
+                        if (item.FieldType == FieldType.String)
+                        {
+                            sBuilder.Append(string.Format(" and {2}{0} in ({1}) ", item.Key, string.Join(",", (List<string>)item.Value), item.TbAsName));
+                        }
+                        else if (item.FieldType == FieldType.Int)
+                        {
+                            sBuilder.Append(string.Format(" and {2}{0} in ({1}) ", item.Key, string.Join(",", (List<int>)item.Value), item.TbAsName));
+                        }
                     }
                     else
                     {
@@ -225,7 +225,15 @@ namespace HST.Art.Core
                     FileSqlDic(string.Format("@{0}", item.Key), item.Value);
                     break;
                 case FilterType.Between:
-                    sBuilder.Append(string.Format(" and {2}{0} between {1} ", item.Key, item.Value, item.TbAsName));
+                    if (item.FieldType == FieldType.Date)
+                    {
+                        sBuilder.Append(string.Format(" and {2}{0} between {1} ", item.Key, string.Format("'{0}' and '{1}'", Convert.ToDateTime(item.Value).ToShortDateString(), Convert.ToDateTime(item.Value).AddDays(1).ToShortDateString()), item.TbAsName));
+                    }
+                    else
+                    {
+                        sBuilder.Append(string.Format(" and {2}{0}=@{1} ", item.Key, item.Key, item.TbAsName));
+                        FileSqlDic(string.Format("@{0}", item.Key), item.Value);
+                    }
                     break;
                 default:
                     break;
@@ -252,6 +260,10 @@ namespace HST.Art.Core
         public void FillWhereTbAsName(string tbAsName)
         {
             if (string.IsNullOrWhiteSpace(tbAsName)) return;
+            if (KeyValueReserve != null)
+            {
+                KeyValueReserve.TbAsName = tbAsName;
+            }
             if (KeyValueList == null || KeyValueList.Count <= 0) return;
             foreach (KeyValueObj item in KeyValueList)
             {

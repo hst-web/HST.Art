@@ -10,7 +10,7 @@
 <script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js" ></script>
 <script>DD_belatedPNG.fix('*');</script>
 <![endif]-->
-<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 系统设置 <span class="c-gray en">&gt;</span> 账户管理 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新"><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 系统设置 <span class="c-gray en">&gt;</span> 账户管理 <a class="btn btn-primary radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新"><i class="Hui-iconfont">&#xe68f;</i></a></nav>
 <div class="page-container">
     <div class="cl pd-10 bg-1 bk-gray mt-10 search-wrap">
         <span class="label-inline">筛选：</span>
@@ -29,7 +29,7 @@
         <button name="search" id="search" class="btn btn-success ml-20" type="button"><i class="Hui-iconfont">&#xe665;</i> 查询</button>
         @if (ViewBag.IsSupAdmin)
         {
-            <button class="btn btn-warning" onclick="user_add('新建账户','@Url.Action("Add")')" type="button">新建账户</button>
+            <button class="btn btn-primary" onclick="user_add('新建账户','@Url.Action("Add")')" type="button">新建账户</button>
         }
         <input type="hidden" id="is_admin" value="@ViewBag.IsSupAdmin" />
         <input type="hidden" id="user_id" value="@ViewBag.UserId" />
@@ -83,7 +83,7 @@
                     $("#sel_state").addClass("hidden");
                 }
 
-                $("#sel_filVal").val("");
+                $("#sel_filVal,#sel_state").val("");
             })
         });
 

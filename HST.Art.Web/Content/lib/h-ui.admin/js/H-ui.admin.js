@@ -99,8 +99,8 @@ function creatIframe(href, titleName) {
 		$tabNavmore = topWindow.find(".Hui-tabNav-more");
     var taballwidth = 0;
 
-    if (show_nav.find("li").length>=5) {
-        layer.alert("打开页面数量不要超过5个", { icon: 7 });
+    if (show_nav.find("li").length>=8) {
+        layer.alert("打开页面数量不要超过8个", { icon: 7 });
         return false;
     }
 
@@ -118,6 +118,11 @@ function creatIframe(href, titleName) {
                 },
                 'closeall': function (t) {
                     $("#min_title_list li i").trigger("click");
+                    $("#main-aside").find("dl:first dt:first").addClass("selected");
+                    $("#main-aside").find("dl:first dt:first").siblings().removeClass("selected");
+                    $("#main-aside").find("dl:first").siblings().find("dt").removeClass("selected");
+                    $("#main-aside").find("dl:first").siblings("dl.list-dt").find("dd").css("display", "none");
+                    $("#main-aside").find("dl:first").siblings("dl.list-dt").find("li").removeClass("current");
                 },
                 'refreshthis': function (t) {
                     var thishref = $(t).find("span").attr("data-href");

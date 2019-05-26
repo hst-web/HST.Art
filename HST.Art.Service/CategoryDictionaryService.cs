@@ -53,9 +53,9 @@ namespace HST.Art.Service
             {
                 filterModel.FilterType = FilterType.In;
                 filterModel.KeyValueList = new List<KeyValueObj>();
-                int[] categoryArray = categoryTypes.Select(g => (int)g).ToArray();
+                List<int> categorys = categoryTypes.Select(g => (int)g).ToList();
 
-                filterModel.KeyValueList.Add(new KeyValueObj() { Key = "Type", Value = categoryArray, FieldType = FieldType.Int, TbAsName = Constant.CATEGORY_DICTIONARY_AS_NAME });
+                filterModel.KeyValueList.Add(new KeyValueObj() { Key = "Type", Value = categorys, FieldType = FieldType.Int, TbAsName = Constant.CATEGORY_DICTIONARY_AS_NAME });
             }
 
             List<CategoryDictionary> categoryList = _categoryDictionaryProvider.GetAll(filterModel);
