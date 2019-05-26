@@ -76,11 +76,11 @@
             <label class="form-label col-md-1 " style="min-width:10%"><span class="c-red">*</span>单位星级：</label>
             <div class="formControls col-md-3 ">
                 <select class="select select-box" name="Star">
-                    <option @(Model.Star == 1 ? "selected") value="1">1星</option>
-                    <option @(Model.Star == 2 ? "selected") value="2">2星</option>
-                    <option @(Model.Star == 3 ? "selected") value="3">3星</option>
-                    <option @(Model.Star == 4 ? "selected") value="4">4星</option>
-                    <option @(Model.Star == 5 ? "selected") value="5">5星</option>
+                    <option @(Model.Star == 1 ? "selected":"") value="1">1星</option>
+                    <option @(Model.Star == 2 ? "selected":"") value="2">2星</option>
+                    <option @(Model.Star == 3 ? "selected":"") value="3">3星</option>
+                    <option @(Model.Star == 4 ? "selected":"") value="4">4星</option>
+                    <option @(Model.Star == 5 ? "selected":"") value="5">5星</option>
                 </select>
             </div>
         </div>
@@ -138,16 +138,17 @@
     function formSuccess(result) {
         if (result != null) {
             if (result.isSuccess) {
-                layer.alert('操作成功！', {
-                    icon: 6, closeBtn: 0, yes: function () {
+                top.layer.alert('操作成功！', {
+                    icon: 6, closeBtn: 0, yes: function () {                     
                         window.location = '@Url.Action("List", "MemberUnit")'
+                        parent.layer.closeAll();
                     }
                 });
             } else {
-                layer.alert('操作失败！', { icon: 5 });
+                top.layer.alert('操作失败！', { icon: 5 });
             }
         } else {
-            layer.alert('操作失败！', { icon: 5 });
+            top.layer.alert('操作失败！', { icon: 5 });
         }
     }
 </script>

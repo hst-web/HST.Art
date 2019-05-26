@@ -20,8 +20,8 @@
             <option value="@((int)SearchType.Name)">姓名</option>
             <option value="@((int)SearchType.State)">状态</option>
         </select>
-        <input type="text" id="sel_filVal" placeholder="请输入筛选关键字" class="input-text lg inline" />
-        <select name="sel_orderstate" id="sel_state" class="select select-box sm inline hidden">
+        <input type="text" id="sel_filVal" placeholder="请输入筛选关键字" class="input-text lg inline hidden" />
+        <select name="sel_orderstate" id="sel_state" class="select select-box sm inline hidden" style="min-width:150px">
             <option value="">请选择账户状态</option>
             <option value="@((int)PublishState.Upper)">已上架</option>
             <option value="@((int)PublishState.Lower)">已下架</option>
@@ -42,7 +42,7 @@
                     <th width="12%">用户名</th>
                     <th width="12%">姓名</th>
                     <th width="12%">手机号</th>
-                    <th width="12%">邮箱</th>                
+                    <th width="12%">邮箱</th>
                     <th width="8%">状态</th>
                     <th width="15%">创建时间</th>
                     <th width="15%">操作</th>
@@ -71,7 +71,11 @@
             });
 
             $("#sel_filType").change(function () {
-                if ($(this).val() == '@((int)SearchType.State)') {
+                if ($(this).val() == "") {
+                    $("#sel_state").addClass("hidden");
+                    $("#sel_filVal").addClass("hidden");
+                }
+                else if ($(this).val() == '@((int)SearchType.State)') {
                     $("#sel_state").removeClass("hidden");
                     $("#sel_filVal").addClass("hidden");
                 } else {
@@ -150,7 +154,7 @@
                       { "mDataProp": "UserName" },
                     { "mDataProp": "RealName" },
                       { "mDataProp": "Phone" },
-                      { "mDataProp": "Email" },                  
+                      { "mDataProp": "Email" },
                        { "mDataProp": "State" },
                        { "mDataProp": "CreateTime" },
                       { "defaultContent": "" }
@@ -191,7 +195,7 @@
                         } else {
                             if ($("#user_id").val() != data) {
                                 tmpString = "不可操作";
-                            } 
+                            }
                         }
 
                         return tmpString;

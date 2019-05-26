@@ -139,16 +139,17 @@
         if (result != null) {
 
             if (result.isSuccess) {
-                layer.alert('添加成功！', {
+                top.layer.alert('添加成功！', {
                     icon: 6, closeBtn: 0, yes: function () {
-                        window.location = '@Url.Action("List", "MemberUnit")'
+                        window.location = '@Url.Action("List", "MemberUnit")';
+                        parent.layer.closeAll();
                     }
                 });
             } else {
-                layer.alert('添加失败！', { icon: 5 });
+                top.layer.alert('添加失败！', { icon: 5 });
             }
         } else {
-            layer.alert('添加失败！', { icon: 5 });
+            top.layer.alert('添加失败！', { icon: 5 });
         }
     }
 </script>

@@ -140,16 +140,17 @@
     function formSuccess(result) {
         if (result != null) {
             if (result.isSuccess) {
-                layer.alert('操作成功！', {
+                top.layer.alert('操作成功！', {
                     icon: 6, closeBtn: 0, yes: function () {
-                        window.location = '@Url.Action("List", "Download")'
+                        window.location = '@Url.Action("List", "Download")';
+                        parent.layer.closeAll();
                     }
                 });
             } else {
-                layer.alert('操作失败！', { icon: 5 });
+                top.layer.alert('操作失败！', { icon: 5 });
             }
         } else {
-            layer.alert('操作失败！', { icon: 5 });
+            top.layer.alert('操作失败！', { icon: 5 });
         }
     }
 </script>

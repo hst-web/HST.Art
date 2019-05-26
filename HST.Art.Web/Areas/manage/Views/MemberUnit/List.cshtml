@@ -22,7 +22,7 @@
             <option value="@((int)SearchType.Type)">单位类别</option>
             <option value="@((int)SearchType.Area)">所在地区</option>
         </select>
-        <input type="text" id="sel_filVal" placeholder="请输入筛选关键字" class="input-text lg inline" />
+        <input type="text" id="sel_filVal" placeholder="请输入筛选关键字" class="input-text lg inline hidden" />
         <select name="sel_orderstate" id="sel_type" class="select select-box sm inline hidden" style="min-width:150px">
             <option value="">请选择所属类别</option>
             @foreach (CategoryDictionary item in ViewBag.AllCategory)
@@ -80,7 +80,12 @@
             });
 
             $("#sel_filType").change(function () {
-                if ($(this).val() == '@((int)SearchType.Type)') {
+                if ($(this).val() == "") {
+                    $("#sel_filVal").addClass("hidden");
+                    $("#sel_area").addClass("hidden");
+                    $("#sel_type").addClass("hidden");
+                }
+               else if ($(this).val() == '@((int)SearchType.Type)') {
                     $("#sel_type").removeClass("hidden");
                     $("#sel_area").addClass("hidden");
                     $("#sel_filVal").addClass("hidden");

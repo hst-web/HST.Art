@@ -37,6 +37,7 @@ namespace HST.Art.Web.Areas.manage.Controllers
                 {
                     case SearchType.Title:
                         fkey = "Title";
+                        fillter.FilterType = FilterType.Like;
                         break;
                     case SearchType.Type:
                         fkey = "Category";
