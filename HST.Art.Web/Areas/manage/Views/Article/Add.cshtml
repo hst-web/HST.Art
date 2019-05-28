@@ -148,6 +148,7 @@
         } else {
             $("#sel_parCategory,#sel_exCategory").addClass("hidden");
             $("#sel_category").removeClass("hidden");
+            $("#sel_parCategory").val(0).change();
             $.ajax({
                 url: "@Url.Action("GetCategorysBySection")",
                 type: "Get",

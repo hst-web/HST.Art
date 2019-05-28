@@ -17,6 +17,7 @@ namespace HST.Art.Web.Areas.manage.Controllers
         public ActionResult List()
         {
             InitData();
+            ViewBag.Statistic = GetStatistic();
             return View();
         }
 
@@ -69,7 +70,7 @@ namespace HST.Art.Web.Areas.manage.Controllers
             IList<ArticleViewModel> gmList = new List<ArticleViewModel>();
 
             if (data != null && data.DataT != null)
-                gmList = data.DataT.Select(g => new ArticleViewModel() { Id = g.Id, UserId = g.UserId, Title = g.Title, CategoryName = !string.IsNullOrEmpty(g.ParCategoryName) ? g.ParCategoryName + "-" + g.CategoryName : g.CategoryName, State = (int)g.State, CreateTime = g.CreateDate.ToString("yyyy-MM-dd HH:MM"), PublishDate =g.PublishDate<=DateTime.MinValue?"无发布日期": g.PublishDate.ToString("yyyy-MM-dd HH:MM"), Category = g.Category, UserName = g.UserName, ParCategory = g.ParCategory, HeadImg = g.HeadImg, SmallHeadImg = GetThumb(g.HeadImg), Section = g.Section, ParCategoryName = g.ParCategoryName }).ToList();
+                gmList = data.DataT.Select(g => new ArticleViewModel() { Id = g.Id, UserId = g.UserId, Title = g.Title, CategoryName = !string.IsNullOrEmpty(g.ParCategoryName) ? g.ParCategoryName + "-" + g.CategoryName : g.CategoryName, State = (int)g.State, CreateTime = g.CreateDate.ToString("yyyy-MM-dd HH:MM"), PublishDate = g.PublishDate <= DateTime.MinValue ? "无发布日期" : g.PublishDate.ToString("yyyy-MM-dd HH:MM"), Category = g.Category, UserName = g.UserName, ParCategory = g.ParCategory, HeadImg = g.HeadImg, SmallHeadImg = GetThumb(g.HeadImg), Section = g.Section, ParCategoryName = g.ParCategoryName }).ToList();
 
             return Json(new
             {
@@ -373,6 +374,34 @@ namespace HST.Art.Web.Areas.manage.Controllers
             }
 
             ViewBag.ExamCategory = dicCategorys;
+        }
+
+        private List<StatisticViewModel> GetStatistic()
+        {
+            List<ArticleStatistic> list = articleService.GetStatistics();
+            List<StatisticViewModel> model = new List<StatisticViewModel>();
+            foreach (SectionType item in Enum.GetValues(typeof(SectionType)))
+            {
+                if (item != SectionType.UnKnown)
+                {
+                    model.Add(new StatisticViewModel() { Section = item, Count = 0, Percent = "0.0%" });
+                }
+            }
+
+            model = model.OrderBy(g => g.Section).ToList();
+
+            if (list != null && list.Count > 0)
+            {
+                double totalCount = list.Sum(g => g.SectionCount);
+                foreach (ArticleStatistic item in list)
+                {
+                    model.Find(g => g.Section == item.SectionType).Count = item.SectionCount;
+                }
+
+                model.ForEach(g => g.Percent = string.Format("{0:0.0%}", g.Count / totalCount));
+            }
+
+            return model;
         }
     }
 }

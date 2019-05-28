@@ -406,8 +406,8 @@ input[type="radio"], input[type="checkbox"] {
     float:left;
 }
 
-.dasboard{overflow:hidden}
-.dasboard .card{border:1px solid #eee;    border-radius: 2px;
+.dasboard{overflow:hidden;margin-bottom:20px}
+.dasboard .card{border:1px solid #ddd;    border-radius: 2px;
     background-color: #fff;
     box-shadow: 0 1px 2px 0 rgba(0,0,0,.05);}
 
@@ -415,12 +415,30 @@ input[type="radio"], input[type="checkbox"] {
                  height: 42px;
     line-height: 42px;
     padding: 0 15px;
-    border-bottom: 1px solid #f6f6f6;
+    border-bottom: 1px solid #ddd;
     color: #333;
     border-radius: 2px 2px 0 0;
     font-size: 14px;
 }
 
 .card-header .badge{
-    border-radius:0px
+    border-radius:0px;
+    float: right;
+    margin-top: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.badge.bg-blue{background:#1E9FFF}
+.card-body {position:relative;padding:10px 15px}
+.card-body p{
+        font-size: 36px;
+    color: #666;
+    line-height: 36px;
+    padding: 5px 0 8px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    white-space: nowrap;
+    margin:0px
 }

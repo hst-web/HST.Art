@@ -35,10 +35,10 @@ namespace HST.Art.Web
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "所属类别不能为空")]
         public int ParCategory { get; set; }
-        public string UserName { get; set; }           
+        public string UserName { get; set; }
 
         public string SmallHeadImg { get; set; }
-       
+
         public string CreateTime { get; set; }
 
         public string CategoryName
@@ -48,5 +48,19 @@ namespace HST.Art.Web
         public string ParCategoryName { get; set; }
 
         public string PublishDate { get; set; }
+    }
+
+    public class StatisticViewModel
+    {
+        public SectionType Section { get; set; }
+        public string Name
+        {
+            get
+            {
+                return Section.GetDescription();
+            }
+        }
+        public int Count { get; set; }
+        public string Percent { get; set; }
     }
 }

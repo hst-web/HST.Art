@@ -14,28 +14,20 @@
 <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span>文章管理 <a class="btn btn-primary radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新"><i class="Hui-iconfont">&#xe68f;</i></a></nav>
 <div class="page-container">
     <div class="row dasboard">
-        <div class="col-sm-3">
-            <div class="card">
-                <div class="card-header">
-                    访问量
-                    <span class="badge bg-blue">周</span>
-                </div>
-                <div class="card-body">
-                    <p>9,999,666</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="card">
-                <div class="card-header">
-                    访问量
-                    <span class="badge bg-blue">周</span>
-                </div>
-                <div class="card-body">
-                    <p>9,999,666</p>
+        @foreach (StatisticViewModel item in ViewBag.Statistic)
+        {
+            <div class="col-sm-3 col-xs-6">
+                <div class="card">
+                    <div class="card-header">
+                        @item.Name
+                        <span class="badge bg-blue">@item.Percent</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-num" data-bind="@item.Count">0</p>
+                    </div>
                 </div>
             </div>
-        </div>
+        }
     </div>
     <div class="cl pd-10 bg-1 bk-gray mt-10 search-wrap">
         <span class="label-inline">筛选：</span>
@@ -105,7 +97,7 @@
         var table1 = null;
         $(function () {
             table1 = initializeTable();
-
+            loadAnimate();
             $("#search").click(function () {
                 table1.ajax.reload();
             });
@@ -191,6 +183,18 @@
             }
         }
 
+        function loadAnimate() {
+            var comma_separator_number_step = $.animateNumber.numberStepFactories.separator(',')
+            $(".card-num").each(function () {
+                $(this).animateNumber(
+              {
+                  number: $(this).attr("data-bind"),
+                  numberStep: comma_separator_number_step
+              }
+              );
+            })
+        }
+
         function initializeTable() {
             var dataTable = $('#tbTable').DataTable({
                 "serverSide": true,
@@ -222,7 +226,7 @@
                      "targets": [3],
                      "data": "SmallHeadImg",
                      "render": function (data, type, full) {
-                         var result = "<a class='fancybox' href='" + full.HeadImg + "' title='' data-rel='fancybox-button'><img src=\"" + data + "\" class=\"thumbnail\" style='width:55px;padding:2px' /></a>";
+                         var result = "<a class='fancybox' href='" + full.HeadImg + "' title='' data-rel='fancybox-button'><img src=\"" + data + "\" class=\"thumbnail\" style='height:40px;padding:2px' /></a>";
                          return result;
                      }
                  },
