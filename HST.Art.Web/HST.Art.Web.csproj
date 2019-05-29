@@ -249,6 +249,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModel.cs" />
+    <Compile Include="Models\OrganizationViewModel.cs" />
     <Compile Include="Models\ArticleViewModel.cs" />
     <Compile Include="Models\MemberUnitViewModel.cs" />
     <Compile Include="Models\FilterViewModel.cs" />
@@ -1839,6 +1840,7 @@
     <Content Include="Areas\manage\Views\Article\Add.cshtml" />
     <Content Include="Areas\manage\Views\Article\Detail.cshtml" />
     <Content Include="Areas\manage\Views\Article\Edit.cshtml" />
+    <Content Include="Areas\manage\Views\Account\Edit.cshtml" />
     <None Include="Areas\manage\Views\_ViewStart.cshtml">
       <LastGenOutput>_ViewStart.generated.cs</LastGenOutput>
       <Generator>RazorGenerator</Generator>

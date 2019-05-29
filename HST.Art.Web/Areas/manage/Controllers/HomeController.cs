@@ -4,17 +4,19 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Web.Mvc;
+using HST.Art.Service;
 
 namespace HST.Art.Web.Areas.manage.Controllers
 {
     public class HomeController : ApplicationBase
     {
+        OrganizationService orgService = new OrganizationService();
         // GET: Home
         public ActionResult Index()
         {
             Account account = GetAccount();
 
-            return  View(account);
+            return View(account);
         }
         public ActionResult welcome()
         {
@@ -22,26 +24,10 @@ namespace HST.Art.Web.Areas.manage.Controllers
 
         }
 
-        /// <summary>
-        /// 资料包统计
-        /// </summary>
-        /// <returns></returns>
-        public JsonResult ResPackageStatistics()
+        public ActionResult Edit()
         {
-            // ResourceStatistics model = new ResourceStatisticsControll().GetResPackgeStatistics();
-            // model = model == null ? new ResourceStatistics() : model;
-            return null;// Json(model, JsonRequestBehavior.AllowGet);
-        }
-
-        /// <summary>
-        /// 资料统计
-        /// </summary>
-        /// <returns></returns>
-        public JsonResult ResourceStatistics()
-        {
-            // ResourceStatistics model = new ResourceStatisticsControll().GetResourceStatistics();
-            // model = model == null ? new ResourceStatistics() : model;
-            return null; //Json(model, JsonRequestBehavior.AllowGet);
+            Organization model = orgService.GetByNumber(Constant.INIT_ORG_NUMBER);
+            return View();
         }
 
         public JsonResult SearchLog(string SearchDate)
