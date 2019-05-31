@@ -1,7 +1,7 @@
 /*==============================================================*/
 /* Database name:  ARTDB                                        */
 /* DBMS name:      Microsoft SQL Server 2012                    */
-/* Created on:     2019/5/26 11:09:50                           */
+/* Created on:     2019/5/31 18:55:59                           */
 /*==============================================================*/
 
 
@@ -34,8 +34,8 @@ create table Article (
    Category             int                  null,
    UpdateDate           datetime             null,
    CreateDate           datetime             null default getdate(),
-   IsDeleted            bit                  null default 0,
    PublishDate          datetime             null,
+   IsDeleted            bit                  null default 0,
    constraint PK_ARTICLE primary key (Id)
 )
 go
@@ -204,7 +204,7 @@ create table Organization (
    Number               varchar(20)          null,
    Telephone            varchar(20)          null,
    Email                varchar(50)          null,
-   WeChat               nvarchar(50)         null,
+   WeChat               nvarchar(128)        null,
    Blog                 nvarchar(50)         null,
    Description          nvarchar(800)        null,
    Detail               nvarchar(Max)        null,
@@ -252,7 +252,6 @@ go
 /*==============================================================*/
 create table RotationChart (
    Id                   int                  identity,
-   Sort                 int                  not null,
    ImgSrc               varchar(128)         not null,
    WebLink              varchar(300)         not null,
    State                int                  null default 0,
@@ -311,7 +310,7 @@ create table Setting (
    Type                 int                  null,
    Val                  varchar(200)         null,
    CreateDate           datetime             null default getdate(),
-   IsEnabled            bit                  null default 0,
+   IsEnabled            bit                  null default 1,
    constraint PK_SETTING primary key (Id)
 )
 go

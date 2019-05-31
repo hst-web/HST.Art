@@ -16,9 +16,6 @@ namespace HST.Art.Web
         [RegularExpression(@"^[^\s]+$", ErrorMessage = "企业名称不能包含空字符")]
         public string OrgName { get; set; }
 
-        [Required(AllowEmptyStrings = false, ErrorMessage = "请上传企业Logo")]
-        public string HeadImg { get; set; }
-
         /// <summary>
         /// 邮箱
         /// </summary>
@@ -29,7 +26,6 @@ namespace HST.Art.Web
         /// <summary>
         /// 手机号
         /// </summary>
-        [Required(ErrorMessage = "联系电话不能为空")]
         [RegularExpression(@"(^(0[0-9]{2,3}\-)?([2-9][0-9]{6,7})+(\-[0-9]{1,4})?$)|(^((\(\d{3}\))|(\d{3}\-))?([1][3-8]\d{9})$)", ErrorMessage = "电话格式不正确")]
         public string Telephone { get; set; }
 
@@ -41,6 +37,8 @@ namespace HST.Art.Web
         [Required(AllowEmptyStrings = false, ErrorMessage = "企业简介不能为空")]
         [RegularExpression(@"^[^\s]+$", ErrorMessage = "企业简介不能包含空字符")]
         public string Description { get; set; }
+
+        public string Logo { get; set; }
 
         /// <summary>
         /// 详情

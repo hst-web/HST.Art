@@ -12,6 +12,7 @@ namespace HST.Art.Web
         {
             bundles.Add(new ScriptBundle("~/bundles/saos").Include(
                  "~/Content/lib/jquery/1.9.1/jquery.min.js",
+                   "~/Content/lib/jquery-ui/jquery-ui.min.js",
                  "~/Content/lib/uniform/jquery.uniform.js").Include(
                  "~/Content/lib/jquery-animateNumber/jquery.animateNumber.min.js", new CssRewriteUrlTransformWrapper()).Include(
                  "~/Content/lib/fancybox/dist/jquery.fancybox.min.js", new CssRewriteUrlTransformWrapper()).Include(

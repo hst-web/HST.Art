@@ -17,7 +17,6 @@ namespace HST.Art.Core
         { }
         #region Model
         private int _id;
-        private int _sort;
         private string _imgsrc;
         private string _weblink;
         private PublishState _state = 0;
@@ -31,14 +30,6 @@ namespace HST.Art.Core
         {
             set { _id = value; }
             get { return _id; }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        public int Sort
-        {
-            set { _sort = value; }
-            get { return _sort; }
         }
         /// <summary>
         /// 

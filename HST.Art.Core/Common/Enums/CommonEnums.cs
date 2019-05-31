@@ -295,10 +295,14 @@ namespace HST.Art.Core
         /// <summary>
         /// 认证
         /// </summary>
-        Attestation = 1,
+        Attestation,
+        /// <summary>
+        /// 轮播
+        /// </summary>
+        Rotation,
         /// <summary>
         /// 其他
         /// </summary>
-        Other = 2
+        Other
     }
 }

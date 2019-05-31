@@ -28,7 +28,7 @@ namespace HST.Art.Data
         {
             RotationChart rotationInfo = null;
             DBHelper dbHelper = new DBHelper(ConnectionString, DbProviderType.SqlServer);
-            string strSql = @"SELECT Id, Sort, ImgSrc, WebLink, State, Type, CreateDate from RotationChart where IsDeleted=0 and id=@Id ";
+            string strSql = @"SELECT Id, ImgSrc, WebLink, State, Type, CreateDate from RotationChart where IsDeleted=0 and id=@Id ";
 
             List<DbParameter> parametersList = new List<DbParameter>();
             parametersList.Add(new SqlParameter("@Id", id));
@@ -62,7 +62,7 @@ namespace HST.Art.Data
             List<RotationChart> rotationList = null;
             DBHelper dbHelper = new DBHelper(ConnectionString, DbProviderType.SqlServer);
 
-            string strSql = @"SELECT Id, Sort, ImgSrc, WebLink, State, Type, CreateDate from RotationChart where IsDeleted=0 " + whereSort;
+            string strSql = @"SELECT Id, ImgSrc, WebLink, State, Type, CreateDate from RotationChart where IsDeleted=0 " + whereSort;
 
             IList<DbParameter> parameList = null;
             if (condition != null && condition.SqlParList.Count > 0)
@@ -98,7 +98,6 @@ namespace HST.Art.Data
             RotationChart rotationInfo = new RotationChart();
             rotationInfo.Id = Convert.ToInt32(reader["Id"]);
             rotationInfo.WebLink = reader["WebLink"].ToString();
-            rotationInfo.Sort = Convert.ToInt32(reader["Sort"]);
             rotationInfo.Type = (RotationType)reader["Type"];
             rotationInfo.ImgSrc = reader["ImgSrc"].ToString();
             rotationInfo.State = Convert.ToInt32(reader["State"]) < 1 ? PublishState.Lower : PublishState.Upper;
@@ -117,10 +116,9 @@ namespace HST.Art.Data
         public bool Add(RotationChart rotationInfo)
         {
             DBHelper dbHelper = new DBHelper(ConnectionString, DbProviderType.SqlServer);
-            string strSql = @"Insert Into RotationChart (Sort, ImgSrc, WebLink, State, Type) Values (@Sort, @ImgSrc, @WebLink, @State, @Type)";
+            string strSql = @"Insert Into RotationChart (ImgSrc, WebLink, State, Type) Values (@@ImgSrc, @WebLink, @State, @Type)";
 
             List<DbParameter> parametersList = new List<DbParameter>();
-            parametersList.Add(new SqlParameter("@Sort", rotationInfo.Sort));
             parametersList.Add(new SqlParameter("@ImgSrc", rotationInfo.ImgSrc));
             parametersList.Add(new SqlParameter("@WebLink", rotationInfo.WebLink));
             parametersList.Add(new SqlParameter("@State", (int)rotationInfo.State));
@@ -138,8 +136,7 @@ namespace HST.Art.Data
         {
             DBHelper dbHelper = new DBHelper(ConnectionString, DbProviderType.SqlServer);
             string strSql = @"Update RotationChart
-                              Set [Sort]=@Sort
-                                  ,[ImgSrc]=@ImgSrc
+                              Set [ImgSrc]=@ImgSrc
                                   ,[WebLink]=@WebLink
                                   ,[State]=@State
                                   ,[Type]=@Type
@@ -147,7 +144,6 @@ namespace HST.Art.Data
 
             List<DbParameter> parametersList = new List<DbParameter>();
             parametersList.Add(new SqlParameter("@ID", rotationInfo.Id));
-            parametersList.Add(new SqlParameter("@Sort", rotationInfo.Sort));
             parametersList.Add(new SqlParameter("@ImgSrc", rotationInfo.ImgSrc));
             parametersList.Add(new SqlParameter("@WebLink", rotationInfo.WebLink));
             parametersList.Add(new SqlParameter("@State", (int)rotationInfo.State));
@@ -166,7 +162,7 @@ namespace HST.Art.Data
             DBHelper dbHelper = new DBHelper(ConnectionString, DbProviderType.SqlServer);
             string ids = string.Join(",", rotations.Select(g => g.Id));
             string sqlDel = "delete RotationChart where id in ( " + ids + " )";
-            string sqlAdd = "Insert Into RotationChart (Sort, ImgSrc, WebLink, State, Type) Values (@Sort, @ImgSrc, @WebLink, @State, @Type)";
+            string sqlAdd = "Insert Into RotationChart (ImgSrc, WebLink, State, Type) Values (@@ImgSrc, @WebLink, @State, @Type)";
 
             dbHelper.BeginTrans();//开启事务
             bool isSuccess = dbHelper.ExecuteNonQueryInTrans(sqlDel, null) > 0;
@@ -180,7 +176,6 @@ namespace HST.Art.Data
             foreach (RotationChart item in rotations)
             {
                 List<DbParameter> parametersList = new List<DbParameter>();
-                parametersList.Add(new SqlParameter("@Sort", item.Sort));
                 parametersList.Add(new SqlParameter("@ImgSrc", item.ImgSrc));
                 parametersList.Add(new SqlParameter("@WebLink", item.WebLink));
                 parametersList.Add(new SqlParameter("@State", (int)item.State));

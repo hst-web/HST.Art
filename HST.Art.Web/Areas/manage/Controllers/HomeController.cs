@@ -27,7 +27,49 @@ namespace HST.Art.Web.Areas.manage.Controllers
         public ActionResult Edit()
         {
             Organization model = orgService.GetByNumber(Constant.INIT_ORG_NUMBER);
+            if (model != null)
+            {
+                return View(new OrganizationViewModel()
+                {
+                    Id = model.Id,
+                    Description = model.Description,
+                    Detail = model.Detail,
+                    Blog = model.Blog,
+                    Email = model.Email,
+                    Framework = model.Framework,
+                    Number = model.Number,
+                    OrgName = model.Name,
+                    SmallHeadImg = GetThumb(model.WeChat),
+                    WeChat = model.WeChat,
+                    Telephone = model.Telephone,
+                    Logo=model.Logo
+                });
+            }
+
             return View();
+        }
+
+        [HttpPost]
+        public JsonResult Edit(OrganizationViewModel model)
+        {
+            ResultRetrun rmodel = new ResultRetrun();
+            if (ModelState.IsValid)
+            {
+                Organization data = orgService.Get(model.Id);
+                data.Name = model.OrgName;
+                data.Framework = model.Framework;
+                data.Description = model.Description;
+                data.Telephone = model.Telephone;
+                data.WeChat = model.WeChat;
+                data.Blog = model.Blog;
+                data.Logo = model.Logo;
+                data.Detail = model.Detail;
+                data.Email = model.Email;
+
+                rmodel.isSuccess = orgService.Update(data);
+            }
+
+            return Json(rmodel);
         }
 
         public JsonResult SearchLog(string SearchDate)

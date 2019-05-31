@@ -1857,6 +1857,7 @@
     <Content Include="Areas\manage\Views\Article\Detail.cshtml" />
     <Content Include="Areas\manage\Views\Article\Edit.cshtml" />
     <Content Include="Areas\manage\Views\Account\Edit.cshtml" />
+    <Content Include="Areas\manage\Views\Home\Edit.cshtml" />
     <None Include="Areas\manage\Views\_ViewStart.cshtml">
       <LastGenOutput>_ViewStart.generated.cs</LastGenOutput>
       <Generator>RazorGenerator</Generator>
