@@ -5,6 +5,8 @@
 // 创建时间：2019-4-14
 //----------------------------------------------------------------*/
 using System;
+using System.Collections.Generic;
+
 namespace HST.Art.Core
 {
     /// <summary>
@@ -82,7 +84,12 @@ namespace HST.Art.Core
             get { return _isdeleted; }
         }
         #endregion Model
+    }
 
+    public class RotationSort
+    {
+        public RotationType RotationType { get; set; }
+        public List<int> SortList { get; set; }
     }
 }
 

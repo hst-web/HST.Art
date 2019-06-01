@@ -6,13 +6,23 @@ using System.Web.Optimization;
 
 namespace HST.Art.Web
 {
+    internal class AsIsBundleOrderer : IBundleOrderer
+    {
+        public virtual IEnumerable<BundleFile> OrderFiles(BundleContext context, IEnumerable<BundleFile> files)
+        {
+            return files;
+        }
+    }
     public class JSBundleConfig
     {
         public static void RegisterBundles(BundleCollection bundles)
         {
-            bundles.Add(new ScriptBundle("~/bundles/saos").Include(
-                 "~/Content/lib/jquery/1.9.1/jquery.min.js",
-                   "~/Content/lib/jquery-ui/jquery-ui.min.js",
+            ScriptBundle mandatoryJs = new ScriptBundle("~/bundles/saos");
+            mandatoryJs.Orderer = new AsIsBundleOrderer();
+            mandatoryJs.Include(
+                 "~/Content/lib/jquery/jquery.min.js",
+                 "~/Content/lib/jquery/jquery-migrate.min.js",
+                  "~/Content/lib/jquery-ui/jquery-ui.min.js",
                  "~/Content/lib/uniform/jquery.uniform.js").Include(
                  "~/Content/lib/jquery-animateNumber/jquery.animateNumber.min.js", new CssRewriteUrlTransformWrapper()).Include(
                  "~/Content/lib/fancybox/dist/jquery.fancybox.min.js", new CssRewriteUrlTransformWrapper()).Include(
@@ -24,12 +34,15 @@ namespace HST.Art.Web
                   "~/Content/lib/vue/vue.min.js",
                    "~/Content/lib/vue/vue-resource.min.js",
                     "~/Content/lib/h-ui.admin/js/custom.js"
-                 ));
+                 );
+
+            bundles.Add(mandatoryJs);
 
             bundles.Add(new ScriptBundle("~/bundles/datatable").Include("~/Content/lib/datatables/1.10.0/jquery.dataTables.min.js", new CssRewriteUrlTransformWrapper()));
 
             bundles.Add(new ScriptBundle("~/bundles/validate").Include(
-            "~/Content/lib/jquery.validation/1.14.0/jquery.validate.js",                     
+
+            "~/Content/lib/jquery.validation/1.14.0/jquery.validate.js",
            "~/Content/lib/jquery.validation/1.14.0/validate-methods.js",
             "~/Content/lib/jquery.validation/1.14.0/messages_zh.js",
             "~/Content/js/jquery.validate.unobtrusive.min.js"

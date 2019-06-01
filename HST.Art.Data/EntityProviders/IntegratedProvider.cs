@@ -78,7 +78,24 @@ namespace HST.Art.Data
 
             List<DbParameter> parametersList = new List<DbParameter>();
             parametersList.Add(new SqlParameter("@ID", setInfo.Id));
-            parametersList.Add(new SqlParameter("@IsEnabled", setInfo.IsEnabled));
+            parametersList.Add(new SqlParameter("@IsEnabled", Convert.ToInt32(setInfo.IsEnabled)));
+            parametersList.Add(new SqlParameter("@Val", setInfo.Val));
+            parametersList.Add(new SqlParameter("@Type", (int)setInfo.Type));
+
+            return dbHelper.ExecuteNonQuery(strSql, parametersList) > 0;
+        }
+
+        /// <summary>
+        /// 修改设置
+        /// </summary>
+        /// <param name="setInfo">设置信息</param>
+        /// <returns>修改成功标识</returns>
+        public bool UpdateSettingByType(Setting setInfo)
+        {
+            DBHelper dbHelper = new DBHelper(ConnectionString, DbProviderType.SqlServer);
+            string strSql = @"Update Setting Set [Val]=@Val  Where [Type]=@Type";
+
+            List<DbParameter> parametersList = new List<DbParameter>();
             parametersList.Add(new SqlParameter("@Val", setInfo.Val));
             parametersList.Add(new SqlParameter("@Type", (int)setInfo.Type));
 

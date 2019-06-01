@@ -50,6 +50,7 @@ namespace HST.Art.Web.Areas.manage.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         public JsonResult Edit(OrganizationViewModel model)
         {
             ResultRetrun rmodel = new ResultRetrun();

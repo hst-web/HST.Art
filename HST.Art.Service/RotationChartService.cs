@@ -9,12 +9,14 @@ using System.Collections.Generic;
 using System.Linq;
 using HST.Art.Data;
 using System;
+using Newtonsoft.Json;
 
 namespace HST.Art.Service
 {
     public class RotationChartService : ServiceBase, IRotationChartService
     {
         RotationChartProvider _rotationChartProvider = new RotationChartProvider();
+        IntegratedProvider _intergratedProvider = new IntegratedProvider();
 
         public RotationChart Get(int id)
         {
@@ -148,6 +150,29 @@ namespace HST.Art.Service
             }
 
             return _rotationChartProvider.Update(rotations);
+        }
+
+        public List<RotationSort> GetRotationSorts()
+        {
+            List<RotationSort> rotationSortList = new List<RotationSort>();
+            Setting setInfo = _intergratedProvider.GetSetting(SettingType.Rotation);
+            if (setInfo != null && !string.IsNullOrEmpty(setInfo.Val))
+            {
+                rotationSortList = JsonConvert.DeserializeObject<List<RotationSort>>(setInfo.Val);
+            }
+            return rotationSortList;
+        }
+
+        public bool UpdateRotationSort(List<RotationSort> sortList)
+        {
+            if (sortList == null)
+            {
+                ErrorMsg = ErrorCode.ParameterNull;
+                return false;
+            }
+
+            string sortJson = JsonConvert.SerializeObject(sortList);
+            return _intergratedProvider.UpdateSettingByType(new Setting() { Val = sortJson, Type = SettingType.Rotation });
         }
     }
 }
