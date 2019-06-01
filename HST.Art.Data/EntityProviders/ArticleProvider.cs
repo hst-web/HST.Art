@@ -288,7 +288,7 @@ namespace HST.Art.Data
             parametersList.Add(new SqlParameter("@ParCategory", articleInfo.ParCategory));
             parametersList.Add(new SqlParameter("@State", (int)articleInfo.State));
             parametersList.Add(new SqlParameter("@Synopsis", articleInfo.Synopsis));
-            parametersList.Add(new SqlParameter("@PublishDate", articleInfo.PublishDate != null ? articleInfo.PublishDate.ToString() : ""));
+            parametersList.Add(new SqlParameter("@PublishDate", articleInfo.PublishDate != null && articleInfo.PublishDate > DateTime.MinValue ? articleInfo.PublishDate.ToString() : ""));
 
             return dbHelper.ExecuteNonQuery(strSql, parametersList) > 0;
         }

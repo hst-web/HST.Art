@@ -444,3 +444,5 @@ input[type="radio"], input[type="checkbox"] {
 }
 
 .form-wrap{margin:50px 0px 45px -30px}
+.tabBar span:not(:first-child){border-left:1px solid #d0d0d0}
+.tab-show{display:block !important}

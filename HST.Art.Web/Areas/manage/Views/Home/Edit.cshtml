@@ -20,91 +20,117 @@
 </style>
 <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span><a href="javascript:void(0)" onclick="location.reload()">企业管理</a> </nav>
 <article class="page-container">
-    <div class="tabBar cl">
-        <span class="current">基本信息</span>
-        <span class="">轮播图管理</span>
-        <span class="">Logo链接管理</span>
+    <div class="tabBar cl" id="tabBarList">
+        <span data-bind="tabCon1" data-type="@RotationType.UnKnown" class="current">基本信息</span>
+        <span data-bind="tabCon2" data-type="@RotationType.Banner" class="">轮播图管理</span>
+        <span data-bind="tabCon2" data-type="@RotationType.Logo" class="">Logo链接管理</span>
     </div>
-    <div class="tabCon form-wrap" style="display:block;">
+    <div class="tabCon form-wrap tab-show" id="tabCon1">
         @using (Ajax.BeginForm("Edit", "Home", new { }, new AjaxOptions() { HttpMethod = "Post", OnSuccess = "formSuccess(data)", OnBegin = "disSubmit('sub_btn')", OnComplete = "enSubmit('sub_btn')" }, new { id = "", @class = "form form-horizontal" }))
         {
-            @Html.AntiForgeryToken()
-            @Html.HiddenFor(m => m.Id)
-            @Html.HiddenFor(m => m.Number)
-            @Html.HiddenFor(m => m.Logo)
-            <div class="row cl">
-                <label class="form-label col-md-2 ">微信公众号：</label>
-                <div class="formControls col-md-6 ">
-                    <div class="form-group" @(string.IsNullOrEmpty(Model.WeChat) ? "" : "style=position:relative")>
-                        <div id="upfileImg" class="up-img-left @(string.IsNullOrEmpty(Model.WeChat) ?"":"up-imgBtn")">
-                            @(string.IsNullOrEmpty(Model.WeChat) ? "上传图片" : "更改图片")
-                        </div>
-                        <span class="help-block help-tip help-img @(string.IsNullOrEmpty(Model.WeChat) ?"":"hidden")" style="top:8px;position:absolute">请上传jpg、jpeg、gif、bmp、png等图片类型的公众号二维码</span>
-                        <div class="formControls">
-                            <ul id="imglist" class="@(string.IsNullOrEmpty(Model.WeChat)?"hidden":"") ">
-                                <li><img src="@Model.SmallHeadImg" /></li>
-                            </ul>
-                            <input type="hidden" id="loc_temp_img" />
-                        </div>
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(m => m.Id)
+        @Html.HiddenFor(m => m.Number)
+        @Html.HiddenFor(m => m.Logo)
+        <div class="row cl">
+            <label class="form-label col-md-2 ">微信公众号：</label>
+            <div class="formControls col-md-6 ">
+                <div class="form-group" @(string.IsNullOrEmpty(Model.WeChat) ? "" : "style=position:relative")>
+                    <div id="upfileImg" class="up-img-left @(string.IsNullOrEmpty(Model.WeChat) ?"":"up-imgBtn")">
+                        @(string.IsNullOrEmpty(Model.WeChat) ? "上传图片" : "更改图片")
                     </div>
-                    @Html.HiddenFor(m => m.WeChat, new { id = "memberFileImg" })
+                    <span class="help-block help-tip help-img @(string.IsNullOrEmpty(Model.WeChat) ?"":"hidden")" style="top:8px;position:absolute">请上传jpg、jpeg、gif、bmp、png等图片类型的公众号二维码</span>
+                    <div class="formControls">
+                        <ul id="imglist" class="@(string.IsNullOrEmpty(Model.WeChat)?"hidden":"") ">
+                            <li><img src="@Model.SmallHeadImg" /></li>
+                        </ul>
+                        <input type="hidden" id="loc_temp_img" />
+                    </div>
                 </div>
+                @Html.HiddenFor(m => m.WeChat, new { id = "memberFileImg" })
             </div>
-            <div class="row cl">
-                <label class="form-label col-sm-2 "><span class="c-red">*</span>企业名称：</label>
-                <div class="formControls col-sm-3 ">
-                    @Html.TextBoxFor(m => m.OrgName, new { placeholder = "请输入企业名称", @class = "input-text" })
-                    @Html.ValidationMessageFor(m => m.OrgName, null, new { @class = "error-lable" })
-                </div>
-                <label class="form-label col-sm-2 ">企业电话：</label>
-                <div class="formControls col-sm-3 ">
-                    @Html.TextBoxFor(m => m.Telephone, new { placeholder = "请输入企业电话", @class = "input-text" })
-                    @Html.ValidationMessageFor(m => m.Telephone, null, new { @class = "error-lable" })
-                </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-sm-2 "><span class="c-red">*</span>企业名称：</label>
+            <div class="formControls col-sm-3 ">
+                @Html.TextBoxFor(m => m.OrgName, new { placeholder = "请输入企业名称", @class = "input-text" })
+                @Html.ValidationMessageFor(m => m.OrgName, null, new { @class = "error-lable" })
             </div>
-            <div class="row cl">
-                <label class="form-label col-sm-2 ">企业邮箱：</label>
-                <div class="formControls col-sm-3 ">
-                    @Html.TextBoxFor(m => m.Email, new { placeholder = "请输入企业邮箱", @class = "input-text" })
-                    @Html.ValidationMessageFor(m => m.Email, null, new { @class = "error-lable" })
-                </div>
-                <label class="form-label col-sm-2 ">企业微博：</label>
-                <div class="formControls col-sm-3 ">
-                    @Html.TextBoxFor(m => m.Blog, new { placeholder = "请输入企业微博", @class = "input-text" })
-                    @Html.ValidationMessageFor(m => m.Blog, null, new { @class = "error-lable" })
-                </div>
+            <label class="form-label col-sm-2 ">企业电话：</label>
+            <div class="formControls col-sm-3 ">
+                @Html.TextBoxFor(m => m.Telephone, new { placeholder = "请输入企业电话", @class = "input-text" })
+                @Html.ValidationMessageFor(m => m.Telephone, null, new { @class = "error-lable" })
             </div>
-            <div class="row cl">
-                <label class="form-label col-sm-2 "><span class="c-red">*</span>协会简介：</label>
-                <div class="formControls col-sm-8 ">
-                    @Html.TextAreaFor(m => m.Description, new { @class = "textarea", rows = "5", placeholder = "请输入协会简介..." })
-                    @Html.ValidationMessageFor(m => m.Description, null, new { @class = "error-lable" })
-                </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-sm-2 ">企业邮箱：</label>
+            <div class="formControls col-sm-3 ">
+                @Html.TextBoxFor(m => m.Email, new { placeholder = "请输入企业邮箱", @class = "input-text" })
+                @Html.ValidationMessageFor(m => m.Email, null, new { @class = "error-lable" })
             </div>
+            <label class="form-label col-sm-2 ">企业微博：</label>
+            <div class="formControls col-sm-3 ">
+                @Html.TextBoxFor(m => m.Blog, new { placeholder = "请输入企业微博", @class = "input-text" })
+                @Html.ValidationMessageFor(m => m.Blog, null, new { @class = "error-lable" })
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-sm-2 "><span class="c-red">*</span>协会简介：</label>
+            <div class="formControls col-sm-8 ">
+                @Html.TextAreaFor(m => m.Description, new { @class = "textarea", rows = "5", placeholder = "请输入协会简介..." })
+                @Html.ValidationMessageFor(m => m.Description, null, new { @class = "error-lable" })
+            </div>
+        </div>
 
-            <div class="row cl">
-                <label class="form-label col-sm-2 ">组织架构：</label>
-                <div class="formControls col-sm-8 ">
-                    @Html.TextAreaFor(m => m.Framework, new { @class = "ckeditor textarea", rows = "10", placeholder = "请输入组织架构..." })
-                </div>
+        <div class="row cl">
+            <label class="form-label col-sm-2 ">组织架构：</label>
+            <div class="formControls col-sm-8 ">
+                @Html.TextAreaFor(m => m.Framework, new { @class = "ckeditor textarea", rows = "10", placeholder = "请输入组织架构..." })
             </div>
-            <div class="row cl">
-                <label class="form-label col-sm-2 ">企业详情：</label>
-                <div class="formControls col-sm-8 ">
-                    @Html.TextAreaFor(m => m.Detail, new { @class = "ckeditor textarea", rows = "10", placeholder = "请输入协会详情..." })
-                </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-sm-2 ">企业详情：</label>
+            <div class="formControls col-sm-8 ">
+                @Html.TextAreaFor(m => m.Detail, new { @class = "ckeditor textarea", rows = "10", placeholder = "请输入协会详情..." })
             </div>
-            <div class="row cl">
-                <div id="btn_submit" class="col-xs-6  col-xs-offset-3 col-sm-offset-2 mt-10">
-                    <button class="btn btn-primary radius" type="submit" id="sub_btn">保存</button>
-                </div>
+        </div>
+        <div class="row cl">
+            <div id="btn_submit" class="col-xs-6  col-xs-offset-3 col-sm-offset-2 mt-10">
+                <button class="btn btn-primary radius" type="submit" id="sub_btn">保存</button>
             </div>
+        </div>
         }
+    </div>
+    <div class="tabCon" id="tabCon2">
+        <div class="cl pd-10  mt-10 search-wrap" style="padding-left:0px;padding-right:0px">
+            <button class="btn btn-primary float-right hidden" id="btnRotation1" onclick="ration_add('新建轮播','@Url.Action("AddRotation")','@RotationType.Banner')" type="button">新建轮播</button>
+            <button class="btn btn-primary float-right hidden" id="btnRotation2" onclick="ration_add('新建Logo轮播','@Url.Action("AddRotation")','@RotationType.Logo')" type="button">新建Logo轮播</button>
+            <span class="help-block help-tip  " style="font-size:13px">最多可添加5张轮播图，可通过鼠标拖动改变显示顺序</span>
+        </div>
+        <div style="margin-top:-10px">
+            <table id="tbTable" class="table table-border table-bordered table-bg table-sort">
+                <thead>
+                    <tr class="text-c">
+                        <th width="8%">序号</th>
+                        <th width="15%">轮播图片</th>
+                        <th>链接地址</th>
+                        <th width="11%">操作</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+    <div class="hidden">
+        <input type="hidden" id="rotationType" value="@RotationType.UnKnown" />
+        <input type="hidden" id="rotationSort" value="" />
     </div>
 </article>
 
+@Scripts.Render("~/bundles/datatable")
 <script type="text/javascript">
+    var table1 = null;
     $(function () {
+        table1 = initializeTable();
         var editor = CKEDITOR.replace('Framework',
           {
               height: 260,
@@ -116,34 +142,172 @@
              height: 260,
              toolbar: 'Basic',
              filebrowserImageUploadUrl: "@Url.Action("UploadEditer", "Upload")"
-        });
-    });
+         });
 
-    function bindData() {
-        if ($("#sel_section").val() == '@((int)SectionType.Examination)') {
-            $("#sel_parCategory,#sel_exCategory").removeClass("hidden");
-            $("#sel_category").addClass("hidden");
-            $("#sel_parCategory").val(0).change();
+        $("#tabBarList span").each(function () {
+            $(this).click(function () {
+                $(this).addClass("current").siblings().removeClass("current");
+                var attrId = $(this).attr("data-bind");
+                var attrType = $(this).attr("data-type");
+                $("#" + attrId).addClass("tab-show").siblings().removeClass("tab-show");
+                if (attrType != '@RotationType.UnKnown') {
+                    if (attrType == '@RotationType.Banner') {
+                        $("#btnRotation1").removeClass("hidden").siblings("button").addClass("hidden");
+                    } else {
+                        $("#btnRotation2").removeClass("hidden").siblings("button").addClass("hidden");
+                    }
 
-        } else {
-            $("#sel_parCategory,#sel_exCategory").addClass("hidden");
-            $("#sel_category").removeClass("hidden");
-            $.ajax({
-                url: "@Url.Action("GetCategorysBySection")",
-                type: "Get",
-                data: { "sectionType": $("#sel_section").val(), "searchType": 1 },
-                dataType: "json",
-                success: function (data) {
-                    var stringBuild = new StringBuffer();
-                    $.each(data, function (i, v) {
-                        stringBuild.append("<option value='" + v.Key + "'>" + v.Value + "</option>");
-                    });
-
-                    $("#sel_category").empty().append("<option value=''>所属类别</option>").append(stringBuild.toString());
-                    $("#sel_category").change();
+                    $("#rotationType").val(attrType);
+                    table1.ajax.reload();
                 }
             })
+        });
+
+
+        var fixHelperModified = function (e, tr) {
+            var $originals = tr.children();
+            var $helper = tr.clone();
+            $helper.children().each(function (index) {
+                $(this).width($originals.eq(index).width())
+            });
+            return $helper;
+        },
+        updateIndex = function (e, ui) {
+            $('td.index', ui.item.parent()).each(function (i) {
+                $(this).html(i + 1);
+            });
+
+            var itemArray = new Array();
+            ui.item.parent().find("tr").each(function () {
+                var attrId = $(this).attr("data-bind");
+                itemArray.push(parseInt(attrId));
+            });
+
+            $("#rotationSort").val(JSON.stringify(itemArray));
+            $.ajax({
+                url: "@Url.Action("UpdateSort")",
+                type: "Post",
+                data: { "RotationType": $("#rotationType").val(), "SortJson": $("#rotationSort").val() },
+                dataType: "json",
+                success: function (data) {
+                    if (data.isSuccess) {
+                        table1.ajax.reload();
+                    } else {
+                        layer.msg('排序失败');
+                    }
+                }
+            })
+        };
+        $("#tbTable tbody").sortable({
+            helper: fixHelperModified,
+            stop: updateIndex
+        }).disableSelection();
+    });
+
+    /*编辑*/
+    function ration_deit(title, url, id) {
+        var index = top.layer.open({
+            type: 2,
+            title: title,
+            area: ['750px', '450px'],
+            content: url + "?id=" + id
+        });
+    }
+
+    /*添加*/
+    function ration_add(title, url, type) {
+        var rationCount = $("#tbTable tbody tr").length;
+        if (rationCount >= 5) {
+            layer.alert("最多添加轮播不可超过5条", 3);
+            return;
         }
+
+        var index = top.layer.open({
+            type: 2,
+            title: title,
+            area: ['750px', '450px'],
+            content: url + "?rotationType=" + type
+        });
+    }
+
+    function initializeTable() {
+        var dataTable = $('#tbTable').DataTable({
+            "serverSide": true,
+            "ajax": {
+                "url": "@Url.Action("GetJsonData")",
+                "type": "post",
+                "data": function (data) {
+                    data.pageIndex = (data.start / data.length) + 1;
+                    data.rotationType = $("#rotationType").val();
+                }
+            },
+            "columns": [
+                { "defaultContent": "" },
+                { "mDataProp": "SmallHeadImg" },
+                { "mDataProp": "WebLink" },
+                { "defaultContent": "" }
+            ],
+            "columnDefs": [
+             {
+                 "targets": [1],
+                 "data": "SmallHeadImg",
+                 "render": function (data, type, full) {
+                     var result = "<a class='fancybox' href='" + full.HeadImg + "' title='' data-rel='fancybox-button'><img src=\"" + data + "\" class=\"thumbnail\" style='height:40px;padding:2px' /></a>";
+                     return result;
+                 }
+             },
+            {
+                "targets": [-1],
+                "data": "Id",
+                "render": function (data, type, full) {
+                    var tmpString = "<a  onClick=\"ration_deit('修改轮播','@Url.Action("EditRotation")'," + data + ")\" href=\"javascript:;\" title=\"编辑\">编辑</a>";
+                    tmpString += "<a href=\"javascript:;\" onClick=\"obj_del('轮播','@Url.Action("Delete")'," + data + ")\"  title=\"删除\">删除</a>";
+
+                    return tmpString;
+                }
+            }
+            ],
+            "fnDrawCallback": function () {
+                var api = this.api();
+                var startIndex = api.context[0]._iDisplayStart;
+                api.column(0).nodes().each(function (cell, i) {
+                    cell.innerHTML = startIndex + i + 1;
+                });
+            },
+            "rowCallback": function (row, data, displayIndex) {
+                $(row).attr("class", "text-c").attr("data-bind", data.Id);
+                $(row).children('td').eq(3).attr("class", "td-manage");
+                $(row).children('td').eq(0).css("cursor", "move");
+            },
+            "initComplete": function (settings, json) {
+                handleFancybox();              
+            },
+            language: {
+                lengthMenu: '',
+                loadingRecords: '数据加载中...',
+                paginate: {
+                    previous: "上一页",
+                    next: "下一页",
+                    first: "",
+                    last: ""
+                },
+                zeroRecords: "暂无数据",
+
+                info: "<span class='pagesStyle'>总共<span class='recordsStyle'> _TOTAL_ 条,计 _PAGES_ </span>页，当前显示 _START_ -- _END_ 条记录 </span>",
+                infoEmpty: "0条记录",
+                infoFiltered: ""
+            },
+            "searching": false,
+            "ordering": false,
+            "autoWidth": false,
+            "iDisplayLength": 10,
+            "processing": true,
+            //destroy: true, //Cannot reinitialise DataTable,解决重新加载表格内容问题
+
+        });
+
+        //handleFancybox();
+        return dataTable;
     }
 
     function formSuccess(result) {

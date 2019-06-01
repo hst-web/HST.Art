@@ -173,8 +173,10 @@ function obj_del(title, action, id) {
                         yes: function () {
                             if (parent[1] != null) {
                                 parent[pageIndex()].table1.ajax.reload();
-                            } else {
+                            }else if(parent.table1!=null){
                                 parent.table1.ajax.reload();
+                            } else {
+                                parent[0].table1.ajax.reload();
                             }
 
                             parent.layer.closeAll();

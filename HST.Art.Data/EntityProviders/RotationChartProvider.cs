@@ -115,8 +115,9 @@ namespace HST.Art.Data
         /// <returns>添加成功标识</returns>
         public bool Add(RotationChart rotationInfo)
         {
+            bool isSuccess = false;
             DBHelper dbHelper = new DBHelper(ConnectionString, DbProviderType.SqlServer);
-            string strSql = @"Insert Into RotationChart (ImgSrc, WebLink, State, Type) Values (@@ImgSrc, @WebLink, @State, @Type)";
+            string strSql = @"Insert Into RotationChart (ImgSrc, WebLink, State, Type) Values (@ImgSrc, @WebLink, @State, @Type);select SCOPE_IDENTITY()";
 
             List<DbParameter> parametersList = new List<DbParameter>();
             parametersList.Add(new SqlParameter("@ImgSrc", rotationInfo.ImgSrc));
@@ -124,7 +125,16 @@ namespace HST.Art.Data
             parametersList.Add(new SqlParameter("@State", (int)rotationInfo.State));
             parametersList.Add(new SqlParameter("@Type", (int)rotationInfo.Type));
 
-            return dbHelper.ExecuteNonQuery(strSql, parametersList) > 0;
+            int iResultInsert = Convert.ToInt32(dbHelper.ExecuteScalar(strSql, parametersList));
+
+            if (iResultInsert > 0)
+            {
+                //若成功，则记录成功信息：患者信息，发卡时间，索引信息
+                rotationInfo.Id = iResultInsert;
+                isSuccess = true;
+            }
+
+            return isSuccess;
         }
 
         /// <summary>
@@ -180,7 +190,7 @@ namespace HST.Art.Data
                 parametersList.Add(new SqlParameter("@WebLink", item.WebLink));
                 parametersList.Add(new SqlParameter("@State", (int)item.State));
                 parametersList.Add(new SqlParameter("@Type", (int)item.Type));
-                isSuccess= dbHelper.ExecuteNonQueryInTrans(sqlAdd, parametersList) > 0;
+                isSuccess = dbHelper.ExecuteNonQueryInTrans(sqlAdd, parametersList) > 0;
 
                 if (!isSuccess)
                 {
@@ -196,7 +206,7 @@ namespace HST.Art.Data
             else
             {
                 dbHelper.RollBack();
-            }       
+            }
 
             return isSuccess;
         }

@@ -249,6 +249,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModel.cs" />
+    <Compile Include="Models\RotationChartViewModel.cs" />
     <Compile Include="Models\OrganizationViewModel.cs" />
     <Compile Include="Models\ArticleViewModel.cs" />
     <Compile Include="Models\MemberUnitViewModel.cs" />
@@ -1866,6 +1867,8 @@
     <Content Include="Areas\manage\Views\Article\Edit.cshtml" />
     <Content Include="Areas\manage\Views\Account\Edit.cshtml" />
     <Content Include="Areas\manage\Views\Home\Edit.cshtml" />
+    <Content Include="Areas\manage\Views\Home\AddRotation.cshtml" />
+    <Content Include="Areas\manage\Views\Home\EditRotation.cshtml" />
     <None Include="Areas\manage\Views\_ViewStart.cshtml">
       <LastGenOutput>_ViewStart.generated.cs</LastGenOutput>
       <Generator>RazorGenerator</Generator>

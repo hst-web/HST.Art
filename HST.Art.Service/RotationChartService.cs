@@ -35,7 +35,7 @@ namespace HST.Art.Service
         public List<RotationChart> GetAll(RotationType rotationType)
         {
             FilterEntityModel filterModel = new FilterEntityModel();
-            filterModel.SortDict = new KeyValuePair<string, SortType>("Sort", SortType.Asc);
+            filterModel.SortDict = new KeyValuePair<string, SortType>("Id", SortType.Asc);
 
             if (rotationType != RotationType.UnKnown)
             {
@@ -45,8 +45,33 @@ namespace HST.Art.Service
                 };
             }
 
+            List<int> sortList = GetSortList(rotationType);
             List<RotationChart> rotationChartList = _rotationChartProvider.GetAll(filterModel);
+
+            if (rotationChartList != null && rotationChartList.Count > 0 && sortList.Count > 0)
+            {
+                rotationChartList = rotationChartList.OrderByDescending(x => Enumerable.Reverse(sortList.Select(g => g)).ToList().IndexOf(x.Id)).ToList();
+            }
+
             return rotationChartList;
+        }
+
+        private List<int> GetSortList(RotationType type)
+        {
+            List<RotationSort> sortList = GetRotationSorts();
+            List<int> sorts = new List<int>();
+
+            if (sortList != null)
+            {
+                RotationSort sortModel = sortList.Find(g => g.RotationType == type);
+
+                if (sortModel != null)
+                {
+                    sorts = sortModel.SortList;
+                }
+            }
+
+            return sorts;
         }
 
         public bool Add(RotationChart rotationChartInfo)
@@ -58,7 +83,31 @@ namespace HST.Art.Service
                 return false;
             }
 
-            return _rotationChartProvider.Add(rotationChartInfo);
+            bool isSuccess = _rotationChartProvider.Add(rotationChartInfo);
+
+            if (isSuccess)
+            {
+                try
+                {
+                    List<RotationSort> sortList = GetRotationSorts();
+                    if (sortList.Find(g => g.RotationType == rotationChartInfo.Type) != null)
+                    {
+                        sortList.Find(g => g.RotationType == rotationChartInfo.Type).SortList.Add(rotationChartInfo.Id);
+                    }
+                    else
+                    {
+                        sortList.Add(new RotationSort() { RotationType = rotationChartInfo.Type, SortList = new List<int>() { rotationChartInfo.Id } });
+                    }
+
+                    UpdateRotationSort(sortList);
+                }
+                catch
+                {
+
+                }
+            }
+
+            return isSuccess;
         }
 
         public bool Delete(int id)
@@ -69,7 +118,44 @@ namespace HST.Art.Service
                 return false;
             }
 
-            return _rotationChartProvider.Delete(id);
+            bool isSuccess = _rotationChartProvider.Delete(id);
+            if (isSuccess)
+            {
+                DeleteSort(id);
+            }
+
+            return isSuccess;
+        }
+
+        private void DeleteSort(int id)
+        {
+            List<RotationSort> sortList = GetRotationSorts();
+            if (sortList.Count <= 0)
+            {
+                return;
+            }
+
+            try
+            {
+                RotationSort bannerSort = sortList.Find(g => g.RotationType == RotationType.Banner);
+                RotationSort logoSort = sortList.Find(g => g.RotationType == RotationType.Logo);
+
+                if (bannerSort != null && bannerSort.SortList.Count > 0)
+                {
+                    bannerSort.SortList.RemoveAll(g => g.Equals(id));
+                }
+                if (logoSort != null && logoSort.SortList.Count > 0)
+                {
+                    logoSort.SortList.RemoveAll(g => g.Equals(id));
+                }
+
+                UpdateRotationSort(new List<RotationSort>() { bannerSort, logoSort });
+            }
+            catch
+            {
+
+            }
+
         }
 
         public bool LogicDelete(int id)
@@ -81,7 +167,7 @@ namespace HST.Art.Service
                 return false;
             }
 
-            return _rotationChartProvider.Update(new FlagUpdHandle()
+            bool isSuccess = _rotationChartProvider.Update(new FlagUpdHandle()
             {
                 FieldType = FieldType.Int,
                 Id = id,
@@ -89,6 +175,13 @@ namespace HST.Art.Service
                 Value = 1,
                 TableName = "RotationChart"
             });
+
+            if (isSuccess)
+            {
+                DeleteSort(id);
+            }
+
+            return isSuccess;
         }
 
         public bool Publish(int id)

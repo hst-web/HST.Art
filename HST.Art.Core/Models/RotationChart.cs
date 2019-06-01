@@ -88,8 +88,20 @@ namespace HST.Art.Core
 
     public class RotationSort
     {
+        private List<int> _sortList = new List<int>();
         public RotationType RotationType { get; set; }
-        public List<int> SortList { get; set; }
+        public List<int> SortList
+        {
+            get
+            {
+                return _sortList;
+            }
+
+            set
+            {
+                _sortList = value;
+            }
+        }
     }
 }
 
