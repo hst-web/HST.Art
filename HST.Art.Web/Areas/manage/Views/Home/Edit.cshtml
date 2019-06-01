@@ -20,80 +20,87 @@
 </style>
 <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span><a href="javascript:void(0)" onclick="location.reload()">企业管理</a> </nav>
 <article class="page-container">
-    @using (Ajax.BeginForm("Edit", "Home", new { }, new AjaxOptions() { HttpMethod = "Post", OnSuccess = "formSuccess(data)", OnBegin = "disSubmit('sub_btn')", OnComplete = "enSubmit('sub_btn')" }, new { id = "", @class = "form form-horizontal" }))
-    {
-        @Html.AntiForgeryToken()
-        @Html.HiddenFor(m => m.Id)
-        @Html.HiddenFor(m => m.Number)
-        @Html.HiddenFor(m => m.Logo)
-        <div class="row cl">
-            <label class="form-label col-md-2 "><span class="c-red">*</span>微信公众号：</label>
-            <div class="formControls col-md-6 ">
-                <div class="form-group" @(string.IsNullOrEmpty(Model.WeChat) ? "" : "style=position:relative")>
-                    <div id="upfileImg" class="up-img-left @(string.IsNullOrEmpty(Model.WeChat) ?"":"up-imgBtn")">
-                        @(string.IsNullOrEmpty(Model.WeChat) ? "上传图片" : "更改图片")
+    <div class="tabBar cl">
+        <span class="current">基本信息</span>
+        <span class="">轮播图管理</span>
+        <span class="">Logo链接管理</span>
+    </div>
+    <div class="tabCon form-wrap" style="display:block;">
+        @using (Ajax.BeginForm("Edit", "Home", new { }, new AjaxOptions() { HttpMethod = "Post", OnSuccess = "formSuccess(data)", OnBegin = "disSubmit('sub_btn')", OnComplete = "enSubmit('sub_btn')" }, new { id = "", @class = "form form-horizontal" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(m => m.Id)
+            @Html.HiddenFor(m => m.Number)
+            @Html.HiddenFor(m => m.Logo)
+            <div class="row cl">
+                <label class="form-label col-md-2 ">微信公众号：</label>
+                <div class="formControls col-md-6 ">
+                    <div class="form-group" @(string.IsNullOrEmpty(Model.WeChat) ? "" : "style=position:relative")>
+                        <div id="upfileImg" class="up-img-left @(string.IsNullOrEmpty(Model.WeChat) ?"":"up-imgBtn")">
+                            @(string.IsNullOrEmpty(Model.WeChat) ? "上传图片" : "更改图片")
+                        </div>
+                        <span class="help-block help-tip help-img @(string.IsNullOrEmpty(Model.WeChat) ?"":"hidden")" style="top:8px;position:absolute">请上传jpg、jpeg、gif、bmp、png等图片类型的公众号二维码</span>
+                        <div class="formControls">
+                            <ul id="imglist" class="@(string.IsNullOrEmpty(Model.WeChat)?"hidden":"") ">
+                                <li><img src="@Model.SmallHeadImg" /></li>
+                            </ul>
+                            <input type="hidden" id="loc_temp_img" />
+                        </div>
                     </div>
-                    <span class="help-block help-tip help-img @(string.IsNullOrEmpty(Model.WeChat) ?"":"hidden")" style="top:8px;position:absolute">请上传jpg、jpeg、gif、bmp、png等图片类型的公众号二维码</span>
-                    <div class="formControls">
-                        <ul id="imglist" class="hidden">
-                            <li><img src="@Model.SmallHeadImg" /></li>
-                        </ul>
-                        <input type="hidden" id="loc_temp_img" />
-                    </div>
+                    @Html.HiddenFor(m => m.WeChat, new { id = "memberFileImg" })
                 </div>
-                @Html.HiddenFor(m => m.WeChat, new { id = "memberFileImg" })
             </div>
-        </div>
-        <div class="row cl">
-            <label class="form-label col-sm-2 "><span class="c-red">*</span>企业名称：</label>
-            <div class="formControls col-sm-3 ">
-                @Html.TextBoxFor(m => m.OrgName, new { placeholder = "请输入企业名称", @class = "input-text" })
-                @Html.ValidationMessageFor(m => m.OrgName, null, new { @class = "error-lable" })
+            <div class="row cl">
+                <label class="form-label col-sm-2 "><span class="c-red">*</span>企业名称：</label>
+                <div class="formControls col-sm-3 ">
+                    @Html.TextBoxFor(m => m.OrgName, new { placeholder = "请输入企业名称", @class = "input-text" })
+                    @Html.ValidationMessageFor(m => m.OrgName, null, new { @class = "error-lable" })
+                </div>
+                <label class="form-label col-sm-2 ">企业电话：</label>
+                <div class="formControls col-sm-3 ">
+                    @Html.TextBoxFor(m => m.Telephone, new { placeholder = "请输入企业电话", @class = "input-text" })
+                    @Html.ValidationMessageFor(m => m.Telephone, null, new { @class = "error-lable" })
+                </div>
             </div>
-            <label class="form-label col-sm-2 ">企业电话：</label>
-            <div class="formControls col-sm-3 ">
-                @Html.TextBoxFor(m => m.Telephone, new { placeholder = "请输入企业电话", @class = "input-text" })
-                @Html.ValidationMessageFor(m => m.Telephone, null, new { @class = "error-lable" })
+            <div class="row cl">
+                <label class="form-label col-sm-2 ">企业邮箱：</label>
+                <div class="formControls col-sm-3 ">
+                    @Html.TextBoxFor(m => m.Email, new { placeholder = "请输入企业邮箱", @class = "input-text" })
+                    @Html.ValidationMessageFor(m => m.Email, null, new { @class = "error-lable" })
+                </div>
+                <label class="form-label col-sm-2 ">企业微博：</label>
+                <div class="formControls col-sm-3 ">
+                    @Html.TextBoxFor(m => m.Blog, new { placeholder = "请输入企业微博", @class = "input-text" })
+                    @Html.ValidationMessageFor(m => m.Blog, null, new { @class = "error-lable" })
+                </div>
             </div>
-        </div>
-        <div class="row cl">
-            <label class="form-label col-sm-2 ">企业邮箱：</label>
-            <div class="formControls col-sm-3 ">
-                @Html.TextBoxFor(m => m.Email, new { placeholder = "请输入企业邮箱", @class = "input-text" })
-                @Html.ValidationMessageFor(m => m.Email, null, new { @class = "error-lable" })
+            <div class="row cl">
+                <label class="form-label col-sm-2 "><span class="c-red">*</span>协会简介：</label>
+                <div class="formControls col-sm-8 ">
+                    @Html.TextAreaFor(m => m.Description, new { @class = "textarea", rows = "5", placeholder = "请输入协会简介..." })
+                    @Html.ValidationMessageFor(m => m.Description, null, new { @class = "error-lable" })
+                </div>
             </div>
-            <label class="form-label col-sm-2 ">企业微博：</label>
-            <div class="formControls col-sm-3 ">
-                @Html.TextBoxFor(m => m.Blog, new { placeholder = "请输入企业微博", @class = "input-text" })
-                @Html.ValidationMessageFor(m => m.Blog, null, new { @class = "error-lable" })
-            </div>
-        </div>
-        <div class="row cl">
-            <label class="form-label col-sm-2 ">协会简介：</label>
-            <div class="formControls col-sm-8 ">
-                @Html.TextAreaFor(m => m.Description, new { @class = "textarea", rows = "5", placeholder = "请输入协会简介..." })
-                @Html.ValidationMessageFor(m => m.Description, null, new { @class = "error-lable" })
-            </div>
-        </div>
 
-        <div class="row cl">
-            <label class="form-label col-sm-2 ">组织架构：</label>
-            <div class="formControls col-sm-8 ">
-                @Html.TextAreaFor(m => m.Framework, new { @class = "ckeditor textarea", rows = "10", placeholder = "请输入组织架构..." })
+            <div class="row cl">
+                <label class="form-label col-sm-2 ">组织架构：</label>
+                <div class="formControls col-sm-8 ">
+                    @Html.TextAreaFor(m => m.Framework, new { @class = "ckeditor textarea", rows = "10", placeholder = "请输入组织架构..." })
+                </div>
             </div>
-        </div>
-        <div class="row cl">
-            <label class="form-label col-sm-2 ">企业详情：</label>
-            <div class="formControls col-sm-8 ">
-                @Html.TextAreaFor(m => m.Detail, new { @class = "ckeditor textarea", rows = "10", placeholder = "请输入协会详情..." })
+            <div class="row cl">
+                <label class="form-label col-sm-2 ">企业详情：</label>
+                <div class="formControls col-sm-8 ">
+                    @Html.TextAreaFor(m => m.Detail, new { @class = "ckeditor textarea", rows = "10", placeholder = "请输入协会详情..." })
+                </div>
             </div>
-        </div>
-        <div class="row cl">
-            <div id="btn_submit" class="col-xs-6  col-xs-offset-3 col-sm-offset-2 mt-10">
-                <button class="btn btn-primary radius" type="submit" id="sub_btn">保存</button>
+            <div class="row cl">
+                <div id="btn_submit" class="col-xs-6  col-xs-offset-3 col-sm-offset-2 mt-10">
+                    <button class="btn btn-primary radius" type="submit" id="sub_btn">保存</button>
+                </div>
             </div>
-        </div>
-    }
+        }
+    </div>
 </article>
 
 <script type="text/javascript">
@@ -104,6 +111,12 @@
               toolbar: 'Basic',
               filebrowserImageUploadUrl: "@Url.Action("UploadEditer", "Upload")"
           });
+        var editor1 = CKEDITOR.replace('Detail',
+         {
+             height: 260,
+             toolbar: 'Basic',
+             filebrowserImageUploadUrl: "@Url.Action("UploadEditer", "Upload")"
+        });
     });
 
     function bindData() {
@@ -273,6 +286,7 @@
                 $("#upfileImg").find("div.webuploader-pick").html("更改图片");
                 $("#upfileImg").parent().attr("style", "position:relative");//
                 $("#upfileImg").addClass("up-imgBtn");
+                $("#imglist").removeClass("hidden");
             }
             else {
                 layer.msg(jsonresult.Message);
