@@ -37,6 +37,7 @@
         </select>
         <button name="search" id="search" class="btn btn-success ml-20" type="button"><i class="Hui-iconfont">&#xe665;</i> 查询</button>
         <button class="btn btn-primary" onclick="tea_add('新建证书','@Url.Action("Add")')" type="button">新建证书</button>
+        <button class="btn btn-default" onclick="tea_import('证书导入','@Url.Action("Import")')" type="button">证书导入</button>
     </div>
     <div class="mt-10">
         <table id="tbTable" class="table table-border table-bordered table-bg table-sort">
@@ -117,6 +118,15 @@
                 type: 2,
                 title: title,
                 area: ['750px', '510px'],
+                content: url
+            });
+        }
+
+        function tea_import(title, url) {
+            var index = top.layer.open({
+                type: 2,
+                title: title,
+                area: ['750px', '500px'],
                 content: url
             });
         }

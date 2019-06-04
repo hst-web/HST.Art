@@ -1876,6 +1876,7 @@
     <Content Include="Areas\manage\Views\Category\Index.cshtml" />
     <Content Include="Areas\manage\Views\Category\List.cshtml" />
     <Content Include="Areas\manage\Views\Student\Import.cshtml" />
+    <Content Include="Areas\manage\Views\Teacher\Import.cshtml" />
     <None Include="Areas\manage\Views\_ViewStart.cshtml">
       <LastGenOutput>_ViewStart.generated.cs</LastGenOutput>
       <Generator>RazorGenerator</Generator>
