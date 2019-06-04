@@ -28,7 +28,6 @@ namespace HST.Art.Web.Areas.manage.Controllers
         /// <returns></returns>
         public ActionResult List()
         {
-            InitData();
             return View();
         }
 
@@ -101,30 +100,6 @@ namespace HST.Art.Web.Areas.manage.Controllers
         #endregion
 
         #region 修改
-        /// <summary>
-        /// 更新
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        //public ActionResult Edit(int id)
-        //{
-        //    InitData();
-        //    CategoryDictionary model = cdService.Get(id);
-        //    if (model != null)
-        //    {
-        //        return View(new CategoryViewModel()
-        //        {
-        //            Id = model.Id,
-        //            CategoryName = model.Name,
-        //            CategoryType = model.Type,
-        //            ParentId = model.Parent,
-        //            ParentName = model.ParentName,
-        //            State = (int)model.State
-        //        });
-        //    }
-        //    return View();
-        //}
-
         [HttpPost]
         public JsonResult Edit(CategoryViewModel model)
         {

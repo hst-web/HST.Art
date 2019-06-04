@@ -149,7 +149,7 @@
         $(obj).removeClass("error").siblings().addClass("hidden");
     }
     function cancelEdit(obj) {
-        $(obj).parents("tr").empty().html(tempTr);
+        $(obj).parents("tr").empty().html(tempTr).removeClass("bg-warning");
     }
 
     function removeParent(obj) {
@@ -218,7 +218,7 @@
         var trCount = $(obj).parents("tr").find("td:first").html();
         $("#tableCategory1").find("td:first").html(trCount);
         tempTr = $(obj).parents("tr").html();
-        $(obj).parents("tr").empty().html($("#tableCategory1 tbody tr:first").html());
+        $(obj).parents("tr").addClass("bg-warning").empty().html($("#tableCategory1 tbody tr:first").html());
 
         $("#tbTable").find("input[name=CategoryName]").val(categroyVal);
         $("#tbTable").find("select").val(parentId);
@@ -269,7 +269,7 @@
                         tmpString += "<a href=\"javascript:;\" onClick=\"obj_publish('@Url.Action("Publish")'," + data + ")\"  title=\"上架\">上架</a>";
                     else
                         tmpString += "<a href=\"javascript:;\" onClick=\"obj_shelves('@Url.Action("Shelves")'," + data + ")\"  title=\"下架\">下架</a>";
-                    tmpString += "<a href=\"javascript:;\" onClick=\"obj_del('轮播','@Url.Action("Delete")'," + data + ")\"  title=\"删除\">删除</a>";
+                    tmpString += "<a href=\"javascript:;\" onClick=\"obj_del('类别','@Url.Action("Delete")'," + data + ")\"  title=\"删除\">删除</a>";
 
                     return tmpString;
                 }
@@ -322,20 +322,4 @@
         return dataTable;
     }
 
-    function formSuccess(result) {
-        if (result != null) {
-            if (result.isSuccess) {
-                top.layer.alert('操作成功！', {
-                    icon: 6, closeBtn: 0, yes: function () {
-                        location.reload();
-                        parent.layer.closeAll();
-                    }
-                });
-            } else {
-                top.layer.alert('操作失败！', { icon: 5 });
-            }
-        } else {
-            top.layer.alert('操作失败！', { icon: 5 });
-        }
-    }
 </script>
