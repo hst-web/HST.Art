@@ -7,6 +7,7 @@
 using HST.Art.Core;
 using System.Collections.Generic;
 using HST.Art.Data;
+using System;
 
 namespace HST.Art.Service
 {
@@ -154,6 +155,19 @@ namespace HST.Art.Service
             }
 
             return _certificateProvider.GetStuByNumber(number);
+        }
+
+        public bool Add(List<StuCertificate> stuInfos, out List<StuCertificate> failList)
+        {
+            //参数验证
+            if (stuInfos==null||stuInfos.Count<=0)
+            {
+                failList = null;
+                ErrorMsg = ErrorCode.ParameterNull;
+                return false;
+            }
+
+            return _certificateProvider.AddStu(stuInfos, out failList);
         }
     }
 }

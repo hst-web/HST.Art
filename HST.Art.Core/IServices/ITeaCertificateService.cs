@@ -14,5 +14,6 @@ namespace HST.Art.Core
         TeaCertificate GetByNumber(string number);
         bool Update(TeaCertificate teaInfo);
         bool Add(TeaCertificate teaInfo);
+        bool Add(List<TeaCertificate> teaInfos, out List<TeaCertificate> failList);
     }
 }

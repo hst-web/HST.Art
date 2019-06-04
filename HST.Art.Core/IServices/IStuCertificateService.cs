@@ -14,5 +14,6 @@ namespace HST.Art.Core
         StuCertificate GetByNumber(string number);
         bool Update(StuCertificate stuInfo);
         bool Add(StuCertificate stuInfo);
+        bool Add(List<StuCertificate> stuInfos,out List<StuCertificate> failList);
     }
 }

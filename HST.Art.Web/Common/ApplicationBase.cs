@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Web.Configuration;
 using System.IO;
 using System.Linq;
+using NPOI.SS.UserModel;
 
 namespace HST.Art.Web
 {
@@ -209,10 +210,34 @@ namespace HST.Art.Web
 
         protected string GetAreaStr(string province, string city)
         {
+            if (string.IsNullOrEmpty(city)) return "";
             string proStr = Province.Where(g => g.Key == Convert.ToInt32(province)).FirstOrDefault().Value;
             string cityStr = City.Where(g => g.Key == Convert.ToInt32(city)).FirstOrDefault().Value;
 
             return proStr + "-" + cityStr;
+        }
+
+        protected bool IsExcel(string suffix)
+        {
+            bool result = false;
+            List<string> suffixList = new List<string>() { ".xlsx", ".xls" };
+            if (!string.IsNullOrEmpty(suffix))
+                result = suffixList.Contains(suffix);
+            return result;
+        }
+
+        protected string CellSwitch(ICell cell)
+        {
+            if (cell == null) return "";
+            switch (cell.CellType)
+            {
+                case CellType.Numeric: return DateUtil.IsCellDateFormatted(cell) ? cell.DateCellValue.ToString("yyyy-M-d") : cell.NumericCellValue.ToString();
+                case CellType.String: return cell.StringCellValue;
+                case CellType.Boolean: return cell.BooleanCellValue.ToString();
+                case CellType.Error: return cell.ErrorCellValue.ToString();
+                case CellType.Formula: return cell.StringCellValue;
+                default: return "";
+            }
         }
     }
 }

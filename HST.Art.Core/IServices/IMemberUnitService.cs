@@ -12,7 +12,8 @@ namespace HST.Art.Core
         List<MemberUnit> GetAll(FilterEntityModel filterModel);
         MemberUnit Get(int id);
         MemberUnit GetByNumber(string number);
-        bool Update(MemberUnit MemberUnitInfo);
-        bool Add(MemberUnit MemberUnitInfo);
+        bool Update(MemberUnit memberUnitInfo);
+        bool Add(MemberUnit memberUnitInfo);
+        bool Add(List<MemberUnit> memberUnitInfos, out List<MemberUnit> failList);
     }
 }

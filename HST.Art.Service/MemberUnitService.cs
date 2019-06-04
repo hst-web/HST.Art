@@ -8,6 +8,7 @@ using HST.Art.Core;
 using System.Collections.Generic;
 using System.Linq;
 using HST.Art.Data;
+using System;
 
 namespace HST.Art.Service
 {
@@ -31,7 +32,7 @@ namespace HST.Art.Service
 
         public List<MemberUnit> GetAll(FilterEntityModel filterModel = null)
         {
-            if(filterModel!=null) filterModel.FillWhereTbAsName(Constant.MEMBER_UNIT_AS_NAME);//筛选器添加表别名
+            if (filterModel != null) filterModel.FillWhereTbAsName(Constant.MEMBER_UNIT_AS_NAME);//筛选器添加表别名
             List<MemberUnit> memberUnitList = _memberUnitProvider.GetAll(filterModel);
             return memberUnitList;
         }
@@ -53,16 +54,16 @@ namespace HST.Art.Service
             return memberUnitList;
         }
 
-        public bool Add(MemberUnit MemberUnitInfo)
+        public bool Add(MemberUnit memberUnitInfo)
         {
             //参数验证
-            if (MemberUnitInfo == null)
+            if (memberUnitInfo == null)
             {
                 ErrorMsg = ErrorCode.ParameterNull;
                 return false;
             }
 
-            return _memberUnitProvider.Add(MemberUnitInfo);
+            return _memberUnitProvider.Add(memberUnitInfo);
         }
 
         public bool Delete(int id)
@@ -133,16 +134,16 @@ namespace HST.Art.Service
             });
         }
 
-        public bool Update(MemberUnit MemberUnitInfo)
+        public bool Update(MemberUnit memberUnitInfo)
         {
             //参数验证
-            if (MemberUnitInfo == null)
+            if (memberUnitInfo == null)
             {
                 ErrorMsg = ErrorCode.ParameterNull;
                 return false;
             }
 
-            return _memberUnitProvider.Update(MemberUnitInfo);
+            return _memberUnitProvider.Update(memberUnitInfo);
         }
 
         public MemberUnit GetByNumber(string number)
@@ -160,12 +161,24 @@ namespace HST.Art.Service
             };
 
             List<MemberUnit> memberUnitList = _memberUnitProvider.GetAll(filterModel);
-            if (memberUnitList!=null&&memberUnitList.Count>0)
+            if (memberUnitList != null && memberUnitList.Count > 0)
             {
                 return memberUnitList.FirstOrDefault();
             }
 
             return null;
+        }
+
+        public bool Add(List<MemberUnit> memberUnitInfos, out List<MemberUnit> failList)
+        {
+            if (memberUnitInfos == null || memberUnitInfos.Count <= 0)
+            {
+                failList = null;
+                ErrorMsg = ErrorCode.ParameterNull;
+                return false;
+            }
+
+            return _memberUnitProvider.Add(memberUnitInfos, out failList);
         }
     }
 }

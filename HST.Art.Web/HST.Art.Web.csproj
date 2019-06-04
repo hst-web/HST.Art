@@ -1875,6 +1875,7 @@
     <Content Include="Areas\manage\Views\Home\EditRotation.cshtml" />
     <Content Include="Areas\manage\Views\Category\Index.cshtml" />
     <Content Include="Areas\manage\Views\Category\List.cshtml" />
+    <Content Include="Areas\manage\Views\Student\Import.cshtml" />
     <None Include="Areas\manage\Views\_ViewStart.cshtml">
       <LastGenOutput>_ViewStart.generated.cs</LastGenOutput>
       <Generator>RazorGenerator</Generator>
@@ -1905,6 +1906,9 @@
     <Content Include="Content\lib\ckeditor\samples\plugins\htmlwriter\assets\outputforflash\outputforflash.fla" />
     <Content Include="Content\lib\ckeditor\samples\sample_posteddata.php" />
     <Content Include="Content\lib\ckeditor\skins\moono\readme.md" />
+    <Content Include="Content\协会会员导入模板.xlsx" />
+    <Content Include="Content\学生证书导入模板.xlsx" />
+    <Content Include="Content\教师证书导入模板.xlsx" />
     <None Include="Properties\PublishProfiles\art.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />

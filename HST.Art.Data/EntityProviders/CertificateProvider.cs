@@ -254,6 +254,48 @@ namespace HST.Art.Data
             return dbHelper.ExecuteNonQuery(strSql, parametersList) > 0;
         }
 
+        public bool AddTea(List<TeaCertificate> teaInfos, out List<TeaCertificate> failList)
+        {
+            failList = new List<TeaCertificate>();
+            bool success = false;
+            DBHelper dbHelper = new DBHelper(ConnectionString, DbProviderType.SqlServer);
+            string strSql = @"if exists(select Id from TeaCertificate where Number=@Number)
+                                begin
+                                    update TeaCertificate set UserId=@UserId,Name=@Name,Gender=@Gender,HeadImg=@HeadImg,State=@State,Category=@Category,Level=@Level,Province=@Province,City=@City,County=@County,CreateDate=getdate(),IsDeleted=0 where Number=@Number 
+                                end
+                                else
+                                begin
+                                Insert Into TeaCertificate(UserId, Name, Gender, HeadImg, Number, State, Category, Level, Province, City, County) 
+                                   Values(@UserId, @Name, @Gender, @HeadImg, @Number, @State, @Category, @Level, @Province, @City, @County) 
+                                end ";
+
+            List<DbParameter> parametersList = null;
+            foreach (TeaCertificate item in teaInfos)
+            {
+                parametersList = new List<DbParameter>();
+                parametersList.Add(new SqlParameter("@UserId", item.UserId));
+                parametersList.Add(new SqlParameter("@Name", item.Name));
+                parametersList.Add(new SqlParameter("@Gender", (int)item.Gender));
+                parametersList.Add(new SqlParameter("@HeadImg", item.HeadImg));
+                parametersList.Add(new SqlParameter("@Number", item.Number));
+                parametersList.Add(new SqlParameter("@State", (int)item.State));
+                parametersList.Add(new SqlParameter("@Category", (int)item.Category));
+                parametersList.Add(new SqlParameter("@Level", (int)item.Level));
+                parametersList.Add(new SqlParameter("@Province", item.Province));
+                parametersList.Add(new SqlParameter("@City", item.City));
+                parametersList.Add(new SqlParameter("@County", item.County));
+
+                success = dbHelper.ExecuteNonQuery(strSql, parametersList) > 0;
+
+                if (!success)
+                {
+                    failList.Add(item);
+                }
+            }
+
+            return success && failList.Count == 0;
+        }
+
         /// <summary>
         /// 修改教师证书
         /// </summary>
@@ -283,8 +325,8 @@ namespace HST.Art.Data
             parametersList.Add(new SqlParameter("@HeadImg", teaInfo.HeadImg));
             parametersList.Add(new SqlParameter("@Gender", (int)teaInfo.Gender));
             parametersList.Add(new SqlParameter("@Number", teaInfo.Number));
-            parametersList.Add(new SqlParameter("@State", (int)teaInfo.State));          
-            parametersList.Add(new SqlParameter("@Category", (int)teaInfo.Category));           
+            parametersList.Add(new SqlParameter("@State", (int)teaInfo.State));
+            parametersList.Add(new SqlParameter("@Category", (int)teaInfo.Category));
             parametersList.Add(new SqlParameter("@Province", teaInfo.Province));
             parametersList.Add(new SqlParameter("@City", teaInfo.City));
             parametersList.Add(new SqlParameter("@County", teaInfo.County));
@@ -371,7 +413,7 @@ namespace HST.Art.Data
             if (condition != null)
             {
                 condition.DefaultSort = SortType.Desc;
-                
+
                 whereSort = condition.Where + condition.OrderBy;
             }
 
@@ -541,6 +583,52 @@ namespace HST.Art.Data
             parametersList.Add(new SqlParameter("@City", stuInfo.City));
             parametersList.Add(new SqlParameter("@County", stuInfo.County));
             return dbHelper.ExecuteNonQuery(strSql, parametersList) > 0;
+        }
+
+        /// <summary>
+        /// 添加学生证书
+        /// </summary>
+        /// <param name="stuInfo">学生证书信息</param>
+        /// <returns>添加成功标识</returns>
+        public bool AddStu(List<StuCertificate> stuInfos, out List<StuCertificate> failList)
+        {
+            failList = new List<StuCertificate>();
+            bool success = false;
+            DBHelper dbHelper = new DBHelper(ConnectionString, DbProviderType.SqlServer);
+            string strSql = @"if exists(select Id from StuCertificate where Number=@Number)
+                                begin
+                                    update StuCertificate set UserId=@UserId,Name=@Name,Gender=@Gender,HeadImg=@HeadImg,State=@State,Category=@Category,Province=@Province,City=@City,County=@County,CreateDate=getdate(),IsDeleted=0 where Number=@Number 
+                                end
+                                else
+                                begin
+                                Insert Into StuCertificate(UserId, Name, Gender, HeadImg, Number, State, Category,  Province, City, County) 
+                                   Values(@UserId, @Name, @Gender, @HeadImg, @Number, @State, @Category,  @Province, @City, @County) 
+                                end ";
+
+            List<DbParameter> parametersList = null;
+
+            foreach (StuCertificate item in stuInfos)
+            {
+                parametersList = new List<DbParameter>();
+                parametersList.Add(new SqlParameter("@UserId", item.UserId));
+                parametersList.Add(new SqlParameter("@Name", item.Name));
+                parametersList.Add(new SqlParameter("@Gender", (int)item.Gender));
+                parametersList.Add(new SqlParameter("@HeadImg", item.HeadImg));
+                parametersList.Add(new SqlParameter("@Number", item.Number));
+                parametersList.Add(new SqlParameter("@State", (int)item.State));
+                parametersList.Add(new SqlParameter("@Category", (int)item.Category));
+                parametersList.Add(new SqlParameter("@Province", item.Province));
+                parametersList.Add(new SqlParameter("@City", item.City));
+                parametersList.Add(new SqlParameter("@County", item.County));
+                success = dbHelper.ExecuteNonQuery(strSql, parametersList) > 0;
+
+                if (!success)
+                {
+                    failList.Add(item);
+                }
+            }
+
+            return success && failList.Count == 0;
         }
 
         /// <summary>

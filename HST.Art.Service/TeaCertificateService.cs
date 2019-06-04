@@ -7,6 +7,7 @@
 using HST.Art.Core;
 using System.Collections.Generic;
 using HST.Art.Data;
+using System;
 
 namespace HST.Art.Service
 {
@@ -30,7 +31,7 @@ namespace HST.Art.Service
 
         public List<TeaCertificate> GetAll(FilterEntityModel filterModel = null)
         {
-            if(filterModel!=null) filterModel.FillWhereTbAsName(Constant.TEA_CERTIFICATE_AS_NAME);//筛选器添加表别名
+            if (filterModel != null) filterModel.FillWhereTbAsName(Constant.TEA_CERTIFICATE_AS_NAME);//筛选器添加表别名
             List<TeaCertificate> teaCertificateList = _certificateProvider.GetTeaAll(filterModel);
             return teaCertificateList;
         }
@@ -154,6 +155,18 @@ namespace HST.Art.Service
             }
 
             return _certificateProvider.GetTeaByNumber(number);
+        }
+
+        public bool Add(List<TeaCertificate> teaInfos, out List<TeaCertificate> failList)
+        {
+            if (teaInfos == null || teaInfos.Count <= 0)
+            {
+                failList = null;
+                ErrorMsg = ErrorCode.ParameterNull;
+                return false;
+            }
+
+            return _certificateProvider.AddTea(teaInfos, out failList);
         }
     }
 }

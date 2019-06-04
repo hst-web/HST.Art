@@ -446,3 +446,24 @@ input[type="radio"], input[type="checkbox"] {
 .form-wrap{margin:50px 0px 45px -30px}
 .tabBar span:not(:first-child){border-left:1px solid #d0d0d0}
 .tab-show{display:block !important}
+.upload-wrap{width:100%;border-bottom:1px dashed #ddd;text-align:center}
+.wrap-section{width:100%;text-align:center}
+.upload-wrap .wrap-bg{
+    background:#3bb4f2;
+      width: 200px;
+    padding: 20px 25px;
+    background: #eee;
+    border: 1px dashed #3bb4f2;
+}
+
+.wrap-bg i{font-size:36px;color:#3bb4f2}
+.upload-wrap .webuploader-pick{padding:0px}
+.upload-wrap .file-up{margin-left:0px;width:100%;text-align:center;margin-top:5px;margin-bottom:5px}
+.upload-wrap .down-temp {display:inline-block;color:#3bb4f2;margin-bottom:8px}
+.upload-info {width:100%;text-align:center;position:relative}
+.upload-info h4{font-size:14px}
+.upload-info ul{text-align:left;   
+                 margin-left: 30%;
+    font-size: 12px;
+    color: #666;}
+.upload-button{text-align:center;margin-top:45px;position:relative}
