@@ -228,26 +228,32 @@ namespace HST.Art.Core
         /// <summary>
         /// 行业资讯
         /// </summary>
+        [Description("行业资讯")]
         Industry,
         /// <summary>
         /// 协会活动
         /// </summary>
+        [Description("协会活动")]
         Association,
         /// <summary>
         /// 考级中心
         /// </summary>
+        [Description("考级中心")]
         Examination,
         /// <summary>
         /// 社会公益
         /// </summary>
+        [Description("社会公益")]
         Social,
         /// <summary>
         /// 会员类别
         /// </summary>
+        [Description("协会会员")]
         Member,
         /// <summary>
         /// 下载类别
         /// </summary>
+        [Description("下载类别")]
         Download
     }
 

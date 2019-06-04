@@ -33,6 +33,7 @@ namespace HST.Art.Service
         public List<CategoryDictionary> GetAll(CategoryType categoryType)
         {
             FilterEntityModel filterModel = new FilterEntityModel();
+            filterModel.SortDict = new KeyValuePair<string, SortType>("createDate", SortType.Asc);
 
             if (categoryType != CategoryType.UnKnown)
             {
