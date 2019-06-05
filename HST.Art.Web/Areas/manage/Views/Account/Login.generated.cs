@@ -127,198 +127,178 @@ Write(Styles.Render("~/login"));
             #line hidden
 WriteLiteral("\r\n    <!--[if IE 6]>\r\n    <script type=\"text/javascript\" src=\"lib/DD_belatedPNG_0" +
 ".0.8a-min.js\" ></script>\r\n    <script>DD_belatedPNG.fix(\'*\');</script>\r\n    <![e" +
-"ndif]-->\r\n    <title>登录</title>\r\n    <style");
-
-WriteLiteral(" type=\"text/css\"");
-
-WriteLiteral(">\r\n        .input-validation-error {\r\n            border: 1px solid #f00;\r\n      " +
-"      background-color: #fee;\r\n        }\r\n    </style>\r\n</head>\r\n<body>\r\n");
+"ndif]-->\r\n    <title>登录</title>\r\n</head>\r\n<body>\r\n");
 
             
-            #line 36 "..\..\Areas\manage\Views\Account\Login.cshtml"
+            #line 30 "..\..\Areas\manage\Views\Account\Login.cshtml"
     
             
             #line default
             #line hidden
             
-            #line 36 "..\..\Areas\manage\Views\Account\Login.cshtml"
-     using (Html.BeginForm("Login", "Account", new { RetrunUrl = ViewBag.ReturnUrl }, FormMethod.Post,new {id= "frmLogin" }))
+            #line 30 "..\..\Areas\manage\Views\Account\Login.cshtml"
+     using (Html.BeginForm("Login", "Account", new { RetrunUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { id = "frmLogin" }))
     {
         
             
             #line default
             #line hidden
             
-            #line 38 "..\..\Areas\manage\Views\Account\Login.cshtml"
+            #line 32 "..\..\Areas\manage\Views\Account\Login.cshtml"
    Write(Html.AntiForgeryToken());
 
             
             #line default
             #line hidden
             
-            #line 38 "..\..\Areas\manage\Views\Account\Login.cshtml"
+            #line 32 "..\..\Areas\manage\Views\Account\Login.cshtml"
                                 
         
             
             #line default
             #line hidden
             
-            #line 39 "..\..\Areas\manage\Views\Account\Login.cshtml"
+            #line 33 "..\..\Areas\manage\Views\Account\Login.cshtml"
    Write(Html.ValidationSummary(true));
 
             
             #line default
             #line hidden
             
-            #line 39 "..\..\Areas\manage\Views\Account\Login.cshtml"
+            #line 33 "..\..\Areas\manage\Views\Account\Login.cshtml"
                                      
 
             
             #line default
             #line hidden
-WriteLiteral("        <input");
-
-WriteLiteral(" type=\"hidden\"");
-
-WriteLiteral(" id=\"TenantId\"");
-
-WriteLiteral(" name=\"TenantId\"");
-
-WriteLiteral(" value=\"\"");
-
-WriteLiteral(" />\r\n");
-
 WriteLiteral("        <div");
 
-WriteLiteral(" class=\"header header_c\"");
-
-WriteLiteral("><span");
-
-WriteLiteral(" style=\"padding-left:20px;\"");
-
-WriteLiteral(">哈哈哈哈</span></div>\r\n");
-
-WriteLiteral("        <div");
-
-WriteLiteral(" class=\"loginWraper\"");
+WriteLiteral(" class=\"wrap\"");
 
 WriteLiteral(">\r\n            <div");
 
-WriteLiteral(" id=\"loginform\"");
+WriteLiteral(" class=\"wpn\"");
 
-WriteLiteral(" class=\"loginBox\"");
+WriteLiteral(">\r\n                <div");
 
-WriteLiteral(">\r\n                <h1>欢迎回来</h1>\r\n                <div");
+WriteLiteral(" class=\"form-data pos\"");
 
-WriteLiteral(" class=\"row cl\"");
+WriteLiteral(">\r\n                    <img");
+
+WriteLiteral(" src=\"/Content/lib/h-ui.admin/images/logo.png\"");
+
+WriteLiteral(" class=\"head-logo\"");
 
 WriteLiteral(">\r\n                    <div");
 
-WriteLiteral(" class=\"formControls\"");
+WriteLiteral(" class=\"change-login\"");
+
+WriteLiteral(">\r\n                        <p");
+
+WriteLiteral(" class=\"account_number on\"");
+
+WriteLiteral(">账号登录</p>\r\n                    </div>\r\n                    <div");
+
+WriteLiteral(" class=\"form1\"");
+
+WriteLiteral(">\r\n                        <p");
+
+WriteLiteral(" class=\"p-input pos\"");
 
 WriteLiteral(">\r\n");
 
-WriteLiteral("                        ");
+WriteLiteral("                            ");
+
+            
+            #line 43 "..\..\Areas\manage\Views\Account\Login.cshtml"
+                       Write(Html.TextBoxFor(m => m.Account, new { placeholder = "请输入用户名" }));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n");
+
+WriteLiteral("                            ");
+
+            
+            #line 44 "..\..\Areas\manage\Views\Account\Login.cshtml"
+                       Write(Html.ValidationMessageFor(m => m.Account, null, new { @class = "error-lable login-error" }));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n                        </p>\r\n                        <p");
+
+WriteLiteral(" class=\"p-input pos\"");
+
+WriteLiteral(">\r\n");
+
+WriteLiteral("                            ");
 
             
             #line 47 "..\..\Areas\manage\Views\Account\Login.cshtml"
-                   Write(Html.TextBoxFor(m => m.Account, new { placeholder = "请输入用户名或手机号", @class = "input-text size-L" }));
+                       Write(Html.PasswordFor(m => m.Password, new { placeholder = "请输入密码"}));
 
             
             #line default
             #line hidden
 WriteLiteral("\r\n");
 
-WriteLiteral("                        ");
+WriteLiteral("                            ");
 
             
             #line 48 "..\..\Areas\manage\Views\Account\Login.cshtml"
-                   Write(Html.ValidationMessageFor(m => m.Account, null, new { @class = "error-lable" }));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n                    </div>\r\n                </div>\r\n                <div");
-
-WriteLiteral(" class=\"row cl\"");
-
-WriteLiteral(">               \r\n                    <div");
-
-WriteLiteral(" class=\"formControls\"");
-
-WriteLiteral(">\r\n");
-
-WriteLiteral("                        ");
-
-            
-            #line 53 "..\..\Areas\manage\Views\Account\Login.cshtml"
-                   Write(Html.PasswordFor(m => m.Password, new { placeholder = "请输入密码", @class = "input-text size-L" }));
+                       Write(Html.ValidationMessageFor(m => m.Password, null, new { @class = "error-lable login-error" }));
 
             
             #line default
             #line hidden
 WriteLiteral("\r\n");
 
-WriteLiteral("                        ");
+WriteLiteral("                            ");
 
             
-            #line 54 "..\..\Areas\manage\Views\Account\Login.cshtml"
-                   Write(Html.ValidationMessageFor(m => m.Password, null, new { @class = "error-lable" }));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n");
-
-WriteLiteral("                        ");
-
-            
-            #line 55 "..\..\Areas\manage\Views\Account\Login.cshtml"
-                   Write(Html.ValidationMessage("ErrorMessage", null, new { @class = "error-lable", id = "password_error" }));
+            #line 49 "..\..\Areas\manage\Views\Account\Login.cshtml"
+                       Write(Html.ValidationMessage("ErrorMessage", null, new { @class = "error-lable login-error", id = "password_error" }));
 
             
             #line default
             #line hidden
-WriteLiteral("\r\n                    </div>\r\n                </div>\r\n                <div");
+WriteLiteral("\r\n                        </p>\r\n                    </div>\r\n                    <" +
+"div");
 
-WriteLiteral(" class=\"row cl\"");
+WriteLiteral(" class=\"r-forget cl\"");
 
-WriteLiteral(">\r\n                    <div");
+WriteLiteral(">\r\n                        <a");
 
-WriteLiteral(" class=\"formControls\"");
+WriteLiteral(" href=\"javascript:layer.alert(\'请联系管理员对账户进行操作！\', { icon: 8 });\"");
 
-WriteLiteral(">\r\n                        <input");
+WriteLiteral(" class=\"y\"");
 
-WriteLiteral(" type=\"button\"");
+WriteLiteral(">忘记密码</a>\r\n                    </div>\r\n                    <button");
+
+WriteLiteral(" class=\"lang-btn log-btn\"");
 
 WriteLiteral(" id=\"btn_login\"");
 
-WriteLiteral(" class=\"btn btn-primary radius size-L\"");
-
-WriteLiteral("  value=\"登&nbsp;&nbsp;&nbsp;&nbsp;录\"");
-
-WriteLiteral(">\r\n                    </div>\r\n                </div>\r\n            </div>\r\n      " +
-"  </div>\r\n");
+WriteLiteral(">登&nbsp;&nbsp;&nbsp;&nbsp;录</button>\r\n                </div>\r\n            </div>\r" +
+"\n        </div>\r\n");
 
             
-            #line 65 "..\..\Areas\manage\Views\Account\Login.cshtml"
+            #line 59 "..\..\Areas\manage\Views\Account\Login.cshtml"
     }
 
             
             #line default
             #line hidden
-WriteLiteral("    <div");
-
-WriteLiteral(" class=\"footer\"");
-
-WriteLiteral(@"></div>
+WriteLiteral(@"
     <script>
         $(function () {
-            $(""#btn_login"").click(function () {         
+            $(""#btn_login"").click(function () {
                 if ($(""#frmLogin"").valid()) {
                     $(""#frmLogin"").submit();
                     $(""#password_error"").html("""");
-                    $(this).val(""正在登录..."").css(""opacity"", ""0.8"").attr(""disabled"", ""disabled"");
+                    $(this).html(""正在登录..."").css(""opacity"", ""0.8"").attr(""disabled"", ""disabled"");
                 }
             });
 
@@ -326,7 +306,6 @@ WriteLiteral(@"></div>
                 if (e.which == 13) {
                     $(""#btn_login"").click();
                 }
-
             })
         })
     </script>

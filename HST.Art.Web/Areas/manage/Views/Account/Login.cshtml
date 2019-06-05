@@ -25,52 +25,46 @@
     <script>DD_belatedPNG.fix('*');</script>
     <![endif]-->
     <title>登录</title>
-    <style type="text/css">
-        .input-validation-error {
-            border: 1px solid #f00;
-            background-color: #fee;
-        }
-    </style>
 </head>
 <body>
-    @using (Html.BeginForm("Login", "Account", new { RetrunUrl = ViewBag.ReturnUrl }, FormMethod.Post,new {id= "frmLogin" }))
+    @using (Html.BeginForm("Login", "Account", new { RetrunUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { id = "frmLogin" }))
     {
         @Html.AntiForgeryToken()
         @Html.ValidationSummary(true)
-        <input type="hidden" id="TenantId" name="TenantId" value="" />
-        <div class="header header_c"><span style="padding-left:20px;">哈哈哈哈</span></div>
-        <div class="loginWraper">
-            <div id="loginform" class="loginBox">
-                <h1>欢迎回来</h1>
-                <div class="row cl">
-                    <div class="formControls">
-                        @Html.TextBoxFor(m => m.Account, new { placeholder = "请输入用户名或手机号", @class = "input-text size-L" })
-                        @Html.ValidationMessageFor(m => m.Account, null, new { @class = "error-lable" })
+        <div class="wrap">
+            <div class="wpn">
+                <div class="form-data pos">
+                    <img src="/Content/lib/h-ui.admin/images/logo.png" class="head-logo">
+                    <div class="change-login">
+                        <p class="account_number on">账号登录</p>
                     </div>
-                </div>
-                <div class="row cl">               
-                    <div class="formControls">
-                        @Html.PasswordFor(m => m.Password, new { placeholder = "请输入密码", @class = "input-text size-L" })
-                        @Html.ValidationMessageFor(m => m.Password, null, new { @class = "error-lable" })
-                        @Html.ValidationMessage("ErrorMessage", null, new { @class = "error-lable", id = "password_error" })
+                    <div class="form1">
+                        <p class="p-input pos">
+                            @Html.TextBoxFor(m => m.Account, new { placeholder = "请输入用户名" })
+                            @Html.ValidationMessageFor(m => m.Account, null, new { @class = "error-lable login-error" })
+                        </p>
+                        <p class="p-input pos">
+                            @Html.PasswordFor(m => m.Password, new { placeholder = "请输入密码"})
+                            @Html.ValidationMessageFor(m => m.Password, null, new { @class = "error-lable login-error" })
+                            @Html.ValidationMessage("ErrorMessage", null, new { @class = "error-lable login-error", id = "password_error" })
+                        </p>
                     </div>
-                </div>
-                <div class="row cl">
-                    <div class="formControls">
-                        <input type="button" id="btn_login" class="btn btn-primary radius size-L"  value="登&nbsp;&nbsp;&nbsp;&nbsp;录">
+                    <div class="r-forget cl">
+                        <a href="javascript:layer.alert('请联系管理员对账户进行操作！', { icon: 8 });" class="y">忘记密码</a>
                     </div>
+                    <button class="lang-btn log-btn" id="btn_login">登&nbsp;&nbsp;&nbsp;&nbsp;录</button>
                 </div>
             </div>
         </div>
     }
-    <div class="footer"></div>
+
     <script>
         $(function () {
-            $("#btn_login").click(function () {         
+            $("#btn_login").click(function () {
                 if ($("#frmLogin").valid()) {
                     $("#frmLogin").submit();
                     $("#password_error").html("");
-                    $(this).val("正在登录...").css("opacity", "0.8").attr("disabled", "disabled");
+                    $(this).html("正在登录...").css("opacity", "0.8").attr("disabled", "disabled");
                 }
             });
 
@@ -78,7 +72,6 @@
                 if (e.which == 13) {
                     $("#btn_login").click();
                 }
-
             })
         })
     </script>

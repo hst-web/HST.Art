@@ -16,11 +16,10 @@ namespace HST.Art.Web
                      "~/Content/lib/fancybox/dist/jquery.fancybox.min.css", new CssRewriteUrlTransformWrapper()).Include(
                      "~/Content/lib/h-ui.admin/css/style.css"
                 ));
-
             bundles.Add(new StyleBundle("~/bootstrap").Include(
                "~/Content/lib/Bootstrap/css/bootstrap.min.css", new CssRewriteUrlTransformWrapper()).Include(
                "~/Content/lib/bootstrap-select/bootstrap-select.min.css", new CssRewriteUrlTransformWrapper()));
-            bundles.Add(new StyleBundle("~/login").Include("~/Content/lib/h-ui.admin/css/H-ui.login.css", new CssRewriteUrlTransformWrapper()));
+            bundles.Add(new StyleBundle("~/login").Include("~/Content/lib/h-ui.admin/css/base.css", new CssRewriteUrlTransformWrapper()).Include("~/Content/lib/h-ui.admin/css/reg.css", new CssRewriteUrlTransformWrapper()));
             bundles.Add(new StyleBundle("~/patternfly").Include(
          "~/Content/lib/patternfly/css/patternfly.min.css", new CssRewriteUrlTransformWrapper()).Include(
           "~/Content/lib/patternfly/css/patternfly-additions.min.css", new CssRewriteUrlTransformWrapper()
