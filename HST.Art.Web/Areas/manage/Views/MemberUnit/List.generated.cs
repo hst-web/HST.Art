@@ -543,22 +543,22 @@ WriteLiteral("\",\r\n                    \"type\": \"post\",\r\n                
 "       \"targets\": [1],\r\n                     \"data\": \"SmallHeadImg\",\r\n          " +
 "           \"render\": function (data, type, full) {\r\n                        \r\n  " +
 "                       var result = \"<a class=\'fancybox\' href=\'\" + full.HeadImg " +
-"+ \"\' title=\'\' data-rel=\'fancybox-button\'><img src=\\\"\" + data + \"\\\" class=\\\"thumb" +
-"nail\\\" style=\'width:55px;padding:2px\' /></a>\";\r\n                         if (dat" +
-"a.length<=0) {\r\n                             result=\"<img src=\'/Content/image/no" +
-"t-img.jpg\' class=\\\"thumbnail\\\" style=\'width:55px;padding:2px\' />\";\r\n            " +
-"             }\r\n                         return result;\r\n                     }\r" +
-"\n                 },\r\n                 {\r\n                     \"targets\": [7],\r\n" +
-"                     \"data\": \"State\",\r\n                     \"render\": function (" +
-"data, type, full) {\r\n                         var result = data;\r\n              " +
-"           if (data > 0) {\r\n                             result = \"<span class=\\" +
-"\"label label-success radius\\\">已上架</span>\";\r\n                         } else {\r\n " +
-"                            result = \"<span class=\\\"label label-danger radius\\\">" +
-"已下架</span>\";\r\n                         }\r\n\r\n                         return resu" +
-"lt;\r\n                     }\r\n                 },\r\n                 {\r\n          " +
-"           \"targets\": [8],\r\n                     \"data\": \"Id\",\r\n                " +
-"     \"render\": function (data, type, full) {\r\n                         var resul" +
-"t = \"<a href=\\\"javascript:;\\\" onClick=\\\"obj_detail(\'查看详情\',\'");
+"+ \"\' title=\'\' data-rel=\'fancybox-button\'><img src=\\\"\" + data + \"\\\" onerror=\'nofi" +
+"nd()\' class=\\\"thumbnail\\\" style=\'width:55px;padding:2px\' /></a>\";\r\n             " +
+"            if (data.length<=0) {\r\n                             result=\"<img src" +
+"=\'/Content/image/not-img.jpg\' class=\\\"thumbnail\\\" style=\'width:55px;padding:2px\'" +
+" />\";\r\n                         }\r\n                         return result;\r\n    " +
+"                 }\r\n                 },\r\n                 {\r\n                   " +
+"  \"targets\": [7],\r\n                     \"data\": \"State\",\r\n                     \"" +
+"render\": function (data, type, full) {\r\n                         var result = da" +
+"ta;\r\n                         if (data > 0) {\r\n                             resu" +
+"lt = \"<span class=\\\"label label-success radius\\\">已上架</span>\";\r\n                 " +
+"        } else {\r\n                             result = \"<span class=\\\"label lab" +
+"el-danger radius\\\">已下架</span>\";\r\n                         }\r\n\r\n                 " +
+"        return result;\r\n                     }\r\n                 },\r\n           " +
+"      {\r\n                     \"targets\": [8],\r\n                     \"data\": \"Id\"" +
+",\r\n                     \"render\": function (data, type, full) {\r\n               " +
+"          var result = \"<a href=\\\"javascript:;\\\" onClick=\\\"obj_detail(\'查看详情\',\'");
 
             
             #line 183 "..\..\Areas\manage\Views\MemberUnit\List.cshtml"

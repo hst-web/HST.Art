@@ -155,7 +155,7 @@
                      "data": "SmallHeadImg",
                      "render": function (data, type, full) {
                         
-                         var result = "<a class='fancybox' href='" + full.HeadImg + "' title='' data-rel='fancybox-button'><img src=\"" + data + "\" class=\"thumbnail\" style='width:55px;padding:2px' /></a>";
+                         var result = "<a class='fancybox' href='" + full.HeadImg + "' title='' data-rel='fancybox-button'><img src=\"" + data + "\" onerror='nofind()' class=\"thumbnail\" style='width:55px;padding:2px' /></a>";
                          if (data.length<=0) {
                              result="<img src='/Content/image/not-img.jpg' class=\"thumbnail\" style='width:55px;padding:2px' />";
                          }

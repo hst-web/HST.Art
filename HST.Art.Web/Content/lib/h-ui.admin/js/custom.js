@@ -266,3 +266,10 @@ function obj_detail(title, url, id) {
 function pageIndex() {
     return window.parent.$("#min_title_list").find("li.active").index();
 }
+
+
+function nofind() {
+    var img = event.srcElement;
+    img.src = "/Content/image/not-img.jpg"; //替换的图片
+    img.onerror = null; //控制不要一直触发错误
+}

@@ -825,22 +825,25 @@ WriteLiteral("\",\r\n                    \"type\": \"post\",\r\n                
 "   \"targets\": [3],\r\n                     \"data\": \"SmallHeadImg\",\r\n              " +
 "       \"render\": function (data, type, full) {\r\n                         var res" +
 "ult = \"<a class=\'fancybox\' href=\'\" + full.HeadImg + \"\' title=\'\' data-rel=\'fancyb" +
-"ox-button\'><img src=\\\"\" + data + \"\\\" class=\\\"thumbnail\\\" style=\'height:40px;padd" +
-"ing:2px\' /></a>\";\r\n                         return result;\r\n                    " +
-" }\r\n                 },\r\n                 {\r\n                     \"targets\": [7]" +
-",\r\n                     \"data\": \"State\",\r\n                     \"render\": functio" +
-"n (data, type, full) {\r\n                         var result = data;\r\n           " +
-"              if (data > 0) {\r\n                             result = \"<span clas" +
-"s=\\\"label label-success radius\\\">已上架</span>\";\r\n                         } else {" +
-"\r\n                             result = \"<span class=\\\"label label-danger radius" +
-"\\\">已下架</span>\";\r\n                         }\r\n\r\n                         return r" +
-"esult;\r\n                     }\r\n                 },\r\n                 {\r\n       " +
-"              \"targets\": [8],\r\n                     \"data\": \"Id\",\r\n             " +
-"        \"render\": function (data, type, full) {\r\n                         var re" +
-"sult = \"<a href=\\\"javascript:;\\\" onClick=\\\"obj_detail(\'查看详情\',\'");
+"ox-button\'><img src=\\\"\" + data + \"\\\" onerror=\'nofind()\' class=\\\"thumbnail\\\" styl" +
+"e=\'height:40px;padding:2px\' /></a>\";\r\n                         if (data.length <" +
+"= 0) {\r\n                             result = \"<img src=\'/Content/image/not-img." +
+"jpg\' class=\\\"thumbnail\\\" style=\'width:55px;padding:2px\' />\";\r\n                  " +
+"       }\r\n                         return result;\r\n                     }\r\n     " +
+"            },\r\n                 {\r\n                     \"targets\": [7],\r\n      " +
+"               \"data\": \"State\",\r\n                     \"render\": function (data, " +
+"type, full) {\r\n                         var result = data;\r\n                    " +
+"     if (data > 0) {\r\n                             result = \"<span class=\\\"label" +
+" label-success radius\\\">已上架</span>\";\r\n                         } else {\r\n       " +
+"                      result = \"<span class=\\\"label label-danger radius\\\">已下架</s" +
+"pan>\";\r\n                         }\r\n\r\n                         return result;\r\n " +
+"                    }\r\n                 },\r\n                 {\r\n                " +
+"     \"targets\": [8],\r\n                     \"data\": \"Id\",\r\n                     \"" +
+"render\": function (data, type, full) {\r\n                         var result = \"<" +
+"a href=\\\"javascript:;\\\" onClick=\\\"obj_detail(\'查看详情\',\'");
 
             
-            #line 251 "..\..\Areas\manage\Views\Article\List.cshtml"
+            #line 254 "..\..\Areas\manage\Views\Article\List.cshtml"
                                                                                         Write(Url.Action("Detail"));
 
             
@@ -857,7 +860,7 @@ WriteLiteral(@"',"" + data + "")\""  title=\""查看详情\"">查看详情</a>""
                         var tmpString = '<a href=""");
 
             
-            #line 259 "..\..\Areas\manage\Views\Article\List.cshtml"
+            #line 262 "..\..\Areas\manage\Views\Article\List.cshtml"
                                              Write(Url.Action("Edit"));
 
             
@@ -868,7 +871,7 @@ WriteLiteral("?id=\' + data + \'\" title=\"编辑\">编辑</a>\';\r\n           
 "\"obj_publish(\'");
 
             
-            #line 261 "..\..\Areas\manage\Views\Article\List.cshtml"
+            #line 264 "..\..\Areas\manage\Views\Article\List.cshtml"
                                                                                      Write(Url.Action("Publish"));
 
             
@@ -879,7 +882,7 @@ WriteLiteral("\',\" + data + \")\\\"  title=\\\"上架\\\">上架</a>\";\r\n    
 "\'");
 
             
-            #line 263 "..\..\Areas\manage\Views\Article\List.cshtml"
+            #line 266 "..\..\Areas\manage\Views\Article\List.cshtml"
                                                                                      Write(Url.Action("Shelves"));
 
             
@@ -889,7 +892,7 @@ WriteLiteral("\',\" + data + \")\\\"  title=\\\"下架\\\">下架</a>\";\r\n    
 "a href=\\\"javascript:;\\\" onClick=\\\"obj_del(\'文件\',\'");
 
             
-            #line 264 "..\..\Areas\manage\Views\Article\List.cshtml"
+            #line 267 "..\..\Areas\manage\Views\Article\List.cshtml"
                                                                                   Write(Url.Action("Delete"));
 
             
