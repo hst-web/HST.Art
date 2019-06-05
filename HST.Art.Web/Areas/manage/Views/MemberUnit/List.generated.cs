@@ -336,7 +336,7 @@ WriteLiteral("\r\n        <button");
 WriteLiteral(" class=\"btn btn-default\"");
 
 WriteAttribute("onclick", Tuple.Create(" onclick=\"", 2387), Tuple.Create("\"", 2442)
-, Tuple.Create(Tuple.Create("", 2397), Tuple.Create("member_import(\'证书导入\',\'", 2397), true)
+, Tuple.Create(Tuple.Create("", 2397), Tuple.Create("member_import(\'批量导入\',\'", 2397), true)
             
             #line 42 "..\..\Areas\manage\Views\MemberUnit\List.cshtml"
 , Tuple.Create(Tuple.Create("", 2419), Tuple.Create<System.Object, System.Int32>(Url.Action("Import")
@@ -349,7 +349,7 @@ WriteAttribute("onclick", Tuple.Create(" onclick=\"", 2387), Tuple.Create("\"", 
 
 WriteLiteral(" type=\"button\"");
 
-WriteLiteral(">证书导入</button>\r\n    </div>\r\n    <div");
+WriteLiteral(">批量导入</button>\r\n    </div>\r\n    <div");
 
 WriteLiteral(" class=\"mt-10\"");
 

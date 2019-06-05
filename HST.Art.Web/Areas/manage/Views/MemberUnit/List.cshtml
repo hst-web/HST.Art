@@ -39,7 +39,7 @@
         </select>
         <button name="search" id="search" class="btn btn-success ml-20" type="button"><i class="Hui-iconfont">&#xe665;</i> 查询</button>
         @Html.ActionLink("新建会员单位", "Add", null, new { @class = "btn btn-primary" })
-        <button class="btn btn-default" onclick="member_import('证书导入','@Url.Action("Import")')" type="button">证书导入</button>
+        <button class="btn btn-default" onclick="member_import('批量导入','@Url.Action("Import")')" type="button">批量导入</button>
     </div>
     <div class="mt-10">
         <table id="tbTable" class="table table-border table-bordered table-bg table-sort">
