@@ -195,17 +195,13 @@ WriteLiteral(">\r\n            <dt");
 
 WriteLiteral(" class=\"selected\"");
 
-WriteLiteral(" ><i");
-
-WriteLiteral(" class=\"Hui-iconfont\"");
-
-WriteLiteral(">&#xe616;</i><a");
+WriteLiteral(" ><a");
 
 WriteLiteral(" data-href=\"");
 
             
             #line 35 "..\..\Areas\manage\Views\Home\Index.cshtml"
-                                                                               Write(Url.Action("Edit","Home"));
+                                           Write(Url.Action("Edit","Home"));
 
             
             #line default
@@ -216,17 +212,17 @@ WriteLiteral(" data-title=\"企业信息\"");
 
 WriteLiteral(" href=\"javascript:void(0)\"");
 
-WriteLiteral(">企业信息</a></dt>\r\n            <dt><i");
+WriteLiteral("><i");
 
 WriteLiteral(" class=\"Hui-iconfont\"");
 
-WriteLiteral(">&#xe616;</i><a");
+WriteLiteral(">&#xe616;</i>企业信息</a></dt>\r\n            <dt><a");
 
 WriteLiteral(" data-href=\"");
 
             
             #line 36 "..\..\Areas\manage\Views\Home\Index.cshtml"
-                                                             Write(Url.Action("List","MemberUnit"));
+                         Write(Url.Action("List","MemberUnit"));
 
             
             #line default
@@ -237,17 +233,17 @@ WriteLiteral(" data-title=\"协会会员\"");
 
 WriteLiteral(" href=\"javascript:void(0)\"");
 
-WriteLiteral(">协会会员</a></dt>\r\n            <dt><i");
+WriteLiteral("><i");
 
 WriteLiteral(" class=\"Hui-iconfont\"");
 
-WriteLiteral(">&#xe616;</i><a");
+WriteLiteral(">&#xe616;</i>协会会员</a></dt>\r\n            <dt><a");
 
 WriteLiteral(" data-href=\"");
 
             
             #line 37 "..\..\Areas\manage\Views\Home\Index.cshtml"
-                                                             Write(Url.Action("List","Article"));
+                         Write(Url.Action("List","Article"));
 
             
             #line default
@@ -258,7 +254,11 @@ WriteLiteral(" data-title=\"文章管理\"");
 
 WriteLiteral(" href=\"javascript:void(0)\"");
 
-WriteLiteral(">文章管理</a></dt>\r\n\r\n        </dl>\r\n        <dl");
+WriteLiteral("><i");
+
+WriteLiteral(" class=\"Hui-iconfont\"");
+
+WriteLiteral(">&#xe616;</i>文章管理</a></dt>\r\n\r\n        </dl>\r\n        <dl");
 
 WriteLiteral(" class=\"list-dt\"");
 
@@ -310,17 +310,13 @@ WriteLiteral(">学员证书</a></li>\r\n                </ul>\r\n            </d
 
 WriteLiteral(" class=\"single-dt\"");
 
-WriteLiteral(">\r\n            <dt><i");
-
-WriteLiteral(" class=\"Hui-iconfont\"");
-
-WriteLiteral(">&#xe616;</i><a");
+WriteLiteral(">\r\n            <dt><a");
 
 WriteLiteral(" data-href=\"");
 
             
             #line 50 "..\..\Areas\manage\Views\Home\Index.cshtml"
-                                                             Write(Url.Action("List","Download"));
+                         Write(Url.Action("List","Download"));
 
             
             #line default
@@ -331,7 +327,11 @@ WriteLiteral(" data-title=\"下载管理\"");
 
 WriteLiteral(" href=\"javascript:void(0)\"");
 
-WriteLiteral(">下载管理</a></dt>\r\n        </dl>\r\n        <dl");
+WriteLiteral("><i");
+
+WriteLiteral(" class=\"Hui-iconfont\"");
+
+WriteLiteral(">&#xe616;</i>下载管理</a></dt>\r\n        </dl>\r\n        <dl");
 
 WriteLiteral(" class=\"list-dt\"");
 
