@@ -22,7 +22,7 @@ namespace HST.Art.Data
         {
             MemberUnit MemberUnitInfo = null;
             DBHelper dbHelper = new DBHelper(ConnectionString, DbProviderType.SqlServer);
-            string strSql = @"SELECT m.Id, m.Name, m.HeadImg, m.Star, m.Number, m.State, m.Category,cd.name as  CategoryName,Description, Province, City, County, m.CreateDate  from MemberUnit m ,CategoryDictionary cd where m.category=cd.id and m.IsDeleted=0 and m.id=@Id ";
+            string strSql = @"SELECT m.Id, m.Name, m.HeadImg, m.Star, m.Number, m.State, m.Category,cd.name as  CategoryName,Description, Province, City, County, m.CreateDate  from MemberUnit m left join CategoryDictionary cd  on  m.category=cd.id where m.IsDeleted=0 and m.id=@Id ";
 
             List<DbParameter> parametersList = new List<DbParameter>();
             parametersList.Add(new SqlParameter("@Id", id));
@@ -56,7 +56,7 @@ namespace HST.Art.Data
             List<MemberUnit> MemberUnitList = null;
             DBHelper dbHelper = new DBHelper(ConnectionString, DbProviderType.SqlServer);
 
-            string strSql = @"SELECT m.Id, m.Name, m.HeadImg, m.Star, m.Number, m.State, m.Category,cd.name as  CategoryName, Province, City, County, m.CreateDate  from MemberUnit m ,CategoryDictionary cd where m.category=cd.id and m.IsDeleted=0 " + whereSort;
+            string strSql = @"SELECT m.Id, m.Name, m.HeadImg, m.Star, m.Number, m.State, m.Category,cd.name as  CategoryName, Province, City, County, m.CreateDate  from MemberUnit m left join CategoryDictionary cd on m.category=cd.id where m.IsDeleted=0 " + whereSort;
 
             IList<DbParameter> parameList = null;
             if (condition != null && condition.SqlParList.Count > 0)
@@ -99,7 +99,7 @@ namespace HST.Art.Data
 
             List<MemberUnit> MemberUnitList = null;
             DBHelper dbHelper = new DBHelper(ConnectionString, DbProviderType.SqlServer);
-            string strSqlQuery = @"select count(m.ID) from [MemberUnit] m,CategoryDictionary cd  where m.Category=cd.id and m.IsDeleted=0 " + where;//查询有多少条记录
+            string strSqlQuery = @"select count(m.ID) from [MemberUnit] m left join CategoryDictionary cd on m.Category=cd.id  where  m.IsDeleted=0 " + where;//查询有多少条记录
             IList<DbParameter> parameList = new List<DbParameter>();
             parameList.Add(new SqlParameter("@pageSize", condition.PageSize));
             parameList.Add(new SqlParameter("@pageIndex", condition.PageIndex));
@@ -138,7 +138,7 @@ namespace HST.Art.Data
                                   ,m.[City]
                                   ,m.[County]
                                   ,m.[CreateDate]
-                                    ,ROW_NUMBER() over(" + asSort + ") as num  from [MemberUnit] m,CategoryDictionary cd where m.Category=cd.id and  m.IsDeleted=0 " + where + ") as t where num between (@pageIndex - 1) * @pageSize + 1  and @pageIndex*@pageSize " + sort;
+                                    ,ROW_NUMBER() over(" + asSort + ") as num  from [MemberUnit] m  left join CategoryDictionary cd  on m.Category=cd.id  where  m.IsDeleted=0 " + where + ") as t where num between (@pageIndex - 1) * @pageSize + 1  and @pageIndex*@pageSize " + sort;
             using (DbDataReader reader = dbHelper.ExecuteReader(strSql, parameList))
             {
                 MemberUnitList = new List<MemberUnit>();

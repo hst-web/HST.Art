@@ -16,7 +16,15 @@
     <div class="form-horizontal">
         <div class="row cl">
             <div class="col-xs-12">
-                @Html.Raw(Model.Description)
+                @if (string.IsNullOrEmpty(Model.Description))
+                {
+                    <p style="text-align:center;margin-top:20%">暂无详情信息</p>
+                }
+                else
+                {
+                    @Html.Raw(Model.Description)
+                }
+               
             </div>
         </div>
     </div>

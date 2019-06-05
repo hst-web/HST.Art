@@ -33,8 +33,8 @@
         @Html.HiddenFor(m => m.Number)
         @Html.HiddenFor(m => m.Logo)
         <div class="row cl">
-            <label class="form-label col-md-2 ">微信公众号：</label>
-            <div class="formControls col-md-6 ">
+            <label class="form-label col-sm-2 ">微信公众号：</label>
+            <div class="formControls col-sm-6 ">
                 <div class="form-group" @(string.IsNullOrEmpty(Model.WeChat) ? "" : "style=position:relative")>
                     <div id="upfileImg" class="up-img-left @(string.IsNullOrEmpty(Model.WeChat) ?"":"up-imgBtn")">
                         @(string.IsNullOrEmpty(Model.WeChat) ? "上传图片" : "更改图片")
@@ -75,7 +75,7 @@
             </div>
         </div>
         <div class="row cl">
-            <label class="form-label col-sm-2 "><span class="c-red">*</span>协会简介：</label>
+            <label class="form-label col-sm-2 "><span class="c-red">*</span>企业简介：</label>
             <div class="formControls col-sm-8 ">
                 @Html.TextAreaFor(m => m.Description, new { @class = "textarea", rows = "5", placeholder = "请输入协会简介..." })
                 @Html.ValidationMessageFor(m => m.Description, null, new { @class = "error-lable" })

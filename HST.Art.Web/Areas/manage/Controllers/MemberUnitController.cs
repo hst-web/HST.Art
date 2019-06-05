@@ -2,8 +2,17 @@
 using HST.Art.Service;
 using System;
 using System.Web.Mvc;
+using HST.Utillity;
 using System.Collections.Generic;
 using System.Linq;
+using NPOI.SS.UserModel;
+using NPOI.XSSF.UserModel;
+using System.Text.RegularExpressions;
+using NPOI.HSSF.UserModel;
+using System.Text;
+using System.IO;
+using System.Web.Configuration;
+using System.Web;
 
 namespace HST.Art.Web.Areas.manage.Controllers
 {
@@ -278,6 +287,172 @@ namespace HST.Art.Web.Areas.manage.Controllers
             else
                 rmodel.isSuccess = true;
             return Json(rmodel.isSuccess, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult Import()
+        {
+            return View();
+        }
+
+        //导入
+        [HttpPost]
+        public JsonResult ImportExcel(HttpPostedFileBase file)
+        {
+            string locAddr = WebConfigurationManager.AppSettings["FileAddr"].ToString();
+            string filePath = "/uploadFiles/";
+            string localPath = string.IsNullOrEmpty(locAddr) ? System.Web.Hosting.HostingEnvironment.MapPath(filePath) : locAddr + filePath;
+
+            string errorMsg = "";
+            int userid = Convert.ToInt16(GetAccount().Id);
+            List<MemberUnit> failList = new List<MemberUnit>();
+
+            UploadViewModel um_mod = new UploadViewModel();
+            string suffixstr = Path.GetExtension(file.FileName);
+            um_mod.Extension = suffixstr;
+
+            if (file == null || file.ContentLength == 0)
+                um_mod.Message = "情选择文件";
+            else if (!IsExcel(suffixstr))
+                um_mod.Message = "请上传xls、xlsx类型文件";
+            else
+            {
+                //文件后缀
+                string Suffixstr = Path.GetExtension(file.FileName);
+                um_mod.Extension = Suffixstr;
+                um_mod.FileName = file.FileName;
+
+                List<MemberUnit> memberList = GetData(file.FileName, file.InputStream, out errorMsg);
+                if (memberList != null && memberList.Count > 0)
+                {
+                    memberList.ForEach(g => g.UserId = userid);
+                }
+
+                if (!string.IsNullOrEmpty(errorMsg))
+                {
+                    um_mod.Message = errorMsg;
+                }
+                else
+                {
+                    List<MemberUnit> failOutList = null;
+                    failList = memberList.FindAll(g => string.IsNullOrEmpty(g.Name) || string.IsNullOrEmpty(g.Number) || string.IsNullOrEmpty(g.City));
+                    memberList.RemoveAll(g => string.IsNullOrEmpty(g.Name) || string.IsNullOrEmpty(g.Number) || string.IsNullOrEmpty(g.City));
+
+                    bool result = muService.Add(memberList, out failOutList);
+
+                    if (!result)
+                    {
+                        failList.AddRange(failOutList);
+                    }
+
+                    if (failList.Count > 0)
+                    {
+                        string fileName = Guid.NewGuid().ToString("N") + ".csv";
+                        um_mod.Message = string.Format("导入失败条数{0}条,成功条数{1}条", failList.Count, memberList.Count == 0 ? 0 : memberList.Count - failOutList.Count);
+                        um_mod.FilePath = filePath + fileName;
+                        SaveFile(localPath + fileName, failList);
+                    }
+                    else
+                    {
+                        um_mod.IsSuccess = result;
+                    }
+                }
+            }
+
+            return Json(um_mod);
+        }
+
+        private void SaveFile(string path, List<MemberUnit> failList)
+        {
+            try
+            {
+                List<MemberUnitViewModel> memberViewModelList = failList.Select(g => new MemberUnitViewModel() { MemberUnitName = g.Name, Area = GetAreaStr(g.Province, g.City), Category = g.Category, Number = g.Number, Star = g.Star }).ToList();
+
+                List<ExcelHeaderColumn> excelList = new List<ExcelHeaderColumn>(){
+                new ExcelHeaderColumn() { DisplayName = "单位名称", Name = "MemberUnitName" },
+                new ExcelHeaderColumn() { DisplayName = "单位编号", Name = "Number" },
+                new ExcelHeaderColumn() { DisplayName = "单位星级", Name = "StarName" },
+                new ExcelHeaderColumn() { DisplayName = "所在地区", Name = "Area" },
+                new ExcelHeaderColumn() { DisplayName = "单位类别", Name = "CategoryName" },
+                };
+
+                byte[] bytes = ExcelHelper.ExportCsvByte(memberViewModelList, excelList);
+
+                System.IO.StreamWriter stream = new System.IO.StreamWriter(path, false, Encoding.UTF8);
+                stream.Write(Encoding.Default.GetString(bytes));
+                stream.Flush();
+                stream.Close();
+                stream.Dispose();
+            }
+            catch
+            {
+
+            }
+        }
+
+        private List<MemberUnit> GetData(string fileName, Stream fs, out string errorMsg)
+        {
+            errorMsg = string.Empty;
+            List<MemberUnit> dicList = new List<MemberUnit>();
+            IWorkbook workbook = null;//工作表
+
+            if (fileName.IndexOf(".xlsx") > 0) // 2007版本
+                workbook = new XSSFWorkbook(fs);
+            else if (fileName.IndexOf(".xls") > 0) // 2003版本
+                workbook = new HSSFWorkbook(fs);
+            fs.Close();
+
+            ISheet sheet = workbook.GetSheetAt(0);//取默认第一个sheet表的数据
+            if (sheet.SheetName.StartsWith("association", StringComparison.InvariantCultureIgnoreCase))
+            {
+                dicList = GetSheetData(sheet);
+                if (dicList.Count <= 0)
+                {
+                    errorMsg = "没有找到要导入的数据";
+                }
+            }
+            else
+            {
+                errorMsg = "当前导入的Excel不是教师证书模板";
+            }
+
+            return dicList;
+        }
+
+        private List<MemberUnit> GetSheetData(ISheet sheet)
+        {
+            List<CategoryDictionary> cdAllList = cdService.GetAll(CategoryType.Member);
+            List<MemberUnit> memberCertList = null;
+            const int minrownum = 1;//最小行数，如果小于1行证明sheet无数据
+            if (sheet != null && sheet.LastRowNum >= minrownum)
+            {
+                int startrownum = 1;//从第2行开始取数据（row和cell从0开始）
+                int endrownum = sheet.LastRowNum;
+                memberCertList = new List<MemberUnit>();
+                MemberUnit memberCertInfo = null;
+                for (int index = startrownum; index <= endrownum; index++)
+                {
+                    IRow row = sheet.GetRow(index);
+
+                    int star = 0;
+                    int.TryParse(Regex.Replace(CellSwitch(row.GetCell(2)), @"\s", ""), out star);
+                    CategoryDictionary cdict = string.IsNullOrEmpty(CellSwitch(row.GetCell(4))) ? null : cdAllList.Find(g => g.Name.Equals(CellSwitch(row.GetCell(4))));
+
+                    memberCertInfo = new MemberUnit()
+                    {
+                        Name = Regex.Replace(CellSwitch(row.GetCell(0)), @"\s", ""),
+                        Number = Regex.Replace(CellSwitch(row.GetCell(1)), @"\s", ""),
+                        Star = star,
+                        State = PublishState.Lower,
+                        Province = Constant.DEFAULT_PROVINCE,
+                        City = string.IsNullOrWhiteSpace(CellSwitch(row.GetCell(3))) ? "" : City.Where(g => g.Value.Equals(CellSwitch(row.GetCell(3)))).FirstOrDefault().Key + "",
+                        Category = cdict != null ? cdict.Id : 0
+                    };
+
+                    memberCertList.Add(memberCertInfo);
+                }
+            }
+
+            return memberCertList;
         }
     }
 }

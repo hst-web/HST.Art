@@ -226,10 +226,185 @@
     <Compile Include="Areas\manage\Controllers\DownloadController.cs" />
     <Compile Include="Areas\manage\Controllers\TeacherController.cs" />
     <Compile Include="Areas\manage\manageAreaRegistration.cs" />
+    <Compile Include="Areas\manage\Views\Account\Edit.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Edit.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\manage\Views\Account\Index.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Index.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\manage\Views\Account\Login.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Login.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\manage\Views\Article\Add.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Add.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\manage\Views\Article\Detail.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Detail.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\manage\Views\Article\Edit.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Edit.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\manage\Views\Article\List.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>List.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\manage\Views\Category\Index.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Index.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\manage\Views\Category\List.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>List.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\manage\Views\Download\Add.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Add.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\manage\Views\Download\Detail.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Detail.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\manage\Views\Download\Edit.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Edit.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\manage\Views\Download\List.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>List.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\manage\Views\Home\AddRotation.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AddRotation.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\manage\Views\Home\Edit.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Edit.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\manage\Views\Home\EditRotation.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EditRotation.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\manage\Views\Home\Index.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Index.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\manage\Views\Home\welcome.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>welcome.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\manage\Views\MemberUnit\Add.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Add.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\manage\Views\MemberUnit\Detail.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Detail.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\manage\Views\MemberUnit\Edit.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Edit.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\manage\Views\MemberUnit\Import.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Import.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\manage\Views\MemberUnit\List.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>List.cshtml</DependentUpon>
+    </Compile>
     <Compile Include="Areas\manage\Views\Shared\_Layout.generated.cs">
       <DependentUpon>_Layout.cshtml</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Areas\manage\Views\Student\Add.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Add.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\manage\Views\Student\Edit.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Edit.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\manage\Views\Student\Import.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Import.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\manage\Views\Student\List.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>List.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\manage\Views\Teacher\Add.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Add.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\manage\Views\Teacher\Edit.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Edit.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\manage\Views\Teacher\Import.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Import.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\manage\Views\Teacher\List.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>List.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\manage\Views\User\Add.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Add.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\manage\Views\User\Edit.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Edit.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\manage\Views\User\Index.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Index.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\manage\Views\User\List.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>List.cshtml</DependentUpon>
     </Compile>
     <Compile Include="Areas\manage\Views\_ViewStart.generated.cs">
       <AutoGen>True</AutoGen>
@@ -245,7 +420,6 @@
     <Compile Include="Areas\manage\Controllers\HomeController.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="Areas\manage\Controllers\ResourceController.cs" />
     <Compile Include="Areas\manage\Controllers\UploadController.cs" />
     <Compile Include="Areas\manage\Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
@@ -272,6 +446,16 @@
     <Compile Include="Models\SearchDataTable.cs" />
     <Compile Include="Models\UploadViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\Shared\_Layout.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_Layout.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\_ViewStart.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_ViewStart.cshtml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-grid.css" />
@@ -281,6 +465,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\image\no-data.png" />
+    <Content Include="Content\image\not-img.jpg" />
     <Content Include="Content\image\video_load.png" />
     <Content Include="Content\image\video_load_error.png" />
     <Content Include="Content\js\jquery.unobtrusive-ajax.js" />
@@ -1851,32 +2036,111 @@
     <Content Include="Content\lib\bootstrap-select\bootstrap-select.css.map" />
     <Content Include="Content\lib\bootstrap-select\bootstrap-select.js.map" />
     <Content Include="Content\lib\uniform\css\uniform.default.scss" />
-    <Content Include="Areas\manage\Views\web.config" />
-    <Content Include="Areas\manage\Views\Teacher\Add.cshtml" />
-    <Content Include="Areas\manage\Views\Teacher\Edit.cshtml" />
-    <Content Include="Areas\manage\Views\Student\List.cshtml" />
-    <Content Include="Areas\manage\Views\Student\Edit.cshtml" />
-    <Content Include="Areas\manage\Views\Student\Add.cshtml" />
-    <Content Include="Areas\manage\Views\Download\List.cshtml" />
-    <Content Include="Areas\manage\Views\Download\Edit.cshtml" />
-    <Content Include="Areas\manage\Views\Download\Add.cshtml" />
-    <Content Include="Areas\manage\Views\Download\Detail.cshtml" />
-    <Content Include="Areas\manage\Views\MemberUnit\List.cshtml" />
-    <Content Include="Areas\manage\Views\MemberUnit\Add.cshtml" />
-    <Content Include="Areas\manage\Views\MemberUnit\Detail.cshtml" />
-    <Content Include="Areas\manage\Views\MemberUnit\Edit.cshtml" />
-    <Content Include="Areas\manage\Views\Article\List.cshtml" />
-    <Content Include="Areas\manage\Views\Article\Add.cshtml" />
-    <Content Include="Areas\manage\Views\Article\Detail.cshtml" />
-    <Content Include="Areas\manage\Views\Article\Edit.cshtml" />
-    <Content Include="Areas\manage\Views\Account\Edit.cshtml" />
-    <Content Include="Areas\manage\Views\Home\Edit.cshtml" />
-    <Content Include="Areas\manage\Views\Home\AddRotation.cshtml" />
-    <Content Include="Areas\manage\Views\Home\EditRotation.cshtml" />
-    <Content Include="Areas\manage\Views\Category\Index.cshtml" />
-    <Content Include="Areas\manage\Views\Category\List.cshtml" />
-    <Content Include="Areas\manage\Views\Student\Import.cshtml" />
-    <Content Include="Areas\manage\Views\Teacher\Import.cshtml" />
+    <None Include="Areas\manage\Views\web.config" />
+    <None Include="Areas\manage\Views\Teacher\Add.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Add.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Areas\manage\Views\Teacher\Edit.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Edit.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Areas\manage\Views\Student\List.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>List.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Areas\manage\Views\Student\Edit.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Edit.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Areas\manage\Views\Student\Add.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Add.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Areas\manage\Views\Download\List.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>List.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Areas\manage\Views\Download\Edit.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Edit.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Areas\manage\Views\Download\Add.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Add.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Areas\manage\Views\Download\Detail.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Detail.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Areas\manage\Views\MemberUnit\List.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>List.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Areas\manage\Views\MemberUnit\Add.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Add.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Areas\manage\Views\MemberUnit\Detail.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Detail.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Areas\manage\Views\MemberUnit\Edit.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Edit.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Areas\manage\Views\Article\List.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>List.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Areas\manage\Views\Article\Add.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Add.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Areas\manage\Views\Article\Detail.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Detail.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Areas\manage\Views\Article\Edit.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Edit.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Areas\manage\Views\Account\Edit.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Edit.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Areas\manage\Views\Home\Edit.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Edit.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Areas\manage\Views\Home\AddRotation.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>AddRotation.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Areas\manage\Views\Home\EditRotation.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>EditRotation.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Areas\manage\Views\Category\Index.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Index.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Areas\manage\Views\Category\List.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>List.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Areas\manage\Views\Student\Import.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Import.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Areas\manage\Views\Teacher\Import.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Import.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Areas\manage\Views\MemberUnit\Import.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Import.generated.cs</LastGenOutput>
+    </None>
     <None Include="Areas\manage\Views\_ViewStart.cshtml">
       <LastGenOutput>_ViewStart.generated.cs</LastGenOutput>
       <Generator>RazorGenerator</Generator>
@@ -1885,17 +2149,30 @@
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>_Layout.generated.cs</LastGenOutput>
     </None>
-    <None Include="Areas\manage\Views\Home\Index.cshtml" />
-    <None Include="Areas\manage\Views\Account\Index.cshtml" />
-    <Content Include="Areas\manage\Views\Resource\Add.cshtml" />
-    <Content Include="Areas\manage\Views\Resource\Detail.cshtml" />
-    <Content Include="Areas\manage\Views\Resource\Edit.cshtml" />
-    <Content Include="Areas\manage\Views\Resource\List.cshtml" />
-    <Content Include="Areas\manage\Views\Resource\Preview.cshtml" />
-    <None Include="Areas\manage\Views\Teacher\List.cshtml" />
-    <None Include="Areas\manage\Views\User\List.cshtml" />
-    <None Include="Areas\manage\Views\User\Add.cshtml" />
-    <None Include="Areas\manage\Views\User\Edit.cshtml" />
+    <None Include="Areas\manage\Views\Home\Index.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Index.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Areas\manage\Views\Account\Index.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Index.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Areas\manage\Views\Teacher\List.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>List.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Areas\manage\Views\User\List.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>List.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Areas\manage\Views\User\Add.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Add.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Areas\manage\Views\User\Edit.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Edit.generated.cs</LastGenOutput>
+    </None>
     <Content Include="Content\lib\ckeditor\CHANGES.md" />
     <Content Include="Content\lib\ckeditor\LICENSE.md" />
     <Content Include="Content\lib\ckeditor\plugins\scayt\LICENSE.md" />
@@ -1945,18 +2222,23 @@
     </None>
     <None Include="Views\_ViewStart.cshtml">
       <LastGenOutput>_ViewStart.generated.cs</LastGenOutput>
+      <Generator>RazorGenerator</Generator>
     </None>
     <None Include="Areas\manage\Views\Account\Login.cshtml">
       <LastGenOutput>Login.generated.cs</LastGenOutput>
+      <Generator>RazorGenerator</Generator>
     </None>
-    <Content Include="Areas\manage\Views\Home\welcome.cshtml">
+    <None Include="Areas\manage\Views\Home\welcome.cshtml">
       <LastGenOutput>welcome.generated.cs</LastGenOutput>
-    </Content>
+      <Generator>RazorGenerator</Generator>
+    </None>
     <None Include="Views\Shared\_Layout.cshtml">
       <LastGenOutput>_Layout.generated.cs</LastGenOutput>
+      <Generator>RazorGenerator</Generator>
     </None>
     <None Include="Areas\manage\Views\User\Index.cshtml">
       <LastGenOutput>Index.generated.cs</LastGenOutput>
+      <Generator>RazorGenerator</Generator>
     </None>
   </ItemGroup>
   <ItemGroup>
