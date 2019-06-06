@@ -38,7 +38,7 @@ namespace ASP
         }
         public override void Execute()
         {
-WriteLiteral("<!DOCTYPE html>\r\n\r\n<html>\r\n<head>\r\n    <meta");
+WriteLiteral("<!DOCTYPE html>\r\n<html>\r\n<head>\r\n    <meta");
 
 WriteLiteral(" charset=\"utf-8\"");
 
@@ -67,13 +67,28 @@ WriteLiteral(" http-equiv=\"Cache-Control\"");
 
 WriteLiteral(" content=\"no-siteapp\"");
 
-WriteLiteral(" />\r\n    <link");
+WriteLiteral(" />\r\n    <meta");
 
-WriteLiteral(" rel=\"Bookmark\"");
+WriteLiteral(" name=\"keywords\"");
 
-WriteLiteral(" href=\"/favicon.ico\"");
+WriteLiteral(" content=\"\"");
 
-WriteLiteral(">\r\n    <link");
+WriteLiteral(" />\r\n    <meta");
+
+WriteLiteral(" name=\"description\"");
+
+WriteLiteral(" content=\"\"");
+
+WriteLiteral(" />\r\n    <title>");
+
+            
+            #line 11 "..\..\Views\Shared\_Layout.cshtml"
+      Write(RenderSection("TitleSection"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("</title>\r\n    <link");
 
 WriteLiteral(" rel=\"Shortcut Icon\"");
 
@@ -81,7 +96,7 @@ WriteLiteral(" href=\"/favicon.ico\"");
 
 WriteLiteral(" />\r\n    <!--[if lt IE 9]>\r\n    <script type=\"text/javascript\" src=\"/Content/lib/" +
 "html5shiv.js\"></script>\r\n    <script type=\"text/javascript\" src=\"/Content/lib/re" +
-"spond.min.js\"></script>\r\n    <![endif]-->\r\n    ");
+"spond.min.js\"></script>\r\n    <![endif]-->\r\n\r\n\r\n\r\n  \r\n    ");
 
 WriteLiteral("\r\n    <!--[if IE 6]>\r\n    <script type=\"text/javascript\" src=\"/Content/lib/DD_bel" +
 "atedPNG_0.0.8a-min.js\" ></script>\r\n    <script>DD_belatedPNG.fix(\'*\');</script>\r" +

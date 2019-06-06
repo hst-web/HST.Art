@@ -454,13 +454,36 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\css.css" />
+    <Content Include="Content\css\owl.carousel.min.css" />
+    <Content Include="Content\css\response.css" />
+    <Content Include="Content\css\style.css" />
+    <Content Include="Content\css\swiper.min.css" />
+    <Content Include="Content\fonts\iconfont.svg" />
+    <Content Include="Content\image\caret.png" />
+    <Content Include="Content\image\circle.png" />
+    <Content Include="Content\image\img.jpg" />
+    <Content Include="Content\image\index_ds_fl.jpg" />
+    <Content Include="Content\image\index_ds_fr.jpg" />
+    <Content Include="Content\image\index_new.jpg" />
+    <Content Include="Content\image\logo.jpg" />
     <Content Include="Content\image\no-data.png" />
     <Content Include="Content\image\not-img.jpg" />
     <Content Include="Content\image\video_load.png" />
     <Content Include="Content\image\video_load_error.png" />
+    <Content Include="Content\image\xingxing.png" />
+    <Content Include="Content\image\xingxingh.png" />
+    <Content Include="Content\image\y.png" />
+    <Content Include="Content\image\yy.png" />
+    <Content Include="Content\image\z.png" />
+    <Content Include="Content\image\zz.png" />
+    <Content Include="Content\js\jQuery.1.9.1.js" />
     <Content Include="Content\js\jquery.unobtrusive-ajax.js" />
     <Content Include="Content\js\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Content\js\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Content\js\js.js" />
+    <Content Include="Content\js\owl.carousel.js" />
+    <Content Include="Content\js\swiper.min.js" />
     <Content Include="Content\lib\bootstrap-select\bootstrap-select.css" />
     <Content Include="Content\lib\bootstrap-select\bootstrap-select.js" />
     <Content Include="Content\lib\bootstrap-select\bootstrap-select.min.css" />
@@ -2176,6 +2199,10 @@
     <Content Include="Content\协会会员导入模板.xlsx" />
     <Content Include="Content\学生证书导入模板.xlsx" />
     <Content Include="Content\教师证书导入模板.xlsx" />
+    <Content Include="Content\fonts\iconfont.eot" />
+    <Content Include="Content\fonts\iconfont.ttf" />
+    <Content Include="Content\fonts\iconfont.woff" />
+    <Content Include="Content\fonts\iconfont.woff2" />
     <None Include="Properties\PublishProfiles\art.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
@@ -2229,7 +2256,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\manage\Models\" />
-    <Folder Include="Content\css\" />
     <Folder Include="Controllers\" />
     <Folder Include="uploadFiles\" />
   </ItemGroup>
