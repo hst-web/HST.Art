@@ -495,38 +495,36 @@ WriteLiteral(">\r\n        <select");
 
 WriteLiteral(" id=\"sel_examination\"");
 
-WriteLiteral(">\r\n");
-
-            
-            #line 71 "..\..\Areas\manage\Views\Article\List.cshtml"
-            
-            
-            #line default
-            #line hidden
-            
-            #line 71 "..\..\Areas\manage\Views\Article\List.cshtml"
-             foreach (KeyValuePair<CategoryDictionary, List<CategoryDictionary>> item in ViewBag.ExamCategory)
-            {
-
-            
-            #line default
-            #line hidden
-WriteLiteral("                <option");
+WriteLiteral(">\r\n            <option");
 
 WriteLiteral(" value=\"\"");
 
 WriteLiteral(">请选择所属类别</option>\r\n");
 
-WriteLiteral("                <optgroup");
-
-WriteAttribute("label", Tuple.Create(" label=\"", 4036), Tuple.Create("\"", 4058)
             
-            #line 74 "..\..\Areas\manage\Views\Article\List.cshtml"
-, Tuple.Create(Tuple.Create("", 4044), Tuple.Create<System.Object, System.Int32>(item.Key.Name
+            #line 72 "..\..\Areas\manage\Views\Article\List.cshtml"
+            
             
             #line default
             #line hidden
-, 4044), false)
+            
+            #line 72 "..\..\Areas\manage\Views\Article\List.cshtml"
+             foreach (KeyValuePair<CategoryDictionary, List<CategoryDictionary>> item in ViewBag.ExamCategory)
+            {               
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                <optgroup");
+
+WriteAttribute("label", Tuple.Create(" label=\"", 4047), Tuple.Create("\"", 4069)
+            
+            #line 74 "..\..\Areas\manage\Views\Article\List.cshtml"
+, Tuple.Create(Tuple.Create("", 4055), Tuple.Create<System.Object, System.Int32>(item.Key.Name
+            
+            #line default
+            #line hidden
+, 4055), false)
 );
 
 WriteLiteral(">\r\n");
@@ -547,14 +545,14 @@ WriteLiteral(">\r\n");
             #line hidden
 WriteLiteral("                        <option");
 
-WriteAttribute("value", Tuple.Create(" value=\"", 4184), Tuple.Create("\"", 4202)
+WriteAttribute("value", Tuple.Create(" value=\"", 4195), Tuple.Create("\"", 4213)
             
             #line 77 "..\..\Areas\manage\Views\Article\List.cshtml"
-, Tuple.Create(Tuple.Create("", 4192), Tuple.Create<System.Object, System.Int32>(caItem.Id
+, Tuple.Create(Tuple.Create("", 4203), Tuple.Create<System.Object, System.Int32>(caItem.Id
             
             #line default
             #line hidden
-, 4192), false)
+, 4203), false)
 );
 
 WriteLiteral(">");

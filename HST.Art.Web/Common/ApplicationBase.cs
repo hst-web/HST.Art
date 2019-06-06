@@ -37,6 +37,13 @@ namespace HST.Art.Web
                     filterContext.HttpContext.Response.End();
                 }
             }
+            else if(string.IsNullOrEmpty(CookiesEvent.GetCookies(SetCurrentCookies, "accountInfo")))
+            {
+                RemoveStoredData();
+                filterContext.Result = new EmptyResult();
+                filterContext.HttpContext.Response.Write("<script>top.location ='/manage/account/login';</script>");
+                filterContext.HttpContext.Response.End();
+            }
         }
 
         /// <summary>

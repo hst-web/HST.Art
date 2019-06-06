@@ -25,8 +25,8 @@
         @Html.AntiForgeryToken()
         @Html.HiddenFor(m => m.Id)
         <div class="row cl">
-            <label class="form-label col-md-2 "><span class="c-red">*</span>文章头图：</label>
-            <div class="formControls col-md-6 ">
+            <label class="form-label col-sm-2 "><span class="c-red">*</span>文章头图：</label>
+            <div class="formControls col-sm-6 ">
                 <div class="form-group" @(string.IsNullOrEmpty(Model.HeadImg) ? "" : "style=position:relative")>
                     <div id="upfileImg" class="up-img-left @(string.IsNullOrEmpty(Model.HeadImg) ?"":"up-imgBtn")">
                         @(string.IsNullOrEmpty(Model.HeadImg) ? "上传图片" : "更改图片")
@@ -34,7 +34,12 @@
                     <span class="help-block help-tip help-img @(string.IsNullOrEmpty(Model.HeadImg) ?"":"hidden")" style="top:8px;position:absolute">请上传jpg、jpeg、gif、bmp、png等图片类型的文件</span>
                     <div class="formControls">
                         <ul id="imglist" class="">
-                            <li><img src="@Model.SmallHeadImg" /></li>
+                            <li>
+                                @if (!string.IsNullOrEmpty(Model.SmallHeadImg))
+                                {
+                                    <img src="@Model.SmallHeadImg" style="max-width:125px" onerror='nofind()' />
+                                }
+                            </li>
                         </ul>
                         <input type="hidden" id="loc_temp_img" />
                     </div>
@@ -44,8 +49,8 @@
             </div>
         </div>
         <div class="row cl">
-            <label class="form-label col-md-2 "><span class="c-red">*</span>所属模块：</label>
-            <div class="formControls col-md-3 ">
+            <label class="form-label col-sm-2 "><span class="c-red">*</span>所属模块：</label>
+            <div class="formControls col-sm-3 ">
                 <select class="select select-box" name="Section" id="sel_section" onchange="bindData()">
                     <option value="@((int)SectionType.Industry)" @(Model.Section == SectionType.Industry ? "selected" : "")>@SectionType.Industry.GetDescription()</option>
                     <option value="@((int)SectionType.Association)" @(Model.Section == SectionType.Association ? "selected" : "")>@SectionType.Association.GetDescription()</option>
@@ -53,8 +58,8 @@
                     <option value="@((int)SectionType.Social)" @(Model.Section == SectionType.Social ? "selected" : "")>@SectionType.Social.GetDescription()</option>
                 </select>
             </div>
-            <label class="form-label col-md-1 "><span class="c-red">*</span>所属类别：</label>
-            <div class="formControls col-md-4 ">
+            <label class="form-label col-sm-1 "><span class="c-red">*</span>所属类别：</label>
+            <div class="formControls col-sm-4 ">
                 <select class="select select-box inline @(Model.Section==SectionType.Examination?"":"hidden")" style="width:47%;" id="sel_parCategory">
                     <option value="0">所属大类</option>
                     @foreach (CategoryDictionary item in ViewBag.ParentCategory)

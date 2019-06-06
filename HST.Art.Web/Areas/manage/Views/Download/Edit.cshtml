@@ -33,8 +33,13 @@
                     </div>
                     <span class="help-block help-tip help-img @(string.IsNullOrEmpty(Model.FileImg)?"":"hidden")" style="top:8px;position:absolute">请上传jpg、jpeg、gif、bmp、png等图片类型的文件</span>
                     <div class="formControls">
-                        <ul id="imglist" class="">
-                            <li><img src="@Model.SmallFileImg" /></li>
+                        <ul id="imglist" class="">                        
+                            <li>
+                                @if (!string.IsNullOrEmpty(Model.SmallFileImg))
+                                {
+                                    <img src="@Model.SmallFileImg" style="max-width:125px" onerror='nofind()' />
+                                }
+                            </li>
                         </ul>
                         <input type="hidden" id="loc_temp_img" />
                     </div>

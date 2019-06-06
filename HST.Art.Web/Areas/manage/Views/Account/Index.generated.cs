@@ -183,7 +183,7 @@ WriteLiteral(" class=\"row cl\"");
 
 WriteLiteral(">\r\n                        <label");
 
-WriteLiteral(" class=\"form-label col-xs-2 col-md-1\"");
+WriteLiteral(" class=\"form-label col-xs-2\"");
 
 WriteLiteral(">\r\n                            用户名：\r\n                        </label>\r\n          " +
 "              <div");
@@ -209,7 +209,7 @@ WriteLiteral(" class=\"row cl\"");
 
 WriteLiteral(">\r\n                        <label");
 
-WriteLiteral(" class=\"form-label col-xs-2 col-md-1\"");
+WriteLiteral(" class=\"form-label col-xs-2 \"");
 
 WriteLiteral("><span");
 
@@ -218,7 +218,7 @@ WriteLiteral(" class=\"c-red\"");
 WriteLiteral(">*</span>\r\n                            姓名：\r\n                        </label>\r\n   " +
 "                     <div");
 
-WriteLiteral(" class=\"formControls text col-md-3\"");
+WriteLiteral(" class=\"formControls text col-xs-3\"");
 
 WriteLiteral(">\r\n");
 
@@ -250,7 +250,7 @@ WriteLiteral(" class=\"row cl\"");
 
 WriteLiteral(">\r\n                        <label");
 
-WriteLiteral(" class=\"form-label col-xs-2 col-md-1\"");
+WriteLiteral(" class=\"form-label col-xs-2\"");
 
 WriteLiteral("><span");
 
@@ -259,7 +259,7 @@ WriteLiteral(" class=\"c-red\"");
 WriteLiteral(">*</span>\r\n                            手机：\r\n                        </label>\r\n   " +
 "                     <div");
 
-WriteLiteral(" class=\"formControls text col-md-3\"");
+WriteLiteral(" class=\"formControls text col-xs-3\"");
 
 WriteLiteral(">\r\n");
 
@@ -291,12 +291,12 @@ WriteLiteral(" class=\"row cl\"");
 
 WriteLiteral(">\r\n                        <label");
 
-WriteLiteral(" class=\"form-label col-xs-2 col-md-1\"");
+WriteLiteral(" class=\"form-label col-xs-2 \"");
 
 WriteLiteral(">\r\n                            邮箱：\r\n                        </label>\r\n           " +
 "             <div");
 
-WriteLiteral(" class=\"formControls text col-md-3\"");
+WriteLiteral(" class=\"formControls text col-xs-3\"");
 
 WriteLiteral(">\r\n");
 
@@ -330,7 +330,7 @@ WriteLiteral(">\r\n                        <div");
 
 WriteLiteral(" id=\"btn_submit\"");
 
-WriteLiteral(" class=\"col-xs-6  col-xs-offset-3 col-sm-offset-1 mt-10\"");
+WriteLiteral(" class=\"col-xs-6  col-xs-offset-2  mt-10\"");
 
 WriteLiteral(">\r\n                            <button");
 
@@ -360,13 +360,15 @@ WriteLiteral(">\r\n                <form");
 
 WriteLiteral(" id=\"form-admin\"");
 
+WriteLiteral(" class=\"form-horizontal\"");
+
 WriteLiteral(">\r\n                    <div");
 
 WriteLiteral(" class=\"row cl\"");
 
 WriteLiteral(">\r\n                        <label");
 
-WriteLiteral(" class=\"form-label col-xs-2 col-md-1\"");
+WriteLiteral(" class=\"form-label col-xs-2 \"");
 
 WriteLiteral("><span");
 
@@ -374,7 +376,7 @@ WriteLiteral(" class=\"c-red\"");
 
 WriteLiteral(">*</span>原密码：</label>\r\n                        <div");
 
-WriteLiteral(" class=\"formControls col-xs-8 col-md-3\"");
+WriteLiteral(" class=\"formControls  col-xs-3\"");
 
 WriteLiteral(">\r\n                            <input");
 
@@ -399,7 +401,7 @@ WriteLiteral(" class=\"row cl\"");
 
 WriteLiteral(">\r\n                        <label");
 
-WriteLiteral(" class=\"form-label col-xs-2 col-md-1\"");
+WriteLiteral(" class=\"form-label col-xs-2\"");
 
 WriteLiteral("><span");
 
@@ -407,7 +409,7 @@ WriteLiteral(" class=\"c-red\"");
 
 WriteLiteral(">*</span>新密码：</label>\r\n                        <div");
 
-WriteLiteral(" class=\"formControls col-xs-8 col-md-3\"");
+WriteLiteral(" class=\"formControls  col-xs-3\"");
 
 WriteLiteral(">\r\n                            <input");
 
@@ -432,7 +434,7 @@ WriteLiteral(" class=\"row cl\"");
 
 WriteLiteral(">\r\n                        <label");
 
-WriteLiteral(" class=\"form-label col-xs-2 col-md-1\"");
+WriteLiteral(" class=\"form-label col-xs-2\"");
 
 WriteLiteral(" style=\"padding-right:0px\"");
 
@@ -442,7 +444,7 @@ WriteLiteral(" class=\"c-red\"");
 
 WriteLiteral(">*</span>确认密码：</label>\r\n                        <div");
 
-WriteLiteral(" class=\"formControls col-xs-8 col-md-3\"");
+WriteLiteral(" class=\"formControls col-xs-3\"");
 
 WriteLiteral(">\r\n                            <input");
 
@@ -465,7 +467,7 @@ WriteLiteral(" class=\"row cl\"");
 
 WriteLiteral(">\r\n                        <div");
 
-WriteLiteral(" class=\"col-xs-8 col-md-3 col-xs-offset-4 col-sm-offset-1 mt-10\"");
+WriteLiteral(" class=\"col-xs-8  col-xs-offset-2  mt-10\"");
 
 WriteLiteral(">\r\n                            <button");
 

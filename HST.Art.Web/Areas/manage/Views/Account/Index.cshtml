@@ -31,7 +31,7 @@
                     @Html.AntiForgeryToken()
                     @Html.HiddenFor(m => m.Id)
                     <div class="row cl">
-                        <label class="form-label col-xs-2 col-md-1">
+                        <label class="form-label col-xs-2">
                             用户名：
                         </label>
                         <div class="formControls text col-xs-6">
@@ -39,61 +39,61 @@
                         </div>
                     </div>
                     <div class="row cl">
-                        <label class="form-label col-xs-2 col-md-1"><span class="c-red">*</span>
+                        <label class="form-label col-xs-2 "><span class="c-red">*</span>
                             姓名：
                         </label>
-                        <div class="formControls text col-md-3">
+                        <div class="formControls text col-xs-3">
                             @Html.TextBoxFor(m => m.RealName, new { placeholder = "请输入姓名", @class = "input-text" })
                             @Html.ValidationMessageFor(m => m.RealName, null, new { @class = "error-lable" })
                         </div>
                     </div>
                     <div class="row cl">
-                        <label class="form-label col-xs-2 col-md-1"><span class="c-red">*</span>
+                        <label class="form-label col-xs-2"><span class="c-red">*</span>
                             手机：
                         </label>
-                        <div class="formControls text col-md-3">
+                        <div class="formControls text col-xs-3">
                             @Html.TextBoxFor(m => m.Phone, new { placeholder = "请输入手机号", @class = "input-text" })
                             @Html.ValidationMessageFor(m => m.Phone, null, new { @class = "error-lable" })
                         </div>
                     </div>
                     <div class="row cl">
-                        <label class="form-label col-xs-2 col-md-1">
+                        <label class="form-label col-xs-2 ">
                             邮箱：
                         </label>
-                        <div class="formControls text col-md-3">
+                        <div class="formControls text col-xs-3">
                             @Html.TextBoxFor(m => m.Email, new { placeholder = "请输入邮箱", @class = "input-text" })
                             @Html.ValidationMessageFor(m => m.Email, null, new { @class = "error-lable" })
                         </div>
                     </div>
                     <div class="row cl">
-                        <div id="btn_submit" class="col-xs-6  col-xs-offset-3 col-sm-offset-1 mt-10">
+                        <div id="btn_submit" class="col-xs-6  col-xs-offset-2  mt-10">
                             <button class="btn btn-primary radius" type="submit" id="sub_btn">保存</button>                         
                         </div>
                     </div>
                 }
             </div>
             <div class="tabCon user-wrap" style="display: none;">
-                <form id="form-admin">
+                <form id="form-admin" class="form-horizontal">
                     <div class="row cl">
-                        <label class="form-label col-xs-2 col-md-1"><span class="c-red">*</span>原密码：</label>
-                        <div class="formControls col-xs-8 col-md-3">
+                        <label class="form-label col-xs-2 "><span class="c-red">*</span>原密码：</label>
+                        <div class="formControls  col-xs-3">
                             <input type="password" class="input-text" autocomplete="off" value="" placeholder="原密码" id="oldPwd" name="oldPwd">
                         </div>
                     </div>
                     <div class="row cl">
-                        <label class="form-label col-xs-2 col-md-1"><span class="c-red">*</span>新密码：</label>
-                        <div class="formControls col-xs-8 col-md-3">
+                        <label class="form-label col-xs-2"><span class="c-red">*</span>新密码：</label>
+                        <div class="formControls  col-xs-3">
                             <input type="password" class="input-text" autocomplete="off" value="" placeholder="新密码" id="newPwd" name="newPwd">
                         </div>
                     </div>
                     <div class="row cl">
-                        <label class="form-label col-xs-2 col-md-1" style="padding-right:0px"><span class="c-red">*</span>确认密码：</label>
-                        <div class="formControls col-xs-8 col-md-3">
+                        <label class="form-label col-xs-2" style="padding-right:0px"><span class="c-red">*</span>确认密码：</label>
+                        <div class="formControls col-xs-3">
                             <input type="password" class="input-text" autocomplete="off" placeholder="确认新密码" id="renewPwd" name="renewPwd">
                         </div>
                     </div>
                     <div class="row cl">
-                        <div class="col-xs-8 col-md-3 col-xs-offset-4 col-sm-offset-1 mt-10">
+                        <div class="col-xs-8  col-xs-offset-2  mt-10">
                             <button class="btn btn-primary radius" type="submit">修改</button>
                         </div>
                     </div>

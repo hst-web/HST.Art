@@ -68,9 +68,9 @@
     </div>
     <div class="hidden">
         <select id="sel_examination">
+            <option value="">请选择所属类别</option>
             @foreach (KeyValuePair<CategoryDictionary, List<CategoryDictionary>> item in ViewBag.ExamCategory)
-            {
-                <option value="">请选择所属类别</option>
+            {               
                 <optgroup label="@item.Key.Name">
                     @foreach (CategoryDictionary caItem in item.Value)
                 {

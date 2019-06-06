@@ -101,9 +101,9 @@ Write(Styles.Render("~/appcss"));
             #line hidden
 WriteLiteral("\r\n<script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 267), Tuple.Create("\"", 323)
-, Tuple.Create(Tuple.Create("", 273), Tuple.Create<System.Object, System.Int32>(Href("~/Content/lib/webuploader/0.1.5/webuploader.min.js")
-, 273), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 269), Tuple.Create("\"", 325)
+, Tuple.Create(Tuple.Create("", 275), Tuple.Create<System.Object, System.Int32>(Href("~/Content/lib/webuploader/0.1.5/webuploader.min.js")
+, 275), false)
 );
 
 WriteLiteral(" type=\"text/javascript\"");
@@ -112,9 +112,9 @@ WriteLiteral("></script>\r\n<script");
 
 WriteLiteral(" type=\"text/javascript\"");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 389), Tuple.Create("\"", 429)
-, Tuple.Create(Tuple.Create("", 395), Tuple.Create<System.Object, System.Int32>(Href("~/Content/lib/ckeditor/ckeditor.js")
-, 395), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 391), Tuple.Create("\"", 431)
+, Tuple.Create(Tuple.Create("", 397), Tuple.Create<System.Object, System.Int32>(Href("~/Content/lib/ckeditor/ckeditor.js")
+, 397), false)
 );
 
 WriteLiteral("></script>\r\n<style");
@@ -234,15 +234,15 @@ WriteLiteral(">\r\n                    <div");
 
 WriteLiteral(" id=\"upfileImg\"");
 
-WriteAttribute("class", Tuple.Create(" class=\"", 1478), Tuple.Create("\"", 1551)
-, Tuple.Create(Tuple.Create("", 1486), Tuple.Create("up-img-left", 1486), true)
+WriteAttribute("class", Tuple.Create(" class=\"", 1480), Tuple.Create("\"", 1553)
+, Tuple.Create(Tuple.Create("", 1488), Tuple.Create("up-img-left", 1488), true)
             
             #line 31 "..\..\Areas\manage\Views\Download\Edit.cshtml"
-, Tuple.Create(Tuple.Create(" ", 1497), Tuple.Create<System.Object, System.Int32>(string.IsNullOrEmpty(Model.FileImg)?"":"up-imgBtn"
+, Tuple.Create(Tuple.Create(" ", 1499), Tuple.Create<System.Object, System.Int32>(string.IsNullOrEmpty(Model.FileImg)?"":"up-imgBtn"
             
             #line default
             #line hidden
-, 1498), false)
+, 1500), false)
 );
 
 WriteLiteral(">\r\n");
@@ -258,17 +258,17 @@ WriteLiteral("                        ");
             #line hidden
 WriteLiteral("\r\n                    </div>\r\n                    <span");
 
-WriteAttribute("class", Tuple.Create(" class=\"", 1690), Tuple.Create("\"", 1777)
-, Tuple.Create(Tuple.Create("", 1698), Tuple.Create("help-block", 1698), true)
-, Tuple.Create(Tuple.Create(" ", 1708), Tuple.Create("help-tip", 1709), true)
-, Tuple.Create(Tuple.Create(" ", 1717), Tuple.Create("help-img", 1718), true)
+WriteAttribute("class", Tuple.Create(" class=\"", 1692), Tuple.Create("\"", 1779)
+, Tuple.Create(Tuple.Create("", 1700), Tuple.Create("help-block", 1700), true)
+, Tuple.Create(Tuple.Create(" ", 1710), Tuple.Create("help-tip", 1711), true)
+, Tuple.Create(Tuple.Create(" ", 1719), Tuple.Create("help-img", 1720), true)
             
             #line 34 "..\..\Areas\manage\Views\Download\Edit.cshtml"
-, Tuple.Create(Tuple.Create(" ", 1726), Tuple.Create<System.Object, System.Int32>(string.IsNullOrEmpty(Model.FileImg)?"":"hidden"
+, Tuple.Create(Tuple.Create(" ", 1728), Tuple.Create<System.Object, System.Int32>(string.IsNullOrEmpty(Model.FileImg)?"":"hidden"
             
             #line default
             #line hidden
-, 1727), false)
+, 1729), false)
 );
 
 WriteLiteral(" style=\"top:8px;position:absolute\"");
@@ -283,19 +283,49 @@ WriteLiteral(" id=\"imglist\"");
 
 WriteLiteral(" class=\"\"");
 
-WriteLiteral(">\r\n                            <li><img");
+WriteLiteral(">                        \r\n                            <li>\r\n");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 1989), Tuple.Create("\"", 2014)
             
-            #line 37 "..\..\Areas\manage\Views\Download\Edit.cshtml"
-, Tuple.Create(Tuple.Create("", 1995), Tuple.Create<System.Object, System.Int32>(Model.SmallFileImg
+            #line 38 "..\..\Areas\manage\Views\Download\Edit.cshtml"
+                                
             
             #line default
             #line hidden
-, 1995), false)
+            
+            #line 38 "..\..\Areas\manage\Views\Download\Edit.cshtml"
+                                 if (!string.IsNullOrEmpty(Model.SmallFileImg))
+                                {
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                                    <img");
+
+WriteAttribute("src", Tuple.Create(" src=\"", 2169), Tuple.Create("\"", 2194)
+            
+            #line 40 "..\..\Areas\manage\Views\Download\Edit.cshtml"
+, Tuple.Create(Tuple.Create("", 2175), Tuple.Create<System.Object, System.Int32>(Model.SmallFileImg
+            
+            #line default
+            #line hidden
+, 2175), false)
 );
 
-WriteLiteral(" /></li>\r\n                        </ul>\r\n                        <input");
+WriteLiteral(" style=\"max-width:125px\"");
+
+WriteLiteral(" onerror=\'nofind()\'");
+
+WriteLiteral(" />\r\n");
+
+            
+            #line 41 "..\..\Areas\manage\Views\Download\Edit.cshtml"
+                                }
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                            </li>\r\n                        </ul>\r\n               " +
+"         <input");
 
 WriteLiteral(" type=\"hidden\"");
 
@@ -306,7 +336,7 @@ WriteLiteral(" />\r\n                    </div>\r\n                </div>\r\n");
 WriteLiteral("                ");
 
             
-            #line 42 "..\..\Areas\manage\Views\Download\Edit.cshtml"
+            #line 47 "..\..\Areas\manage\Views\Download\Edit.cshtml"
            Write(Html.ValidationMessageFor(m => m.FileImg, null, new { @class = "error-lable" }));
 
             
@@ -317,7 +347,7 @@ WriteLiteral("\r\n");
 WriteLiteral("                ");
 
             
-            #line 43 "..\..\Areas\manage\Views\Download\Edit.cshtml"
+            #line 48 "..\..\Areas\manage\Views\Download\Edit.cshtml"
            Write(Html.TextBoxFor(m => m.FileImg, new { id = "downFileImg", @class = "hide-area input-text" }));
 
             
@@ -354,13 +384,13 @@ WriteLiteral(" value=\"\"");
 WriteLiteral(">请选择所属类别</option>\r\n");
 
             
-            #line 51 "..\..\Areas\manage\Views\Download\Edit.cshtml"
+            #line 56 "..\..\Areas\manage\Views\Download\Edit.cshtml"
                     
             
             #line default
             #line hidden
             
-            #line 51 "..\..\Areas\manage\Views\Download\Edit.cshtml"
+            #line 56 "..\..\Areas\manage\Views\Download\Edit.cshtml"
                      foreach (CategoryDictionary item in ViewBag.AllCategory)
                     {
 
@@ -370,7 +400,7 @@ WriteLiteral(">请选择所属类别</option>\r\n");
 WriteLiteral("                        <option ");
 
             
-            #line 53 "..\..\Areas\manage\Views\Download\Edit.cshtml"
+            #line 58 "..\..\Areas\manage\Views\Download\Edit.cshtml"
                             Write(item.Id == Model.Category ? "selected" : "");
 
             
@@ -379,7 +409,7 @@ WriteLiteral("                        <option ");
 WriteLiteral(" value=\"");
 
             
-            #line 53 "..\..\Areas\manage\Views\Download\Edit.cshtml"
+            #line 58 "..\..\Areas\manage\Views\Download\Edit.cshtml"
                                                                                  Write(item.Id);
 
             
@@ -388,7 +418,7 @@ WriteLiteral(" value=\"");
 WriteLiteral("\">");
 
             
-            #line 53 "..\..\Areas\manage\Views\Download\Edit.cshtml"
+            #line 58 "..\..\Areas\manage\Views\Download\Edit.cshtml"
                                                                                            Write(item.Name);
 
             
@@ -397,7 +427,7 @@ WriteLiteral("\">");
 WriteLiteral("</option>\r\n");
 
             
-            #line 54 "..\..\Areas\manage\Views\Download\Edit.cshtml"
+            #line 59 "..\..\Areas\manage\Views\Download\Edit.cshtml"
                     }
 
             
@@ -408,7 +438,7 @@ WriteLiteral("                </select>\r\n");
 WriteLiteral("                ");
 
             
-            #line 56 "..\..\Areas\manage\Views\Download\Edit.cshtml"
+            #line 61 "..\..\Areas\manage\Views\Download\Edit.cshtml"
            Write(Html.ValidationMessageFor(m => m.Category, null, new { @class = "error-lable" }));
 
             
@@ -419,7 +449,7 @@ WriteLiteral("\r\n");
 WriteLiteral("                ");
 
             
-            #line 57 "..\..\Areas\manage\Views\Download\Edit.cshtml"
+            #line 62 "..\..\Areas\manage\Views\Download\Edit.cshtml"
            Write(Html.TextBoxFor(m => m.Category, new { @class = "hide-area input-text" }));
 
             
@@ -448,7 +478,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                ");
 
             
-            #line 64 "..\..\Areas\manage\Views\Download\Edit.cshtml"
+            #line 69 "..\..\Areas\manage\Views\Download\Edit.cshtml"
            Write(Html.TextBoxFor(m => m.FileTitle, new { placeholder = "请输入下载标题", @class = "input-text" }));
 
             
@@ -459,7 +489,7 @@ WriteLiteral("\r\n");
 WriteLiteral("                ");
 
             
-            #line 65 "..\..\Areas\manage\Views\Download\Edit.cshtml"
+            #line 70 "..\..\Areas\manage\Views\Download\Edit.cshtml"
            Write(Html.ValidationMessageFor(m => m.FileTitle, null, new { @class = "error-lable" }));
 
             
@@ -496,17 +526,17 @@ WriteLiteral(" style=\"float:left\"");
 WriteLiteral(">\r\n                        本地上传\r\n                    </div>\r\n                    " +
 "<span");
 
-WriteAttribute("class", Tuple.Create(" class=\"", 3980), Tuple.Create("\"", 4069)
-, Tuple.Create(Tuple.Create("", 3988), Tuple.Create("help-block", 3988), true)
-, Tuple.Create(Tuple.Create(" ", 3998), Tuple.Create("help-tip", 3999), true)
-, Tuple.Create(Tuple.Create(" ", 4007), Tuple.Create("help-file", 4008), true)
+WriteAttribute("class", Tuple.Create(" class=\"", 4268), Tuple.Create("\"", 4357)
+, Tuple.Create(Tuple.Create("", 4276), Tuple.Create("help-block", 4276), true)
+, Tuple.Create(Tuple.Create(" ", 4286), Tuple.Create("help-tip", 4287), true)
+, Tuple.Create(Tuple.Create(" ", 4295), Tuple.Create("help-file", 4296), true)
             
-            #line 75 "..\..\Areas\manage\Views\Download\Edit.cshtml"
-, Tuple.Create(Tuple.Create(" ", 4017), Tuple.Create<System.Object, System.Int32>(string.IsNullOrEmpty(Model.FileName)?"":"hidden"
+            #line 80 "..\..\Areas\manage\Views\Download\Edit.cshtml"
+, Tuple.Create(Tuple.Create(" ", 4305), Tuple.Create<System.Object, System.Int32>(string.IsNullOrEmpty(Model.FileName)?"":"hidden"
             
             #line default
             #line hidden
-, 4018), false)
+, 4306), false)
 );
 
 WriteLiteral(" style=\"top:8px;position:absolute\"");
@@ -524,7 +554,7 @@ WriteLiteral(" class=\"\"");
 WriteLiteral(">\r\n                            <li><span>");
 
             
-            #line 78 "..\..\Areas\manage\Views\Download\Edit.cshtml"
+            #line 83 "..\..\Areas\manage\Views\Download\Edit.cshtml"
                                  Write(Model.FileName);
 
             
@@ -541,7 +571,7 @@ WriteLiteral(" />\r\n                    </div>\r\n                </div>\r\n");
 WriteLiteral("                ");
 
             
-            #line 83 "..\..\Areas\manage\Views\Download\Edit.cshtml"
+            #line 88 "..\..\Areas\manage\Views\Download\Edit.cshtml"
            Write(Html.ValidationMessageFor(m => m.Src, null, new { @class = "error-lable" }));
 
             
@@ -552,7 +582,7 @@ WriteLiteral("\r\n");
 WriteLiteral("                ");
 
             
-            #line 84 "..\..\Areas\manage\Views\Download\Edit.cshtml"
+            #line 89 "..\..\Areas\manage\Views\Download\Edit.cshtml"
            Write(Html.TextBoxFor(m => m.Src, new { id = "file_src", @class = "hide-area input-text" }));
 
             
@@ -577,7 +607,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                ");
 
             
-            #line 90 "..\..\Areas\manage\Views\Download\Edit.cshtml"
+            #line 95 "..\..\Areas\manage\Views\Download\Edit.cshtml"
            Write(Html.TextAreaFor(m => m.Description, new { @class = "ckeditor textarea", rows = "10", placeholder = "请输入附件详情..." }));
 
             
@@ -610,7 +640,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                        ");
 
             
-            #line 98 "..\..\Areas\manage\Views\Download\Edit.cshtml"
+            #line 103 "..\..\Areas\manage\Views\Download\Edit.cshtml"
                    Write(Html.RadioButtonFor(m => m.State, (int)PublishState.Upper, new { id = "" }));
 
             
@@ -625,7 +655,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                        ");
 
             
-            #line 101 "..\..\Areas\manage\Views\Download\Edit.cshtml"
+            #line 106 "..\..\Areas\manage\Views\Download\Edit.cshtml"
                    Write(Html.RadioButtonFor(m => m.State, (int)PublishState.Lower, new { id = "" }));
 
             
@@ -658,7 +688,7 @@ WriteLiteral(">保存</button>\r\n");
 WriteLiteral("                ");
 
             
-            #line 113 "..\..\Areas\manage\Views\Download\Edit.cshtml"
+            #line 118 "..\..\Areas\manage\Views\Download\Edit.cshtml"
            Write(Html.ActionLink("取消", "List", null, new { @class = "btn btn-default radius" }));
 
             
@@ -667,7 +697,7 @@ WriteLiteral("                ");
 WriteLiteral("\r\n            </div>\r\n        </div>\r\n");
 
             
-            #line 116 "..\..\Areas\manage\Views\Download\Edit.cshtml"
+            #line 121 "..\..\Areas\manage\Views\Download\Edit.cshtml"
 
 
             
@@ -682,7 +712,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("            ");
 
             
-            #line 118 "..\..\Areas\manage\Views\Download\Edit.cshtml"
+            #line 123 "..\..\Areas\manage\Views\Download\Edit.cshtml"
        Write(Html.HiddenFor(m => m.FileName, new { id = "file_name" }));
 
             
@@ -693,7 +723,7 @@ WriteLiteral("\r\n");
 WriteLiteral("            ");
 
             
-            #line 119 "..\..\Areas\manage\Views\Download\Edit.cshtml"
+            #line 124 "..\..\Areas\manage\Views\Download\Edit.cshtml"
        Write(Html.HiddenFor(m => m.Extension, new { id = "file_extension" }));
 
             
@@ -704,7 +734,7 @@ WriteLiteral("\r\n");
 WriteLiteral("            ");
 
             
-            #line 120 "..\..\Areas\manage\Views\Download\Edit.cshtml"
+            #line 125 "..\..\Areas\manage\Views\Download\Edit.cshtml"
        Write(Html.HiddenFor(m => m.FileType));
 
             
@@ -713,7 +743,7 @@ WriteLiteral("            ");
 WriteLiteral("\r\n        </div>\r\n");
 
             
-            #line 122 "..\..\Areas\manage\Views\Download\Edit.cshtml"
+            #line 127 "..\..\Areas\manage\Views\Download\Edit.cshtml"
     }
 
             
@@ -728,7 +758,7 @@ WriteLiteral(">\r\n    $(function () {\r\n        var editor = CKEDITOR.replace(
 "     filebrowserImageUploadUrl: \"");
 
             
-            #line 131 "..\..\Areas\manage\Views\Download\Edit.cshtml"
+            #line 136 "..\..\Areas\manage\Views\Download\Edit.cshtml"
                                      Write(Url.Action("UploadEditer", "Upload"));
 
             
@@ -751,7 +781,7 @@ WriteLiteral(@"""
                         window.location = '");
 
             
-            #line 145 "..\..\Areas\manage\Views\Download\Edit.cshtml"
+            #line 150 "..\..\Areas\manage\Views\Download\Edit.cshtml"
                                       Write(Url.Action("List", "Download"));
 
             
@@ -815,7 +845,7 @@ WriteLiteral(@">
             server: jq_uploadFormData.BidFileDomain + '");
 
             
-            #line 196 "..\..\Areas\manage\Views\Download\Edit.cshtml"
+            #line 201 "..\..\Areas\manage\Views\Download\Edit.cshtml"
                                                   Write(Url.Action("Upload", "Upload"));
 
             
@@ -925,7 +955,7 @@ WriteLiteral(@">
             server: jq_imgFormData.BidFileDomain + '");
 
             
-            #line 357 "..\..\Areas\manage\Views\Download\Edit.cshtml"
+            #line 362 "..\..\Areas\manage\Views\Download\Edit.cshtml"
                                                Write(Url.Action("Upload", "Upload"));
 
             

@@ -207,7 +207,7 @@ WriteLiteral(" class=\"row cl\"");
 
 WriteLiteral(">\r\n            <label");
 
-WriteLiteral(" class=\"form-label col-md-2 \"");
+WriteLiteral(" class=\"form-label col-sm-2 \"");
 
 WriteLiteral("><span");
 
@@ -215,7 +215,7 @@ WriteLiteral(" class=\"c-red\"");
 
 WriteLiteral(">*</span>单位头图：</label>\r\n            <div");
 
-WriteLiteral(" class=\"formControls col-md-6 \"");
+WriteLiteral(" class=\"formControls col-sm-6 \"");
 
 WriteLiteral(">\r\n                <div");
 
@@ -283,19 +283,49 @@ WriteLiteral(" id=\"imglist\"");
 
 WriteLiteral(" class=\"\"");
 
-WriteLiteral(">\r\n                            <li><img");
+WriteLiteral(">\r\n                            <li>\r\n");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 1999), Tuple.Create("\"", 2024)
             
-            #line 37 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
-, Tuple.Create(Tuple.Create("", 2005), Tuple.Create<System.Object, System.Int32>(Model.SmallHeadImg
+            #line 38 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
+                                
             
             #line default
             #line hidden
-, 2005), false)
+            
+            #line 38 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
+                                 if (!string.IsNullOrEmpty(Model.SmallHeadImg))
+                                {
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                                    <img");
+
+WriteAttribute("src", Tuple.Create(" src=\"", 2153), Tuple.Create("\"", 2178)
+            
+            #line 40 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
+, Tuple.Create(Tuple.Create("", 2159), Tuple.Create<System.Object, System.Int32>(Model.SmallHeadImg
+            
+            #line default
+            #line hidden
+, 2159), false)
 );
 
-WriteLiteral(" /></li>\r\n                        </ul>\r\n                        <input");
+WriteLiteral(" style=\"max-width:125px\"");
+
+WriteLiteral(" onerror=\'nofind()\'");
+
+WriteLiteral(" />\r\n");
+
+            
+            #line 41 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
+                                }
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                            </li>\r\n                        </ul>\r\n               " +
+"         <input");
 
 WriteLiteral(" type=\"hidden\"");
 
@@ -306,7 +336,7 @@ WriteLiteral(" />\r\n                    </div>\r\n                </div>\r\n");
 WriteLiteral("                ");
 
             
-            #line 42 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
+            #line 47 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
            Write(Html.ValidationMessageFor(m => m.HeadImg, null, new { @class = "error-lable" }));
 
             
@@ -317,7 +347,7 @@ WriteLiteral("\r\n");
 WriteLiteral("                ");
 
             
-            #line 43 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
+            #line 48 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
            Write(Html.TextBoxFor(m => m.HeadImg, new { id = "memberFileImg", @class = "hide-area input-text" }));
 
             
@@ -331,7 +361,7 @@ WriteLiteral(" class=\"row cl\"");
 
 WriteLiteral(">\r\n            <label");
 
-WriteLiteral(" class=\"form-label col-md-2 \"");
+WriteLiteral(" class=\"form-label col-sm-2 \"");
 
 WriteLiteral("><span");
 
@@ -339,14 +369,14 @@ WriteLiteral(" class=\"c-red\"");
 
 WriteLiteral(">*</span>单位名称：</label>\r\n            <div");
 
-WriteLiteral(" class=\"formControls col-md-3 \"");
+WriteLiteral(" class=\"formControls col-sm-3 \"");
 
 WriteLiteral(">\r\n");
 
 WriteLiteral("                ");
 
             
-            #line 49 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
+            #line 54 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
            Write(Html.TextBoxFor(m => m.MemberUnitName, new { placeholder = "请输入单位名称", @class = "input-text" }));
 
             
@@ -357,7 +387,7 @@ WriteLiteral("\r\n");
 WriteLiteral("                ");
 
             
-            #line 50 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
+            #line 55 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
            Write(Html.ValidationMessageFor(m => m.MemberUnitName, null, new { @class = "error-lable" }));
 
             
@@ -365,7 +395,7 @@ WriteLiteral("                ");
             #line hidden
 WriteLiteral("\r\n            </div>\r\n            <label");
 
-WriteLiteral(" class=\"form-label col-md-1 \"");
+WriteLiteral(" class=\"form-label col-sm-1 \"");
 
 WriteLiteral(" style=\"min-width:10%\"");
 
@@ -375,7 +405,7 @@ WriteLiteral(" class=\"c-red\"");
 
 WriteLiteral(">*</span>所在地区：</label>\r\n            <div");
 
-WriteLiteral(" class=\"formControls col-md-3 \"");
+WriteLiteral(" class=\"formControls col-sm-3 \"");
 
 WriteLiteral(">\r\n                <input");
 
@@ -383,14 +413,14 @@ WriteLiteral(" type=\"hidden\"");
 
 WriteLiteral(" name=\"Province\"");
 
-WriteAttribute("value", Tuple.Create(" value=\"", 3056), Tuple.Create("\"", 3090)
+WriteAttribute("value", Tuple.Create(" value=\"", 3318), Tuple.Create("\"", 3352)
             
-            #line 54 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
-, Tuple.Create(Tuple.Create("", 3064), Tuple.Create<System.Object, System.Int32>(Constant.DEFAULT_PROVINCE
+            #line 59 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
+, Tuple.Create(Tuple.Create("", 3326), Tuple.Create<System.Object, System.Int32>(Constant.DEFAULT_PROVINCE
             
             #line default
             #line hidden
-, 3064), false)
+, 3326), false)
 );
 
 WriteLiteral(" />\r\n                <select");
@@ -404,24 +434,24 @@ WriteLiteral(" style=\"width:45%;background:#eee\"");
 WriteLiteral(">\r\n");
 
             
-            #line 56 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
+            #line 61 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
                     
             
             #line default
             #line hidden
             
-            #line 56 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
+            #line 61 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
                      foreach (KeyValuePair<int, string> item in ViewBag.AreaProvince)
                     {
 
             
             #line default
             #line hidden
-WriteLiteral("                    <option ");
+WriteLiteral("                        <option ");
 
             
-            #line 58 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
-                        Write(Model.Province==item.Key?"selected":"");
+            #line 63 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
+                            Write(Model.Province == item.Key ? "selected" : "");
 
             
             #line default
@@ -429,8 +459,8 @@ WriteLiteral("                    <option ");
 WriteLiteral(" value=\"");
 
             
-            #line 58 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
-                                                                        Write(item.Key);
+            #line 63 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
+                                                                                  Write(item.Key);
 
             
             #line default
@@ -438,8 +468,8 @@ WriteLiteral(" value=\"");
 WriteLiteral("\">");
 
             
-            #line 58 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
-                                                                                   Write(item.Value);
+            #line 63 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
+                                                                                             Write(item.Value);
 
             
             #line default
@@ -447,7 +477,7 @@ WriteLiteral("\">");
 WriteLiteral("</option>\r\n");
 
             
-            #line 59 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
+            #line 64 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
                     }
 
             
@@ -464,24 +494,24 @@ WriteLiteral(" style=\"width:50%\"");
 WriteLiteral(">\r\n");
 
             
-            #line 62 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
+            #line 67 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
                     
             
             #line default
             #line hidden
             
-            #line 62 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
+            #line 67 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
                      foreach (KeyValuePair<int, string> item in ViewBag.AreaCity)
                 {
 
             
             #line default
             #line hidden
-WriteLiteral("                    <option ");
+WriteLiteral("                        <option ");
 
             
-            #line 64 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
-                        Write(Model.Province==item.Key?"selected":"");
+            #line 69 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
+                            Write(Model.Province == item.Key ? "selected" : "");
 
             
             #line default
@@ -489,8 +519,8 @@ WriteLiteral("                    <option ");
 WriteLiteral(" value=\"");
 
             
-            #line 64 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
-                                                                        Write(item.Key);
+            #line 69 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
+                                                                                  Write(item.Key);
 
             
             #line default
@@ -498,8 +528,8 @@ WriteLiteral(" value=\"");
 WriteLiteral("\">");
 
             
-            #line 64 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
-                                                                                   Write(item.Value);
+            #line 69 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
+                                                                                             Write(item.Value);
 
             
             #line default
@@ -507,7 +537,7 @@ WriteLiteral("\">");
 WriteLiteral("</option>\r\n");
 
             
-            #line 65 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
+            #line 70 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
                     }
 
             
@@ -521,7 +551,7 @@ WriteLiteral(" class=\"row cl\"");
 
 WriteLiteral(">\r\n            <label");
 
-WriteLiteral(" class=\"form-label col-md-2 \"");
+WriteLiteral(" class=\"form-label col-sm-2 \"");
 
 WriteLiteral("><span");
 
@@ -529,14 +559,14 @@ WriteLiteral(" class=\"c-red\"");
 
 WriteLiteral(">*</span>单位编号：</label>\r\n            <div");
 
-WriteLiteral(" class=\"formControls col-md-3 \"");
+WriteLiteral(" class=\"formControls col-sm-3 \"");
 
 WriteLiteral(">\r\n");
 
 WriteLiteral("                ");
 
             
-            #line 73 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
+            #line 78 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
            Write(Html.TextBoxFor(m => m.Number, new { placeholder = "请输入单位编号", @class = "input-text" }));
 
             
@@ -547,7 +577,7 @@ WriteLiteral("\r\n");
 WriteLiteral("                ");
 
             
-            #line 74 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
+            #line 79 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
            Write(Html.ValidationMessageFor(m => m.Number, null, new { @class = "error-lable" }));
 
             
@@ -555,7 +585,7 @@ WriteLiteral("                ");
             #line hidden
 WriteLiteral("\r\n            </div>\r\n            <label");
 
-WriteLiteral(" class=\"form-label col-md-1 \"");
+WriteLiteral(" class=\"form-label col-sm-1 \"");
 
 WriteLiteral(" style=\"min-width:10%\"");
 
@@ -565,7 +595,7 @@ WriteLiteral(" class=\"c-red\"");
 
 WriteLiteral(">*</span>单位星级：</label>\r\n            <div");
 
-WriteLiteral(" class=\"formControls col-md-3 \"");
+WriteLiteral(" class=\"formControls col-sm-3 \"");
 
 WriteLiteral(">\r\n                <select");
 
@@ -576,8 +606,8 @@ WriteLiteral(" name=\"Star\"");
 WriteLiteral(">\r\n                    <option ");
 
             
-            #line 79 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
-                        Write(Model.Star == 1 ? "selected":"");
+            #line 84 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
+                        Write(Model.Star == 1 ? "selected" : "");
 
             
             #line default
@@ -585,8 +615,8 @@ WriteLiteral(">\r\n                    <option ");
 WriteLiteral(" value=\"1\">1星</option>\r\n                    <option ");
 
             
-            #line 80 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
-                        Write(Model.Star == 2 ? "selected":"");
+            #line 85 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
+                        Write(Model.Star == 2 ? "selected" : "");
 
             
             #line default
@@ -594,8 +624,8 @@ WriteLiteral(" value=\"1\">1星</option>\r\n                    <option ");
 WriteLiteral(" value=\"2\">2星</option>\r\n                    <option ");
 
             
-            #line 81 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
-                        Write(Model.Star == 3 ? "selected":"");
+            #line 86 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
+                        Write(Model.Star == 3 ? "selected" : "");
 
             
             #line default
@@ -603,8 +633,8 @@ WriteLiteral(" value=\"2\">2星</option>\r\n                    <option ");
 WriteLiteral(" value=\"3\">3星</option>\r\n                    <option ");
 
             
-            #line 82 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
-                        Write(Model.Star == 4 ? "selected":"");
+            #line 87 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
+                        Write(Model.Star == 4 ? "selected" : "");
 
             
             #line default
@@ -612,8 +642,8 @@ WriteLiteral(" value=\"3\">3星</option>\r\n                    <option ");
 WriteLiteral(" value=\"4\">4星</option>\r\n                    <option ");
 
             
-            #line 83 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
-                        Write(Model.Star == 5 ? "selected":"");
+            #line 88 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
+                        Write(Model.Star == 5 ? "selected" : "");
 
             
             #line default
@@ -627,7 +657,7 @@ WriteLiteral(" class=\"row cl\"");
 
 WriteLiteral(">\r\n            <label");
 
-WriteLiteral(" class=\"form-label col-md-2 \"");
+WriteLiteral(" class=\"form-label col-sm-2 \"");
 
 WriteLiteral("><span");
 
@@ -635,13 +665,11 @@ WriteLiteral(" class=\"c-red\"");
 
 WriteLiteral(">*</span>所属类别：</label>\r\n            <div");
 
-WriteLiteral(" class=\"formControls col-md-3 \"");
+WriteLiteral(" class=\"formControls col-sm-3 \"");
 
 WriteLiteral(">\r\n                <select");
 
 WriteLiteral(" class=\"select select-box\"");
-
-WriteLiteral(" style=\"min-width:250px\"");
 
 WriteLiteral(" id=\"sel_type\"");
 
@@ -652,13 +680,13 @@ WriteLiteral(" value=\"\"");
 WriteLiteral(">请选择所属类别</option>\r\n");
 
             
-            #line 92 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
+            #line 97 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
                     
             
             #line default
             #line hidden
             
-            #line 92 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
+            #line 97 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
                      foreach (CategoryDictionary item in ViewBag.AllCategory)
                     {
 
@@ -668,7 +696,7 @@ WriteLiteral(">请选择所属类别</option>\r\n");
 WriteLiteral("                        <option ");
 
             
-            #line 94 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
+            #line 99 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
                             Write(item.Id == Model.Category ? "selected" : "");
 
             
@@ -677,7 +705,7 @@ WriteLiteral("                        <option ");
 WriteLiteral(" value=\"");
 
             
-            #line 94 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
+            #line 99 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
                                                                                  Write(item.Id);
 
             
@@ -686,7 +714,7 @@ WriteLiteral(" value=\"");
 WriteLiteral("\">");
 
             
-            #line 94 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
+            #line 99 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
                                                                                            Write(item.Name);
 
             
@@ -695,7 +723,7 @@ WriteLiteral("\">");
 WriteLiteral("</option>\r\n");
 
             
-            #line 95 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
+            #line 100 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
                     }
 
             
@@ -706,7 +734,7 @@ WriteLiteral("                </select>\r\n");
 WriteLiteral("                ");
 
             
-            #line 97 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
+            #line 102 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
            Write(Html.ValidationMessageFor(m => m.Category, null, new { @class = "error-lable" }));
 
             
@@ -717,7 +745,7 @@ WriteLiteral("\r\n");
 WriteLiteral("                ");
 
             
-            #line 98 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
+            #line 103 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
            Write(Html.TextBoxFor(m => m.Category, new { @class = "hide-area input-text" }));
 
             
@@ -725,7 +753,7 @@ WriteLiteral("                ");
             #line hidden
 WriteLiteral("\r\n            </div>\r\n            <label");
 
-WriteLiteral(" class=\"form-label col-md-1 \"");
+WriteLiteral(" class=\"form-label col-sm-1 \"");
 
 WriteLiteral(" style=\"min-width:10%\"");
 
@@ -735,7 +763,7 @@ WriteLiteral(" class=\"c-red\"");
 
 WriteLiteral(">*</span>状态：</label>\r\n            <div");
 
-WriteLiteral(" class=\"formControls col-md-3 \"");
+WriteLiteral(" class=\"formControls col-sm-3 \"");
 
 WriteLiteral(">\r\n                <select");
 
@@ -746,7 +774,7 @@ WriteLiteral(" name=\"State\"");
 WriteLiteral(">\r\n                    <option ");
 
             
-            #line 103 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
+            #line 108 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
                         Write(Model.State == (int)PublishState.Upper ? "selected" : "");
 
             
@@ -755,7 +783,7 @@ WriteLiteral(">\r\n                    <option ");
 WriteLiteral(" value=\"");
 
             
-            #line 103 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
+            #line 108 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
                                                                                            Write((int)PublishState.Upper);
 
             
@@ -764,7 +792,7 @@ WriteLiteral(" value=\"");
 WriteLiteral("\">上架</option>\r\n                    <option ");
 
             
-            #line 104 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
+            #line 109 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
                         Write(Model.State == (int)PublishState.Lower ? "selected" : "");
 
             
@@ -773,14 +801,13 @@ WriteLiteral("\">上架</option>\r\n                    <option ");
 WriteLiteral(" value=\"");
 
             
-            #line 104 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
+            #line 109 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
                                                                                            Write((int)PublishState.Upper);
 
             
             #line default
             #line hidden
-WriteLiteral("\">下架</option>\r\n                </select>\r\n            </div>\r\n        </div>     " +
-"       \r\n");
+WriteLiteral("\">下架</option>\r\n                </select>\r\n            </div>\r\n        </div>\r\n");
 
 WriteLiteral("        <div");
 
@@ -799,13 +826,13 @@ WriteLiteral(">\r\n");
 WriteLiteral("                ");
 
             
-            #line 111 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
+            #line 116 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
            Write(Html.TextAreaFor(m => m.Description, new { @class = "ckeditor textarea", rows = "10", placeholder = "请输入单位详情..." }));
 
             
             #line default
             #line hidden
-WriteLiteral("\r\n            </div>\r\n        </div>        \r\n");
+WriteLiteral("\r\n            </div>\r\n        </div>\r\n");
 
 WriteLiteral("        <div");
 
@@ -830,7 +857,7 @@ WriteLiteral(">保存</button>\r\n");
 WriteLiteral("                ");
 
             
-            #line 117 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
+            #line 122 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
            Write(Html.ActionLink("取消", "List", null, new { @class = "btn btn-default radius" }));
 
             
@@ -839,7 +866,7 @@ WriteLiteral("                ");
 WriteLiteral("\r\n            </div>\r\n        </div>\r\n");
 
             
-            #line 120 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
+            #line 125 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
     }
 
             
@@ -854,7 +881,7 @@ WriteLiteral(">\r\n    $(function () {\r\n        var editor = CKEDITOR.replace(
 "     filebrowserImageUploadUrl: \"");
 
             
-            #line 129 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
+            #line 134 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
                                      Write(Url.Action("UploadEditer", "Upload"));
 
             
@@ -873,11 +900,11 @@ WriteLiteral(@"""
         if (result != null) {
             if (result.isSuccess) {
                 top.layer.alert('操作成功！', {
-                    icon: 6, closeBtn: 0, yes: function () {                     
+                    icon: 6, closeBtn: 0, yes: function () {
                         window.location = '");
 
             
-            #line 143 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
+            #line 148 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
                                       Write(Url.Action("List", "MemberUnit"));
 
             
@@ -941,7 +968,7 @@ WriteLiteral(@">
             server: jq_imgFormData.BidFileDomain + '");
 
             
-            #line 194 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
+            #line 199 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
                                                Write(Url.Action("Upload", "Upload"));
 
             

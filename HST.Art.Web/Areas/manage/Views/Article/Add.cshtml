@@ -42,8 +42,8 @@
             </div>
         </div>
         <div class="row cl">
-            <label class="form-label col-md-2 "><span class="c-red">*</span>所属模块：</label>
-            <div class="formControls col-md-3 ">
+            <label class="form-label col-sm-2 "><span class="c-red">*</span>所属模块：</label>
+            <div class="formControls col-sm-3 ">
                 <select class="select select-box" name="Section" id="sel_section" onchange="bindData()">
                     <option value="@((int)SectionType.Industry)">@SectionType.Industry.GetDescription()</option>
                     <option value="@((int)SectionType.Association)">@SectionType.Association.GetDescription()</option>
@@ -51,8 +51,8 @@
                     <option value="@((int)SectionType.Social)">@SectionType.Social.GetDescription()</option>
                 </select>
             </div>
-            <label class="form-label col-md-1 "><span class="c-red">*</span>所属类别：</label>
-            <div class="formControls col-md-4 ">
+            <label class="form-label col-sm-1 "><span class="c-red">*</span>所属类别：</label>
+            <div class="formControls col-sm-4 ">
                 <select class="select select-box inline hidden" style="width:47%;" id="sel_parCategory">
                     <option value="0">所属大类</option>
                     @foreach (CategoryDictionary item in ViewBag.ParentCategory)

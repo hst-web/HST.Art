@@ -207,7 +207,7 @@ WriteLiteral(" class=\"row cl\"");
 
 WriteLiteral(">\r\n            <label");
 
-WriteLiteral(" class=\"form-label col-md-2 \"");
+WriteLiteral(" class=\"form-label col-sm-2 \"");
 
 WriteLiteral("><span");
 
@@ -215,7 +215,7 @@ WriteLiteral(" class=\"c-red\"");
 
 WriteLiteral(">*</span>单位头图：</label>\r\n            <div");
 
-WriteLiteral(" class=\"formControls col-md-6 \"");
+WriteLiteral(" class=\"formControls col-sm-6 \"");
 
 WriteLiteral(">\r\n                <div");
 
@@ -280,7 +280,7 @@ WriteLiteral(" class=\"row cl\"");
 
 WriteLiteral(">\r\n            <label");
 
-WriteLiteral(" class=\"form-label col-md-2 \"");
+WriteLiteral(" class=\"form-label col-sm-2 \"");
 
 WriteLiteral("><span");
 
@@ -288,7 +288,7 @@ WriteLiteral(" class=\"c-red\"");
 
 WriteLiteral(">*</span>单位名称：</label>\r\n            <div");
 
-WriteLiteral(" class=\"formControls col-md-3 \"");
+WriteLiteral(" class=\"formControls col-sm-3 \"");
 
 WriteLiteral(">\r\n");
 
@@ -314,7 +314,7 @@ WriteLiteral("                ");
             #line hidden
 WriteLiteral("\r\n            </div>\r\n            <label");
 
-WriteLiteral(" class=\"form-label col-md-1 \"");
+WriteLiteral(" class=\"form-label col-sm-1 \"");
 
 WriteLiteral(" style=\"min-width:10%\"");
 
@@ -324,7 +324,7 @@ WriteLiteral(" class=\"c-red\"");
 
 WriteLiteral(">*</span>所在地区：</label>\r\n            <div");
 
-WriteLiteral(" class=\"formControls col-md-3 \"");
+WriteLiteral(" class=\"formControls col-sm-3 \"");
 
 WriteLiteral(">\r\n                <input");
 
@@ -458,7 +458,7 @@ WriteLiteral(" class=\"row cl\"");
 
 WriteLiteral(">\r\n            <label");
 
-WriteLiteral(" class=\"form-label col-md-2 \"");
+WriteLiteral(" class=\"form-label col-sm-2 \"");
 
 WriteLiteral("><span");
 
@@ -466,7 +466,7 @@ WriteLiteral(" class=\"c-red\"");
 
 WriteLiteral(">*</span>单位编号：</label>\r\n            <div");
 
-WriteLiteral(" class=\"formControls col-md-3 \"");
+WriteLiteral(" class=\"formControls col-sm-3 \"");
 
 WriteLiteral(">\r\n");
 
@@ -492,7 +492,7 @@ WriteLiteral("                ");
             #line hidden
 WriteLiteral("\r\n            </div>\r\n            <label");
 
-WriteLiteral(" class=\"form-label col-md-1 \"");
+WriteLiteral(" class=\"form-label col-sm-1 \"");
 
 WriteLiteral(" style=\"min-width:10%\"");
 
@@ -502,7 +502,7 @@ WriteLiteral(" class=\"c-red\"");
 
 WriteLiteral(">*</span>单位星级：</label>\r\n            <div");
 
-WriteLiteral(" class=\"formControls col-md-3 \"");
+WriteLiteral(" class=\"formControls col-sm-3 \"");
 
 WriteLiteral(">\r\n                <select");
 
@@ -538,7 +538,7 @@ WriteLiteral(" class=\"row cl\"");
 
 WriteLiteral(">\r\n            <label");
 
-WriteLiteral(" class=\"form-label col-md-2 \"");
+WriteLiteral(" class=\"form-label col-sm-2 \"");
 
 WriteLiteral("><span");
 
@@ -546,7 +546,7 @@ WriteLiteral(" class=\"c-red\"");
 
 WriteLiteral(">*</span>所属类别：</label>\r\n            <div");
 
-WriteLiteral(" class=\"formControls col-md-3 \"");
+WriteLiteral(" class=\"formControls col-sm-3 \"");
 
 WriteLiteral(">\r\n                <select");
 
@@ -628,7 +628,7 @@ WriteLiteral("                ");
             #line hidden
 WriteLiteral("\r\n\r\n            </div>\r\n            <label");
 
-WriteLiteral(" class=\"form-label col-md-1 \"");
+WriteLiteral(" class=\"form-label col-sm-1 \"");
 
 WriteLiteral(" style=\"min-width:10%\"");
 
@@ -638,7 +638,7 @@ WriteLiteral(" class=\"c-red\"");
 
 WriteLiteral(">*</span>状态：</label>\r\n            <div");
 
-WriteLiteral(" class=\"formControls col-md-3 \"");
+WriteLiteral(" class=\"formControls col-sm-3 \"");
 
 WriteLiteral(">\r\n                <select");
 
@@ -685,11 +685,11 @@ WriteLiteral(" class=\"row cl\"");
 
 WriteLiteral(">\r\n            <label");
 
-WriteLiteral(" class=\"form-label col-md-2 \"");
+WriteLiteral(" class=\"form-label col-sm-2 \"");
 
 WriteLiteral(">单位详情：</label>\r\n            <div");
 
-WriteLiteral(" class=\"formControls col-md-8 \"");
+WriteLiteral(" class=\"formControls col-sm-8 \"");
 
 WriteLiteral(">\r\n");
 

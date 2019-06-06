@@ -25,8 +25,8 @@
         @Html.AntiForgeryToken()
         @Html.HiddenFor(m => m.Id, new { @Value = 0 })
         <div class="row cl">
-            <label class="form-label col-md-2 "><span class="c-red">*</span>单位头图：</label>
-            <div class="formControls col-md-6 ">
+            <label class="form-label col-sm-2 "><span class="c-red">*</span>单位头图：</label>
+            <div class="formControls col-sm-6 ">
                 <div class="form-group">
                     <div id="upfileImg" class="up-img-left">
                         上传图片
@@ -42,13 +42,13 @@
             </div>
         </div>
         <div class="row cl">
-            <label class="form-label col-md-2 "><span class="c-red">*</span>单位名称：</label>
-            <div class="formControls col-md-3 ">
+            <label class="form-label col-sm-2 "><span class="c-red">*</span>单位名称：</label>
+            <div class="formControls col-sm-3 ">
                 @Html.TextBoxFor(m => m.MemberUnitName, new { placeholder = "请输入单位名称", @class = "input-text" })
                 @Html.ValidationMessageFor(m => m.MemberUnitName, null, new { @class = "error-lable" })
             </div>
-            <label class="form-label col-md-1 " style="min-width:10%"><span class="c-red">*</span>所在地区：</label>
-            <div class="formControls col-md-3 ">
+            <label class="form-label col-sm-1 " style="min-width:10%"><span class="c-red">*</span>所在地区：</label>
+            <div class="formControls col-sm-3 ">
                 <input type="hidden" name="Province" value="@Constant.DEFAULT_PROVINCE" />
                 <select class="select select-box inline" disabled style="width:45%;background:#eee">
                     @foreach (KeyValuePair<int, string> item in ViewBag.AreaProvince)
@@ -66,13 +66,13 @@
             </div>
         </div>
         <div class="row cl">
-            <label class="form-label col-md-2 "><span class="c-red">*</span>单位编号：</label>
-            <div class="formControls col-md-3 ">
+            <label class="form-label col-sm-2 "><span class="c-red">*</span>单位编号：</label>
+            <div class="formControls col-sm-3 ">
                 @Html.TextBoxFor(m => m.Number, new { placeholder = "请输入单位编号", @class = "input-text" })
                 @Html.ValidationMessageFor(m => m.Number, null, new { @class = "error-lable" })
             </div>
-            <label class="form-label col-md-1 " style="min-width:10%"><span class="c-red">*</span>单位星级：</label>
-            <div class="formControls col-md-3 ">
+            <label class="form-label col-sm-1 " style="min-width:10%"><span class="c-red">*</span>单位星级：</label>
+            <div class="formControls col-sm-3 ">
                 <select class="select select-box" name="Star">
                     <option value="1">1星</option>
                     <option value="2">2星</option>
@@ -83,8 +83,8 @@
             </div>
         </div>
         <div class="row cl">
-            <label class="form-label col-md-2 "><span class="c-red">*</span>所属类别：</label>
-            <div class="formControls col-md-3 ">
+            <label class="form-label col-sm-2 "><span class="c-red">*</span>所属类别：</label>
+            <div class="formControls col-sm-3 ">
                 <select class="select select-box" id="sel_type">
                     <option value="">请选择所属类别</option>
                     @foreach (CategoryDictionary item in ViewBag.EnabledCategory)
@@ -96,8 +96,8 @@
                 @Html.TextBoxFor(m => m.Category, new { @class = "hide-area input-text" })
 
             </div>
-            <label class="form-label col-md-1 " style="min-width:10%"><span class="c-red">*</span>状态：</label>
-            <div class="formControls col-md-3 ">
+            <label class="form-label col-sm-1 " style="min-width:10%"><span class="c-red">*</span>状态：</label>
+            <div class="formControls col-sm-3 ">
                 <select class="select select-box" name="State">
                     <option value="@((int)PublishState.Upper)">上架</option>
                     <option value="@((int)PublishState.Lower)">下架</option>
@@ -106,8 +106,8 @@
         </div>
 
         <div class="row cl">
-            <label class="form-label col-md-2 ">单位详情：</label>
-            <div class="formControls col-md-8 ">
+            <label class="form-label col-sm-2 ">单位详情：</label>
+            <div class="formControls col-sm-8 ">
                 @Html.TextAreaFor(m => m.Description, new { @class = "ckeditor textarea", rows = "10", placeholder = "请输入单位详情..." })
             </div>
         </div>
