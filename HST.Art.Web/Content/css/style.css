@@ -1,4 +1,4 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 /* index */
 .swiper-container {width: 100%; position:relative}
 .swiper-slide {text-align: center;font-size: 18px;background: #fff; display: -webkit-box;display: -ms-flexbox;display: -webkit-flex;display: flex; -webkit-box-pack: center; -ms-flex-pack: center;-webkit-justify-content: center;justify-content: center;-webkit-box-align: center;-ms-flex-align: center;-webkit-align-items: center;align-items: center;  }
@@ -6,10 +6,10 @@
 .swiper-container-horizontal>.swiper-pagination-bullets,.swiper-pagination-custom,.swiper-pagination-fraction{bottom:0px !important;left:0;width:100%; background:rgba(0,0,0,0.3); height:40px; line-height:40px}
 .swiper-button-next,.swiper-button-prev{ display:none}
 .cont .swiper-container:hover .swiper-button-next,.cont .swiper-container:hover .swiper-button-prev{ display:block}
-.cont .swiper-container .swiper-button-next{background:url(../images/y.png) no-repeat center; background-size:25px 24px; width:26px; height:26px;}
-.cont .swiper-container .swiper-button-next:hover{background:url(../images/yy.png) no-repeat center; background-size:25px 24px; width:26px; height:26px;}
-.cont .swiper-container .swiper-button-prev{background:url(../images/z.png) no-repeat center; background-size:25px 24px; width:26px; height:26px;}
-.cont .swiper-container .swiper-button-prev:hover{background:url(../images/zz.png) no-repeat center; background-size:25px 24px; width:26px; height:26px;}
+.cont .swiper-container .swiper-button-next{background:url(../image/y.png) no-repeat center; background-size:25px 24px; width:26px; height:26px;}
+.cont .swiper-container .swiper-button-next:hover{background:url(../image/yy.png) no-repeat center; background-size:25px 24px; width:26px; height:26px;}
+.cont .swiper-container .swiper-button-prev{background:url(../image/z.png) no-repeat center; background-size:25px 24px; width:26px; height:26px;}
+.cont .swiper-container .swiper-button-prev:hover{background:url(../image/zz.png) no-repeat center; background-size:25px 24px; width:26px; height:26px;}
 .cont_box{ max-width:1280px; width:96%; margin:0 auto; margin-top:18px; overflow:hidden}
 .index_new_fl{width:25%; background:#dd1c34;  height:224px; text-align:center; color:#fff; position:relative}
 .index_new_fl p{ font-size:16px;}
@@ -19,7 +19,7 @@
 .index_new_cont{  width:55%; border:1px solid #e3e3e3; background:#fff;border-left:none; padding:20px 0; height:224px}
 .index_ul{ width:92%; margin:0 auto; overflow:hidden; font-size:14px; color:#333; line-height:35px;}
 .index_ul a{ color:#333}
-.index_ul a p{ width:80%; height:35px; overflow:hidden;text-overflow:ellipsis;white-space:nowrap; background:url(../images/circle.png) no-repeat left center; padding-left:15px; background-size:10px 10px}
+.index_ul a p{ width:80%; height:35px; overflow:hidden;text-overflow:ellipsis;white-space:nowrap; background:url(../image/circle.png) no-repeat left center; padding-left:15px; background-size:10px 10px}
 .index_new_fr{ height:224px; width:18%; background:#fff; padding:4% 0; text-align:center; border:1px solid #e3e3e3; font-size:20px}
 .index_new_fr a{ color:#333}
 .index_new_fr b{ display:block;}
@@ -59,7 +59,7 @@ h3 i{ width:3px; height:18px; background:#d9001b; display:inline-block; margin-r
 .query_box .query_div:last-child{ border-right: 1px solid #d4d4d4}
 .query_box .query_div p{ font-size:16px; line-height: 40px; margin-bottom: 15px;}
 .query_box .query_div p i{ font-size:26px; color: #d9001b; border: 1px solid #d9001b; width: 40px; height: 40px; border-radius: 50%; display:inline-block; text-align: center;line-height: 40px; margin-right: 6px;}
-.query_box .query_div select{ width:70%; margin: 0 auto; border: 1px solid #e3e3e3;border-radius: 5px; line-height: 40px; height: 40px;background: url("../images/caret.png") no-repeat scroll 97% center transparent; background-color: #fff; appearance:none;-moz-appearance:none;-webkit-appearance:none; padding-left: 5px; margin-bottom: 10px; color:#aaa}
+.query_box .query_div select{ width:70%; margin: 0 auto; border: 1px solid #e3e3e3;border-radius: 5px; line-height: 40px; height: 40px;background: url("../image/caret.png") no-repeat scroll 97% center transparent; background-color: #fff; appearance:none;-moz-appearance:none;-webkit-appearance:none; padding-left: 5px; margin-bottom: 10px; color:#aaa}
 .query_box .query_div input{width:70%; margin: 0 auto; border: 1px solid #e3e3e3;border-radius: 5px; line-height: 40px; height: 40px; padding-left: 5px;  background: #fff;}
 .query_box .query_div input::-webkit-input-placeholder{color:#aaa; }
 .query_box .query_div input::-moz-placeholder{color:#aaa; }
@@ -131,7 +131,11 @@ h3 i{ width:3px; height:18px; background:#d9001b; display:inline-block; margin-r
 .details div{ width:100%; font-size: 14px; color: #333; line-height: 28px;}
 .details p{width:100%; font-size: 14px; color: #333; line-height: 28px; margin-bottom: 10px}
 .details img{ display: block; margin: 10px auto}
-
+.clearfix::after {
+  display: block;
+  clear: both;
+  content: "";
+}
 
 
 

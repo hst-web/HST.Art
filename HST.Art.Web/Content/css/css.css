@@ -51,7 +51,7 @@ h1,h2,h3,h4,h5,h6{ font-weight:normal}
   content: "\e50d";
 }
 
-.icon-xinxiduanxinxiaoxitixingyoujiansixinyouxiang:before {
+.icon-email-icon:before {
   content: "\e890";
 }
 .banner{ width:100%; background:#fff;}
@@ -63,7 +63,7 @@ h1,h2,h3,h4,h5,h6{ font-weight:normal}
 .logo img{ width:100%}
 .top_fr{ font-size:14px; color:#555; line-height:30px; padding:1.6% 0}
 .top_fr .icon-dianhua{ color:#444; font-size:15px; margin-right:6px}
-.top_fr .icon-xinxiduanxinxiaoxitixingyoujiansixinyouxiang{ color:#444; font-size:16px; margin-right:6px}
+.top_fr .icon-email-icon{ color:#444; font-size:16px; margin-right:6px}
 /*导航*/
 nav {width: 100%;height: 60px; background: #d9001b}
 nav li, nav a { text-decoration: none; list-style: none;}

@@ -16,15 +16,22 @@ namespace HST.Art.Web
                      "~/Content/lib/fancybox/dist/jquery.fancybox.min.css", new CssRewriteUrlTransformWrapper()).Include(
                      "~/Content/lib/h-ui.admin/css/style.css"
                 ));
+
             bundles.Add(new StyleBundle("~/bootstrap").Include(
                "~/Content/lib/Bootstrap/css/bootstrap.min.css", new CssRewriteUrlTransformWrapper()).Include(
                "~/Content/lib/bootstrap-select/bootstrap-select.min.css", new CssRewriteUrlTransformWrapper()));
             bundles.Add(new StyleBundle("~/login").Include("~/Content/lib/h-ui.admin/css/base.css", new CssRewriteUrlTransformWrapper()).Include("~/Content/lib/h-ui.admin/css/reg.css", new CssRewriteUrlTransformWrapper()));
             bundles.Add(new StyleBundle("~/patternfly").Include(
-         "~/Content/lib/patternfly/css/patternfly.min.css", new CssRewriteUrlTransformWrapper()).Include(
-          "~/Content/lib/patternfly/css/patternfly-additions.min.css", new CssRewriteUrlTransformWrapper()
+                 "~/Content/lib/patternfly/css/patternfly.min.css", new CssRewriteUrlTransformWrapper()).Include(
+                  "~/Content/lib/patternfly/css/patternfly-additions.min.css", new CssRewriteUrlTransformWrapper()));
+            bundles.Add(new StyleBundle("~/webclient").Include(
+                 "~/Content/css/css.css", new CssRewriteUrlTransformWrapper()).Include(
+                   "~/Content/css/style.css", new CssRewriteUrlTransformWrapper()).Include(
+                  "~/Content/css/response.css", new CssRewriteUrlTransformWrapper()));
 
-     ));
+            bundles.Add(new StyleBundle("~/swiper").Include(
+                 "~/Content/css/swiper.min.css", new CssRewriteUrlTransformWrapper()).Include(
+                "~/Content/css/owl.carousel.min.css", new CssRewriteUrlTransformWrapper()));
         }
     }
 
@@ -33,7 +40,7 @@ namespace HST.Art.Web
         public string Process(string includedVirtualPath, string input)
         {
             return new CssRewriteUrlTransform().Process("~" + VirtualPathUtility.ToAbsolute(includedVirtualPath), input);
-            
+
         }
     }
 }

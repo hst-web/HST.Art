@@ -60,6 +60,13 @@ namespace HST.Art.Web
                "~/Content/lib/C-D3/c3.min.js",
                "~/Content/lib/C-D3/d3.min.js"
                 ));
+
+            bundles.Add(new ScriptBundle("~/bundles/webclient").Include(
+                "~/Content/js/jQuery.1.9.1.js",
+             "~/Content/js/swiper.min.js",
+             "~/Content/js/owl.carousel.js",
+               "~/Content/js/js.js"
+              ));
         }
     }
 }

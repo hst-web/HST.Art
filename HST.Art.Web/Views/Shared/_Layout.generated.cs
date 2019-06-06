@@ -96,14 +96,179 @@ WriteLiteral(" href=\"/favicon.ico\"");
 
 WriteLiteral(" />\r\n    <!--[if lt IE 9]>\r\n    <script type=\"text/javascript\" src=\"/Content/lib/" +
 "html5shiv.js\"></script>\r\n    <script type=\"text/javascript\" src=\"/Content/lib/re" +
-"spond.min.js\"></script>\r\n    <![endif]-->\r\n\r\n\r\n\r\n  \r\n    ");
+"spond.min.js\"></script>\r\n    <![endif]-->\r\n\r\n");
 
-WriteLiteral("\r\n    <!--[if IE 6]>\r\n    <script type=\"text/javascript\" src=\"/Content/lib/DD_bel" +
-"atedPNG_0.0.8a-min.js\" ></script>\r\n    <script>DD_belatedPNG.fix(\'*\');</script>\r" +
-"\n    <![endif]-->\r\n    ");
+WriteLiteral("    ");
 
-WriteLiteral("\r\n</head>\r\n<body>\r\n\r\n\r\n    ");
+            
+            #line 18 "..\..\Views\Shared\_Layout.cshtml"
+Write(Styles.Render("~/webclient"));
 
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n");
+
+WriteLiteral("    ");
+
+            
+            #line 19 "..\..\Views\Shared\_Layout.cshtml"
+Write(Scripts.Render("~/bundles/webclient"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n</head>\r\n<body>\r\n    <header>\r\n        <div");
+
+WriteLiteral(" class=\"top\"");
+
+WriteLiteral(">\r\n            <div");
+
+WriteLiteral(" class=\"cont top_div\"");
+
+WriteLiteral(">\r\n                <p");
+
+WriteLiteral(" class=\"fl logo\"");
+
+WriteLiteral("><img");
+
+WriteLiteral(" src=\"images/logo.jpg\"");
+
+WriteLiteral(" /></p>\r\n                <div");
+
+WriteLiteral(" class=\"fr top_fr\"");
+
+WriteLiteral(">\r\n                    <p><i");
+
+WriteLiteral(" class=\"iconfont icon-dianhua\"");
+
+WriteLiteral("></i>010-6855086</p>\r\n                    <p><i");
+
+WriteLiteral(" class=\"iconfont icon-email-icon\"");
+
+WriteLiteral("></i>123456789@qq.com</p>\r\n                </div>\r\n            </div>\r\n        </" +
+"div><!--/top-->\r\n    </header>\r\n    <nav>\r\n        <div");
+
+WriteLiteral(" class=\"nav-logo\"");
+
+WriteLiteral(">\r\n            <a");
+
+WriteLiteral(" href=\"#\"");
+
+WriteLiteral("><img");
+
+WriteLiteral(" src=\"images/logo.jpg\"");
+
+WriteLiteral(" alt=\"\"");
+
+WriteLiteral("></a>\r\n        </div>\r\n        <div");
+
+WriteLiteral(" class=\"nav-menu\"");
+
+WriteLiteral(">\r\n            <span></span>\r\n            <span></span>\r\n            <span></span" +
+">\r\n        </div>\r\n\r\n        <ul");
+
+WriteLiteral(" class=\"nav-list\"");
+
+WriteLiteral(">\r\n            <li><a");
+
+WriteLiteral(" href=\"\"");
+
+WriteLiteral(" class=\"active\"");
+
+WriteLiteral(">首页</a></li>\r\n            <li>\r\n                <a");
+
+WriteLiteral(" href=\"\"");
+
+WriteLiteral(">协会概况</a>\r\n                <ul");
+
+WriteLiteral(" class=\"menu\"");
+
+WriteLiteral(">\r\n                    <li><a");
+
+WriteLiteral(" href=\"\"");
+
+WriteLiteral(">协会简介</a></li>\r\n                    <li><a");
+
+WriteLiteral(" href=\"\"");
+
+WriteLiteral(">组织架构</a></li>\r\n                    <li><a");
+
+WriteLiteral(" href=\"\"");
+
+WriteLiteral(">协会会员</a></li>\r\n                </ul>\r\n            </li>\r\n            <li><a");
+
+WriteLiteral(" href=\"\"");
+
+WriteLiteral(">行业资讯</a></li>\r\n            <li><a");
+
+WriteLiteral(" href=\"\"");
+
+WriteLiteral(">协会活动</a></li>\r\n            <li><a");
+
+WriteLiteral(" href=\"\"");
+
+WriteLiteral(">社会公益</a></li>\r\n            <li><a");
+
+WriteLiteral(" href=\"\"");
+
+WriteLiteral(">考级中心</a></li>\r\n            <li><a");
+
+WriteLiteral(" href=\"\"");
+
+WriteLiteral(">下载专区</a></li>\r\n        </ul>\r\n    </nav>\r\n    <div");
+
+WriteLiteral(" class=\"content-wrap\"");
+
+WriteLiteral(">\r\n");
+
+WriteLiteral("        ");
+
+            
+            #line 61 "..\..\Views\Shared\_Layout.cshtml"
+   Write(RenderBody());
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n    </div>\r\n    <div");
+
+WriteLiteral(" class=\"foot\"");
+
+WriteLiteral(">\r\n        <div");
+
+WriteLiteral(" class=\"foot_cont\"");
+
+WriteLiteral(">\r\n            <div");
+
+WriteLiteral(" class=\"foot_fl fl\"");
+
+WriteLiteral(">\r\n                <p><span><img");
+
+WriteLiteral(" src=\"images/ewm.jpg\"");
+
+WriteLiteral(" /></span>扫码关注我们</p>\r\n            </div>\r\n\r\n            <div");
+
+WriteLiteral(" class=\"foot_conts fl\"");
+
+WriteLiteral(">\r\n                <b>联系我们</b>\r\n                <p>山东省艺术教育专业教育委员会</p>\r\n          " +
+"      <p>地址：北京市丰台区昌宁大厦5层506</p>\r\n                <p>电话：010-6855068</p>\r\n        " +
+"        <p>邮箱：123456789@163.com</p>\r\n            </div>\r\n            <p");
+
+WriteLiteral(" class=\"fr index_ab\"");
+
+WriteLiteral("><a><i></i> 关于我们</a></p>\r\n\r\n        </div>\r\n    </div>\r\n    <footer>京ICP备13003730" +
+"号-1</footer>\r\n");
+
+WriteLiteral("    ");
+
+            
+            #line 81 "..\..\Views\Shared\_Layout.cshtml"
+Write(RenderSection("Scripts", required: false));
+
+            
+            #line default
+            #line hidden
 WriteLiteral("\r\n</body>\r\n</html>\r\n");
 
         }
