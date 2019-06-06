@@ -58,7 +58,7 @@ namespace ASP
             
             #line 1 "..\..\Areas\manage\Views\MemberUnit\Add.cshtml"
   
-    Layout = "";
+    Layout = null;
 
             
             #line default
@@ -101,9 +101,9 @@ Write(Styles.Render("~/appcss"));
             #line hidden
 WriteLiteral("\r\n<script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 269), Tuple.Create("\"", 325)
-, Tuple.Create(Tuple.Create("", 275), Tuple.Create<System.Object, System.Int32>(Href("~/Content/lib/webuploader/0.1.5/webuploader.min.js")
-, 275), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 271), Tuple.Create("\"", 327)
+, Tuple.Create(Tuple.Create("", 277), Tuple.Create<System.Object, System.Int32>(Href("~/Content/lib/webuploader/0.1.5/webuploader.min.js")
+, 277), false)
 );
 
 WriteLiteral(" type=\"text/javascript\"");
@@ -112,9 +112,9 @@ WriteLiteral("></script>\r\n<script");
 
 WriteLiteral(" type=\"text/javascript\"");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 391), Tuple.Create("\"", 431)
-, Tuple.Create(Tuple.Create("", 397), Tuple.Create<System.Object, System.Int32>(Href("~/Content/lib/ckeditor/ckeditor.js")
-, 397), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 393), Tuple.Create("\"", 433)
+, Tuple.Create(Tuple.Create("", 399), Tuple.Create<System.Object, System.Int32>(Href("~/Content/lib/ckeditor/ckeditor.js")
+, 399), false)
 );
 
 WriteLiteral("></script>\r\n<style");
@@ -332,14 +332,14 @@ WriteLiteral(" type=\"hidden\"");
 
 WriteLiteral(" name=\"Province\"");
 
-WriteAttribute("value", Tuple.Create(" value=\"", 2744), Tuple.Create("\"", 2778)
+WriteAttribute("value", Tuple.Create(" value=\"", 2746), Tuple.Create("\"", 2780)
             
             #line 52 "..\..\Areas\manage\Views\MemberUnit\Add.cshtml"
-, Tuple.Create(Tuple.Create("", 2752), Tuple.Create<System.Object, System.Int32>(Constant.DEFAULT_PROVINCE
+, Tuple.Create(Tuple.Create("", 2754), Tuple.Create<System.Object, System.Int32>(Constant.DEFAULT_PROVINCE
             
             #line default
             #line hidden
-, 2752), false)
+, 2754), false)
 );
 
 WriteLiteral(" />\r\n                <select");
@@ -368,14 +368,14 @@ WriteLiteral(">\r\n");
             #line hidden
 WriteLiteral("                        <option");
 
-WriteAttribute("value", Tuple.Create(" value=\"", 3027), Tuple.Create("\"", 3044)
+WriteAttribute("value", Tuple.Create(" value=\"", 3029), Tuple.Create("\"", 3046)
             
             #line 56 "..\..\Areas\manage\Views\MemberUnit\Add.cshtml"
-, Tuple.Create(Tuple.Create("", 3035), Tuple.Create<System.Object, System.Int32>(item.Key
+, Tuple.Create(Tuple.Create("", 3037), Tuple.Create<System.Object, System.Int32>(item.Key
             
             #line default
             #line hidden
-, 3035), false)
+, 3037), false)
 );
 
 WriteLiteral(">");
@@ -422,14 +422,14 @@ WriteLiteral(">\r\n");
             #line hidden
 WriteLiteral("                        <option");
 
-WriteAttribute("value", Tuple.Create(" value=\"", 3353), Tuple.Create("\"", 3370)
+WriteAttribute("value", Tuple.Create(" value=\"", 3355), Tuple.Create("\"", 3372)
             
             #line 62 "..\..\Areas\manage\Views\MemberUnit\Add.cshtml"
-, Tuple.Create(Tuple.Create("", 3361), Tuple.Create<System.Object, System.Int32>(item.Key
+, Tuple.Create(Tuple.Create("", 3363), Tuple.Create<System.Object, System.Int32>(item.Key
             
             #line default
             #line hidden
-, 3361), false)
+, 3363), false)
 );
 
 WriteLiteral(">");
@@ -576,14 +576,14 @@ WriteLiteral(">请选择所属类别</option>\r\n");
             #line hidden
 WriteLiteral("                        <option");
 
-WriteAttribute("value", Tuple.Create(" value=\"", 4849), Tuple.Create("\"", 4865)
+WriteAttribute("value", Tuple.Create(" value=\"", 4851), Tuple.Create("\"", 4867)
             
             #line 92 "..\..\Areas\manage\Views\MemberUnit\Add.cshtml"
-, Tuple.Create(Tuple.Create("", 4857), Tuple.Create<System.Object, System.Int32>(item.Id
+, Tuple.Create(Tuple.Create("", 4859), Tuple.Create<System.Object, System.Int32>(item.Id
             
             #line default
             #line hidden
-, 4857), false)
+, 4859), false)
 );
 
 WriteLiteral(">");
@@ -648,26 +648,26 @@ WriteLiteral(" name=\"State\"");
 
 WriteLiteral(">\r\n                    <option");
 
-WriteAttribute("value", Tuple.Create(" value=\"", 5404), Tuple.Create("\"", 5438)
+WriteAttribute("value", Tuple.Create(" value=\"", 5406), Tuple.Create("\"", 5440)
             
             #line 102 "..\..\Areas\manage\Views\MemberUnit\Add.cshtml"
-, Tuple.Create(Tuple.Create("", 5412), Tuple.Create<System.Object, System.Int32>((int)PublishState.Upper
+, Tuple.Create(Tuple.Create("", 5414), Tuple.Create<System.Object, System.Int32>((int)PublishState.Upper
             
             #line default
             #line hidden
-, 5412), false)
+, 5414), false)
 );
 
 WriteLiteral(">上架</option>\r\n                    <option");
 
-WriteAttribute("value", Tuple.Create(" value=\"", 5480), Tuple.Create("\"", 5514)
+WriteAttribute("value", Tuple.Create(" value=\"", 5482), Tuple.Create("\"", 5516)
             
             #line 103 "..\..\Areas\manage\Views\MemberUnit\Add.cshtml"
-, Tuple.Create(Tuple.Create("", 5488), Tuple.Create<System.Object, System.Int32>((int)PublishState.Lower
+, Tuple.Create(Tuple.Create("", 5490), Tuple.Create<System.Object, System.Int32>((int)PublishState.Lower
             
             #line default
             #line hidden
-, 5488), false)
+, 5490), false)
 );
 
 WriteLiteral(">下架</option>\r\n                </select>\r\n            </div>\r\n        </div>\r\n");

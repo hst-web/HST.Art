@@ -58,7 +58,7 @@ namespace ASP
             
             #line 1 "..\..\Areas\manage\Views\Home\EditRotation.cshtml"
   
-    Layout = "";
+    Layout = null;
 
             
             #line default
@@ -101,9 +101,9 @@ Write(Styles.Render("~/appcss"));
             #line hidden
 WriteLiteral("\r\n<script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 272), Tuple.Create("\"", 328)
-, Tuple.Create(Tuple.Create("", 278), Tuple.Create<System.Object, System.Int32>(Href("~/Content/lib/webuploader/0.1.5/webuploader.min.js")
-, 278), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 274), Tuple.Create("\"", 330)
+, Tuple.Create(Tuple.Create("", 280), Tuple.Create<System.Object, System.Int32>(Href("~/Content/lib/webuploader/0.1.5/webuploader.min.js")
+, 280), false)
 );
 
 WriteLiteral(" type=\"text/javascript\"");
@@ -209,15 +209,15 @@ WriteLiteral(">\r\n                    <div");
 
 WriteLiteral(" id=\"upfileImg\"");
 
-WriteAttribute("class", Tuple.Create(" class=\"", 1214), Tuple.Create("\"", 1288)
-, Tuple.Create(Tuple.Create("", 1222), Tuple.Create("up-img-left", 1222), true)
+WriteAttribute("class", Tuple.Create(" class=\"", 1216), Tuple.Create("\"", 1290)
+, Tuple.Create(Tuple.Create("", 1224), Tuple.Create("up-img-left", 1224), true)
             
             #line 32 "..\..\Areas\manage\Views\Home\EditRotation.cshtml"
-, Tuple.Create(Tuple.Create(" ", 1233), Tuple.Create<System.Object, System.Int32>(string.IsNullOrEmpty(Model.HeadImg) ?"":"up-imgBtn"
+, Tuple.Create(Tuple.Create(" ", 1235), Tuple.Create<System.Object, System.Int32>(string.IsNullOrEmpty(Model.HeadImg) ?"":"up-imgBtn"
             
             #line default
             #line hidden
-, 1234), false)
+, 1236), false)
 );
 
 WriteLiteral(">\r\n");
@@ -233,17 +233,17 @@ WriteLiteral("                        ");
             #line hidden
 WriteLiteral("\r\n                    </div>\r\n                    <span");
 
-WriteAttribute("class", Tuple.Create(" class=\"", 1427), Tuple.Create("\"", 1515)
-, Tuple.Create(Tuple.Create("", 1435), Tuple.Create("help-block", 1435), true)
-, Tuple.Create(Tuple.Create(" ", 1445), Tuple.Create("help-tip", 1446), true)
-, Tuple.Create(Tuple.Create(" ", 1454), Tuple.Create("help-img", 1455), true)
+WriteAttribute("class", Tuple.Create(" class=\"", 1429), Tuple.Create("\"", 1517)
+, Tuple.Create(Tuple.Create("", 1437), Tuple.Create("help-block", 1437), true)
+, Tuple.Create(Tuple.Create(" ", 1447), Tuple.Create("help-tip", 1448), true)
+, Tuple.Create(Tuple.Create(" ", 1456), Tuple.Create("help-img", 1457), true)
             
             #line 35 "..\..\Areas\manage\Views\Home\EditRotation.cshtml"
-, Tuple.Create(Tuple.Create(" ", 1463), Tuple.Create<System.Object, System.Int32>(string.IsNullOrEmpty(Model.HeadImg) ?"":"hidden"
+, Tuple.Create(Tuple.Create(" ", 1465), Tuple.Create<System.Object, System.Int32>(string.IsNullOrEmpty(Model.HeadImg) ?"":"hidden"
             
             #line default
             #line hidden
-, 1464), false)
+, 1466), false)
 );
 
 WriteLiteral(" style=\"top:8px;position:absolute\"");
@@ -260,14 +260,14 @@ WriteLiteral(" class=\"\"");
 
 WriteLiteral(">\r\n                            <li><img");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 1727), Tuple.Create("\"", 1752)
+WriteAttribute("src", Tuple.Create(" src=\"", 1729), Tuple.Create("\"", 1754)
             
             #line 38 "..\..\Areas\manage\Views\Home\EditRotation.cshtml"
-, Tuple.Create(Tuple.Create("", 1733), Tuple.Create<System.Object, System.Int32>(Model.SmallHeadImg
+, Tuple.Create(Tuple.Create("", 1735), Tuple.Create<System.Object, System.Int32>(Model.SmallHeadImg
             
             #line default
             #line hidden
-, 1733), false)
+, 1735), false)
 );
 
 WriteLiteral(" /></li>\r\n                        </ul>\r\n                        <input");

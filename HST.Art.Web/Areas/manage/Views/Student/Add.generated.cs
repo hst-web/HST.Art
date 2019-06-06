@@ -58,7 +58,7 @@ namespace ASP
             
             #line 1 "..\..\Areas\manage\Views\Student\Add.cshtml"
   
-    Layout = "";
+    Layout = null;
 
             
             #line default

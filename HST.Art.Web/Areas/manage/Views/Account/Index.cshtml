@@ -7,10 +7,8 @@
 <script type="text/javascript" src="lib/html5shiv.js"></script>
 <script type="text/javascript" src="lib/respond.min.js"></script>
 <![endif]-->
-@Scripts.Render("~/bundles/saos")
 @Scripts.Render("~/bundles/ajaxAsync")
 @Scripts.Render("~/bundles/validate")
-@Styles.Render("~/appcss")
 <!--[if IE 6]>
 <script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js" ></script>
 <script>DD_belatedPNG.fix('*');</script>
@@ -106,7 +104,7 @@
 
     </div>
 </div>
-@Scripts.Render("~/bundles/validate")
+
 @section scripts {
     <script type="text/javascript">
         $(function () {

@@ -58,7 +58,7 @@ namespace ASP
             
             #line 1 "..\..\Areas\manage\Views\Home\Edit.cshtml"
   
-    Layout = "";
+    Layout = null;
 
             
             #line default
@@ -101,9 +101,9 @@ Write(Styles.Render("~/appcss"));
             #line hidden
 WriteLiteral("\r\n<script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 271), Tuple.Create("\"", 327)
-, Tuple.Create(Tuple.Create("", 277), Tuple.Create<System.Object, System.Int32>(Href("~/Content/lib/webuploader/0.1.5/webuploader.min.js")
-, 277), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 273), Tuple.Create("\"", 329)
+, Tuple.Create(Tuple.Create("", 279), Tuple.Create<System.Object, System.Int32>(Href("~/Content/lib/webuploader/0.1.5/webuploader.min.js")
+, 279), false)
 );
 
 WriteLiteral(" type=\"text/javascript\"");
@@ -112,9 +112,9 @@ WriteLiteral("></script>\r\n<script");
 
 WriteLiteral(" type=\"text/javascript\"");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 393), Tuple.Create("\"", 433)
-, Tuple.Create(Tuple.Create("", 399), Tuple.Create<System.Object, System.Int32>(Href("~/Content/lib/ckeditor/ckeditor.js")
-, 399), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 395), Tuple.Create("\"", 435)
+, Tuple.Create(Tuple.Create("", 401), Tuple.Create<System.Object, System.Int32>(Href("~/Content/lib/ckeditor/ckeditor.js")
+, 401), false)
 );
 
 WriteLiteral("></script>\r\n<style");
@@ -308,15 +308,15 @@ WriteLiteral(">\r\n                    <div");
 
 WriteLiteral(" id=\"upfileImg\"");
 
-WriteAttribute("class", Tuple.Create(" class=\"", 1861), Tuple.Create("\"", 1934)
-, Tuple.Create(Tuple.Create("", 1869), Tuple.Create("up-img-left", 1869), true)
+WriteAttribute("class", Tuple.Create(" class=\"", 1863), Tuple.Create("\"", 1936)
+, Tuple.Create(Tuple.Create("", 1871), Tuple.Create("up-img-left", 1871), true)
             
             #line 39 "..\..\Areas\manage\Views\Home\Edit.cshtml"
-, Tuple.Create(Tuple.Create(" ", 1880), Tuple.Create<System.Object, System.Int32>(string.IsNullOrEmpty(Model.WeChat) ?"":"up-imgBtn"
+, Tuple.Create(Tuple.Create(" ", 1882), Tuple.Create<System.Object, System.Int32>(string.IsNullOrEmpty(Model.WeChat) ?"":"up-imgBtn"
             
             #line default
             #line hidden
-, 1881), false)
+, 1883), false)
 );
 
 WriteLiteral(">\r\n");
@@ -332,17 +332,17 @@ WriteLiteral("                        ");
             #line hidden
 WriteLiteral("\r\n                    </div>\r\n                    <span");
 
-WriteAttribute("class", Tuple.Create(" class=\"", 2072), Tuple.Create("\"", 2159)
-, Tuple.Create(Tuple.Create("", 2080), Tuple.Create("help-block", 2080), true)
-, Tuple.Create(Tuple.Create(" ", 2090), Tuple.Create("help-tip", 2091), true)
-, Tuple.Create(Tuple.Create(" ", 2099), Tuple.Create("help-img", 2100), true)
+WriteAttribute("class", Tuple.Create(" class=\"", 2074), Tuple.Create("\"", 2161)
+, Tuple.Create(Tuple.Create("", 2082), Tuple.Create("help-block", 2082), true)
+, Tuple.Create(Tuple.Create(" ", 2092), Tuple.Create("help-tip", 2093), true)
+, Tuple.Create(Tuple.Create(" ", 2101), Tuple.Create("help-img", 2102), true)
             
             #line 42 "..\..\Areas\manage\Views\Home\Edit.cshtml"
-, Tuple.Create(Tuple.Create(" ", 2108), Tuple.Create<System.Object, System.Int32>(string.IsNullOrEmpty(Model.WeChat) ?"":"hidden"
+, Tuple.Create(Tuple.Create(" ", 2110), Tuple.Create<System.Object, System.Int32>(string.IsNullOrEmpty(Model.WeChat) ?"":"hidden"
             
             #line default
             #line hidden
-, 2109), false)
+, 2111), false)
 );
 
 WriteLiteral(" style=\"top:8px;position:absolute\"");
@@ -355,27 +355,27 @@ WriteLiteral(">\r\n                        <ul");
 
 WriteLiteral(" id=\"imglist\"");
 
-WriteAttribute("class", Tuple.Create(" class=\"", 2327), Tuple.Create("\"", 2385)
+WriteAttribute("class", Tuple.Create(" class=\"", 2329), Tuple.Create("\"", 2387)
             
             #line 44 "..\..\Areas\manage\Views\Home\Edit.cshtml"
-, Tuple.Create(Tuple.Create("", 2335), Tuple.Create<System.Object, System.Int32>(string.IsNullOrEmpty(Model.WeChat)?"hidden":""
+, Tuple.Create(Tuple.Create("", 2337), Tuple.Create<System.Object, System.Int32>(string.IsNullOrEmpty(Model.WeChat)?"hidden":""
             
             #line default
             #line hidden
-, 2335), false)
-, Tuple.Create(Tuple.Create(" ", 2384), Tuple.Create("", 2384), true)
+, 2337), false)
+, Tuple.Create(Tuple.Create(" ", 2386), Tuple.Create("", 2386), true)
 );
 
 WriteLiteral(">\r\n                            <li><img");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 2425), Tuple.Create("\"", 2450)
+WriteAttribute("src", Tuple.Create(" src=\"", 2427), Tuple.Create("\"", 2452)
             
             #line 45 "..\..\Areas\manage\Views\Home\Edit.cshtml"
-, Tuple.Create(Tuple.Create("", 2431), Tuple.Create<System.Object, System.Int32>(Model.SmallHeadImg
+, Tuple.Create(Tuple.Create("", 2433), Tuple.Create<System.Object, System.Int32>(Model.SmallHeadImg
             
             #line default
             #line hidden
-, 2431), false)
+, 2433), false)
 );
 
 WriteLiteral(" /></li>\r\n                        </ul>\r\n                        <input");
@@ -675,24 +675,24 @@ WriteLiteral(" class=\"btn btn-primary float-right hidden\"");
 
 WriteLiteral(" id=\"btnRotation1\"");
 
-WriteAttribute("onclick", Tuple.Create(" onclick=\"", 5729), Tuple.Create("\"", 5809)
-, Tuple.Create(Tuple.Create("", 5739), Tuple.Create("ration_add(\'新建轮播\',\'", 5739), true)
+WriteAttribute("onclick", Tuple.Create(" onclick=\"", 5731), Tuple.Create("\"", 5811)
+, Tuple.Create(Tuple.Create("", 5741), Tuple.Create("ration_add(\'新建轮播\',\'", 5741), true)
             
             #line 106 "..\..\Areas\manage\Views\Home\Edit.cshtml"
-                             , Tuple.Create(Tuple.Create("", 5758), Tuple.Create<System.Object, System.Int32>(Url.Action("AddRotation")
+                             , Tuple.Create(Tuple.Create("", 5760), Tuple.Create<System.Object, System.Int32>(Url.Action("AddRotation")
             
             #line default
             #line hidden
-, 5758), false)
-, Tuple.Create(Tuple.Create("", 5784), Tuple.Create("\',\'", 5784), true)
+, 5760), false)
+, Tuple.Create(Tuple.Create("", 5786), Tuple.Create("\',\'", 5786), true)
             
             #line 106 "..\..\Areas\manage\Views\Home\Edit.cshtml"
-                                                          , Tuple.Create(Tuple.Create("", 5787), Tuple.Create<System.Object, System.Int32>(RotationType.Banner
+                                                          , Tuple.Create(Tuple.Create("", 5789), Tuple.Create<System.Object, System.Int32>(RotationType.Banner
             
             #line default
             #line hidden
-, 5787), false)
-, Tuple.Create(Tuple.Create("", 5807), Tuple.Create("\')", 5807), true)
+, 5789), false)
+, Tuple.Create(Tuple.Create("", 5809), Tuple.Create("\')", 5809), true)
 );
 
 WriteLiteral(" type=\"button\"");
@@ -703,24 +703,24 @@ WriteLiteral(" class=\"btn btn-primary float-right hidden\"");
 
 WriteLiteral(" id=\"btnRotation2\"");
 
-WriteAttribute("onclick", Tuple.Create(" onclick=\"", 5920), Tuple.Create("\"", 6002)
-, Tuple.Create(Tuple.Create("", 5930), Tuple.Create("ration_add(\'新建Logo轮播\',\'", 5930), true)
+WriteAttribute("onclick", Tuple.Create(" onclick=\"", 5922), Tuple.Create("\"", 6004)
+, Tuple.Create(Tuple.Create("", 5932), Tuple.Create("ration_add(\'新建Logo轮播\',\'", 5932), true)
             
             #line 107 "..\..\Areas\manage\Views\Home\Edit.cshtml"
-                                 , Tuple.Create(Tuple.Create("", 5953), Tuple.Create<System.Object, System.Int32>(Url.Action("AddRotation")
+                                 , Tuple.Create(Tuple.Create("", 5955), Tuple.Create<System.Object, System.Int32>(Url.Action("AddRotation")
             
             #line default
             #line hidden
-, 5953), false)
-, Tuple.Create(Tuple.Create("", 5979), Tuple.Create("\',\'", 5979), true)
+, 5955), false)
+, Tuple.Create(Tuple.Create("", 5981), Tuple.Create("\',\'", 5981), true)
             
             #line 107 "..\..\Areas\manage\Views\Home\Edit.cshtml"
-                                                              , Tuple.Create(Tuple.Create("", 5982), Tuple.Create<System.Object, System.Int32>(RotationType.Logo
+                                                              , Tuple.Create(Tuple.Create("", 5984), Tuple.Create<System.Object, System.Int32>(RotationType.Logo
             
             #line default
             #line hidden
-, 5982), false)
-, Tuple.Create(Tuple.Create("", 6000), Tuple.Create("\')", 6000), true)
+, 5984), false)
+, Tuple.Create(Tuple.Create("", 6002), Tuple.Create("\')", 6002), true)
 );
 
 WriteLiteral(" type=\"button\"");
@@ -768,14 +768,14 @@ WriteLiteral(" type=\"hidden\"");
 
 WriteLiteral(" id=\"rotationType\"");
 
-WriteAttribute("value", Tuple.Create(" value=\"", 6721), Tuple.Create("\"", 6750)
+WriteAttribute("value", Tuple.Create(" value=\"", 6723), Tuple.Create("\"", 6752)
             
             #line 124 "..\..\Areas\manage\Views\Home\Edit.cshtml"
-, Tuple.Create(Tuple.Create("", 6729), Tuple.Create<System.Object, System.Int32>(RotationType.UnKnown
+, Tuple.Create(Tuple.Create("", 6731), Tuple.Create<System.Object, System.Int32>(RotationType.UnKnown
             
             #line default
             #line hidden
-, 6729), false)
+, 6731), false)
 );
 
 WriteLiteral(" />\r\n        <input");

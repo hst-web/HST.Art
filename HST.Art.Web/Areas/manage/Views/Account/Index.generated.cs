@@ -59,15 +59,6 @@ WriteLiteral("<!--[if lt IE 9]>\r\n<script type=\"text/javascript\" src=\"lib/ht
 
             
             #line 10 "..\..\Areas\manage\Views\Account\Index.cshtml"
-Write(Scripts.Render("~/bundles/saos"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n");
-
-            
-            #line 11 "..\..\Areas\manage\Views\Account\Index.cshtml"
 Write(Scripts.Render("~/bundles/ajaxAsync"));
 
             
@@ -76,17 +67,8 @@ Write(Scripts.Render("~/bundles/ajaxAsync"));
 WriteLiteral("\r\n");
 
             
-            #line 12 "..\..\Areas\manage\Views\Account\Index.cshtml"
+            #line 11 "..\..\Areas\manage\Views\Account\Index.cshtml"
 Write(Scripts.Render("~/bundles/validate"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n");
-
-            
-            #line 13 "..\..\Areas\manage\Views\Account\Index.cshtml"
-Write(Styles.Render("~/appcss"));
 
             
             #line default
@@ -154,13 +136,13 @@ WriteLiteral(" style=\"display: block;\"");
 WriteLiteral(">\r\n");
 
             
-            #line 31 "..\..\Areas\manage\Views\Account\Index.cshtml"
+            #line 29 "..\..\Areas\manage\Views\Account\Index.cshtml"
                 
             
             #line default
             #line hidden
             
-            #line 31 "..\..\Areas\manage\Views\Account\Index.cshtml"
+            #line 29 "..\..\Areas\manage\Views\Account\Index.cshtml"
                  using (Ajax.BeginForm("Update", "Account", new AjaxOptions() { HttpMethod = "Post", OnSuccess = "formSuccess(data)", OnBegin = "disSubmit('sub_btn')", OnComplete = "enSubmit('sub_btn')" }, new { id = "", @class = "form form-horizontal" }))
             {
                     
@@ -168,28 +150,28 @@ WriteLiteral(">\r\n");
             #line default
             #line hidden
             
-            #line 33 "..\..\Areas\manage\Views\Account\Index.cshtml"
+            #line 31 "..\..\Areas\manage\Views\Account\Index.cshtml"
                Write(Html.AntiForgeryToken());
 
             
             #line default
             #line hidden
             
-            #line 33 "..\..\Areas\manage\Views\Account\Index.cshtml"
+            #line 31 "..\..\Areas\manage\Views\Account\Index.cshtml"
                                             
                     
             
             #line default
             #line hidden
             
-            #line 34 "..\..\Areas\manage\Views\Account\Index.cshtml"
+            #line 32 "..\..\Areas\manage\Views\Account\Index.cshtml"
                Write(Html.HiddenFor(m => m.Id));
 
             
             #line default
             #line hidden
             
-            #line 34 "..\..\Areas\manage\Views\Account\Index.cshtml"
+            #line 32 "..\..\Areas\manage\Views\Account\Index.cshtml"
                                               
 
             
@@ -213,7 +195,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                            ");
 
             
-            #line 40 "..\..\Areas\manage\Views\Account\Index.cshtml"
+            #line 38 "..\..\Areas\manage\Views\Account\Index.cshtml"
                        Write(Model.UserName);
 
             
@@ -243,7 +225,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                            ");
 
             
-            #line 48 "..\..\Areas\manage\Views\Account\Index.cshtml"
+            #line 46 "..\..\Areas\manage\Views\Account\Index.cshtml"
                        Write(Html.TextBoxFor(m => m.RealName, new { placeholder = "请输入姓名", @class = "input-text" }));
 
             
@@ -254,7 +236,7 @@ WriteLiteral("\r\n");
 WriteLiteral("                            ");
 
             
-            #line 49 "..\..\Areas\manage\Views\Account\Index.cshtml"
+            #line 47 "..\..\Areas\manage\Views\Account\Index.cshtml"
                        Write(Html.ValidationMessageFor(m => m.RealName, null, new { @class = "error-lable" }));
 
             
@@ -284,7 +266,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                            ");
 
             
-            #line 57 "..\..\Areas\manage\Views\Account\Index.cshtml"
+            #line 55 "..\..\Areas\manage\Views\Account\Index.cshtml"
                        Write(Html.TextBoxFor(m => m.Phone, new { placeholder = "请输入手机号", @class = "input-text" }));
 
             
@@ -295,7 +277,7 @@ WriteLiteral("\r\n");
 WriteLiteral("                            ");
 
             
-            #line 58 "..\..\Areas\manage\Views\Account\Index.cshtml"
+            #line 56 "..\..\Areas\manage\Views\Account\Index.cshtml"
                        Write(Html.ValidationMessageFor(m => m.Phone, null, new { @class = "error-lable" }));
 
             
@@ -321,7 +303,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                            ");
 
             
-            #line 66 "..\..\Areas\manage\Views\Account\Index.cshtml"
+            #line 64 "..\..\Areas\manage\Views\Account\Index.cshtml"
                        Write(Html.TextBoxFor(m => m.Email, new { placeholder = "请输入邮箱", @class = "input-text" }));
 
             
@@ -332,7 +314,7 @@ WriteLiteral("\r\n");
 WriteLiteral("                            ");
 
             
-            #line 67 "..\..\Areas\manage\Views\Account\Index.cshtml"
+            #line 65 "..\..\Areas\manage\Views\Account\Index.cshtml"
                        Write(Html.ValidationMessageFor(m => m.Email, null, new { @class = "error-lable" }));
 
             
@@ -362,7 +344,7 @@ WriteLiteral(">保存</button>                         \r\n                     
 "          </div>\r\n");
 
             
-            #line 75 "..\..\Areas\manage\Views\Account\Index.cshtml"
+            #line 73 "..\..\Areas\manage\Views\Account\Index.cshtml"
                 }
 
             
@@ -492,16 +474,8 @@ WriteLiteral(" class=\"btn btn-primary radius\"");
 WriteLiteral(" type=\"submit\"");
 
 WriteLiteral(">修改</button>\r\n                        </div>\r\n                    </div>\r\n       " +
-"         </form>\r\n            </div>\r\n\r\n        </div>\r\n\r\n    </div>\r\n</div>\r\n");
-
-            
-            #line 109 "..\..\Areas\manage\Views\Account\Index.cshtml"
-Write(Scripts.Render("~/bundles/validate"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n");
+"         </form>\r\n            </div>\r\n\r\n        </div>\r\n\r\n    </div>\r\n</div>\r\n\r\n" +
+"");
 
 DefineSection("scripts", () => {
 
@@ -553,7 +527,7 @@ WriteLiteral(@">
                         url: """);
 
             
-            #line 152 "..\..\Areas\manage\Views\Account\Index.cshtml"
+            #line 150 "..\..\Areas\manage\Views\Account\Index.cshtml"
                          Write(Url.Action("UpdatePwd"));
 
             

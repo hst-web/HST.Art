@@ -58,7 +58,7 @@ namespace ASP
             
             #line 1 "..\..\Areas\manage\Views\Home\AddRotation.cshtml"
   
-    Layout = "";
+    Layout = null;
 
             
             #line default
@@ -101,9 +101,9 @@ Write(Styles.Render("~/appcss"));
             #line hidden
 WriteLiteral("\r\n<script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 272), Tuple.Create("\"", 328)
-, Tuple.Create(Tuple.Create("", 278), Tuple.Create<System.Object, System.Int32>(Href("~/Content/lib/webuploader/0.1.5/webuploader.min.js")
-, 278), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 274), Tuple.Create("\"", 330)
+, Tuple.Create(Tuple.Create("", 280), Tuple.Create<System.Object, System.Int32>(Href("~/Content/lib/webuploader/0.1.5/webuploader.min.js")
+, 280), false)
 );
 
 WriteLiteral(" type=\"text/javascript\"");
@@ -167,14 +167,14 @@ WriteLiteral(" type=\"hidden\"");
 
 WriteLiteral(" name=\"RotationType\"");
 
-WriteAttribute("value", Tuple.Create(" value=\"", 906), Tuple.Create("\"", 935)
+WriteAttribute("value", Tuple.Create(" value=\"", 908), Tuple.Create("\"", 937)
             
             #line 25 "..\..\Areas\manage\Views\Home\AddRotation.cshtml"
-, Tuple.Create(Tuple.Create("", 914), Tuple.Create<System.Object, System.Int32>(ViewBag.RotationType
+, Tuple.Create(Tuple.Create("", 916), Tuple.Create<System.Object, System.Int32>(ViewBag.RotationType
             
             #line default
             #line hidden
-, 914), false)
+, 916), false)
 );
 
 WriteLiteral(" />\r\n");

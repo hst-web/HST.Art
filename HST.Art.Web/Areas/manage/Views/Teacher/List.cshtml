@@ -1,16 +1,7 @@
-﻿<!--[if lt IE 9]>
-<script type="text/javascript" src="lib/html5shiv.js"></script>
-<script type="text/javascript" src="lib/respond.min.js"></script>
-<![endif]-->
-@using HST.Art.Web
+﻿@using HST.Art.Web
 @using HST.Art.Core
 @using HST.Utillity
-@Scripts.Render("~/bundles/saos")
-@Styles.Render("~/appcss")
-<!--[if IE 6]>
-<script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js" ></script>
-<script>DD_belatedPNG.fix('*');</script>
-<![endif]-->
+
 <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span>证书管理 <span class="c-gray en">&gt;</span> 教师证书 <a class="btn btn-primary radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新"><i class="Hui-iconfont">&#xe68f;</i></a></nav>
 <div class="page-container">
     <div class="cl pd-10 bg-1 bk-gray mt-10 search-wrap">
@@ -60,7 +51,6 @@
     </div>
 </div>
 
-@Scripts.Render("~/bundles/datatable")
 @section scripts {
     <script type="text/javascript">
         var table1 = null;

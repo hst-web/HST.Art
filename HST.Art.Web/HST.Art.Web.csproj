@@ -226,11 +226,6 @@
     <Compile Include="Areas\manage\Controllers\DownloadController.cs" />
     <Compile Include="Areas\manage\Controllers\TeacherController.cs" />
     <Compile Include="Areas\manage\manageAreaRegistration.cs" />
-    <Compile Include="Areas\manage\Views\Account\Edit.generated.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Edit.cshtml</DependentUpon>
-    </Compile>
     <Compile Include="Areas\manage\Views\Account\Index.generated.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -395,11 +390,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Edit.cshtml</DependentUpon>
-    </Compile>
-    <Compile Include="Areas\manage\Views\User\Index.generated.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Index.cshtml</DependentUpon>
     </Compile>
     <Compile Include="Areas\manage\Views\User\List.generated.cs">
       <AutoGen>True</AutoGen>
@@ -2108,10 +2098,6 @@
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>Edit.generated.cs</LastGenOutput>
     </None>
-    <None Include="Areas\manage\Views\Account\Edit.cshtml">
-      <Generator>RazorGenerator</Generator>
-      <LastGenOutput>Edit.generated.cs</LastGenOutput>
-    </None>
     <None Include="Areas\manage\Views\Home\Edit.cshtml">
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>Edit.generated.cs</LastGenOutput>
@@ -2237,10 +2223,6 @@
     </None>
     <None Include="Views\Shared\_Layout.cshtml">
       <LastGenOutput>_Layout.generated.cs</LastGenOutput>
-      <Generator>RazorGenerator</Generator>
-    </None>
-    <None Include="Areas\manage\Views\User\Index.cshtml">
-      <LastGenOutput>Index.generated.cs</LastGenOutput>
       <Generator>RazorGenerator</Generator>
     </None>
   </ItemGroup>

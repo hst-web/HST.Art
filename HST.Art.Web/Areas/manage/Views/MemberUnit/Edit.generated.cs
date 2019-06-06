@@ -58,7 +58,7 @@ namespace ASP
             
             #line 1 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
   
-    Layout = "";
+    Layout = null;
 
             
             #line default
@@ -101,9 +101,9 @@ Write(Styles.Render("~/appcss"));
             #line hidden
 WriteLiteral("\r\n<script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 269), Tuple.Create("\"", 325)
-, Tuple.Create(Tuple.Create("", 275), Tuple.Create<System.Object, System.Int32>(Href("~/Content/lib/webuploader/0.1.5/webuploader.min.js")
-, 275), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 271), Tuple.Create("\"", 327)
+, Tuple.Create(Tuple.Create("", 277), Tuple.Create<System.Object, System.Int32>(Href("~/Content/lib/webuploader/0.1.5/webuploader.min.js")
+, 277), false)
 );
 
 WriteLiteral(" type=\"text/javascript\"");
@@ -112,9 +112,9 @@ WriteLiteral("></script>\r\n<script");
 
 WriteLiteral(" type=\"text/javascript\"");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 391), Tuple.Create("\"", 431)
-, Tuple.Create(Tuple.Create("", 397), Tuple.Create<System.Object, System.Int32>(Href("~/Content/lib/ckeditor/ckeditor.js")
-, 397), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 393), Tuple.Create("\"", 433)
+, Tuple.Create(Tuple.Create("", 399), Tuple.Create<System.Object, System.Int32>(Href("~/Content/lib/ckeditor/ckeditor.js")
+, 399), false)
 );
 
 WriteLiteral("></script>\r\n<style");
@@ -234,15 +234,15 @@ WriteLiteral(">\r\n                    <div");
 
 WriteLiteral(" id=\"upfileImg\"");
 
-WriteAttribute("class", Tuple.Create(" class=\"", 1484), Tuple.Create("\"", 1558)
-, Tuple.Create(Tuple.Create("", 1492), Tuple.Create("up-img-left", 1492), true)
+WriteAttribute("class", Tuple.Create(" class=\"", 1486), Tuple.Create("\"", 1560)
+, Tuple.Create(Tuple.Create("", 1494), Tuple.Create("up-img-left", 1494), true)
             
             #line 31 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
-, Tuple.Create(Tuple.Create(" ", 1503), Tuple.Create<System.Object, System.Int32>(string.IsNullOrEmpty(Model.HeadImg) ?"":"up-imgBtn"
+, Tuple.Create(Tuple.Create(" ", 1505), Tuple.Create<System.Object, System.Int32>(string.IsNullOrEmpty(Model.HeadImg) ?"":"up-imgBtn"
             
             #line default
             #line hidden
-, 1504), false)
+, 1506), false)
 );
 
 WriteLiteral(">\r\n");
@@ -258,17 +258,17 @@ WriteLiteral("                        ");
             #line hidden
 WriteLiteral("\r\n                    </div>\r\n                    <span");
 
-WriteAttribute("class", Tuple.Create(" class=\"", 1697), Tuple.Create("\"", 1785)
-, Tuple.Create(Tuple.Create("", 1705), Tuple.Create("help-block", 1705), true)
-, Tuple.Create(Tuple.Create(" ", 1715), Tuple.Create("help-tip", 1716), true)
-, Tuple.Create(Tuple.Create(" ", 1724), Tuple.Create("help-img", 1725), true)
+WriteAttribute("class", Tuple.Create(" class=\"", 1699), Tuple.Create("\"", 1787)
+, Tuple.Create(Tuple.Create("", 1707), Tuple.Create("help-block", 1707), true)
+, Tuple.Create(Tuple.Create(" ", 1717), Tuple.Create("help-tip", 1718), true)
+, Tuple.Create(Tuple.Create(" ", 1726), Tuple.Create("help-img", 1727), true)
             
             #line 34 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
-, Tuple.Create(Tuple.Create(" ", 1733), Tuple.Create<System.Object, System.Int32>(string.IsNullOrEmpty(Model.HeadImg) ?"":"hidden"
+, Tuple.Create(Tuple.Create(" ", 1735), Tuple.Create<System.Object, System.Int32>(string.IsNullOrEmpty(Model.HeadImg) ?"":"hidden"
             
             #line default
             #line hidden
-, 1734), false)
+, 1736), false)
 );
 
 WriteLiteral(" style=\"top:8px;position:absolute\"");
@@ -285,14 +285,14 @@ WriteLiteral(" class=\"\"");
 
 WriteLiteral(">\r\n                            <li><img");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 1997), Tuple.Create("\"", 2022)
+WriteAttribute("src", Tuple.Create(" src=\"", 1999), Tuple.Create("\"", 2024)
             
             #line 37 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
-, Tuple.Create(Tuple.Create("", 2003), Tuple.Create<System.Object, System.Int32>(Model.SmallHeadImg
+, Tuple.Create(Tuple.Create("", 2005), Tuple.Create<System.Object, System.Int32>(Model.SmallHeadImg
             
             #line default
             #line hidden
-, 2003), false)
+, 2005), false)
 );
 
 WriteLiteral(" /></li>\r\n                        </ul>\r\n                        <input");
@@ -383,14 +383,14 @@ WriteLiteral(" type=\"hidden\"");
 
 WriteLiteral(" name=\"Province\"");
 
-WriteAttribute("value", Tuple.Create(" value=\"", 3054), Tuple.Create("\"", 3088)
+WriteAttribute("value", Tuple.Create(" value=\"", 3056), Tuple.Create("\"", 3090)
             
             #line 54 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
-, Tuple.Create(Tuple.Create("", 3062), Tuple.Create<System.Object, System.Int32>(Constant.DEFAULT_PROVINCE
+, Tuple.Create(Tuple.Create("", 3064), Tuple.Create<System.Object, System.Int32>(Constant.DEFAULT_PROVINCE
             
             #line default
             #line hidden
-, 3062), false)
+, 3064), false)
 );
 
 WriteLiteral(" />\r\n                <select");

@@ -103,12 +103,23 @@ Write(Styles.Render("~/appcss"));
             
             #line default
             #line hidden
+WriteLiteral("\r\n");
+
+WriteLiteral("    ");
+
+            
+            #line 18 "..\..\Areas\manage\Views\Shared\_Layout.cshtml"
+Write(Scripts.Render("~/bundles/datatable"));
+
+            
+            #line default
+            #line hidden
 WriteLiteral("\r\n    <!--[if IE 6]>\r\n    <script type=\"text/javascript\" src=\"/Content/lib/DD_bel" +
 "atedPNG_0.0.8a-min.js\" ></script>\r\n    <script>DD_belatedPNG.fix(\'*\');</script>\r" +
 "\n    <![endif]-->\r\n    <title>");
 
             
-            #line 22 "..\..\Areas\manage\Views\Shared\_Layout.cshtml"
+            #line 23 "..\..\Areas\manage\Views\Shared\_Layout.cshtml"
       Write(ViewBag.Title);
 
             
@@ -119,7 +130,7 @@ WriteLiteral("</title>\r\n</head>\r\n<body>\r\n");
 WriteLiteral("    ");
 
             
-            #line 25 "..\..\Areas\manage\Views\Shared\_Layout.cshtml"
+            #line 26 "..\..\Areas\manage\Views\Shared\_Layout.cshtml"
 Write(RenderBody());
 
             
@@ -130,7 +141,7 @@ WriteLiteral("\r\n");
 WriteLiteral("    ");
 
             
-            #line 26 "..\..\Areas\manage\Views\Shared\_Layout.cshtml"
+            #line 27 "..\..\Areas\manage\Views\Shared\_Layout.cshtml"
 Write(RenderSection("Scripts", required: false));
 
             

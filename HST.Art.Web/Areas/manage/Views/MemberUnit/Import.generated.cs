@@ -58,7 +58,7 @@ namespace ASP
             
             #line 1 "..\..\Areas\manage\Views\MemberUnit\Import.cshtml"
   
-    Layout = "";
+    Layout = null;
 
             
             #line default
@@ -85,9 +85,9 @@ Write(Styles.Render("~/appcss"));
             #line hidden
 WriteLiteral("\r\n<script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 161), Tuple.Create("\"", 217)
-, Tuple.Create(Tuple.Create("", 167), Tuple.Create<System.Object, System.Int32>(Href("~/Content/lib/webuploader/0.1.5/webuploader.min.js")
-, 167), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 163), Tuple.Create("\"", 219)
+, Tuple.Create(Tuple.Create("", 169), Tuple.Create<System.Object, System.Int32>(Href("~/Content/lib/webuploader/0.1.5/webuploader.min.js")
+, 169), false)
 );
 
 WriteLiteral(" type=\"text/javascript\"");
@@ -147,9 +147,9 @@ WriteLiteral(" id=\"loc_temp_inp\"");
 
 WriteLiteral(" />\r\n            </div>\r\n\r\n            <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 936), Tuple.Create("\"", 966)
-, Tuple.Create(Tuple.Create("", 943), Tuple.Create<System.Object, System.Int32>(Href("~/Content/协会会员导入模板.xlsx")
-, 943), false)
+WriteAttribute("href", Tuple.Create(" href=\"", 938), Tuple.Create("\"", 968)
+, Tuple.Create(Tuple.Create("", 945), Tuple.Create<System.Object, System.Int32>(Href("~/Content/协会会员导入模板.xlsx")
+, 945), false)
 );
 
 WriteLiteral(" class=\"down-temp\"");

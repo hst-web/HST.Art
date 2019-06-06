@@ -28,19 +28,19 @@ namespace ASP
     using System.Web.UI;
     using System.Web.WebPages;
     
-    #line 6 "..\..\Areas\manage\Views\Download\List.cshtml"
+    #line 2 "..\..\Areas\manage\Views\Download\List.cshtml"
     using HST.Art.Core;
     
     #line default
     #line hidden
     
-    #line 5 "..\..\Areas\manage\Views\Download\List.cshtml"
+    #line 1 "..\..\Areas\manage\Views\Download\List.cshtml"
     using HST.Art.Web;
     
     #line default
     #line hidden
     
-    #line 7 "..\..\Areas\manage\Views\Download\List.cshtml"
+    #line 3 "..\..\Areas\manage\Views\Download\List.cshtml"
     using HST.Utillity;
     
     #line default
@@ -55,28 +55,7 @@ namespace ASP
         }
         public override void Execute()
         {
-WriteLiteral("<!--[if lt IE 9]>\r\n<script type=\"text/javascript\" src=\"lib/html5shiv.js\"></script" +
-">\r\n<script type=\"text/javascript\" src=\"lib/respond.min.js\"></script>\r\n<![endif]-" +
-"->\r\n");
-
-            
-            #line 8 "..\..\Areas\manage\Views\Download\List.cshtml"
-Write(Scripts.Render("~/bundles/saos"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n");
-
-            
-            #line 9 "..\..\Areas\manage\Views\Download\List.cshtml"
-Write(Styles.Render("~/appcss"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n<!--[if IE 6]>\r\n<script type=\"text/javascript\" src=\"lib/DD_belatedPNG_0.0.8a-mi" +
-"n.js\" ></script>\r\n<script>DD_belatedPNG.fix(\'*\');</script>\r\n<![endif]-->\r\n<nav");
+WriteLiteral("\r\n<nav");
 
 WriteLiteral(" class=\"breadcrumb\"");
 
@@ -130,38 +109,38 @@ WriteLiteral(" value=\"\"");
 
 WriteLiteral(">请选择筛选条件</option>\r\n            <option");
 
-WriteAttribute("value", Tuple.Create(" value=\"", 1049), Tuple.Create("\"", 1080)
+WriteAttribute("value", Tuple.Create(" value=\"", 670), Tuple.Create("\"", 701)
             
-            #line 20 "..\..\Areas\manage\Views\Download\List.cshtml"
-, Tuple.Create(Tuple.Create("", 1057), Tuple.Create<System.Object, System.Int32>((int)SearchType.Type
+            #line 11 "..\..\Areas\manage\Views\Download\List.cshtml"
+, Tuple.Create(Tuple.Create("", 678), Tuple.Create<System.Object, System.Int32>((int)SearchType.Type
             
             #line default
             #line hidden
-, 1057), false)
+, 678), false)
 );
 
 WriteLiteral(">所属类别</option>\r\n            <option");
 
-WriteAttribute("value", Tuple.Create(" value=\"", 1116), Tuple.Create("\"", 1148)
+WriteAttribute("value", Tuple.Create(" value=\"", 737), Tuple.Create("\"", 769)
             
-            #line 21 "..\..\Areas\manage\Views\Download\List.cshtml"
-, Tuple.Create(Tuple.Create("", 1124), Tuple.Create<System.Object, System.Int32>((int)SearchType.Title
+            #line 12 "..\..\Areas\manage\Views\Download\List.cshtml"
+, Tuple.Create(Tuple.Create("", 745), Tuple.Create<System.Object, System.Int32>((int)SearchType.Title
             
             #line default
             #line hidden
-, 1124), false)
+, 745), false)
 );
 
 WriteLiteral(">标题</option>\r\n            <option");
 
-WriteAttribute("value", Tuple.Create(" value=\"", 1182), Tuple.Create("\"", 1214)
+WriteAttribute("value", Tuple.Create(" value=\"", 803), Tuple.Create("\"", 835)
             
-            #line 22 "..\..\Areas\manage\Views\Download\List.cshtml"
-, Tuple.Create(Tuple.Create("", 1190), Tuple.Create<System.Object, System.Int32>((int)SearchType.State
+            #line 13 "..\..\Areas\manage\Views\Download\List.cshtml"
+, Tuple.Create(Tuple.Create("", 811), Tuple.Create<System.Object, System.Int32>((int)SearchType.State
             
             #line default
             #line hidden
-, 1190), false)
+, 811), false)
 );
 
 WriteLiteral(">状态</option>\r\n        </select>\r\n        <input");
@@ -191,13 +170,13 @@ WriteLiteral(" value=\"\"");
 WriteLiteral(">请选择所属类别</option>\r\n");
 
             
-            #line 27 "..\..\Areas\manage\Views\Download\List.cshtml"
+            #line 18 "..\..\Areas\manage\Views\Download\List.cshtml"
             
             
             #line default
             #line hidden
             
-            #line 27 "..\..\Areas\manage\Views\Download\List.cshtml"
+            #line 18 "..\..\Areas\manage\Views\Download\List.cshtml"
              foreach (CategoryDictionary item in ViewBag.AllCategory)
             {
 
@@ -206,20 +185,20 @@ WriteLiteral(">请选择所属类别</option>\r\n");
             #line hidden
 WriteLiteral("                <option");
 
-WriteAttribute("value", Tuple.Create(" value=\"", 1631), Tuple.Create("\"", 1647)
+WriteAttribute("value", Tuple.Create(" value=\"", 1252), Tuple.Create("\"", 1268)
             
-            #line 29 "..\..\Areas\manage\Views\Download\List.cshtml"
-, Tuple.Create(Tuple.Create("", 1639), Tuple.Create<System.Object, System.Int32>(item.Id
+            #line 20 "..\..\Areas\manage\Views\Download\List.cshtml"
+, Tuple.Create(Tuple.Create("", 1260), Tuple.Create<System.Object, System.Int32>(item.Id
             
             #line default
             #line hidden
-, 1639), false)
+, 1260), false)
 );
 
 WriteLiteral(">");
 
             
-            #line 29 "..\..\Areas\manage\Views\Download\List.cshtml"
+            #line 20 "..\..\Areas\manage\Views\Download\List.cshtml"
                                     Write(item.Name);
 
             
@@ -228,7 +207,7 @@ WriteLiteral(">");
 WriteLiteral("</option>\r\n");
 
             
-            #line 30 "..\..\Areas\manage\Views\Download\List.cshtml"
+            #line 21 "..\..\Areas\manage\Views\Download\List.cshtml"
             }
 
             
@@ -248,26 +227,26 @@ WriteLiteral(" value=\"\"");
 
 WriteLiteral(">请选择文件状态</option>\r\n            <option");
 
-WriteAttribute("value", Tuple.Create(" value=\"", 1868), Tuple.Create("\"", 1902)
+WriteAttribute("value", Tuple.Create(" value=\"", 1489), Tuple.Create("\"", 1523)
             
-            #line 34 "..\..\Areas\manage\Views\Download\List.cshtml"
-, Tuple.Create(Tuple.Create("", 1876), Tuple.Create<System.Object, System.Int32>((int)PublishState.Upper
+            #line 25 "..\..\Areas\manage\Views\Download\List.cshtml"
+, Tuple.Create(Tuple.Create("", 1497), Tuple.Create<System.Object, System.Int32>((int)PublishState.Upper
             
             #line default
             #line hidden
-, 1876), false)
+, 1497), false)
 );
 
 WriteLiteral(">已上架</option>\r\n            <option");
 
-WriteAttribute("value", Tuple.Create(" value=\"", 1937), Tuple.Create("\"", 1971)
+WriteAttribute("value", Tuple.Create(" value=\"", 1558), Tuple.Create("\"", 1592)
             
-            #line 35 "..\..\Areas\manage\Views\Download\List.cshtml"
-, Tuple.Create(Tuple.Create("", 1945), Tuple.Create<System.Object, System.Int32>((int)PublishState.Lower
+            #line 26 "..\..\Areas\manage\Views\Download\List.cshtml"
+, Tuple.Create(Tuple.Create("", 1566), Tuple.Create<System.Object, System.Int32>((int)PublishState.Lower
             
             #line default
             #line hidden
-, 1945), false)
+, 1566), false)
 );
 
 WriteLiteral(">已下架</option>\r\n        </select>\r\n        <button");
@@ -289,7 +268,7 @@ WriteLiteral(">&#xe665;</i> 查询</button>\r\n");
 WriteLiteral("        ");
 
             
-            #line 38 "..\..\Areas\manage\Views\Download\List.cshtml"
+            #line 29 "..\..\Areas\manage\Views\Download\List.cshtml"
    Write(Html.ActionLink("新建下载", "Add", null, new { @class = "btn btn-primary" }));
 
             
@@ -348,15 +327,6 @@ WriteLiteral(" width=\"11%\"");
 WriteLiteral(">操作</th>\r\n                </tr>\r\n            </thead>\r\n        </table>\r\n    </di" +
 "v>\r\n</div>\r\n\r\n");
 
-            
-            #line 59 "..\..\Areas\manage\Views\Download\List.cshtml"
-Write(Scripts.Render("~/bundles/datatable"));
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n");
-
 DefineSection("scripts", () => {
 
 WriteLiteral("\r\n    <script");
@@ -388,7 +358,7 @@ WriteLiteral(@">
                else if ($(this).val() == '");
 
             
-            #line 83 "..\..\Areas\manage\Views\Download\List.cshtml"
+            #line 73 "..\..\Areas\manage\Views\Download\List.cshtml"
                                       Write((int)SearchType.Type);
 
             
@@ -399,7 +369,7 @@ WriteLiteral("\') {\r\n                    $(\"#sel_type\").removeClass(\"hidden
 "dClass(\"hidden\");\r\n                } else if ($(this).val() == \'");
 
             
-            #line 87 "..\..\Areas\manage\Views\Download\List.cshtml"
+            #line 77 "..\..\Areas\manage\Views\Download\List.cshtml"
                                          Write((int)SearchType.State);
 
             
@@ -423,7 +393,7 @@ WriteLiteral(@"') {
             if ($(""#sel_filType"").val() == '");
 
             
-            #line 102 "..\..\Areas\manage\Views\Download\List.cshtml"
+            #line 92 "..\..\Areas\manage\Views\Download\List.cshtml"
                                         Write((int)SearchType.Type);
 
             
@@ -433,7 +403,7 @@ WriteLiteral("\') {\r\n                return $(\"#sel_type\").val();\r\n       
 "l_filType\").val() == \'");
 
             
-            #line 104 "..\..\Areas\manage\Views\Download\List.cshtml"
+            #line 94 "..\..\Areas\manage\Views\Download\List.cshtml"
                                                Write((int)SearchType.State);
 
             
@@ -454,7 +424,7 @@ WriteLiteral(@"') {
                     ""url"": """);
 
             
-            #line 116 "..\..\Areas\manage\Views\Download\List.cshtml"
+            #line 106 "..\..\Areas\manage\Views\Download\List.cshtml"
                        Write(Url.Action("GetJsonData"));
 
             
@@ -484,7 +454,7 @@ WriteLiteral("\",\r\n                    \"type\": \"post\",\r\n                
 ";\\\" onClick=\\\"obj_detail(\'查看详情\',\'");
 
             
-            #line 156 "..\..\Areas\manage\Views\Download\List.cshtml"
+            #line 146 "..\..\Areas\manage\Views\Download\List.cshtml"
                                                                                         Write(Url.Action("Detail"));
 
             
@@ -501,7 +471,7 @@ WriteLiteral(@"',"" + data + "")\""  title=\""查看详情\"">查看详情</a>""
                         var tmpString = '<a href=""");
 
             
-            #line 164 "..\..\Areas\manage\Views\Download\List.cshtml"
+            #line 154 "..\..\Areas\manage\Views\Download\List.cshtml"
                                              Write(Url.Action("Edit"));
 
             
@@ -512,7 +482,7 @@ WriteLiteral("?id=\' + data + \'\" title=\"编辑\">编辑</a>\';\r\n           
 "\"obj_publish(\'");
 
             
-            #line 166 "..\..\Areas\manage\Views\Download\List.cshtml"
+            #line 156 "..\..\Areas\manage\Views\Download\List.cshtml"
                                                                                      Write(Url.Action("Publish"));
 
             
@@ -523,7 +493,7 @@ WriteLiteral("\',\" + data + \")\\\"  title=\\\"上架\\\">上架</a>\";\r\n    
 "\'");
 
             
-            #line 168 "..\..\Areas\manage\Views\Download\List.cshtml"
+            #line 158 "..\..\Areas\manage\Views\Download\List.cshtml"
                                                                                      Write(Url.Action("Shelves"));
 
             
@@ -533,7 +503,7 @@ WriteLiteral("\',\" + data + \")\\\"  title=\\\"下架\\\">下架</a>\";\r\n    
 "a href=\\\"javascript:;\\\" onClick=\\\"obj_del(\'文件\',\'");
 
             
-            #line 169 "..\..\Areas\manage\Views\Download\List.cshtml"
+            #line 159 "..\..\Areas\manage\Views\Download\List.cshtml"
                                                                                   Write(Url.Action("Delete"));
 
             

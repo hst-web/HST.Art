@@ -58,7 +58,7 @@ namespace ASP
             
             #line 1 "..\..\Areas\manage\Views\Article\Edit.cshtml"
   
-    Layout = "";
+    Layout = null;
 
             
             #line default
@@ -101,9 +101,9 @@ Write(Styles.Render("~/appcss"));
             #line hidden
 WriteLiteral("\r\n<script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 266), Tuple.Create("\"", 322)
-, Tuple.Create(Tuple.Create("", 272), Tuple.Create<System.Object, System.Int32>(Href("~/Content/lib/webuploader/0.1.5/webuploader.min.js")
-, 272), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 268), Tuple.Create("\"", 324)
+, Tuple.Create(Tuple.Create("", 274), Tuple.Create<System.Object, System.Int32>(Href("~/Content/lib/webuploader/0.1.5/webuploader.min.js")
+, 274), false)
 );
 
 WriteLiteral(" type=\"text/javascript\"");
@@ -112,9 +112,9 @@ WriteLiteral("></script>\r\n<script");
 
 WriteLiteral(" type=\"text/javascript\"");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 388), Tuple.Create("\"", 428)
-, Tuple.Create(Tuple.Create("", 394), Tuple.Create<System.Object, System.Int32>(Href("~/Content/lib/ckeditor/ckeditor.js")
-, 394), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 390), Tuple.Create("\"", 430)
+, Tuple.Create(Tuple.Create("", 396), Tuple.Create<System.Object, System.Int32>(Href("~/Content/lib/ckeditor/ckeditor.js")
+, 396), false)
 );
 
 WriteLiteral("></script>\r\n<style");
@@ -234,15 +234,15 @@ WriteLiteral(">\r\n                    <div");
 
 WriteLiteral(" id=\"upfileImg\"");
 
-WriteAttribute("class", Tuple.Create(" class=\"", 1476), Tuple.Create("\"", 1550)
-, Tuple.Create(Tuple.Create("", 1484), Tuple.Create("up-img-left", 1484), true)
+WriteAttribute("class", Tuple.Create(" class=\"", 1478), Tuple.Create("\"", 1552)
+, Tuple.Create(Tuple.Create("", 1486), Tuple.Create("up-img-left", 1486), true)
             
             #line 31 "..\..\Areas\manage\Views\Article\Edit.cshtml"
-, Tuple.Create(Tuple.Create(" ", 1495), Tuple.Create<System.Object, System.Int32>(string.IsNullOrEmpty(Model.HeadImg) ?"":"up-imgBtn"
+, Tuple.Create(Tuple.Create(" ", 1497), Tuple.Create<System.Object, System.Int32>(string.IsNullOrEmpty(Model.HeadImg) ?"":"up-imgBtn"
             
             #line default
             #line hidden
-, 1496), false)
+, 1498), false)
 );
 
 WriteLiteral(">\r\n");
@@ -258,17 +258,17 @@ WriteLiteral("                        ");
             #line hidden
 WriteLiteral("\r\n                    </div>\r\n                    <span");
 
-WriteAttribute("class", Tuple.Create(" class=\"", 1689), Tuple.Create("\"", 1777)
-, Tuple.Create(Tuple.Create("", 1697), Tuple.Create("help-block", 1697), true)
-, Tuple.Create(Tuple.Create(" ", 1707), Tuple.Create("help-tip", 1708), true)
-, Tuple.Create(Tuple.Create(" ", 1716), Tuple.Create("help-img", 1717), true)
+WriteAttribute("class", Tuple.Create(" class=\"", 1691), Tuple.Create("\"", 1779)
+, Tuple.Create(Tuple.Create("", 1699), Tuple.Create("help-block", 1699), true)
+, Tuple.Create(Tuple.Create(" ", 1709), Tuple.Create("help-tip", 1710), true)
+, Tuple.Create(Tuple.Create(" ", 1718), Tuple.Create("help-img", 1719), true)
             
             #line 34 "..\..\Areas\manage\Views\Article\Edit.cshtml"
-, Tuple.Create(Tuple.Create(" ", 1725), Tuple.Create<System.Object, System.Int32>(string.IsNullOrEmpty(Model.HeadImg) ?"":"hidden"
+, Tuple.Create(Tuple.Create(" ", 1727), Tuple.Create<System.Object, System.Int32>(string.IsNullOrEmpty(Model.HeadImg) ?"":"hidden"
             
             #line default
             #line hidden
-, 1726), false)
+, 1728), false)
 );
 
 WriteLiteral(" style=\"top:8px;position:absolute\"");
@@ -285,14 +285,14 @@ WriteLiteral(" class=\"\"");
 
 WriteLiteral(">\r\n                            <li><img");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 1989), Tuple.Create("\"", 2014)
+WriteAttribute("src", Tuple.Create(" src=\"", 1991), Tuple.Create("\"", 2016)
             
             #line 37 "..\..\Areas\manage\Views\Article\Edit.cshtml"
-, Tuple.Create(Tuple.Create("", 1995), Tuple.Create<System.Object, System.Int32>(Model.SmallHeadImg
+, Tuple.Create(Tuple.Create("", 1997), Tuple.Create<System.Object, System.Int32>(Model.SmallHeadImg
             
             #line default
             #line hidden
-, 1995), false)
+, 1997), false)
 );
 
 WriteLiteral(" /></li>\r\n                        </ul>\r\n                        <input");
@@ -353,14 +353,14 @@ WriteLiteral(" onchange=\"bindData()\"");
 
 WriteLiteral(">\r\n                    <option");
 
-WriteAttribute("value", Tuple.Create(" value=\"", 2726), Tuple.Create("\"", 2762)
+WriteAttribute("value", Tuple.Create(" value=\"", 2728), Tuple.Create("\"", 2764)
             
             #line 50 "..\..\Areas\manage\Views\Article\Edit.cshtml"
-, Tuple.Create(Tuple.Create("", 2734), Tuple.Create<System.Object, System.Int32>((int)SectionType.Industry
+, Tuple.Create(Tuple.Create("", 2736), Tuple.Create<System.Object, System.Int32>((int)SectionType.Industry
             
             #line default
             #line hidden
-, 2734), false)
+, 2736), false)
 );
 
 WriteLiteral(" ");
@@ -383,14 +383,14 @@ WriteLiteral(">");
             #line hidden
 WriteLiteral("</option>\r\n                    <option");
 
-WriteAttribute("value", Tuple.Create(" value=\"", 2899), Tuple.Create("\"", 2938)
+WriteAttribute("value", Tuple.Create(" value=\"", 2901), Tuple.Create("\"", 2940)
             
             #line 51 "..\..\Areas\manage\Views\Article\Edit.cshtml"
-, Tuple.Create(Tuple.Create("", 2907), Tuple.Create<System.Object, System.Int32>((int)SectionType.Association
+, Tuple.Create(Tuple.Create("", 2909), Tuple.Create<System.Object, System.Int32>((int)SectionType.Association
             
             #line default
             #line hidden
-, 2907), false)
+, 2909), false)
 );
 
 WriteLiteral(" ");
@@ -413,14 +413,14 @@ WriteLiteral(">");
             #line hidden
 WriteLiteral("</option>\r\n                    <option");
 
-WriteAttribute("value", Tuple.Create(" value=\"", 3081), Tuple.Create("\"", 3120)
+WriteAttribute("value", Tuple.Create(" value=\"", 3083), Tuple.Create("\"", 3122)
             
             #line 52 "..\..\Areas\manage\Views\Article\Edit.cshtml"
-, Tuple.Create(Tuple.Create("", 3089), Tuple.Create<System.Object, System.Int32>((int)SectionType.Examination
+, Tuple.Create(Tuple.Create("", 3091), Tuple.Create<System.Object, System.Int32>((int)SectionType.Examination
             
             #line default
             #line hidden
-, 3089), false)
+, 3091), false)
 );
 
 WriteLiteral(" ");
@@ -443,14 +443,14 @@ WriteLiteral(">");
             #line hidden
 WriteLiteral("</option>\r\n                    <option");
 
-WriteAttribute("value", Tuple.Create(" value=\"", 3263), Tuple.Create("\"", 3297)
+WriteAttribute("value", Tuple.Create(" value=\"", 3265), Tuple.Create("\"", 3299)
             
             #line 53 "..\..\Areas\manage\Views\Article\Edit.cshtml"
-, Tuple.Create(Tuple.Create("", 3271), Tuple.Create<System.Object, System.Int32>((int)SectionType.Social
+, Tuple.Create(Tuple.Create("", 3273), Tuple.Create<System.Object, System.Int32>((int)SectionType.Social
             
             #line default
             #line hidden
-, 3271), false)
+, 3273), false)
 );
 
 WriteLiteral(" ");
@@ -485,17 +485,17 @@ WriteLiteral(" class=\"formControls col-md-4 \"");
 
 WriteLiteral(">\r\n                <select");
 
-WriteAttribute("class", Tuple.Create(" class=\"", 3614), Tuple.Create("\"", 3700)
-, Tuple.Create(Tuple.Create("", 3622), Tuple.Create("select", 3622), true)
-, Tuple.Create(Tuple.Create(" ", 3628), Tuple.Create("select-box", 3629), true)
-, Tuple.Create(Tuple.Create(" ", 3639), Tuple.Create("inline", 3640), true)
+WriteAttribute("class", Tuple.Create(" class=\"", 3616), Tuple.Create("\"", 3702)
+, Tuple.Create(Tuple.Create("", 3624), Tuple.Create("select", 3624), true)
+, Tuple.Create(Tuple.Create(" ", 3630), Tuple.Create("select-box", 3631), true)
+, Tuple.Create(Tuple.Create(" ", 3641), Tuple.Create("inline", 3642), true)
             
             #line 58 "..\..\Areas\manage\Views\Article\Edit.cshtml"
-, Tuple.Create(Tuple.Create(" ", 3646), Tuple.Create<System.Object, System.Int32>(Model.Section==SectionType.Examination?"":"hidden"
+, Tuple.Create(Tuple.Create(" ", 3648), Tuple.Create<System.Object, System.Int32>(Model.Section==SectionType.Examination?"":"hidden"
             
             #line default
             #line hidden
-, 3647), false)
+, 3649), false)
 );
 
 WriteLiteral(" style=\"width:47%;\"");
@@ -524,14 +524,14 @@ WriteLiteral(">所属大类</option>\r\n");
             #line hidden
 WriteLiteral("                        <option");
 
-WriteAttribute("value", Tuple.Create(" value=\"", 3933), Tuple.Create("\"", 3949)
+WriteAttribute("value", Tuple.Create(" value=\"", 3935), Tuple.Create("\"", 3951)
             
             #line 62 "..\..\Areas\manage\Views\Article\Edit.cshtml"
-, Tuple.Create(Tuple.Create("", 3941), Tuple.Create<System.Object, System.Int32>(item.Id
+, Tuple.Create(Tuple.Create("", 3943), Tuple.Create<System.Object, System.Int32>(item.Id
             
             #line default
             #line hidden
-, 3941), false)
+, 3943), false)
 );
 
 WriteLiteral(" ");
@@ -563,18 +563,18 @@ WriteLiteral("</option>\r\n");
             #line hidden
 WriteLiteral("                </select>\r\n                <select");
 
-WriteAttribute("class", Tuple.Create(" class=\"", 4095), Tuple.Create("\"", 4194)
-, Tuple.Create(Tuple.Create("", 4103), Tuple.Create("select", 4103), true)
-, Tuple.Create(Tuple.Create(" ", 4109), Tuple.Create("select-box", 4110), true)
-, Tuple.Create(Tuple.Create("  ", 4120), Tuple.Create("inline", 4122), true)
-, Tuple.Create(Tuple.Create(" ", 4128), Tuple.Create("float-right", 4129), true)
+WriteAttribute("class", Tuple.Create(" class=\"", 4097), Tuple.Create("\"", 4196)
+, Tuple.Create(Tuple.Create("", 4105), Tuple.Create("select", 4105), true)
+, Tuple.Create(Tuple.Create(" ", 4111), Tuple.Create("select-box", 4112), true)
+, Tuple.Create(Tuple.Create("  ", 4122), Tuple.Create("inline", 4124), true)
+, Tuple.Create(Tuple.Create(" ", 4130), Tuple.Create("float-right", 4131), true)
             
             #line 65 "..\..\Areas\manage\Views\Article\Edit.cshtml"
-, Tuple.Create(Tuple.Create(" ", 4140), Tuple.Create<System.Object, System.Int32>(Model.Section==SectionType.Examination?"":"hidden"
+, Tuple.Create(Tuple.Create(" ", 4142), Tuple.Create<System.Object, System.Int32>(Model.Section==SectionType.Examination?"":"hidden"
             
             #line default
             #line hidden
-, 4141), false)
+, 4143), false)
 );
 
 WriteLiteral(" style=\"width:48%\"");
@@ -603,14 +603,14 @@ WriteLiteral(">所属类别</option>\r\n");
             #line hidden
 WriteLiteral("                        <option");
 
-WriteAttribute("value", Tuple.Create(" value=\"", 4421), Tuple.Create("\"", 4437)
+WriteAttribute("value", Tuple.Create(" value=\"", 4423), Tuple.Create("\"", 4439)
             
             #line 69 "..\..\Areas\manage\Views\Article\Edit.cshtml"
-, Tuple.Create(Tuple.Create("", 4429), Tuple.Create<System.Object, System.Int32>(item.Id
+, Tuple.Create(Tuple.Create("", 4431), Tuple.Create<System.Object, System.Int32>(item.Id
             
             #line default
             #line hidden
-, 4429), false)
+, 4431), false)
 );
 
 WriteLiteral(" ");
@@ -642,16 +642,16 @@ WriteLiteral("</option>\r\n");
             #line hidden
 WriteLiteral("                </select>\r\n                <select");
 
-WriteAttribute("class", Tuple.Create(" class=\"", 4580), Tuple.Create("\"", 4659)
-, Tuple.Create(Tuple.Create("", 4588), Tuple.Create("select", 4588), true)
-, Tuple.Create(Tuple.Create(" ", 4594), Tuple.Create("select-box", 4595), true)
+WriteAttribute("class", Tuple.Create(" class=\"", 4582), Tuple.Create("\"", 4661)
+, Tuple.Create(Tuple.Create("", 4590), Tuple.Create("select", 4590), true)
+, Tuple.Create(Tuple.Create(" ", 4596), Tuple.Create("select-box", 4597), true)
             
             #line 72 "..\..\Areas\manage\Views\Article\Edit.cshtml"
-, Tuple.Create(Tuple.Create(" ", 4605), Tuple.Create<System.Object, System.Int32>(Model.Section==SectionType.Examination?"hidden":""
+, Tuple.Create(Tuple.Create(" ", 4607), Tuple.Create<System.Object, System.Int32>(Model.Section==SectionType.Examination?"hidden":""
             
             #line default
             #line hidden
-, 4606), false)
+, 4608), false)
 );
 
 WriteLiteral(" id=\"sel_category\"");
@@ -678,14 +678,14 @@ WriteLiteral(">所属类别</option>\r\n");
             #line hidden
 WriteLiteral("                        <option");
 
-WriteAttribute("value", Tuple.Create(" value=\"", 4864), Tuple.Create("\"", 4880)
+WriteAttribute("value", Tuple.Create(" value=\"", 4866), Tuple.Create("\"", 4882)
             
             #line 76 "..\..\Areas\manage\Views\Article\Edit.cshtml"
-, Tuple.Create(Tuple.Create("", 4872), Tuple.Create<System.Object, System.Int32>(item.Id
+, Tuple.Create(Tuple.Create("", 4874), Tuple.Create<System.Object, System.Int32>(item.Id
             
             #line default
             #line hidden
-, 4872), false)
+, 4874), false)
 );
 
 WriteLiteral(" ");

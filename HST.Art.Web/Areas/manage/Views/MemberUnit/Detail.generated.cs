@@ -52,7 +52,7 @@ namespace ASP
             
             #line 1 "..\..\Areas\manage\Views\MemberUnit\Detail.cshtml"
   
-    Layout = "";
+    Layout = null;
 
             
             #line default

@@ -58,7 +58,7 @@ namespace ASP
             
             #line 1 "..\..\Areas\manage\Views\Category\Index.cshtml"
   
-    Layout = "";
+    Layout = null;
 
             
             #line default
@@ -289,16 +289,16 @@ WriteLiteral(" class=\"btn btn-primary float-right ml-20 hidden\"");
 
 WriteLiteral(" id=\"btnParent\"");
 
-WriteAttribute("onclick", Tuple.Create(" onclick=\"", 1360), Tuple.Create("\"", 1415)
-, Tuple.Create(Tuple.Create("", 1370), Tuple.Create("category_parent(\'大类管理\',\'", 1370), true)
+WriteAttribute("onclick", Tuple.Create(" onclick=\"", 1362), Tuple.Create("\"", 1417)
+, Tuple.Create(Tuple.Create("", 1372), Tuple.Create("category_parent(\'大类管理\',\'", 1372), true)
             
             #line 27 "..\..\Areas\manage\Views\Category\Index.cshtml"
-                                     , Tuple.Create(Tuple.Create("", 1394), Tuple.Create<System.Object, System.Int32>(Url.Action("List")
+                                     , Tuple.Create(Tuple.Create("", 1396), Tuple.Create<System.Object, System.Int32>(Url.Action("List")
             
             #line default
             #line hidden
-, 1394), false)
-, Tuple.Create(Tuple.Create("", 1413), Tuple.Create("\')", 1413), true)
+, 1396), false)
+, Tuple.Create(Tuple.Create("", 1415), Tuple.Create("\')", 1415), true)
 );
 
 WriteLiteral(" type=\"button\"");
@@ -368,14 +368,14 @@ WriteLiteral(" type=\"hidden\"");
 
 WriteLiteral(" id=\"categoryType\"");
 
-WriteAttribute("value", Tuple.Create(" value=\"", 2402), Tuple.Create("\"", 2434)
+WriteAttribute("value", Tuple.Create(" value=\"", 2404), Tuple.Create("\"", 2436)
             
             #line 48 "..\..\Areas\manage\Views\Category\Index.cshtml"
-, Tuple.Create(Tuple.Create("", 2410), Tuple.Create<System.Object, System.Int32>(ViewBag.DefaultCategory
+, Tuple.Create(Tuple.Create("", 2412), Tuple.Create<System.Object, System.Int32>(ViewBag.DefaultCategory
             
             #line default
             #line hidden
-, 2410), false)
+, 2412), false)
 );
 
 WriteLiteral(" />\r\n        <input");
@@ -422,14 +422,14 @@ WriteLiteral(">所属类别</option>\r\n");
             #line hidden
 WriteLiteral("                <option");
 
-WriteAttribute("value", Tuple.Create(" value=\"", 2771), Tuple.Create("\"", 2787)
+WriteAttribute("value", Tuple.Create(" value=\"", 2773), Tuple.Create("\"", 2789)
             
             #line 55 "..\..\Areas\manage\Views\Category\Index.cshtml"
-, Tuple.Create(Tuple.Create("", 2779), Tuple.Create<System.Object, System.Int32>(item.Id
+, Tuple.Create(Tuple.Create("", 2781), Tuple.Create<System.Object, System.Int32>(item.Id
             
             #line default
             #line hidden
-, 2779), false)
+, 2781), false)
 );
 
 WriteLiteral(">");
@@ -478,14 +478,14 @@ WriteLiteral(">所属类别</option>\r\n");
             #line hidden
 WriteLiteral("                <option");
 
-WriteAttribute("value", Tuple.Create(" value=\"", 3043), Tuple.Create("\"", 3059)
+WriteAttribute("value", Tuple.Create(" value=\"", 3045), Tuple.Create("\"", 3061)
             
             #line 62 "..\..\Areas\manage\Views\Category\Index.cshtml"
-, Tuple.Create(Tuple.Create("", 3051), Tuple.Create<System.Object, System.Int32>(item.Id
+, Tuple.Create(Tuple.Create("", 3053), Tuple.Create<System.Object, System.Int32>(item.Id
             
             #line default
             #line hidden
-, 3051), false)
+, 3053), false)
 );
 
 WriteLiteral(">");
@@ -570,16 +570,16 @@ WriteLiteral(">\r\n                            <button");
 
 WriteLiteral(" class=\"btn btn-primary radius btn-xs float-left\"");
 
-WriteAttribute("onclick", Tuple.Create(" onclick=\"", 4057), Tuple.Create("\"", 4101)
-, Tuple.Create(Tuple.Create("", 4067), Tuple.Create("subForm(this,\'", 4067), true)
+WriteAttribute("onclick", Tuple.Create(" onclick=\"", 4059), Tuple.Create("\"", 4103)
+, Tuple.Create(Tuple.Create("", 4069), Tuple.Create("subForm(this,\'", 4069), true)
             
             #line 79 "..\..\Areas\manage\Views\Category\Index.cshtml"
-                            , Tuple.Create(Tuple.Create("", 4081), Tuple.Create<System.Object, System.Int32>(Url.Action("Add")
+                            , Tuple.Create(Tuple.Create("", 4083), Tuple.Create<System.Object, System.Int32>(Url.Action("Add")
             
             #line default
             #line hidden
-, 4081), false)
-, Tuple.Create(Tuple.Create("", 4099), Tuple.Create("\')", 4099), true)
+, 4083), false)
+, Tuple.Create(Tuple.Create("", 4101), Tuple.Create("\')", 4101), true)
 );
 
 WriteLiteral(">保存</button>\r\n                            <button");
@@ -598,16 +598,16 @@ WriteLiteral(">\r\n                            <button");
 
 WriteLiteral(" class=\"btn btn-primary radius btn-xs float-left\"");
 
-WriteAttribute("onclick", Tuple.Create(" onclick=\"", 4448), Tuple.Create("\"", 4493)
-, Tuple.Create(Tuple.Create("", 4458), Tuple.Create("subForm(this,\'", 4458), true)
+WriteAttribute("onclick", Tuple.Create(" onclick=\"", 4450), Tuple.Create("\"", 4495)
+, Tuple.Create(Tuple.Create("", 4460), Tuple.Create("subForm(this,\'", 4460), true)
             
             #line 83 "..\..\Areas\manage\Views\Category\Index.cshtml"
-                            , Tuple.Create(Tuple.Create("", 4472), Tuple.Create<System.Object, System.Int32>(Url.Action("Edit")
+                            , Tuple.Create(Tuple.Create("", 4474), Tuple.Create<System.Object, System.Int32>(Url.Action("Edit")
             
             #line default
             #line hidden
-, 4472), false)
-, Tuple.Create(Tuple.Create("", 4491), Tuple.Create("\')", 4491), true)
+, 4474), false)
+, Tuple.Create(Tuple.Create("", 4493), Tuple.Create("\')", 4493), true)
 );
 
 WriteLiteral(">保存</button>\r\n                            <button");
