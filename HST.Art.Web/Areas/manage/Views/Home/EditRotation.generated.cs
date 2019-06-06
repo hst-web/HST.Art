@@ -258,19 +258,49 @@ WriteLiteral(" id=\"imglist\"");
 
 WriteLiteral(" class=\"\"");
 
-WriteLiteral(">\r\n                            <li><img");
+WriteLiteral(">\r\n                            <li>\r\n");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 1729), Tuple.Create("\"", 1754)
             
-            #line 38 "..\..\Areas\manage\Views\Home\EditRotation.cshtml"
-, Tuple.Create(Tuple.Create("", 1735), Tuple.Create<System.Object, System.Int32>(Model.SmallHeadImg
+            #line 39 "..\..\Areas\manage\Views\Home\EditRotation.cshtml"
+                                
             
             #line default
             #line hidden
-, 1735), false)
+            
+            #line 39 "..\..\Areas\manage\Views\Home\EditRotation.cshtml"
+                                 if (!string.IsNullOrEmpty(Model.SmallHeadImg))
+                                {
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                                    <img");
+
+WriteAttribute("src", Tuple.Create(" src=\"", 1883), Tuple.Create("\"", 1908)
+            
+            #line 41 "..\..\Areas\manage\Views\Home\EditRotation.cshtml"
+, Tuple.Create(Tuple.Create("", 1889), Tuple.Create<System.Object, System.Int32>(Model.SmallHeadImg
+            
+            #line default
+            #line hidden
+, 1889), false)
 );
 
-WriteLiteral(" /></li>\r\n                        </ul>\r\n                        <input");
+WriteLiteral(" style=\"max-width:125px\"");
+
+WriteLiteral(" onerror=\'nofind()\'");
+
+WriteLiteral(" />\r\n");
+
+            
+            #line 42 "..\..\Areas\manage\Views\Home\EditRotation.cshtml"
+                                }
+
+            
+            #line default
+            #line hidden
+WriteLiteral("                            </li>\r\n                        </ul>\r\n               " +
+"         <input");
 
 WriteLiteral(" type=\"hidden\"");
 
@@ -281,7 +311,7 @@ WriteLiteral(" />\r\n                    </div>\r\n                </div>\r\n");
 WriteLiteral("                ");
 
             
-            #line 43 "..\..\Areas\manage\Views\Home\EditRotation.cshtml"
+            #line 48 "..\..\Areas\manage\Views\Home\EditRotation.cshtml"
            Write(Html.ValidationMessageFor(m => m.HeadImg, null, new { @class = "error-lable" }));
 
             
@@ -292,7 +322,7 @@ WriteLiteral("\r\n");
 WriteLiteral("                ");
 
             
-            #line 44 "..\..\Areas\manage\Views\Home\EditRotation.cshtml"
+            #line 49 "..\..\Areas\manage\Views\Home\EditRotation.cshtml"
            Write(Html.TextBoxFor(m => m.HeadImg, new { id = "memberFileImg", @class = "hide-area input-text" }));
 
             
@@ -321,7 +351,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                ");
 
             
-            #line 50 "..\..\Areas\manage\Views\Home\EditRotation.cshtml"
+            #line 55 "..\..\Areas\manage\Views\Home\EditRotation.cshtml"
            Write(Html.TextAreaFor(m => m.WebLink, new { @class = "textarea", rows = "3", placeholder = "请输入链接地址..." }));
 
             
@@ -332,7 +362,7 @@ WriteLiteral("\r\n");
 WriteLiteral("                ");
 
             
-            #line 51 "..\..\Areas\manage\Views\Home\EditRotation.cshtml"
+            #line 56 "..\..\Areas\manage\Views\Home\EditRotation.cshtml"
            Write(Html.ValidationMessageFor(m => m.WebLink, null, new { @class = "error-lable" }));
 
             
@@ -373,7 +403,7 @@ WriteLiteral(" value=\"取消\"");
 WriteLiteral(">\r\n            </div>\r\n        </div>\r\n");
 
             
-            #line 60 "..\..\Areas\manage\Views\Home\EditRotation.cshtml"
+            #line 65 "..\..\Areas\manage\Views\Home\EditRotation.cshtml"
     }
 
             
@@ -452,7 +482,7 @@ WriteLiteral(@">
             server: jq_imgFormData.BidFileDomain + '");
 
             
-            #line 125 "..\..\Areas\manage\Views\Home\EditRotation.cshtml"
+            #line 130 "..\..\Areas\manage\Views\Home\EditRotation.cshtml"
                                                Write(Url.Action("Upload", "Upload"));
 
             

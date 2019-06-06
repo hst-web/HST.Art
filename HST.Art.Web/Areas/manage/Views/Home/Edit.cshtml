@@ -42,7 +42,12 @@
                     <span class="help-block help-tip help-img @(string.IsNullOrEmpty(Model.WeChat) ?"":"hidden")" style="top:8px;position:absolute">请上传jpg、jpeg、gif、bmp、png等图片类型的公众号二维码</span>
                     <div class="formControls">
                         <ul id="imglist" class="@(string.IsNullOrEmpty(Model.WeChat)?"hidden":"") ">
-                            <li><img src="@Model.SmallHeadImg" /></li>
+                            <li>
+                                @if (!string.IsNullOrEmpty(Model.SmallHeadImg))
+                                {
+                                    <img src="@Model.SmallHeadImg" style="max-width:125px" onerror='nofind()' />
+                                }
+                            </li>
                         </ul>
                         <input type="hidden" id="loc_temp_img" />
                     </div>
@@ -252,7 +257,10 @@
                  "targets": [1],
                  "data": "SmallHeadImg",
                  "render": function (data, type, full) {
-                     var result = "<a class='fancybox' href='" + full.HeadImg + "' title='' data-rel='fancybox-button'><img src=\"" + data + "\" class=\"thumbnail\" style='height:40px;padding:2px' /></a>";
+                     var result = "<a class='fancybox' href='" + full.HeadImg + "' title='' data-rel='fancybox-button'><img src=\"" + data + "\" class=\"thumbnail\" onerror='nofind()' style='height:40px;padding:2px' /></a>";
+                     if (data.length <= 0) {
+                         result = "<img src='/Content/image/not-img.jpg' class=\"thumbnail\" style='width:55px;padding:2px' />";
+                     }
                      return result;
                  }
              },
