@@ -24,25 +24,28 @@ namespace HST.Art.Web
 
         protected override void OnAuthorization(AuthorizationContext filterContext)
         {
-            SetCurrentCookies = filterContext.RequestContext.HttpContext.Request.Cookies;
-            string cookieStr = GetCookieStr();
-            if (string.IsNullOrEmpty(cookieStr))
+            if (filterContext.RouteData.DataTokens["area"] != null && filterContext.RouteData.DataTokens["area"].Equals("manage"))
             {
-                string tmpRouteName = RouteData.GetRequiredString("controller");
-                if (!tmpRouteName.Equals("Account", StringComparison.InvariantCultureIgnoreCase))
+                SetCurrentCookies = filterContext.RequestContext.HttpContext.Request.Cookies;
+                string cookieStr = GetCookieStr();
+                if (string.IsNullOrEmpty(cookieStr))
                 {
-                    //filterContext.Result = new RedirectResult("/Account/Login");
+                    string tmpRouteName = RouteData.GetRequiredString("controller");
+                    if (!tmpRouteName.Equals("Account", StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        //filterContext.Result = new RedirectResult("/Account/Login");
+                        filterContext.Result = new EmptyResult();
+                        filterContext.HttpContext.Response.Write("<script>top.location ='/manage/account/login';</script>");
+                        filterContext.HttpContext.Response.End();
+                    }
+                }
+                else if (string.IsNullOrEmpty(CookiesEvent.GetCookies(SetCurrentCookies, "accountInfo")))
+                {
+                    RemoveStoredData();
                     filterContext.Result = new EmptyResult();
                     filterContext.HttpContext.Response.Write("<script>top.location ='/manage/account/login';</script>");
                     filterContext.HttpContext.Response.End();
                 }
-            }
-            else if(string.IsNullOrEmpty(CookiesEvent.GetCookies(SetCurrentCookies, "accountInfo")))
-            {
-                RemoveStoredData();
-                filterContext.Result = new EmptyResult();
-                filterContext.HttpContext.Response.Write("<script>top.location ='/manage/account/login';</script>");
-                filterContext.HttpContext.Response.End();
             }
         }
 
