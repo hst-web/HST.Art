@@ -110,7 +110,7 @@
         <div class="cl pd-10  mt-10 search-wrap" style="padding-left:0px;padding-right:0px">
             <button class="btn btn-primary float-right hidden" id="btnRotation1" onclick="ration_add('新建轮播','@Url.Action("AddRotation")','@RotationType.Banner')" type="button">新建轮播</button>
             <button class="btn btn-primary float-right hidden" id="btnRotation2" onclick="ration_add('新建Logo轮播','@Url.Action("AddRotation")','@RotationType.Logo')" type="button">新建Logo轮播</button>
-            <span class="help-block help-tip  " style="font-size:13px">最多可添加5张轮播图，可通过鼠标拖动改变显示顺序</span>
+            <span class="help-block help-tip  " style="font-size:13px">最多可添加<i style="color:red;padding-right:3px;display:inline-block" id="ration-num">5</i>张轮播图，可通过鼠标拖动改变显示顺序</span>
         </div>
         <div style="margin-top:-10px">
             <table id="tbTable" class="table table-border table-bordered table-bg table-sort">
@@ -158,8 +158,10 @@
                 if (attrType != '@RotationType.UnKnown') {
                     if (attrType == '@RotationType.Banner') {
                         $("#btnRotation1").removeClass("hidden").siblings("button").addClass("hidden");
+                        $("#ration-num").html(5);
                     } else {
                         $("#btnRotation2").removeClass("hidden").siblings("button").addClass("hidden");
+                        $("#ration-num").html(20);
                     }
 
                     $("#rotationType").val(attrType);
@@ -222,8 +224,14 @@
     /*添加*/
     function ration_add(title, url, type) {
         var rationCount = $("#tbTable tbody tr").length;
-        if (rationCount >= 5) {
-            layer.alert("最多添加轮播不可超过5条", 3);
+
+        if (type == '@RotationType.Banner' && rationCount >= 5) {
+            layer.alert("最多添加Banner轮播不可超过5条", 3);
+            return;
+        }
+
+        if (type == '@RotationType.Logo' && rationCount >= 20) {
+            layer.alert("最多添加Logo轮播不可超过20条", 3);
             return;
         }
 
@@ -308,7 +316,7 @@
             "searching": false,
             "ordering": false,
             "autoWidth": false,
-            "iDisplayLength": 10,
+            "iDisplayLength": 50,
             "processing": true,
             //destroy: true, //Cannot reinitialise DataTable,解决重新加载表格内容问题
 

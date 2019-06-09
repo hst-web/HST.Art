@@ -65,7 +65,8 @@ namespace HST.Art.Web
                 "~/Content/js/jQuery.1.9.1.js",
              "~/Content/js/swiper.min.js",
              "~/Content/js/owl.carousel.js",
-               "~/Content/js/js.js"
+               "~/Content/js/js.js",
+                 "~/Content/lib/h-ui.admin/js/custom.js"
               ));
         }
     }

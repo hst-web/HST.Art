@@ -1,0 +1,215 @@
+﻿@using HST.Art.Web
+@using HST.Art.Core
+@using HST.Utillity
+@{
+    ViewBag.Title = "首页";
+}
+@model HomeViewModel
+<div class="banner">
+    <div class="cont">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                @if (Model.BannerList != null && Model.BannerList.Count > 0)
+                {
+                    foreach (var item in Model.BannerList)
+                    {
+                        <div class="swiper-slide"><img src="@item.ImgSrc" /></div>
+                    }
+                }
+                else
+                {
+                    <div class="swiper-slide"><img src="/Content/image/zhanwei_banner.jpg" /></div>
+                }
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </div>
+</div>
+
+<div class="cont_box">
+    <div class="index_new_fl fl">
+        <p><b>NEWS</b><i></i>协会公告</p>
+        <span><a href="#">更多 ></a></span>
+    </div>
+    <div class="index_new_cont fl">
+        @if (Model.NewestList != null && Model.NewestList.Count > 0)
+        {
+            foreach (var item in Model.NewestList)
+            {
+                <div class="index_ul">
+                    <a href="#">
+                        <p class="fl">@item.Title</p>
+                        <span class="fr">@item.CreateDate.ToString("yyyy-MM-dd")</span>
+                    </a>
+                </div>
+            }
+        }
+        else
+        {
+            <p class="not-data">暂无数据</p>
+        }
+    </div>
+    <!--/index_new_cont-->
+    <div class="index_new_fr fr">
+        <p class="searc-cert"><a href="#"><b><img src="/Content/image/index_new.jpg" /></b><span>证书查询 >></span></a></p>
+    </div>
+</div><!--/cont_box-->
+
+<div class="cont_box">
+    <div class="index_fl fl">
+        <h1><i></i>行业资讯</h1>
+        @if (Model.IndustryList != null && Model.IndustryList.Count > 0)
+            {
+                foreach (var item in Model.IndustryList)
+                {
+                <div class="index_hy_box">
+
+                    <a href="#">
+                        <div class="index_data fl">
+                            <p><b>@item.CreateDate.ToString("MM-dd")</b> @item.CreateDate.ToString("yyyy")</p>
+                        </div>
+                        <div class="index_cons fr">
+                            <h2>@item.Title</h2>
+                            <p>@item.Synopsis</p>
+                        </div>
+                    </a>
+                </div>
+            }
+        }
+        else
+        {
+            <p class="not-data">暂无数据</p>
+        }
+    </div><!--/index_fl-->
+    <div class="index_fl fr">
+        <h1><i></i>协会活动</h1>
+        @if (Model.AssociationList != null && Model.AssociationList.Count > 0)
+            {
+                foreach (var item in Model.AssociationList)
+                {
+                <div class="index_hy_box">
+                    <a href="#">
+                        <div class="index_data fl">
+                            <p><b>@item.CreateDate.ToString("MM-dd")</b> @item.CreateDate.ToString("yyyy")</p>
+                        </div>
+                        <div class="index_cons fr">
+                            <h2>@item.Title</h2>
+                            <p>@item.Synopsis</p>
+                        </div>
+                    </a>
+                </div>
+            }
+        }
+        else
+        {
+            <p class="not-data">暂无数据</p>
+        }
+    </div><!--/index_fl-->
+</div><!--/cont_box-->
+
+<div class="box" style="padding-top:5px">
+    <div class="cont_box">
+        <h3><i></i>社会公益</h3>
+        @if (Model.SocialList != null && Model.SocialList.Count > 0)
+        {
+            foreach (var item in Model.SocialList)
+            {
+                <dl>
+                    <a href="#">
+                        <dt><img src="@item.HeadImg" onerror="nofind()"  /></dt>
+                        <dd class="title">@item.Title</dd>
+                        <dd>@item.Synopsis</dd>
+                    </a>
+                </dl>
+            }
+
+        }
+        else
+        {
+            <p class="not-data" style="margin:3% auto;">暂无数据</p>
+        }
+    </div>
+</div>
+
+<div class="box">
+    <div class="cont_box">
+        <div class="owl-carousel">
+            @if (Model.LogoList != null)
+            {
+                foreach (List<RotationChart> item in Model.LogoList)
+                {
+                    <div class="item">
+                        @foreach (RotationChart secItem in item)
+                        {
+                            <a href="#"><img src="@secItem.ImgSrc" onerror="nofind()" /></a>
+                        }
+                    </div>
+                }
+            }
+            else
+            {
+                <p class="not-data">暂无数据</p>
+            }
+            @*<div class="item">
+                <a href="#"><img src="/Content/image/no-data.png" /></a>
+                <a href="#"><img src="/Content/image/no-data.png" /></a>
+                <a href="#"><img src="/Content/image/no-data.png" /></a>
+                <a href="#"><img src="/Content/image/no-data.png" /></a>
+                <a href="#"><img src="/Content/image/no-data.png" /></a>
+                <a href="#"><img src="/Content/image/no-data.png" /></a>
+            </div>
+            <div class="item">
+                <a href="#"><img src="/Content/image/no-data.png" /></a>
+                <a href="#"><img src="/Content/image/no-data.png" /></a>
+                <a href="#"><img src="/Content/image/no-data.png" /></a>
+                <a href="#"><img src="/Content/image/no-data.png" /></a>
+                <a href="#"><img src="/Content/image/no-data.png" /></a>
+                <a href="#"><img src="/Content/image/no-data.png" /></a>
+            </div>*@
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var owl = $('.owl-carousel');
+            owl.owlCarousel({
+                margin: 0,
+                nav: true,
+                loop: true,
+                items: 1,
+                lazyLoad: true,
+                merge: true,
+                //autoplay: 2500,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 1
+                    },
+                    1000: {
+                        items: 1
+                    }
+                }
+            });//1
+        })
+
+        //banner
+        var swiper = new Swiper('.swiper-container', {
+            pagination: '.swiper-pagination',
+            nextButton: '.swiper-button-next',
+            prevButton: '.swiper-button-prev',
+            paginationClickable: true,
+            spaceBetween: 30,
+            loop: true,
+            centeredSlides: true,
+            autoplay: 3500,
+            autoplayDisableOnInteraction: false
+        });
+
+    </script>
+}

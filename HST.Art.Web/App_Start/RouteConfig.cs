@@ -13,10 +13,19 @@ namespace HST.Art.Web
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            //routes.MapLowerCaseUrlRoute(
+            //    name: "Default",
+            //    url: "{controller}/{action}/{id}",
+            //    defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+            //    new string [] { "1"}
+            //);
+
+            //默认路由
             routes.MapLowerCaseUrlRoute(
-                name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+            "Default",
+            "{controller}/{action}/{id}",
+             new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+             , new string[] { "HST.Art.Web.Controllers" }
             );
         }
     }

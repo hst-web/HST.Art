@@ -1,4 +1,4 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 /* CSS Document */
 @media (max-width: 1158px) {
 	/*index*/	
@@ -34,7 +34,7 @@
 	.index_new_cont{ width:100%; height:auto;border-left:1px solid #e3e3e3; margin-top:18px}	
 	.index_new_fr{ width:100%; margin:0 auto; height:auto; margin-top:18px}
 	.index_ul{ width:92%;}
-	.index_fl{ width:100%; margin-bottom:18px}
+	.index_fl{ width:100%; margin-bottom:18px;padding:5%}
 	.cont_box dl { width:100%; margin-right:0; padding:6%; margin-top:18px}
 	.owl-dots{ display:block !important}
 	.item img{ margin:0 }
@@ -59,7 +59,7 @@
 	.details h4{ font-size:18px}
 	.list_cons{ width:70%}
 	
-	
+	.not-data{height:auto;line-height:normal;margin:3% auto}
 	
 	
 }

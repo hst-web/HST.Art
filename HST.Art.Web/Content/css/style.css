@@ -36,12 +36,12 @@
 .cont_box dl { width:32%; float:left; margin-right:1.6%; padding:2%; border:1px solid #d4d4d4; }
 .cont_box dl a{display:block; width:100%}
 .cont_box dl:last-child{ float:right; margin-right:0}
-.cont_box dl a dt{ width:100%; display:block}
+.cont_box dl a dt{ width:100%; display:block;max-height:210px;overflow:hidden}
 .cont_box dl a dt img{ width:100%;}
 .cont_box dl a .title{ font-size:16px; color:#333;overflow:hidden;text-overflow:ellipsis;white-space:nowrap; height:30px; line-height:30px; margin:10px 0}
 .cont_box dl a dd{ font-size:13px; color:#7f7f7f;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp:3;-webkit-box-orient: vertical; line-height:24px; height:72px;}
 .cont_box dl:hover{border:1px solid #dd1c34}
-h3{ font-size:20px; color:#333; font-weight:bold; margin-bottom:4%}
+h3{ font-size:20px; color:#333; font-weight:bold; margin-bottom:2%}
 h3 i{ width:3px; height:18px; background:#d9001b; display:inline-block; margin-right:6px; display:inline-block}
 .item { text-align:center}
 .item img{ margin:0 10px}
@@ -136,7 +136,8 @@ h3 i{ width:3px; height:18px; background:#d9001b; display:inline-block; margin-r
   clear: both;
   content: "";
 }
-
+.not-data{text-align:center;color:#888;margin:9% auto}
+.searc-cert b{margin-bottom:8px}
 
 
 

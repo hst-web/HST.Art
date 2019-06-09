@@ -146,6 +146,7 @@ namespace HST.Art.Core
         public string Synopsis { get; set; }
 
         public DateTime PublishDate { get; set; }
+        public string SmallImg { get; set; }
     }
 
     public class ArticleStatistic

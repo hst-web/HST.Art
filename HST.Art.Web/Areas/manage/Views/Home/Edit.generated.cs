@@ -761,7 +761,13 @@ WriteLiteral(" class=\"help-block help-tip  \"");
 
 WriteLiteral(" style=\"font-size:13px\"");
 
-WriteLiteral(">最多可添加5张轮播图，可通过鼠标拖动改变显示顺序</span>\r\n        </div>\r\n        <div");
+WriteLiteral(">最多可添加<i");
+
+WriteLiteral(" style=\"color:red;padding-right:3px;display:inline-block\"");
+
+WriteLiteral(" id=\"ration-num\"");
+
+WriteLiteral(">5</i>张轮播图，可通过鼠标拖动改变显示顺序</span>\r\n        </div>\r\n        <div");
 
 WriteLiteral(" style=\"margin-top:-10px\"");
 
@@ -798,14 +804,14 @@ WriteLiteral(" type=\"hidden\"");
 
 WriteLiteral(" id=\"rotationType\"");
 
-WriteAttribute("value", Tuple.Create(" value=\"", 6985), Tuple.Create("\"", 7014)
+WriteAttribute("value", Tuple.Create(" value=\"", 7065), Tuple.Create("\"", 7094)
             
             #line 129 "..\..\Areas\manage\Views\Home\Edit.cshtml"
-, Tuple.Create(Tuple.Create("", 6993), Tuple.Create<System.Object, System.Int32>(RotationType.UnKnown
+, Tuple.Create(Tuple.Create("", 7073), Tuple.Create<System.Object, System.Int32>(RotationType.UnKnown
             
             #line default
             #line hidden
-, 6993), false)
+, 7073), false)
 );
 
 WriteLiteral(" />\r\n        <input");
@@ -881,8 +887,10 @@ WriteLiteral("\') {\r\n                    if (attrType == \'");
             #line hidden
 WriteLiteral(@"') {
                         $(""#btnRotation1"").removeClass(""hidden"").siblings(""button"").addClass(""hidden"");
+                        $(""#ration-num"").html(5);
                     } else {
                         $(""#btnRotation2"").removeClass(""hidden"").siblings(""button"").addClass(""hidden"");
+                        $(""#ration-num"").html(20);
                     }
 
                     $(""#rotationType"").val(attrType);
@@ -916,7 +924,7 @@ WriteLiteral(@"') {
                 url: """);
 
             
-            #line 193 "..\..\Areas\manage\Views\Home\Edit.cshtml"
+            #line 195 "..\..\Areas\manage\Views\Home\Edit.cshtml"
                  Write(Url.Action("UpdateSort"));
 
             
@@ -954,8 +962,28 @@ WriteLiteral(@""",
     /*添加*/
     function ration_add(title, url, type) {
         var rationCount = $(""#tbTable tbody tr"").length;
-        if (rationCount >= 5) {
-            layer.alert(""最多添加轮播不可超过5条"", 3);
+
+        if (type == '");
+
+            
+            #line 228 "..\..\Areas\manage\Views\Home\Edit.cshtml"
+                Write(RotationType.Banner);
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\' && rationCount >= 5) {\r\n            layer.alert(\"最多添加Banner轮播不可超过5条\", 3);\r\n    " +
+"        return;\r\n        }\r\n\r\n        if (type == \'");
+
+            
+            #line 233 "..\..\Areas\manage\Views\Home\Edit.cshtml"
+                Write(RotationType.Logo);
+
+            
+            #line default
+            #line hidden
+WriteLiteral(@"' && rationCount >= 20) {
+            layer.alert(""最多添加Logo轮播不可超过20条"", 3);
             return;
         }
 
@@ -974,7 +1002,7 @@ WriteLiteral(@""",
                 ""url"": """);
 
             
-            #line 242 "..\..\Areas\manage\Views\Home\Edit.cshtml"
+            #line 250 "..\..\Areas\manage\Views\Home\Edit.cshtml"
                    Write(Url.Action("GetJsonData"));
 
             
@@ -1012,7 +1040,7 @@ WriteLiteral(@""",
                     var tmpString = ""<a  onClick=\""ration_deit('修改轮播','");
 
             
-            #line 271 "..\..\Areas\manage\Views\Home\Edit.cshtml"
+            #line 279 "..\..\Areas\manage\Views\Home\Edit.cshtml"
                                                                   Write(Url.Action("EditRotation"));
 
             
@@ -1022,7 +1050,7 @@ WriteLiteral("\',\" + data + \")\\\" href=\\\"javascript:;\\\" title=\\\"编辑\
 "  tmpString += \"<a href=\\\"javascript:;\\\" onClick=\\\"obj_del(\'轮播\',\'");
 
             
-            #line 272 "..\..\Areas\manage\Views\Home\Edit.cshtml"
+            #line 280 "..\..\Areas\manage\Views\Home\Edit.cshtml"
                                                                               Write(Url.Action("Delete"));
 
             
@@ -1047,7 +1075,7 @@ WriteLiteral("\',\" + data + \")\\\"  title=\\\"删除\\\">删除</a>\";\r\n\r\n
 "GES_ </span>页，当前显示 _START_ -- _END_ 条记录 </span>\",\r\n                infoEmpty: \"0" +
 "条记录\",\r\n                infoFiltered: \"\"\r\n            },\r\n            \"searching\"" +
 ": false,\r\n            \"ordering\": false,\r\n            \"autoWidth\": false,\r\n     " +
-"       \"iDisplayLength\": 10,\r\n            \"processing\": true,\r\n            //des" +
+"       \"iDisplayLength\": 50,\r\n            \"processing\": true,\r\n            //des" +
 "troy: true, //Cannot reinitialise DataTable,解决重新加载表格内容问题\r\n\r\n        });\r\n\r\n     " +
 "   //handleFancybox();\r\n        return dataTable;\r\n    }\r\n\r\n    function formSuc" +
 "cess(result) {\r\n        if (result != null) {\r\n            if (result.isSuccess)" +
@@ -1101,7 +1129,7 @@ WriteLiteral(@">
             server: jq_imgFormData.BidFileDomain + '");
 
             
-            #line 377 "..\..\Areas\manage\Views\Home\Edit.cshtml"
+            #line 385 "..\..\Areas\manage\Views\Home\Edit.cshtml"
                                                Write(Url.Action("Upload", "Upload"));
 
             

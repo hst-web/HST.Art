@@ -38,7 +38,15 @@ namespace ASP
         }
         public override void Execute()
         {
-WriteLiteral("<!DOCTYPE html>\r\n<html>\r\n<head>\r\n    <meta");
+            
+            #line 1 "..\..\Views\Shared\_Layout.cshtml"
+  
+    string action = Request.RequestContext.RouteData.GetRequiredString("Action");
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n    <meta");
 
 WriteLiteral(" charset=\"utf-8\"");
 
@@ -82,8 +90,8 @@ WriteLiteral(" content=\"\"");
 WriteLiteral(" />\r\n    <title>");
 
             
-            #line 11 "..\..\Views\Shared\_Layout.cshtml"
-      Write(RenderSection("TitleSection"));
+            #line 14 "..\..\Views\Shared\_Layout.cshtml"
+      Write(ViewBag.Title);
 
             
             #line default
@@ -96,13 +104,44 @@ WriteLiteral(" href=\"/favicon.ico\"");
 
 WriteLiteral(" />\r\n    <!--[if lt IE 9]>\r\n    <script type=\"text/javascript\" src=\"/Content/lib/" +
 "html5shiv.js\"></script>\r\n    <script type=\"text/javascript\" src=\"/Content/lib/re" +
-"spond.min.js\"></script>\r\n    <![endif]-->\r\n\r\n");
+"spond.min.js\"></script>\r\n    <![endif]-->\r\n");
 
 WriteLiteral("    ");
 
             
-            #line 18 "..\..\Views\Shared\_Layout.cshtml"
+            #line 20 "..\..\Views\Shared\_Layout.cshtml"
 Write(Styles.Render("~/webclient"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n");
+
+            
+            #line 21 "..\..\Views\Shared\_Layout.cshtml"
+    
+            
+            #line default
+            #line hidden
+            
+            #line 21 "..\..\Views\Shared\_Layout.cshtml"
+     if (action.Equals("index", StringComparison.InvariantCultureIgnoreCase))
+    {
+        
+            
+            #line default
+            #line hidden
+            
+            #line 23 "..\..\Views\Shared\_Layout.cshtml"
+   Write(Styles.Render("~/swiper"));
+
+            
+            #line default
+            #line hidden
+            
+            #line 23 "..\..\Views\Shared\_Layout.cshtml"
+                                  
+    }
 
             
             #line default
@@ -112,13 +151,22 @@ WriteLiteral("\r\n");
 WriteLiteral("    ");
 
             
-            #line 19 "..\..\Views\Shared\_Layout.cshtml"
+            #line 26 "..\..\Views\Shared\_Layout.cshtml"
 Write(Scripts.Render("~/bundles/webclient"));
 
             
             #line default
             #line hidden
-WriteLiteral("\r\n</head>\r\n<body>\r\n    <header>\r\n        <div");
+WriteLiteral("\r\n</head>\r\n<body ");
+
+            
+            #line 28 "..\..\Views\Shared\_Layout.cshtml"
+  Write(action.Equals("index", StringComparison.InvariantCultureIgnoreCase)?"style=background:#f2f2f2":"");
+
+            
+            #line default
+            #line hidden
+WriteLiteral(">\r\n    <header>\r\n        <div");
 
 WriteLiteral(" class=\"top\"");
 
@@ -132,7 +180,7 @@ WriteLiteral(" class=\"fl logo\"");
 
 WriteLiteral("><img");
 
-WriteLiteral(" src=\"images/logo.jpg\"");
+WriteLiteral(" src=\"/Content/image/logo.jpg\"");
 
 WriteLiteral(" /></p>\r\n                <div");
 
@@ -157,7 +205,7 @@ WriteLiteral(" href=\"#\"");
 
 WriteLiteral("><img");
 
-WriteLiteral(" src=\"images/logo.jpg\"");
+WriteLiteral(" src=\"/Content/image/logo.jpg\"");
 
 WriteLiteral(" alt=\"\"");
 
@@ -225,7 +273,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("        ");
 
             
-            #line 61 "..\..\Views\Shared\_Layout.cshtml"
+            #line 68 "..\..\Views\Shared\_Layout.cshtml"
    Write(RenderBody());
 
             
@@ -263,7 +311,7 @@ WriteLiteral("><a><i></i> 关于我们</a></p>\r\n\r\n        </div>\r\n    </di
 WriteLiteral("    ");
 
             
-            #line 81 "..\..\Views\Shared\_Layout.cshtml"
+            #line 88 "..\..\Views\Shared\_Layout.cshtml"
 Write(RenderSection("Scripts", required: false));
 
             

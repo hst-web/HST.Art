@@ -39,7 +39,7 @@ namespace HST.Art.Web.Areas.manage.Controllers
 
             int totalNum = 0;
             List<RotationChart> rotationList = rotationService.GetAll(rotationType);
-            totalNum = rotationList != null ? rotationList.Count : 0; 
+            totalNum = rotationList != null ? rotationList.Count : 0;
 
             ReturnPageResultIList<RotationChart> data = new ReturnPageResultIList<Core.RotationChart>(rotationList, totalNum);
             IList<RotationChartViewModel> gmList = new List<RotationChartViewModel>();
@@ -134,9 +134,15 @@ namespace HST.Art.Web.Areas.manage.Controllers
 
 
                 List<RotationChart> rlist = rotationService.GetAll(model.RotationType);
-                if (rlist != null && rlist.Count >= 5)
+                if (rlist != null && model.RotationType == RotationType.Banner && rlist.Count >= 5)
                 {
-                    rmodel.message = "最多添加轮播不可超过5条";
+                    rmodel.message = "最多添加Banner轮播不可超过5条";
+                    return Json(rmodel);
+                }
+
+                if (rlist != null && model.RotationType == RotationType.Logo && rlist.Count >= 20)
+                {
+                    rmodel.message = "最多添加Logo轮播不可超过20条";
                     return Json(rmodel);
                 }
 

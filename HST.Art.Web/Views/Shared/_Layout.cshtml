@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@{
+    string action = Request.RequestContext.RouteData.GetRequiredString("Action");
+}
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -8,21 +11,25 @@
     <meta http-equiv="Cache-Control" content="no-siteapp" />
     <meta name="keywords" content="" />
     <meta name="description" content="" />
-    <title>@RenderSection("TitleSection")</title>
+    <title>@ViewBag.Title</title>
     <link rel="Shortcut Icon" href="/favicon.ico" />
     <!--[if lt IE 9]>
     <script type="text/javascript" src="/Content/lib/html5shiv.js"></script>
     <script type="text/javascript" src="/Content/lib/respond.min.js"></script>
     <![endif]-->
-
     @Styles.Render("~/webclient")
+    @if (action.Equals("index", StringComparison.InvariantCultureIgnoreCase))
+    {
+        @Styles.Render("~/swiper")
+    }
+
     @Scripts.Render("~/bundles/webclient")
 </head>
-<body>
+<body @(action.Equals("index", StringComparison.InvariantCultureIgnoreCase)?"style=background:#f2f2f2":"")>
     <header>
         <div class="top">
             <div class="cont top_div">
-                <p class="fl logo"><img src="images/logo.jpg" /></p>
+                <p class="fl logo"><img src="/Content/image/logo.jpg" /></p>
                 <div class="fr top_fr">
                     <p><i class="iconfont icon-dianhua"></i>010-6855086</p>
                     <p><i class="iconfont icon-email-icon"></i>123456789@qq.com</p>
@@ -32,7 +39,7 @@
     </header>
     <nav>
         <div class="nav-logo">
-            <a href="#"><img src="images/logo.jpg" alt=""></a>
+            <a href="#"><img src="/Content/image/logo.jpg" alt=""></a>
         </div>
         <div class="nav-menu">
             <span></span>
