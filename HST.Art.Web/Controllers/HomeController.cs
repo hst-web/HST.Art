@@ -43,22 +43,22 @@ namespace HST.Art.Web.Controllers
             }
 
             model.BannerList = bannerList != null ? bannerList.FindAll(g => g.State == PublishState.Upper) : null;
-            logoList = logoList != null ? logoList.FindAll(g => g.State == PublishState.Upper) : null;
+            model.LogoList = logoList != null ? logoList.FindAll(g => g.State == PublishState.Upper) : null;
 
-            if (logoList != null)
-            {
-                List<List<RotationChart>> listGroup = new List<List<RotationChart>>();
-                int j = 6;
-                for (int i = 0; i < logoList.Count; i += 6)
-                {
-                    List<RotationChart> cList = new List<RotationChart>();
-                    cList = logoList.Take(j).Skip(i).ToList();
-                    j += 6;
-                    listGroup.Add(cList);
-                }
+            //if (logoList != null)
+            //{
+            //    List<List<RotationChart>> listGroup = new List<List<RotationChart>>();
+            //    int j = 6;
+            //    for (int i = 0; i < logoList.Count; i += 6)
+            //    {
+            //        List<RotationChart> cList = new List<RotationChart>();
+            //        cList = logoList.Take(j).Skip(i).ToList();
+            //        j += 6;
+            //        listGroup.Add(cList);
+            //    }
 
-                model.LogoList = listGroup;
-            }   
+            //    model.LogoList = listGroup;
+            //}   
 
             return View(model);
         }

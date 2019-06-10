@@ -13,7 +13,7 @@ namespace HST.Art.Web
     {
         public List<RotationChart> BannerList { get; set; }
 
-        public List<List<RotationChart>> LogoList { get; set; }
+        public List<RotationChart> LogoList { get; set; }
         /// <summary>
         /// 协会活动集合
         /// </summary>

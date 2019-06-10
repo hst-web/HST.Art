@@ -27,11 +27,11 @@
 	/*index*/
 	.nav_scroll{background:#fff;}
 	.index_new_fl{ float:inherit; width:100%; background:none; height:auto; height:40px; line-height:40px; overflow:hidden}
-	.index_new_fl p{ color:#333; float:left; font-weight:bold; font-size:20px}
+	.index_new_fl p{ color:#333; float:left; font-weight:bold; font-size:20px;margin-top:-5px}
 	.index_new_fl p i{ display:inline-block}
 	.index_new_fl b{ display:none}
-	.index_new_fl span a{ background:none; color:#d9001b; border:none; position:inherit; float:right}
-	.index_new_cont{ width:100%; height:auto;border-left:1px solid #e3e3e3; margin-top:18px}	
+	.index_new_fl span a{ background:none; color:#d9001b; border:none; position:inherit; float:right;margin-top:-10px}
+	.index_new_cont{ width:100%; height:auto;border-left:1px solid #e3e3e3; margin-top:5px}	
 	.index_new_fr{ width:100%; margin:0 auto; height:auto; margin-top:18px}
 	.index_ul{ width:92%;}
 	.index_fl{ width:100%; margin-bottom:18px;padding:5%}
@@ -61,7 +61,7 @@
 	
 	.not-data{height:auto;line-height:normal;margin:3% auto}
 	
-	
+	 .swiper-slide{max-height:147px !important;overflow:hidden}
 }
 
 

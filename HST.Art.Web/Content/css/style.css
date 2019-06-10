@@ -16,7 +16,7 @@
 .index_new_fl p i{ width:3px; height:18px; background:#d9001b; display:inline-block; margin-right:5px; display:none}
 .index_new_fl b{ font-size:30px; display:block; margin-top:24%; font-weight: normal}
 .index_new_fl span a{ position:absolute; right:30px; bottom:20px; padding:5px 20px; border:1px solid #fff; background:#d9001b; color:#fff; font-size:13px}
-.index_new_cont{  width:55%; border:1px solid #e3e3e3; background:#fff;border-left:none; padding:20px 0; height:224px}
+.index_new_cont{  width:55%; border:1px solid #e3e3e3; background:#fff;border-left:none; padding:10px 0; height:224px}
 .index_ul{ width:92%; margin:0 auto; overflow:hidden; font-size:14px; color:#333; line-height:35px;}
 .index_ul a{ color:#333}
 .index_ul a p{ width:80%; height:35px; overflow:hidden;text-overflow:ellipsis;white-space:nowrap; background:url(../image/circle.png) no-repeat left center; padding-left:15px; background-size:10px 10px}
@@ -45,6 +45,10 @@ h3{ font-size:20px; color:#333; font-weight:bold; margin-bottom:2%}
 h3 i{ width:3px; height:18px; background:#d9001b; display:inline-block; margin-right:6px; display:inline-block}
 .item { text-align:center}
 .item img{ margin:0 10px}
+.owl-carousel .iconfont{ display:none !important}
+.owl-item img{width:100%;padding:5px}
+.owl-item a{display: table-cell;vertical-align: middle;}
+.owl-carousel.owl-loaded{padding:0 20px}
 .owl-dots{ display:none !important}
 /*查询*/
 .query{max-width:1140px; width: 98%; margin: 0 auto}
@@ -131,6 +135,7 @@ h3 i{ width:3px; height:18px; background:#d9001b; display:inline-block; margin-r
 .details div{ width:100%; font-size: 14px; color: #333; line-height: 28px;}
 .details p{width:100%; font-size: 14px; color: #333; line-height: 28px; margin-bottom: 10px}
 .details img{ display: block; margin: 10px auto}
+ .swiper-slide{max-height:480px;overflow:hidden}
 .clearfix::after {
   display: block;
   clear: both;
@@ -138,7 +143,7 @@ h3 i{ width:3px; height:18px; background:#d9001b; display:inline-block; margin-r
 }
 .not-data{text-align:center;color:#888;margin:9% auto}
 .searc-cert b{margin-bottom:8px}
-
+.box-height .not-data{margin: 3% auto;}
 
 
 
