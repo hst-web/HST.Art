@@ -31,4 +31,11 @@ namespace HST.Art.Web
         /// </summary>
         public List<Article> NewestList { get; set; }
     }
+
+    public class DetailViewModel
+    {
+        public string Title { get; set; }
+        public DateTime CreateDate { get; set; }
+        public string Description { get; set; }
+    }
 }

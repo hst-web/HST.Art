@@ -1,0 +1,26 @@
+﻿@using HST.Art.Web
+@using HST.Art.Core
+
+@model SidebarViewModel
+<p class="list_ti">最新文章</p>
+<div class="list_new">
+    @if (Model.NewestList != null && Model.NewestList.Count > 0)
+    {
+        foreach (Article item in Model.NewestList)
+        {
+            <div class="list_div">
+                <a href="#">
+                    <p class="list_p fl"><b>@item.PublishDate.ToString("dd")</b>@item.PublishDate.ToString("yyyy-MM")</p>
+                    <div class="list_fr_n fr">
+                        <p>@item.Synopsis</p>
+                        <span>@item.PublishDate.ToString("HH:mm")</span>
+                    </div>
+                </a>
+            </div>
+        }
+    }
+    else
+    {
+        <p class="not-data">暂无数据</p>
+    }
+</div><!--/list_new-->

@@ -429,6 +429,7 @@
     <Compile Include="Models\PageListViewModel.cs" />
     <Compile Include="Models\ReturnPageResultIList.cs" />
     <Compile Include="Models\DownloadViewModel.cs" />
+    <Compile Include="Models\SidebarViewModel.cs" />
     <Compile Include="Models\StuViewModel.cs" />
     <Compile Include="Models\TeaViewModel.cs" />
     <Compile Include="Models\UserViewModel.cs" />
@@ -2239,6 +2240,9 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\GetRecommend.cshtml" />
+    <Content Include="Views\Home\GetDetail.cshtml" />
     <None Include="Views\Web.config">
       <Generator>RazorGenerator</Generator>
     </None>

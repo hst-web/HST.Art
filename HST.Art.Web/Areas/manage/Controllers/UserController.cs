@@ -55,7 +55,7 @@ namespace HST.Art.Web.Areas.manage.Controllers
             IList<UserViewModel> gmList = new List<UserViewModel>();
 
             if (data != null && data.DataT != null)
-                gmList = data.DataT.Select(g => new UserViewModel() { Id = g.Id, RealName = g.Name, UserName = g.UserName, Phone = g.Telephone, State = (int)g.State, CreateTime = g.CreateDate.ToString("yyyy-MM-dd HH:MM"), Email = g.Email, IsSupAdmin = g.IsAdmin }).ToList();
+                gmList = data.DataT.Select(g => new UserViewModel() { Id = g.Id, RealName = g.Name, UserName = g.UserName, Phone = g.Telephone, State = (int)g.State, CreateTime = g.CreateDate.ToString("yyyy-MM-dd HH:mm"), Email = g.Email, IsSupAdmin = g.IsAdmin }).ToList();
 
             return Json(new
             {

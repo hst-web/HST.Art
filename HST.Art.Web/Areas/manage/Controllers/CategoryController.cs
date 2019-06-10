@@ -56,7 +56,7 @@ namespace HST.Art.Web.Areas.manage.Controllers
             IList<CategoryViewModel> gmList = new List<CategoryViewModel>();
 
             if (data != null && data.DataT != null)
-                gmList = data.DataT.Select(g => new CategoryViewModel() { Id = g.Id, CategoryName = g.Name, CategoryType = g.Type, ParentId = g.Parent, ParentName = g.ParentName, State = (int)g.State, UserName = g.UserName, CreateTime = g.CreateDate.ToString("yyyy-MM-dd HH:MM") }).ToList();
+                gmList = data.DataT.Select(g => new CategoryViewModel() { Id = g.Id, CategoryName = g.Name, CategoryType = g.Type, ParentId = g.Parent, ParentName = g.ParentName, State = (int)g.State, UserName = g.UserName, CreateTime = g.CreateDate.ToString("yyyy-MM-dd HH:mm") }).ToList();
 
             return Json(new
             {

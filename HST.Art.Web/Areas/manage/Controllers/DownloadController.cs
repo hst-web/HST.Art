@@ -55,7 +55,7 @@ namespace HST.Art.Web.Areas.manage.Controllers
             IList<DownloadViewModel> gmList = new List<DownloadViewModel>();
 
             if (data != null && data.DataT != null)
-                gmList = data.DataT.Select(g => new DownloadViewModel() { Id = g.Id, UserId = g.UserId, FileName = g.Name, CategoryName = g.CategoryName, State = (int)g.State, CreateTime = g.CreateDate.ToString("yyyy-MM-dd HH:MM"), Category = g.Category, FileType = g.Type, FileTitle = g.Title, UserName = g.UserName }).ToList();
+                gmList = data.DataT.Select(g => new DownloadViewModel() { Id = g.Id, UserId = g.UserId, FileName = g.Name, CategoryName = g.CategoryName, State = (int)g.State, CreateTime = g.CreateDate.ToString("yyyy-MM-dd HH:mm"), Category = g.Category, FileType = g.Type, FileTitle = g.Title, UserName = g.UserName }).ToList();
 
             return Json(new
             {

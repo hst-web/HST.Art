@@ -1,0 +1,11 @@
+﻿@using HST.Art.Web
+@using HST.Art.Core
+
+@model DetailViewModel
+<div class="list_fr fr details">
+    <h4>@Model.Title</h4>
+    <span>@Model.CreateDate.ToString("yyyy-MM-dd HH:mm:ss")</span>
+    <div>
+        @Html.Raw(Model.Description)
+    </div>
+</div>

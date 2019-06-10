@@ -6,6 +6,8 @@
 //----------------------------------------------------------------*/
 using System;
 using HST.Utillity;
+using System.IO;
+
 namespace HST.Art.Core
 {
     /// <summary>
@@ -146,7 +148,16 @@ namespace HST.Art.Core
         public string Synopsis { get; set; }
 
         public DateTime PublishDate { get; set; }
-        public string SmallImg { get; set; }
+        public string SmallImg
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(HeadImg)) { return string.Empty; }
+                string fileName = Path.GetFileName(HeadImg);
+                string thumbFileName = "small_" + fileName;
+                return HeadImg.Replace(fileName, thumbFileName);
+            }
+        }
     }
 
     public class ArticleStatistic

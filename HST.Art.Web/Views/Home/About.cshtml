@@ -1,0 +1,105 @@
+﻿
+@{
+    ViewBag.Title = "协会概况";
+}
+
+<div class="list">
+    <div class="position">当前位置：<a href="#">首页</a> / <a href="#" class="red">协会会员</a></div>
+    <div class="list_cont">
+        <div class="list_fl fl">
+            <ul class="list_ul">
+                <li class="title">全部</li>
+                <li><a href="#">协会简介</a></li>
+                <li><a href="#">组织架构</a></li>
+                <li class="current">
+                    <a href="#">协会会员</a>
+                    <span><a href="#">副会长单位</a></span>
+                    <span><a href="#">常务理事单位</a></span>
+                    <span><a href="#">理事单位</a></span>
+                    <span><a href="#">会员单位</a></span>
+                </li>
+            </ul>
+            @Html.Action("GetRecommend")
+        </div>
+        <div class="list_fr fr">
+            <div class="list_list">
+                <a href="#">
+                    <div class="list_img fl"><img src="images/list_img.png" /></div>
+                    <div class="list_cons fr">
+                        <h6>标题标题标题标题标题标题标题标题标题标题标题</h6>
+                        <span><b>会员单位</b>2019-11-11 11：11：11</span>
+                        <p>内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</p>
+                    </div>
+                </a>
+            </div>
+            <div class="list_list">
+                <a href="#">
+                    <div class="list_img fl"><img src="images/list_img.png" /></div>
+                    <div class="list_cons fr">
+                        <h6>标题标题标题标题标题标题标题标题标题标题标题</h6>
+                        <span><b>会员单位</b>2019-11-11 11：11：11</span>
+                        <p>内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</p>
+                    </div>
+                </a>
+            </div>
+            <div class="list_list">
+                <a href="#">
+                    <div class="list_img fl"><img src="images/list_img.png" /></div>
+                    <div class="list_cons fr">
+                        <h6>标题标题标题标题标题标题标题标题标题标题标题</h6>
+                        <span><b>会员单位</b>2019-11-11 11：11：11</span>
+                        <p>内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</p>
+                    </div>
+                </a>
+            </div>
+            <div class="list_list">
+                <a href="#">
+                    <div class="list_img fl"><img src="images/list_img.png" /></div>
+                    <div class="list_cons fr">
+                        <h6>标题标题标题标题标题标题标题标题标题标题标题</h6>
+                        <span><b>会员单位</b>2019-11-11 11：11：11</span>
+                        <p>内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</p>
+                    </div>
+                </a>
+            </div>
+            <div class="list_list">
+                <a href="#">
+                    <div class="list_img fl"><img src="images/list_img.png" /></div>
+                    <div class="list_cons fr">
+                        <h6>标题标题标题标题标题标题标题标题标题标题标题</h6>
+                        <span><b>会员单位</b>2019-11-11 11：11：11</span>
+                        <p>内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</p>
+                    </div>
+                </a>
+            </div>
+            <div class="list_list">
+                <a href="#">
+                    <div class="list_img fl"><img src="images/list_img.png" /></div>
+                    <div class="list_cons fr">
+                        <h6>标题标题标题标题标题标题标题标题标题标题标题</h6>
+                        <span><b>会员单位</b>2019-11-11 11：11：11</span>
+                        <p>内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</p>
+                    </div>
+                </a>
+            </div>
+
+
+            <div class="page">
+                <p><a href="#"><i class="iconfont icon-icon zuo"></i></a></p>
+                <p><a href="#">1</a></p>
+                <p><a href="#" class="active">2</a></p>
+                <p><a href="#"><i class="iconfont icon-icon"></i></a></p>
+            </div>
+
+        </div>
+
+    </div><!--/list_cont-->
+</div><!--/list-->
+
+@section scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+        })
+    </script>
+}

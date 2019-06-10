@@ -70,7 +70,7 @@ namespace HST.Art.Web.Areas.manage.Controllers
             IList<ArticleViewModel> gmList = new List<ArticleViewModel>();
 
             if (data != null && data.DataT != null)
-                gmList = data.DataT.Select(g => new ArticleViewModel() { Id = g.Id, UserId = g.UserId, Title = g.Title, CategoryName = !string.IsNullOrEmpty(g.ParCategoryName) ? g.ParCategoryName + "-" + g.CategoryName : g.CategoryName, State = (int)g.State, CreateTime = g.CreateDate.ToString("yyyy-MM-dd HH:MM"), PublishDate = g.PublishDate <= DateTime.MinValue ? "无发布日期" : g.PublishDate.ToString("yyyy-MM-dd HH:MM"), Category = g.Category, UserName = g.UserName, ParCategory = g.ParCategory, HeadImg = g.HeadImg, SmallHeadImg = GetThumb(g.HeadImg), Section = g.Section, ParCategoryName = g.ParCategoryName }).ToList();
+                gmList = data.DataT.Select(g => new ArticleViewModel() { Id = g.Id, UserId = g.UserId, Title = g.Title, CategoryName = !string.IsNullOrEmpty(g.ParCategoryName) ? g.ParCategoryName + "-" + g.CategoryName : g.CategoryName, State = (int)g.State, CreateTime = g.CreateDate.ToString("yyyy-MM-dd HH:mm"), PublishDate = g.PublishDate <= DateTime.MinValue ? "无发布日期" : g.PublishDate.ToString("yyyy-MM-dd HH:mm"), Category = g.Category, UserName = g.UserName, ParCategory = g.ParCategory, HeadImg = g.HeadImg, SmallHeadImg = GetThumb(g.HeadImg), Section = g.Section, ParCategoryName = g.ParCategoryName }).ToList();
 
             return Json(new
             {

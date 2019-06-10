@@ -66,7 +66,7 @@ namespace HST.Art.Web.Areas.manage.Controllers
             IList<StuViewModel> gmList = new List<StuViewModel>();
 
             if (data != null && data.DataT != null)
-                gmList = data.DataT.Select(g => new StuViewModel() { Id = g.Id, UserId = g.UserId, StudentName = g.Name, Number = g.Number, Gender = g.Gender, State = (int)g.State, CreateTime = g.CreateDate.ToString("yyyy-MM-dd HH:MM"), Category = g.Category, Province = Convert.ToInt32(g.Province), City = Convert.ToInt32(g.City), UserName = g.UserName, Area = GetAreaStr(g.Province, g.City) }).ToList();
+                gmList = data.DataT.Select(g => new StuViewModel() { Id = g.Id, UserId = g.UserId, StudentName = g.Name, Number = g.Number, Gender = g.Gender, State = (int)g.State, CreateTime = g.CreateDate.ToString("yyyy-MM-dd HH:mm"), Category = g.Category, Province = Convert.ToInt32(g.Province), City = Convert.ToInt32(g.City), UserName = g.UserName, Area = GetAreaStr(g.Province, g.City) }).ToList();
 
             return Json(new
             {
