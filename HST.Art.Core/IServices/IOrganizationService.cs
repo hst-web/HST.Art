@@ -11,6 +11,7 @@ namespace HST.Art.Core
         Organization Get(int id);
         Organization GetByNumber(string number);
         List<Organization> GetAll();
+        Organization GetChacheData();
         bool Update(Organization orgInfo);
         bool Delete(int id);
     }

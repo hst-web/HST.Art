@@ -1,7 +1,7 @@
 /*==============================================================*/
 /* Database name:  ARTDB                                        */
 /* DBMS name:      Microsoft SQL Server 2012                    */
-/* Created on:     2019/5/31 18:55:59                           */
+/* Created on:     2019/6/11 12:59:23                           */
 /*==============================================================*/
 
 
@@ -165,6 +165,7 @@ create table MemberUnit (
    State                int                  null default 0,
    Category             int                  null,
    Description          nvarchar(Max)        null,
+   Synopsis             nvarchar(200)        null,
    Province             nvarchar(10)         null,
    City                 nvarchar(20)         null,
    County               nvarchar(30)         null,

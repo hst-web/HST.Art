@@ -16,6 +16,10 @@ namespace HST.Utillity
     /// </summary>
     public class CacheHelper
     {
+
+        private static readonly object objLock = new object();
+        public const int DEFAULT_CACHE_PERIOD = 20;
+
         /// <summary>
         /// 本地缓存获取
         /// </summary>
@@ -97,5 +101,28 @@ namespace HST.Utillity
                 HttpRuntime.Cache.Insert(name, value, null, Cache.NoAbsoluteExpiration, TimeSpan.FromMinutes(minutes), CacheItemPriority.Normal, onRemoveCallback);
         }
 
+        public static T GetOrAddToCache<T>(string cacheKey, Func<T> callback, int minuteToCache = DEFAULT_CACHE_PERIOD, bool skipNull = false) where T : class, new()
+        {
+            T returnValue = Get(cacheKey) as T;
+            if (returnValue == null)
+            {
+                lock (objLock)
+                {
+                    returnValue = Get(cacheKey) as T;
+                    if (returnValue == null)
+                    {
+                        returnValue = callback();
+                        if (returnValue == null)
+                        {
+                            if (skipNull) return null;
+                        }
+
+                        Set(cacheKey, returnValue,  minuteToCache);
+                    }
+                }
+            }
+
+            return returnValue;
+        }
     }
 }

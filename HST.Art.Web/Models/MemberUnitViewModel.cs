@@ -32,7 +32,7 @@ namespace HST.Art.Web
         public string SmallHeadImg { get; set; }
         public string Description { get; set; }
         public string CreateTime { get; set; }
-
+        public string Synopsis { get; set; }
         public string CategoryName
         {
             get; set;

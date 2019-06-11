@@ -1,0 +1,31 @@
+﻿@using HST.Art.Web
+@model PageListViewModel<MemberUnitViewModel>
+
+@foreach (var item in Model)
+{
+    <div class="list_list">
+        <a href="@Url.Action("About", new { QType = QSType.Detail, Id=item.Id,FCType=item.Category })">
+            <div class="list_img fl"><img src="@item.SmallHeadImg" /></div>
+            <div class="list_cons fr">
+                <h6>@item.MemberUnitName</h6>
+               
+                <p>@(string.IsNullOrEmpty(item.Synopsis)? item.MemberUnitName : item.Synopsis)</p>
+                <span>@item.CreateTime</span>
+            </div>
+        </a>
+    </div>
+}
+
+<div class="dataTables_info">
+    <span class="pagesStyle">总共<span class="recordsStyle">@Model.TotalItemCount 条,计 @Model.TotalPageCount </span>页，当前显示 @Model.StartRecordIndex - @Model.EndRecordIndex 条记录 </span>
+</div>
+<div class="dataTables_paginate paging_simple_numbers">
+    @Html.Page(Model.CurrentPageIndex, Model.TotalPageCount, "changePageIndex")
+</div>
+
+@*<div class="page">
+    <p><a href="#"><i class="iconfont icon-icon zuo"></i></a></p>
+    <p><a href="#">1</a></p>
+    <p><a href="#" class="active">2</a></p>
+    <p><a href="#"><i class="iconfont icon-icon"></i></a></p>
+</div>*@

@@ -157,10 +157,21 @@ Write(Scripts.Render("~/bundles/webclient"));
             
             #line default
             #line hidden
+WriteLiteral("\r\n");
+
+WriteLiteral("    ");
+
+            
+            #line 27 "..\..\Views\Shared\_Layout.cshtml"
+Write(Scripts.Render("~/bundles/ajaxAsync"));
+
+            
+            #line default
+            #line hidden
 WriteLiteral("\r\n</head>\r\n<body ");
 
             
-            #line 28 "..\..\Views\Shared\_Layout.cshtml"
+            #line 29 "..\..\Views\Shared\_Layout.cshtml"
   Write(action.Equals("index", StringComparison.InvariantCultureIgnoreCase)?"style=background:#f2f2f2":"");
 
             
@@ -273,7 +284,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("        ");
 
             
-            #line 68 "..\..\Views\Shared\_Layout.cshtml"
+            #line 69 "..\..\Views\Shared\_Layout.cshtml"
    Write(RenderBody());
 
             
@@ -311,7 +322,7 @@ WriteLiteral("><a><i></i> 关于我们</a></p>\r\n\r\n        </div>\r\n    </di
 WriteLiteral("    ");
 
             
-            #line 88 "..\..\Views\Shared\_Layout.cshtml"
+            #line 89 "..\..\Views\Shared\_Layout.cshtml"
 Write(RenderSection("Scripts", required: false));
 
             

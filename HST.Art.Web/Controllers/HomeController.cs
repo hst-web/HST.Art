@@ -12,7 +12,10 @@ namespace HST.Art.Web.Controllers
     public class HomeController : ApplicationBase
     {
         ArticleService _articleService = new ArticleService();
+        MemberUnitService _memberUnitService = new MemberUnitService();
         RotationChartService _rotationChartService = new RotationChartService();
+        OrganizationService _orgService = new OrganizationService();
+        CategoryDictionaryService _cdService = new CategoryDictionaryService();
 
         // GET: Home
         public ActionResult Index()
@@ -60,10 +63,56 @@ namespace HST.Art.Web.Controllers
             return View(model);
         }
 
-        public ActionResult About()
+        public ActionResult About(QueryViewModel model)
         {
+            int category = 0;
+            WebContentViewModel viewModel = new WebContentViewModel();
+            InitData(CategoryType.Member);
+            Organization orgInfo = _orgService.GetChacheData();
+            viewModel.QType = model.QType;
 
-            return View();
+            switch (model.QType)
+            {
+                case QSType.Synopsis:
+                    viewModel.DetailModel = new DetailViewModel()
+                    {
+                        Title = orgInfo.Name,
+                        Description = orgInfo.Detail,
+                        CreateDate = orgInfo.CreateDate
+                    };
+                    break;
+                case QSType.Frame:
+                    viewModel.DetailModel = new DetailViewModel()
+                    {
+                        Title = orgInfo.Name,
+                        Description = orgInfo.Framework,
+                        CreateDate = orgInfo.CreateDate
+                    };
+                    break;
+                case QSType.List:
+                    int.TryParse(model.FCType, out category);
+                    viewModel.PageFilter = new PageViewModel()
+                    {
+                        Category = category
+                    };
+                    break;
+                case QSType.Detail:
+                    MemberUnit mInfo = _memberUnitService.Get(model.Id);
+                    int.TryParse(model.FCType, out category);
+                    viewModel.DetailModel = new DetailViewModel()
+                    {
+                        Title = mInfo.Name,
+                        Description = mInfo.Description,
+                        CreateDate = mInfo.CreateDate
+                    };
+                    viewModel.PageFilter = new PageViewModel()
+                    {
+                        Category = category
+                    };
+                    break;
+            }
+
+            return View(viewModel);
         }
 
 
@@ -89,6 +138,52 @@ namespace HST.Art.Web.Controllers
 
             model.NewestList = newsestList;
             return PartialView(model);
+        }
+
+        /// <summary>
+        /// DataTable读取数据
+        /// </summary>
+        /// <param name="dt"></param>
+        /// <param name="name"></param>
+        /// <param name="state"></param>
+        /// <param name="upgradetime"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public PartialViewResult MemberList(PageViewModel model)
+        {
+            // InitData();
+            int totalNum = 0;
+            FilterEntityModel fillter = new FilterEntityModel();
+            fillter.PageIndex = model.PageIndex;
+            fillter.PageSize = model.PageSize;
+            fillter.KeyValueList = new List<KeyValueObj>();
+
+            if (model.Category > 0)
+            {
+                fillter.KeyValueList.Add(new KeyValueObj() { Key = "Category", Value = model.Category });
+            }
+
+            List<MemberUnit> downList = _memberUnitService.GetPage(fillter, out totalNum);
+            ReturnPageResultIList<MemberUnit> data = new ReturnPageResultIList<Core.MemberUnit>(downList, totalNum);
+            IList<MemberUnitViewModel> gmList = new List<MemberUnitViewModel>();
+
+            if (data != null && data.DataT != null)
+                gmList = data.DataT.Select(g => new MemberUnitViewModel() { Id = g.Id, UserId = g.UserId, MemberUnitName = g.Name, CategoryName = g.CategoryName, State = (int)g.State, CreateTime = g.CreateDate.ToLongDateString(), Category = g.Category, UserName = g.UserName, Number = g.Number, Star = g.Star, HeadImg = g.HeadImg, SmallHeadImg = GetThumb(g.HeadImg), Province = Convert.ToInt32(g.Province), City = Convert.ToInt32(g.City), Area = GetAreaStr(g.Province, g.City), Synopsis = g.Synopsis }).ToList();
+
+            PageListViewModel<MemberUnitViewModel> mpage = new PageListViewModel<MemberUnitViewModel>(gmList, model.PageIndex, model.PageSize, data.totalRecords);
+
+            return PartialView(mpage);
+        }
+
+        public void InitData(CategoryType type = CategoryType.UnKnown)
+        {
+            List<CategoryDictionary> cdList = _cdService.GetAll(type);
+            if (cdList != null)
+            {
+                cdList.RemoveAll(g => g.State == PublishState.Lower);
+            }
+
+            ViewBag.Categorys = cdList;
         }
     }
 }

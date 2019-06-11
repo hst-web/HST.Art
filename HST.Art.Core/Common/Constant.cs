@@ -26,6 +26,7 @@ namespace HST.Art.Core
 
         //初始化企业编号
         public static string INIT_ORG_NUMBER = "Z190001";
+        public static string ORG_CACHE_KEY = "Organization_Z190001";
 
         //表简称
         public static string USER_AS_NAME = "u";

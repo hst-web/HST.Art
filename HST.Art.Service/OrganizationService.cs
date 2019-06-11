@@ -7,6 +7,7 @@
 using System.Collections.Generic;
 using HST.Art.Core;
 using HST.Art.Data;
+using HST.Utillity;
 
 namespace HST.Art.Service
 {
@@ -55,6 +56,11 @@ namespace HST.Art.Service
             return orgInfo;
         }
 
+        public Organization GetChacheData()
+        {
+            return CacheHelper.GetOrAddToCache<Organization>(Constant.ORG_CACHE_KEY, () => (GetByNumber(Constant.INIT_ORG_NUMBER)), 60);
+        }
+
         /// <summary>
         /// 获取所有企业信息
         /// </summary>
@@ -78,6 +84,8 @@ namespace HST.Art.Service
                 ErrorMsg = ErrorCode.ParameterNull;
                 return false;
             }
+
+            CacheHelper.Remove(Constant.ORG_CACHE_KEY);
 
             return _organizationProvider.Update(orgInfo);
         }

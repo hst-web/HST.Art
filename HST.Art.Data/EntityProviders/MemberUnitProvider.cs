@@ -22,7 +22,7 @@ namespace HST.Art.Data
         {
             MemberUnit MemberUnitInfo = null;
             DBHelper dbHelper = new DBHelper(ConnectionString, DbProviderType.SqlServer);
-            string strSql = @"SELECT m.Id, m.Name, m.HeadImg, m.Star, m.Number, m.State, m.Category,cd.name as  CategoryName,Description, Province, City, County, m.CreateDate  from MemberUnit m left join CategoryDictionary cd  on  m.category=cd.id where m.IsDeleted=0 and m.id=@Id ";
+            string strSql = @"SELECT m.Id, m.Name, m.HeadImg, m.Star, m.Number, m.State, m.Category,cd.name as  CategoryName,Description, Province, City, County, m.CreateDate,m.Synopsis  from MemberUnit m left join CategoryDictionary cd  on  m.category=cd.id where m.IsDeleted=0 and m.id=@Id ";
 
             List<DbParameter> parametersList = new List<DbParameter>();
             parametersList.Add(new SqlParameter("@Id", id));
@@ -56,7 +56,7 @@ namespace HST.Art.Data
             List<MemberUnit> MemberUnitList = null;
             DBHelper dbHelper = new DBHelper(ConnectionString, DbProviderType.SqlServer);
 
-            string strSql = @"SELECT m.Id, m.Name, m.HeadImg, m.Star, m.Number, m.State, m.Category,cd.name as  CategoryName, Province, City, County, m.CreateDate  from MemberUnit m left join CategoryDictionary cd on m.category=cd.id where m.IsDeleted=0 " + whereSort;
+            string strSql = @"SELECT m.Id, m.Name, m.HeadImg, m.Star, m.Number, m.State, m.Category,cd.name as  CategoryName, Province, City, County, m.CreateDate,m.Synopsis  from MemberUnit m left join CategoryDictionary cd on m.category=cd.id where m.IsDeleted=0 " + whereSort;
 
             IList<DbParameter> parameList = null;
             if (condition != null && condition.SqlParList.Count > 0)
@@ -126,6 +126,7 @@ namespace HST.Art.Data
                                   ,[City]
                                   ,[County]
                                   ,[CreateDate]
+                                  ,[Synopsis]
                             FROM (select top (@pageSize*@pageIndex)  m.[ID]
                                   ,m.[Name]
                                   ,m.[HeadImg]
@@ -138,6 +139,7 @@ namespace HST.Art.Data
                                   ,m.[City]
                                   ,m.[County]
                                   ,m.[CreateDate]
+                                  ,m.[Synopsis]
                                     ,ROW_NUMBER() over(" + asSort + ") as num  from [MemberUnit] m  left join CategoryDictionary cd  on m.Category=cd.id  where  m.IsDeleted=0 " + where + ") as t where num between (@pageIndex - 1) * @pageSize + 1  and @pageIndex*@pageSize " + sort;
             using (DbDataReader reader = dbHelper.ExecuteReader(strSql, parameList))
             {
@@ -184,6 +186,10 @@ namespace HST.Art.Data
             {
                 MemberUnitInfo.Description = reader["Description"].ToString();
             }
+            if (ReaderExists(reader, "Synopsis") && DBNull.Value != reader["Synopsis"])
+            {
+                MemberUnitInfo.Synopsis = reader["Synopsis"].ToString();
+            }
 
             return MemberUnitInfo;
         }
@@ -202,12 +208,12 @@ namespace HST.Art.Data
             DBHelper dbHelper = new DBHelper(ConnectionString, DbProviderType.SqlServer);
             string strSql = @"if exists(select Id from MemberUnit where Number=@Number)
                                 begin
-                                    update MemberUnit set Name=@Name,HeadImg=@HeadImg,Star=@Star,State=@State,Category=@Category,Description=@Description,Province=@Province,City=@City,County=@County,UserId=@UserId,CreateDate=getdate(),IsDeleted=0 where Number=@Number 
+                                    update MemberUnit set Name=@Name,HeadImg=@HeadImg,Star=@Star,State=@State,Category=@Category,Description=@Description,Synopsis=@Synopsis,Province=@Province,City=@City,County=@County,UserId=@UserId,CreateDate=getdate(),IsDeleted=0 where Number=@Number 
                                 end
                                 else
                                 begin
-                                Insert Into MemberUnit(Name, HeadImg, Star, Number, State, Category, Description, Province, City, County,UserId) 
-                                   Values(@Name, @HeadImg, @Star, @Number, @State, @Category, @Description, @Province, @City, @County,@UserId) 
+                                Insert Into MemberUnit(Name, HeadImg, Star, Number, State, Category, Description,Synopsis, Province, City, County,UserId) 
+                                   Values(@Name, @HeadImg, @Star, @Number, @State, @Category, @Description,@Synopsis, @Province, @City, @County,@UserId) 
                                 end ";
 
             List<DbParameter> parametersList = new List<DbParameter>();
@@ -218,6 +224,7 @@ namespace HST.Art.Data
             parametersList.Add(new SqlParameter("@State", (int)memberUnitInfo.State));
             parametersList.Add(new SqlParameter("@Category", memberUnitInfo.Category));
             parametersList.Add(new SqlParameter("@Description", memberUnitInfo.Description));
+            parametersList.Add(new SqlParameter("@Synopsis", memberUnitInfo.Synopsis));
             parametersList.Add(new SqlParameter("@Province", memberUnitInfo.Province));
             parametersList.Add(new SqlParameter("@City", memberUnitInfo.City));
             parametersList.Add(new SqlParameter("@County", memberUnitInfo.County));
@@ -288,6 +295,7 @@ namespace HST.Art.Data
                                   ,[State]=@State
                                   ,[Category]=@Category
                                   ,[Description]=@Description
+                                  ,[Synopsis]=@Synopsis
                                   ,[Province]=@Province
                                   ,[City]=@City
                                   ,[County]=@County
@@ -307,6 +315,7 @@ namespace HST.Art.Data
             parametersList.Add(new SqlParameter("@City", memberUnitInfo.City));
             parametersList.Add(new SqlParameter("@County", memberUnitInfo.County));
             parametersList.Add(new SqlParameter("@UserId", memberUnitInfo.UserId));
+            parametersList.Add(new SqlParameter("@Synopsis", memberUnitInfo.Synopsis));
 
             return dbHelper.ExecuteNonQuery(strSql, parametersList) > 0;
         }

@@ -2243,6 +2243,7 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\GetRecommend.cshtml" />
     <Content Include="Views\Home\GetDetail.cshtml" />
+    <Content Include="Views\Home\MemberList.cshtml" />
     <None Include="Views\Web.config">
       <Generator>RazorGenerator</Generator>
     </None>
