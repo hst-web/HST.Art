@@ -55,7 +55,7 @@ h1,h2,h3,h4,h5,h6{ font-weight:normal}
   content: "\e890";
 }
 .banner{ width:100%; background:#fff;}
-.nav_scroll{position: fixed;top: 0;left: 0; width: 100%; z-index: 99; }
+.nav_scroll{position: fixed;top: 0;left: 0; width: 100%; z-index: 99;box-shadow: 0px 0px 5px 0px rgba(0,0,0,.1); }
 .top{ width:100%; border-top:2px solid #d9001b; background: #FFF;}
 .cont{ max-width:1280px; width:100%; margin:0 auto; overflow:hidden}
 .top_div{ overflow:hidden}
@@ -71,13 +71,14 @@ nav .nav-logo { width: auto; height: 100%; margin-left: 20px; float: left; displ
 nav .nav-logo a, nav .nav-logo li, nav .nav-logo ol, nav .nav-logo span, nav .nav-logo p { font-size: 30px; font-weight: bold; list-style: none; color: #1f79ec; text-decoration: none;}
 nav .nav-logo img {  max-width: 100%;  max-height: 100%;}
 nav ::-webkit-scrollbar { display: none;}
-nav .nav-list { max-width:1000px; width: 98%; margin: 0 auto;}
+nav .nav-list { max-width:1120px; width: 98%; margin: 0 auto;z-index:2;}
 nav .nav-list > li {position: relative;list-style: none; float: left; text-align: center; width: 14.28%;}
 nav .nav-list > li .active { color: #555;background: #f2f2f2;font-size: 16px; font-weight: bold}
 nav .nav-list > li a {color: #fff;display: block;line-height: 60px;padding: 0px 15px;width:100%;font-size: 15px;text-decoration: none;}
 nav .nav-list > li > a:hover { color: #555; background: #f2f2f2; font-size: 16px; font-weight: bold}
 nav .nav-list > li .menu { min-width: 100%;  position: absolute; white-space: nowrap; left: 0; height: 0;overflow: hidden; -webkit-transition: 1s; transition: 1s; z-index:999}
 nav .nav-list > li .menu li a { width:100%; text-align: center; line-height:40px; color: #fff; background:rgba(68,68,68,0.87);}
+nav .nav-list > li .menu li.active a{color:#d9001b;font-weight:normal} 
 nav .nav-list > li:hover .menu { height: auto;  }
 nav .nav-list > li > .menu  a:hover  { background:rgba(68,68,68,1); }
 nav .nav-menu { display: none;z-index: 999; background: #fff; cursor: pointer;}

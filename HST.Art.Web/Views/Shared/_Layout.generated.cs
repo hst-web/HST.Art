@@ -42,6 +42,7 @@ namespace ASP
             #line 1 "..\..\Views\Shared\_Layout.cshtml"
   
     string action = Request.RequestContext.RouteData.GetRequiredString("Action");
+    string queryName = string.IsNullOrEmpty(Request.QueryString["qtype"])?"": Request.QueryString["qtype"];
 
             
             #line default
@@ -90,7 +91,7 @@ WriteLiteral(" content=\"\"");
 WriteLiteral(" />\r\n    <title>");
 
             
-            #line 14 "..\..\Views\Shared\_Layout.cshtml"
+            #line 15 "..\..\Views\Shared\_Layout.cshtml"
       Write(ViewBag.Title);
 
             
@@ -109,7 +110,7 @@ WriteLiteral(" />\r\n    <!--[if lt IE 9]>\r\n    <script type=\"text/javascript
 WriteLiteral("    ");
 
             
-            #line 20 "..\..\Views\Shared\_Layout.cshtml"
+            #line 21 "..\..\Views\Shared\_Layout.cshtml"
 Write(Styles.Render("~/webclient"));
 
             
@@ -118,13 +119,13 @@ Write(Styles.Render("~/webclient"));
 WriteLiteral("\r\n");
 
             
-            #line 21 "..\..\Views\Shared\_Layout.cshtml"
+            #line 22 "..\..\Views\Shared\_Layout.cshtml"
     
             
             #line default
             #line hidden
             
-            #line 21 "..\..\Views\Shared\_Layout.cshtml"
+            #line 22 "..\..\Views\Shared\_Layout.cshtml"
      if (action.Equals("index", StringComparison.InvariantCultureIgnoreCase))
     {
         
@@ -132,14 +133,14 @@ WriteLiteral("\r\n");
             #line default
             #line hidden
             
-            #line 23 "..\..\Views\Shared\_Layout.cshtml"
+            #line 24 "..\..\Views\Shared\_Layout.cshtml"
    Write(Styles.Render("~/swiper"));
 
             
             #line default
             #line hidden
             
-            #line 23 "..\..\Views\Shared\_Layout.cshtml"
+            #line 24 "..\..\Views\Shared\_Layout.cshtml"
                                   
     }
 
@@ -151,7 +152,7 @@ WriteLiteral("\r\n");
 WriteLiteral("    ");
 
             
-            #line 26 "..\..\Views\Shared\_Layout.cshtml"
+            #line 27 "..\..\Views\Shared\_Layout.cshtml"
 Write(Scripts.Render("~/bundles/webclient"));
 
             
@@ -162,7 +163,7 @@ WriteLiteral("\r\n");
 WriteLiteral("    ");
 
             
-            #line 27 "..\..\Views\Shared\_Layout.cshtml"
+            #line 28 "..\..\Views\Shared\_Layout.cshtml"
 Write(Scripts.Render("~/bundles/ajaxAsync"));
 
             
@@ -171,7 +172,7 @@ Write(Scripts.Render("~/bundles/ajaxAsync"));
 WriteLiteral("\r\n</head>\r\n<body ");
 
             
-            #line 29 "..\..\Views\Shared\_Layout.cshtml"
+            #line 30 "..\..\Views\Shared\_Layout.cshtml"
   Write(action.Equals("index", StringComparison.InvariantCultureIgnoreCase)?"style=background:#f2f2f2":"");
 
             
@@ -212,7 +213,15 @@ WriteLiteral(" class=\"nav-logo\"");
 
 WriteLiteral(">\r\n            <a");
 
-WriteLiteral(" href=\"#\"");
+WriteAttribute("href", Tuple.Create(" href=\"", 1830), Tuple.Create("\"", 1865)
+            
+            #line 44 "..\..\Views\Shared\_Layout.cshtml"
+, Tuple.Create(Tuple.Create("", 1837), Tuple.Create<System.Object, System.Int32>(Url.Action("Index", "Home")
+            
+            #line default
+            #line hidden
+, 1837), false)
+);
 
 WriteLiteral("><img");
 
@@ -231,29 +240,123 @@ WriteLiteral(" class=\"nav-list\"");
 
 WriteLiteral(">\r\n            <li><a");
 
-WriteLiteral(" href=\"\"");
+WriteAttribute("href", Tuple.Create(" href=\"", 2111), Tuple.Create("\"", 2146)
+            
+            #line 53 "..\..\Views\Shared\_Layout.cshtml"
+, Tuple.Create(Tuple.Create("", 2118), Tuple.Create<System.Object, System.Int32>(Url.Action("Index", "Home")
+            
+            #line default
+            #line hidden
+, 2118), false)
+);
 
-WriteLiteral(" class=\"active\"");
+WriteAttribute("class", Tuple.Create(" class=\"", 2147), Tuple.Create("\"", 2236)
+            
+            #line 53 "..\..\Views\Shared\_Layout.cshtml"
+, Tuple.Create(Tuple.Create("", 2155), Tuple.Create<System.Object, System.Int32>(action.Equals("index",StringComparison.InvariantCultureIgnoreCase)?"active":""
+            
+            #line default
+            #line hidden
+, 2155), false)
+);
 
-WriteLiteral(">首页</a></li>\r\n            <li>\r\n                <a");
+WriteLiteral(" >首页</a></li>\r\n            <li>\r\n                <a");
 
-WriteLiteral(" href=\"\"");
+WriteAttribute("href", Tuple.Create(" href=\"", 2288), Tuple.Create("\"", 2322)
+            
+            #line 55 "..\..\Views\Shared\_Layout.cshtml"
+, Tuple.Create(Tuple.Create("", 2295), Tuple.Create<System.Object, System.Int32>(Url.Action("About","Home")
+            
+            #line default
+            #line hidden
+, 2295), false)
+);
+
+WriteAttribute("class", Tuple.Create(" class=\"", 2323), Tuple.Create("\"", 2412)
+            
+            #line 55 "..\..\Views\Shared\_Layout.cshtml"
+, Tuple.Create(Tuple.Create("", 2331), Tuple.Create<System.Object, System.Int32>(action.Equals("about",StringComparison.InvariantCultureIgnoreCase)?"active":""
+            
+            #line default
+            #line hidden
+, 2331), false)
+);
 
 WriteLiteral(">协会概况</a>\r\n                <ul");
 
 WriteLiteral(" class=\"menu\"");
 
-WriteLiteral(">\r\n                    <li><a");
+WriteLiteral(">\r\n                    <li");
 
-WriteLiteral(" href=\"\"");
+WriteAttribute("class", Tuple.Create(" class=\"", 2482), Tuple.Create("\"", 2577)
+            
+            #line 57 "..\..\Views\Shared\_Layout.cshtml"
+, Tuple.Create(Tuple.Create("", 2490), Tuple.Create<System.Object, System.Int32>(queryName.Equals("Synopsis",StringComparison.InvariantCultureIgnoreCase)?"active":""
+            
+            #line default
+            #line hidden
+, 2490), false)
+);
 
-WriteLiteral(">协会简介</a></li>\r\n                    <li><a");
+WriteLiteral("><a");
 
-WriteLiteral(" href=\"\"");
+WriteAttribute("href", Tuple.Create(" href=\"", 2581), Tuple.Create("\"", 2648)
+            
+            #line 57 "..\..\Views\Shared\_Layout.cshtml"
+                                                 , Tuple.Create(Tuple.Create("", 2588), Tuple.Create<System.Object, System.Int32>(Url.Action("About","Home", new { QType = QSType.Synopsis })
+            
+            #line default
+            #line hidden
+, 2588), false)
+);
 
-WriteLiteral(">组织架构</a></li>\r\n                    <li><a");
+WriteLiteral(">协会简介</a></li>\r\n                    <li");
 
-WriteLiteral(" href=\"\"");
+WriteAttribute("class", Tuple.Create(" class=\"", 2688), Tuple.Create("\"", 2780)
+            
+            #line 58 "..\..\Views\Shared\_Layout.cshtml"
+, Tuple.Create(Tuple.Create("", 2696), Tuple.Create<System.Object, System.Int32>(queryName.Equals("Frame",StringComparison.InvariantCultureIgnoreCase)?"active":""
+            
+            #line default
+            #line hidden
+, 2696), false)
+);
+
+WriteLiteral("><a");
+
+WriteAttribute("href", Tuple.Create(" href=\"", 2784), Tuple.Create("\"", 2848)
+            
+            #line 58 "..\..\Views\Shared\_Layout.cshtml"
+                                              , Tuple.Create(Tuple.Create("", 2791), Tuple.Create<System.Object, System.Int32>(Url.Action("About","Home", new { QType = QSType.Frame })
+            
+            #line default
+            #line hidden
+, 2791), false)
+);
+
+WriteLiteral(">组织架构</a></li>\r\n                    <li");
+
+WriteAttribute("class", Tuple.Create(" class=\"", 2888), Tuple.Create("\"", 3051)
+            
+            #line 59 "..\..\Views\Shared\_Layout.cshtml"
+, Tuple.Create(Tuple.Create("", 2896), Tuple.Create<System.Object, System.Int32>(queryName.Equals("List",StringComparison.InvariantCultureIgnoreCase)||queryName.Equals("Detail",StringComparison.InvariantCultureIgnoreCase)?"active":""
+            
+            #line default
+            #line hidden
+, 2896), false)
+);
+
+WriteLiteral("><a");
+
+WriteAttribute("href", Tuple.Create(" href=\"", 3055), Tuple.Create("\"", 3118)
+            
+            #line 59 "..\..\Views\Shared\_Layout.cshtml"
+                                                                                                                     , Tuple.Create(Tuple.Create("", 3062), Tuple.Create<System.Object, System.Int32>(Url.Action("About","Home", new { QType = QSType.List })
+            
+            #line default
+            #line hidden
+, 3062), false)
+);
 
 WriteLiteral(">协会会员</a></li>\r\n                </ul>\r\n            </li>\r\n            <li><a");
 
@@ -284,7 +387,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("        ");
 
             
-            #line 69 "..\..\Views\Shared\_Layout.cshtml"
+            #line 70 "..\..\Views\Shared\_Layout.cshtml"
    Write(RenderBody());
 
             
@@ -317,12 +420,38 @@ WriteLiteral(">\r\n                <b>联系我们</b>\r\n                <p>山
 WriteLiteral(" class=\"fr index_ab\"");
 
 WriteLiteral("><a><i></i> 关于我们</a></p>\r\n\r\n        </div>\r\n    </div>\r\n    <footer>京ICP备13003730" +
-"号-1</footer>\r\n");
+"号-1</footer>\r\n    <script");
+
+WriteLiteral(" type=\"text/javascript\"");
+
+WriteLiteral(@">
+        $(document).ready(function () {
+            var topMain = $(""header"").height() + 15
+            var nav = $(""nav"");
+            $(window).scroll(function () {
+                if ($(window).scrollTop() > topMain) {
+                    nav.addClass(""nav_scroll"");
+
+                } else {
+                    nav.removeClass(""nav_scroll"");
+                }
+            });         
+        })
+
+        $(document).click(function () {
+            $('.nav-list').removeClass('open')
+        })
+        $('.nav-menu,.nav-list').click(function (e) { e.stopPropagation() })
+        $('nav').find('.nav-menu').click(function (e) {
+            $('.nav-list').toggleClass('open')
+        })
+    </script>
+");
 
 WriteLiteral("    ");
 
             
-            #line 89 "..\..\Views\Shared\_Layout.cshtml"
+            #line 112 "..\..\Views\Shared\_Layout.cshtml"
 Write(RenderSection("Scripts", required: false));
 
             

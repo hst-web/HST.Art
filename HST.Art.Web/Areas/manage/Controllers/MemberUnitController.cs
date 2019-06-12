@@ -316,11 +316,6 @@ namespace HST.Art.Web.Areas.manage.Controllers
                 um_mod.Message = "请上传xls、xlsx类型文件";
             else
             {
-                //文件后缀
-                string Suffixstr = Path.GetExtension(file.FileName);
-                um_mod.Extension = Suffixstr;
-                um_mod.FileName = file.FileName;
-
                 List<MemberUnit> memberList = GetData(file.FileName, file.InputStream, out errorMsg);
                 if (memberList != null && memberList.Count > 0)
                 {
@@ -333,6 +328,11 @@ namespace HST.Art.Web.Areas.manage.Controllers
                 }
                 else
                 {
+                    //文件后缀
+                    string Suffixstr = Path.GetExtension(file.FileName);
+                    um_mod.Extension = Suffixstr;
+                    um_mod.FileName = file.FileName;
+
                     List<MemberUnit> failOutList = null;
                     failList = memberList.FindAll(g => string.IsNullOrEmpty(g.Name) || string.IsNullOrEmpty(g.Number) || string.IsNullOrEmpty(g.City));
                     memberList.RemoveAll(g => string.IsNullOrEmpty(g.Name) || string.IsNullOrEmpty(g.Number) || string.IsNullOrEmpty(g.City));
@@ -412,7 +412,7 @@ namespace HST.Art.Web.Areas.manage.Controllers
             }
             else
             {
-                errorMsg = "当前导入的Excel不是教师证书模板";
+                errorMsg = "当前导入的Excel不是协会会员模板";
             }
 
             return dicList;

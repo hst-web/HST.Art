@@ -260,12 +260,7 @@ namespace HST.Art.Web.Areas.manage.Controllers
             else if (!IsExcel(suffixstr))
                 um_mod.Message = "请上传xls、xlsx类型文件";
             else
-            {
-                //文件后缀
-                string Suffixstr = Path.GetExtension(file.FileName);
-                um_mod.Extension = Suffixstr;
-                um_mod.FileName = file.FileName;
-
+            {     
                 List<StuCertificate> stuList = GetData(file.FileName, file.InputStream, out errorMsg);
                 if (stuList != null && stuList.Count > 0)
                 {
@@ -278,6 +273,11 @@ namespace HST.Art.Web.Areas.manage.Controllers
                 }
                 else
                 {
+                    //文件后缀
+                    string Suffixstr = Path.GetExtension(file.FileName);
+                    um_mod.Extension = Suffixstr;
+                    um_mod.FileName = file.FileName;
+
                     List<StuCertificate> failOutList = null;
                     failList = stuList.FindAll(g => string.IsNullOrEmpty(g.Name) || string.IsNullOrEmpty(g.Number) || string.IsNullOrEmpty(g.City));
                     stuList.RemoveAll(g => string.IsNullOrEmpty(g.Name) || string.IsNullOrEmpty(g.Number) || string.IsNullOrEmpty(g.City));

@@ -173,15 +173,22 @@
             if (jsonresult.FileName) {
                 $("#" + file.id).find(".showtitle").text("");
                 $("#" + file.id).find("span.title").html(jsonresult.FileName);
+                $("#filelist").removeClass("hidden");
+            } else {
+                $("#filelist").addClass("hidden");
             }
 
             if (!jsonresult.IsSuccess) {
-                top.layer.open({
-                    type: 1,
-                    anim: 2,
-                    shadeClose: true, //开启遮罩关闭
-                    content: '<div  style="padding: 20px 60px 25px;"   >' + jsonresult.Message + '</br><a style="color:#3bb4f2;display:inline-block;margin-top:5px" href="' + jsonresult.FilePath + '">点击此处下载失败数据<a/></div>'
-                });
+                if (CheckIsNotNullOrEmpty(jsonresult.FilePath)) {
+                    top.layer.open({
+                        type: 1,
+                        anim: 2,
+                        shadeClose: true, //开启遮罩关闭
+                        content: '<div  style="padding: 20px 60px 25px;"   >' + jsonresult.Message + '</br><a style="color:#3bb4f2;display:inline-block;margin-top:5px" href="' + jsonresult.FilePath + '">点击此处下载失败数据<a/></div>'
+                    });
+                } else {
+                    top.layer.alert(jsonresult.Message, { icon: 8 });
+                }
             } else {
                 layer.msg("导入成功");
             }

@@ -57,10 +57,13 @@
 	.list_fr{ width:100%}
 	.list_cons h6{ font-size:16px; line-height: 28px}
 	.details h4{ font-size:18px}
-	.list_cons{ width:70%}
-	
+	.list_cons{ width:73%}
+    .list_list .list_img{ width: 20%; }
+	.details img{max-width:100% !important;height:auto !important}
 	.not-data{height:auto;line-height:normal;margin:3% auto}
-	
+    .dataTables_wrapper .dataTables_paginate{float:left}
+    .dataTables_info{display:none}
+	.foot_cont{padding:0px 8px 8px}
 	 .swiper-slide{max-height:147px !important;overflow:hidden}
 }
 

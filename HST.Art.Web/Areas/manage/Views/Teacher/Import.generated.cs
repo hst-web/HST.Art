@@ -85,9 +85,9 @@ Write(Styles.Render("~/appcss"));
             #line hidden
 WriteLiteral("\r\n<script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 161), Tuple.Create("\"", 217)
-, Tuple.Create(Tuple.Create("", 167), Tuple.Create<System.Object, System.Int32>(Href("~/Content/lib/webuploader/0.1.5/webuploader.min.js")
-, 167), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 163), Tuple.Create("\"", 219)
+, Tuple.Create(Tuple.Create("", 169), Tuple.Create<System.Object, System.Int32>(Href("~/Content/lib/webuploader/0.1.5/webuploader.min.js")
+, 169), false)
 );
 
 WriteLiteral(" type=\"text/javascript\"");
@@ -147,9 +147,9 @@ WriteLiteral(" id=\"loc_temp_inp\"");
 
 WriteLiteral(" />\r\n            </div>\r\n\r\n            <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 936), Tuple.Create("\"", 966)
-, Tuple.Create(Tuple.Create("", 943), Tuple.Create<System.Object, System.Int32>(Href("~/Content/教师证书导入模板.xlsx")
-, 943), false)
+WriteAttribute("href", Tuple.Create(" href=\"", 938), Tuple.Create("\"", 968)
+, Tuple.Create(Tuple.Create("", 945), Tuple.Create<System.Object, System.Int32>(Href("~/Content/教师证书导入模板.xlsx")
+, 945), false)
 );
 
 WriteLiteral(" class=\"down-temp\"");
@@ -279,25 +279,29 @@ WriteLiteral("\',\r\n            //创建选择文件按钮\r\n            pick:
 "        var jsonresult = obj._raw;\r\n            jsonresult = eval(\'(\' + jsonresu" +
 "lt + \')\');\r\n            if (jsonresult.FileName) {\r\n                $(\"#\" + file" +
 ".id).find(\".showtitle\").text(\"\");\r\n                $(\"#\" + file.id).find(\"span.t" +
-"itle\").html(jsonresult.FileName);\r\n            }\r\n\r\n            if (!jsonresult." +
-"IsSuccess) {\r\n                top.layer.open({\r\n                    type: 1,\r\n  " +
-"                  anim: 2,\r\n                    shadeClose: true, //开启遮罩关闭\r\n    " +
-"                content: \'<div  style=\"padding: 20px 60px 25px;\"   >\' + jsonresu" +
-"lt.Message + \'</br><a style=\"color:#3bb4f2;display:inline-block;margin-top:5px\" " +
-"href=\"\' + jsonresult.FilePath + \'\">点击此处下载失败数据<a/></div>\'\r\n                });\r\n " +
-"           } else {\r\n                layer.msg(\"导入成功\");\r\n            }\r\n\r\n      " +
-"      if (parent[1] != null) {\r\n                parent[pageIndex()].table1.ajax." +
-"reload();\r\n            } else {\r\n                parent.table1.ajax.reload();\r\n " +
-"           }\r\n\r\n            uploader.reset();\r\n        });\r\n\r\n        uploader.o" +
-"n(\'uploadError\', function (file, reason) {\r\n            layer.msg(reason);\r\n    " +
-"    });\r\n        uploader.on(\'error\', function (handler) {\r\n            if (hand" +
-"ler == \"Q_EXCEED_NUM_LIMIT\") {\r\n                layer.alert(\"超出最大张数\");\r\n        " +
-"    }\r\n            if (handler == \"F_DUPLICATE\") {\r\n                layer.alert(" +
-"\"该文件已在上传列表\", 3);\r\n            }\r\n\r\n            if (handler == \"Q_TYPE_DENIED\") {" +
-"\r\n                layer.alert(\"该文件不满足上传要求，可能您上传的文件为0KB\");\r\n            }\r\n      " +
-"  });\r\n        uploader.on(\'uploadComplete\', function (file) {\r\n            $(\'#" +
-"\' + file.id).find(\'.percent_small\').fadeOut();\r\n        });\r\n\r\n    });\r\n\r\n</scri" +
-"pt>");
+"itle\").html(jsonresult.FileName);\r\n                $(\"#filelist\").removeClass(\"h" +
+"idden\");\r\n            } else {\r\n                $(\"#filelist\").addClass(\"hidden\"" +
+");\r\n            }\r\n\r\n            if (!jsonresult.IsSuccess) {\r\n                i" +
+"f (CheckIsNotNullOrEmpty(jsonresult.FilePath)) {\r\n                    top.layer." +
+"open({\r\n                        type: 1,\r\n                        anim: 2,\r\n    " +
+"                    shadeClose: true, //开启遮罩关闭\r\n                        content:" +
+" \'<div  style=\"padding: 20px 60px 25px;\"   >\' + jsonresult.Message + \'</br><a st" +
+"yle=\"color:#3bb4f2;display:inline-block;margin-top:5px\" href=\"\' + jsonresult.Fil" +
+"ePath + \'\">点击此处下载失败数据<a/></div>\'\r\n                    });\r\n                } els" +
+"e {\r\n                    top.layer.alert(jsonresult.Message, { icon: 8 });\r\n    " +
+"            }\r\n            } else {\r\n                layer.msg(\"导入成功\");\r\n       " +
+"     }\r\n\r\n            if (parent[1] != null) {\r\n                parent[pageIndex" +
+"()].table1.ajax.reload();\r\n            } else {\r\n                parent.table1.a" +
+"jax.reload();\r\n            }\r\n\r\n            uploader.reset();\r\n        });\r\n\r\n  " +
+"      uploader.on(\'uploadError\', function (file, reason) {\r\n            layer.ms" +
+"g(reason);\r\n        });\r\n        uploader.on(\'error\', function (handler) {\r\n    " +
+"        if (handler == \"Q_EXCEED_NUM_LIMIT\") {\r\n                layer.alert(\"超出最" +
+"大张数\");\r\n            }\r\n            if (handler == \"F_DUPLICATE\") {\r\n            " +
+"    layer.alert(\"该文件已在上传列表\", 3);\r\n            }\r\n\r\n            if (handler == \"Q" +
+"_TYPE_DENIED\") {\r\n                layer.alert(\"该文件不满足上传要求，可能您上传的文件为0KB\");\r\n     " +
+"       }\r\n        });\r\n        uploader.on(\'uploadComplete\', function (file) {\r\n" +
+"            $(\'#\' + file.id).find(\'.percent_small\').fadeOut();\r\n        });\r\n\r\n " +
+"   });\r\n\r\n</script>");
 
         }
     }

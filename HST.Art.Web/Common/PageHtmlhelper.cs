@@ -79,7 +79,7 @@ namespace HST.Art.Web
             page.InnerHtml += pageNum.ToString();
 
             #region 最后1页
-            if (totalPageCount > 5)
+            if (totalPageCount > 6)
             {
                 if (totalPageCount == currentPageIndex)
                     page.InnerHtml += string.Format(@"<a href=""javascript:void(0)"" class=""paginate_button current"" onclick=""{0}({1})"">{2}</a>", fun, totalPageCount, totalPageCount);

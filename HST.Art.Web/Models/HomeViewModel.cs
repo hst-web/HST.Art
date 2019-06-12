@@ -42,10 +42,14 @@ namespace HST.Art.Web
     }
 
     public class WebContentViewModel
-    {
-      
+    {  
+        public WebContentViewModel()
+        {
+            DetailModel = new DetailViewModel();
+            PageFilter = new PageViewModel();
+        }
         public DetailViewModel DetailModel { get; set; }
-        public PageListViewModel<object> PageListModel { get; set; }
+        //public PageListViewModel<object> PageListModel { get; set; }
         public PageViewModel PageFilter { get; set; }
         public QSType QType { get; set; }
     }

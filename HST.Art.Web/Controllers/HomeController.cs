@@ -69,6 +69,7 @@ namespace HST.Art.Web.Controllers
             WebContentViewModel viewModel = new WebContentViewModel();
             InitData(CategoryType.Member);
             Organization orgInfo = _orgService.GetChacheData();
+            model = model == null ? new QueryViewModel() : model;
             viewModel.QType = model.QType;
 
             switch (model.QType)
@@ -157,6 +158,7 @@ namespace HST.Art.Web.Controllers
             fillter.PageIndex = model.PageIndex;
             fillter.PageSize = model.PageSize;
             fillter.KeyValueList = new List<KeyValueObj>();
+            fillter.KeyValueList.Add(new KeyValueObj() { Key = "State", Value = (int)PublishState.Upper });
 
             if (model.Category > 0)
             {
@@ -178,12 +180,25 @@ namespace HST.Art.Web.Controllers
         public void InitData(CategoryType type = CategoryType.UnKnown)
         {
             List<CategoryDictionary> cdList = _cdService.GetAll(type);
+            Dictionary<CategoryDictionary, List<CategoryDictionary>> dicCategorys = new Dictionary<CategoryDictionary, List<CategoryDictionary>>();
+
             if (cdList != null)
             {
                 cdList.RemoveAll(g => g.State == PublishState.Lower);
             }
 
             ViewBag.Categorys = cdList;
+
+            if (type == CategoryType.Examination && cdList != null)
+            {
+                List<CategoryDictionary> parList = cdList.FindAll(g => g.Parent == 0);
+                foreach (CategoryDictionary item in parList)
+                {
+                    dicCategorys.Add(item, cdList.FindAll(g => g.Parent == item.Id));
+                }
+
+                ViewBag.Categorys = dicCategorys;
+            }
         }
     }
 }

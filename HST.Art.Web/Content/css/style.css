@@ -98,17 +98,17 @@ h3 i{ width:3px; height:18px; background:#d9001b; display:inline-block; margin-r
 .page p a i.zuo{transform:rotate(180deg);-ms-transform:rotate(180deg);-moz-transform:rotate(180deg);-webkit-transform:rotate(180deg); -o-transform:rotate(180deg); display: inline-block}
 
 /*list*/
-.list{max-width:990px; width: 96%; margin: 0 auto; margin-bottom: 20px}
+.list{max-width:1120px; width: 96%; margin: 0 auto; margin-bottom: 20px}
 .list_cont{ width:100%; overflow: hidden}
-.list_fl{ width:26%;}
-.list_fr{ width:72%}
+.list_fl{ width:23%;}
+.list_fr{ width:74.5%}
 .list_ul{ width:100%; border: 1px solid #ececec; overflow: hidden; margin-bottom: 18px}
 .list_ul .title{ background: #444; color: #fff; height: 50px; line-height: 50px;padding-left: 15px}
-.list_ul li{  width: 100%; height: 50px; line-height: 50px;border-bottom: 1px solid #ececec; font-size: 14px;}
+.list_ul li{  width: 100%; height: 45px; line-height: 45px;border-bottom: 1px solid #ececec; font-size: 14px;}
 .list_ul li > a{color: #000;display:block; padding-left: 15px}
 .list_ul li:last-child { border-bottom:none}
 .list_ul > li:hover > a,.list_ul > li.current > a{ background:#ececec; color: #d9001b}
-.list_ul li > span a{ color: #555; width: 50%; float: left; line-height: 35px; padding-left: 15px; font-size: 12px;}
+.list_ul li > span a{ color: #555; width: 50%; float: left; line-height: 35px; padding-left: 15px; font-size: 12px;padding-bottom:7px;margin-top:-2px}
 .list_ul > li:hover span a,.list_ul > li.current span a{ background:#ececec; display:block}
 .list_ul li > span a:hover{ color:#d9001b}
 .list_ul li > span.current a{ color:#d9001b}
@@ -121,9 +121,9 @@ h3 i{ width:3px; height:18px; background:#d9001b; display:inline-block; margin-r
 .list_fr_n span{ color:#7c7c7c;font-size: 12px}
 .list_div:hover{ background:#ececec}
 .list_list{ width:100%; padding: 12px; overflow: hidden; border: 1px solid #ececec; margin-bottom: 12px}
-.list_list .list_img{ width: 20%; }
+.list_list .list_img{ width: 16%; }
 .list_list .list_img img{ width: 79px; height: 79px; display: block; margin: 0 auto}
-.list_cons{ width:78%}
+.list_cons{ width:82%}
 .list_cons h6{ font-size: 18px; color: #2a2a2a; line-height: 35px;}
 .list_cons span{ font-size:12px; color: #aaa;margin: 8px auto 4px;display: inline-block;}
 .list_cons span b{ margin-right:10px; font-weight: normal; line-height: 30px}
@@ -131,11 +131,11 @@ h3 i{ width:3px; height:18px; background:#d9001b; display:inline-block; margin-r
 .list_list:hover{ background: #ececec;} 
 .list .page{ overflow:hidden; margin-top: 30px; float: left}
 
-.details h4{ font-size:25px; color: #333; margin-bottom: 10px;}
-.details span{ width:100%; display: block; border-bottom: 1px solid #ececec; font-size: 14px; color: #555; line-height: 30px}
+.details h4.title{ font-size:25px; color: #333; margin-bottom: 5px;}
+.details p.tip{ width:100%;border-bottom: 1px solid #ececec; font-size: 13px; color: #888; padding-bottom:10px;padding-top: 5px;}
 .details div{ width:100%; font-size: 14px; color: #333; line-height: 28px;}
-.details p{width:100%; font-size: 14px; color: #333; line-height: 28px; margin-bottom: 10px}
-.details img{ display: block; margin: 10px auto}
+.details p{ margin-bottom: 10px}
+.details img{ display: block; margin: 10px auto 15px}
  .swiper-slide{max-height:480px;overflow:hidden}
 .clearfix::after {
   display: block;
@@ -154,12 +154,21 @@ table.dataTable thead .sorting_asc, table.dataTable thead .sorting_desc, table.d
 .dataTables_wrapper .dataTables_length .select{ width:50px}
 .dataTables_wrapper .dataTables_filter {float: right;text-align: right}
 .dataTables_wrapper .dataTables_filter .input-text { width:auto}
-.dataTables_wrapper .dataTables_info {clear: both;float: left;padding-top:10px;font-size:14px; color:#666}
+.dataTables_wrapper .dataTables_info {clear: both;float: left;padding-top:10px;font-size:13px; color:#666}
 .dataTables_wrapper .dataTables_paginate {float: right;padding-top:10px;text-align: right}
-.dataTables_wrapper .dataTables_paginate .paginate_button {border: 1px solid #ccc;cursor: pointer;display: inline-block;margin-left: 2px;text-align: center;text-decoration: none;color: #666;height: 26px;line-height: 26px;text-decoration: none;margin: 0 0px 6px 6px;padding: 0 10px;font-size:14px}
+.dataTables_wrapper .dataTables_paginate .paginate_button {border: 1px solid #ccc;cursor: pointer;display: inline-block;margin-left: 2px;text-align: center;text-decoration: none;color: #666;height: 28px;line-height: 26px;text-decoration: none;margin: 0 0px 6px 6px;padding: 0 10px;font-size:13px}
 .dataTables_wrapper .dataTables_paginate .paginate_button:hover,
 .dataTables_wrapper .dataTables_paginate .paginate_button.current,
 .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {background:#f56c6c;color:#fff}
+
+.dataTables_paginate a .icon-icon{ font-size:18px;}
+.dataTables_paginate a i.zuo{transform:rotate(180deg);-ms-transform:rotate(180deg);-moz-transform:rotate(180deg);-webkit-transform:rotate(180deg); -o-transform:rotate(180deg); display: inline-block}
+.dataTables_info{float:left}
+.dataTables_wrapper{
+    display: block;
+    overflow: hidden;
+    margin-bottom: 12px;
+}
 .paginate_button.disabled{
     pointer-events: none;
     filter:alpha(opacity=60);

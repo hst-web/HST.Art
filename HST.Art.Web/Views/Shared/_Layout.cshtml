@@ -1,5 +1,6 @@
 ﻿@{
     string action = Request.RequestContext.RouteData.GetRequiredString("Action");
+    string queryName = string.IsNullOrEmpty(Request.QueryString["qtype"])?"": Request.QueryString["qtype"];
 }
 <!DOCTYPE html>
 <html>
@@ -40,7 +41,7 @@
     </header>
     <nav>
         <div class="nav-logo">
-            <a href="#"><img src="/Content/image/logo.jpg" alt=""></a>
+            <a href="@Url.Action("Index", "Home")"><img src="/Content/image/logo.jpg" alt=""></a>
         </div>
         <div class="nav-menu">
             <span></span>
@@ -49,13 +50,13 @@
         </div>
 
         <ul class="nav-list">
-            <li><a href="" class="active">首页</a></li>
+            <li><a href="@Url.Action("Index", "Home")" class="@(action.Equals("index",StringComparison.InvariantCultureIgnoreCase)?"active":"")" >首页</a></li>
             <li>
-                <a href="">协会概况</a>
+                <a href="@Url.Action("About","Home")" class="@(action.Equals("about",StringComparison.InvariantCultureIgnoreCase)?"active":"")">协会概况</a>
                 <ul class="menu">
-                    <li><a href="">协会简介</a></li>
-                    <li><a href="">组织架构</a></li>
-                    <li><a href="">协会会员</a></li>
+                    <li class="@(queryName.Equals("Synopsis",StringComparison.InvariantCultureIgnoreCase)?"active":"")"><a href="@Url.Action("About","Home", new { QType = QSType.Synopsis })">协会简介</a></li>
+                    <li class="@(queryName.Equals("Frame",StringComparison.InvariantCultureIgnoreCase)?"active":"")"><a href="@Url.Action("About","Home", new { QType = QSType.Frame })">组织架构</a></li>
+                    <li class="@(queryName.Equals("List",StringComparison.InvariantCultureIgnoreCase)||queryName.Equals("Detail",StringComparison.InvariantCultureIgnoreCase)?"active":"")"><a href="@Url.Action("About","Home", new { QType = QSType.List })">协会会员</a></li>
                 </ul>
             </li>
             <li><a href="">行业资讯</a></li>
@@ -86,6 +87,28 @@
         </div>
     </div>
     <footer>京ICP备13003730号-1</footer>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var topMain = $("header").height() + 15
+            var nav = $("nav");
+            $(window).scroll(function () {
+                if ($(window).scrollTop() > topMain) {
+                    nav.addClass("nav_scroll");
+
+                } else {
+                    nav.removeClass("nav_scroll");
+                }
+            });         
+        })
+
+        $(document).click(function () {
+            $('.nav-list').removeClass('open')
+        })
+        $('.nav-menu,.nav-list').click(function (e) { e.stopPropagation() })
+        $('nav').find('.nav-menu').click(function (e) {
+            $('.nav-list').toggleClass('open')
+        })
+    </script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>
