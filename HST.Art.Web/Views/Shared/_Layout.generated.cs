@@ -303,7 +303,7 @@ WriteLiteral("><a");
 WriteAttribute("href", Tuple.Create(" href=\"", 2581), Tuple.Create("\"", 2648)
             
             #line 57 "..\..\Views\Shared\_Layout.cshtml"
-                                                 , Tuple.Create(Tuple.Create("", 2588), Tuple.Create<System.Object, System.Int32>(Url.Action("About","Home", new { QType = QSType.Synopsis })
+                                                 , Tuple.Create(Tuple.Create("", 2588), Tuple.Create<System.Object, System.Int32>(Url.Action("About","Home", new { qtype = QSType.synopsis })
             
             #line default
             #line hidden
@@ -327,7 +327,7 @@ WriteLiteral("><a");
 WriteAttribute("href", Tuple.Create(" href=\"", 2784), Tuple.Create("\"", 2848)
             
             #line 58 "..\..\Views\Shared\_Layout.cshtml"
-                                              , Tuple.Create(Tuple.Create("", 2791), Tuple.Create<System.Object, System.Int32>(Url.Action("About","Home", new { QType = QSType.Frame })
+                                              , Tuple.Create(Tuple.Create("", 2791), Tuple.Create<System.Object, System.Int32>(Url.Action("About","Home", new { qtype = QSType.frame })
             
             #line default
             #line hidden
@@ -351,7 +351,7 @@ WriteLiteral("><a");
 WriteAttribute("href", Tuple.Create(" href=\"", 3055), Tuple.Create("\"", 3118)
             
             #line 59 "..\..\Views\Shared\_Layout.cshtml"
-                                                                                                                     , Tuple.Create(Tuple.Create("", 3062), Tuple.Create<System.Object, System.Int32>(Url.Action("About","Home", new { QType = QSType.List })
+                                                                                                                     , Tuple.Create(Tuple.Create("", 3062), Tuple.Create<System.Object, System.Int32>(Url.Action("About","Home", new { qtype = QSType.list })
             
             #line default
             #line hidden

@@ -74,7 +74,7 @@ namespace HST.Art.Web.Controllers
 
             switch (model.QType)
             {
-                case QSType.Synopsis:
+                case QSType.synopsis:
                     viewModel.DetailModel = new DetailViewModel()
                     {
                         Title = orgInfo.Name,
@@ -82,7 +82,7 @@ namespace HST.Art.Web.Controllers
                         CreateDate = orgInfo.CreateDate
                     };
                     break;
-                case QSType.Frame:
+                case QSType.frame:
                     viewModel.DetailModel = new DetailViewModel()
                     {
                         Title = orgInfo.Name,
@@ -90,14 +90,14 @@ namespace HST.Art.Web.Controllers
                         CreateDate = orgInfo.CreateDate
                     };
                     break;
-                case QSType.List:
+                case QSType.list:
                     int.TryParse(model.FCType, out category);
                     viewModel.PageFilter = new PageViewModel()
                     {
                         Category = category
                     };
                     break;
-                case QSType.Detail:
+                case QSType.detail:
                     MemberUnit mInfo = _memberUnitService.Get(model.Id);
                     int.TryParse(model.FCType, out category);
                     viewModel.DetailModel = new DetailViewModel()

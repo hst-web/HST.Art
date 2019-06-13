@@ -76,9 +76,9 @@ namespace HST.Art.Web
 
     public enum QSType
     {
-        Synopsis,
-        Frame,
-        List,
-        Detail
+        synopsis,
+        frame,
+        list,
+        detail
     }
 }

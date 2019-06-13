@@ -6,20 +6,20 @@
 
 @model WebContentViewModel
 <div class="list">
-    <div class="position">当前位置：<a href="@Url.Action("about")">协会概况</a> / @Html.Raw((Model.QType==QSType.Frame? "<a href='"+Url.Action("About", new { QType = QSType.Frame }) + "' class='red'>组织架构</a>" : Model.QType==QSType.List||Model.QType==QSType.Detail? "<a href='"+Url.Action("About", new { QType = QSType.List }) +"' class='red'>协会会员</a>": "<a href='"+ Url.Action("About", new { QType = QSType.Synopsis }) + "' class='red'>协会简介</a>"))</div>
+    <div class="position">当前位置：<a href="@Url.Action("about")">协会概况</a> / @Html.Raw((Model.QType==QSType.frame? "<a href='"+Url.Action("About", new { qtype = QSType.frame }) + "' class='red'>组织架构</a>" : Model.QType==QSType.list||Model.QType==QSType.detail? "<a href='"+Url.Action("About", new { qtype = QSType.list }) +"' class='red'>协会会员</a>": "<a href='"+ Url.Action("About", new { qtype = QSType.synopsis }) + "' class='red'>协会简介</a>"))</div>
     <div class="list_cont">
         <div class="list_fl fl">
             <ul class="list_ul">
                 <li class="title">协会概况</li>
-                <li class="@(Model.QType== QSType.Synopsis?"current":"")"><a href="@Url.Action("About", new { QType = QSType.Synopsis })">协会简介</a></li>
-                <li class="@(Model.QType== QSType.Frame?"current":"")"><a href="@Url.Action("About", new { QType = QSType.Frame })">组织架构</a></li>
-                <li class="@(Model.QType == QSType.List || Model.QType == QSType.Detail ? "current" : "")">
-                    <a href="@Url.Action("About", new { QType = QSType.List})">协会会员</a>
+                <li class="@(Model.QType== QSType.synopsis?"current":"")"><a href="@Url.Action("About", new { qtype = QSType.synopsis })">协会简介</a></li>
+                <li class="@(Model.QType== QSType.frame?"current":"")"><a href="@Url.Action("About", new { qtype = QSType.frame })">组织架构</a></li>
+                <li class="@(Model.QType == QSType.list || Model.QType == QSType.detail ? "current" : "")">
+                    <a href="@Url.Action("About", new { qtype = QSType.list})">协会会员</a>
                     @if (ViewBag.Categorys != null)
                     {
                         foreach (CategoryDictionary item in ViewBag.Categorys)
                         {
-                            <span class="@(Model.PageFilter!=null&&Model.PageFilter.Category==item.Id?"current":"")"><a href="@Url.Action("About", new { QType = QSType.List, FCType=item.Id })">@item.Name</a></span>
+                            <span class="@(Model.PageFilter!=null&&Model.PageFilter.Category==item.Id?"current":"")"><a href="@Url.Action("About", new { qtype = QSType.list, fctype=item.Id })">@item.Name</a></span>
                         }
                     }
 
@@ -27,7 +27,7 @@
             </ul>
             @Html.Action("GetRecommend")
         </div>
-        @if (Model.QType != QSType.List)
+        @if (Model.QType != QSType.list)
         {
             @Html.Partial("GetDetail", Model.DetailModel)
         }
@@ -48,7 +48,7 @@
 @section scripts {
     <script type="text/javascript">
         $(document).ready(function () {
-            if ('@Model.QType' == '@QSType.List') {
+            if ('@Model.QType' == '@QSType.list') {
                 changeQueryCondition();
             }
         })

@@ -54,9 +54,9 @@
             <li>
                 <a href="@Url.Action("About","Home")" class="@(action.Equals("about",StringComparison.InvariantCultureIgnoreCase)?"active":"")">协会概况</a>
                 <ul class="menu">
-                    <li class="@(queryName.Equals("Synopsis",StringComparison.InvariantCultureIgnoreCase)?"active":"")"><a href="@Url.Action("About","Home", new { QType = QSType.Synopsis })">协会简介</a></li>
-                    <li class="@(queryName.Equals("Frame",StringComparison.InvariantCultureIgnoreCase)?"active":"")"><a href="@Url.Action("About","Home", new { QType = QSType.Frame })">组织架构</a></li>
-                    <li class="@(queryName.Equals("List",StringComparison.InvariantCultureIgnoreCase)||queryName.Equals("Detail",StringComparison.InvariantCultureIgnoreCase)?"active":"")"><a href="@Url.Action("About","Home", new { QType = QSType.List })">协会会员</a></li>
+                    <li class="@(queryName.Equals("Synopsis",StringComparison.InvariantCultureIgnoreCase)?"active":"")"><a href="@Url.Action("About","Home", new { qtype = QSType.synopsis })">协会简介</a></li>
+                    <li class="@(queryName.Equals("Frame",StringComparison.InvariantCultureIgnoreCase)?"active":"")"><a href="@Url.Action("About","Home", new { qtype = QSType.frame })">组织架构</a></li>
+                    <li class="@(queryName.Equals("List",StringComparison.InvariantCultureIgnoreCase)||queryName.Equals("Detail",StringComparison.InvariantCultureIgnoreCase)?"active":"")"><a href="@Url.Action("About","Home", new { qtype = QSType.list })">协会会员</a></li>
                 </ul>
             </li>
             <li><a href="">行业资讯</a></li>
