@@ -1,0 +1,87 @@
+﻿
+@{
+    ViewBag.Title = "证书查询";
+}
+
+@using HST.Art.Web
+@using HST.Art.Core
+
+@model CertViewModel
+
+<div class="query">
+    <div class="position">当前位置：<a href="@Url.Action("Index", "Home")">首页</a> / <a href="@Url.Action("Certificate", "Home")" class="red">证书查询</a></div>
+    <div class="query_text">
+        <h5>@(Model.Title + "简介")</h5>
+        <p>@Model.Description</p>
+    </div>
+    <div class="query_box">
+        <div class="query_div @(Model.CertType==CertType.teacher?"active":"")">
+            <p><i class="iconfont icon-c_query"></i>教师证书查询</p>
+            <select id="selTeaArea">
+                <option value="">选择市</option>
+                @foreach (KeyValuePair<int, string> item in ViewBag.City)
+                {
+                    <option value="@item.Key">@item.Value</option>
+                }
+            </select>
+            <input placeholder="请输入教师姓或证书编号" type="text" />
+            <span><i class="iconfont icon-search"></i></span>
+        </div><!--/query_div-->
+        <div class="query_div @(Model.CertType==CertType.teacher?"active":"")">
+            <p><i class="iconfont icon-c_query"></i>学生证书查询</p>
+            <select id="selStuArea">
+                <option value="">选择市</option>
+                @foreach (KeyValuePair<int, string> item in ViewBag.City)
+                {
+                    <option value="@item.Key">@item.Value</option>
+                }
+            </select>
+            <input placeholder="请输入学生姓或证书编号" type="text" />
+            <span><i class="iconfont icon-search"></i></span>
+        </div><!--/query_div-->
+        <div class="query_div @(Model.CertType==CertType.teacher?"active":"")">
+            <p><i class="iconfont icon-c_query"></i>会员单位星际查询</p>
+            <select id="selUnitaArea">
+                <option value="">选择市</option>
+                @foreach (KeyValuePair<int, string> item in ViewBag.City)
+                {
+                    <option value="@item.Key">@item.Value</option>
+                }
+            </select>
+            <input placeholder="请输入会员名称或单位编号" type="text" />
+            <span><i class="iconfont icon-search"></i></span>
+        </div><!--/query_div-->
+    </div>
+
+    <div class="query_cont">
+
+    </div><!--/query_cont-->
+    @using (Ajax.BeginForm("MemberList", new { }, new AjaxOptions { OnFailure = "showException", OnSuccess = "", UpdateTargetId = "tbTable_wrapper", OnBegin = "", OnComplete = "" }, new { id = "searchByRequest" }))
+    {
+        @Html.Hidden("PageIndex", Model.PageFilter.PageIndex)
+        @Html.Hidden("PageSize", Model.PageFilter.PageSize)
+        @Html.Hidden("City", Model.PageFilter.City)
+        @Html.Hidden("NameOrNumber", Model.PageFilter.NameOrNumber)
+        @Html.Hidden("CertType", Model.CertType)
+    }
+</div>
+
+@section scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            changeQueryCondition();
+        })
+
+        //改变筛选条件
+        function changeQueryCondition() {
+            $("#PageIndex").val(1);//页索引置为1
+            $("#searchByRequest").submit();
+        }
+
+        //改变索引页
+        function changePageIndex(index) {
+            $("#PageIndex").val(index);
+            $("#searchByRequest").submit();
+        }
+    </script>
+}

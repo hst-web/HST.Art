@@ -71,7 +71,7 @@ h3 i{ width:3px; height:18px; background:#d9001b; display:inline-block; margin-r
 .query_box .query_div input:-ms-input-placeholder{color:#aaa;}
 .query_box .query_div span{ position: absolute; right: 10px; bottom: 12.5%; width: 30px; height: 30px; background: #d9001b; color: #fff; border-radius: 6px; display: inline-block;}
 .query_box .query_div span i{font-size: 20px; text-align: center; line-height: 30px;}
-.query_box .query_div:hover{background: #f2f2f2; border: none; border-top:3px solid #d9001b; margin-bottom:0}
+.query_box .query_div:hover,.query_box .query_div.active{background: #f2f2f2; border: none; border-top:3px solid #d9001b; margin-bottom:0}
 .query_cont{ border:1px solid #d4d4d4; padding: 10px; margin-top: 18px; overflow: hidden;margin-bottom: 20px}
 .query_tiele { width:100%; overflow: hidden; height: 35px; line-height: 35px; }
 .query_tiele span{ font-size:14px; color: #333;font-weight:bold}

@@ -41,8 +41,18 @@ namespace HST.Art.Web
         public string Description { get; set; }
     }
 
+    public class ListViewModel
+    {
+        public string Name { get; set; }
+        public string Gender { get; set; }
+        public string Area { get; set; }
+        public string Number { get; set; }
+        public string LevelName { get; set; }
+        public int Star { get; set; }
+    }
+
     public class WebContentViewModel
-    {  
+    {
         public WebContentViewModel()
         {
             DetailModel = new DetailViewModel();
@@ -52,6 +62,19 @@ namespace HST.Art.Web
         //public PageListViewModel<object> PageListModel { get; set; }
         public PageViewModel PageFilter { get; set; }
         public QSType QType { get; set; }
+    }
+
+    public class CertViewModel
+    {
+        public CertViewModel()
+        {
+            PageFilter = new PageViewModel();
+        }
+        public CertType CertType { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public string UserName { get; set; }
+        public PageViewModel PageFilter { get; set; }
     }
 
     public class PageViewModel
@@ -65,6 +88,9 @@ namespace HST.Art.Web
         public int PageIndex { get; set; }
         public int PageSize { get; set; }
         public int Category { get; set; }
+        public string City { get; set; }
+        public string NameOrNumber { get; set; }
+        public CertType CertType { get; set; }
     }
 
     public class QueryViewModel
@@ -80,5 +106,15 @@ namespace HST.Art.Web
         frame,
         list,
         detail
+    }
+
+    /// <summary>
+    /// 前端查询枚举
+    /// </summary>
+    public enum CertType
+    {
+        teacher,
+        student,
+        member
     }
 }

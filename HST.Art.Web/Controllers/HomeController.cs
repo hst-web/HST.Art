@@ -116,6 +116,19 @@ namespace HST.Art.Web.Controllers
             return View(viewModel);
         }
 
+        public ActionResult Certificate()
+        {
+            Organization org = _orgService.GetChacheData();
+            CertViewModel model = new CertViewModel()
+            {
+                Title = org.Name,
+                Description = org.Description,
+                CertType = CertType.teacher
+            };
+
+            ViewBag.City = City;
+            return View(model);
+        }
 
         /// <summary>
         /// 获取推荐新闻分布视图
@@ -144,13 +157,43 @@ namespace HST.Art.Web.Controllers
         /// <summary>
         /// DataTable读取数据
         /// </summary>
-        /// <param name="dt"></param>
-        /// <param name="name"></param>
-        /// <param name="state"></param>
-        /// <param name="upgradetime"></param>
+        /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost]
         public PartialViewResult MemberList(PageViewModel model)
+        {
+            // InitData();
+            int totalNum = 0;
+            FilterEntityModel fillter = new FilterEntityModel();
+            fillter.PageIndex = model.PageIndex;
+            fillter.PageSize = model.PageSize;
+            fillter.KeyValueList = new List<KeyValueObj>();
+            fillter.KeyValueList.Add(new KeyValueObj() { Key = "State", Value = (int)PublishState.Upper });
+
+            if (model.Category > 0)
+            {
+                fillter.KeyValueList.Add(new KeyValueObj() { Key = "Category", Value = model.Category });
+            }
+
+            List<MemberUnit> downList = _memberUnitService.GetPage(fillter, out totalNum);
+            ReturnPageResultIList<MemberUnit> data = new ReturnPageResultIList<Core.MemberUnit>(downList, totalNum);
+            IList<MemberUnitViewModel> gmList = new List<MemberUnitViewModel>();
+
+            if (data != null && data.DataT != null)
+                gmList = data.DataT.Select(g => new MemberUnitViewModel() { Id = g.Id, UserId = g.UserId, MemberUnitName = g.Name, CategoryName = g.CategoryName, State = (int)g.State, CreateTime = g.CreateDate.ToLongDateString(), Category = g.Category, UserName = g.UserName, Number = g.Number, Star = g.Star, HeadImg = g.HeadImg, SmallHeadImg = GetThumb(g.HeadImg), Province = Convert.ToInt32(g.Province), City = Convert.ToInt32(g.City), Area = GetAreaStr(g.Province, g.City), Synopsis = g.Synopsis }).ToList();
+
+            PageListViewModel<MemberUnitViewModel> mpage = new PageListViewModel<MemberUnitViewModel>(gmList, model.PageIndex, model.PageSize, data.totalRecords);
+
+            return PartialView(mpage);
+        }
+
+        /// <summary>
+        /// DataTable读取数据
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public PartialViewResult CertificateList(PageViewModel model)
         {
             // InitData();
             int totalNum = 0;
