@@ -16,6 +16,8 @@ namespace HST.Art.Web.Controllers
         RotationChartService _rotationChartService = new RotationChartService();
         OrganizationService _orgService = new OrganizationService();
         CategoryDictionaryService _cdService = new CategoryDictionaryService();
+        TeaCertificateService _teaService = new TeaCertificateService();
+        StuCertificateService _stuService = new StuCertificateService();
 
         // GET: Home
         public ActionResult Index()
@@ -126,6 +128,8 @@ namespace HST.Art.Web.Controllers
                 CertType = CertType.teacher
             };
 
+            model.PageFilter.PageSize = 30;
+
             ViewBag.City = City;
             return View(model);
         }
@@ -162,7 +166,6 @@ namespace HST.Art.Web.Controllers
         [HttpPost]
         public PartialViewResult MemberList(PageViewModel model)
         {
-            // InitData();
             int totalNum = 0;
             FilterEntityModel fillter = new FilterEntityModel();
             fillter.PageIndex = model.PageIndex;
@@ -175,8 +178,8 @@ namespace HST.Art.Web.Controllers
                 fillter.KeyValueList.Add(new KeyValueObj() { Key = "Category", Value = model.Category });
             }
 
-            List<MemberUnit> downList = _memberUnitService.GetPage(fillter, out totalNum);
-            ReturnPageResultIList<MemberUnit> data = new ReturnPageResultIList<Core.MemberUnit>(downList, totalNum);
+            List<MemberUnit> memberList = _memberUnitService.GetPage(fillter, out totalNum);
+            ReturnPageResultIList<MemberUnit> data = new ReturnPageResultIList<Core.MemberUnit>(memberList, totalNum);
             IList<MemberUnitViewModel> gmList = new List<MemberUnitViewModel>();
 
             if (data != null && data.DataT != null)
@@ -195,27 +198,50 @@ namespace HST.Art.Web.Controllers
         [HttpPost]
         public PartialViewResult CertificateList(PageViewModel model)
         {
-            // InitData();
             int totalNum = 0;
             FilterEntityModel fillter = new FilterEntityModel();
             fillter.PageIndex = model.PageIndex;
             fillter.PageSize = model.PageSize;
+            fillter.FilterType = FilterType.Or;
             fillter.KeyValueList = new List<KeyValueObj>();
-            fillter.KeyValueList.Add(new KeyValueObj() { Key = "State", Value = (int)PublishState.Upper });
+            fillter.KeyValueReserves = new List<KeyValueObj>();
+            fillter.KeyValueReserves.Add(new KeyValueObj() { Key = "State", Value = (int)PublishState.Upper });
 
-            if (model.Category > 0)
+            if (!string.IsNullOrEmpty(model.CityCode))
             {
-                fillter.KeyValueList.Add(new KeyValueObj() { Key = "Category", Value = model.Category });
+                fillter.KeyValueReserves.Add(new KeyValueObj() { Key = "City", Value = model.CityCode });
             }
 
-            List<MemberUnit> downList = _memberUnitService.GetPage(fillter, out totalNum);
-            ReturnPageResultIList<MemberUnit> data = new ReturnPageResultIList<Core.MemberUnit>(downList, totalNum);
-            IList<MemberUnitViewModel> gmList = new List<MemberUnitViewModel>();
+            if (!string.IsNullOrEmpty(model.NameOrNumber))
+            {
+                fillter.KeyValueReserves.Add(new KeyValueObj() { Key = "Name", Value = model.NameOrNumber });
+                fillter.KeyValueList.Add(new KeyValueObj() { Key = "Number", Value = model.NameOrNumber });
+            }
 
-            if (data != null && data.DataT != null)
-                gmList = data.DataT.Select(g => new MemberUnitViewModel() { Id = g.Id, UserId = g.UserId, MemberUnitName = g.Name, CategoryName = g.CategoryName, State = (int)g.State, CreateTime = g.CreateDate.ToLongDateString(), Category = g.Category, UserName = g.UserName, Number = g.Number, Star = g.Star, HeadImg = g.HeadImg, SmallHeadImg = GetThumb(g.HeadImg), Province = Convert.ToInt32(g.Province), City = Convert.ToInt32(g.City), Area = GetAreaStr(g.Province, g.City), Synopsis = g.Synopsis }).ToList();
+            List<ListViewModel> modelList = new List<ListViewModel>();
 
-            PageListViewModel<MemberUnitViewModel> mpage = new PageListViewModel<MemberUnitViewModel>(gmList, model.PageIndex, model.PageSize, data.totalRecords);
+            #region 数据处理
+            switch (model.CertType)
+            {
+                case CertType.student:
+                    List<StuCertificate> stuList = _stuService.GetPage(fillter, out totalNum);
+                    modelList = stuList.Select(g => new ListViewModel() { Name = g.Name, Gender = g.Gender.GetDescription(), Number = g.Number, Area = GetAreaStr(Constant.DEFAULT_PROVINCE, g.City).Replace("-", "") }).ToList();
+                    break;
+                case CertType.member:
+                    List<MemberUnit> memberList = _memberUnitService.GetPage(fillter, out totalNum);
+                    modelList = memberList.Select(g => new ListViewModel() { Name = g.Name, Number = g.Number, Area = GetAreaStr(Constant.DEFAULT_PROVINCE, g.City).Replace("-", ""), Star = g.Star }).ToList();
+                    break;
+                default:
+                    List<TeaCertificate> teaList = _teaService.GetPage(fillter, out totalNum);
+                    modelList = teaList.Select(g => new ListViewModel() { Name = g.Name, Gender = g.Gender.GetDescription(), Number = g.Number, Area = GetAreaStr(Constant.DEFAULT_PROVINCE, g.City).Replace("-", ""), LevelName = g.Level.GetDescription() }).ToList();
+                    break;
+            }
+
+            ViewBag.CertType = model.CertType;
+            #endregion
+
+            ReturnPageResultIList<ListViewModel> data = new ReturnPageResultIList<ListViewModel>(modelList, totalNum);
+            PageListViewModel<ListViewModel> mpage = new PageListViewModel<ListViewModel>(data.DataT, model.PageIndex, model.PageSize, data.totalRecords);
 
             return PartialView(mpage);
         }

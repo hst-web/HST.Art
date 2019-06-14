@@ -444,6 +444,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>_Layout.cshtml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Shared\_Layout1.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_Layout.cshtml</DependentUpon>
+    </Compile>
     <Compile Include="Views\_ViewStart.generated.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -463,17 +468,40 @@
     <Content Include="Content\css\style.css" />
     <Content Include="Content\css\swiper.min.css" />
     <Content Include="Content\fonts\iconfont.svg" />
+    <Content Include="Content\image\accordion-plusminus.png" />
+    <Content Include="Content\image\ajax-loading.gif" />
+    <Content Include="Content\image\ajax-modal-loading.gif" />
     <Content Include="Content\image\caret.png" />
     <Content Include="Content\image\circle.png" />
+    <Content Include="Content\image\datatable-row-openclose.png" />
     <Content Include="Content\image\img.jpg" />
     <Content Include="Content\image\index_ds_fl.jpg" />
     <Content Include="Content\image\index_ds_fl.png" />
     <Content Include="Content\image\index_ds_fr.jpg" />
     <Content Include="Content\image\index_ds_fr.png" />
     <Content Include="Content\image\index_new.jpg" />
+    <Content Include="Content\image\input-spinner.gif" />
+    <Content Include="Content\image\loading-spinner-blue.gif" />
+    <Content Include="Content\image\loading-spinner-default.gif" />
+    <Content Include="Content\image\loading-spinner-grey.gif" />
+    <Content Include="Content\image\loading.gif" />
     <Content Include="Content\image\logo.jpg" />
     <Content Include="Content\image\no-data.png" />
     <Content Include="Content\image\not-img.jpg" />
+    <Content Include="Content\image\overlay-icon.png" />
+    <Content Include="Content\image\portlet-collapse-icon-white.png" />
+    <Content Include="Content\image\portlet-collapse-icon.png" />
+    <Content Include="Content\image\portlet-config-icon-white.png" />
+    <Content Include="Content\image\portlet-config-icon.png" />
+    <Content Include="Content\image\portlet-expand-icon-white.png" />
+    <Content Include="Content\image\portlet-expand-icon.png" />
+    <Content Include="Content\image\portlet-reload-icon-white.png" />
+    <Content Include="Content\image\portlet-reload-icon.png" />
+    <Content Include="Content\image\portlet-remove-icon-white.png" />
+    <Content Include="Content\image\portlet-remove-icon.png" />
+    <Content Include="Content\image\remove-icon-small.png" />
+    <Content Include="Content\image\syncfusion-icons-white.png" />
+    <Content Include="Content\image\syncfusion-icons.png" />
     <Content Include="Content\image\video_load.png" />
     <Content Include="Content\image\video_load_error.png" />
     <Content Include="Content\image\xingxing.png" />
@@ -484,10 +512,10 @@
     <Content Include="Content\image\zhanwei_banner.jpg" />
     <Content Include="Content\image\zz.png" />
     <Content Include="Content\js\jQuery.1.9.1.js" />
+    <Content Include="Content\js\jquery.blockui.min.js" />
     <Content Include="Content\js\jquery.unobtrusive-ajax.js" />
     <Content Include="Content\js\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Content\js\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Content\js\js.js" />
     <Content Include="Content\js\owl.carousel.js" />
     <Content Include="Content\js\swiper.min.js" />
     <Content Include="Content\lib\bootstrap-select\bootstrap-select.css" />
@@ -2262,8 +2290,8 @@
       <Generator>RazorGenerator</Generator>
     </None>
     <None Include="Views\Shared\_Layout.cshtml">
-      <LastGenOutput>_Layout.generated.cs</LastGenOutput>
       <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_Layout1.generated.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>

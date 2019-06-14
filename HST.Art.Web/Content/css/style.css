@@ -63,7 +63,7 @@ h3 i{ width:3px; height:18px; background:#d9001b; display:inline-block; margin-r
 .query_box .query_div:last-child{ border-right: 1px solid #d4d4d4}
 .query_box .query_div p{ font-size:16px; line-height: 40px; margin-bottom: 15px;}
 .query_box .query_div p i{ font-size:26px; color: #d9001b; border: 1px solid #d9001b; width: 40px; height: 40px; border-radius: 50%; display:inline-block; text-align: center;line-height: 40px; margin-right: 6px;}
-.query_box .query_div select{ width:70%; margin: 0 auto; border: 1px solid #e3e3e3;border-radius: 5px; line-height: 40px; height: 40px;background: url("../image/caret.png") no-repeat scroll 97% center transparent; background-color: #fff; appearance:none;-moz-appearance:none;-webkit-appearance:none; padding-left: 5px; margin-bottom: 10px; color:#aaa}
+.query_box .query_div select{ width:70%; margin: 0 auto; border: 1px solid #e3e3e3;border-radius: 5px; line-height: 40px; height: 40px;background: url("../image/caret.png") no-repeat scroll 97% center transparent; background-color: #fff; appearance:none;-moz-appearance:none;-webkit-appearance:none; padding-left: 5px; margin-bottom: 10px; color:#555}
 .query_box .query_div input{width:70%; margin: 0 auto; border: 1px solid #e3e3e3;border-radius: 5px; line-height: 40px; height: 40px; padding-left: 5px;  background: #fff;}
 .query_box .query_div input::-webkit-input-placeholder{color:#aaa; }
 .query_box .query_div input::-moz-placeholder{color:#aaa; }
@@ -143,7 +143,7 @@ h3 i{ width:3px; height:18px; background:#d9001b; display:inline-block; margin-r
   content: "";
 }
 .not-data{text-align:center;color:#888;margin:9% auto}
-.searc-cert b{margin-bottom:8px}
+.searc-cert b{margin-bottom:15px}
 .box-height .not-data{margin: 3% auto;}
 
 /*datatable*/
@@ -178,7 +178,123 @@ table.dataTable thead .sorting_asc, table.dataTable thead .sorting_desc, table.d
 }
 
 
+/***
+UI Loading
+***/
+.loading-message {
+  display: inline-block;
+  min-width: 125px;
+  margin-left: -60px;
+  padding: 10px;
+  margin: 0 auto;
+  color: #000 !important;
+  font-size: 13px;
+  font-weight: 400;
+  text-align: center;
+  vertical-align: middle;
+}
+.loading-message.loading-message-boxed {
+  border: 1px solid #ddd;
+  background-color: #eee;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+}
+.loading-message > span {
+  line-height: 20px;
+  vertical-align: middle;
+}
 
+.page-loading {
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  border-radius: 4px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  min-width: 125px;
+  margin-left: -60px;
+  margin-top: -30px;
+  padding: 7px;
+  text-align: center;
+  color: #333;
+  font-size: 13px;
+  border: 1px solid #ddd;
+  background-color: #eee;
+  vertical-align: middle;
+  -webkit-box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+}
+.page-loading > span {
+  line-height: 20px;
+  vertical-align: middle;
+}
+
+.page-spinner-bar {
+  position: fixed;
+  z-index: 10051;
+  width: 100px;
+  top: 40%;
+  left: 50%;
+  margin-left: -55px;
+  text-align: center;
+}
+.page-spinner-bar > div {
+  margin: 0 5px;
+  width: 18px;
+  height: 18px;
+  background: #eee;
+  border-radius: 100% !important;
+  display: inline-block;
+  -webkit-animation: bounceDelay 1.4s infinite ease-in-out;
+  animation: bounceDelay 1.4s infinite ease-in-out;
+  /* Prevent first frame from flickering when animation starts */
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+.page-spinner-bar .bounce1 {
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+.page-spinner-bar .bounce2 {
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+
+.block-spinner-bar {
+  display: inline-block;
+  width: 80px;
+  text-align: center;
+}
+.block-spinner-bar > div {
+  margin: 0 2px;
+  width: 15px;
+  height: 15px;
+  background: #eee;
+  border-radius: 100% !important;
+  display: inline-block;
+  -webkit-animation: bounceDelay 1.4s infinite ease-in-out;
+  animation: bounceDelay 1.4s infinite ease-in-out;
+  /* Prevent first frame from flickering when animation starts */
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+.block-spinner-bar .bounce1 {
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+.block-spinner-bar .bounce2 {
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
 
 
 

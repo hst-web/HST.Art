@@ -88,7 +88,7 @@ namespace HST.Art.Web
         public int PageIndex { get; set; }
         public int PageSize { get; set; }
         public int Category { get; set; }
-        public string City { get; set; }
+        public string CityCode { get; set; }
         public string NameOrNumber { get; set; }
         public CertType CertType { get; set; }
     }

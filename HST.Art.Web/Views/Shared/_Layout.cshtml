@@ -50,7 +50,7 @@
         </div>
 
         <ul class="nav-list">
-            <li><a href="@Url.Action("Index", "Home")" class="@(action.Equals("index",StringComparison.InvariantCultureIgnoreCase)?"active":"")" >首页</a></li>
+            <li><a href="@Url.Action("Index", "Home")" class="@(action.Equals("index",StringComparison.InvariantCultureIgnoreCase)||action.Equals("certificate",StringComparison.InvariantCulture)?"active":"")" >首页</a></li>
             <li>
                 <a href="@Url.Action("About","Home")" class="@(action.Equals("about",StringComparison.InvariantCultureIgnoreCase)?"active":"")">协会概况</a>
                 <ul class="menu">

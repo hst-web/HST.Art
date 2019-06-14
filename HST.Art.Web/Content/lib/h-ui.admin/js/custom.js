@@ -161,7 +161,7 @@ function enSubmit(id, title) {
 function CheckIsNotNullOrEmpty(value) {
     var reg = /\s+/g//正则表达式用于判斷是否有空格或空字符串
     //reg.test(value)判斷是否有空格，有空格為true,如果首尾空格要求不嚴格的話可以加上trim(),如reg.test(value.trim()
-    return (value != null && value != undefined && value.length>0)
+    return (value != null && value != undefined && value.length > 0)
 }
 
 /*删除*/
@@ -179,7 +179,7 @@ function obj_del(title, action, id) {
                         yes: function () {
                             if (parent[1] != null) {
                                 parent[pageIndex()].table1.ajax.reload();
-                            }else if(parent.table1!=null){
+                            } else if (parent.table1 != null) {
                                 parent.table1.ajax.reload();
                             } else {
                                 parent[0].table1.ajax.reload();
@@ -279,3 +279,80 @@ function nofind() {
     img.src = "/Content/image/not-img.jpg"; //替换的图片
     img.onerror = null; //控制不要一直触发错误
 }
+
+var loading = function () {
+    var assetsPath = '/Content/';
+    var globalImgPath = 'image/';
+
+    return {
+        getGlobalImgPath: function () {
+            return assetsPath + globalImgPath;
+        },
+        // wrMetronicer function to  block element(indicate loading)
+        blockUI: function (options) {
+            options = $.extend(true, {}, options);
+            var html = '';
+            if (options.animate) {
+                html = '<div class="loading-message ' + (options.boxed ? 'loading-message-boxed' : '') + '">' + '<div class="block-spinner-bar"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div>' + '</div>';
+            } else if (options.iconOnly) {
+                html = '<div class="loading-message ' + (options.boxed ? 'loading-message-boxed' : '') + '"><img src="' + this.getGlobalImgPath() + 'loading-spinner-grey.gif" align=""></div>';
+            } else if (options.textOnly) {
+                html = '<div class="loading-message ' + (options.boxed ? 'loading-message-boxed' : '') + '"><span>&nbsp;&nbsp;' + (options.message ? options.message : '加载中...') + '</span></div>';
+            } else {
+                html = '<div class="loading-message ' + (options.boxed ? 'loading-message-boxed' : '') + '"><img src="' + this.getGlobalImgPath() + 'loading-spinner-grey.gif" align=""><span>&nbsp;&nbsp;' + (options.message ? options.message : '加载中...') + '</span></div>';
+            }
+
+            if (options.target) { // element blocking
+                var el = $(options.target);
+                if (el.height() <= ($(window).height())) {
+                    options.cenrerY = true;
+                }
+                el.block({
+                    message: html,
+                    baseZ: options.zIndex ? options.zIndex : 1000,
+                    centerY: options.cenrerY !== undefined ? options.cenrerY : false,
+                    css: {
+                        top: '10%',
+                        border: '0',
+                        padding: '0',
+                        backgroundColor: 'none'
+                    },
+                    overlayCSS: {
+                        backgroundColor: options.overlayColor ? options.overlayColor : '#555',
+                        opacity: options.boxed ? 0.05 : 0.1,
+                        cursor: 'wait'
+                    }
+                });
+            } else { // page blocking
+                $.blockUI({
+                    message: html,
+                    baseZ: options.zIndex ? options.zIndex : 1000,
+                    css: {
+                        border: '0',
+                        padding: '0',
+                        backgroundColor: 'none'
+                    },
+                    overlayCSS: {
+                        backgroundColor: options.overlayColor ? options.overlayColor : '#555',
+                        opacity: options.boxed ? 0.05 : 0.1,
+                        cursor: 'wait'
+                    }
+                });
+            }
+        },
+
+        // wrMetronicer function to  un-block element(finish loading)
+        unblockUI: function (target) {
+            if (target) {
+                $(target).unblock({
+                    onUnblock: function () {
+                        $(target).css('position', '');
+                        $(target).css('zoom', '');
+                    }
+                });
+            } else {
+                $.unblockUI();
+            }
+        }
+    }
+}();

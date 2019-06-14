@@ -15,52 +15,52 @@
         <p>@Model.Description</p>
     </div>
     <div class="query_box">
-        <div class="query_div @(Model.CertType==CertType.teacher?"active":"")">
+        <div class="query_div @(Model.CertType==CertType.teacher?"active":"")" data-bind="@CertType.teacher">
             <p><i class="iconfont icon-c_query"></i>教师证书查询</p>
-            <select id="selTeaArea">
+            <select class="select-city">
                 <option value="">选择市</option>
                 @foreach (KeyValuePair<int, string> item in ViewBag.City)
                 {
                     <option value="@item.Key">@item.Value</option>
                 }
             </select>
-            <input placeholder="请输入教师姓或证书编号" type="text" />
-            <span><i class="iconfont icon-search"></i></span>
+            <input class="input-number" placeholder="请输入教师姓或证书编号" type="text" value="" />
+            <span class="search"><i class="iconfont icon-search"></i></span>
         </div><!--/query_div-->
-        <div class="query_div @(Model.CertType==CertType.teacher?"active":"")">
+        <div class="query_div @(Model.CertType==CertType.student?"active":"")" data-bind="@CertType.student">
             <p><i class="iconfont icon-c_query"></i>学生证书查询</p>
-            <select id="selStuArea">
+            <select class="select-city">
                 <option value="">选择市</option>
                 @foreach (KeyValuePair<int, string> item in ViewBag.City)
                 {
                     <option value="@item.Key">@item.Value</option>
                 }
             </select>
-            <input placeholder="请输入学生姓或证书编号" type="text" />
-            <span><i class="iconfont icon-search"></i></span>
+            <input class="input-number" placeholder="请输入学生姓或证书编号" type="text" />
+            <span class="search"><i class="iconfont icon-search"></i></span>
         </div><!--/query_div-->
-        <div class="query_div @(Model.CertType==CertType.teacher?"active":"")">
+        <div class="query_div @(Model.CertType==CertType.member?"active":"")" data-bind="@CertType.member">
             <p><i class="iconfont icon-c_query"></i>会员单位星际查询</p>
-            <select id="selUnitaArea">
+            <select class="select-city">
                 <option value="">选择市</option>
                 @foreach (KeyValuePair<int, string> item in ViewBag.City)
                 {
                     <option value="@item.Key">@item.Value</option>
                 }
             </select>
-            <input placeholder="请输入会员名称或单位编号" type="text" />
-            <span><i class="iconfont icon-search"></i></span>
+            <input class="input-number" placeholder="请输入会员名称或单位编号" type="text" />
+            <span class="search"><i class="iconfont icon-search"></i></span>
         </div><!--/query_div-->
     </div>
 
-    <div class="query_cont">
+    <div class="query_cont" id="tbTable_wrapper">
 
     </div><!--/query_cont-->
-    @using (Ajax.BeginForm("MemberList", new { }, new AjaxOptions { OnFailure = "showException", OnSuccess = "", UpdateTargetId = "tbTable_wrapper", OnBegin = "", OnComplete = "" }, new { id = "searchByRequest" }))
+    @using (Ajax.BeginForm("CertificateList", new { }, new AjaxOptions { OnFailure = "showException", OnSuccess = "", UpdateTargetId = "tbTable_wrapper", OnBegin = "", OnComplete = "" }, new { id = "searchByRequest" }))
     {
         @Html.Hidden("PageIndex", Model.PageFilter.PageIndex)
         @Html.Hidden("PageSize", Model.PageFilter.PageSize)
-        @Html.Hidden("City", Model.PageFilter.City)
+        @Html.Hidden("CityCode", Model.PageFilter.CityCode)
         @Html.Hidden("NameOrNumber", Model.PageFilter.NameOrNumber)
         @Html.Hidden("CertType", Model.CertType)
     }
@@ -70,6 +70,43 @@
     <script type="text/javascript">
         $(document).ready(function () {
             changeQueryCondition();
+
+            $(".query_div").on('click', function () {
+                if ($(this).hasClass("active")) {
+                    return false;
+                } else {
+                    $("#CityCode,#NameOrNumber").val("");
+                    $(this).addClass("active").siblings().removeClass("active");
+                    $("#CertType").val($(this).attr("data-bind"));
+                    //请求数据
+                    changeQueryCondition();
+                }
+            })
+
+            $(".query_div .search").on('click', function (e) {
+                e.stopPropagation();
+                $(this).parents(".query_div").addClass("active").siblings().removeClass("active");
+                $("#CityCode").val($(this).siblings("select.select-city").val());
+                $("#NameOrNumber").val($(this).siblings("input.input-number").val());
+                $("#CertType").val($(this).parents(".query_div").attr("data-bind"));
+                //请求数据
+                changeQueryCondition();
+
+                $('html, body').animate({
+                    scrollTop: $("#tbTable_wrapper").offset().top
+                }, 300);
+            })
+
+            $(".select-city,.input-number").click(function (e) {
+                e.stopPropagation();
+            })
+
+            $(".query_div input.input-number").keypress(function (e) {
+                if (e.which == 13) {
+                    $(this).focus();
+                    $(this).siblings("span.search").click();
+                }
+            });
         })
 
         //改变筛选条件
