@@ -1,7 +1,7 @@
 /*==============================================================*/
 /* Database name:  ARTDB                                        */
 /* DBMS name:      Microsoft SQL Server 2012                    */
-/* Created on:     2019/6/11 12:59:23                           */
+/* Created on:     2019/6/14 19:50:26                           */
 /*==============================================================*/
 
 
@@ -209,6 +209,7 @@ create table Organization (
    Blog                 nvarchar(50)         null,
    Description          nvarchar(800)        null,
    Detail               nvarchar(Max)        null,
+   Address              nvarchar(218)        null,
    Framework            nvarchar(Max)        null,
    CreateDate           datetime             null default getdate(),
    constraint PK_ORGANIZATION primary key (Id)

@@ -29,6 +29,10 @@ namespace HST.Art.Web
         [RegularExpression(@"(^(0[0-9]{2,3}\-)?([2-9][0-9]{6,7})+(\-[0-9]{1,4})?$)|(^((\(\d{3}\))|(\d{3}\-))?([1][3-8]\d{9})$)", ErrorMessage = "电话格式不正确")]
         public string Telephone { get; set; }
 
+        [StringLength(200, ErrorMessage = "长度不能超过200个字符")]
+        [RegularExpression(@"^[^\s]+$", ErrorMessage = "地址不能包含空字符")]
+        public string Address { get; set; }
+
         public string Blog { get; set; }
 
         public string WeChat { get; set; }

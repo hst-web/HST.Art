@@ -31,11 +31,7 @@
     <header>
         <div class="top">
             <div class="cont top_div">
-                <p class="fl logo"><img src="/Content/image/logo.jpg" /></p>
-                <div class="fr top_fr">
-                    <p><i class="iconfont icon-dianhua"></i>010-6855086</p>
-                    <p><i class="iconfont icon-email-icon"></i>123456789@qq.com</p>
-                </div>
+                @Html.Action("Header", "Home")
             </div>
         </div><!--/top-->
     </header>
@@ -71,19 +67,7 @@
     </div>
     <div class="foot">
         <div class="foot_cont">
-            <div class="foot_fl fl">
-                <p><span><img src="images/ewm.jpg" /></span>扫码关注我们</p>
-            </div>
-
-            <div class="foot_conts fl">
-                <b>联系我们</b>
-                <p>山东省艺术教育专业教育委员会</p>
-                <p>地址：北京市丰台区昌宁大厦5层506</p>
-                <p>电话：010-6855068</p>
-                <p>邮箱：123456789@163.com</p>
-            </div>
-            <p class="fr index_ab"><a><i></i> 关于我们</a></p>
-
+          @Html.Action("Footer","Home")
         </div>
     </div>
     <footer>京ICP备13003730号-1</footer>

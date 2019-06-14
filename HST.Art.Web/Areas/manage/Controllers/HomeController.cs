@@ -74,7 +74,8 @@ namespace HST.Art.Web.Areas.manage.Controllers
                     SmallHeadImg = GetThumb(model.WeChat),
                     WeChat = model.WeChat,
                     Telephone = model.Telephone,
-                    Logo = model.Logo
+                    Logo = model.Logo,
+                    Address=model.Address
                 });
             }
 
@@ -98,6 +99,7 @@ namespace HST.Art.Web.Areas.manage.Controllers
                 data.Logo = model.Logo;
                 data.Detail = model.Detail;
                 data.Email = model.Email;
+                data.Address = model.Address;
 
                 rmodel.isSuccess = orgService.Update(data);
             }

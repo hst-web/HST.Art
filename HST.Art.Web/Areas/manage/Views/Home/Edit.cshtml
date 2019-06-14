@@ -80,6 +80,13 @@
             </div>
         </div>
         <div class="row cl">
+            <label class="form-label col-sm-2 "><span class="c-red">*</span>企业地址：</label>
+            <div class="formControls col-sm-8 ">
+                @Html.TextBoxFor(m => m.Address, new { @class = "input-text", placeholder = "请输入企业地址" })
+                @Html.ValidationMessageFor(m => m.Address, null, new { @class = "error-lable" })
+            </div>
+        </div>
+        <div class="row cl">
             <label class="form-label col-sm-2 "><span class="c-red">*</span>企业简介：</label>
             <div class="formControls col-sm-8 ">
                 @Html.TextAreaFor(m => m.Description, new { @class = "textarea", rows = "5", placeholder = "请输入协会简介..." })

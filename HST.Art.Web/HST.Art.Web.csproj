@@ -439,20 +439,17 @@
     <Compile Include="Models\SearchDataTable.cs" />
     <Compile Include="Models\UploadViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Views\Shared\_Layout.generated.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>_Layout.cshtml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Shared\_Layout1.generated.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>_Layout.cshtml</DependentUpon>
-    </Compile>
     <Compile Include="Views\_ViewStart.generated.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>_ViewStart.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="WebClearCache.aspx.cs">
+      <DependentUpon>WebClearCache.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebClearCache.aspx.designer.cs">
+      <DependentUpon>WebClearCache.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -2086,6 +2083,7 @@
     <Content Include="Content\lib\bootstrap-select\bootstrap-select.css.map" />
     <Content Include="Content\lib\bootstrap-select\bootstrap-select.js.map" />
     <Content Include="Content\lib\uniform\css\uniform.default.scss" />
+    <Content Include="WebClearCache.aspx" />
     <None Include="Areas\manage\Views\web.config" />
     <None Include="Areas\manage\Views\Teacher\Add.cshtml">
       <Generator>RazorGenerator</Generator>
@@ -2274,6 +2272,8 @@
     <Content Include="Views\Home\MemberList.cshtml" />
     <Content Include="Views\Home\CertificateList.cshtml" />
     <Content Include="Views\Home\Certificate.cshtml" />
+    <Content Include="Views\Home\Header.cshtml" />
+    <Content Include="Views\Home\Footer.cshtml" />
     <None Include="Views\Web.config">
       <Generator>RazorGenerator</Generator>
     </None>
@@ -2289,10 +2289,7 @@
       <LastGenOutput>welcome.generated.cs</LastGenOutput>
       <Generator>RazorGenerator</Generator>
     </None>
-    <None Include="Views\Shared\_Layout.cshtml">
-      <Generator>RazorGenerator</Generator>
-      <LastGenOutput>_Layout1.generated.cs</LastGenOutput>
-    </None>
+    <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

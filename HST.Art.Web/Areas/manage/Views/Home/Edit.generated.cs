@@ -575,7 +575,7 @@ WriteLiteral("><span");
 
 WriteLiteral(" class=\"c-red\"");
 
-WriteLiteral(">*</span>企业简介：</label>\r\n            <div");
+WriteLiteral(">*</span>企业地址：</label>\r\n            <div");
 
 WriteLiteral(" class=\"formControls col-sm-8 \"");
 
@@ -585,7 +585,7 @@ WriteLiteral("                ");
 
             
             #line 85 "..\..\Areas\manage\Views\Home\Edit.cshtml"
-           Write(Html.TextAreaFor(m => m.Description, new { @class = "textarea", rows = "5", placeholder = "请输入协会简介..." }));
+           Write(Html.TextBoxFor(m => m.Address, new { @class = "input-text", placeholder = "请输入企业地址" }));
 
             
             #line default
@@ -596,6 +596,46 @@ WriteLiteral("                ");
 
             
             #line 86 "..\..\Areas\manage\Views\Home\Edit.cshtml"
+           Write(Html.ValidationMessageFor(m => m.Address, null, new { @class = "error-lable" }));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n            </div>\r\n        </div>\r\n");
+
+WriteLiteral("        <div");
+
+WriteLiteral(" class=\"row cl\"");
+
+WriteLiteral(">\r\n            <label");
+
+WriteLiteral(" class=\"form-label col-sm-2 \"");
+
+WriteLiteral("><span");
+
+WriteLiteral(" class=\"c-red\"");
+
+WriteLiteral(">*</span>企业简介：</label>\r\n            <div");
+
+WriteLiteral(" class=\"formControls col-sm-8 \"");
+
+WriteLiteral(">\r\n");
+
+WriteLiteral("                ");
+
+            
+            #line 92 "..\..\Areas\manage\Views\Home\Edit.cshtml"
+           Write(Html.TextAreaFor(m => m.Description, new { @class = "textarea", rows = "5", placeholder = "请输入协会简介..." }));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n");
+
+WriteLiteral("                ");
+
+            
+            #line 93 "..\..\Areas\manage\Views\Home\Edit.cshtml"
            Write(Html.ValidationMessageFor(m => m.Description, null, new { @class = "error-lable" }));
 
             
@@ -604,7 +644,7 @@ WriteLiteral("                ");
 WriteLiteral("\r\n            </div>\r\n        </div>\r\n");
 
             
-            #line 89 "..\..\Areas\manage\Views\Home\Edit.cshtml"
+            #line 96 "..\..\Areas\manage\Views\Home\Edit.cshtml"
 
 
             
@@ -627,7 +667,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                ");
 
             
-            #line 93 "..\..\Areas\manage\Views\Home\Edit.cshtml"
+            #line 100 "..\..\Areas\manage\Views\Home\Edit.cshtml"
            Write(Html.TextAreaFor(m => m.Framework, new { @class = "ckeditor textarea", rows = "10", placeholder = "请输入组织架构..." }));
 
             
@@ -652,7 +692,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("                ");
 
             
-            #line 99 "..\..\Areas\manage\Views\Home\Edit.cshtml"
+            #line 106 "..\..\Areas\manage\Views\Home\Edit.cshtml"
            Write(Html.TextAreaFor(m => m.Detail, new { @class = "ckeditor textarea", rows = "10", placeholder = "请输入协会详情..." }));
 
             
@@ -681,7 +721,7 @@ WriteLiteral(" id=\"sub_btn\"");
 WriteLiteral(">保存</button>\r\n            </div>\r\n        </div>\r\n");
 
             
-            #line 107 "..\..\Areas\manage\Views\Home\Edit.cshtml"
+            #line 114 "..\..\Areas\manage\Views\Home\Edit.cshtml"
         }
 
             
@@ -705,24 +745,24 @@ WriteLiteral(" class=\"btn btn-primary float-right hidden\"");
 
 WriteLiteral(" id=\"btnRotation1\"");
 
-WriteAttribute("onclick", Tuple.Create(" onclick=\"", 5993), Tuple.Create("\"", 6073)
-, Tuple.Create(Tuple.Create("", 6003), Tuple.Create("ration_add(\'新建轮播\',\'", 6003), true)
+WriteAttribute("onclick", Tuple.Create(" onclick=\"", 6404), Tuple.Create("\"", 6484)
+, Tuple.Create(Tuple.Create("", 6414), Tuple.Create("ration_add(\'新建轮播\',\'", 6414), true)
             
-            #line 111 "..\..\Areas\manage\Views\Home\Edit.cshtml"
-                             , Tuple.Create(Tuple.Create("", 6022), Tuple.Create<System.Object, System.Int32>(Url.Action("AddRotation")
-            
-            #line default
-            #line hidden
-, 6022), false)
-, Tuple.Create(Tuple.Create("", 6048), Tuple.Create("\',\'", 6048), true)
-            
-            #line 111 "..\..\Areas\manage\Views\Home\Edit.cshtml"
-                                                          , Tuple.Create(Tuple.Create("", 6051), Tuple.Create<System.Object, System.Int32>(RotationType.Banner
+            #line 118 "..\..\Areas\manage\Views\Home\Edit.cshtml"
+                             , Tuple.Create(Tuple.Create("", 6433), Tuple.Create<System.Object, System.Int32>(Url.Action("AddRotation")
             
             #line default
             #line hidden
-, 6051), false)
-, Tuple.Create(Tuple.Create("", 6071), Tuple.Create("\')", 6071), true)
+, 6433), false)
+, Tuple.Create(Tuple.Create("", 6459), Tuple.Create("\',\'", 6459), true)
+            
+            #line 118 "..\..\Areas\manage\Views\Home\Edit.cshtml"
+                                                          , Tuple.Create(Tuple.Create("", 6462), Tuple.Create<System.Object, System.Int32>(RotationType.Banner
+            
+            #line default
+            #line hidden
+, 6462), false)
+, Tuple.Create(Tuple.Create("", 6482), Tuple.Create("\')", 6482), true)
 );
 
 WriteLiteral(" type=\"button\"");
@@ -733,24 +773,24 @@ WriteLiteral(" class=\"btn btn-primary float-right hidden\"");
 
 WriteLiteral(" id=\"btnRotation2\"");
 
-WriteAttribute("onclick", Tuple.Create(" onclick=\"", 6184), Tuple.Create("\"", 6266)
-, Tuple.Create(Tuple.Create("", 6194), Tuple.Create("ration_add(\'新建Logo轮播\',\'", 6194), true)
+WriteAttribute("onclick", Tuple.Create(" onclick=\"", 6595), Tuple.Create("\"", 6677)
+, Tuple.Create(Tuple.Create("", 6605), Tuple.Create("ration_add(\'新建Logo轮播\',\'", 6605), true)
             
-            #line 112 "..\..\Areas\manage\Views\Home\Edit.cshtml"
-                                 , Tuple.Create(Tuple.Create("", 6217), Tuple.Create<System.Object, System.Int32>(Url.Action("AddRotation")
-            
-            #line default
-            #line hidden
-, 6217), false)
-, Tuple.Create(Tuple.Create("", 6243), Tuple.Create("\',\'", 6243), true)
-            
-            #line 112 "..\..\Areas\manage\Views\Home\Edit.cshtml"
-                                                              , Tuple.Create(Tuple.Create("", 6246), Tuple.Create<System.Object, System.Int32>(RotationType.Logo
+            #line 119 "..\..\Areas\manage\Views\Home\Edit.cshtml"
+                                 , Tuple.Create(Tuple.Create("", 6628), Tuple.Create<System.Object, System.Int32>(Url.Action("AddRotation")
             
             #line default
             #line hidden
-, 6246), false)
-, Tuple.Create(Tuple.Create("", 6264), Tuple.Create("\')", 6264), true)
+, 6628), false)
+, Tuple.Create(Tuple.Create("", 6654), Tuple.Create("\',\'", 6654), true)
+            
+            #line 119 "..\..\Areas\manage\Views\Home\Edit.cshtml"
+                                                              , Tuple.Create(Tuple.Create("", 6657), Tuple.Create<System.Object, System.Int32>(RotationType.Logo
+            
+            #line default
+            #line hidden
+, 6657), false)
+, Tuple.Create(Tuple.Create("", 6675), Tuple.Create("\')", 6675), true)
 );
 
 WriteLiteral(" type=\"button\"");
@@ -804,14 +844,14 @@ WriteLiteral(" type=\"hidden\"");
 
 WriteLiteral(" id=\"rotationType\"");
 
-WriteAttribute("value", Tuple.Create(" value=\"", 7065), Tuple.Create("\"", 7094)
+WriteAttribute("value", Tuple.Create(" value=\"", 7476), Tuple.Create("\"", 7505)
             
-            #line 129 "..\..\Areas\manage\Views\Home\Edit.cshtml"
-, Tuple.Create(Tuple.Create("", 7073), Tuple.Create<System.Object, System.Int32>(RotationType.UnKnown
+            #line 136 "..\..\Areas\manage\Views\Home\Edit.cshtml"
+, Tuple.Create(Tuple.Create("", 7484), Tuple.Create<System.Object, System.Int32>(RotationType.UnKnown
             
             #line default
             #line hidden
-, 7073), false)
+, 7484), false)
 );
 
 WriteLiteral(" />\r\n        <input");
@@ -825,7 +865,7 @@ WriteLiteral(" value=\"\"");
 WriteLiteral(" />\r\n    </div>\r\n</article>\r\n\r\n");
 
             
-            #line 134 "..\..\Areas\manage\Views\Home\Edit.cshtml"
+            #line 141 "..\..\Areas\manage\Views\Home\Edit.cshtml"
 Write(Scripts.Render("~/bundles/datatable"));
 
             
@@ -841,7 +881,7 @@ WriteLiteral(">\r\n    var table1 = null;\r\n    $(function () {\r\n        tabl
 "UploadUrl: \"");
 
             
-            #line 143 "..\..\Areas\manage\Views\Home\Edit.cshtml"
+            #line 150 "..\..\Areas\manage\Views\Home\Edit.cshtml"
                                      Write(Url.Action("UploadEditer", "Upload"));
 
             
@@ -852,7 +892,7 @@ WriteLiteral("\"\r\n          });\r\n        var editor1 = CKEDITOR.replace(\'De
 "erImageUploadUrl: \"");
 
             
-            #line 149 "..\..\Areas\manage\Views\Home\Edit.cshtml"
+            #line 156 "..\..\Areas\manage\Views\Home\Edit.cshtml"
                                     Write(Url.Action("UploadEditer", "Upload"));
 
             
@@ -870,7 +910,7 @@ WriteLiteral(@"""
                 if (attrType != '");
 
             
-            #line 158 "..\..\Areas\manage\Views\Home\Edit.cshtml"
+            #line 165 "..\..\Areas\manage\Views\Home\Edit.cshtml"
                             Write(RotationType.UnKnown);
 
             
@@ -879,7 +919,7 @@ WriteLiteral(@"""
 WriteLiteral("\') {\r\n                    if (attrType == \'");
 
             
-            #line 159 "..\..\Areas\manage\Views\Home\Edit.cshtml"
+            #line 166 "..\..\Areas\manage\Views\Home\Edit.cshtml"
                                 Write(RotationType.Banner);
 
             
@@ -924,7 +964,7 @@ WriteLiteral(@"') {
                 url: """);
 
             
-            #line 195 "..\..\Areas\manage\Views\Home\Edit.cshtml"
+            #line 202 "..\..\Areas\manage\Views\Home\Edit.cshtml"
                  Write(Url.Action("UpdateSort"));
 
             
@@ -966,7 +1006,7 @@ WriteLiteral(@""",
         if (type == '");
 
             
-            #line 228 "..\..\Areas\manage\Views\Home\Edit.cshtml"
+            #line 235 "..\..\Areas\manage\Views\Home\Edit.cshtml"
                 Write(RotationType.Banner);
 
             
@@ -976,7 +1016,7 @@ WriteLiteral("\' && rationCount >= 5) {\r\n            layer.alert(\"最多添�
 "        return;\r\n        }\r\n\r\n        if (type == \'");
 
             
-            #line 233 "..\..\Areas\manage\Views\Home\Edit.cshtml"
+            #line 240 "..\..\Areas\manage\Views\Home\Edit.cshtml"
                 Write(RotationType.Logo);
 
             
@@ -1002,7 +1042,7 @@ WriteLiteral(@"' && rationCount >= 20) {
                 ""url"": """);
 
             
-            #line 250 "..\..\Areas\manage\Views\Home\Edit.cshtml"
+            #line 257 "..\..\Areas\manage\Views\Home\Edit.cshtml"
                    Write(Url.Action("GetJsonData"));
 
             
@@ -1040,7 +1080,7 @@ WriteLiteral(@""",
                     var tmpString = ""<a  onClick=\""ration_deit('修改轮播','");
 
             
-            #line 279 "..\..\Areas\manage\Views\Home\Edit.cshtml"
+            #line 286 "..\..\Areas\manage\Views\Home\Edit.cshtml"
                                                                   Write(Url.Action("EditRotation"));
 
             
@@ -1050,7 +1090,7 @@ WriteLiteral("\',\" + data + \")\\\" href=\\\"javascript:;\\\" title=\\\"编辑\
 "  tmpString += \"<a href=\\\"javascript:;\\\" onClick=\\\"obj_del(\'轮播\',\'");
 
             
-            #line 280 "..\..\Areas\manage\Views\Home\Edit.cshtml"
+            #line 287 "..\..\Areas\manage\Views\Home\Edit.cshtml"
                                                                               Write(Url.Action("Delete"));
 
             
@@ -1129,7 +1169,7 @@ WriteLiteral(@">
             server: jq_imgFormData.BidFileDomain + '");
 
             
-            #line 385 "..\..\Areas\manage\Views\Home\Edit.cshtml"
+            #line 392 "..\..\Areas\manage\Views\Home\Edit.cshtml"
                                                Write(Url.Action("Upload", "Upload"));
 
             

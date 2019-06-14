@@ -158,6 +158,18 @@ namespace HST.Art.Web.Controllers
             return PartialView(model);
         }
 
+        public PartialViewResult Header()
+        {
+            Organization model = _orgService.GetChacheData();
+            return PartialView(model);
+        }
+
+        public PartialViewResult Footer()
+        {
+            Organization model = _orgService.GetChacheData();
+            return PartialView(model);
+        }
+
         /// <summary>
         /// DataTable读取数据
         /// </summary>
