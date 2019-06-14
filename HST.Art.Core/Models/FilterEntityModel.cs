@@ -16,7 +16,7 @@ namespace HST.Art.Core
         private SortType _defaultSort;
         private Dictionary<string, object> _sqlParList = new Dictionary<string, object>();
         private string _sortTbAsName;
-        public KeyValueObj KeyValueReserve { get; set; }
+        public List<KeyValueObj> KeyValueReserves { get; set; }
         public List<KeyValueObj> KeyValueList { get; set; }
         public KeyValuePair<string, SortType> SortDict { get; set; }
         public KeyValuePair<string, SortType> ThenDict { get; set; }
@@ -91,9 +91,9 @@ namespace HST.Art.Core
             get
             {
                 StringBuilder sBuilder = new StringBuilder();
-                if (KeyValueReserve != null)
+                if (KeyValueReserves != null)
                 {
-                    sBuilder.Append(GetReserveWhereStr(KeyValueReserve));
+                    sBuilder.Append(GetReserveWhereStr(KeyValueReserves));
                 }
 
                 if (KeyValueList != null && KeyValueList.Count > 0)
@@ -242,11 +242,14 @@ namespace HST.Art.Core
             return sBuilder.ToString();
         }
 
-        private string GetReserveWhereStr(KeyValueObj item)
+        private string GetReserveWhereStr(List<KeyValueObj> items)
         {
             StringBuilder sBuilder = new StringBuilder();
-            sBuilder.Append(string.Format(" and {2}{0}=@{1} ", item.Key, item.Key, item.TbAsName));
-            FileSqlDic(string.Format("@{0}", item.Key), item.Value);
+            foreach (KeyValueObj item in items)
+            {
+                sBuilder.Append(string.Format(" and {2}{0}=@{1} ", item.Key, item.Key, item.TbAsName));
+                FileSqlDic(string.Format("@{0}", item.Key), item.Value);
+            }
 
             return sBuilder.ToString();
         }
@@ -260,10 +263,12 @@ namespace HST.Art.Core
         public void FillWhereTbAsName(string tbAsName)
         {
             if (string.IsNullOrWhiteSpace(tbAsName)) return;
-            if (KeyValueReserve != null)
+            if (KeyValueReserves != null)
             {
-                KeyValueReserve.TbAsName = tbAsName;
+                //KeyValueReserve.ForEach.TbAsName = tbAsName;
+                KeyValueReserves.ForEach(g => g.TbAsName = tbAsName);
             }
+
             if (KeyValueList == null || KeyValueList.Count <= 0) return;
             foreach (KeyValueObj item in KeyValueList)
             {

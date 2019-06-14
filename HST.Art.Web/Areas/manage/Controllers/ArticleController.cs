@@ -34,7 +34,7 @@ namespace HST.Art.Web.Areas.manage.Controllers
             {
                 if (!string.IsNullOrEmpty(svm.ReserveField))
                 {
-                    fillter.KeyValueReserve = new KeyValueObj() { Key = "Section", Value = svm.ReserveField };
+                    fillter.KeyValueReserves = new List<KeyValueObj>() { new KeyValueObj() { Key = "Section", Value = svm.ReserveField } };
                 }
 
                 if (!string.IsNullOrEmpty(svm.FilterKey) && !string.IsNullOrEmpty(svm.FilterVal))

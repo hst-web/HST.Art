@@ -79,7 +79,7 @@ namespace HST.Art.Core
         {
             get
             {
-                if (!string.IsNullOrEmpty(_tbAsName))
+                if (!string.IsNullOrEmpty(_tbAsName) && !_tbAsName.EndsWith("."))
                 {
                     _tbAsName = _tbAsName + ".";
                 }
