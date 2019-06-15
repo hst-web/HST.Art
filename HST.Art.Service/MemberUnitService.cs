@@ -63,7 +63,8 @@ namespace HST.Art.Service
                 ErrorMsg = ErrorCode.ParameterNull;
                 return false;
             }
-            DisposeMember(memberUnitInfo);
+
+            memberUnitInfo.Synopsis = DisposeHtmlStr(memberUnitInfo.Description);
             return _memberUnitProvider.Add(memberUnitInfo);
         }
 
@@ -143,7 +144,8 @@ namespace HST.Art.Service
                 ErrorMsg = ErrorCode.ParameterNull;
                 return false;
             }
-            DisposeMember(memberUnitInfo);
+
+            memberUnitInfo.Synopsis = DisposeHtmlStr(memberUnitInfo.Description);
             return _memberUnitProvider.Update(memberUnitInfo);
         }
 
@@ -180,34 +182,6 @@ namespace HST.Art.Service
             }
 
             return _memberUnitProvider.Add(memberUnitInfos, out failList);
-        }
-
-        /// <summary>
-        /// 处理（简介）
-        /// </summary>
-        private void DisposeMember(MemberUnit  unitModel)
-        {
-            if (unitModel == null) return;
-            if (string.IsNullOrWhiteSpace(unitModel.Description)) return;
-            if (!string.IsNullOrWhiteSpace(unitModel.Synopsis)) return;
-            unitModel.Synopsis = GetLength(Regex.Replace(unitModel.Description, "<[^>]+>", "", RegexOptions.Singleline), 40);
-        }
-
-        /// <summary>
-        /// 获取设定长度的字符串
-        /// </summary>
-        /// <param name="str">字符串</param>
-        /// <param name="length">截取长度</param>
-        /// <returns></returns>
-        private string GetLength(string str, int length)
-        {
-            if (string.IsNullOrWhiteSpace(str)) return string.Empty;
-            string strR = str;
-            if (str.Length > length)
-            {
-                strR = str.Substring(0, length).TrimEnd(',');
-            }
-            return strR;
         }
     }
 }

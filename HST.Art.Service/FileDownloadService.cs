@@ -62,7 +62,7 @@ namespace HST.Art.Service
                 ErrorMsg = ErrorCode.ParameterNull;
                 return false;
             }
-            DisposeMember(fileDownloadInfo);
+            fileDownloadInfo.Synopsis = DisposeHtmlStr(fileDownloadInfo.Description);
             return _fileDownloadProvider.Add(fileDownloadInfo);
         }
 
@@ -142,36 +142,8 @@ namespace HST.Art.Service
                 ErrorMsg = ErrorCode.ParameterNull;
                 return false;
             }
-            DisposeMember(fileDownloadInfo);
+            fileDownloadInfo.Synopsis = DisposeHtmlStr(fileDownloadInfo.Description);
             return _fileDownloadProvider.Update(fileDownloadInfo);
-        }
-
-        /// <summary>
-        /// 处理（简介）
-        /// </summary>
-        private void DisposeMember(FileDownload fileModel)
-        {
-            if (fileModel == null) return;
-            if (string.IsNullOrWhiteSpace(fileModel.Description)) return;
-            if (!string.IsNullOrWhiteSpace(fileModel.Synopsis)) return;
-            fileModel.Synopsis = GetLength(Regex.Replace(fileModel.Description, "<[^>]+>", "", RegexOptions.Singleline), 40);
-        }
-
-        /// <summary>
-        /// 获取设定长度的字符串
-        /// </summary>
-        /// <param name="str">字符串</param>
-        /// <param name="length">截取长度</param>
-        /// <returns></returns>
-        private string GetLength(string str, int length)
-        {
-            if (string.IsNullOrWhiteSpace(str)) return string.Empty;
-            string strR = str;
-            if (str.Length > length)
-            {
-                strR = str.Substring(0, length).TrimEnd(',');
-            }
-            return strR;
         }
     }
 }

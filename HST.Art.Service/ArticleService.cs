@@ -63,7 +63,7 @@ namespace HST.Art.Service
             }
 
             //文章简介处理
-            DisposeArticle(articleInfo);
+            articleInfo.Synopsis = DisposeHtmlStr(articleInfo.Content);
             return _articleProvider.Add(articleInfo);
         }
 
@@ -138,7 +138,7 @@ namespace HST.Art.Service
             }
 
             //文章简介处理
-            DisposeArticle(articleInfo);
+            articleInfo.Synopsis = DisposeHtmlStr(articleInfo.Content);
             return _articleProvider.Update(articleInfo);
         }
 
