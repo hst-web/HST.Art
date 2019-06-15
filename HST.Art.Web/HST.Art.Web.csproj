@@ -2277,6 +2277,9 @@
     <Content Include="Views\Home\SecondMenu.cshtml" />
     <Content Include="Views\Home\Examination.cshtml" />
     <Content Include="Views\Home\GetArticList.cshtml" />
+    <Content Include="Views\Home\Industry.cshtml" />
+    <Content Include="Views\Home\Social.cshtml" />
+    <Content Include="Views\Home\Association.cshtml" />
     <None Include="Views\Web.config">
       <Generator>RazorGenerator</Generator>
     </None>

@@ -58,15 +58,15 @@
                 </ul>
             </li>
             <li>
-                <a href="">行业资讯</a>
+                <a class="@(action.Equals("industry",StringComparison.InvariantCultureIgnoreCase)?"active":"")" href="@Url.Action("industry")">行业资讯</a>
                 @Html.Action("SecondMenu", "Home", new { sectionType = CategoryType.Industry })
             </li>
             <li>
-                <a href="">协会活动</a>
+                <a class="@(action.Equals("association",StringComparison.InvariantCultureIgnoreCase)?"active":"")" href="@Url.Action("association")">协会活动</a>
                 @Html.Action("SecondMenu", "Home", new { sectionType = CategoryType.Association })
             </li>
             <li>
-                <a href="">社会公益</a>
+                <a class="@(action.Equals("social",StringComparison.InvariantCultureIgnoreCase)?"active":"")" href="@Url.Action("social")">社会公益</a>
                 @Html.Action("SecondMenu", "Home", new { sectionType = CategoryType.Social })
             </li>
             <li>

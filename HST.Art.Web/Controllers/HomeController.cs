@@ -119,7 +119,6 @@ namespace HST.Art.Web.Controllers
             return View(viewModel);
         }
 
-
         public ActionResult Examination(QueryViewModel model)
         {
             int category = 0;
@@ -148,15 +147,140 @@ namespace HST.Art.Web.Controllers
                     int.TryParse(model.PCType, out parCategory);
                     viewModel.DetailModel = new DetailViewModel()
                     {
+                        Id = mInfo.Id,
                         Title = mInfo.Title,
                         Description = mInfo.Content,
-                        CreateDate = mInfo.CreateDate
+                        CreateDate = mInfo.CreateDate,
+                        Author = mInfo.UserName
                     };
                     viewModel.PageFilter = new PageViewModel()
                     {
                         Category = category,
                         ParCategory = parCategory,
                         SectionType = SectionType.Examination
+                    };
+                    break;
+            }
+
+            return View(viewModel);
+        }
+
+        public ActionResult Industry(QueryViewModel model)
+        {
+            int category = 0;
+            WebContentViewModel viewModel = new WebContentViewModel();
+            InitData(CategoryType.Industry);
+            model = model == null ? new QueryViewModel() : model;
+            model.QType = model.QType != QSType.list && model.QType != QSType.detail ? QSType.list : model.QType;
+            viewModel.QType = model.QType;
+
+            switch (model.QType)
+            {
+                case QSType.list:
+                    int.TryParse(model.FCType, out category);
+                    viewModel.PageFilter = new PageViewModel()
+                    {
+                        Category = category,
+                        SectionType = SectionType.Industry
+                    };
+                    break;
+                case QSType.detail:
+                    Article mInfo = _articleService.Get(model.Id);
+                    int.TryParse(model.FCType, out category);
+                    viewModel.DetailModel = new DetailViewModel()
+                    {
+                        Id = mInfo.Id,
+                        Title = mInfo.Title,
+                        Description = mInfo.Content,
+                        CreateDate = mInfo.CreateDate,
+                        Author = mInfo.UserName
+                    };
+                    viewModel.PageFilter = new PageViewModel()
+                    {
+                        Category = category,
+                        SectionType = SectionType.Industry
+                    };
+                    break;
+            }
+
+            return View(viewModel);
+        }
+
+        public ActionResult Social(QueryViewModel model)
+        {
+            int category = 0;
+            WebContentViewModel viewModel = new WebContentViewModel();
+            InitData(CategoryType.Social);
+            model = model == null ? new QueryViewModel() : model;
+            model.QType = model.QType != QSType.list && model.QType != QSType.detail ? QSType.list : model.QType;
+            viewModel.QType = model.QType;
+
+            switch (model.QType)
+            {
+                case QSType.list:
+                    int.TryParse(model.FCType, out category);
+                    viewModel.PageFilter = new PageViewModel()
+                    {
+                        Category = category,
+                        SectionType = SectionType.Examination
+                    };
+                    break;
+                case QSType.detail:
+                    Article mInfo = _articleService.Get(model.Id);
+                    int.TryParse(model.FCType, out category);
+                    viewModel.DetailModel = new DetailViewModel()
+                    {
+                        Id = mInfo.Id,
+                        Title = mInfo.Title,
+                        Description = mInfo.Content,
+                        CreateDate = mInfo.CreateDate,
+                        Author = mInfo.UserName
+                    };
+                    viewModel.PageFilter = new PageViewModel()
+                    {
+                        Category = category,
+                        SectionType = SectionType.Social
+                    };
+                    break;
+            }
+
+            return View(viewModel);
+        }
+
+        public ActionResult Association(QueryViewModel model)
+        {
+            int category = 0;
+            WebContentViewModel viewModel = new WebContentViewModel();
+            InitData(CategoryType.Association);
+            model = model == null ? new QueryViewModel() : model;
+            model.QType = model.QType != QSType.list && model.QType != QSType.detail ? QSType.list : model.QType;
+            viewModel.QType = model.QType;
+
+            switch (model.QType)
+            {
+                case QSType.list:
+                    int.TryParse(model.FCType, out category);
+                    viewModel.PageFilter = new PageViewModel()
+                    {
+                        Category = category,
+                        SectionType = SectionType.Association
+                    };
+                    break;
+                case QSType.detail:
+                    Article mInfo = _articleService.Get(model.Id);
+                    int.TryParse(model.FCType, out category);
+                    viewModel.DetailModel = new DetailViewModel()
+                    {
+                        Id = mInfo.Id,
+                        Title = mInfo.Title,
+                        Description = mInfo.Content,
+                        CreateDate = mInfo.CreateDate,
+                        Author = mInfo.UserName
+                    };
+                    viewModel.PageFilter = new PageViewModel()
+                    {
+                        Category = category,
+                        SectionType = SectionType.Association
                     };
                     break;
             }
@@ -173,7 +297,7 @@ namespace HST.Art.Web.Controllers
             fillter.PageSize = query.PageSize;
             fillter.KeyValueList = new List<KeyValueObj>();
             fillter.KeyValueReserves = new List<KeyValueObj>() { new KeyValueObj() { Key = "Section", Value = (int)query.SectionType }, new KeyValueObj() { Key = "State", Value = (int)PublishState.Upper } };
-
+            
             if (query.ParCategory > 0)
             {
                 List<int> chridlen = _cdService.GetCategorysByPartentId(query.ParCategory);
@@ -201,6 +325,8 @@ namespace HST.Art.Web.Controllers
 
             ReturnPageResultIList<WebArticleViewModel> data = new ReturnPageResultIList<WebArticleViewModel>(webModelList, totalNum);
             PageListViewModel<WebArticleViewModel> mpage = new PageListViewModel<WebArticleViewModel>(data.DataT, query.PageIndex, query.PageSize, data.totalRecords);
+
+            ViewBag.SectionType = query.SectionType;
 
             return PartialView(mpage);
         }

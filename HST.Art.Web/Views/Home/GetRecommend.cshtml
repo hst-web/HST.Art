@@ -13,7 +13,7 @@
                 @switch (Model.SectionType)
                 {
                     case CategoryType.Industry:
-                        <a href="@Url.Action("industry", "home", new { sectionType = CategoryType.Industry, qtype = QSType.detail, id =item.Id, fctype = item.Category })">
+                        <a href="@Url.Action("industry", "home", new {qtype = QSType.detail, id =item.Id, fctype = item.Category })">
                             <p class="list_p fl"><b>@item.CreateTime.ToString("dd")</b>@item.CreateTime.ToString("yyyy-MM")</p>
                             <div class="list_fr_n fr">
                                 <p>@item.Synopsis</p>
@@ -22,7 +22,7 @@
                         </a>
                         break;
                     case CategoryType.Association:
-                        <a href="@Url.Action("association", "home", new { sectionType = CategoryType.Association, qtype = QSType.detail, id =item.Id, fctype = item.Category })">
+                        <a href="@Url.Action("association", "home", new { qtype = QSType.detail, id =item.Id, fctype = item.Category })">
                             <p class="list_p fl"><b>@item.CreateTime.ToString("dd")</b>@item.CreateTime.ToString("yyyy-MM")</p>
                             <div class="list_fr_n fr">
                                 <p>@item.Synopsis</p>
@@ -31,7 +31,7 @@
                         </a>
                         break;
                     case CategoryType.Examination:
-                        <a href="@Url.Action("examination", "home", new { sectionType = CategoryType.Examination, qtype = QSType.detail, id =item.Id, fctype = item.Category,pctype=item.ParCategory })">
+                        <a href="@Url.Action("examination", "home", new {qtype = QSType.detail, id =item.Id, fctype = item.Category,pctype=item.ParCategory })">
                             <p class="list_p fl"><b>@item.CreateTime.ToString("dd")</b>@item.CreateTime.ToString("yyyy-MM")</p>
                             <div class="list_fr_n fr">
                                 <p>@item.Synopsis</p>
@@ -40,7 +40,7 @@
                         </a>
                         break;
                     case CategoryType.Social:
-                        <a href="@Url.Action("social", "home", new { sectionType = CategoryType.Social, qtype = QSType.detail, id =item.Id, fctype = item.Category })">
+                        <a href="@Url.Action("social", "home", new {qtype = QSType.detail, id =item.Id, fctype = item.Category })">
                             <p class="list_p fl"><b>@item.CreateTime.ToString("dd")</b>@item.CreateTime.ToString("yyyy-MM")</p>
                             <div class="list_fr_n fr">
                                 <p>@item.Synopsis</p>
@@ -49,7 +49,7 @@
                         </a>
                         break;
                     case CategoryType.Member:
-                        <a href="@Url.Action("about", "home", new { sectionType = CategoryType.Member, qtype = QSType.detail, id =item.Id, fctype = item.Category })">
+                        <a href="@Url.Action("about", "home", new { qtype = QSType.detail, id =item.Id, fctype = item.Category })">
                             <p class="list_p fl"><b>@item.CreateTime.ToString("dd")</b>@item.CreateTime.ToString("yyyy-MM")</p>
                             <div class="list_fr_n fr">
                                 <p>@item.Synopsis</p>
@@ -58,7 +58,7 @@
                         </a>
                         break;
                     case CategoryType.Download:
-                        <a href="@Url.Action("download", "home", new { sectionType = CategoryType.Download, qtype = QSType.detail, id =item.Id, fctype = item.Category })">
+                        <a href="@Url.Action("download", "home", new {qtype = QSType.detail, id =item.Id, fctype = item.Category })">
                             <p class="list_p fl"><b>@item.CreateTime.ToString("dd")</b>@item.CreateTime.ToString("yyyy-MM")</p>
                             <div class="list_fr_n fr">
                                 <p>@item.Synopsis</p>
