@@ -10,6 +10,7 @@ namespace HST.Art.Core
     {
         List<CategoryDictionary> GetAll(CategoryType categoryType);
         List<CategoryDictionary> GetAll(List<CategoryType> categoryTypes);
+        List<int> GetCategorysByPartentId(int partentId);
         CategoryDictionary Get(int id);
         bool Update(CategoryDictionary categoryInfo);
         bool Add(CategoryDictionary categoryInfo);

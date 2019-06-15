@@ -108,10 +108,41 @@ h3 i{ width:3px; height:18px; background:#d9001b; display:inline-block; margin-r
 .list_ul li > a{color: #000;display:block; padding-left: 15px}
 .list_ul li:last-child { border-bottom:none}
 .list_ul > li:hover > a,.list_ul > li.current > a{ background:#ececec; color: #d9001b}
-.list_ul li > span a{ color: #555; width: 50%; float: left; line-height: 35px; padding-left: 15px; font-size: 12px;padding-bottom:7px;margin-top:-2px}
+.list_ul li > span a{ color: #555; width: 50%; float: left; /*line-height: 35px;*/ padding-left: 15px; font-size: 12px;padding-bottom:7px;margin-top:-2px;padding-bottom: 10px;
+    padding-top: 5px;}
 .list_ul > li:hover span a,.list_ul > li.current span a{ background:#ececec; display:block}
 .list_ul li > span a:hover{ color:#d9001b}
 .list_ul li > span.current a{ color:#d9001b}
+
+.list_ul.list_exam li.title{
+    height:45px;
+    line-height:45px;
+}
+.list_ul.list_exam li{
+    height:auto;
+    line-height:normal;
+    overflow:hidden;
+}
+.list_ul.list_exam li:not(:first-child){
+    /*padding-top:8px;
+    padding-bottom:8px*/
+}
+.list_ul.list_exam li:not(:first-child):hover{
+    background:#ececec;
+}
+
+.list_ul.list_exam li.current{
+     background:#ececec;
+}
+
+.list_ul.list_exam li>a{
+     padding-top:11px;
+    padding-bottom:11px
+}
+
+
+
+
 .list_ti{ font-size:16px; color: #333; line-height: 30px;}
 .list_div{ width:100%; padding: 10px; overflow: hidden}
 .list_div .list_p{ font-size:12px; color: #555; text-align: center; width:28%;}

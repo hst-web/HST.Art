@@ -70,7 +70,7 @@
                 @Html.Action("SecondMenu", "Home", new { sectionType = CategoryType.Social })
             </li>
             <li>
-                <a href="">考级中心</a>
+                <a class="@(action.Equals("examination",StringComparison.InvariantCultureIgnoreCase)?"active":"")" href="@Url.Action("examination")">考级中心</a>
                 @Html.Action("SecondMenu", "Home", new { sectionType = CategoryType.Examination })
             </li>
             <li>

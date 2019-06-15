@@ -88,6 +88,29 @@ namespace HST.Art.Data
             return categoryList;
         }
 
+        public List<int> GetCategorysByPartentId(int partentId)
+        {
+            List<int> categoryList = null;
+            DBHelper dbHelper = new DBHelper(ConnectionString, DbProviderType.SqlServer);
+
+            string strSql = @"SELECT Id  from CategoryDictionary  where IsDeleted=0 and state=1 and  parent=@parent";
+
+            IList<DbParameter> parameList = new List<DbParameter>();
+            parameList.Add(new SqlParameter("@parent", partentId));
+
+
+            using (DbDataReader reader = dbHelper.ExecuteReader(strSql, parameList))
+            {
+                categoryList = new List<int>();
+                while (reader.Read())
+                {                   
+                    categoryList.Add(Convert.ToInt32(reader["Id"]));
+                }
+            }
+
+            return categoryList;
+        }
+
         /// <summary>
         /// 从游标中读取数据
         /// </summary>

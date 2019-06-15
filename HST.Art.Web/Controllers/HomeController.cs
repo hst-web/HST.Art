@@ -119,6 +119,92 @@ namespace HST.Art.Web.Controllers
             return View(viewModel);
         }
 
+
+        public ActionResult Examination(QueryViewModel model)
+        {
+            int category = 0;
+            int parCategory = 0;
+            WebContentViewModel viewModel = new WebContentViewModel();
+            InitData(CategoryType.Examination);
+            model = model == null ? new QueryViewModel() : model;
+            model.QType = model.QType != QSType.list && model.QType != QSType.detail ? QSType.list : model.QType;
+            viewModel.QType = model.QType;
+
+            switch (model.QType)
+            {
+                case QSType.list:
+                    int.TryParse(model.FCType, out category);
+                    int.TryParse(model.PCType, out parCategory);
+                    viewModel.PageFilter = new PageViewModel()
+                    {
+                        Category = category,
+                        ParCategory = parCategory,
+                        SectionType = SectionType.Examination
+                    };
+                    break;
+                case QSType.detail:
+                    Article mInfo = _articleService.Get(model.Id);
+                    int.TryParse(model.FCType, out category);
+                    int.TryParse(model.PCType, out parCategory);
+                    viewModel.DetailModel = new DetailViewModel()
+                    {
+                        Title = mInfo.Title,
+                        Description = mInfo.Content,
+                        CreateDate = mInfo.CreateDate
+                    };
+                    viewModel.PageFilter = new PageViewModel()
+                    {
+                        Category = category,
+                        ParCategory = parCategory,
+                        SectionType = SectionType.Examination
+                    };
+                    break;
+            }
+
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public PartialViewResult GetArticList(PageViewModel query)
+        {
+            int totalNum = 0;
+            FilterEntityModel fillter = new FilterEntityModel();
+            fillter.PageIndex = query.PageIndex;
+            fillter.PageSize = query.PageSize;
+            fillter.KeyValueList = new List<KeyValueObj>();
+            fillter.KeyValueReserves = new List<KeyValueObj>() { new KeyValueObj() { Key = "Section", Value = (int)query.SectionType }, new KeyValueObj() { Key = "State", Value = (int)PublishState.Upper } };
+
+            if (query.ParCategory > 0)
+            {
+                List<int> chridlen = _cdService.GetCategorysByPartentId(query.ParCategory);
+                if (chridlen != null && chridlen.Count > 0)
+                {
+                    fillter.FilterType = FilterType.In;
+
+                    fillter.KeyValueList.Add(new KeyValueObj() { Key = "Category", Value = chridlen, FieldType = FieldType.Int });
+                }
+            }
+            else
+            {
+                if (query.Category > 0)
+                {
+                    fillter.KeyValueList.Add(new KeyValueObj() { Key = "Category", Value = query.Category });
+                }
+            }
+
+            List<WebArticleViewModel> webModelList = new List<WebArticleViewModel>();
+            List<Article> newsestList = _articleService.GetPage(fillter, out totalNum);
+            if (newsestList != null && newsestList.Count > 0)
+            {
+                webModelList = newsestList.Select(g => new WebArticleViewModel() { Id = g.Id, Title = g.Title, Synopsis = g.Synopsis, CreateTime = g.PublishDate, Author = g.UserName, HeadImg = GetThumb(g.HeadImg), Category = g.Category, ParCategory = g.ParCategory }).ToList();
+            }
+
+            ReturnPageResultIList<WebArticleViewModel> data = new ReturnPageResultIList<WebArticleViewModel>(webModelList, totalNum);
+            PageListViewModel<WebArticleViewModel> mpage = new PageListViewModel<WebArticleViewModel>(data.DataT, query.PageIndex, query.PageSize, data.totalRecords);
+
+            return PartialView(mpage);
+        }
+
         public ActionResult Certificate()
         {
             Organization org = _orgService.GetChacheData();
@@ -183,7 +269,7 @@ namespace HST.Art.Web.Controllers
                 List<MemberUnit> unitList = _memberUnitService.GetPage(fillter, out totalNum);
                 if (unitList != null && unitList.Count > 0)
                 {
-                    webModelList = unitList.Select(g => new WebArticleViewModel() { Id = g.Id, Title = g.Name, Synopsis = g.Synopsis, CreateTime = g.CreateDate, Author = g.UserName, HeadImg = GetThumb(g.HeadImg) }).ToList();
+                    webModelList = unitList.Select(g => new WebArticleViewModel() { Id = g.Id, Title = g.Name, Synopsis = g.Synopsis, CreateTime = g.CreateDate, Author = g.UserName, HeadImg = GetThumb(g.HeadImg), Category = g.Category }).ToList();
                 }
             }
             else if (query.SectionType == CategoryType.Download)
@@ -191,7 +277,7 @@ namespace HST.Art.Web.Controllers
                 List<FileDownload> downList = _downService.GetPage(fillter, out totalNum);
                 if (downList != null && downList.Count > 0)
                 {
-                    webModelList = downList.Select(g => new WebArticleViewModel() { Id = g.Id, Title = g.Title, Synopsis = g.Synopsis, CreateTime = g.CreateDate, Author = g.UserName, HeadImg = GetThumb(g.HeadImg) }).ToList();
+                    webModelList = downList.Select(g => new WebArticleViewModel() { Id = g.Id, Title = g.Title, Synopsis = g.Synopsis, CreateTime = g.CreateDate, Author = g.UserName, HeadImg = GetThumb(g.HeadImg), Category = g.Category }).ToList();
                 }
             }
             else
@@ -199,13 +285,13 @@ namespace HST.Art.Web.Controllers
                 List<Article> newsestList = _articleService.GetPage(fillter, out totalNum);
                 if (newsestList != null && newsestList.Count > 0)
                 {
-                    webModelList = newsestList.Select(g => new WebArticleViewModel() { Id = g.Id, Title = g.Title, Synopsis = g.Synopsis, CreateTime = g.PublishDate, Author = g.UserName, HeadImg = GetThumb(g.HeadImg) }).ToList();
+                    webModelList = newsestList.Select(g => new WebArticleViewModel() { Id = g.Id, Title = g.Title, Synopsis = g.Synopsis, CreateTime = g.PublishDate, Author = g.UserName, HeadImg = GetThumb(g.HeadImg), Category = g.Category, ParCategory = g.ParCategory }).ToList();
                 }
             }
 
             if (webModelList != null)
             {
-                webModelList = query.Id > 0 ? webModelList.FindAll(g => g.Id != query.Id).Take(5).ToList() : webModelList.Take(5).ToList();
+                webModelList = query.Id > 0 && webModelList.Count > 5 ? webModelList.FindAll(g => g.Id != query.Id).Take(5).ToList() : webModelList.Take(5).ToList();
             }
 
             model.NewestList = webModelList;
@@ -226,8 +312,10 @@ namespace HST.Art.Web.Controllers
 
         public PartialViewResult SecondMenu(CategoryType sectionType)
         {
+            HeaderViewModel model = new HeaderViewModel();
+            model.SectionType = sectionType;
             List<CategoryDictionary> cdList = _cdService.GetAll(sectionType);
-            if (cdList != null)
+            if (cdList != null && sectionType != CategoryType.Examination)
             {
                 cdList = cdList.FindAll(g => g.State == PublishState.Upper);
             }
@@ -237,7 +325,8 @@ namespace HST.Art.Web.Controllers
                 cdList = cdList.FindAll(g => g.Parent == 0);
             }
 
-            return PartialView(cdList);
+            model.CategoryList = cdList;
+            return PartialView(model);
         }
 
         /// <summary>
@@ -333,7 +422,7 @@ namespace HST.Art.Web.Controllers
             List<CategoryDictionary> cdList = _cdService.GetAll(type);
             Dictionary<CategoryDictionary, List<CategoryDictionary>> dicCategorys = new Dictionary<CategoryDictionary, List<CategoryDictionary>>();
 
-            if (cdList != null)
+            if (cdList != null && type != CategoryType.Examination)
             {
                 cdList.RemoveAll(g => g.State == PublishState.Lower);
             }
@@ -345,7 +434,7 @@ namespace HST.Art.Web.Controllers
                 List<CategoryDictionary> parList = cdList.FindAll(g => g.Parent == 0);
                 foreach (CategoryDictionary item in parList)
                 {
-                    dicCategorys.Add(item, cdList.FindAll(g => g.Parent == item.Id));
+                    dicCategorys.Add(item, cdList.FindAll(g => g.Parent == item.Id && g.State == PublishState.Upper));
                 }
 
                 ViewBag.Categorys = dicCategorys;

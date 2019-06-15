@@ -1,14 +1,40 @@
-﻿@using HST.Art.Web
+﻿@{ 
+    string pcName = string.IsNullOrEmpty(Request.QueryString["pctype"]) ? "" : Request.QueryString["pctype"];
+    string fcName = string.IsNullOrEmpty(Request.QueryString["fctype"]) ? "" : Request.QueryString["fctype"];
+}
+@using HST.Art.Web
 @using HST.Art.Core
+@model HeaderViewModel
 
-@model List<CategoryDictionary>
-@if (Model != null && Model.Count > 0)
+@if (Model != null)
 {
-    <ul class="menu">
-        @foreach (CategoryDictionary item in Model)
-        {
-            <li class=""><a href="#">@item.Name</a></li>
-        }
-    </ul>
+    if (Model.CategoryList != null && Model.CategoryList.Count > 0)
+    {
+        <ul class="menu">
+            @foreach (CategoryDictionary item in Model.CategoryList)
+            {
+                switch (Model.SectionType)
+                {
+                    case CategoryType.Industry:
+                        <li class="@(fcName.Equals(item.Id.ToString(),StringComparison.InvariantCultureIgnoreCase)?"active":"")"><a href="@Url.Action("industry","home",new { sectionType = CategoryType.Industry,fctype=item.Id })">@item.Name</a></li>
+                        break;
+                    case CategoryType.Association:
+                        <li class="@(fcName.Equals(item.Id.ToString(),StringComparison.InvariantCultureIgnoreCase)?"active":"")"><a href="@Url.Action("association","home",new { sectionType = CategoryType.Association,fctype=item.Id })">@item.Name</a></li>
+                        break;
+                    case CategoryType.Examination:
+                        <li class="@(pcName.Equals(item.Id.ToString(),StringComparison.InvariantCultureIgnoreCase)?"active":"")"><a href="@Url.Action("examination","home",new { sectionType = CategoryType.Examination,pctype=item.Id })">@item.Name</a></li>
+                        break;
+                    case CategoryType.Social:
+                        <li class="@(fcName.Equals(item.Id.ToString(),StringComparison.InvariantCultureIgnoreCase)?"active":"")"><a href="@Url.Action("social","home",new { sectionType = CategoryType.Social,fctype=item.Id })">@item.Name</a></li>
+                        break;
+                    case CategoryType.Download:
+                        <li class="@(fcName.Equals(item.Id.ToString(),StringComparison.InvariantCultureIgnoreCase)?"active":"")"><a href="@Url.Action("download","home",new { sectionType = CategoryType.Download,fctype=item.Id })">@item.Name</a></li>
+                        break;
+                }
+                @*<li class=""><a href="#">@item.Name</a></li>*@
+            }
+        </ul>
+    }
+
 }
 

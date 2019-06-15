@@ -155,6 +155,14 @@ namespace HST.Art.Service
             return _categoryDictionaryProvider.Update(categoryInfo);
         }
 
+        public List<int> GetCategorysByPartentId(int partentId)
+        {
+            if (partentId<=0)
+            {
+                return null;
+            }
 
+            return _categoryDictionaryProvider.GetCategorysByPartentId(partentId);
+        }
     }
 }

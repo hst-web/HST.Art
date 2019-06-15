@@ -90,8 +90,10 @@ namespace HST.Art.Web
         public int PageIndex { get; set; }
         public int PageSize { get; set; }
         public int Category { get; set; }
+        public int ParCategory { get; set; }
         public string CityCode { get; set; }
         public string NameOrNumber { get; set; }
+        public SectionType SectionType { get; set; }
         public CertType CertType { get; set; }
     }
 
@@ -99,7 +101,14 @@ namespace HST.Art.Web
     {
         public int Id { get; set; }
         public QSType QType { get; set; }
+        /// <summary>
+        /// 筛选类别
+        /// </summary>
         public string FCType { get; set; }
+        /// <summary>
+        /// 父级筛选类别
+        /// </summary>
+        public string PCType { get; set; }
         public CategoryType SectionType { get; set; }
     }
 
@@ -111,6 +120,8 @@ namespace HST.Art.Web
         public DateTime CreateTime { get; set; }
         public string Synopsis { get; set; }
         public string Author { get; set; }
+        public int Category { get; set; }
+        public int ParCategory { get; set; }
     }
 
     public enum QSType

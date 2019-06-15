@@ -16,4 +16,10 @@ namespace HST.Art.Web
         public CategoryType SectionType { get; set; }
     }
 
+    public class HeaderViewModel
+    {
+        public CategoryType SectionType { get; set; }
+        public List<CategoryDictionary> CategoryList { get; set; }
+    }
+
 }
