@@ -118,6 +118,46 @@ namespace HST.Art.Web.Controllers
 
             return View(viewModel);
         }
+        public ActionResult Download(QueryViewModel model)
+        {
+            int category = 0;
+            WebContentViewModel viewModel = new WebContentViewModel();
+            InitData(CategoryType.Download);
+            model = model == null ? new QueryViewModel() : model;
+            model.QType = model.QType != QSType.list && model.QType != QSType.detail ? QSType.list : model.QType;
+            viewModel.QType = model.QType;
+
+            switch (model.QType)
+            {
+                case QSType.list:
+                    int.TryParse(model.FCType, out category);
+                    viewModel.PageFilter = new PageViewModel()
+                    {
+                        Category = category
+                    };
+                    break;
+                case QSType.detail:
+                    FileDownload mInfo = _downService.Get(model.Id);
+                    int.TryParse(model.FCType, out category);
+                    viewModel.DetailModel = new DetailViewModel()
+                    {
+                        Id = mInfo.Id,
+                        Title = mInfo.Title,
+                        Description = mInfo.Description,
+                        CreateDate = mInfo.CreateDate,
+                        Author = mInfo.UserName,
+                        FileName=mInfo.Name,
+                        FileUrl=mInfo.Src
+                    };
+                    viewModel.PageFilter = new PageViewModel()
+                    {
+                        Category = category
+                    };
+                    break;
+            }
+
+            return View(viewModel);
+        }
 
         public ActionResult Examination(QueryViewModel model)
         {
@@ -297,7 +337,7 @@ namespace HST.Art.Web.Controllers
             fillter.PageSize = query.PageSize;
             fillter.KeyValueList = new List<KeyValueObj>();
             fillter.KeyValueReserves = new List<KeyValueObj>() { new KeyValueObj() { Key = "Section", Value = (int)query.SectionType }, new KeyValueObj() { Key = "State", Value = (int)PublishState.Upper } };
-            
+
             if (query.ParCategory > 0)
             {
                 List<int> chridlen = _cdService.GetCategorysByPartentId(query.ParCategory);
@@ -483,6 +523,38 @@ namespace HST.Art.Web.Controllers
                 gmList = data.DataT.Select(g => new MemberUnitViewModel() { Id = g.Id, UserId = g.UserId, MemberUnitName = g.Name, CategoryName = g.CategoryName, State = (int)g.State, CreateTime = g.CreateDate.ToLongDateString(), Category = g.Category, UserName = g.UserName, Number = g.Number, Star = g.Star, HeadImg = g.HeadImg, SmallHeadImg = GetThumb(g.HeadImg), Province = Convert.ToInt32(g.Province), City = Convert.ToInt32(g.City), Area = GetAreaStr(g.Province, g.City), Synopsis = g.Synopsis }).ToList();
 
             PageListViewModel<MemberUnitViewModel> mpage = new PageListViewModel<MemberUnitViewModel>(gmList, model.PageIndex, model.PageSize, data.totalRecords);
+
+            return PartialView(mpage);
+        }
+
+        /// <summary>
+        /// DataTable读取数据
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public PartialViewResult DownloadList(PageViewModel model)
+        {
+            int totalNum = 0;
+            FilterEntityModel fillter = new FilterEntityModel();
+            fillter.PageIndex = model.PageIndex;
+            fillter.PageSize = model.PageSize;
+            fillter.KeyValueList = new List<KeyValueObj>();
+            fillter.KeyValueList.Add(new KeyValueObj() { Key = "State", Value = (int)PublishState.Upper });
+
+            if (model.Category > 0)
+            {
+                fillter.KeyValueList.Add(new KeyValueObj() { Key = "Category", Value = model.Category });
+            }
+
+            List<FileDownload> downList = _downService.GetPage(fillter, out totalNum);
+            ReturnPageResultIList<FileDownload> data = new ReturnPageResultIList<Core.FileDownload>(downList, totalNum);
+            IList<DownloadViewModel> gmList = new List<DownloadViewModel>();
+
+            if (data != null && data.DataT != null)
+                gmList = data.DataT.Select(g => new DownloadViewModel() { Id = g.Id, UserId = g.UserId, FileName = g.Name, State = (int)g.State, CreateTime = g.CreateDate.ToLongDateString(), Category = g.Category, UserName = g.UserName, SmallFileImg = GetThumb(g.HeadImg), Synopsis = g.Synopsis, FileTitle = g.Title }).ToList();
+
+            PageListViewModel<DownloadViewModel> mpage = new PageListViewModel<DownloadViewModel>(gmList, model.PageIndex, model.PageSize, data.totalRecords);
 
             return PartialView(mpage);
         }

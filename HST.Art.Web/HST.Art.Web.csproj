@@ -2280,6 +2280,8 @@
     <Content Include="Views\Home\Industry.cshtml" />
     <Content Include="Views\Home\Social.cshtml" />
     <Content Include="Views\Home\Association.cshtml" />
+    <Content Include="Views\Home\DownloadList.cshtml" />
+    <Content Include="Views\Home\Download.cshtml" />
     <None Include="Views\Web.config">
       <Generator>RazorGenerator</Generator>
     </None>

@@ -74,7 +74,7 @@
                 @Html.Action("SecondMenu", "Home", new { sectionType = CategoryType.Examination })
             </li>
             <li>
-                <a href="">下载专区</a>
+                <a class="@(action.Equals("download",StringComparison.InvariantCultureIgnoreCase)?"active":"")" href="@Url.Action("download")">下载专区</a>
                 @Html.Action("SecondMenu", "Home", new { sectionType = CategoryType.Download })
             </li>
         </ul>

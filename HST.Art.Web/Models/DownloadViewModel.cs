@@ -47,5 +47,6 @@ namespace HST.Art.Web
         {
             get; set;
         }
+        public string Synopsis { get; set; }
     }
 }

@@ -8,4 +8,11 @@
     <div>
         @Html.Raw(Model.Description)
     </div>
+    @if (!string.IsNullOrEmpty(Model.FileUrl))
+    {
+        <div style="margin:12px auto">
+            <a href="@Model.FileUrl">@Model.FileName</a>
+        </div>
+    }
+   
 </div>
