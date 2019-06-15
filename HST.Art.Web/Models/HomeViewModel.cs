@@ -36,9 +36,11 @@ namespace HST.Art.Web
 
     public class DetailViewModel
     {
+        public int Id { get; set; }
         public string Title { get; set; }
         public DateTime CreateDate { get; set; }
         public string Description { get; set; }
+        public string Author { get; set; }
     }
 
     public class ListViewModel
@@ -98,6 +100,17 @@ namespace HST.Art.Web
         public int Id { get; set; }
         public QSType QType { get; set; }
         public string FCType { get; set; }
+        public CategoryType SectionType { get; set; }
+    }
+
+    public class WebArticleViewModel
+    {
+        public int Id { get; set; }
+        public string Title { get; set; }
+        public string HeadImg { get; set; }
+        public DateTime CreateTime { get; set; }
+        public string Synopsis { get; set; }
+        public string Author { get; set; }
     }
 
     public enum QSType

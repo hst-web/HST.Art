@@ -18,6 +18,7 @@ namespace HST.Art.Web.Controllers
         CategoryDictionaryService _cdService = new CategoryDictionaryService();
         TeaCertificateService _teaService = new TeaCertificateService();
         StuCertificateService _stuService = new StuCertificateService();
+        FileDownloadService _downService = new FileDownloadService();
 
         // GET: Home
         public ActionResult Index()
@@ -139,22 +140,75 @@ namespace HST.Art.Web.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public PartialViewResult GetRecommend(int id = 0)
+        public PartialViewResult GetRecommend(QueryViewModel query)
         {
+            if (query == null)
+            {
+                query = new QueryViewModel();
+            }
+
             int totalNum = 0;
             SidebarViewModel model = new SidebarViewModel();
+            model.SectionType = query.SectionType;
             FilterEntityModel fillter = new FilterEntityModel();
             fillter.SortDict = new KeyValuePair<string, SortType>("PublishDate", SortType.Desc);
             fillter.KeyValueList = new List<KeyValueObj>();
             fillter.KeyValueList.Add(new KeyValueObj() { Key = "State", Value = (int)PublishState.Upper });
-            List<Article> newsestList = _articleService.GetPage(fillter, out totalNum);
+            List<WebArticleViewModel> webModelList = new List<WebArticleViewModel>();
 
-            if (newsestList != null)
+            switch (query.SectionType)
             {
-                newsestList = id > 0 ? newsestList.FindAll(g => g.Id != id).Take(5).ToList() : newsestList.Take(5).ToList();
+                case CategoryType.Industry:
+                    fillter.KeyValueReserves = new List<KeyValueObj>() { new KeyValueObj() { Key = "Section", Value = (int)SectionType.Industry } };
+                    break;
+                case CategoryType.Association:
+                    fillter.KeyValueReserves = new List<KeyValueObj>() { new KeyValueObj() { Key = "Section", Value = (int)SectionType.Association } };
+                    break;
+                case CategoryType.Examination:
+                    fillter.KeyValueReserves = new List<KeyValueObj>() { new KeyValueObj() { Key = "Section", Value = (int)SectionType.Examination } };
+                    break;
+                case CategoryType.Social:
+                    fillter.KeyValueReserves = new List<KeyValueObj>() { new KeyValueObj() { Key = "Section", Value = (int)SectionType.Social } };
+                    break;
+                case CategoryType.Member:
+                    fillter.SortDict = new KeyValuePair<string, SortType>("CreateDate", SortType.Desc);
+                    break;
+                case CategoryType.Download:
+                    fillter.SortDict = new KeyValuePair<string, SortType>("CreateDate", SortType.Desc);
+                    break;
             }
 
-            model.NewestList = newsestList;
+            if (query.SectionType == CategoryType.Member)
+            {
+                List<MemberUnit> unitList = _memberUnitService.GetPage(fillter, out totalNum);
+                if (unitList != null && unitList.Count > 0)
+                {
+                    webModelList = unitList.Select(g => new WebArticleViewModel() { Id = g.Id, Title = g.Name, Synopsis = g.Synopsis, CreateTime = g.CreateDate, Author = g.UserName, HeadImg = GetThumb(g.HeadImg) }).ToList();
+                }
+            }
+            else if (query.SectionType == CategoryType.Download)
+            {
+                List<FileDownload> downList = _downService.GetPage(fillter, out totalNum);
+                if (downList != null && downList.Count > 0)
+                {
+                    webModelList = downList.Select(g => new WebArticleViewModel() { Id = g.Id, Title = g.Title, Synopsis = g.Synopsis, CreateTime = g.CreateDate, Author = g.UserName, HeadImg = GetThumb(g.HeadImg) }).ToList();
+                }
+            }
+            else
+            {
+                List<Article> newsestList = _articleService.GetPage(fillter, out totalNum);
+                if (newsestList != null && newsestList.Count > 0)
+                {
+                    webModelList = newsestList.Select(g => new WebArticleViewModel() { Id = g.Id, Title = g.Title, Synopsis = g.Synopsis, CreateTime = g.PublishDate, Author = g.UserName, HeadImg = GetThumb(g.HeadImg) }).ToList();
+                }
+            }
+
+            if (webModelList != null)
+            {
+                webModelList = query.Id > 0 ? webModelList.FindAll(g => g.Id != query.Id).Take(5).ToList() : webModelList.Take(5).ToList();
+            }
+
+            model.NewestList = webModelList;
             return PartialView(model);
         }
 
@@ -168,6 +222,22 @@ namespace HST.Art.Web.Controllers
         {
             Organization model = _orgService.GetChacheData();
             return PartialView(model);
+        }
+
+        public PartialViewResult SecondMenu(CategoryType sectionType)
+        {
+            List<CategoryDictionary> cdList = _cdService.GetAll(sectionType);
+            if (cdList != null)
+            {
+                cdList = cdList.FindAll(g => g.State == PublishState.Upper);
+            }
+
+            if (sectionType == CategoryType.Examination)
+            {
+                cdList = cdList.FindAll(g => g.Parent == 0);
+            }
+
+            return PartialView(cdList);
         }
 
         /// <summary>

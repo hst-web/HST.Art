@@ -1,7 +1,7 @@
 /*==============================================================*/
 /* Database name:  ARTDB                                        */
 /* DBMS name:      Microsoft SQL Server 2012                    */
-/* Created on:     2019/6/14 19:50:26                           */
+/* Created on:     2019/6/15 11:25:57                           */
 /*==============================================================*/
 
 
@@ -109,6 +109,7 @@ create table FileDownload (
    Src                  varchar(128)         not null,
    State                int                  null,
    Description          nvarchar(max)        null,
+   Synopsis             nvarchar(200)        null,
    HeadImg              varchar(128)         null,
    CreateDate           datetime             null default getdate(),
    IsDeleted            bit                  null default 0,

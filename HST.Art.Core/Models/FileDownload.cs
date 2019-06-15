@@ -128,6 +128,7 @@ namespace HST.Art.Core
 
         public string CategoryName { get; set; }
         public string UserName { get; set; }
+        public string Synopsis { get; set; }
         #endregion Model
 
     }

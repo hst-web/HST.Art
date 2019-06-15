@@ -6,7 +6,7 @@
 
 @model WebContentViewModel
 <div class="list">
-    <div class="position">当前位置：<a href="@Url.Action("about")">协会概况</a> / @Html.Raw((Model.QType==QSType.frame? "<a href='"+Url.Action("About", new { qtype = QSType.frame }) + "' class='red'>组织架构</a>" : Model.QType==QSType.list||Model.QType==QSType.detail? "<a href='"+Url.Action("About", new { qtype = QSType.list }) +"' class='red'>协会会员</a>": "<a href='"+ Url.Action("About", new { qtype = QSType.synopsis }) + "' class='red'>协会简介</a>"))</div>
+    <div class="position">当前位置：<a href="@Url.Action("about")">协会概况</a> / @Html.Raw((Model.QType == QSType.frame ? "<a href='" + Url.Action("About", new { qtype = QSType.frame }) + "' class='red'>组织架构</a>" : Model.QType == QSType.list || Model.QType == QSType.detail ? "<a href='" + Url.Action("About", new { qtype = QSType.list }) + "' class='red'>协会会员</a>" : "<a href='" + Url.Action("About", new { qtype = QSType.synopsis }) + "' class='red'>协会简介</a>"))</div>
     <div class="list_cont">
         <div class="list_fl fl">
             <ul class="list_ul">
@@ -25,7 +25,7 @@
 
                 </li>
             </ul>
-            @Html.Action("GetRecommend")
+            @Html.Action("GetRecommend", new { sectionType = CategoryType.Member })
         </div>
         @if (Model.QType != QSType.list)
         {

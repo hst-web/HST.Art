@@ -9,8 +9,11 @@ namespace HST.Art.Web
     public class SidebarViewModel
     {
         /// <summary>
-        /// 最新新闻
+        /// 最新信息
         /// </summary>
-        public List<Article> NewestList { get; set; }
+        public List<WebArticleViewModel> NewestList { get; set; }
+
+        public CategoryType SectionType { get; set; }
     }
+
 }

@@ -28,7 +28,7 @@ namespace HST.Art.Data
         {
             FileDownload fileDownloadInfo = null;
             DBHelper dbHelper = new DBHelper(ConnectionString, DbProviderType.SqlServer);
-            string strSql = @"SELECT fd.Id, fd.UserId, fd.Name, fd.Title, fd.Category, fd.Type, fd.Src, fd.State, fd.Description, fd.HeadImg, fd.CreateDate ,cd.Name as CategoryName,u.Name as UserName  from FileDownload fd  inner join CategoryDictionary cd on fd.category=cd.id  left join [User] u on fd.userid=u.id where  fd.IsDeleted=0 and fd.id=@Id ";
+            string strSql = @"SELECT fd.Id, fd.UserId, fd.Name, fd.Title, fd.Category, fd.Type, fd.Src, fd.State, fd.Description, fd.Synopsis,fd.HeadImg, fd.CreateDate ,cd.Name as CategoryName,u.Name as UserName  from FileDownload fd  inner join CategoryDictionary cd on fd.category=cd.id  left join [User] u on fd.userid=u.id where  fd.IsDeleted=0 and fd.id=@Id ";
 
             List<DbParameter> parametersList = new List<DbParameter>();
             parametersList.Add(new SqlParameter("@Id", id));
@@ -62,7 +62,7 @@ namespace HST.Art.Data
             List<FileDownload> fileDownloadList = null;
             DBHelper dbHelper = new DBHelper(ConnectionString, DbProviderType.SqlServer);
 
-            string strSql = @"SELECT fd.Id, fd.UserId, fd.Name, fd.Title, fd.Category, fd.Type, fd.Src, fd.State, fd.HeadImg, fd.CreateDate ,cd.Name as CategoryName,u.Name as UserName  from FileDownload fd  inner join CategoryDictionary cd on fd.category=cd.id  left join [User] u on fd.userid=u.id where  fd.IsDeleted=0 " + whereSort;
+            string strSql = @"SELECT fd.Id, fd.UserId, fd.Name, fd.Title, fd.Category, fd.Type, fd.Src, fd.State, fd.HeadImg, fd.Synopsis,fd.CreateDate ,cd.Name as CategoryName,u.Name as UserName  from FileDownload fd  inner join CategoryDictionary cd on fd.category=cd.id  left join [User] u on fd.userid=u.id where  fd.IsDeleted=0 " + whereSort;
 
             IList<DbParameter> parameList = null;
             if (condition != null && condition.SqlParList.Count > 0)
@@ -129,6 +129,7 @@ namespace HST.Art.Data
                                   ,[Src]
                                   ,[State]
                                   ,[HeadImg]
+                                  ,[Synopsis]
                                   ,[CreateDate]
                                   ,[UserName]
                                   ,[CategoryName]
@@ -141,6 +142,7 @@ namespace HST.Art.Data
                                   ,fd.[Src]
                                   ,fd.[State]
                                   ,fd.[HeadImg]
+                                  ,fd.Synopsis
                                   ,fd.[CreateDate]
                                   ,u.[Name] as UserName
                                   ,cd.Name as [CategoryName]
@@ -189,6 +191,10 @@ namespace HST.Art.Data
             {
                 fileDownloadInfo.HeadImg = reader["HeadImg"].ToString();
             }
+            if (ReaderExists(reader, "Synopsis") && DBNull.Value != reader["Synopsis"])
+            {
+                fileDownloadInfo.Synopsis = reader["Synopsis"].ToString();
+            }
             if (ReaderExists(reader, "Description") && DBNull.Value != reader["Description"])
             {
                 fileDownloadInfo.Description = reader["Description"].ToString();
@@ -207,7 +213,7 @@ namespace HST.Art.Data
         public bool Add(FileDownload fileDownloadInfo)
         {
             DBHelper dbHelper = new DBHelper(ConnectionString, DbProviderType.SqlServer);
-            string strSql = @"Insert Into FileDownload (UserId, Name, Title, Category, Type, Src, State, Description, HeadImg) Values (@UserId, @Name, @Title, @Category, @Type, @Src, @State, @Description, @HeadImg)";
+            string strSql = @"Insert Into FileDownload (UserId, Name, Title, Category, Type, Src, State, Description,Synopsis, HeadImg) Values (@UserId, @Name, @Title, @Category, @Type, @Src, @State, @Description,@Synopsis, @HeadImg)";
 
             List<DbParameter> parametersList = new List<DbParameter>();
             parametersList.Add(new SqlParameter("@UserId", fileDownloadInfo.UserId));
@@ -219,6 +225,7 @@ namespace HST.Art.Data
             parametersList.Add(new SqlParameter("@Description", fileDownloadInfo.Description));  
             parametersList.Add(new SqlParameter("@Src", fileDownloadInfo.Src));
             parametersList.Add(new SqlParameter("@State", (int)fileDownloadInfo.State));
+            parametersList.Add(new SqlParameter("@Synopsis", fileDownloadInfo.Synopsis));
 
             return dbHelper.ExecuteNonQuery(strSql, parametersList) > 0;
         }
@@ -241,6 +248,7 @@ namespace HST.Art.Data
                                   ,[State]=@State
                                   ,[HeadImg]=@HeadImg 
                                   ,[Description]=@Description
+                                  ,[Synopsis]=@Synopsis
                                   Where ID=@ID";
 
             List<DbParameter> parametersList = new List<DbParameter>();
@@ -254,6 +262,7 @@ namespace HST.Art.Data
             parametersList.Add(new SqlParameter("@Src", fileDownloadInfo.Src));
             parametersList.Add(new SqlParameter("@State", (int)fileDownloadInfo.State));
             parametersList.Add(new SqlParameter("@Type", (int)fileDownloadInfo.Type));
+            parametersList.Add(new SqlParameter("@Synopsis", fileDownloadInfo.Synopsis));
 
             return dbHelper.ExecuteNonQuery(strSql, parametersList) > 0;
         }

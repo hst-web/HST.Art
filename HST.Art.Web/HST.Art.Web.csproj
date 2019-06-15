@@ -2274,6 +2274,7 @@
     <Content Include="Views\Home\Certificate.cshtml" />
     <Content Include="Views\Home\Header.cshtml" />
     <Content Include="Views\Home\Footer.cshtml" />
+    <Content Include="Views\Home\SecondMenu.cshtml" />
     <None Include="Views\Web.config">
       <Generator>RazorGenerator</Generator>
     </None>
