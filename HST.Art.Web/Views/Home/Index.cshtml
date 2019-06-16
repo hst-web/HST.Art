@@ -32,18 +32,55 @@
 <div class="cont_box">
     <div class="index_new_fl fl">
         <p><b>NEWS</b><i></i>协会公告</p>
-        <span><a href="#">更多 ></a></span>
+        @*<span><a href="#">更多 ></a></span>*@
     </div>
     <div class="index_new_cont fl">
-        @if (Model.NewestList != null && Model.NewestList.Count > 0)
+        @if (Model.BulletinList != null && Model.BulletinList.Count>0)
         {
-            foreach (var item in Model.NewestList)
+            foreach (var item in Model.BulletinList)
             {
                 <div class="index_ul">
-                    <a href="#">
-                        <p class="fl">@item.Title</p>
-                        <span class="fr">@item.PublishDate.ToString("yyyy-MM-dd")</span>
-                    </a>
+                    @{ 
+                        string actionName = string.Empty;
+                        int parCategory = 0;
+                        switch (item.SectionType)
+                        {
+                            case CategoryType.Industry:
+                                actionName = "industry";
+                                break;
+                            case CategoryType.Association:
+                                actionName = "association";
+                                break;
+                            case CategoryType.Examination:
+                                actionName = "examination";
+                                parCategory = item.ParCategory;
+                                break;
+                            case CategoryType.Social:
+                                actionName = "social";
+                                break;
+                            case CategoryType.Member:
+                                actionName = "about";
+                                break;
+                            case CategoryType.Download:
+                                actionName = "download";
+                                break;
+                        }
+                    }
+
+                    @if (parCategory > 0)
+                    {
+                        <a href="@Url.Action(actionName, "home", new {qtype = QSType.detail, id =item.Id, fctype = item.Category,pctype=item.ParCategory })">
+                            <p class="fl">@item.Title</p>
+                            <span class="fr">@item.CreateTime.ToString("yyyy-MM-dd")</span>
+                        </a>
+                    }
+                    else
+                    {
+                        <a href="@Url.Action(actionName, "home", new {qtype = QSType.detail, id =item.Id, fctype = item.Category })">
+                            <p class="fl">@item.Title</p>
+                            <span class="fr">@item.CreateTime.ToString("yyyy-MM-dd")</span>
+                        </a>
+                    }
                 </div>
             }
         }
@@ -67,7 +104,7 @@
                 {
                 <div class="index_hy_box">
 
-                    <a href="#">
+                    <a href="@Url.Action("industry", new { qtype = QSType.detail, id=item.Id,fctype=item.Category })">
                         <div class="index_data fl">
                             <p><b>@item.PublishDate.ToString("MM-dd")</b> @item.PublishDate.ToString("yyyy")</p>
                         </div>
@@ -91,7 +128,7 @@
                 foreach (var item in Model.AssociationList)
                 {
                 <div class="index_hy_box">
-                    <a href="#">
+                    <a href="@Url.Action("association", new { qtype = QSType.detail, id=item.Id,fctype=item.Category })">
                         <div class="index_data fl">
                             <p><b>@item.PublishDate.ToString("MM-dd")</b> @item.PublishDate.ToString("yyyy")</p>
                         </div>
@@ -118,7 +155,7 @@
             foreach (var item in Model.SocialList)
             {
                 <dl>
-                    <a href="#">
+                    <a href="@Url.Action("social", new { qtype = QSType.detail, id=item.Id,fctype=item.Category })">
                         <dt><img src="@item.HeadImg" onerror="nofind()" /></dt>
                         <dd class="title">@item.Title</dd>
                         <dd>@item.Synopsis</dd>

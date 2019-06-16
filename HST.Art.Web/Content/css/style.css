@@ -11,16 +11,16 @@
 .cont .swiper-container .swiper-button-prev{background:url(../image/z.png) no-repeat center; background-size:25px 24px; width:26px; height:26px;}
 .cont .swiper-container .swiper-button-prev:hover{background:url(../image/zz.png) no-repeat center; background-size:25px 24px; width:26px; height:26px;}
 .cont_box{ max-width:1280px; width:96%; margin:0 auto; margin-top:18px; overflow:hidden}
-.index_new_fl{width:25%; background:#dd1c34;  height:224px; text-align:center; color:#fff; position:relative}
+.index_new_fl{width:25%; background:#dd1c34;  height:200px; text-align:center; color:#fff; position:relative}
 .index_new_fl p{ font-size:16px;}
 .index_new_fl p i{ width:3px; height:18px; background:#d9001b; display:inline-block; margin-right:5px; display:none}
 .index_new_fl b{ font-size:30px; display:block; margin-top:24%; font-weight: normal}
 .index_new_fl span a{ position:absolute; right:30px; bottom:20px; padding:5px 20px; border:1px solid #fff; background:#d9001b; color:#fff; font-size:13px}
-.index_new_cont{  width:55%; border:1px solid #e3e3e3; background:#fff;border-left:none; padding:10px 0; height:224px}
+.index_new_cont{  width:55%; border:1px solid #e3e3e3; background:#fff;border-left:none; padding:10px 0; height:200px}
 .index_ul{ width:92%; margin:0 auto; overflow:hidden; font-size:14px; color:#333; line-height:35px;}
 .index_ul a{ color:#333}
 .index_ul a p{ width:80%; height:35px; overflow:hidden;text-overflow:ellipsis;white-space:nowrap; background:url(../image/circle.png) no-repeat left center; padding-left:15px; background-size:10px 10px}
-.index_new_fr{ height:224px; width:18%; background:#fff; padding:4% 0; text-align:center; border:1px solid #e3e3e3; font-size:20px}
+.index_new_fr{ height:200px; width:18%; background:#fff; padding:4% 0; text-align:center; border:1px solid #e3e3e3; font-size:20px}
 .index_new_fr a{ color:#333}
 .index_new_fr b{ display:block;}
 .index_fl{ width:49%; background:#fff; border:1px solid #e3e3e3; padding:2%;}
@@ -33,9 +33,10 @@
 .index_hy_box a .index_cons h2{ font-size:16px; color:#000; height:35px; line-height:35px; overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .index_hy_box a .index_cons p{font-size:13px; color:#555; line-height:24px; height:52px;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;}
 .box{ width:100%; background:#fff; padding:2%; margin-top:18px;}
-.cont_box dl { width:32%; float:left; margin-right:1.6%; padding:2%; border:1px solid #d4d4d4; }
+.cont_box dl { width:32.2%; float:left; margin-right:1.6%; padding:2%; border:1px solid #d4d4d4; }
 .cont_box dl a{display:block; width:100%}
-.cont_box dl:last-child{ float:right; margin-right:0}
+/*.cont_box dl:last-child{ float:right; margin-right:0}*/
+.cont_box dl:nth-child(3){float:right; margin-right:0}
 .cont_box dl a dt{ width:100%; display:block;max-height:210px;overflow:hidden}
 .cont_box dl a dt img{ width:100%;}
 .cont_box dl a .title{ font-size:16px; color:#333;overflow:hidden;text-overflow:ellipsis;white-space:nowrap; height:30px; line-height:30px; margin:10px 0}

@@ -37,8 +37,6 @@ namespace HST.Art.Web.Controllers
 
             List<RotationChart> bannerList = _rotationChartService.GetAll(RotationType.Banner);
             List<RotationChart> logoList = _rotationChartService.GetAll(RotationType.Logo);
-
-            model.NewestList = _articleService.GetPage(fillter, out totalNum);
             model.AssociationList = _articleService.GetPage(associationFillter, out totalNum);
             model.IndustryList = _articleService.GetPage(industryFillter, out totalNum);
             model.SocialList = _articleService.GetPage(socialFillter, out totalNum);
@@ -61,6 +59,32 @@ namespace HST.Art.Web.Controllers
 
             //    model.LogoList = listGroup;
             //}   
+            #endregion
+
+            #region 公告
+            List<BulletinViewModel> bulletinList = new List<BulletinViewModel>();
+            FilterEntityModel otherFilter = new FilterEntityModel() { KeyValueList = new List<KeyValueObj>() { new KeyValueObj() { Key = "State", Value = (int)PublishState.Upper } }, PageSize = 5, SortDict = new KeyValuePair<string, SortType>("CreateDate", SortType.Desc) };
+            List<Article> newestList = _articleService.GetPage(fillter, out totalNum);
+            List<MemberUnit> unitList = _memberUnitService.GetPage(otherFilter, out totalNum);
+            List<FileDownload> fileList = _downService.GetPage(otherFilter, out totalNum);
+
+            if (unitList != null && unitList.Count > 0)
+            {
+                bulletinList.AddRange(unitList.Take(1).Select(g => new BulletinViewModel() { Id = g.Id, Category = g.Category, CreateTime = g.CreateDate, Title = g.Name, SectionType = CategoryType.Member }));
+            }
+
+            if (fileList != null && fileList.Count > 0)
+            {
+                bulletinList.AddRange(fileList.Take(1).Select(g => new BulletinViewModel() { Id = g.Id, Category = g.Category, CreateTime = g.CreateDate, Title = g.Title, SectionType = CategoryType.Download }));
+            }
+
+            if (newestList != null && newestList.Count > 0)
+            {
+                bulletinList.AddRange(newestList.Select(g => new BulletinViewModel() { Id = g.Id, Category = g.Category, CreateTime = g.CreateDate, Title = g.Title, SectionType = GetCategoryType((int)g.Section) }));
+            }
+
+            model.BulletinList = bulletinList.OrderByDescending(g => g.CreateTime).Take(5).ToList();
+
             #endregion
 
             return View(model);
@@ -146,8 +170,8 @@ namespace HST.Art.Web.Controllers
                         Description = mInfo.Description,
                         CreateDate = mInfo.CreateDate,
                         Author = mInfo.UserName,
-                        FileName=mInfo.Name,
-                        FileUrl=mInfo.Src
+                        FileName = mInfo.Name,
+                        FileUrl = mInfo.Src
                     };
                     viewModel.PageFilter = new PageViewModel()
                     {
@@ -356,15 +380,15 @@ namespace HST.Art.Web.Controllers
                 }
             }
 
-            List<WebArticleViewModel> webModelList = new List<WebArticleViewModel>();
+            List<WebNewsViewModel> webModelList = new List<WebNewsViewModel>();
             List<Article> newsestList = _articleService.GetPage(fillter, out totalNum);
             if (newsestList != null && newsestList.Count > 0)
             {
-                webModelList = newsestList.Select(g => new WebArticleViewModel() { Id = g.Id, Title = g.Title, Synopsis = g.Synopsis, CreateTime = g.PublishDate, Author = g.UserName, HeadImg = GetThumb(g.HeadImg), Category = g.Category, ParCategory = g.ParCategory }).ToList();
+                webModelList = newsestList.Select(g => new WebNewsViewModel() { Id = g.Id, Title = g.Title, Synopsis = g.Synopsis, CreateTime = g.PublishDate, Author = g.UserName, HeadImg = GetThumb(g.HeadImg), Category = g.Category, ParCategory = g.ParCategory }).ToList();
             }
 
-            ReturnPageResultIList<WebArticleViewModel> data = new ReturnPageResultIList<WebArticleViewModel>(webModelList, totalNum);
-            PageListViewModel<WebArticleViewModel> mpage = new PageListViewModel<WebArticleViewModel>(data.DataT, query.PageIndex, query.PageSize, data.totalRecords);
+            ReturnPageResultIList<WebNewsViewModel> data = new ReturnPageResultIList<WebNewsViewModel>(webModelList, totalNum);
+            PageListViewModel<WebNewsViewModel> mpage = new PageListViewModel<WebNewsViewModel>(data.DataT, query.PageIndex, query.PageSize, data.totalRecords);
 
             ViewBag.SectionType = query.SectionType;
 
@@ -406,7 +430,7 @@ namespace HST.Art.Web.Controllers
             fillter.SortDict = new KeyValuePair<string, SortType>("PublishDate", SortType.Desc);
             fillter.KeyValueList = new List<KeyValueObj>();
             fillter.KeyValueList.Add(new KeyValueObj() { Key = "State", Value = (int)PublishState.Upper });
-            List<WebArticleViewModel> webModelList = new List<WebArticleViewModel>();
+            List<WebNewsViewModel> webModelList = new List<WebNewsViewModel>();
 
             switch (query.SectionType)
             {
@@ -435,7 +459,7 @@ namespace HST.Art.Web.Controllers
                 List<MemberUnit> unitList = _memberUnitService.GetPage(fillter, out totalNum);
                 if (unitList != null && unitList.Count > 0)
                 {
-                    webModelList = unitList.Select(g => new WebArticleViewModel() { Id = g.Id, Title = g.Name, Synopsis = g.Synopsis, CreateTime = g.CreateDate, Author = g.UserName, HeadImg = GetThumb(g.HeadImg), Category = g.Category }).ToList();
+                    webModelList = unitList.Select(g => new WebNewsViewModel() { Id = g.Id, Title = g.Name, Synopsis = g.Synopsis, CreateTime = g.CreateDate, Author = g.UserName, HeadImg = GetThumb(g.HeadImg), Category = g.Category }).ToList();
                 }
             }
             else if (query.SectionType == CategoryType.Download)
@@ -443,7 +467,7 @@ namespace HST.Art.Web.Controllers
                 List<FileDownload> downList = _downService.GetPage(fillter, out totalNum);
                 if (downList != null && downList.Count > 0)
                 {
-                    webModelList = downList.Select(g => new WebArticleViewModel() { Id = g.Id, Title = g.Title, Synopsis = g.Synopsis, CreateTime = g.CreateDate, Author = g.UserName, HeadImg = GetThumb(g.HeadImg), Category = g.Category }).ToList();
+                    webModelList = downList.Select(g => new WebNewsViewModel() { Id = g.Id, Title = g.Title, Synopsis = g.Synopsis, CreateTime = g.CreateDate, Author = g.UserName, HeadImg = GetThumb(g.HeadImg), Category = g.Category }).ToList();
                 }
             }
             else
@@ -451,7 +475,7 @@ namespace HST.Art.Web.Controllers
                 List<Article> newsestList = _articleService.GetPage(fillter, out totalNum);
                 if (newsestList != null && newsestList.Count > 0)
                 {
-                    webModelList = newsestList.Select(g => new WebArticleViewModel() { Id = g.Id, Title = g.Title, Synopsis = g.Synopsis, CreateTime = g.PublishDate, Author = g.UserName, HeadImg = GetThumb(g.HeadImg), Category = g.Category, ParCategory = g.ParCategory }).ToList();
+                    webModelList = newsestList.Select(g => new WebNewsViewModel() { Id = g.Id, Title = g.Title, Synopsis = g.Synopsis, CreateTime = g.PublishDate, Author = g.UserName, HeadImg = GetThumb(g.HeadImg), Category = g.Category, ParCategory = g.ParCategory }).ToList();
                 }
             }
 
@@ -637,6 +661,11 @@ namespace HST.Art.Web.Controllers
 
                 ViewBag.Categorys = dicCategorys;
             }
+        }
+
+        public CategoryType GetCategoryType(int type)
+        {
+            return (CategoryType)type;
         }
     }
 }

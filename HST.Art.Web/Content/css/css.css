@@ -86,19 +86,21 @@ nav .nav-menu { display: none;z-index: 999; background: #fff; cursor: pointer;}
   .top{display:none}
   nav{ margin: 0 auto; background:#fff; padding:10px 0; height:70px}
   nav .nav-logo{ display:block}
-  nav .nav-list {position: fixed; height: 100%; top: 0; padding-top: 10px; width:40%; background: #fff;left: -60%; -webkit-transition: 1s; transition: 1s;}
+  nav .nav-list {position: fixed; height: 100%; top: 0; padding-top: 10px; width:40%; background: #f0f0f0;left: -60%; -webkit-transition: 1s; transition: 1s;box-shadow: 1px -3px 5px rgba(0,0,0,.15);}
   nav .nav-list > li { width: 100%; margin: 0; overflow: hidden; }
   nav .nav-list > li { margin-bottom: 15px; }
   nav .nav-list > li a { width: 100%; border-radius: 0; margin: 0; color: #555; line-height:35px}
+  nav .nav-list > li>a{font-weight:bold}
+  nav .nav-list > li .active{background:#fff}
   nav .nav-list > li .menu {position: relative;width: 100%;text-align: center; background: none; }
-  nav .nav-list > li .menu li a{font-size: 15px; line-height: 30px; color: #666;}
+  nav .nav-list > li .menu li a{font-size: 13px; line-height: 30px; color: #666;padding-left: 25px;padding-right: 0px;text-align:left;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;width: 125px;}
   nav .nav-list > li .menu li{ margin-left:18px}
   nav .nav-menu {display: block;float: right; padding: 8px 5px; position: relative; border: 1px solid #ccc; border-radius: 5px;  margin-right: 15px;margin-top:12px}
   nav .nav-menu span {height: 2px;width: 25px;display: block;background: #CCC;border-radius: 10px;}
   nav .nav-menu span + span {margin-top: 6px; }
   nav .nav-list > li .menu{ left:inherit; height:auto; overflow:auto}
   nav .nav-logo{ margin-left:5px;}  
-  nav .nav-list > li .menu li a{ background:#fff;}
+  nav .nav-list > li .menu li a{ background:#f0f0f0;}
   
 }
 nav .open {left: 0%;overflow: auto; z-index:99}

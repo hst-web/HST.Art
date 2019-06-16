@@ -29,9 +29,17 @@ namespace HST.Art.Web
         /// <summary>
         /// 协会公告最新集合
         /// </summary>
-        public List<Article> NewestList { get; set; }
+        public List<BulletinViewModel> BulletinList { get; set; }
+    }
 
-
+    public class BulletinViewModel
+    {
+        public int Id { get; set; }
+        public CategoryType SectionType { get; set; }  
+        public string Title { get; set; }
+        public DateTime CreateTime { get; set; }
+        public int Category { get; set; }
+        public int ParCategory { get; set; }
     }
 
     public class DetailViewModel
@@ -114,7 +122,7 @@ namespace HST.Art.Web
         public CategoryType SectionType { get; set; }
     }
 
-    public class WebArticleViewModel
+    public class WebNewsViewModel
     {
         public int Id { get; set; }
         public string Title { get; set; }

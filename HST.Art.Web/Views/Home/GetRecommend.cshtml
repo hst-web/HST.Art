@@ -7,7 +7,7 @@
 <div class="list_new">
     @if (Model.NewestList != null && Model.NewestList.Count > 0)
     {
-        foreach (WebArticleViewModel item in Model.NewestList)
+        foreach (WebNewsViewModel item in Model.NewestList)
         {
             <div class="list_div">
                 @switch (Model.SectionType)
