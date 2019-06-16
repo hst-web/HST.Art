@@ -23,9 +23,11 @@
     @Styles.Render("~/webclient")
     @if (action.Equals("index", StringComparison.InvariantCultureIgnoreCase))
     {
-        @Styles.Render("~/swiper")
+        @*@Styles.Render("~/swiper")*@
+        <link rel="stylesheet" href="~/Content/css/swiper.min.css">
+        <link rel="stylesheet" href="~/Content/css/owl.carousel.min.css">
     }
-
+   
     @Scripts.Render("~/bundles/webclient")
     @Scripts.Render("~/bundles/ajaxAsync")
 </head>

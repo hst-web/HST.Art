@@ -439,6 +439,96 @@
     <Compile Include="Models\SearchDataTable.cs" />
     <Compile Include="Models\UploadViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\Home\About.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>About.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Home\Association.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Association.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Home\Certificate.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Certificate.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Home\CertificateList.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CertificateList.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Home\Download.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Download.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Home\DownloadList.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DownloadList.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Home\Examination.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Examination.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Home\Footer.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Footer.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Home\GetArticList.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GetArticList.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Home\GetDetail.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GetDetail.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Home\GetRecommend.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GetRecommend.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Home\Header.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Header.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Home\Index.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Index.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Home\Industry.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Industry.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Home\MemberList.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MemberList.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Home\SecondMenu.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SecondMenu.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Home\Social.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Social.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shared\_Layout.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_Layout.cshtml</DependentUpon>
+    </Compile>
     <Compile Include="Views\_ViewStart.generated.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -2265,23 +2355,74 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\GetRecommend.cshtml" />
-    <Content Include="Views\Home\GetDetail.cshtml" />
-    <Content Include="Views\Home\MemberList.cshtml" />
-    <Content Include="Views\Home\CertificateList.cshtml" />
-    <Content Include="Views\Home\Certificate.cshtml" />
-    <Content Include="Views\Home\Header.cshtml" />
-    <Content Include="Views\Home\Footer.cshtml" />
-    <Content Include="Views\Home\SecondMenu.cshtml" />
-    <Content Include="Views\Home\Examination.cshtml" />
-    <Content Include="Views\Home\GetArticList.cshtml" />
-    <Content Include="Views\Home\Industry.cshtml" />
-    <Content Include="Views\Home\Social.cshtml" />
-    <Content Include="Views\Home\Association.cshtml" />
-    <Content Include="Views\Home\DownloadList.cshtml" />
-    <Content Include="Views\Home\Download.cshtml" />
+    <None Include="Views\Home\Index.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Index.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Views\Home\About.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>About.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Views\Home\GetRecommend.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>GetRecommend.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Views\Home\GetDetail.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>GetDetail.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Views\Home\MemberList.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>MemberList.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Views\Home\CertificateList.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>CertificateList.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Views\Home\Certificate.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Certificate.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Views\Home\Header.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Header.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Views\Home\Footer.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Footer.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Views\Home\SecondMenu.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>SecondMenu.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Views\Home\Examination.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Examination.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Views\Home\GetArticList.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>GetArticList.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Views\Home\Industry.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Industry.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Views\Home\Social.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Social.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Views\Home\Association.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Association.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Views\Home\DownloadList.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>DownloadList.generated.cs</LastGenOutput>
+    </None>
+    <None Include="Views\Home\Download.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Download.generated.cs</LastGenOutput>
+    </None>
     <None Include="Views\Web.config">
       <Generator>RazorGenerator</Generator>
     </None>
@@ -2297,7 +2438,10 @@
       <LastGenOutput>welcome.generated.cs</LastGenOutput>
       <Generator>RazorGenerator</Generator>
     </None>
-    <Content Include="Views\Shared\_Layout.cshtml" />
+    <None Include="Views\Shared\_Layout.cshtml">
+      <Generator>RazorGenerator</Generator>
+      <LastGenOutput>_Layout.generated.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
