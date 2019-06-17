@@ -79,6 +79,11 @@
             $("#tableCategory2").find("td:first").html(trCount);
             $("#tbTableP tbody").append($("#tableCategory2 tbody").html());
         })
+
+        //测试数据
+        $("#btnTest").click(function () {
+            parent[pageIndex()].reloadParCategory();
+        })
     });
 
 
@@ -129,6 +134,7 @@
                 if (data.isSuccess) {
                     layer.msg("操作成功");
                     table2.ajax.reload();
+                    parent[pageIndex()].reloadParCategory();
                 } else {
                     top.layer.alert(data.message, 3);
                 }
@@ -241,6 +247,7 @@
                             closeBtn: 0,
                             yes: function () {
                                 table2.ajax.reload();
+                                parent[pageIndex()].reloadParCategory();
                                 top.layer.close(index);
                             }
                         });
@@ -268,6 +275,7 @@
                             closeBtn: 0,
                             yes: function () {
                                 table2.ajax.reload();
+                                parent[pageIndex()].reloadParCategory();
                                 top.layer.close(index);
                             }
                         });
@@ -294,6 +302,7 @@
                             closeBtn: 0,
                             yes: function () {
                                 table2.ajax.reload();
+                                parent[pageIndex()].reloadParCategory();
                                 top.layer.close(index);
                             }
                         });

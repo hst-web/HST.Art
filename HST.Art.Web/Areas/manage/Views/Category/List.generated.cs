@@ -348,39 +348,42 @@ WriteLiteral(">\r\n    var tempTr2;\r\n    var table2 = null;\r\n    $(function 
 "gory2 div[data-bind=btn-edit]\").addClass(\"hidden\");\r\n            var trCount = $" +
 "(\"#tbTableP tbody tr\").length + 1;\r\n            $(\"#tableCategory2\").find(\"td:fi" +
 "rst\").html(trCount);\r\n            $(\"#tbTableP tbody\").append($(\"#tableCategory2" +
-" tbody\").html());\r\n        })\r\n    });\r\n\r\n\r\n    function category_deit(obj, id, " +
-"parentId) {\r\n        if ($(\"#tbTableP div[data-bind=category-form]\").length > 0)" +
-" {\r\n            $(\"#tbTableP input[name=CategoryName]\").focus();\r\n            to" +
-"p.layer.alert(\"当前有未编辑完的项目，请操作完成后再进行添加\", 3);\r\n            return false;\r\n        " +
-"}\r\n\r\n        $(\"#categoryId\").val(id);\r\n        $(\"#categoryParentId\").val(paren" +
-"tId);\r\n        var categroyVal = $(obj).attr(\"data-bind\");\r\n        $(\"#tableCat" +
-"egory2 div[data-bind=btn-add]\").addClass(\"hidden\");\r\n        $(\"#tableCategory2 " +
-"div[data-bind=btn-edit]\").removeClass(\"hidden\");\r\n        var trCount = $(obj).p" +
-"arents(\"tr\").find(\"td:first\").html();\r\n        $(\"#tableCategory2\").find(\"td:fir" +
-"st\").html(trCount);\r\n        tempTr2 = $(obj).parents(\"tr\").html();\r\n        $(o" +
-"bj).parents(\"tr\").addClass(\"bg-warning\").empty().html($(\"#tableCategory2 tbody t" +
-"r:first\").html());\r\n\r\n        $(\"#tbTableP\").find(\"input[name=CategoryName]\").va" +
-"l(categroyVal);\r\n    }\r\n\r\n    function clearError(obj) {\r\n        $(obj).removeC" +
-"lass(\"error\").siblings().addClass(\"hidden\");\r\n    }\r\n    function cancelEdit(obj" +
-") {\r\n        $(obj).parents(\"tr\").empty().html(tempTr2).removeClass(\"bg-warning\"" +
-");\r\n    }\r\n\r\n    function removeParent(obj) {\r\n        $(obj).parents(\"tr\").remo" +
-"ve();\r\n    }\r\n\r\n    function subForm(obj, url) {\r\n        if ($(\"#tbTableP input" +
-"[name=CategoryName]\").val().length <= 0) {\r\n            $(\"#tbTableP input[name=" +
-"CategoryName]\").siblings(\"label\").removeClass(\"hidden\");\r\n            $(\"#tbTabl" +
-"eP input[name=CategoryName]\").addClass(\"error\");\r\n            return false;\r\n   " +
-"     }\r\n\r\n        $.ajax({\r\n            url: url,\r\n            type: \"Post\",\r\n  " +
-"          data: { \"CategoryName\": $(\"#tbTableP input[name=CategoryName]\").val()," +
-" \"CategoryType\": $(\"#categoryType\").val(), \"Id\": $(\"#categoryId\").val(), ParentI" +
-"d: $(\"#categoryParentId\").val() },\r\n            dataType: \"json\",\r\n            s" +
-"uccess: function (data) {\r\n                if (data.isSuccess) {\r\n              " +
-"      layer.msg(\"操作成功\");\r\n                    table2.ajax.reload();\r\n           " +
-"     } else {\r\n                    top.layer.alert(data.message, 3);\r\n          " +
-"      }\r\n            }\r\n        })\r\n    }\r\n\r\n    function initializeTable() {\r\n " +
-"       var dataTable = $(\'#tbTableP\').DataTable({\r\n            \"serverSide\": tru" +
-"e,\r\n            \"ajax\": {\r\n                \"url\": \"");
+" tbody\").html());\r\n        })\r\n\r\n        //测试数据\r\n        $(\"#btnTest\").click(fun" +
+"ction () {\r\n            parent[pageIndex()].reloadParCategory();\r\n        })\r\n  " +
+"  });\r\n\r\n\r\n    function category_deit(obj, id, parentId) {\r\n        if ($(\"#tbTa" +
+"bleP div[data-bind=category-form]\").length > 0) {\r\n            $(\"#tbTableP inpu" +
+"t[name=CategoryName]\").focus();\r\n            top.layer.alert(\"当前有未编辑完的项目，请操作完成后再" +
+"进行添加\", 3);\r\n            return false;\r\n        }\r\n\r\n        $(\"#categoryId\").val" +
+"(id);\r\n        $(\"#categoryParentId\").val(parentId);\r\n        var categroyVal = " +
+"$(obj).attr(\"data-bind\");\r\n        $(\"#tableCategory2 div[data-bind=btn-add]\").a" +
+"ddClass(\"hidden\");\r\n        $(\"#tableCategory2 div[data-bind=btn-edit]\").removeC" +
+"lass(\"hidden\");\r\n        var trCount = $(obj).parents(\"tr\").find(\"td:first\").htm" +
+"l();\r\n        $(\"#tableCategory2\").find(\"td:first\").html(trCount);\r\n        temp" +
+"Tr2 = $(obj).parents(\"tr\").html();\r\n        $(obj).parents(\"tr\").addClass(\"bg-wa" +
+"rning\").empty().html($(\"#tableCategory2 tbody tr:first\").html());\r\n\r\n        $(\"" +
+"#tbTableP\").find(\"input[name=CategoryName]\").val(categroyVal);\r\n    }\r\n\r\n    fun" +
+"ction clearError(obj) {\r\n        $(obj).removeClass(\"error\").siblings().addClass" +
+"(\"hidden\");\r\n    }\r\n    function cancelEdit(obj) {\r\n        $(obj).parents(\"tr\")" +
+".empty().html(tempTr2).removeClass(\"bg-warning\");\r\n    }\r\n\r\n    function removeP" +
+"arent(obj) {\r\n        $(obj).parents(\"tr\").remove();\r\n    }\r\n\r\n    function subF" +
+"orm(obj, url) {\r\n        if ($(\"#tbTableP input[name=CategoryName]\").val().lengt" +
+"h <= 0) {\r\n            $(\"#tbTableP input[name=CategoryName]\").siblings(\"label\")" +
+".removeClass(\"hidden\");\r\n            $(\"#tbTableP input[name=CategoryName]\").add" +
+"Class(\"error\");\r\n            return false;\r\n        }\r\n\r\n        $.ajax({\r\n     " +
+"       url: url,\r\n            type: \"Post\",\r\n            data: { \"CategoryName\":" +
+" $(\"#tbTableP input[name=CategoryName]\").val(), \"CategoryType\": $(\"#categoryType" +
+"\").val(), \"Id\": $(\"#categoryId\").val(), ParentId: $(\"#categoryParentId\").val() }" +
+",\r\n            dataType: \"json\",\r\n            success: function (data) {\r\n      " +
+"          if (data.isSuccess) {\r\n                    layer.msg(\"操作成功\");\r\n       " +
+"             table2.ajax.reload();\r\n                    parent[pageIndex()].relo" +
+"adParCategory();\r\n                } else {\r\n                    top.layer.alert(" +
+"data.message, 3);\r\n                }\r\n            }\r\n        })\r\n    }\r\n\r\n    fu" +
+"nction initializeTable() {\r\n        var dataTable = $(\'#tbTableP\').DataTable({\r\n" +
+"            \"serverSide\": true,\r\n            \"ajax\": {\r\n                \"url\": \"" +
+"");
 
             
-            #line 143 "..\..\Areas\manage\Views\Category\List.cshtml"
+            #line 149 "..\..\Areas\manage\Views\Category\List.cshtml"
                    Write(Url.Action("GetJsonData"));
 
             
@@ -409,7 +412,7 @@ WriteLiteral("\",\r\n                \"type\": \"post\",\r\n                \"da
 "ipt:;\\\" onClick=\\\"category_publish(\'");
 
             
-            #line 180 "..\..\Areas\manage\Views\Category\List.cshtml"
+            #line 186 "..\..\Areas\manage\Views\Category\List.cshtml"
                                                                                       Write(Url.Action("Publish"));
 
             
@@ -419,7 +422,7 @@ WriteLiteral("\',\" + data + \")\\\"  title=\\\"上架\\\">上架</a>\";\r\n    
 "           tmpString += \"<a href=\\\"javascript:;\\\" onClick=\\\"category_shelves(\'");
 
             
-            #line 182 "..\..\Areas\manage\Views\Category\List.cshtml"
+            #line 188 "..\..\Areas\manage\Views\Category\List.cshtml"
                                                                                       Write(Url.Action("Shelves"));
 
             
@@ -429,7 +432,7 @@ WriteLiteral("\',\" + data + \")\\\"  title=\\\"下架\\\">下架</a>\";\r\n    
 "ef=\\\"javascript:;\\\" onClick=\\\"category_del(\'类别\',\'");
 
             
-            #line 183 "..\..\Areas\manage\Views\Category\List.cshtml"
+            #line 189 "..\..\Areas\manage\Views\Category\List.cshtml"
                                                                                    Write(Url.Action("Delete"));
 
             
@@ -463,35 +466,38 @@ WriteLiteral("\',\" + data + \")\\\"  title=\\\"删除\\\">删除</a>\";\r\n\r\n
 "                       var index = top.layer.alert(\'操作成功！\', {\r\n                 " +
 "           icon: 6,\r\n                            closeBtn: 0,\r\n                 " +
 "           yes: function () {\r\n                                table2.ajax.reloa" +
-"d();\r\n                                top.layer.close(index);\r\n                 " +
-"           }\r\n                        });\r\n                    } else {\r\n       " +
-"                 top.layer.alert(\'操作失败！\', { icon: 5 });\r\n                    }\r\n" +
-"                },\r\n                error: function (data) { top.layer.alert(\'操作" +
-"失败！\', { icon: 5 }); }\r\n            })\r\n        });\r\n    }\r\n\r\n\r\n    /*上架*/\r\n    f" +
-"unction category_publish(action, id) {\r\n        top.layer.confirm(\'确认要上架吗？\', fun" +
-"ction (e) {\r\n            $.ajax({\r\n                url: action,\r\n               " +
-" type: \"post\",\r\n                data: { id: id },\r\n                success: func" +
-"tion (data) {\r\n                    if (data.isSuccess) {\r\n                      " +
-"  var index = top.layer.alert(\'操作成功！\', {\r\n                            icon: 6,\r\n" +
-"                            closeBtn: 0,\r\n                            yes: funct" +
-"ion () {\r\n                                table2.ajax.reload();\r\n               " +
-"                 top.layer.close(index);\r\n                            }\r\n       " +
-"                 });\r\n                    } else {\r\n                        top." +
-"layer.alert(\'操作失败！\', { icon: 5 });\r\n                    }\r\n                },\r\n " +
-"               error: function (data) { top.layer.alert(\'操作失败！\', { icon: 5 }); }" +
-"\r\n            })\r\n        });\r\n    }\r\n\r\n    /*下架*/\r\n    function category_shelve" +
-"s(action, id) {\r\n        top.layer.confirm(\'确认要下架吗？\', function (e) {\r\n          " +
-"  $.ajax({\r\n                url: action,\r\n                type: \"post\",\r\n       " +
-"         data: { id: id },\r\n                success: function (data) {\r\n        " +
-"            if (data.isSuccess) {\r\n                        var index = top.layer" +
-".alert(\'操作成功！\', {\r\n                            icon: 6,\r\n                       " +
-"     closeBtn: 0,\r\n                            yes: function () {\r\n             " +
-"                   table2.ajax.reload();\r\n                                top.la" +
-"yer.close(index);\r\n                            }\r\n                        });\r\n " +
-"                   } else {\r\n                        top.layer.alert(\'操作失败！\', { " +
-"icon: 5 });\r\n                    }\r\n                },\r\n                error: f" +
-"unction (data) { top.layer.alert(\'操作失败！\', { icon: 5 }); }\r\n            })\r\n     " +
-"   });\r\n    }\r\n\r\n</script>\r\n");
+"d();\r\n                                parent[pageIndex()].reloadParCategory();\r\n" +
+"                                top.layer.close(index);\r\n                       " +
+"     }\r\n                        });\r\n                    } else {\r\n             " +
+"           top.layer.alert(\'操作失败！\', { icon: 5 });\r\n                    }\r\n      " +
+"          },\r\n                error: function (data) { top.layer.alert(\'操作失败！\', " +
+"{ icon: 5 }); }\r\n            })\r\n        });\r\n    }\r\n\r\n\r\n    /*上架*/\r\n    functio" +
+"n category_publish(action, id) {\r\n        top.layer.confirm(\'确认要上架吗？\', function " +
+"(e) {\r\n            $.ajax({\r\n                url: action,\r\n                type:" +
+" \"post\",\r\n                data: { id: id },\r\n                success: function (" +
+"data) {\r\n                    if (data.isSuccess) {\r\n                        var " +
+"index = top.layer.alert(\'操作成功！\', {\r\n                            icon: 6,\r\n      " +
+"                      closeBtn: 0,\r\n                            yes: function ()" +
+" {\r\n                                table2.ajax.reload();\r\n                     " +
+"           parent[pageIndex()].reloadParCategory();\r\n                           " +
+"     top.layer.close(index);\r\n                            }\r\n                   " +
+"     });\r\n                    } else {\r\n                        top.layer.alert(" +
+"\'操作失败！\', { icon: 5 });\r\n                    }\r\n                },\r\n             " +
+"   error: function (data) { top.layer.alert(\'操作失败！\', { icon: 5 }); }\r\n          " +
+"  })\r\n        });\r\n    }\r\n\r\n    /*下架*/\r\n    function category_shelves(action, id" +
+") {\r\n        top.layer.confirm(\'确认要下架吗？\', function (e) {\r\n            $.ajax({\r\n" +
+"                url: action,\r\n                type: \"post\",\r\n                dat" +
+"a: { id: id },\r\n                success: function (data) {\r\n                    " +
+"if (data.isSuccess) {\r\n                        var index = top.layer.alert(\'操作成功" +
+"！\', {\r\n                            icon: 6,\r\n                            closeBt" +
+"n: 0,\r\n                            yes: function () {\r\n                         " +
+"       table2.ajax.reload();\r\n                                parent[pageIndex()" +
+"].reloadParCategory();\r\n                                top.layer.close(index);\r" +
+"\n                            }\r\n                        });\r\n                   " +
+" } else {\r\n                        top.layer.alert(\'操作失败！\', { icon: 5 });\r\n     " +
+"               }\r\n                },\r\n                error: function (data) { t" +
+"op.layer.alert(\'操作失败！\', { icon: 5 }); }\r\n            })\r\n        });\r\n    }\r\n\r\n<" +
+"/script>\r\n");
 
         }
     }

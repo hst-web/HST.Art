@@ -185,7 +185,36 @@
 
     }
 
+    function reloadParCategory() {
+        console.log("获取类别被执行了");
+        $.ajax({
+            url: "@Url.Action("GetParentCategory")",
+            type: "Get",          
+            dataType: "json",
+            success: function (data) {
+                var sbAll = new StringBuffer();
+                var sbEnabled = new StringBuffer();
+                $.each(data.allList, function (i, v) {
+                    sbAll.append("<option value='" + v.Id + "'>" + v.Name + "</option>");
+                });
+
+                $.each(data.enabledList, function (i, v) {
+                    sbEnabled.append("<option value='" + v.Id + "'>" + v.Name + "</option>");
+                });
+
+
+                $("#selAll").empty().append("<option value='0'>所属类别</option>").append(sbAll.toString());
+                $("#selEnabled").empty().append("<option value='0'>所属类别</option>").append(sbEnabled.toString());
+            }
+        })
+    }
+
     function category_parent(title, url) {
+        if ($("#tbTable div[data-bind=category-form]").length > 0) {
+            top.layer.alert("当前有未编辑完的项目，请操作完成后再进行大类管理", 3);
+            return false;
+        }
+
         var index = top.layer.open({
             type: 2,
             title: title,

@@ -171,6 +171,19 @@ namespace HST.Art.Web.Areas.manage.Controllers
         }
         #endregion
 
+        public JsonResult GetParentCategory()
+        {
+            List<CategoryDictionary> cdAllList = cdService.GetAll(CategoryType.Examination);
+            List<CategoryDictionary> cdEnabledList = new List<CategoryDictionary>();
+            if (cdAllList != null && cdAllList.Count > 0)
+            {
+                cdAllList.RemoveAll(g => g.Parent > 0);
+                cdEnabledList = cdAllList.FindAll(g => g.State == PublishState.Upper);
+            }
+
+            return Json(new { allList = cdAllList, enabledList = cdEnabledList }, JsonRequestBehavior.AllowGet);
+        }
+
         private void InitData()
         {
             List<CategoryDictionary> cdAllList = cdService.GetAll(CategoryType.Examination);
@@ -195,7 +208,7 @@ namespace HST.Art.Web.Areas.manage.Controllers
             List<CategoryDictionary> cdList = cdService.GetAll(categoryType);
             if (cdList != null && cdList.Count > 0 && cdList.Where(g => g.Name.Equals(categoryName)).Count() > 0)
             {
-                if (cdList.FindAll(g=>g.Name.Equals(categoryName)).Where(g => !g.Id.Equals(id)).Count() > 0)
+                if (cdList.FindAll(g => g.Name.Equals(categoryName)).Where(g => !g.Id.Equals(id)).Count() > 0)
                     rmodel.message = "类别名称已经存在";
                 else
                     rmodel.isSuccess = true;

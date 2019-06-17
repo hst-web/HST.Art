@@ -39,7 +39,6 @@ namespace HST.Art.Web
 
         [StringLength(600, ErrorMessage = "长度不能超过600个字符")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "企业简介不能为空")]
-        [RegularExpression(@"^[^\s]+$", ErrorMessage = "企业简介不能包含空字符")]
         public string Description { get; set; }
 
         public string Logo { get; set; }

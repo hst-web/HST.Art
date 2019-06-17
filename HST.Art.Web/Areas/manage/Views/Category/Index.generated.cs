@@ -716,41 +716,78 @@ WriteLiteral("\') {\r\n                $(\"#tableCategory1 select\").parent().re
             
             #line default
             #line hidden
-WriteLiteral("\' && $(\"#tbTable select[name=selParCategory]\").val() <= 0) {\r\n            $(\"#tbT" +
-"able select[name=selParCategory]\").addClass(\"error\");\r\n            return false;" +
-"\r\n        }\r\n\r\n        $.ajax({\r\n            url: url,\r\n            type: \"Post\"" +
-",\r\n            data: { \"CategoryName\": $(\"#tbTable input[name=CategoryName]\").va" +
-"l(), \"CategoryType\": $(\"#categoryType\").val(), \"Id\": $(\"#categoryId\").val(), Par" +
-"entId: $(\"#categoryParentId\").val() },\r\n            dataType: \"json\",\r\n         " +
-"   success: function (data) {\r\n                if (data.isSuccess) {\r\n          " +
-"          layer.msg(\"操作成功\");\r\n                    table1.ajax.reload();\r\n       " +
-"         } else {\r\n                    top.layer.alert(data.message, 3);\r\n      " +
-"          }\r\n            }\r\n        })\r\n\r\n    }\r\n\r\n    function category_parent(" +
-"title, url) {\r\n        var index = top.layer.open({\r\n            type: 2,\r\n     " +
-"       title: title,\r\n            area: [\'950px\', \'650px\'],\r\n            content" +
-": url\r\n        });\r\n    }\r\n\r\n    function category_deit(obj, id, parentId) {\r\n  " +
-"      if ($(\"#tbTable div[data-bind=category-form]\").length > 0) {\r\n            " +
-"$(\"#tbTable input[name=CategoryName]\").focus();\r\n            top.layer.alert(\"当前" +
-"有未编辑完的项目，请操作完成后再进行添加\", 3);\r\n            return false;\r\n        }\r\n\r\n        if (" +
-"parentId > 0) {\r\n            $(\"#tableCategory1 select\").parent().removeClass(\"h" +
-"idden\");\r\n            $(\"#tableCategory1 tbody td:last\").attr(\"colspan\", 6);\r\n  " +
-"      } else {\r\n            $(\"#tableCategory1 select\").parent().addClass(\"hidde" +
-"n\");\r\n            $(\"#tableCategory1 tbody td:last\").attr(\"colspan\", 5);\r\n      " +
-"  }\r\n\r\n        $(\"#categoryId\").val(id);\r\n        $(\"#categoryParentId\").val(par" +
-"entId);\r\n        $(\"#tableCategory1 select\").empty().html($(\"#selAll\").html());\r" +
-"\n        var categroyVal = $(obj).attr(\"data-bind\");\r\n        $(\"#tableCategory1" +
-" div[data-bind=btn-add]\").addClass(\"hidden\");\r\n        $(\"#tableCategory1 div[da" +
-"ta-bind=btn-edit]\").removeClass(\"hidden\");\r\n        var trCount = $(obj).parents" +
-"(\"tr\").find(\"td:first\").html();\r\n        $(\"#tableCategory1\").find(\"td:first\").h" +
-"tml(trCount);\r\n        tempTr = $(obj).parents(\"tr\").html();\r\n        $(obj).par" +
-"ents(\"tr\").addClass(\"bg-warning\").empty().html($(\"#tableCategory1 tbody tr:first" +
-"\").html());\r\n\r\n        $(\"#tbTable\").find(\"input[name=CategoryName]\").val(categr" +
-"oyVal);\r\n        $(\"#tbTable\").find(\"select\").val(parentId);\r\n    }\r\n\r\n    funct" +
-"ion initializeTable() {\r\n        var dataTable = $(\'#tbTable\').DataTable({\r\n    " +
-"        \"serverSide\": true,\r\n            \"ajax\": {\r\n                \"url\": \"");
+WriteLiteral(@"' && $(""#tbTable select[name=selParCategory]"").val() <= 0) {
+            $(""#tbTable select[name=selParCategory]"").addClass(""error"");
+            return false;
+        }
+
+        $.ajax({
+            url: url,
+            type: ""Post"",
+            data: { ""CategoryName"": $(""#tbTable input[name=CategoryName]"").val(), ""CategoryType"": $(""#categoryType"").val(), ""Id"": $(""#categoryId"").val(), ParentId: $(""#categoryParentId"").val() },
+            dataType: ""json"",
+            success: function (data) {
+                if (data.isSuccess) {
+                    layer.msg(""操作成功"");
+                    table1.ajax.reload();
+                } else {
+                    top.layer.alert(data.message, 3);
+                }
+            }
+        })
+
+    }
+
+    function reloadParCategory() {
+        console.log(""获取类别被执行了"");
+        $.ajax({
+            url: """);
 
             
-            #line 231 "..\..\Areas\manage\Views\Category\Index.cshtml"
+            #line 191 "..\..\Areas\manage\Views\Category\Index.cshtml"
+             Write(Url.Action("GetParentCategory"));
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\",\r\n            type: \"Get\",          \r\n            dataType: \"json\",\r\n          " +
+"  success: function (data) {\r\n                var sbAll = new StringBuffer();\r\n " +
+"               var sbEnabled = new StringBuffer();\r\n                $.each(data." +
+"allList, function (i, v) {\r\n                    sbAll.append(\"<option value=\'\" +" +
+" v.Id + \"\'>\" + v.Name + \"</option>\");\r\n                });\r\n\r\n                $." +
+"each(data.enabledList, function (i, v) {\r\n                    sbEnabled.append(\"" +
+"<option value=\'\" + v.Id + \"\'>\" + v.Name + \"</option>\");\r\n                });\r\n\r\n" +
+"\r\n                $(\"#selAll\").empty().append(\"<option value=\'0\'>所属类别</option>\")" +
+".append(sbAll.toString());\r\n                $(\"#selEnabled\").empty().append(\"<op" +
+"tion value=\'0\'>所属类别</option>\").append(sbEnabled.toString());\r\n            }\r\n   " +
+"     })\r\n    }\r\n\r\n    function category_parent(title, url) {\r\n        if ($(\"#tb" +
+"Table div[data-bind=category-form]\").length > 0) {\r\n            top.layer.alert(" +
+"\"当前有未编辑完的项目，请操作完成后再进行大类管理\", 3);\r\n            return false;\r\n        }\r\n\r\n       " +
+" var index = top.layer.open({\r\n            type: 2,\r\n            title: title,\r\n" +
+"            area: [\'950px\', \'650px\'],\r\n            content: url\r\n        });\r\n  " +
+"  }\r\n\r\n    function category_deit(obj, id, parentId) {\r\n        if ($(\"#tbTable " +
+"div[data-bind=category-form]\").length > 0) {\r\n            $(\"#tbTable input[name" +
+"=CategoryName]\").focus();\r\n            top.layer.alert(\"当前有未编辑完的项目，请操作完成后再进行添加\"," +
+" 3);\r\n            return false;\r\n        }\r\n\r\n        if (parentId > 0) {\r\n     " +
+"       $(\"#tableCategory1 select\").parent().removeClass(\"hidden\");\r\n            " +
+"$(\"#tableCategory1 tbody td:last\").attr(\"colspan\", 6);\r\n        } else {\r\n      " +
+"      $(\"#tableCategory1 select\").parent().addClass(\"hidden\");\r\n            $(\"#" +
+"tableCategory1 tbody td:last\").attr(\"colspan\", 5);\r\n        }\r\n\r\n        $(\"#cat" +
+"egoryId\").val(id);\r\n        $(\"#categoryParentId\").val(parentId);\r\n        $(\"#t" +
+"ableCategory1 select\").empty().html($(\"#selAll\").html());\r\n        var categroyV" +
+"al = $(obj).attr(\"data-bind\");\r\n        $(\"#tableCategory1 div[data-bind=btn-add" +
+"]\").addClass(\"hidden\");\r\n        $(\"#tableCategory1 div[data-bind=btn-edit]\").re" +
+"moveClass(\"hidden\");\r\n        var trCount = $(obj).parents(\"tr\").find(\"td:first\"" +
+").html();\r\n        $(\"#tableCategory1\").find(\"td:first\").html(trCount);\r\n       " +
+" tempTr = $(obj).parents(\"tr\").html();\r\n        $(obj).parents(\"tr\").addClass(\"b" +
+"g-warning\").empty().html($(\"#tableCategory1 tbody tr:first\").html());\r\n\r\n       " +
+" $(\"#tbTable\").find(\"input[name=CategoryName]\").val(categroyVal);\r\n        $(\"#t" +
+"bTable\").find(\"select\").val(parentId);\r\n    }\r\n\r\n    function initializeTable() " +
+"{\r\n        var dataTable = $(\'#tbTable\').DataTable({\r\n            \"serverSide\": " +
+"true,\r\n            \"ajax\": {\r\n                \"url\": \"");
+
+            
+            #line 260 "..\..\Areas\manage\Views\Category\Index.cshtml"
                    Write(Url.Action("GetJsonData"));
 
             
@@ -780,7 +817,7 @@ WriteLiteral("\",\r\n                \"type\": \"post\",\r\n                \"da
 "");
 
             
-            #line 269 "..\..\Areas\manage\Views\Category\Index.cshtml"
+            #line 298 "..\..\Areas\manage\Views\Category\Index.cshtml"
                                                                                  Write(Url.Action("Publish"));
 
             
@@ -790,7 +827,7 @@ WriteLiteral("\',\" + data + \")\\\"  title=\\\"上架\\\">上架</a>\";\r\n    
 "           tmpString += \"<a href=\\\"javascript:;\\\" onClick=\\\"obj_shelves(\'");
 
             
-            #line 271 "..\..\Areas\manage\Views\Category\Index.cshtml"
+            #line 300 "..\..\Areas\manage\Views\Category\Index.cshtml"
                                                                                  Write(Url.Action("Shelves"));
 
             
@@ -800,7 +837,7 @@ WriteLiteral("\',\" + data + \")\\\"  title=\\\"下架\\\">下架</a>\";\r\n    
 "ef=\\\"javascript:;\\\" onClick=\\\"obj_del(\'类别\',\'");
 
             
-            #line 272 "..\..\Areas\manage\Views\Category\Index.cshtml"
+            #line 301 "..\..\Areas\manage\Views\Category\Index.cshtml"
                                                                               Write(Url.Action("Delete"));
 
             
@@ -824,7 +861,7 @@ WriteLiteral(@"',"" + data + "")\""  title=\""删除\"">删除</a>"";
                 if ($(""#categoryType"").val() == '");
 
             
-            #line 287 "..\..\Areas\manage\Views\Category\Index.cshtml"
+            #line 316 "..\..\Areas\manage\Views\Category\Index.cshtml"
                                             Write(CategoryType.Examination);
 
             
