@@ -179,7 +179,7 @@
             }
 
             if (!jsonresult.IsSuccess) {
-                if (CheckIsNotNullOrEmpty(jsonresult.FilePath)) {
+                if (jsonresult.FilePath) {
                     top.layer.open({
                         type: 1,
                         anim: 2,

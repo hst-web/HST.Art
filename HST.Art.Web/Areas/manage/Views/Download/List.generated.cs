@@ -441,20 +441,26 @@ WriteLiteral("\",\r\n                    \"type\": \"post\",\r\n                
 " { \"mDataProp\": \"UserName\" },\r\n                      { \"mDataProp\": \"CreateTime\"" +
 " },\r\n                      { \"mDataProp\": \"Id\" },\r\n                      { \"defa" +
 "ultContent\": \"\" }\r\n\r\n                ],\r\n                \"columnDefs\": [\r\n      " +
-"           {\r\n                     \"targets\": [4],\r\n                     \"data\":" +
-" \"State\",\r\n                     \"render\": function (data, type, full) {\r\n       " +
-"                  var result = data;\r\n                         if (data > 0) {\r\n" +
-"                             result = \"<span class=\\\"label label-success radius\\" +
-"\">已上架</span>\";\r\n                         } else {\r\n                             " +
-"result = \"<span class=\\\"label label-danger radius\\\">已下架</span>\";\r\n              " +
-"           }\r\n\r\n                         return result;\r\n                     }\r" +
-"\n                 },\r\n                 {\r\n\r\n                     \"targets\": [7]," +
-"\r\n                     \"data\": \"Id\",\r\n                     \"render\": function (d" +
-"ata, type, full) {\r\n                         var result = \"<a href=\\\"javascript:" +
-";\\\" onClick=\\\"obj_detail(\'查看详情\',\'");
+"           {\r\n                     \"targets\": [3],\r\n                     \"data\":" +
+" \"FileName\",\r\n                     \"render\": function (data, type, full) {\r\n    " +
+"                     var result = data;\r\n                         if (full.Src) " +
+"{\r\n                             result = \"<a href=\\\"\"+full.Src+\"\\\">\"+data+\"</a>\"" +
+";\r\n                         } \r\n\r\n                         return result;\r\n     " +
+"                }\r\n                 },\r\n                     {\r\n                " +
+"         \"targets\": [4],\r\n                         \"data\": \"State\",\r\n           " +
+"              \"render\": function (data, type, full) {\r\n                         " +
+"    var result = data;\r\n                             if (data > 0) {\r\n          " +
+"                       result = \"<span class=\\\"label label-success radius\\\">已上架<" +
+"/span>\";\r\n                             } else {\r\n                               " +
+"  result = \"<span class=\\\"label label-danger radius\\\">已下架</span>\";\r\n            " +
+"                 }\r\n\r\n                             return result;\r\n             " +
+"            }\r\n                     },\r\n                 {\r\n\r\n                  " +
+"   \"targets\": [7],\r\n                     \"data\": \"Id\",\r\n                     \"re" +
+"nder\": function (data, type, full) {\r\n                         var result = \"<a " +
+"href=\\\"javascript:;\\\" onClick=\\\"obj_detail(\'查看详情\',\'");
 
             
-            #line 146 "..\..\Areas\manage\Views\Download\List.cshtml"
+            #line 158 "..\..\Areas\manage\Views\Download\List.cshtml"
                                                                                         Write(Url.Action("Detail"));
 
             
@@ -471,7 +477,7 @@ WriteLiteral(@"',"" + data + "")\""  title=\""查看详情\"">查看详情</a>""
                         var tmpString = '<a href=""");
 
             
-            #line 154 "..\..\Areas\manage\Views\Download\List.cshtml"
+            #line 166 "..\..\Areas\manage\Views\Download\List.cshtml"
                                              Write(Url.Action("Edit"));
 
             
@@ -482,7 +488,7 @@ WriteLiteral("?id=\' + data + \'\" title=\"编辑\">编辑</a>\';\r\n           
 "\"obj_publish(\'");
 
             
-            #line 156 "..\..\Areas\manage\Views\Download\List.cshtml"
+            #line 168 "..\..\Areas\manage\Views\Download\List.cshtml"
                                                                                      Write(Url.Action("Publish"));
 
             
@@ -493,7 +499,7 @@ WriteLiteral("\',\" + data + \")\\\"  title=\\\"上架\\\">上架</a>\";\r\n    
 "\'");
 
             
-            #line 158 "..\..\Areas\manage\Views\Download\List.cshtml"
+            #line 170 "..\..\Areas\manage\Views\Download\List.cshtml"
                                                                                      Write(Url.Action("Shelves"));
 
             
@@ -503,7 +509,7 @@ WriteLiteral("\',\" + data + \")\\\"  title=\\\"下架\\\">下架</a>\";\r\n    
 "a href=\\\"javascript:;\\\" onClick=\\\"obj_del(\'文件\',\'");
 
             
-            #line 159 "..\..\Areas\manage\Views\Download\List.cshtml"
+            #line 171 "..\..\Areas\manage\Views\Download\List.cshtml"
                                                                                   Write(Url.Action("Delete"));
 
             

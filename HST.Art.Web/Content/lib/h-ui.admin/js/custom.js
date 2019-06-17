@@ -158,12 +158,6 @@ function enSubmit(id, title) {
     }
 }
 
-function CheckIsNotNullOrEmpty(value) {
-    var reg = /\s+/g//正则表达式用于判斷是否有空格或空字符串
-    //reg.test(value)判斷是否有空格，有空格為true,如果首尾空格要求不嚴格的話可以加上trim(),如reg.test(value.trim()
-    return (value != null && value != undefined && value.length > 0)
-}
-
 /*删除*/
 function obj_del(title, action, id) {
     top.layer.confirm('确认要删除该' + title + '吗？', function (e) {

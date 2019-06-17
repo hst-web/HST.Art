@@ -125,19 +125,31 @@
                 ],
                 "columnDefs": [
                  {
-                     "targets": [4],
-                     "data": "State",
+                     "targets": [3],
+                     "data": "FileName",
                      "render": function (data, type, full) {
                          var result = data;
-                         if (data > 0) {
-                             result = "<span class=\"label label-success radius\">已上架</span>";
-                         } else {
-                             result = "<span class=\"label label-danger radius\">已下架</span>";
-                         }
+                         if (full.Src) {
+                             result = "<a href=\""+full.Src+"\">"+data+"</a>";
+                         } 
 
                          return result;
                      }
                  },
+                     {
+                         "targets": [4],
+                         "data": "State",
+                         "render": function (data, type, full) {
+                             var result = data;
+                             if (data > 0) {
+                                 result = "<span class=\"label label-success radius\">已上架</span>";
+                             } else {
+                                 result = "<span class=\"label label-danger radius\">已下架</span>";
+                             }
+
+                             return result;
+                         }
+                     },
                  {
 
                      "targets": [7],

@@ -282,26 +282,25 @@ WriteLiteral("\',\r\n            //创建选择文件按钮\r\n            pick:
 "itle\").html(jsonresult.FileName);\r\n                $(\"#filelist\").removeClass(\"h" +
 "idden\");\r\n            } else {\r\n                $(\"#filelist\").addClass(\"hidden\"" +
 ");\r\n            }\r\n\r\n            if (!jsonresult.IsSuccess) {\r\n                i" +
-"f (CheckIsNotNullOrEmpty(jsonresult.FilePath)) {\r\n                    top.layer." +
-"open({\r\n                        type: 1,\r\n                        anim: 2,\r\n    " +
-"                    shadeClose: true, //开启遮罩关闭\r\n                        content:" +
-" \'<div  style=\"padding: 20px 60px 25px;\"   >\' + jsonresult.Message + \'</br><a st" +
-"yle=\"color:#3bb4f2;display:inline-block;margin-top:5px\" href=\"\' + jsonresult.Fil" +
-"ePath + \'\">点击此处下载失败数据<a/></div>\'\r\n                    });\r\n                } els" +
-"e {\r\n                    top.layer.alert(jsonresult.Message, { icon: 8 });\r\n    " +
-"            }\r\n            } else {\r\n                layer.msg(\"导入成功\");\r\n       " +
-"     }\r\n\r\n            if (parent[1] != null) {\r\n                parent[pageIndex" +
-"()].table1.ajax.reload();\r\n            } else {\r\n                parent.table1.a" +
-"jax.reload();\r\n            }\r\n\r\n            uploader.reset();\r\n        });\r\n\r\n  " +
-"      uploader.on(\'uploadError\', function (file, reason) {\r\n            layer.ms" +
-"g(reason);\r\n        });\r\n        uploader.on(\'error\', function (handler) {\r\n    " +
-"        if (handler == \"Q_EXCEED_NUM_LIMIT\") {\r\n                layer.alert(\"超出最" +
-"大张数\");\r\n            }\r\n            if (handler == \"F_DUPLICATE\") {\r\n            " +
-"    layer.alert(\"该文件已在上传列表\", 3);\r\n            }\r\n\r\n            if (handler == \"Q" +
-"_TYPE_DENIED\") {\r\n                layer.alert(\"该文件不满足上传要求，可能您上传的文件为0KB\");\r\n     " +
-"       }\r\n        });\r\n        uploader.on(\'uploadComplete\', function (file) {\r\n" +
-"            $(\'#\' + file.id).find(\'.percent_small\').fadeOut();\r\n        });\r\n\r\n " +
-"   });\r\n\r\n</script>");
+"f (jsonresult.FilePath) {\r\n                    top.layer.open({\r\n               " +
+"         type: 1,\r\n                        anim: 2,\r\n                        sha" +
+"deClose: true, //开启遮罩关闭\r\n                        content: \'<div  style=\"padding:" +
+" 20px 60px 25px;\"   >\' + jsonresult.Message + \'</br><a style=\"color:#3bb4f2;disp" +
+"lay:inline-block;margin-top:5px\" href=\"\' + jsonresult.FilePath + \'\">点击此处下载失败数据<a" +
+"/></div>\'\r\n                    });\r\n                } else {\r\n                  " +
+"  top.layer.alert(jsonresult.Message, { icon: 8 });\r\n                }\r\n        " +
+"    } else {\r\n                layer.msg(\"导入成功\");\r\n            }\r\n\r\n            i" +
+"f (parent[1] != null) {\r\n                parent[pageIndex()].table1.ajax.reload(" +
+");\r\n            } else {\r\n                parent.table1.ajax.reload();\r\n        " +
+"    }\r\n\r\n            uploader.reset();\r\n        });\r\n\r\n        uploader.on(\'uplo" +
+"adError\', function (file, reason) {\r\n            layer.msg(reason);\r\n        });" +
+"\r\n        uploader.on(\'error\', function (handler) {\r\n            if (handler == " +
+"\"Q_EXCEED_NUM_LIMIT\") {\r\n                layer.alert(\"超出最大张数\");\r\n            }\r\n" +
+"            if (handler == \"F_DUPLICATE\") {\r\n                layer.alert(\"该文件已在上" +
+"传列表\", 3);\r\n            }\r\n\r\n            if (handler == \"Q_TYPE_DENIED\") {\r\n     " +
+"           layer.alert(\"该文件不满足上传要求，可能您上传的文件为0KB\");\r\n            }\r\n        });\r\n" +
+"        uploader.on(\'uploadComplete\', function (file) {\r\n            $(\'#\' + fil" +
+"e.id).find(\'.percent_small\').fadeOut();\r\n        });\r\n\r\n    });\r\n\r\n</script>");
 
         }
     }

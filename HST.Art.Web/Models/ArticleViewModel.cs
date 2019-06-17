@@ -12,7 +12,7 @@ namespace HST.Art.Web
         public int Id { get; set; }
         public int UserId { get; set; }
 
-        [StringLength(20, MinimumLength = 1, ErrorMessage = "{0}长度{2}-{1}个字符")]
+        [StringLength(50, ErrorMessage = "文章标题不可超过{1}个字符")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "文章标题不能为空")]
         [RegularExpression(@"^[^\s]+$", ErrorMessage = "文章标题不能包含空字符")]
         public string Title { get; set; }
