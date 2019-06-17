@@ -58,6 +58,14 @@ WriteLiteral(" rel=\"stylesheet\"");
 
 WriteLiteral(" type=\"text/css\"");
 
+WriteLiteral(" href=\"/Content/lib/ali-iconfont/iconfont.css\"");
+
+WriteLiteral("/>\r\n<link");
+
+WriteLiteral(" rel=\"stylesheet\"");
+
+WriteLiteral(" type=\"text/css\"");
+
 WriteLiteral(" href=\"/Content/lib/h-ui.admin/skin/default/skin.css\"");
 
 WriteLiteral(" id=\"skin\"");
@@ -123,7 +131,7 @@ WriteLiteral(" class=\"hidden-xs\"");
 WriteLiteral(">");
 
             
-            #line 18 "..\..\Areas\manage\Views\Home\Index.cshtml"
+            #line 19 "..\..\Areas\manage\Views\Home\Index.cshtml"
                                      Write(Model.UserName);
 
             
@@ -132,7 +140,7 @@ WriteLiteral(">");
 WriteLiteral("&nbsp;&nbsp;");
 
             
-            #line 18 "..\..\Areas\manage\Views\Home\Index.cshtml"
+            #line 19 "..\..\Areas\manage\Views\Home\Index.cshtml"
                                                                  Write(Model.IsAdmin?"超级管理员":"管理员");
 
             
@@ -164,14 +172,14 @@ WriteLiteral(" onclick=\"user_show()\"");
 
 WriteLiteral(">个人信息</a></li>\r\n                            <li><a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 1311), Tuple.Create("\"", 1351)
+WriteAttribute("href", Tuple.Create(" href=\"", 1399), Tuple.Create("\"", 1439)
             
-            #line 23 "..\..\Areas\manage\Views\Home\Index.cshtml"
-, Tuple.Create(Tuple.Create("", 1318), Tuple.Create<System.Object, System.Int32>(Url.Action("LoginOut","Account")
+            #line 24 "..\..\Areas\manage\Views\Home\Index.cshtml"
+, Tuple.Create(Tuple.Create("", 1406), Tuple.Create<System.Object, System.Int32>(Url.Action("LoginOut","Account")
             
             #line default
             #line hidden
-, 1318), false)
+, 1406), false)
 );
 
 WriteLiteral(" data-title=\"退出\"");
@@ -200,7 +208,7 @@ WriteLiteral(" ><a");
 WriteLiteral(" data-href=\"");
 
             
-            #line 35 "..\..\Areas\manage\Views\Home\Index.cshtml"
+            #line 36 "..\..\Areas\manage\Views\Home\Index.cshtml"
                                            Write(Url.Action("Edit","Home"));
 
             
@@ -214,14 +222,16 @@ WriteLiteral(" href=\"javascript:void(0)\"");
 
 WriteLiteral("><i");
 
-WriteLiteral(" class=\"Hui-iconfont\"");
+WriteLiteral(" class=\"iconfont icon-qiyexinxi\"");
 
-WriteLiteral(">&#xe616;</i>企业信息</a></dt>\r\n            <dt><a");
+WriteLiteral(" style=\"font-size:18px\"");
+
+WriteLiteral("></i>企业信息</a></dt>\r\n            <dt><a");
 
 WriteLiteral(" data-href=\"");
 
             
-            #line 36 "..\..\Areas\manage\Views\Home\Index.cshtml"
+            #line 37 "..\..\Areas\manage\Views\Home\Index.cshtml"
                          Write(Url.Action("List","MemberUnit"));
 
             
@@ -235,14 +245,14 @@ WriteLiteral(" href=\"javascript:void(0)\"");
 
 WriteLiteral("><i");
 
-WriteLiteral(" class=\"Hui-iconfont\"");
+WriteLiteral(" class=\"iconfont icon-danwei\"");
 
-WriteLiteral(">&#xe616;</i>协会会员</a></dt>\r\n            <dt><a");
+WriteLiteral("></i>协会会员</a></dt>\r\n            <dt><a");
 
 WriteLiteral(" data-href=\"");
 
             
-            #line 37 "..\..\Areas\manage\Views\Home\Index.cshtml"
+            #line 38 "..\..\Areas\manage\Views\Home\Index.cshtml"
                          Write(Url.Action("List","Article"));
 
             
@@ -256,17 +266,17 @@ WriteLiteral(" href=\"javascript:void(0)\"");
 
 WriteLiteral("><i");
 
-WriteLiteral(" class=\"Hui-iconfont\"");
+WriteLiteral(" class=\"iconfont icon-aiguifanfile\"");
 
-WriteLiteral(">&#xe616;</i>文章管理</a></dt>\r\n\r\n        </dl>\r\n        <dl");
+WriteLiteral("></i>文章管理</a></dt>\r\n\r\n        </dl>\r\n        <dl");
 
 WriteLiteral(" class=\"list-dt\"");
 
 WriteLiteral(">\r\n            <dt><i");
 
-WriteLiteral(" class=\"Hui-iconfont\"");
+WriteLiteral(" class=\"iconfont icon-diploma\"");
 
-WriteLiteral(">&#xe616;</i>证书管理<i");
+WriteLiteral("></i>证书管理<i");
 
 WriteLiteral(" class=\"Hui-iconfont menu_dropdown-arrow\"");
 
@@ -276,7 +286,7 @@ WriteLiteral(">&#xe6d5;</i></dt>\r\n            <dd>\r\n                <ul>\r\n
 WriteLiteral(" data-href=\"");
 
             
-            #line 44 "..\..\Areas\manage\Views\Home\Index.cshtml"
+            #line 45 "..\..\Areas\manage\Views\Home\Index.cshtml"
                                  Write(Url.Action("List","Teacher"));
 
             
@@ -293,7 +303,7 @@ WriteLiteral(">教师证书</a></li>\r\n                    <li><a");
 WriteLiteral(" data-href=\"");
 
             
-            #line 45 "..\..\Areas\manage\Views\Home\Index.cshtml"
+            #line 46 "..\..\Areas\manage\Views\Home\Index.cshtml"
                                  Write(Url.Action("List","Student"));
 
             
@@ -315,7 +325,7 @@ WriteLiteral(">\r\n            <dt><a");
 WriteLiteral(" data-href=\"");
 
             
-            #line 50 "..\..\Areas\manage\Views\Home\Index.cshtml"
+            #line 51 "..\..\Areas\manage\Views\Home\Index.cshtml"
                          Write(Url.Action("List","Download"));
 
             
@@ -329,9 +339,9 @@ WriteLiteral(" href=\"javascript:void(0)\"");
 
 WriteLiteral("><i");
 
-WriteLiteral(" class=\"Hui-iconfont\"");
+WriteLiteral(" class=\"iconfont icon-xiazaiguanli\"");
 
-WriteLiteral(">&#xe616;</i>下载管理</a></dt>\r\n        </dl>\r\n        <dl");
+WriteLiteral("></i>下载管理</a></dt>\r\n        </dl>\r\n        <dl");
 
 WriteLiteral(" class=\"list-dt\"");
 
@@ -341,9 +351,9 @@ WriteLiteral(" class=\"\"");
 
 WriteLiteral("><i");
 
-WriteLiteral(" class=\"Hui-iconfont\"");
+WriteLiteral(" class=\"iconfont icon-xitong\"");
 
-WriteLiteral(">&#xe62d;</i>系统设置<i");
+WriteLiteral("></i>系统设置<i");
 
 WriteLiteral(" class=\"Hui-iconfont menu_dropdown-arrow\"");
 
@@ -353,7 +363,7 @@ WriteLiteral(">&#xe6d5;</i></dt>\r\n            <dd>\r\n                <ul>\r\n
 WriteLiteral(" data-href=\"");
 
             
-            #line 56 "..\..\Areas\manage\Views\Home\Index.cshtml"
+            #line 57 "..\..\Areas\manage\Views\Home\Index.cshtml"
                                  Write(Url.Action("Index", "Category"));
 
             
@@ -370,7 +380,7 @@ WriteLiteral(">类别设置</a></li>\r\n                    <li><a");
 WriteLiteral(" data-href=\"");
 
             
-            #line 57 "..\..\Areas\manage\Views\Home\Index.cshtml"
+            #line 58 "..\..\Areas\manage\Views\Home\Index.cshtml"
                                  Write(Url.Action("List", "User"));
 
             
@@ -396,7 +406,7 @@ WriteLiteral("><a");
 WriteLiteral(" data-href=\"");
 
             
-            #line 63 "..\..\Areas\manage\Views\Home\Index.cshtml"
+            #line 64 "..\..\Areas\manage\Views\Home\Index.cshtml"
                                                 Write(Url.Action("Index","Account"));
 
             
@@ -453,7 +463,7 @@ WriteLiteral(" title=\"企业信息\"");
 WriteLiteral(" data-href=\"");
 
             
-            #line 73 "..\..\Areas\manage\Views\Home\Index.cshtml"
+            #line 74 "..\..\Areas\manage\Views\Home\Index.cshtml"
                                              Write(Url.Action("Edit", "home"));
 
             
@@ -512,14 +522,14 @@ WriteLiteral(" scrolling=\"yes\"");
 
 WriteLiteral(" frameborder=\"0\"");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 4625), Tuple.Create("\"", 4658)
+WriteAttribute("src", Tuple.Create(" src=\"", 4752), Tuple.Create("\"", 4785)
             
-            #line 83 "..\..\Areas\manage\Views\Home\Index.cshtml"
-, Tuple.Create(Tuple.Create("", 4631), Tuple.Create<System.Object, System.Int32>(Url.Action("Edit", "home")
+            #line 84 "..\..\Areas\manage\Views\Home\Index.cshtml"
+, Tuple.Create(Tuple.Create("", 4758), Tuple.Create<System.Object, System.Int32>(Url.Action("Edit", "home")
             
             #line default
             #line hidden
-, 4631), false)
+, 4758), false)
 );
 
 WriteLiteral("></iframe>\r\n        </div>\r\n    </div>\r\n</section>\r\n\r\n<div");
@@ -579,7 +589,7 @@ WriteLiteral(">\r\n    $(function () {\r\n        $(\"#main-aside ul li\").click
 "           return false;\r\n        }\r\n\r\n        $.ajax({\r\n            url: \"");
 
             
-            #line 142 "..\..\Areas\manage\Views\Home\Index.cshtml"
+            #line 143 "..\..\Areas\manage\Views\Home\Index.cshtml"
              Write(Url.Action("SearchLog"));
 
             
@@ -596,7 +606,7 @@ WriteLiteral(@""",
                     $(""#searchTip a"").attr(""href"", """);
 
             
-            #line 150 "..\..\Areas\manage\Views\Home\Index.cshtml"
+            #line 151 "..\..\Areas\manage\Views\Home\Index.cshtml"
                                                Write(Url.Action("DownloadFile"));
 
             
