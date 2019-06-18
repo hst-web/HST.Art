@@ -101,7 +101,8 @@ nav .nav-menu { display: none;z-index: 999; background: #fff; cursor: pointer;}
   nav .nav-list > li .menu{ left:inherit; height:auto; overflow:auto}
   nav .nav-logo{ margin-left:5px;}  
   nav .nav-list > li .menu li a{ background:#f0f0f0;}
-  
+  nav .nav-list > li .menu li:focus,nav .nav-list > li .menu li:active{background:#f0f0f0}
+  nav .nav-list > li .menu li a:focus,nav .nav-list > li .menu li a:active{background:#f0f0f0;color:#d9001b;-webkit-tap-highlight-color: transparent}
 }
 nav .open {left: 0%;overflow: auto; z-index:99}
 .container-fluid {width: 100%; padding-bottom: 10px;}
