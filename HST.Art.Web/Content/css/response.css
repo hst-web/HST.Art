@@ -55,7 +55,7 @@
 	/*list*/
 	.list_fl{ display:none}
 	.list_fr{ width:100%}
-	.list_cons h6{ font-size:16px; line-height: 28px}
+	.list_cons h6{ font-size:16px; line-height: 24px}
 	.details h4{ font-size:18px}
 	.list_cons{ width:72%}
     .list_list .list_img{ width: 20%; }

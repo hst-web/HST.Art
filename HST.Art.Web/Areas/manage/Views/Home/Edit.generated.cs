@@ -898,8 +898,10 @@ WriteLiteral("\"\r\n          });\r\n        var editor1 = CKEDITOR.replace(\'De
             
             #line default
             #line hidden
-WriteLiteral(@"""
-         });
+WriteLiteral("\"\r\n         });\r\n\r\n        ");
+
+WriteLiteral(@"
+
 
         $(""#tabBarList span"").each(function () {
             $(this).click(function () {
@@ -910,7 +912,7 @@ WriteLiteral(@"""
                 if (attrType != '");
 
             
-            #line 165 "..\..\Areas\manage\Views\Home\Edit.cshtml"
+            #line 210 "..\..\Areas\manage\Views\Home\Edit.cshtml"
                             Write(RotationType.UnKnown);
 
             
@@ -919,7 +921,7 @@ WriteLiteral(@"""
 WriteLiteral("\') {\r\n                    if (attrType == \'");
 
             
-            #line 166 "..\..\Areas\manage\Views\Home\Edit.cshtml"
+            #line 211 "..\..\Areas\manage\Views\Home\Edit.cshtml"
                                 Write(RotationType.Banner);
 
             
@@ -964,7 +966,7 @@ WriteLiteral(@"') {
                 url: """);
 
             
-            #line 202 "..\..\Areas\manage\Views\Home\Edit.cshtml"
+            #line 247 "..\..\Areas\manage\Views\Home\Edit.cshtml"
                  Write(Url.Action("UpdateSort"));
 
             
@@ -1006,7 +1008,7 @@ WriteLiteral(@""",
         if (type == '");
 
             
-            #line 235 "..\..\Areas\manage\Views\Home\Edit.cshtml"
+            #line 280 "..\..\Areas\manage\Views\Home\Edit.cshtml"
                 Write(RotationType.Banner);
 
             
@@ -1016,7 +1018,7 @@ WriteLiteral("\' && rationCount >= 5) {\r\n            layer.alert(\"最多添�
 "        return;\r\n        }\r\n\r\n        if (type == \'");
 
             
-            #line 240 "..\..\Areas\manage\Views\Home\Edit.cshtml"
+            #line 285 "..\..\Areas\manage\Views\Home\Edit.cshtml"
                 Write(RotationType.Logo);
 
             
@@ -1042,7 +1044,7 @@ WriteLiteral(@"' && rationCount >= 20) {
                 ""url"": """);
 
             
-            #line 257 "..\..\Areas\manage\Views\Home\Edit.cshtml"
+            #line 302 "..\..\Areas\manage\Views\Home\Edit.cshtml"
                    Write(Url.Action("GetJsonData"));
 
             
@@ -1080,7 +1082,7 @@ WriteLiteral(@""",
                     var tmpString = ""<a  onClick=\""ration_deit('修改轮播','");
 
             
-            #line 286 "..\..\Areas\manage\Views\Home\Edit.cshtml"
+            #line 331 "..\..\Areas\manage\Views\Home\Edit.cshtml"
                                                                   Write(Url.Action("EditRotation"));
 
             
@@ -1090,7 +1092,7 @@ WriteLiteral("\',\" + data + \")\\\" href=\\\"javascript:;\\\" title=\\\"编辑\
 "  tmpString += \"<a href=\\\"javascript:;\\\" onClick=\\\"obj_del(\'轮播\',\'");
 
             
-            #line 287 "..\..\Areas\manage\Views\Home\Edit.cshtml"
+            #line 332 "..\..\Areas\manage\Views\Home\Edit.cshtml"
                                                                               Write(Url.Action("Delete"));
 
             
@@ -1169,7 +1171,7 @@ WriteLiteral(@">
             server: jq_imgFormData.BidFileDomain + '");
 
             
-            #line 392 "..\..\Areas\manage\Views\Home\Edit.cshtml"
+            #line 437 "..\..\Areas\manage\Views\Home\Edit.cshtml"
                                                Write(Url.Action("Upload", "Upload"));
 
             
