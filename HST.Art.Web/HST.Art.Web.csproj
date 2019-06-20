@@ -291,11 +291,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AddRotation.cshtml</DependentUpon>
     </Compile>
-    <Compile Include="Areas\manage\Views\Home\Edit.generated.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Edit.cshtml</DependentUpon>
-    </Compile>
     <Compile Include="Areas\manage\Views\Home\EditRotation.generated.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -2248,10 +2243,7 @@
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>Edit.generated.cs</LastGenOutput>
     </None>
-    <None Include="Areas\manage\Views\Home\Edit.cshtml">
-      <Generator>RazorGenerator</Generator>
-      <LastGenOutput>Edit.generated.cs</LastGenOutput>
-    </None>
+    <None Include="Areas\manage\Views\Home\Edit.cshtml" />
     <None Include="Areas\manage\Views\Home\AddRotation.cshtml">
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>AddRotation.generated.cs</LastGenOutput>

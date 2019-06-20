@@ -189,6 +189,44 @@ namespace HST.Art.Web.Areas.manage.Controllers
             return Content("<script>window.parent.CKEDITOR.tools.callFunction(" + CKEditorFuncNum + ", \"" + url + "\");</script>");
         }
 
+        [HttpPost]
+        public ActionResult UploadPasteImg(HttpPostedFileBase imgfile)
+        {
+            string url = string.Empty;
+            string errorMsg = string.Empty;
+            UploadViewModel um_mod = new UploadViewModel();
+
+            if (imgfile == null || imgfile.ContentLength == 0)
+                errorMsg = "情选择文件";
+
+            if (imgfile != null)
+            {
+                int userid = Convert.ToInt16(GetAccount().Id);
+                //文件后缀
+                string Suffixstr ="."+imgfile.ContentType.Split('/')[1];
+                string fileNameGuid = Guid.NewGuid().ToString("N");
+                string localFileName = "art_" + userid + "_" + fileNameGuid + Suffixstr;
+                string locAddr = WebConfigurationManager.AppSettings["FileAddr"].ToString();//图片上传地址
+                //相对路径
+                string filePath = string.Format("/uploadFiles/{0}/", DateTime.Now.ToString("yyyyMM"));
+                //文件需要存储的路径
+                string localPath = string.IsNullOrEmpty(locAddr) ? System.Web.Hosting.HostingEnvironment.MapPath(filePath) : locAddr + filePath;
+                if (!Directory.Exists(localPath))
+                    Directory.CreateDirectory(localPath);
+                //文件全路径
+                string fullPath = localPath + localFileName;
+                //guid重命名
+                string fileName = System.Guid.NewGuid().ToString() + System.IO.Path.GetFileName(imgfile.FileName);
+                //储存文件
+                imgfile.SaveAs(fullPath);
+                url = filePath + localFileName;
+            }
+            um_mod.Message = errorMsg;
+            um_mod.FilePath = url;
+
+            return Json(um_mod);
+        }
+
         #region 方法
         /// <summary>
         /// 是否允许上传类型

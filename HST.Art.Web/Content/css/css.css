@@ -116,9 +116,9 @@ nav .open {left: 0%;overflow: auto; z-index:99}
 .foot_cont{max-width:1233px; width:96%; margin:0 auto;overflow:hidden}
 .foot_fl{ width:200px; float:left; padding:5px; background:#fff; font-size:13px; color:#333; text-align:center}
 .foot_fl span,.foot_fl span img{ width:100%; display:block}
-.foot_conts{ margin-left:20px; color:#fff; margin-top:2%}
+.foot_conts{ margin-left:60px; color:#fff; margin-top:2%}
 .foot_conts b{ font-size:18px; margin-bottom:15px; display:block}
-.foot_conts p{ font-size:15px; line-height:32px;}
+.foot_conts p{ font-size:15px; line-height:30px;}
 .index_ab a{ font-size:16px; color:#fff; display:block}
 .index_ab a i{ width:3px; height:16px; background:#fff; display:inline-block; margin-right:6px; display:inline-block}
 footer{ background:#dd1c34; width:100%; color:#fff; text-align:center; font-size:14px; height:35px; line-height:35px}
