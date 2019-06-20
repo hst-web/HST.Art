@@ -355,11 +355,11 @@ WriteLiteral(@">
                     $(""#sel_state"").addClass(""hidden"");
                     $(""#sel_type"").addClass(""hidden"");
                 }
-               else if ($(this).val() == '");
+                else if ($(this).val() == '");
 
             
             #line 73 "..\..\Areas\manage\Views\Download\List.cshtml"
-                                      Write((int)SearchType.Type);
+                                       Write((int)SearchType.Type);
 
             
             #line default
@@ -430,37 +430,76 @@ WriteLiteral(@"') {
             
             #line default
             #line hidden
-WriteLiteral("\",\r\n                    \"type\": \"post\",\r\n                    \"data\": function (da" +
-"ta) {\r\n                        data.pageIndex = (data.start / data.length) + 1;\r" +
-"\n                        data.filterKey = $(\"#sel_filType\").val();\r\n            " +
-"            data.filterVal = getFilterVal();\r\n                    }\r\n           " +
-"     },\r\n                \"columns\": [\r\n                      { \"defaultContent\":" +
-" \"\" },\r\n                      { \"mDataProp\": \"CategoryName\" },\r\n                " +
-"       { \"mDataProp\": \"FileTitle\" },\r\n                      { \"mDataProp\": \"File" +
-"Name\" },\r\n                      { \"mDataProp\": \"State\" },\r\n                     " +
-" { \"mDataProp\": \"UserName\" },\r\n                      { \"mDataProp\": \"CreateTime\"" +
-" },\r\n                      { \"mDataProp\": \"Id\" },\r\n                      { \"defa" +
-"ultContent\": \"\" }\r\n\r\n                ],\r\n                \"columnDefs\": [\r\n      " +
-"           {\r\n                     \"targets\": [3],\r\n                     \"data\":" +
-" \"FileName\",\r\n                     \"render\": function (data, type, full) {\r\n    " +
-"                     var result = data;\r\n                         if (full.Src) " +
-"{\r\n                             result = \"<a href=\\\"\"+full.Src+\"\\\">\"+data+\"</a>\"" +
-";\r\n                         } \r\n\r\n                         return result;\r\n     " +
-"                }\r\n                 },\r\n                     {\r\n                " +
-"         \"targets\": [4],\r\n                         \"data\": \"State\",\r\n           " +
-"              \"render\": function (data, type, full) {\r\n                         " +
-"    var result = data;\r\n                             if (data > 0) {\r\n          " +
-"                       result = \"<span class=\\\"label label-success radius\\\">已上架<" +
-"/span>\";\r\n                             } else {\r\n                               " +
-"  result = \"<span class=\\\"label label-danger radius\\\">已下架</span>\";\r\n            " +
-"                 }\r\n\r\n                             return result;\r\n             " +
-"            }\r\n                     },\r\n                 {\r\n\r\n                  " +
-"   \"targets\": [7],\r\n                     \"data\": \"Id\",\r\n                     \"re" +
-"nder\": function (data, type, full) {\r\n                         var result = \"<a " +
-"href=\\\"javascript:;\\\" onClick=\\\"obj_detail(\'查看详情\',\'");
+WriteLiteral(@""",
+                    ""type"": ""post"",
+                    ""data"": function (data) {
+                        data.pageIndex = (data.start / data.length) + 1;
+                        data.filterKey = $(""#sel_filType"").val();
+                        data.filterVal = getFilterVal();
+                    }
+                },
+                ""columns"": [
+                      { ""defaultContent"": """" },
+                      { ""mDataProp"": ""CategoryName"" },
+                       { ""mDataProp"": ""FileTitle"" },
+                      { ""mDataProp"": ""FileName"" },
+                      { ""mDataProp"": ""State"" },
+                      { ""mDataProp"": ""UserName"" },
+                      { ""mDataProp"": ""CreateTime"" },
+                      { ""mDataProp"": ""Id"" },
+                      { ""defaultContent"": """" }
+
+                ],
+                ""columnDefs"": [
+                 {
+                     ""targets"": [3],
+                     ""data"": ""FileName"",
+                     ""render"": function (data, type, full) {
+                         //    var result = ""<a class='fancybox' href='"" + full.HeadImg + ""' title='' data-rel='fancybox-button'></a>"";
+                         var result = data;
+                         if (full.Src) {
+                             if (full.FileType == '");
 
             
-            #line 158 "..\..\Areas\manage\Views\Download\List.cshtml"
+            #line 134 "..\..\Areas\manage\Views\Download\List.cshtml"
+                                               Write((int)FileFormat.Img);
+
+            
+            #line default
+            #line hidden
+WriteLiteral(@"') {
+                                 result = ""<a class='fancybox' data-rel='fancybox-button'  href=\"""" + full.Src + ""\"">"" + data + ""</a>"";
+                             } else {
+                                 result = ""<a data-bind='""+full.FileType+""' href=\"""" + full.Src + ""\"">"" + data + ""</a>"";
+                             }                               
+                         }
+
+                         return result;
+                     }
+                 },
+                     {
+                         ""targets"": [4],
+                         ""data"": ""State"",
+                         ""render"": function (data, type, full) {
+                             var result = data;
+                             if (data > 0) {
+                                 result = ""<span class=\""label label-success radius\"">已上架</span>"";
+                             } else {
+                                 result = ""<span class=\""label label-danger radius\"">已下架</span>"";
+                             }
+
+                             return result;
+                         }
+                     },
+                 {
+
+                     ""targets"": [7],
+                     ""data"": ""Id"",
+                     ""render"": function (data, type, full) {
+                         var result = ""<a href=\""javascript:;\"" onClick=\""obj_detail('查看详情','");
+
+            
+            #line 163 "..\..\Areas\manage\Views\Download\List.cshtml"
                                                                                         Write(Url.Action("Detail"));
 
             
@@ -477,7 +516,7 @@ WriteLiteral(@"',"" + data + "")\""  title=\""查看详情\"">查看详情</a>""
                         var tmpString = '<a href=""");
 
             
-            #line 166 "..\..\Areas\manage\Views\Download\List.cshtml"
+            #line 171 "..\..\Areas\manage\Views\Download\List.cshtml"
                                              Write(Url.Action("Edit"));
 
             
@@ -488,7 +527,7 @@ WriteLiteral("?id=\' + data + \'\" title=\"编辑\">编辑</a>\';\r\n           
 "\"obj_publish(\'");
 
             
-            #line 168 "..\..\Areas\manage\Views\Download\List.cshtml"
+            #line 173 "..\..\Areas\manage\Views\Download\List.cshtml"
                                                                                      Write(Url.Action("Publish"));
 
             
@@ -499,7 +538,7 @@ WriteLiteral("\',\" + data + \")\\\"  title=\\\"上架\\\">上架</a>\";\r\n    
 "\'");
 
             
-            #line 170 "..\..\Areas\manage\Views\Download\List.cshtml"
+            #line 175 "..\..\Areas\manage\Views\Download\List.cshtml"
                                                                                      Write(Url.Action("Shelves"));
 
             
@@ -509,7 +548,7 @@ WriteLiteral("\',\" + data + \")\\\"  title=\\\"下架\\\">下架</a>\";\r\n    
 "a href=\\\"javascript:;\\\" onClick=\\\"obj_del(\'文件\',\'");
 
             
-            #line 171 "..\..\Areas\manage\Views\Download\List.cshtml"
+            #line 176 "..\..\Areas\manage\Views\Download\List.cshtml"
                                                                                   Write(Url.Action("Delete"));
 
             
@@ -525,19 +564,20 @@ WriteLiteral("\',\" + data + \")\\\"  title=\\\"删除\\\">删除</a>\";\r\n\r\n
 "              $(row).attr(\"class\", \"text-c\");\r\n                    $(row).childr" +
 "en(\'td\').eq(4).attr(\"class\", \"td-status\");\r\n                    $(row).children(" +
 "\'td\').eq(8).attr(\"class\", \"td-manage\");\r\n                },\r\n                \"in" +
-"itComplete\": function (settings, json) {\r\n\r\n                },\r\n                " +
-"language: {\r\n                    lengthMenu: \'\',\r\n                    loadingRec" +
-"ords: \'数据加载中...\',\r\n                    paginate: {\r\n                        prev" +
-"ious: \"上一页\",\r\n                        next: \"下一页\",\r\n                        firs" +
-"t: \"\",\r\n                        last: \"\"\r\n                    },\r\n              " +
-"      zeroRecords: \"暂无数据\",\r\n\r\n                    info: \"<span class=\'pagesStyle" +
-"\'>总共<span class=\'recordsStyle\'> _TOTAL_ 条,计 _PAGES_ </span>页，当前显示 _START_ -- _EN" +
-"D_ 条记录 </span>\",\r\n                    infoEmpty: \"0条记录\",\r\n                    in" +
-"foFiltered: \"\"\r\n                },\r\n                \"searching\": false,\r\n       " +
-"         \"ordering\": false,\r\n                \"autoWidth\": false,\r\n              " +
-"  \"iDisplayLength\": 10,\r\n                \"processing\": true,\r\n                //" +
-"destroy: true, //Cannot reinitialise DataTable,解决重新加载表格内容问题\r\n\r\n            });\r\n" +
-"            return dataTable;\r\n        }\r\n\r\n    </script>\r\n");
+"itComplete\": function (settings, json) {\r\n                    handleFancybox();\r" +
+"\n                },\r\n                language: {\r\n                    lengthMenu" +
+": \'\',\r\n                    loadingRecords: \'数据加载中...\',\r\n                    pagi" +
+"nate: {\r\n                        previous: \"上一页\",\r\n                        next:" +
+" \"下一页\",\r\n                        first: \"\",\r\n                        last: \"\"\r\n " +
+"                   },\r\n                    zeroRecords: \"暂无数据\",\r\n\r\n             " +
+"       info: \"<span class=\'pagesStyle\'>总共<span class=\'recordsStyle\'> _TOTAL_ 条,计" +
+" _PAGES_ </span>页，当前显示 _START_ -- _END_ 条记录 </span>\",\r\n                    infoE" +
+"mpty: \"0条记录\",\r\n                    infoFiltered: \"\"\r\n                },\r\n       " +
+"         \"searching\": false,\r\n                \"ordering\": false,\r\n              " +
+"  \"autoWidth\": false,\r\n                \"iDisplayLength\": 10,\r\n                \"p" +
+"rocessing\": true,\r\n                //destroy: true, //Cannot reinitialise DataTa" +
+"ble,解决重新加载表格内容问题\r\n\r\n            });\r\n            return dataTable;\r\n        }\r\n\r" +
+"\n    </script>\r\n");
 
 });
 

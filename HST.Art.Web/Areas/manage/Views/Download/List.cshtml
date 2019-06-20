@@ -70,7 +70,7 @@
                     $("#sel_state").addClass("hidden");
                     $("#sel_type").addClass("hidden");
                 }
-               else if ($(this).val() == '@((int)SearchType.Type)') {
+                else if ($(this).val() == '@((int)SearchType.Type)') {
                     $("#sel_type").removeClass("hidden");
                     $("#sel_state").addClass("hidden");
                     $("#sel_filVal").addClass("hidden");
@@ -128,10 +128,15 @@
                      "targets": [3],
                      "data": "FileName",
                      "render": function (data, type, full) {
+                         //    var result = "<a class='fancybox' href='" + full.HeadImg + "' title='' data-rel='fancybox-button'></a>";
                          var result = data;
                          if (full.Src) {
-                             result = "<a href=\""+full.Src+"\">"+data+"</a>";
-                         } 
+                             if (full.FileType == '@((int)FileFormat.Img)') {
+                                 result = "<a class='fancybox' data-rel='fancybox-button'  href=\"" + full.Src + "\">" + data + "</a>";
+                             } else {
+                                 result = "<a data-bind='"+full.FileType+"' href=\"" + full.Src + "\">" + data + "</a>";
+                             }                               
+                         }
 
                          return result;
                      }
@@ -187,7 +192,7 @@
                     $(row).children('td').eq(8).attr("class", "td-manage");
                 },
                 "initComplete": function (settings, json) {
-
+                    handleFancybox();
                 },
                 language: {
                     lengthMenu: '',

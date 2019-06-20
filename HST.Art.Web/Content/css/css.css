@@ -110,6 +110,7 @@ nav .open {left: 0%;overflow: auto; z-index:99}
 
 @media (max-width:767px) {
 	nav .nav-logo{ width:70%}
+    .foot_conts p{ font-size:14px; line-height:30px;}
 	
 }
 .foot{ width:100%; background:#444444; padding:2% 0; overflow:hidden}
@@ -118,7 +119,7 @@ nav .open {left: 0%;overflow: auto; z-index:99}
 .foot_fl span,.foot_fl span img{ width:100%; display:block}
 .foot_conts{ margin-left:60px; color:#fff; margin-top:2%}
 .foot_conts b{ font-size:18px; margin-bottom:15px; display:block}
-.foot_conts p{ font-size:15px; line-height:30px;}
+.foot_conts p{ font-size:15px; line-height:32px;}
 .index_ab a{ font-size:16px; color:#fff; display:block}
 .index_ab a i{ width:3px; height:16px; background:#fff; display:inline-block; margin-right:6px; display:inline-block}
 footer{ background:#dd1c34; width:100%; color:#fff; text-align:center; font-size:14px; height:35px; line-height:35px}

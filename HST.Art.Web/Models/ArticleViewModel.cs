@@ -14,7 +14,6 @@ namespace HST.Art.Web
 
         [StringLength(50, ErrorMessage = "文章标题不可超过{1}个字符")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "文章标题不能为空")]
-        [RegularExpression(@"^[^\s]+$", ErrorMessage = "文章标题不能包含空字符")]
         public string Title { get; set; }
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "请上传文章头图")]

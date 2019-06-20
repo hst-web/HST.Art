@@ -67,5 +67,8 @@
 	 .swiper-slide{max-height:147px !important;overflow:hidden}
 }
 
+@media (max-width:320px) {
+    	.list_cons{ width:69%}
+}
 
 
