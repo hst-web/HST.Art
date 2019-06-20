@@ -110,8 +110,6 @@ nav .open {left: 0%;overflow: auto; z-index:99}
 
 @media (max-width:767px) {
 	nav .nav-logo{ width:70%}
-    .foot_conts p{ font-size:14px; line-height:30px;}
-	
 }
 .foot{ width:100%; background:#444444; padding:2% 0; overflow:hidden}
 .foot_cont{max-width:1233px; width:96%; margin:0 auto;overflow:hidden}
