@@ -116,6 +116,8 @@
              filebrowserImageUploadUrl: "@Url.Action("UploadEditer", "Upload")"
          });
 
+        editor.on("change", pasteImg);
+
         $("#sel_parCategory").change(function () {
             $("#ParCategory").val($(this).val());
             $.ajax({

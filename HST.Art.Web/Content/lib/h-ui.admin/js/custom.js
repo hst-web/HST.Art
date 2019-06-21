@@ -355,12 +355,37 @@ var loading = function () {
     }
 }();
 
+function loadPage(title) {
+    var loadingIndex = layer.load(2, { //icon支持传入0-2
+        shade: [0.5, 'gray'], //0.5透明度的灰色背景
+        content: '<p>' + title + '</p>',
+        success: function (layero) {
+            layero.find('.layui-layer-content').css({
+                'padding-top': '39px',
+                'width': '140px',
+                'background-color': '#fff',
+                'background-position': 'left 15% center',
+                'text-align': 'center',
+                'height': '20px'
+            });
+            layero.find('.layui-layer-content p').css({
+                'float': 'left',
+                'margin-left': '45%',
+                'position': 'relative',
+                'top': '-18px'
+            });
+        }
+    });
+}
 
 function pasteImg(e) {
-    console.log("触发了change事件");
     var a = e.editor.document;
     var b = a.find("img");
     var count = b.count();
+    if (count <= 0) {
+        return false;
+    }
+
     for (var i = 0; i < count; i++) {
         var src = b.getItem(i).$.src;//获取img的src
         if (src.substring(0, 10) == 'data:image') { //判断是否是二进制图像，是才处理
@@ -392,6 +417,7 @@ function pasteImg(e) {
                     //获取并更改到现有的图片标签src的值
                     b.getItem(i).$.src = imgurl;
                     b.getItem(i).$.setAttribute("data-cke-saved-src", imgurl);
+                    //console.log("上传图片" + imgurl);
                     //var a = $(this).getElementsByTagName("img")[i]; //content为textarea的id
                     //console.log(a);
                     //a.setAttribute('data-cke-saved-src', imgurl);
@@ -399,4 +425,6 @@ function pasteImg(e) {
             });
         }
     }
+
+
 }

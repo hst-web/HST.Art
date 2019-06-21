@@ -681,12 +681,12 @@ WriteLiteral(">\r\n    bindData();\r\n    $(function () {\r\n        var editor 
             
             #line default
             #line hidden
-WriteLiteral("\"\r\n         });\r\n\r\n        $(\"#sel_parCategory\").change(function () {\r\n          " +
-"  $(\"#ParCategory\").val($(this).val());\r\n            $.ajax({\r\n                u" +
-"rl: \"");
+WriteLiteral("\"\r\n         });\r\n\r\n        editor.on(\"change\", pasteImg);\r\n\r\n        $(\"#sel_parC" +
+"ategory\").change(function () {\r\n            $(\"#ParCategory\").val($(this).val())" +
+";\r\n            $.ajax({\r\n                url: \"");
 
             
-            #line 122 "..\..\Areas\manage\Views\Article\Add.cshtml"
+            #line 124 "..\..\Areas\manage\Views\Article\Add.cshtml"
                  Write(Url.Action("GetCategorysById"));
 
             
@@ -717,7 +717,7 @@ WriteLiteral(@""",
         if ($(""#sel_section"").val() == '");
 
             
-            #line 144 "..\..\Areas\manage\Views\Article\Add.cshtml"
+            #line 146 "..\..\Areas\manage\Views\Article\Add.cshtml"
                                     Write((int)SectionType.Examination);
 
             
@@ -735,7 +735,7 @@ WriteLiteral(@"') {
                 url: """);
 
             
-            #line 153 "..\..\Areas\manage\Views\Article\Add.cshtml"
+            #line 155 "..\..\Areas\manage\Views\Article\Add.cshtml"
                  Write(Url.Action("GetCategorysBySection"));
 
             
@@ -767,7 +767,7 @@ WriteLiteral(@""",
                         window.location = '");
 
             
-            #line 176 "..\..\Areas\manage\Views\Article\Add.cshtml"
+            #line 178 "..\..\Areas\manage\Views\Article\Add.cshtml"
                                       Write(Url.Action("List", "Article"));
 
             
@@ -831,7 +831,7 @@ WriteLiteral(@">
             server: jq_imgFormData.BidFileDomain + '");
 
             
-            #line 227 "..\..\Areas\manage\Views\Article\Add.cshtml"
+            #line 229 "..\..\Areas\manage\Views\Article\Add.cshtml"
                                                Write(Url.Action("Upload", "Upload"));
 
             
