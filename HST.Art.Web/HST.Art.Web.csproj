@@ -504,6 +504,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Index.cshtml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Home\Index1.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Index.cshtml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Home\Industry.generated.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -2366,6 +2371,7 @@
     </Content>
     <None Include="Views\Home\Index.cshtml">
       <Generator>RazorGenerator</Generator>
+      <LastGenOutput>Index1.generated.cs</LastGenOutput>
     </None>
     <None Include="Views\Home\About.cshtml">
       <Generator>RazorGenerator</Generator>

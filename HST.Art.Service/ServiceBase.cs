@@ -99,7 +99,7 @@ namespace HST.Art.Service
             description.Replace("\r\n", "");
             //System
             // description = HttpServerUtility.HtmlEncode(description).Trim();
-            return GetLength(description.Trim(), 40);
+            return GetLength(description.Trim(), 50);
         }
 
         /// <summary>
@@ -114,7 +114,7 @@ namespace HST.Art.Service
             string strR = str;
             if (str.Length > length)
             {
-                strR = str.Substring(0, length).TrimEnd(',');
+                strR = str.Substring(0, length).TrimEnd(',')+"...";
             }
             return strR;
         }
