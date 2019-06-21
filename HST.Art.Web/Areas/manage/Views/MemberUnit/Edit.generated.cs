@@ -890,6 +890,9 @@ WriteLiteral(">\r\n    $(function () {\r\n        var editor = CKEDITOR.replace(
 WriteLiteral(@"""
           });
 
+        //控制富文本编辑器复制粘贴图片方法
+        editor.on(""change"", pasteImg);
+
         $(""#sel_type"").change(function () {
             $(""#Category"").val($(this).val()).blur();
 
@@ -904,7 +907,7 @@ WriteLiteral(@"""
                         window.location = '");
 
             
-            #line 148 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
+            #line 151 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
                                       Write(Url.Action("List", "MemberUnit"));
 
             
@@ -968,7 +971,7 @@ WriteLiteral(@">
             server: jq_imgFormData.BidFileDomain + '");
 
             
-            #line 199 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
+            #line 202 "..\..\Areas\manage\Views\MemberUnit\Edit.cshtml"
                                                Write(Url.Action("Upload", "Upload"));
 
             

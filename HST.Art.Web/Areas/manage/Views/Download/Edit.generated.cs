@@ -767,6 +767,8 @@ WriteLiteral(">\r\n    $(function () {\r\n        var editor = CKEDITOR.replace(
 WriteLiteral(@"""
           });
 
+        editor.on(""change"", pasteImg);
+
         $(""#sel_type"").change(function () {
             $(""#Category"").val($(this).val()).blur();
 
@@ -781,7 +783,7 @@ WriteLiteral(@"""
                         window.location = '");
 
             
-            #line 150 "..\..\Areas\manage\Views\Download\Edit.cshtml"
+            #line 152 "..\..\Areas\manage\Views\Download\Edit.cshtml"
                                       Write(Url.Action("List", "Download"));
 
             
@@ -845,7 +847,7 @@ WriteLiteral(@">
             server: jq_uploadFormData.BidFileDomain + '");
 
             
-            #line 201 "..\..\Areas\manage\Views\Download\Edit.cshtml"
+            #line 203 "..\..\Areas\manage\Views\Download\Edit.cshtml"
                                                   Write(Url.Action("Upload", "Upload"));
 
             
@@ -955,7 +957,7 @@ WriteLiteral(@">
             server: jq_imgFormData.BidFileDomain + '");
 
             
-            #line 362 "..\..\Areas\manage\Views\Download\Edit.cshtml"
+            #line 364 "..\..\Areas\manage\Views\Download\Edit.cshtml"
                                                Write(Url.Action("Upload", "Upload"));
 
             

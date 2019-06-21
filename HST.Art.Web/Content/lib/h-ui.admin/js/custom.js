@@ -379,6 +379,7 @@ function loadPage(title) {
 }
 
 function pasteImg(e) {
+  
     var a = e.editor.document;
     var b = a.find("img");
     var count = b.count();

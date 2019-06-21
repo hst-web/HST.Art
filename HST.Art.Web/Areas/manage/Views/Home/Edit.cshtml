@@ -149,12 +149,17 @@
               toolbar: 'Basic',
               filebrowserImageUploadUrl: "@Url.Action("UploadEditer", "Upload")"
           });
+
         var editor1 = CKEDITOR.replace('Detail',
          {
              height: 260,
              toolbar: 'Basic',
              filebrowserImageUploadUrl: "@Url.Action("UploadEditer", "Upload")"
          });
+
+        //控制富文本编辑器复制粘贴图片方法
+        editor.on("change", pasteImg);
+        editor1.on("change", pasteImg);
 
         $("#tabBarList span").each(function () {
             $(this).click(function () {

@@ -101,9 +101,9 @@ Write(Styles.Render("~/appcss"));
             #line hidden
 WriteLiteral("\r\n<script");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 267), Tuple.Create("\"", 323)
-, Tuple.Create(Tuple.Create("", 273), Tuple.Create<System.Object, System.Int32>(Href("~/Content/lib/webuploader/0.1.5/webuploader.min.js")
-, 273), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 269), Tuple.Create("\"", 325)
+, Tuple.Create(Tuple.Create("", 275), Tuple.Create<System.Object, System.Int32>(Href("~/Content/lib/webuploader/0.1.5/webuploader.min.js")
+, 275), false)
 );
 
 WriteLiteral(" type=\"text/javascript\"");
@@ -112,9 +112,9 @@ WriteLiteral("></script>\r\n<script");
 
 WriteLiteral(" type=\"text/javascript\"");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 389), Tuple.Create("\"", 429)
-, Tuple.Create(Tuple.Create("", 395), Tuple.Create<System.Object, System.Int32>(Href("~/Content/lib/ckeditor/ckeditor.js")
-, 395), false)
+WriteAttribute("src", Tuple.Create(" src=\"", 391), Tuple.Create("\"", 431)
+, Tuple.Create(Tuple.Create("", 397), Tuple.Create<System.Object, System.Int32>(Href("~/Content/lib/ckeditor/ckeditor.js")
+, 397), false)
 );
 
 WriteLiteral("></script>\r\n<style");
@@ -318,14 +318,14 @@ WriteLiteral(">请选择所属类别</option>\r\n");
             #line hidden
 WriteLiteral("                        <option");
 
-WriteAttribute("value", Tuple.Create(" value=\"", 2542), Tuple.Create("\"", 2558)
+WriteAttribute("value", Tuple.Create(" value=\"", 2544), Tuple.Create("\"", 2560)
             
             #line 51 "..\..\Areas\manage\Views\Download\Add.cshtml"
-, Tuple.Create(Tuple.Create("", 2550), Tuple.Create<System.Object, System.Int32>(item.Id
+, Tuple.Create(Tuple.Create("", 2552), Tuple.Create<System.Object, System.Int32>(item.Id
             
             #line default
             #line hidden
-, 2550), false)
+, 2552), false)
 );
 
 WriteLiteral(">");
@@ -649,6 +649,8 @@ WriteLiteral(">\r\n    $(function () {\r\n        var editor = CKEDITOR.replace(
 WriteLiteral(@"""
          });
 
+        editor.on(""change"", pasteImg);
+
         $(""#sel_type"").change(function () {
             $(""#Category"").val($(this).val()).blur();
 
@@ -664,7 +666,7 @@ WriteLiteral(@"""
                         window.location = '");
 
             
-            #line 141 "..\..\Areas\manage\Views\Download\Add.cshtml"
+            #line 143 "..\..\Areas\manage\Views\Download\Add.cshtml"
                                       Write(Url.Action("List", "Download"));
 
             
@@ -728,7 +730,7 @@ WriteLiteral(@">
             server: jq_uploadFormData.BidFileDomain + '");
 
             
-            #line 192 "..\..\Areas\manage\Views\Download\Add.cshtml"
+            #line 194 "..\..\Areas\manage\Views\Download\Add.cshtml"
                                                   Write(Url.Action("Upload", "Upload"));
 
             
@@ -838,7 +840,7 @@ WriteLiteral(@">
             server: jq_imgFormData.BidFileDomain + '");
 
             
-            #line 353 "..\..\Areas\manage\Views\Download\Add.cshtml"
+            #line 355 "..\..\Areas\manage\Views\Download\Add.cshtml"
                                                Write(Url.Action("Upload", "Upload"));
 
             

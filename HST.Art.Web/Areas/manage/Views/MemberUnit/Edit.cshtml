@@ -134,6 +134,9 @@
               filebrowserImageUploadUrl: "@Url.Action("UploadEditer", "Upload")"
           });
 
+        //控制富文本编辑器复制粘贴图片方法
+        editor.on("change", pasteImg);
+
         $("#sel_type").change(function () {
             $("#Category").val($(this).val()).blur();
 

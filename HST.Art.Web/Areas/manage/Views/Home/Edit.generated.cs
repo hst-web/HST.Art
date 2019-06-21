@@ -887,12 +887,12 @@ WriteLiteral(">\r\n    var table1 = null;\r\n    $(function () {\r\n        tabl
             
             #line default
             #line hidden
-WriteLiteral("\"\r\n          });\r\n        var editor1 = CKEDITOR.replace(\'Detail\',\r\n         {\r\n " +
-"            height: 260,\r\n             toolbar: \'Basic\',\r\n             filebrows" +
-"erImageUploadUrl: \"");
+WriteLiteral("\"\r\n          });\r\n\r\n        var editor1 = CKEDITOR.replace(\'Detail\',\r\n         {\r" +
+"\n             height: 260,\r\n             toolbar: \'Basic\',\r\n             filebro" +
+"wserImageUploadUrl: \"");
 
             
-            #line 156 "..\..\Areas\manage\Views\Home\Edit.cshtml"
+            #line 157 "..\..\Areas\manage\Views\Home\Edit.cshtml"
                                     Write(Url.Action("UploadEditer", "Upload"));
 
             
@@ -900,6 +900,10 @@ WriteLiteral("\"\r\n          });\r\n        var editor1 = CKEDITOR.replace(\'De
             #line hidden
 WriteLiteral(@"""
          });
+
+        //控制富文本编辑器复制粘贴图片方法
+        editor.on(""change"", pasteImg);
+        editor1.on(""change"", pasteImg);
 
         $(""#tabBarList span"").each(function () {
             $(this).click(function () {
@@ -910,7 +914,7 @@ WriteLiteral(@"""
                 if (attrType != '");
 
             
-            #line 165 "..\..\Areas\manage\Views\Home\Edit.cshtml"
+            #line 170 "..\..\Areas\manage\Views\Home\Edit.cshtml"
                             Write(RotationType.UnKnown);
 
             
@@ -919,7 +923,7 @@ WriteLiteral(@"""
 WriteLiteral("\') {\r\n                    if (attrType == \'");
 
             
-            #line 166 "..\..\Areas\manage\Views\Home\Edit.cshtml"
+            #line 171 "..\..\Areas\manage\Views\Home\Edit.cshtml"
                                 Write(RotationType.Banner);
 
             
@@ -963,7 +967,7 @@ WriteLiteral(@"') {
                 url: """);
 
             
-            #line 201 "..\..\Areas\manage\Views\Home\Edit.cshtml"
+            #line 206 "..\..\Areas\manage\Views\Home\Edit.cshtml"
                  Write(Url.Action("UpdateSort"));
 
             
@@ -1005,7 +1009,7 @@ WriteLiteral(@""",
         if (type == '");
 
             
-            #line 234 "..\..\Areas\manage\Views\Home\Edit.cshtml"
+            #line 239 "..\..\Areas\manage\Views\Home\Edit.cshtml"
                 Write(RotationType.Banner);
 
             
@@ -1015,7 +1019,7 @@ WriteLiteral("\' && rationCount >= 5) {\r\n            layer.alert(\"最多添�
 "        return;\r\n        }\r\n\r\n        if (type == \'");
 
             
-            #line 239 "..\..\Areas\manage\Views\Home\Edit.cshtml"
+            #line 244 "..\..\Areas\manage\Views\Home\Edit.cshtml"
                 Write(RotationType.Logo);
 
             
@@ -1041,7 +1045,7 @@ WriteLiteral(@"' && rationCount >= 20) {
                 ""url"": """);
 
             
-            #line 256 "..\..\Areas\manage\Views\Home\Edit.cshtml"
+            #line 261 "..\..\Areas\manage\Views\Home\Edit.cshtml"
                    Write(Url.Action("GetJsonData"));
 
             
@@ -1079,7 +1083,7 @@ WriteLiteral(@""",
                     var tmpString = ""<a  onClick=\""ration_deit('修改轮播','");
 
             
-            #line 285 "..\..\Areas\manage\Views\Home\Edit.cshtml"
+            #line 290 "..\..\Areas\manage\Views\Home\Edit.cshtml"
                                                                   Write(Url.Action("EditRotation"));
 
             
@@ -1089,7 +1093,7 @@ WriteLiteral("\',\" + data + \")\\\" href=\\\"javascript:;\\\" title=\\\"编辑\
 "  tmpString += \"<a href=\\\"javascript:;\\\" onClick=\\\"obj_del(\'轮播\',\'");
 
             
-            #line 286 "..\..\Areas\manage\Views\Home\Edit.cshtml"
+            #line 291 "..\..\Areas\manage\Views\Home\Edit.cshtml"
                                                                               Write(Url.Action("Delete"));
 
             
@@ -1168,7 +1172,7 @@ WriteLiteral(@">
             server: jq_imgFormData.BidFileDomain + '");
 
             
-            #line 391 "..\..\Areas\manage\Views\Home\Edit.cshtml"
+            #line 396 "..\..\Areas\manage\Views\Home\Edit.cshtml"
                                                Write(Url.Action("Upload", "Upload"));
 
             
