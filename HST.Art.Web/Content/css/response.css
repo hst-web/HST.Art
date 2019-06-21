@@ -66,6 +66,8 @@
 	.foot_cont{padding:0px 8px 8px}
 	.swiper-slide{max-height:147px !important;overflow:hidden}
     .foot_conts p{ font-size:14px; line-height:30px;}
+    .cont_box dl{height:auto}
+    .social-box{padding-bottom:20px}
 }
 
 @media (max-width:320px) {

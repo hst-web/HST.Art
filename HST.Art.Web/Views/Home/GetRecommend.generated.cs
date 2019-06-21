@@ -140,7 +140,7 @@ WriteLiteral(">\r\n                                <p>");
 
             
             #line 19 "..\..\Views\Home\GetRecommend.cshtml"
-                              Write(item.Synopsis);
+                              Write(item.Title);
 
             
             #line default
@@ -166,14 +166,14 @@ WriteLiteral("</span>\r\n                            </div>\r\n                 
             #line hidden
 WriteLiteral("                        <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 1049), Tuple.Create("\"", 1158)
+WriteAttribute("href", Tuple.Create(" href=\"", 1046), Tuple.Create("\"", 1155)
             
             #line 25 "..\..\Views\Home\GetRecommend.cshtml"
-, Tuple.Create(Tuple.Create("", 1056), Tuple.Create<System.Object, System.Int32>(Url.Action("association", "home", new { qtype = QSType.detail, id =item.Id, fctype = item.Category })
+, Tuple.Create(Tuple.Create("", 1053), Tuple.Create<System.Object, System.Int32>(Url.Action("association", "home", new { qtype = QSType.detail, id =item.Id, fctype = item.Category })
             
             #line default
             #line hidden
-, 1056), false)
+, 1053), false)
 );
 
 WriteLiteral(">\r\n                            <p");
@@ -206,7 +206,7 @@ WriteLiteral(">\r\n                                <p>");
 
             
             #line 28 "..\..\Views\Home\GetRecommend.cshtml"
-                              Write(item.Synopsis);
+                              Write(item.Title);
 
             
             #line default
@@ -232,14 +232,14 @@ WriteLiteral("</span>\r\n                            </div>\r\n                 
             #line hidden
 WriteLiteral("                        <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 1659), Tuple.Create("\"", 1791)
+WriteAttribute("href", Tuple.Create(" href=\"", 1653), Tuple.Create("\"", 1785)
             
             #line 34 "..\..\Views\Home\GetRecommend.cshtml"
-, Tuple.Create(Tuple.Create("", 1666), Tuple.Create<System.Object, System.Int32>(Url.Action("examination", "home", new {qtype = QSType.detail, id =item.Id, fctype = item.Category,pctype=item.ParCategory })
+, Tuple.Create(Tuple.Create("", 1660), Tuple.Create<System.Object, System.Int32>(Url.Action("examination", "home", new {qtype = QSType.detail, id =item.Id, fctype = item.Category,pctype=item.ParCategory })
             
             #line default
             #line hidden
-, 1666), false)
+, 1660), false)
 );
 
 WriteLiteral(">\r\n                            <p");
@@ -272,7 +272,7 @@ WriteLiteral(">\r\n                                <p>");
 
             
             #line 37 "..\..\Views\Home\GetRecommend.cshtml"
-                              Write(item.Synopsis);
+                              Write(item.Title);
 
             
             #line default
@@ -298,14 +298,14 @@ WriteLiteral("</span>\r\n                            </div>\r\n                 
             #line hidden
 WriteLiteral("                        <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 2287), Tuple.Create("\"", 2390)
+WriteAttribute("href", Tuple.Create(" href=\"", 2278), Tuple.Create("\"", 2381)
             
             #line 43 "..\..\Views\Home\GetRecommend.cshtml"
-, Tuple.Create(Tuple.Create("", 2294), Tuple.Create<System.Object, System.Int32>(Url.Action("social", "home", new {qtype = QSType.detail, id =item.Id, fctype = item.Category })
+, Tuple.Create(Tuple.Create("", 2285), Tuple.Create<System.Object, System.Int32>(Url.Action("social", "home", new {qtype = QSType.detail, id =item.Id, fctype = item.Category })
             
             #line default
             #line hidden
-, 2294), false)
+, 2285), false)
 );
 
 WriteLiteral(">\r\n                            <p");
@@ -338,7 +338,7 @@ WriteLiteral(">\r\n                                <p>");
 
             
             #line 46 "..\..\Views\Home\GetRecommend.cshtml"
-                              Write(item.Synopsis);
+                              Write(item.Title);
 
             
             #line default
@@ -364,14 +364,14 @@ WriteLiteral("</span>\r\n                            </div>\r\n                 
             #line hidden
 WriteLiteral("                        <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 2886), Tuple.Create("\"", 2989)
+WriteAttribute("href", Tuple.Create(" href=\"", 2874), Tuple.Create("\"", 2977)
             
             #line 52 "..\..\Views\Home\GetRecommend.cshtml"
-, Tuple.Create(Tuple.Create("", 2893), Tuple.Create<System.Object, System.Int32>(Url.Action("about", "home", new { qtype = QSType.detail, id =item.Id, fctype = item.Category })
+, Tuple.Create(Tuple.Create("", 2881), Tuple.Create<System.Object, System.Int32>(Url.Action("about", "home", new { qtype = QSType.detail, id =item.Id, fctype = item.Category })
             
             #line default
             #line hidden
-, 2893), false)
+, 2881), false)
 );
 
 WriteLiteral(">\r\n                            <p");
@@ -404,7 +404,7 @@ WriteLiteral(">\r\n                                <p>");
 
             
             #line 55 "..\..\Views\Home\GetRecommend.cshtml"
-                              Write(item.Synopsis);
+                              Write(item.Title);
 
             
             #line default
@@ -430,14 +430,14 @@ WriteLiteral("</span>\r\n                            </div>\r\n                 
             #line hidden
 WriteLiteral("                        <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 3487), Tuple.Create("\"", 3592)
+WriteAttribute("href", Tuple.Create(" href=\"", 3472), Tuple.Create("\"", 3577)
             
             #line 61 "..\..\Views\Home\GetRecommend.cshtml"
-, Tuple.Create(Tuple.Create("", 3494), Tuple.Create<System.Object, System.Int32>(Url.Action("download", "home", new {qtype = QSType.detail, id =item.Id, fctype = item.Category })
+, Tuple.Create(Tuple.Create("", 3479), Tuple.Create<System.Object, System.Int32>(Url.Action("download", "home", new {qtype = QSType.detail, id =item.Id, fctype = item.Category })
             
             #line default
             #line hidden
-, 3494), false)
+, 3479), false)
 );
 
 WriteLiteral(">\r\n                            <p");
@@ -470,7 +470,7 @@ WriteLiteral(">\r\n                                <p>");
 
             
             #line 64 "..\..\Views\Home\GetRecommend.cshtml"
-                              Write(item.Synopsis);
+                              Write(item.Title);
 
             
             #line default

@@ -16,7 +16,7 @@
                         <a href="@Url.Action("industry", "home", new {qtype = QSType.detail, id =item.Id, fctype = item.Category })">
                             <p class="list_p fl"><b>@item.CreateTime.ToString("dd")</b>@item.CreateTime.ToString("yyyy-MM")</p>
                             <div class="list_fr_n fr">
-                                <p>@item.Synopsis</p>
+                                <p>@item.Title</p>
                                 <span>@item.CreateTime.ToString("HH:mm")</span>
                             </div>
                         </a>
@@ -25,7 +25,7 @@
                         <a href="@Url.Action("association", "home", new { qtype = QSType.detail, id =item.Id, fctype = item.Category })">
                             <p class="list_p fl"><b>@item.CreateTime.ToString("dd")</b>@item.CreateTime.ToString("yyyy-MM")</p>
                             <div class="list_fr_n fr">
-                                <p>@item.Synopsis</p>
+                                <p>@item.Title</p>
                                 <span>@item.CreateTime.ToString("HH:mm")</span>
                             </div>
                         </a>
@@ -34,7 +34,7 @@
                         <a href="@Url.Action("examination", "home", new {qtype = QSType.detail, id =item.Id, fctype = item.Category,pctype=item.ParCategory })">
                             <p class="list_p fl"><b>@item.CreateTime.ToString("dd")</b>@item.CreateTime.ToString("yyyy-MM")</p>
                             <div class="list_fr_n fr">
-                                <p>@item.Synopsis</p>
+                                <p>@item.Title</p>
                                 <span>@item.CreateTime.ToString("HH:mm")</span>
                             </div>
                         </a>
@@ -43,7 +43,7 @@
                         <a href="@Url.Action("social", "home", new {qtype = QSType.detail, id =item.Id, fctype = item.Category })">
                             <p class="list_p fl"><b>@item.CreateTime.ToString("dd")</b>@item.CreateTime.ToString("yyyy-MM")</p>
                             <div class="list_fr_n fr">
-                                <p>@item.Synopsis</p>
+                                <p>@item.Title</p>
                                 <span>@item.CreateTime.ToString("HH:mm")</span>
                             </div>
                         </a>
@@ -52,7 +52,7 @@
                         <a href="@Url.Action("about", "home", new { qtype = QSType.detail, id =item.Id, fctype = item.Category })">
                             <p class="list_p fl"><b>@item.CreateTime.ToString("dd")</b>@item.CreateTime.ToString("yyyy-MM")</p>
                             <div class="list_fr_n fr">
-                                <p>@item.Synopsis</p>
+                                <p>@item.Title</p>
                                 <span>@item.CreateTime.ToString("HH:mm")</span>
                             </div>
                         </a>
@@ -61,7 +61,7 @@
                         <a href="@Url.Action("download", "home", new {qtype = QSType.detail, id =item.Id, fctype = item.Category })">
                             <p class="list_p fl"><b>@item.CreateTime.ToString("dd")</b>@item.CreateTime.ToString("yyyy-MM")</p>
                             <div class="list_fr_n fr">
-                                <p>@item.Synopsis</p>
+                                <p>@item.Title</p>
                                 <span>@item.CreateTime.ToString("HH:mm")</span>
                             </div>
                         </a>
