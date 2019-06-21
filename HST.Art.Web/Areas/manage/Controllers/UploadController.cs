@@ -4,6 +4,7 @@ using System.Web.Mvc;
 using System.IO;
 using System.Web.Configuration;
 using HST.Utillity;
+using System.Web.Helpers;
 
 namespace HST.Art.Web.Areas.manage.Controllers
 {
@@ -158,15 +159,15 @@ namespace HST.Art.Web.Areas.manage.Controllers
             if (!string.IsNullOrEmpty(errorMsg))
             {
                 return Content("<script>window.parent.CKEDITOR.tools.callFunction(" + CKEditorFuncNum + ", \"" + url + "\",\"" + errorMsg + "\");</script>");
-            }                
-           
+            }
+
             if (upload != null)
             {
                 int userid = Convert.ToInt16(GetAccount().Id);
                 //文件后缀
                 string Suffixstr = Path.GetExtension(upload.FileName);
                 string fileNameGuid = Guid.NewGuid().ToString("N");
-                string localFileName = "art_" + userid + "_" + fileNameGuid + Suffixstr;
+                string localFileName = "artf_" + userid + "_" + fileNameGuid + Suffixstr;
                 string locAddr = WebConfigurationManager.AppSettings["FileAddr"].ToString();//图片上传地址
                 //相对路径
                 string filePath = string.Format("/uploadFiles/{0}/", DateTime.Now.ToString("yyyyMM"));
@@ -179,11 +180,20 @@ namespace HST.Art.Web.Areas.manage.Controllers
                 //guid重命名
                 string fileName = System.Guid.NewGuid().ToString() + System.IO.Path.GetFileName(upload.FileName);
                 //储存文件
-                upload.SaveAs(fullPath);
+
+                if (upload.ContentLength > 1024 * 500)
+                {
+                    ImagHelper.CompressImage(upload.InputStream, fullPath);
+                }
+                else
+                {
+                    upload.SaveAs(fullPath);
+                }
+
                 url = filePath + localFileName;
             }
 
-           
+
 
             //上传成功后，我们还需要通过以下的一个脚本把图片返回到第一个tab选项
             return Content("<script>window.parent.CKEDITOR.tools.callFunction(" + CKEditorFuncNum + ", \"" + url + "\");</script>");
@@ -203,9 +213,9 @@ namespace HST.Art.Web.Areas.manage.Controllers
             {
                 int userid = Convert.ToInt16(GetAccount().Id);
                 //文件后缀
-                string Suffixstr ="."+imgfile.ContentType.Split('/')[1];
+                string Suffixstr = "." + imgfile.ContentType.Split('/')[1];
                 string fileNameGuid = Guid.NewGuid().ToString("N");
-                string localFileName = "art_" + userid + "_" + fileNameGuid + Suffixstr;
+                string localFileName = "artf_" + userid + "_" + fileNameGuid + Suffixstr;
                 string locAddr = WebConfigurationManager.AppSettings["FileAddr"].ToString();//图片上传地址
                 //相对路径
                 string filePath = string.Format("/uploadFiles/{0}/", DateTime.Now.ToString("yyyyMM"));
@@ -218,7 +228,16 @@ namespace HST.Art.Web.Areas.manage.Controllers
                 //guid重命名
                 string fileName = System.Guid.NewGuid().ToString() + System.IO.Path.GetFileName(imgfile.FileName);
                 //储存文件
-                imgfile.SaveAs(fullPath);
+
+                if (imgfile.ContentLength > 1024 * 500)
+                {
+                    ImagHelper.CompressImage(imgfile.InputStream, fullPath);
+                }
+                else
+                {
+                    imgfile.SaveAs(fullPath);
+                }
+           
                 url = filePath + localFileName;
             }
             um_mod.Message = errorMsg;
