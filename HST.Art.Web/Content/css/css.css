@@ -17,6 +17,7 @@ input,textarea,select { outline:none;resize:none;}
 input,textarea{outline-color: invert ;outline-style: none ;outline-width: 0px ;border-style: none ;text-shadow: none ;-webkit-appearance: none ;-webkit-user-select: text ;	outline-color: transparent ;box-shadow: none; }
 .display{ display:block !important}
 h1,h2,h3,h4,h5,h6{ font-weight:normal}
+html,body{background-color:#fff}
 
 @font-face {font-family: "iconfont";
   src: url('../fonts/iconfont.eot?t=1558426741900'); /* IE9 */

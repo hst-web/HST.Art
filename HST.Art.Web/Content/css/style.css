@@ -167,7 +167,7 @@ h3 i{ width:3px; height:18px; background:#d9001b; display:inline-block; margin-r
 .details p.tip{ width:100%;border-bottom: 1px solid #ececec; font-size: 13px; color: #888; padding-bottom:10px;padding-top: 5px;}
 .details div{ width:100%; font-size: 14px; color: #333; line-height: 28px;}
 .details p{ margin-bottom: 10px}
-.details img{ display: block; margin: 10px auto 15px}
+.details img{ display: block; margin: 10px auto 15px;max-width:100% !important}
  .swiper-slide{max-height:480px;overflow:hidden}
 .clearfix::after {
   display: block;

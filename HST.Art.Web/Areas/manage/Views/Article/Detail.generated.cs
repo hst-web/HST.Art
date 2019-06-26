@@ -81,7 +81,7 @@ WriteLiteral("\r\n<style");
 
 WriteLiteral(" type=\"text/css\"");
 
-WriteLiteral(">\r\n    p{font-size:14px}\r\n</style>\r\n<article");
+WriteLiteral(">\r\n    p{font-size:14px}\r\n    img{max-width:100% !important}\r\n</style>\r\n<article");
 
 WriteLiteral(" class=\"page-container\"");
 
@@ -100,13 +100,13 @@ WriteLiteral(" class=\"col-xs-12\"");
 WriteLiteral(">\r\n");
 
             
-            #line 19 "..\..\Areas\manage\Views\Article\Detail.cshtml"
+            #line 20 "..\..\Areas\manage\Views\Article\Detail.cshtml"
                 
             
             #line default
             #line hidden
             
-            #line 19 "..\..\Areas\manage\Views\Article\Detail.cshtml"
+            #line 20 "..\..\Areas\manage\Views\Article\Detail.cshtml"
                  if (string.IsNullOrEmpty(Model.Description))
                 {
 
@@ -120,7 +120,7 @@ WriteLiteral(" style=\"text-align:center;margin-top:20%\"");
 WriteLiteral(">暂无详情信息</p>\r\n");
 
             
-            #line 22 "..\..\Areas\manage\Views\Article\Detail.cshtml"
+            #line 23 "..\..\Areas\manage\Views\Article\Detail.cshtml"
                 }
                 else
                 {
@@ -129,14 +129,14 @@ WriteLiteral(">暂无详情信息</p>\r\n");
             #line default
             #line hidden
             
-            #line 25 "..\..\Areas\manage\Views\Article\Detail.cshtml"
+            #line 26 "..\..\Areas\manage\Views\Article\Detail.cshtml"
                Write(Html.Raw(Model.Description));
 
             
             #line default
             #line hidden
             
-            #line 25 "..\..\Areas\manage\Views\Article\Detail.cshtml"
+            #line 26 "..\..\Areas\manage\Views\Article\Detail.cshtml"
                                                 
                 }
 
