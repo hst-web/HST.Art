@@ -55,6 +55,7 @@
 	/*list*/
 	.list_fl{ display:none}
 	.list_fr{ width:100%}
+    .list_fr.details{padding:0 10px}
 	.list_cons h6{ font-size:16px; line-height: 24px}
 	.details h4{ font-size:18px}
 	.list_cons{ width:72%}
@@ -68,6 +69,7 @@
     .foot_conts p{ font-size:14px; line-height:30px;}
     .cont_box dl{height:auto}
     .social-box{padding-bottom:20px}
+    .details p.tip{margin-bottom:15px}
 }
 
 @media (max-width:320px) {
