@@ -194,7 +194,7 @@ WriteLiteral(">\r\n");
             #line hidden
             
             #line 38 "..\..\Views\Home\Index.cshtml"
-         if (Model.BulletinList != null && Model.BulletinList.Count>0)
+         if (Model.BulletinList != null && Model.BulletinList.Count > 0)
         {
             foreach (var item in Model.BulletinList)
             {
@@ -216,7 +216,7 @@ WriteLiteral(">\r\n");
             #line hidden
             
             #line 43 "..\..\Views\Home\Index.cshtml"
-                       
+                      
                         string actionName = string.Empty;
                         int parCategory = 0;
                         switch (item.SectionType)
@@ -263,14 +263,14 @@ WriteLiteral("\r\n\r\n");
             #line hidden
 WriteLiteral("                        <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 2783), Tuple.Create("\"", 2912)
+WriteAttribute("href", Tuple.Create(" href=\"", 2784), Tuple.Create("\"", 2913)
             
             #line 72 "..\..\Views\Home\Index.cshtml"
-, Tuple.Create(Tuple.Create("", 2790), Tuple.Create<System.Object, System.Int32>(Url.Action(actionName, "home", new {qtype = QSType.detail, id =item.Id, fctype = item.Category,pctype=item.ParCategory })
+, Tuple.Create(Tuple.Create("", 2791), Tuple.Create<System.Object, System.Int32>(Url.Action(actionName, "home", new {qtype = QSType.detail, id =item.Id, fctype = item.Category,pctype=item.ParCategory })
             
             #line default
             #line hidden
-, 2790), false)
+, 2791), false)
 );
 
 WriteLiteral(">\r\n                            <p");
@@ -312,14 +312,14 @@ WriteLiteral("</span>\r\n                        </a>\r\n");
             #line hidden
 WriteLiteral("                        <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 3196), Tuple.Create("\"", 3301)
+WriteAttribute("href", Tuple.Create(" href=\"", 3197), Tuple.Create("\"", 3302)
             
             #line 79 "..\..\Views\Home\Index.cshtml"
-, Tuple.Create(Tuple.Create("", 3203), Tuple.Create<System.Object, System.Int32>(Url.Action(actionName, "home", new {qtype = QSType.detail, id =item.Id, fctype = item.Category })
+, Tuple.Create(Tuple.Create("", 3204), Tuple.Create<System.Object, System.Int32>(Url.Action(actionName, "home", new {qtype = QSType.detail, id =item.Id, fctype = item.Category })
             
             #line default
             #line hidden
-, 3203), false)
+, 3204), false)
 );
 
 WriteLiteral(">\r\n                            <p");
@@ -361,15 +361,15 @@ WriteLiteral("                </div>\r\n");
 
             
             #line 85 "..\..\Views\Home\Index.cshtml"
-            }
-        }
-        else
-        {
+                            }
+                        }
+                        else
+                        {
 
             
             #line default
             #line hidden
-WriteLiteral("            <p");
+WriteLiteral("                            <p");
 
 WriteLiteral(" class=\"not-data\"");
 
@@ -377,7 +377,7 @@ WriteLiteral(">暂无数据</p>\r\n");
 
             
             #line 90 "..\..\Views\Home\Index.cshtml"
-        }
+                        }
 
             
             #line default
@@ -392,14 +392,14 @@ WriteLiteral(" class=\"searc-cert\"");
 
 WriteLiteral("><a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 3745), Tuple.Create("\"", 3785)
+WriteAttribute("href", Tuple.Create(" href=\"", 3842), Tuple.Create("\"", 3882)
             
             #line 94 "..\..\Views\Home\Index.cshtml"
-, Tuple.Create(Tuple.Create("", 3752), Tuple.Create<System.Object, System.Int32>(Url.Action("Certificate","Home")
+, Tuple.Create(Tuple.Create("", 3849), Tuple.Create<System.Object, System.Int32>(Url.Action("Certificate","Home")
             
             #line default
             #line hidden
-, 3752), false)
+, 3849), false)
 );
 
 WriteLiteral("><b><img");
@@ -438,14 +438,14 @@ WriteLiteral(" class=\"index_hy_box\"");
 
 WriteLiteral(">\r\n\r\n                    <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 4223), Tuple.Create("\"", 4317)
+WriteAttribute("href", Tuple.Create(" href=\"", 4320), Tuple.Create("\"", 4414)
             
             #line 107 "..\..\Views\Home\Index.cshtml"
-, Tuple.Create(Tuple.Create("", 4230), Tuple.Create<System.Object, System.Int32>(Url.Action("industry", new { qtype = QSType.detail, id=item.Id,fctype=item.Category })
+, Tuple.Create(Tuple.Create("", 4327), Tuple.Create<System.Object, System.Int32>(Url.Action("industry", new { qtype = QSType.detail, id=item.Id,fctype=item.Category })
             
             #line default
             #line hidden
-, 4230), false)
+, 4327), false)
 );
 
 WriteLiteral(">\r\n                        <div");
@@ -546,14 +546,14 @@ WriteLiteral(" class=\"index_hy_box\"");
 
 WriteLiteral(">\r\n                    <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 5190), Tuple.Create("\"", 5287)
+WriteAttribute("href", Tuple.Create(" href=\"", 5287), Tuple.Create("\"", 5384)
             
             #line 131 "..\..\Views\Home\Index.cshtml"
-, Tuple.Create(Tuple.Create("", 5197), Tuple.Create<System.Object, System.Int32>(Url.Action("association", new { qtype = QSType.detail, id=item.Id,fctype=item.Category })
+, Tuple.Create(Tuple.Create("", 5294), Tuple.Create<System.Object, System.Int32>(Url.Action("association", new { qtype = QSType.detail, id=item.Id,fctype=item.Category })
             
             #line default
             #line hidden
-, 5197), false)
+, 5294), false)
 );
 
 WriteLiteral(">\r\n                        <div");
@@ -656,26 +656,26 @@ WriteLiteral(">\r\n        <h3><i></i>社会公益</h3>\r\n");
             #line hidden
 WriteLiteral("                <dl>\r\n                    <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 6188), Tuple.Create("\"", 6280)
+WriteAttribute("href", Tuple.Create(" href=\"", 6285), Tuple.Create("\"", 6377)
             
             #line 158 "..\..\Views\Home\Index.cshtml"
-, Tuple.Create(Tuple.Create("", 6195), Tuple.Create<System.Object, System.Int32>(Url.Action("social", new { qtype = QSType.detail, id=item.Id,fctype=item.Category })
+, Tuple.Create(Tuple.Create("", 6292), Tuple.Create<System.Object, System.Int32>(Url.Action("social", new { qtype = QSType.detail, id=item.Id,fctype=item.Category })
             
             #line default
             #line hidden
-, 6195), false)
+, 6292), false)
 );
 
 WriteLiteral(">\r\n                        <dt><img");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 6316), Tuple.Create("\"", 6335)
+WriteAttribute("src", Tuple.Create(" src=\"", 6413), Tuple.Create("\"", 6432)
             
             #line 159 "..\..\Views\Home\Index.cshtml"
-, Tuple.Create(Tuple.Create("", 6322), Tuple.Create<System.Object, System.Int32>(item.HeadImg
+, Tuple.Create(Tuple.Create("", 6419), Tuple.Create<System.Object, System.Int32>(item.HeadImg
             
             #line default
             #line hidden
-, 6322), false)
+, 6419), false)
 );
 
 WriteLiteral(" onerror=\"nofind()\"");
@@ -732,15 +732,15 @@ WriteLiteral(">暂无数据</p>\r\n");
             #line hidden
 WriteLiteral("    </div>\r\n</div>\r\n\r\n<div");
 
-WriteAttribute("class", Tuple.Create(" class=\"", 6679), Tuple.Create("\"", 6730)
-, Tuple.Create(Tuple.Create("", 6687), Tuple.Create("box", 6687), true)
+WriteAttribute("class", Tuple.Create(" class=\"", 6776), Tuple.Create("\"", 6827)
+, Tuple.Create(Tuple.Create("", 6784), Tuple.Create("box", 6784), true)
             
             #line 174 "..\..\Views\Home\Index.cshtml"
-, Tuple.Create(Tuple.Create(" ", 6690), Tuple.Create<System.Object, System.Int32>(Model.LogoList!=null?"":"box-height"
+, Tuple.Create(Tuple.Create(" ", 6787), Tuple.Create<System.Object, System.Int32>(Model.LogoList!=null?"":"box-height"
             
             #line default
             #line hidden
-, 6691), false)
+, 6788), false)
 );
 
 WriteLiteral(">\r\n");
@@ -753,7 +753,7 @@ WriteLiteral(">\r\n");
             #line hidden
             
             #line 175 "..\..\Views\Home\Index.cshtml"
-     if (Model.LogoList != null)
+     if (Model.LogoList != null && Model.LogoList.Count > 0)
     {
 
             
@@ -787,26 +787,26 @@ WriteLiteral("                    <a");
 
 WriteLiteral(" target=\"_blank\"");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 6974), Tuple.Create("\"", 6997)
+WriteAttribute("href", Tuple.Create(" href=\"", 7099), Tuple.Create("\"", 7122)
             
             #line 182 "..\..\Views\Home\Index.cshtml"
-, Tuple.Create(Tuple.Create("", 6981), Tuple.Create<System.Object, System.Int32>(secItem.WebLink
+, Tuple.Create(Tuple.Create("", 7106), Tuple.Create<System.Object, System.Int32>(secItem.WebLink
             
             #line default
             #line hidden
-, 6981), false)
+, 7106), false)
 );
 
 WriteLiteral("><img");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 7003), Tuple.Create("\"", 7024)
+WriteAttribute("src", Tuple.Create(" src=\"", 7128), Tuple.Create("\"", 7149)
             
             #line 182 "..\..\Views\Home\Index.cshtml"
-, Tuple.Create(Tuple.Create("", 7009), Tuple.Create<System.Object, System.Int32>(secItem.ImgSrc
+, Tuple.Create(Tuple.Create("", 7134), Tuple.Create<System.Object, System.Int32>(secItem.ImgSrc
             
             #line default
             #line hidden
-, 7009), false)
+, 7134), false)
 );
 
 WriteLiteral(" onerror=\"nofind()\"");
@@ -834,6 +834,8 @@ WriteLiteral("\r\n            </div>\r\n        </div>\r\n");
 WriteLiteral("        <p");
 
 WriteLiteral(" class=\"not-data\"");
+
+WriteLiteral(" style=\"margin:3% auto;\"");
 
 WriteLiteral(">暂无数据</p>\r\n");
 

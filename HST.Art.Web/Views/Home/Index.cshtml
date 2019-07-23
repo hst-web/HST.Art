@@ -35,12 +35,12 @@
         @*<span><a href="#">更多 ></a></span>*@
     </div>
     <div class="index_new_cont fl">
-        @if (Model.BulletinList != null && Model.BulletinList.Count>0)
+        @if (Model.BulletinList != null && Model.BulletinList.Count > 0)
         {
             foreach (var item in Model.BulletinList)
             {
                 <div class="index_ul">
-                    @{ 
+                    @{
                         string actionName = string.Empty;
                         int parCategory = 0;
                         switch (item.SectionType)
@@ -82,12 +82,12 @@
                         </a>
                     }
                 </div>
-            }
-        }
-        else
-        {
-            <p class="not-data">暂无数据</p>
-        }
+                            }
+                        }
+                        else
+                        {
+                            <p class="not-data">暂无数据</p>
+                        }
     </div>
     <!--/index_new_cont-->
     <div class="index_new_fr fr">
@@ -172,7 +172,7 @@
 </div>
 
 <div class="box @(Model.LogoList!=null?"":"box-height")">
-    @if (Model.LogoList != null)
+    @if (Model.LogoList != null && Model.LogoList.Count > 0)
     {
         <div class="cont_box">
             <div class="owl-carousel">
@@ -187,7 +187,7 @@
     }
     else
     {
-        <p class="not-data">暂无数据</p>
+        <p class="not-data" style="margin:3% auto;">暂无数据</p>
     }
 </div>
 

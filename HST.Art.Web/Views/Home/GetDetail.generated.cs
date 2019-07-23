@@ -83,11 +83,46 @@ WriteLiteral(">");
             #line hidden
 WriteLiteral("</p>\r\n    <div>\r\n");
 
-WriteLiteral("        ");
-
             
             #line 9 "..\..\Views\Home\GetDetail.cshtml"
-   Write(Html.Raw(Model.Description));
+        
+            
+            #line default
+            #line hidden
+            
+            #line 9 "..\..\Views\Home\GetDetail.cshtml"
+         if (string.IsNullOrEmpty(Model.Description))
+        {
+
+            
+            #line default
+            #line hidden
+WriteLiteral("            <p");
+
+WriteLiteral(" class=\"not-data\"");
+
+WriteLiteral(">暂无数据</p>\r\n");
+
+            
+            #line 12 "..\..\Views\Home\GetDetail.cshtml"
+        }
+        else
+        {
+            
+            
+            #line default
+            #line hidden
+            
+            #line 15 "..\..\Views\Home\GetDetail.cshtml"
+       Write(Html.Raw(Model.Description));
+
+            
+            #line default
+            #line hidden
+            
+            #line 15 "..\..\Views\Home\GetDetail.cshtml"
+                                        
+        }
 
             
             #line default
@@ -95,13 +130,13 @@ WriteLiteral("        ");
 WriteLiteral("\r\n    </div>\r\n");
 
             
-            #line 11 "..\..\Views\Home\GetDetail.cshtml"
+            #line 19 "..\..\Views\Home\GetDetail.cshtml"
     
             
             #line default
             #line hidden
             
-            #line 11 "..\..\Views\Home\GetDetail.cshtml"
+            #line 19 "..\..\Views\Home\GetDetail.cshtml"
      if (!string.IsNullOrEmpty(Model.FileUrl))
     {
 
@@ -114,20 +149,20 @@ WriteLiteral(" style=\"margin:12px auto\"");
 
 WriteLiteral(">\r\n            <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 386), Tuple.Create("\"", 407)
+WriteAttribute("href", Tuple.Create(" href=\"", 547), Tuple.Create("\"", 568)
             
-            #line 14 "..\..\Views\Home\GetDetail.cshtml"
-, Tuple.Create(Tuple.Create("", 393), Tuple.Create<System.Object, System.Int32>(Model.FileUrl
+            #line 22 "..\..\Views\Home\GetDetail.cshtml"
+, Tuple.Create(Tuple.Create("", 554), Tuple.Create<System.Object, System.Int32>(Model.FileUrl
             
             #line default
             #line hidden
-, 393), false)
+, 554), false)
 );
 
 WriteLiteral(">");
 
             
-            #line 14 "..\..\Views\Home\GetDetail.cshtml"
+            #line 22 "..\..\Views\Home\GetDetail.cshtml"
                                 Write(Model.FileName);
 
             
@@ -136,13 +171,13 @@ WriteLiteral(">");
 WriteLiteral("</a>\r\n        </div>\r\n");
 
             
-            #line 16 "..\..\Views\Home\GetDetail.cshtml"
+            #line 24 "..\..\Views\Home\GetDetail.cshtml"
     }
 
             
             #line default
             #line hidden
-WriteLiteral("   \r\n</div>");
+WriteLiteral("\r\n</div>");
 
         }
     }

@@ -6,7 +6,15 @@
     <h4 class="title">@Model.Title</h4>
     <p class="tip">@Model.CreateDate.ToString("yyyy-MM-dd HH:mm:ss")</p>
     <div>
-        @Html.Raw(Model.Description)
+        @if (string.IsNullOrEmpty(Model.Description))
+        {
+            <p class="not-data">暂无数据</p>
+        }
+        else
+        {
+            @Html.Raw(Model.Description)
+        }
+
     </div>
     @if (!string.IsNullOrEmpty(Model.FileUrl))
     {
@@ -14,5 +22,5 @@
             <a href="@Model.FileUrl">@Model.FileName</a>
         </div>
     }
-   
+
 </div>
