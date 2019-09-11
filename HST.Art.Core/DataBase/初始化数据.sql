@@ -3,4 +3,5 @@ insert into [Organization] (Name,Number) values ('山东省艺术职业教育专
 insert into [Setting] ([Val],[Type]) values ('ejEKu8VnIRtJy04khJROEQgOl7G+/J1LEmGnrK93K04nQZi5nTKzA3z05oZu13QWAGSgO02Y6RymakKVxX4pfg==',1)
 insert into [Setting] ([Val],[Type]) values ('',2)
 
+--永久有效連接
 --ejEKu8VnIRtJy04khJROEQgOl7G+/J1LEmGnrK93K04nQZi5nTKzA3z05oZu13QWnSj/UNSQy4w=
