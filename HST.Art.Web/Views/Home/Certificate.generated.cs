@@ -349,7 +349,7 @@ WriteLiteral(">\r\n            <p><i");
 
 WriteLiteral(" class=\"iconfont icon-c_query\"");
 
-WriteLiteral("></i>会员单位星际查询</p>\r\n            <select");
+WriteLiteral("></i>会员单位查询</p>\r\n            <select");
 
 WriteLiteral(" class=\"select-city\"");
 
@@ -375,14 +375,14 @@ WriteLiteral(">选择市</option>\r\n");
             #line hidden
 WriteLiteral("                    <option");
 
-WriteAttribute("value", Tuple.Create(" value=\"", 2142), Tuple.Create("\"", 2159)
+WriteAttribute("value", Tuple.Create(" value=\"", 2140), Tuple.Create("\"", 2157)
             
             #line 48 "..\..\Views\Home\Certificate.cshtml"
-, Tuple.Create(Tuple.Create("", 2150), Tuple.Create<System.Object, System.Int32>(item.Key
+, Tuple.Create(Tuple.Create("", 2148), Tuple.Create<System.Object, System.Int32>(item.Key
             
             #line default
             #line hidden
-, 2150), false)
+, 2148), false)
 );
 
 WriteLiteral(">");

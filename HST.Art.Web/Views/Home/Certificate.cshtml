@@ -40,7 +40,7 @@
             <span class="search"><i class="iconfont icon-search"></i></span>
         </div><!--/query_div-->
         <div class="query_div @(Model.CertType==CertType.member?"active":"")" data-bind="@CertType.member">
-            <p><i class="iconfont icon-c_query"></i>会员单位星际查询</p>
+            <p><i class="iconfont icon-c_query"></i>会员单位查询</p>
             <select class="select-city">
                 <option value="">选择市</option>
                 @foreach (KeyValuePair<int, string> item in ViewBag.City)
