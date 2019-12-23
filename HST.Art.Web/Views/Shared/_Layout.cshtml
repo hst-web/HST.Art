@@ -27,7 +27,7 @@
         <link rel="stylesheet" href="~/Content/css/swiper.min.css">
         <link rel="stylesheet" href="~/Content/css/owl.carousel.min.css">
     }
-   
+
     @Scripts.Render("~/bundles/webclient")
     @Scripts.Render("~/bundles/ajaxAsync")
 </head>
@@ -48,7 +48,7 @@
             <span></span>
             <span></span>
         </div>
-
+       
         <ul class="nav-list">
             <li><a href="@Url.Action("Index", "Home")" class="@(action.Equals("index",StringComparison.InvariantCultureIgnoreCase)||action.Equals("certificate",StringComparison.InvariantCulture)?"active":"")">首页</a></li>
             <li>
@@ -81,6 +81,7 @@
             </li>
         </ul>
     </nav>
+    <div class="nav-zhan"></div>
     <div class="content-wrap">
         @RenderBody()
     </div>
@@ -89,19 +90,24 @@
             @Html.Action("Footer", "Home")
         </div>
     </div>
-    <footer>京ICP备13003730号-1</footer>
+    <footer>鲁ICP备19063185号-1</footer>
     <script type="text/javascript">
         $(document).ready(function () {
-            var topMain = $("header").height() + 15
+            var topMain = $("header").height();
+            //var topNav = $("nav").outerHeight();
+            //var topHeight = isMobile() ? topNav : topMain;
             var nav = $("nav");
-            $(window).scroll(function () {
-                if ($(window).scrollTop() > topMain) {
-                    nav.addClass("nav_scroll");
+            console.log(topMain);
+            if (!isMobile()) {
+                $(window).scroll(function () {
+                    if ($(window).scrollTop() > topMain) {
+                        nav.addClass("nav_scroll");
 
-                } else {
-                    nav.removeClass("nav_scroll");
-                }
-            });
+                    } else {
+                        nav.removeClass("nav_scroll");
+                    }
+                });
+            }
         })
 
         $(document).click(function () {
@@ -111,6 +117,26 @@
         $('nav').find('.nav-menu').click(function (e) {
             $('.nav-list').toggleClass('open')
         })
+
+        function isMobile() {
+            var userAgentInfo = navigator.userAgent;
+            var mobileAgents = ["Android", "iPhone", "SymbianOS", "Windows Phone", "iPad", "iPod"];
+            var mobile_flag = false;
+            //根据userAgent判断是否是手机
+            for (var v = 0; v < mobileAgents.length; v++) {
+                if (userAgentInfo.indexOf(mobileAgents[v]) > 0) {
+                    mobile_flag = true;
+                    break;
+                }
+            }
+            var screen_width = window.screen.width;
+            // var screen_height = window.screen.height;
+            //根据屏幕分辨率判断是否是手机
+            if (screen_width < 996) {
+                mobile_flag = true;
+            }
+            return mobile_flag;
+        }
     </script>
     @RenderSection("Scripts", required: false)
 </body>

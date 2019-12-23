@@ -176,7 +176,7 @@ WriteLiteral(">\r\n");
             
             #line default
             #line hidden
-WriteLiteral("   \r\n");
+WriteLiteral("\r\n");
 
 WriteLiteral("    ");
 
@@ -233,14 +233,14 @@ WriteLiteral(" class=\"nav-logo\"");
 
 WriteLiteral(">\r\n            <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 1805), Tuple.Create("\"", 1840)
+WriteAttribute("href", Tuple.Create(" href=\"", 1802), Tuple.Create("\"", 1837)
             
             #line 44 "..\..\Views\Shared\_Layout.cshtml"
-, Tuple.Create(Tuple.Create("", 1812), Tuple.Create<System.Object, System.Int32>(Url.Action("Index", "Home")
+, Tuple.Create(Tuple.Create("", 1809), Tuple.Create<System.Object, System.Int32>(Url.Action("Index", "Home")
             
             #line default
             #line hidden
-, 1812), false)
+, 1809), false)
 );
 
 WriteLiteral("><img");
@@ -254,52 +254,52 @@ WriteLiteral("></a>\r\n        </div>\r\n        <div");
 WriteLiteral(" class=\"nav-menu\"");
 
 WriteLiteral(">\r\n            <span></span>\r\n            <span></span>\r\n            <span></span" +
-">\r\n        </div>\r\n\r\n        <ul");
+">\r\n        </div>\r\n       \r\n        <ul");
 
 WriteLiteral(" class=\"nav-list\"");
 
 WriteLiteral(">\r\n            <li><a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 2086), Tuple.Create("\"", 2121)
+WriteAttribute("href", Tuple.Create(" href=\"", 2090), Tuple.Create("\"", 2125)
             
             #line 53 "..\..\Views\Shared\_Layout.cshtml"
-, Tuple.Create(Tuple.Create("", 2093), Tuple.Create<System.Object, System.Int32>(Url.Action("Index", "Home")
+, Tuple.Create(Tuple.Create("", 2097), Tuple.Create<System.Object, System.Int32>(Url.Action("Index", "Home")
             
             #line default
             #line hidden
-, 2093), false)
+, 2097), false)
 );
 
-WriteAttribute("class", Tuple.Create(" class=\"", 2122), Tuple.Create("\"", 2275)
+WriteAttribute("class", Tuple.Create(" class=\"", 2126), Tuple.Create("\"", 2279)
             
             #line 53 "..\..\Views\Shared\_Layout.cshtml"
-, Tuple.Create(Tuple.Create("", 2130), Tuple.Create<System.Object, System.Int32>(action.Equals("index",StringComparison.InvariantCultureIgnoreCase)||action.Equals("certificate",StringComparison.InvariantCulture)?"active":""
+, Tuple.Create(Tuple.Create("", 2134), Tuple.Create<System.Object, System.Int32>(action.Equals("index",StringComparison.InvariantCultureIgnoreCase)||action.Equals("certificate",StringComparison.InvariantCulture)?"active":""
             
             #line default
             #line hidden
-, 2130), false)
+, 2134), false)
 );
 
 WriteLiteral(">首页</a></li>\r\n            <li>\r\n                <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 2326), Tuple.Create("\"", 2360)
+WriteAttribute("href", Tuple.Create(" href=\"", 2330), Tuple.Create("\"", 2364)
             
             #line 55 "..\..\Views\Shared\_Layout.cshtml"
-, Tuple.Create(Tuple.Create("", 2333), Tuple.Create<System.Object, System.Int32>(Url.Action("About","Home")
+, Tuple.Create(Tuple.Create("", 2337), Tuple.Create<System.Object, System.Int32>(Url.Action("About","Home")
             
             #line default
             #line hidden
-, 2333), false)
+, 2337), false)
 );
 
-WriteAttribute("class", Tuple.Create(" class=\"", 2361), Tuple.Create("\"", 2450)
+WriteAttribute("class", Tuple.Create(" class=\"", 2365), Tuple.Create("\"", 2454)
             
             #line 55 "..\..\Views\Shared\_Layout.cshtml"
-, Tuple.Create(Tuple.Create("", 2369), Tuple.Create<System.Object, System.Int32>(action.Equals("about",StringComparison.InvariantCultureIgnoreCase)?"active":""
+, Tuple.Create(Tuple.Create("", 2373), Tuple.Create<System.Object, System.Int32>(action.Equals("about",StringComparison.InvariantCultureIgnoreCase)?"active":""
             
             #line default
             #line hidden
-, 2369), false)
+, 2373), false)
 );
 
 WriteLiteral(">协会概况</a>\r\n                <ul");
@@ -308,97 +308,97 @@ WriteLiteral(" class=\"menu\"");
 
 WriteLiteral(">\r\n                    <li");
 
-WriteAttribute("class", Tuple.Create(" class=\"", 2520), Tuple.Create("\"", 2615)
+WriteAttribute("class", Tuple.Create(" class=\"", 2524), Tuple.Create("\"", 2619)
             
             #line 57 "..\..\Views\Shared\_Layout.cshtml"
-, Tuple.Create(Tuple.Create("", 2528), Tuple.Create<System.Object, System.Int32>(queryName.Equals("Synopsis",StringComparison.InvariantCultureIgnoreCase)?"active":""
+, Tuple.Create(Tuple.Create("", 2532), Tuple.Create<System.Object, System.Int32>(queryName.Equals("Synopsis",StringComparison.InvariantCultureIgnoreCase)?"active":""
             
             #line default
             #line hidden
-, 2528), false)
+, 2532), false)
 );
 
 WriteLiteral("><a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 2619), Tuple.Create("\"", 2686)
+WriteAttribute("href", Tuple.Create(" href=\"", 2623), Tuple.Create("\"", 2690)
             
             #line 57 "..\..\Views\Shared\_Layout.cshtml"
-                                                 , Tuple.Create(Tuple.Create("", 2626), Tuple.Create<System.Object, System.Int32>(Url.Action("About","Home", new { qtype = QSType.synopsis })
+                                                 , Tuple.Create(Tuple.Create("", 2630), Tuple.Create<System.Object, System.Int32>(Url.Action("About","Home", new { qtype = QSType.synopsis })
             
             #line default
             #line hidden
-, 2626), false)
+, 2630), false)
 );
 
 WriteLiteral(">协会简介</a></li>\r\n                    <li");
 
-WriteAttribute("class", Tuple.Create(" class=\"", 2726), Tuple.Create("\"", 2818)
+WriteAttribute("class", Tuple.Create(" class=\"", 2730), Tuple.Create("\"", 2822)
             
             #line 58 "..\..\Views\Shared\_Layout.cshtml"
-, Tuple.Create(Tuple.Create("", 2734), Tuple.Create<System.Object, System.Int32>(queryName.Equals("Frame",StringComparison.InvariantCultureIgnoreCase)?"active":""
+, Tuple.Create(Tuple.Create("", 2738), Tuple.Create<System.Object, System.Int32>(queryName.Equals("Frame",StringComparison.InvariantCultureIgnoreCase)?"active":""
             
             #line default
             #line hidden
-, 2734), false)
+, 2738), false)
 );
 
 WriteLiteral("><a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 2822), Tuple.Create("\"", 2886)
+WriteAttribute("href", Tuple.Create(" href=\"", 2826), Tuple.Create("\"", 2890)
             
             #line 58 "..\..\Views\Shared\_Layout.cshtml"
-                                              , Tuple.Create(Tuple.Create("", 2829), Tuple.Create<System.Object, System.Int32>(Url.Action("About","Home", new { qtype = QSType.frame })
+                                              , Tuple.Create(Tuple.Create("", 2833), Tuple.Create<System.Object, System.Int32>(Url.Action("About","Home", new { qtype = QSType.frame })
             
             #line default
             #line hidden
-, 2829), false)
+, 2833), false)
 );
 
 WriteLiteral(">组织架构</a></li>\r\n                    <li");
 
-WriteAttribute("class", Tuple.Create(" class=\"", 2926), Tuple.Create("\"", 3159)
+WriteAttribute("class", Tuple.Create(" class=\"", 2930), Tuple.Create("\"", 3163)
             
             #line 59 "..\..\Views\Shared\_Layout.cshtml"
-, Tuple.Create(Tuple.Create("", 2934), Tuple.Create<System.Object, System.Int32>(action.Equals("about",StringComparison.InvariantCultureIgnoreCase)&&(queryName.Equals("List",StringComparison.InvariantCultureIgnoreCase)||queryName.Equals("Detail",StringComparison.InvariantCultureIgnoreCase))?"active":""
+, Tuple.Create(Tuple.Create("", 2938), Tuple.Create<System.Object, System.Int32>(action.Equals("about",StringComparison.InvariantCultureIgnoreCase)&&(queryName.Equals("List",StringComparison.InvariantCultureIgnoreCase)||queryName.Equals("Detail",StringComparison.InvariantCultureIgnoreCase))?"active":""
             
             #line default
             #line hidden
-, 2934), false)
+, 2938), false)
 );
 
 WriteLiteral("><a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 3163), Tuple.Create("\"", 3226)
+WriteAttribute("href", Tuple.Create(" href=\"", 3167), Tuple.Create("\"", 3230)
             
             #line 59 "..\..\Views\Shared\_Layout.cshtml"
-                                                                                                                                                                                           , Tuple.Create(Tuple.Create("", 3170), Tuple.Create<System.Object, System.Int32>(Url.Action("About","Home", new { qtype = QSType.list })
+                                                                                                                                                                                           , Tuple.Create(Tuple.Create("", 3174), Tuple.Create<System.Object, System.Int32>(Url.Action("About","Home", new { qtype = QSType.list })
             
             #line default
             #line hidden
-, 3170), false)
+, 3174), false)
 );
 
 WriteLiteral(">协会会员</a></li>\r\n                </ul>\r\n            </li>\r\n            <li>\r\n     " +
 "           <a");
 
-WriteAttribute("class", Tuple.Create(" class=\"", 3321), Tuple.Create("\"", 3413)
+WriteAttribute("class", Tuple.Create(" class=\"", 3325), Tuple.Create("\"", 3417)
             
             #line 63 "..\..\Views\Shared\_Layout.cshtml"
-, Tuple.Create(Tuple.Create("", 3329), Tuple.Create<System.Object, System.Int32>(action.Equals("industry",StringComparison.InvariantCultureIgnoreCase)?"active":""
+, Tuple.Create(Tuple.Create("", 3333), Tuple.Create<System.Object, System.Int32>(action.Equals("industry",StringComparison.InvariantCultureIgnoreCase)?"active":""
             
             #line default
             #line hidden
-, 3329), false)
+, 3333), false)
 );
 
-WriteAttribute("href", Tuple.Create(" href=\"", 3414), Tuple.Create("\"", 3444)
+WriteAttribute("href", Tuple.Create(" href=\"", 3418), Tuple.Create("\"", 3448)
             
             #line 63 "..\..\Views\Shared\_Layout.cshtml"
-                                      , Tuple.Create(Tuple.Create("", 3421), Tuple.Create<System.Object, System.Int32>(Url.Action("industry")
+                                      , Tuple.Create(Tuple.Create("", 3425), Tuple.Create<System.Object, System.Int32>(Url.Action("industry")
             
             #line default
             #line hidden
-, 3421), false)
+, 3425), false)
 );
 
 WriteLiteral(">行业资讯</a>\r\n");
@@ -414,24 +414,24 @@ WriteLiteral("                ");
             #line hidden
 WriteLiteral("\r\n            </li>\r\n            <li>\r\n                <a");
 
-WriteAttribute("class", Tuple.Create(" class=\"", 3608), Tuple.Create("\"", 3703)
+WriteAttribute("class", Tuple.Create(" class=\"", 3612), Tuple.Create("\"", 3707)
             
             #line 67 "..\..\Views\Shared\_Layout.cshtml"
-, Tuple.Create(Tuple.Create("", 3616), Tuple.Create<System.Object, System.Int32>(action.Equals("association",StringComparison.InvariantCultureIgnoreCase)?"active":""
+, Tuple.Create(Tuple.Create("", 3620), Tuple.Create<System.Object, System.Int32>(action.Equals("association",StringComparison.InvariantCultureIgnoreCase)?"active":""
             
             #line default
             #line hidden
-, 3616), false)
+, 3620), false)
 );
 
-WriteAttribute("href", Tuple.Create(" href=\"", 3704), Tuple.Create("\"", 3737)
+WriteAttribute("href", Tuple.Create(" href=\"", 3708), Tuple.Create("\"", 3741)
             
             #line 67 "..\..\Views\Shared\_Layout.cshtml"
-                                         , Tuple.Create(Tuple.Create("", 3711), Tuple.Create<System.Object, System.Int32>(Url.Action("association")
+                                         , Tuple.Create(Tuple.Create("", 3715), Tuple.Create<System.Object, System.Int32>(Url.Action("association")
             
             #line default
             #line hidden
-, 3711), false)
+, 3715), false)
 );
 
 WriteLiteral(">协会活动</a>\r\n");
@@ -447,24 +447,24 @@ WriteLiteral("                ");
             #line hidden
 WriteLiteral("\r\n            </li>\r\n            <li>\r\n                <a");
 
-WriteAttribute("class", Tuple.Create(" class=\"", 3904), Tuple.Create("\"", 3994)
+WriteAttribute("class", Tuple.Create(" class=\"", 3908), Tuple.Create("\"", 3998)
             
             #line 71 "..\..\Views\Shared\_Layout.cshtml"
-, Tuple.Create(Tuple.Create("", 3912), Tuple.Create<System.Object, System.Int32>(action.Equals("social",StringComparison.InvariantCultureIgnoreCase)?"active":""
+, Tuple.Create(Tuple.Create("", 3916), Tuple.Create<System.Object, System.Int32>(action.Equals("social",StringComparison.InvariantCultureIgnoreCase)?"active":""
             
             #line default
             #line hidden
-, 3912), false)
+, 3916), false)
 );
 
-WriteAttribute("href", Tuple.Create(" href=\"", 3995), Tuple.Create("\"", 4023)
+WriteAttribute("href", Tuple.Create(" href=\"", 3999), Tuple.Create("\"", 4027)
             
             #line 71 "..\..\Views\Shared\_Layout.cshtml"
-                                    , Tuple.Create(Tuple.Create("", 4002), Tuple.Create<System.Object, System.Int32>(Url.Action("social")
+                                    , Tuple.Create(Tuple.Create("", 4006), Tuple.Create<System.Object, System.Int32>(Url.Action("social")
             
             #line default
             #line hidden
-, 4002), false)
+, 4006), false)
 );
 
 WriteLiteral(">社会公益</a>\r\n");
@@ -480,24 +480,24 @@ WriteLiteral("                ");
             #line hidden
 WriteLiteral("\r\n            </li>\r\n            <li>\r\n                <a");
 
-WriteAttribute("class", Tuple.Create(" class=\"", 4185), Tuple.Create("\"", 4280)
+WriteAttribute("class", Tuple.Create(" class=\"", 4189), Tuple.Create("\"", 4284)
             
             #line 75 "..\..\Views\Shared\_Layout.cshtml"
-, Tuple.Create(Tuple.Create("", 4193), Tuple.Create<System.Object, System.Int32>(action.Equals("examination",StringComparison.InvariantCultureIgnoreCase)?"active":""
+, Tuple.Create(Tuple.Create("", 4197), Tuple.Create<System.Object, System.Int32>(action.Equals("examination",StringComparison.InvariantCultureIgnoreCase)?"active":""
             
             #line default
             #line hidden
-, 4193), false)
+, 4197), false)
 );
 
-WriteAttribute("href", Tuple.Create(" href=\"", 4281), Tuple.Create("\"", 4314)
+WriteAttribute("href", Tuple.Create(" href=\"", 4285), Tuple.Create("\"", 4318)
             
             #line 75 "..\..\Views\Shared\_Layout.cshtml"
-                                         , Tuple.Create(Tuple.Create("", 4288), Tuple.Create<System.Object, System.Int32>(Url.Action("examination")
+                                         , Tuple.Create(Tuple.Create("", 4292), Tuple.Create<System.Object, System.Int32>(Url.Action("examination")
             
             #line default
             #line hidden
-, 4288), false)
+, 4292), false)
 );
 
 WriteLiteral(">考级中心</a>\r\n");
@@ -513,24 +513,24 @@ WriteLiteral("                ");
             #line hidden
 WriteLiteral("\r\n            </li>\r\n            <li>\r\n                <a");
 
-WriteAttribute("class", Tuple.Create(" class=\"", 4481), Tuple.Create("\"", 4573)
+WriteAttribute("class", Tuple.Create(" class=\"", 4485), Tuple.Create("\"", 4577)
             
             #line 79 "..\..\Views\Shared\_Layout.cshtml"
-, Tuple.Create(Tuple.Create("", 4489), Tuple.Create<System.Object, System.Int32>(action.Equals("download",StringComparison.InvariantCultureIgnoreCase)?"active":""
+, Tuple.Create(Tuple.Create("", 4493), Tuple.Create<System.Object, System.Int32>(action.Equals("download",StringComparison.InvariantCultureIgnoreCase)?"active":""
             
             #line default
             #line hidden
-, 4489), false)
+, 4493), false)
 );
 
-WriteAttribute("href", Tuple.Create(" href=\"", 4574), Tuple.Create("\"", 4604)
+WriteAttribute("href", Tuple.Create(" href=\"", 4578), Tuple.Create("\"", 4608)
             
             #line 79 "..\..\Views\Shared\_Layout.cshtml"
-                                      , Tuple.Create(Tuple.Create("", 4581), Tuple.Create<System.Object, System.Int32>(Url.Action("download")
+                                      , Tuple.Create(Tuple.Create("", 4585), Tuple.Create<System.Object, System.Int32>(Url.Action("download")
             
             #line default
             #line hidden
-, 4581), false)
+, 4585), false)
 );
 
 WriteLiteral(">下载专区</a>\r\n");
@@ -546,6 +546,10 @@ WriteLiteral("                ");
             #line hidden
 WriteLiteral("\r\n            </li>\r\n        </ul>\r\n    </nav>\r\n    <div");
 
+WriteLiteral(" class=\"nav-zhan\"");
+
+WriteLiteral("></div>\r\n    <div");
+
 WriteLiteral(" class=\"content-wrap\"");
 
 WriteLiteral(">\r\n");
@@ -553,7 +557,7 @@ WriteLiteral(">\r\n");
 WriteLiteral("        ");
 
             
-            #line 85 "..\..\Views\Shared\_Layout.cshtml"
+            #line 86 "..\..\Views\Shared\_Layout.cshtml"
    Write(RenderBody());
 
             
@@ -572,44 +576,43 @@ WriteLiteral(">\r\n");
 WriteLiteral("            ");
 
             
-            #line 89 "..\..\Views\Shared\_Layout.cshtml"
+            #line 90 "..\..\Views\Shared\_Layout.cshtml"
        Write(Html.Action("Footer", "Home"));
 
             
             #line default
             #line hidden
-WriteLiteral("\r\n        </div>\r\n    </div>\r\n    <footer>京ICP备13003730号-1</footer>\r\n    <script");
+WriteLiteral("\r\n        </div>\r\n    </div>\r\n    <footer>鲁ICP备19063185号-1</footer>\r\n    <script");
 
 WriteLiteral(" type=\"text/javascript\"");
 
-WriteLiteral(@">
-        $(document).ready(function () {
-            var topMain = $(""header"").height() + 15
-            var nav = $(""nav"");
-            $(window).scroll(function () {
-                if ($(window).scrollTop() > topMain) {
-                    nav.addClass(""nav_scroll"");
-
-                } else {
-                    nav.removeClass(""nav_scroll"");
-                }
-            });
-        })
-
-        $(document).click(function () {
-            $('.nav-list').removeClass('open')
-        })
-        $('.nav-menu,.nav-list').click(function (e) { e.stopPropagation() })
-        $('nav').find('.nav-menu').click(function (e) {
-            $('.nav-list').toggleClass('open')
-        })
-    </script>
-");
+WriteLiteral(">\r\n        $(document).ready(function () {\r\n            var topMain = $(\"header\")" +
+".height();\r\n            //var topNav = $(\"nav\").outerHeight();\r\n            //va" +
+"r topHeight = isMobile() ? topNav : topMain;\r\n            var nav = $(\"nav\");\r\n " +
+"           console.log(topMain);\r\n            if (!isMobile()) {\r\n              " +
+"  $(window).scroll(function () {\r\n                    if ($(window).scrollTop() " +
+"> topMain) {\r\n                        nav.addClass(\"nav_scroll\");\r\n\r\n           " +
+"         } else {\r\n                        nav.removeClass(\"nav_scroll\");\r\n     " +
+"               }\r\n                });\r\n            }\r\n        })\r\n\r\n        $(do" +
+"cument).click(function () {\r\n            $(\'.nav-list\').removeClass(\'open\')\r\n   " +
+"     })\r\n        $(\'.nav-menu,.nav-list\').click(function (e) { e.stopPropagation" +
+"() })\r\n        $(\'nav\').find(\'.nav-menu\').click(function (e) {\r\n            $(\'." +
+"nav-list\').toggleClass(\'open\')\r\n        })\r\n\r\n        function isMobile() {\r\n   " +
+"         var userAgentInfo = navigator.userAgent;\r\n            var mobileAgents " +
+"= [\"Android\", \"iPhone\", \"SymbianOS\", \"Windows Phone\", \"iPad\", \"iPod\"];\r\n        " +
+"    var mobile_flag = false;\r\n            //根据userAgent判断是否是手机\r\n            for " +
+"(var v = 0; v < mobileAgents.length; v++) {\r\n                if (userAgentInfo.i" +
+"ndexOf(mobileAgents[v]) > 0) {\r\n                    mobile_flag = true;\r\n       " +
+"             break;\r\n                }\r\n            }\r\n            var screen_wi" +
+"dth = window.screen.width;\r\n            // var screen_height = window.screen.hei" +
+"ght;\r\n            //根据屏幕分辨率判断是否是手机\r\n            if (screen_width < 996) {\r\n     " +
+"           mobile_flag = true;\r\n            }\r\n            return mobile_flag;\r\n" +
+"        }\r\n    </script>\r\n");
 
 WriteLiteral("    ");
 
             
-            #line 115 "..\..\Views\Shared\_Layout.cshtml"
+            #line 141 "..\..\Views\Shared\_Layout.cshtml"
 Write(RenderSection("Scripts", required: false));
 
             

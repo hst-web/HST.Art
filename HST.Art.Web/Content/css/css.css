@@ -55,7 +55,7 @@ html,body{background-color:#fff}
   content: "\e890";
 }
 .banner{ width:100%; background:#fff;}
-.nav_scroll{position: fixed;top: 0;left: 0; width: 100%; z-index: 99;box-shadow: 0px 0px 5px 0px rgba(0,0,0,.1); }
+.nav_scroll{position: fixed;top: 0;left: 0; width: 100%; z-index: 99;box-shadow: 0px 0px 5px 0px rgba(0,0,0,.1);}
 .top{ width:100%; border-top:2px solid #d9001b; background: #FFF;}
 .cont{ max-width:1280px; width:100%; margin:0 auto; overflow:hidden}
 .top_div{ overflow:hidden}
@@ -65,7 +65,9 @@ html,body{background-color:#fff}
 .top_fr .icon-dianhua{ color:#444; font-size:15px; margin-right:6px}
 .top_fr .icon-email-icon{ color:#444; font-size:16px; margin-right:6px}
 /*导航*/
-nav {width: 100%;height: 60px; background: #d9001b}
+nav {width: 100%;height: 60px; background: #d9001b;	-webkit-transition: all .35s ease-in-out;
+	-o-transition: all .35s ease-in-out;
+	transition: all .35s ease-in-out;}
 nav li, nav a { text-decoration: none; list-style: none;}
 nav .nav-logo { width: auto; height: 100%; margin-left: 20px; float: left; display:none}
 nav .nav-logo a, nav .nav-logo li, nav .nav-logo ol, nav .nav-logo span, nav .nav-logo p { font-size: 30px; font-weight: bold; list-style: none; color: #1f79ec; text-decoration: none;}
@@ -84,7 +86,7 @@ nav .nav-list > li > .menu  a:hover  { background:rgba(68,68,68,1); }
 nav .nav-menu { display: none;z-index: 999; background: #fff; cursor: pointer;}
 @media (max-width: 997px) {
   .top{display:none}
-  nav{ margin: 0 auto; background:#fff; padding:10px 0; height:70px}
+  nav{ margin: 0 auto; background:#fff; padding:10px 0; height:70px;position: fixed;top: 0;left: 0; z-index: 99;box-shadow: 0px 0px 5px 0px rgba(0,0,0,.1);}
   nav .nav-logo{ display:block}
   nav .nav-list {position: fixed; height: 100%; top: 0; padding-top: 10px; width:40%; background: #f0f0f0;left: -60%; -webkit-transition: 1s; transition: 1s;box-shadow: 1px -3px 5px rgba(0,0,0,.15);}
   nav .nav-list > li { width: 100%; margin: 0; overflow: hidden; }
@@ -93,7 +95,7 @@ nav .nav-menu { display: none;z-index: 999; background: #fff; cursor: pointer;}
   nav .nav-list > li>a{font-weight:bold}
   nav .nav-list > li .active{background:#fff}
   nav .nav-list > li .menu {position: relative;width: 100%;text-align: center; background: none; }
-  nav .nav-list > li .menu li a{font-size: 13px; line-height: 30px; color: #666;padding-left: 25px;padding-right: 0px;text-align:left;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;width: 125px;}
+  nav .nav-list > li .menu li a{font-size: 13px; line-height: 30px; color: #666;padding-left: 25px;padding-right: 0px;text-align:left;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
   nav .nav-list > li .menu li{ margin-left:18px}
   nav .nav-menu {display: block;float: right; padding: 8px 5px; position: relative; border: 1px solid #ccc; border-radius: 5px;  margin-right: 15px;margin-top:12px}
   nav .nav-menu span {height: 2px;width: 25px;display: block;background: #CCC;border-radius: 10px;}
@@ -103,6 +105,7 @@ nav .nav-menu { display: none;z-index: 999; background: #fff; cursor: pointer;}
   nav .nav-list > li .menu li a{ background:#f0f0f0;}
   nav .nav-list > li .menu li:focus,nav .nav-list > li .menu li:active{background:#f0f0f0}
   nav .nav-list > li .menu li a:focus,nav .nav-list > li .menu li a:active{background:#f0f0f0;color:#d9001b;-webkit-tap-highlight-color: transparent}
+  .nav-zhan{height:70px}
 }
 nav .open {left: 0%;overflow: auto; z-index:99}
 .container-fluid {width: 100%; padding-bottom: 10px;}
