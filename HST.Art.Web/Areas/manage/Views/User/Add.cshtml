@@ -52,7 +52,7 @@
         <div class="row cl">
             <label class="form-label col-xs-3 "><span class="c-red">*</span>密码：</label>
             <div class="formControls col-xs-6 ">
-                @Html.PasswordFor(m => m.Password, new { placeholder = "请设置初始密码", @class = "input-text" })
+                @Html.PasswordFor(m => m.Password, new { placeholder = "6-20位字符，可由英文、数字和特殊符号组成", @class = "input-text" })
                 @Html.ValidationMessageFor(m => m.Password, null, new { @class = "error-lable" })
 
             </div>

@@ -120,6 +120,7 @@
                     },
                     newPwd: {
                         required: true,
+                        passwordCheck:true,
                         minlength: 6
                     },
                     renewPwd: {
@@ -170,6 +171,11 @@
                     });
                 }
             });
+
+            $.validator.addMethod("passwordCheck", function (value, element, params) {
+                var checkPwd = /(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z0-9-*/+.~!#$%^&*()\S]{2,}/g;
+                return this.optional(element)||(checkPwd.test(value));
+            }, "密码需含数字和字母，不能包含空字符");
         });
 
         function formSuccess(result) {

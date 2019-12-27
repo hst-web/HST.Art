@@ -499,6 +499,7 @@ WriteLiteral(@">
                     },
                     newPwd: {
                         required: true,
+                        passwordCheck:true,
                         minlength: 6
                     },
                     renewPwd: {
@@ -529,7 +530,7 @@ WriteLiteral(@">
                         url: """);
 
             
-            #line 150 "..\..\Areas\manage\Views\Account\Index.cshtml"
+            #line 151 "..\..\Areas\manage\Views\Account\Index.cshtml"
                          Write(Url.Action("UpdatePwd"));
 
             
@@ -548,15 +549,18 @@ WriteLiteral("\",\r\n                        success: function (data) {\r\n     
 "     },\r\n                        error: function (XmlHttpRequest, textStatus, er" +
 "rorThrown) {\r\n                            layer.alert(\'修改失败！\', { icon: 5 });\r\n  " +
 "                      }\r\n                    });\r\n                }\r\n           " +
-" });\r\n        });\r\n\r\n        function formSuccess(result) {\r\n            if (res" +
-"ult != null) {\r\n                if (result == \"ok\") {\r\n                    layer" +
-".alert(\'保存成功！\', {\r\n                        icon: 6,\r\n                        clo" +
-"seBtn: 0,\r\n                        yes: function () {\r\n                         " +
-"   layer.closeAll();\r\n                            location.reload();\r\n          " +
-"              }\r\n                    });\r\n                } else\r\n              " +
-"      layer.alert(\'保存失败！\', { icon: 5 });//icon:6为开心图\r\n            } else\r\n      " +
-"          layer.alert(\'保存失败！\', { icon: 5 });//icon:6为开心图\r\n        }\r\n    </scrip" +
-"t>\r\n");
+" });\r\n\r\n            $.validator.addMethod(\"passwordCheck\", function (value, elem" +
+"ent, params) {\r\n                var checkPwd = /(?=.*[a-zA-Z])(?=.*\\d)[a-zA-Z0-9" +
+"-*/+.~!#$%^&*()\\S]{2,}/g;\r\n                return this.optional(element)||(check" +
+"Pwd.test(value));\r\n            }, \"密码需含数字和字母，不能包含空字符\");\r\n        });\r\n\r\n        " +
+"function formSuccess(result) {\r\n            if (result != null) {\r\n             " +
+"   if (result == \"ok\") {\r\n                    layer.alert(\'保存成功！\', {\r\n          " +
+"              icon: 6,\r\n                        closeBtn: 0,\r\n                  " +
+"      yes: function () {\r\n                            layer.closeAll();\r\n       " +
+"                     location.reload();\r\n                        }\r\n            " +
+"        });\r\n                } else\r\n                    layer.alert(\'保存失败！\', { " +
+"icon: 5 });//icon:6为开心图\r\n            } else\r\n                layer.alert(\'保存失败！\'" +
+", { icon: 5 });//icon:6为开心图\r\n        }\r\n    </script>\r\n");
 
 });
 

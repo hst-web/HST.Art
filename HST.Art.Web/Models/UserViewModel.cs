@@ -9,7 +9,7 @@ namespace HST.Art.Web
     {
         public int Id { get; set; }        
 
-        [StringLength(20, MinimumLength = 2, ErrorMessage = "{0}长度{2}-{1}个字符")]
+        [StringLength(20, MinimumLength = 2, ErrorMessage = "用户名长度须{2}-{1}个字符")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "用户名不能为空")]
         [RegularExpression(@"^[^\s]+$", ErrorMessage = "用户名不能包含空字符")]
         [Remote("CheckUserName", "User", AdditionalFields = "Id", ErrorMessage = "用户名称已存在")]
@@ -26,9 +26,9 @@ namespace HST.Art.Web
         [Remote("CheckEmail", "User", AdditionalFields = "Id", ErrorMessage = "邮箱已存在")]
         public string Email { get; set; } // email (length: 100)
 
-        [StringLength(20, MinimumLength = 6, ErrorMessage = "{0}长度{2}-{1}个字符")]
+        [StringLength(20, MinimumLength = 6, ErrorMessage = "密码长度须{2}-{1}个字符")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "密码不能为空")]
-        [RegularExpression(@"^[^\s]+$", ErrorMessage = "密码不能包含空字符")]
+        [RegularExpression(@"^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z0-9-*/+.~!@#$%^&*()\S]{2,}$", ErrorMessage = "密码需含数字和字母，不能包含空字符")]
         public string Password { get; set; } // password (length: 50)
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "姓名不能为空")]

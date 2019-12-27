@@ -1,7 +1,7 @@
 /*==============================================================*/
 /* Database name:  ARTDB                                        */
 /* DBMS name:      Microsoft SQL Server 2012                    */
-/* Created on:     2019/6/15 11:25:57                           */
+/* Created on:     2019/12/27 16:01:09                          */
 /*==============================================================*/
 
 
@@ -376,6 +376,24 @@ select @CurrentUser = user_name()
 execute sp_addextendedproperty 'MS_Description', 
    '固定类别:培训、获奖',
    'user', @CurrentUser, 'table', 'StuCertificate', 'column', 'Category'
+go
+
+/*==============================================================*/
+/* Table: SystemLog                                             */
+/*==============================================================*/
+create table SystemLog (
+   Id                   int                  identity,
+   UserId               int                  null,
+   Type                 int                  null,
+   Source               int                  null,
+   ControllerName       varchar(100)         null,
+   ActionName           varchar(100)         null,
+   ClientIp             varchar(50)          null,
+   UserAgent            varchar(500)         null,
+   ResultLog            varchar(5000)        null,
+   CreateDate           date                 null default getdate(),
+   constraint PK_SYSTEMLOG primary key (Id)
+)
 go
 
 /*==============================================================*/

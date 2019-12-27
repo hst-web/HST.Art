@@ -326,7 +326,7 @@ WriteLiteral("                ");
 
             
             #line 55 "..\..\Areas\manage\Views\User\Add.cshtml"
-           Write(Html.PasswordFor(m => m.Password, new { placeholder = "请设置初始密码", @class = "input-text" }));
+           Write(Html.PasswordFor(m => m.Password, new { placeholder = "6-20位字符，可由英文、数字和特殊符号组成", @class = "input-text" }));
 
             
             #line default
@@ -364,26 +364,26 @@ WriteLiteral(" name=\"State\"");
 
 WriteLiteral(">\r\n                    <option");
 
-WriteAttribute("value", Tuple.Create(" value=\"", 2966), Tuple.Create("\"", 3000)
+WriteAttribute("value", Tuple.Create(" value=\"", 2983), Tuple.Create("\"", 3017)
             
             #line 64 "..\..\Areas\manage\Views\User\Add.cshtml"
-, Tuple.Create(Tuple.Create("", 2974), Tuple.Create<System.Object, System.Int32>((int)PublishState.Upper
+, Tuple.Create(Tuple.Create("", 2991), Tuple.Create<System.Object, System.Int32>((int)PublishState.Upper
             
             #line default
             #line hidden
-, 2974), false)
+, 2991), false)
 );
 
 WriteLiteral(">上架</option>\r\n                    <option");
 
-WriteAttribute("value", Tuple.Create(" value=\"", 3042), Tuple.Create("\"", 3076)
+WriteAttribute("value", Tuple.Create(" value=\"", 3059), Tuple.Create("\"", 3093)
             
             #line 65 "..\..\Areas\manage\Views\User\Add.cshtml"
-, Tuple.Create(Tuple.Create("", 3050), Tuple.Create<System.Object, System.Int32>((int)PublishState.Lower
+, Tuple.Create(Tuple.Create("", 3067), Tuple.Create<System.Object, System.Int32>((int)PublishState.Lower
             
             #line default
             #line hidden
-, 3050), false)
+, 3067), false)
 );
 
 WriteLiteral(">下架</option>\r\n                </select>\r\n            </div>\r\n        </div>\r\n");
