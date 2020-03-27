@@ -43,5 +43,33 @@ namespace HST.Art.Service
 
             return _integratedProvider.DeleteSetting(id);
         }
+
+        public SystemLog GetLog(int id)
+        {
+            if (id < 1)
+            {
+                ErrorMsg = ErrorCode.ParameterNull;
+                return null;
+            }
+
+            return _integratedProvider.GetLog(id);
+        }
+
+        public List<SystemLog> GetLogPage(LogQuery query, out int totalNum)
+        {
+            totalNum = 0;
+            return _integratedProvider.GetLogPage(query.Equals(null) ? new LogQuery() : query, out totalNum);
+        }
+
+        public bool AddLog(SystemLog logInfo)
+        {
+            //参数验证
+            if (logInfo == null)
+            {
+                ErrorMsg = ErrorCode.ParameterNull;
+                return false;
+            }
+            return _integratedProvider.AddLog(logInfo);
+        }
     }
 }

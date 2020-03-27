@@ -6,7 +6,6 @@ using System.Linq;
 using System.Web.Mvc;
 using HST.Art.Service;
 using Newtonsoft.Json;
-
 namespace HST.Art.Web.Areas.manage.Controllers
 {
     public class HomeController : ApplicationBase
@@ -16,14 +15,12 @@ namespace HST.Art.Web.Areas.manage.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            Account account = GetAccount();
-
+            Account account = GetAccount();          
             return View(account);
         }
         public ActionResult welcome()
-        {
+        { 
             return View();
-
         }
 
         [HttpPost]
@@ -75,7 +72,7 @@ namespace HST.Art.Web.Areas.manage.Controllers
                     WeChat = model.WeChat,
                     Telephone = model.Telephone,
                     Logo = model.Logo,
-                    Address=model.Address
+                    Address = model.Address
                 });
             }
 

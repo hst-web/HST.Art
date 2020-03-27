@@ -11,5 +11,8 @@ namespace HST.Art.Core
         Setting GetSetting(SettingType setType);
         bool UpdateSetting(Setting setInfo);
         bool DeleteSetting(int id);
+        SystemLog GetLog(int id);
+        List<SystemLog> GetLogPage(LogQuery query, out int totalNum);
+        bool AddLog(SystemLog logInfo);
     }
 }

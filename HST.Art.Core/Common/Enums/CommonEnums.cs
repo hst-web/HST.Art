@@ -311,4 +311,44 @@ namespace HST.Art.Core
         /// </summary>
         Other
     }
+
+    /// <summary>
+    /// 日志来源
+    /// </summary>
+    public enum LogSource
+    {
+        /// <summary>
+        /// 未知
+        /// </summary>
+        UnKnown = 0,
+        /// <summary>
+        /// 管理端
+        /// </summary>
+        Admin = 1,
+
+        /// <summary>
+        /// 前端
+        /// </summary>
+        Web = 2
+    }
+
+    /// <summary>
+    /// 日志类型
+    /// </summary>
+    public enum LogType
+    {
+        /// <summary>
+        /// 未知
+        /// </summary>
+        UnKnown = 0,
+        /// <summary>
+        /// 操作日志
+        /// </summary>
+        Operation = 1,
+
+        /// <summary>
+        /// 错误日志
+        /// </summary>
+        Error = 2
+    }
 }

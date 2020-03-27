@@ -21,9 +21,39 @@ namespace HST.Art.Web
         private const int MAX_COOKIESTIME = 4;//最大cookies储存时间
         public string ErrorMsg = string.Empty;
         string locAddr = WebConfigurationManager.AppSettings["WebUrl"].ToString();//图片上传地址
+        public string IP
+        {
+            get
+            {
+                return PlatformAgent.Get().IPAddress;
+            }
+        }
+
+        public string UserAgent
+        {
+            get
+            {
+                return JsonConvert.SerializeObject(PlatformAgent.Get());
+            }
+        }
+
+        private static IntegratedService _integratedService;
+        /// <summary>
+        /// 日志服务
+        /// </summary>
+        public static IntegratedService IntegratedService
+        {
+            get
+            {
+                _integratedService = new  IntegratedService();
+                return _integratedService;
+            }
+            set { _integratedService = value; }
+        }
 
         protected override void OnAuthorization(AuthorizationContext filterContext)
         {
+            FillAgent();
             if (filterContext.RouteData.DataTokens["area"] != null && filterContext.RouteData.DataTokens["area"].Equals("manage"))
             {
                 SetCurrentCookies = filterContext.RequestContext.HttpContext.Request.Cookies;
@@ -248,6 +278,12 @@ namespace HST.Art.Web
                 case CellType.Formula: return cell.StringCellValue;
                 default: return "";
             }
+        }
+
+        private void FillAgent()
+        {
+            var agent = new { UserAgent = Request.UserAgent, Platform = Request.Browser.Platform, Version = Request.Browser.Version, BrowserName = Request.Browser.Browser, BrowserType = Request.Browser.Type, IPAddress = Request.UserHostAddress };
+            PlatformAgent.Set(JsonConvert.SerializeObject(agent));
         }
     }
 }
