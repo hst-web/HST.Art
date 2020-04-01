@@ -28,6 +28,33 @@ namespace HST.Art.Web
                 return PlatformAgent.Get().IPAddress;
             }
         }
+        public int UserId
+        {
+            get
+            {
+                Account account = GetAccount();
+                if (account != null)
+                {
+                    return account.Id;
+                }
+
+                return 0;
+            }
+        }
+
+        public string UserName
+        {
+            get
+            {
+                Account account = GetAccount();
+                if (account != null)
+                {
+                    return account.UserName;
+                }
+
+                return string.Empty;
+            }
+        }
 
         public string UserAgent
         {
@@ -116,7 +143,6 @@ namespace HST.Art.Web
                 HttpCookie cookie = new HttpCookie("accountInfo");
                 cookie.Value = Base64Generate(JsonConvert.SerializeObject(model));
                 cookie.Expires = DateTime.Now.AddHours(MAX_COOKIESTIME);
-
                 if (Response != null)
                 {
                     Response.Cookies.Add(cookie);
@@ -130,7 +156,6 @@ namespace HST.Art.Web
             }
             return false;
         }
-
 
         /// <summary>
         /// 取得用户信息
@@ -167,7 +192,11 @@ namespace HST.Art.Web
         {
             return Redirect("~/manage/home/index");
         }
-
+        public ActionResult RedirectError()
+        {
+            return new RedirectResult("/Account/Login");
+           // return Redirect("/home/welcome");
+        }
         /// <summary>
         /// 清除认证信息
         /// </summary>
@@ -284,6 +313,37 @@ namespace HST.Art.Web
         {
             var agent = new { UserAgent = Request.UserAgent, Platform = Request.Browser.Platform, Version = Request.Browser.Version, BrowserName = Request.Browser.Browser, BrowserType = Request.Browser.Type, IPAddress = Request.UserHostAddress };
             PlatformAgent.Set(JsonConvert.SerializeObject(agent));
+        }
+
+        protected void AddLog(string actionName, string resLog,string req="", LogType logType = LogType.Error, LogSource logSourece = LogSource.Admin)
+        {
+            SystemLog sLog = new SystemLog();
+            sLog.ActionName = actionName;
+            sLog.ClientIp = IP;
+            sLog.ControllerName = this.GetType().Name;
+            sLog.ResultLog = resLog;
+            sLog.Source = logSourece;
+            sLog.Type = logType;
+            sLog.UserAgent = UserAgent;
+            sLog.UserId = UserId;
+            sLog.ReqParameter = req;
+            IntegratedService.AddLog(sLog);
+        }
+
+        protected JsonResult EmptyJsonResult()
+        {
+            return Json(new
+            {
+                recordsFiltered = 0,
+                recordsTotal = 0,
+                data = new List<object>()
+            }, JsonRequestBehavior.AllowGet);
+        }
+
+        protected void ExceptionTest()
+        {
+            string a = null;
+            a.ToString();
         }
     }
 }

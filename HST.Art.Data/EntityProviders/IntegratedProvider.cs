@@ -133,6 +133,7 @@ namespace HST.Art.Data
                               ,[ActionName]
                               ,[UserAgent]
                               ,[ResultLog]
+                              ,ReqParameter
                               ,[ClientIp]
                               ,[CreateDate]  from systemLog where  Id=@Id ";
 
@@ -250,8 +251,13 @@ namespace HST.Art.Data
             }
             if (ReaderExists(reader, "ResultLog") && DBNull.Value != reader["ResultLog"])
             {
-                sysLog.UserAgent = reader["ResultLog"].ToString();
+                sysLog.ResultLog = reader["ResultLog"].ToString();
             }
+            if (ReaderExists(reader, "ReqParameter") && DBNull.Value != reader["ReqParameter"])
+            {
+                sysLog.ReqParameter = reader["ReqParameter"].ToString();
+            }
+            
             sysLog.CreateDate = Convert.ToDateTime(reader["CreateDate"]);
 
             return sysLog;
@@ -267,7 +273,7 @@ namespace HST.Art.Data
             try
             {
                 DBHelper dbHelper = new DBHelper(ConnectionString, DbProviderType.SqlServer);
-                string strSql = @"Insert Into SystemLog (UserId, [Type], [Source], ControllerName, ActionName, ClientIp, UserAgent, ResultLog) Values (@UserId, @Type, @Source, @ControllerName, @ActionName, @ClientIp, @UserAgent,@ResultLog)";
+                string strSql = @"Insert Into SystemLog (UserId, [Type], [Source], ControllerName, ActionName, ClientIp, UserAgent, ResultLog,ReqParameter) Values (@UserId, @Type, @Source, @ControllerName, @ActionName, @ClientIp, @UserAgent,@ResultLog,@ReqParameter)";
 
                 List<DbParameter> parametersList = new List<DbParameter>();
                 parametersList.Add(new SqlParameter("@UserId", logInfo.UserId));
@@ -278,6 +284,7 @@ namespace HST.Art.Data
                 parametersList.Add(new SqlParameter("@ClientIp", logInfo.ClientIp));
                 parametersList.Add(new SqlParameter("@UserAgent", logInfo.UserAgent));
                 parametersList.Add(new SqlParameter("@ResultLog", logInfo.ResultLog));
+                parametersList.Add(new SqlParameter("@ReqParameter", logInfo.ReqParameter));
 
                 return dbHelper.ExecuteNonQuery(strSql, parametersList) > 0;
             }

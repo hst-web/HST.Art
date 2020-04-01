@@ -51,5 +51,12 @@ namespace HST.Art.Core
         public static string USER_PASSWORD_ERROR = "用户名或密码错误";
         public static string USER_ALLOW_ERROR = "当前系统已过期，请与管理员联系";
         public static string USER_STATE_ERROR = "当前账户已禁用，请与管理员联系";
+        public static string USER_EXCEPTION_ERROR = "登陆失败，请检查当前网络环境";
+
+        public static string LOG_ACCOUNT_USER_NAME = "current account:{0}";
+        public static string LOG_LOGIN_SUCCESS = "login management platform succeeded";
+        public static string LOG_LOGIN_FAIL = "login management platform failed :{0}";
+        public static string LOG_LOGOUT_SUCCESS = "logout management platform";
+        public static string LOG_UPDATE_PWD = "password updated successfully";
     }
 }

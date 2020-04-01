@@ -1,7 +1,7 @@
 /*==============================================================*/
 /* Database name:  ARTDB                                        */
 /* DBMS name:      Microsoft SQL Server 2012                    */
-/* Created on:     2019/12/27 16:01:09                          */
+/* Created on:     2020/4/1 15:13:56                            */
 /*==============================================================*/
 
 
@@ -55,8 +55,8 @@ end
 
 select @CurrentUser = user_name()
 execute sp_addextendedproperty 'MS_Description', 
-   '0:ÏÂ¼Ü
-   1:ÉÏ¼Ü',
+   '0:ä¸‹æ¶
+   1:ä¸Šæ¶',
    'user', @CurrentUser, 'table', 'Article', 'column', 'State'
 go
 
@@ -91,8 +91,8 @@ end
 
 select @CurrentUser = user_name()
 execute sp_addextendedproperty 'MS_Description', 
-   '0:ÏÂ¼Ü
-   1:ÉÏ¼Ü',
+   '0:ä¸‹æ¶
+   1:ä¸Šæ¶',
    'user', @CurrentUser, 'table', 'CategoryDictionary', 'column', 'State'
 go
 
@@ -132,8 +132,8 @@ end
 
 select @CurrentUser = user_name()
 execute sp_addextendedproperty 'MS_Description', 
-   '0:ÏÂ¼Ü
-   1:ÉÏ¼Ü',
+   '0:ä¸‹æ¶
+   1:ä¸Šæ¶',
    'user', @CurrentUser, 'table', 'FileDownload', 'column', 'State'
 go
 
@@ -146,8 +146,8 @@ create table FileResource (
    Src                  varchar(128)         null,
    Type                 int                  null,
    SpanDays             int                  null,
-   CreateDate           date                 null default getdate(),
-   DelDate              date                 null,
+   CreateDate           datetime             null default getdate(),
+   DelDate              datetime             null,
    IsDeleted            bit                  null default 0,
    constraint PK_FILERESOURCE primary key (Id)
 )
@@ -191,8 +191,8 @@ end
 
 select @CurrentUser = user_name()
 execute sp_addextendedproperty 'MS_Description', 
-   '0:ÏÂ¼Ü
-   1:ÉÏ¼Ü',
+   '0:ä¸‹æ¶
+   1:ä¸Šæ¶',
    'user', @CurrentUser, 'table', 'MemberUnit', 'column', 'State'
 go
 
@@ -280,8 +280,8 @@ end
 
 select @CurrentUser = user_name()
 execute sp_addextendedproperty 'MS_Description', 
-   '0:ÏÂ¼Ü
-   1:ÉÏ¼Ü',
+   '0:ä¸‹æ¶
+   1:ä¸Šæ¶',
    'user', @CurrentUser, 'table', 'RotationChart', 'column', 'State'
 go
 
@@ -300,8 +300,8 @@ end
 
 select @CurrentUser = user_name()
 execute sp_addextendedproperty 'MS_Description', 
-   '1:ÂÖ²¥Í¼
-   2:logoÁ´½Ó',
+   '1:è½®æ’­å›¾
+   2:logoé“¾æ¥',
    'user', @CurrentUser, 'table', 'RotationChart', 'column', 'Type'
 go
 
@@ -354,8 +354,8 @@ end
 
 select @CurrentUser = user_name()
 execute sp_addextendedproperty 'MS_Description', 
-   '0:ÏÂ¼Ü
-   1:ÉÏ¼Ü',
+   '0:ä¸‹æ¶
+   1:ä¸Šæ¶',
    'user', @CurrentUser, 'table', 'StuCertificate', 'column', 'State'
 go
 
@@ -374,7 +374,7 @@ end
 
 select @CurrentUser = user_name()
 execute sp_addextendedproperty 'MS_Description', 
-   '¹Ì¶¨Àà±ğ:ÅàÑµ¡¢»ñ½±',
+   'å›ºå®šç±»åˆ«:åŸ¹è®­ã€è·å¥–',
    'user', @CurrentUser, 'table', 'StuCertificate', 'column', 'Category'
 go
 
@@ -390,8 +390,9 @@ create table SystemLog (
    ActionName           varchar(100)         null,
    ClientIp             varchar(50)          null,
    UserAgent            varchar(500)         null,
-   ResultLog            varchar(5000)        null,
-   CreateDate           date                 null default getdate(),
+   ReqParameter         varchar(1000)        null,
+   ResultLog            varchar(6000)        null,
+   CreateDate           datetime             null default getdate(),
    constraint PK_SYSTEMLOG primary key (Id)
 )
 go
@@ -433,8 +434,8 @@ end
 
 select @CurrentUser = user_name()
 execute sp_addextendedproperty 'MS_Description', 
-   '0:ÏÂ¼Ü
-   1:ÉÏ¼Ü',
+   '0:ä¸‹æ¶
+   1:ä¸Šæ¶',
    'user', @CurrentUser, 'table', 'TeaCertificate', 'column', 'State'
 go
 
@@ -453,7 +454,7 @@ end
 
 select @CurrentUser = user_name()
 execute sp_addextendedproperty 'MS_Description', 
-   '¹Ì¶¨Àà±ğ:ÅàÑµ¡¢»ñ½±',
+   'å›ºå®šç±»åˆ«:åŸ¹è®­ã€è·å¥–',
    'user', @CurrentUser, 'table', 'TeaCertificate', 'column', 'Category'
 go
 
@@ -493,8 +494,8 @@ end
 
 select @CurrentUser = user_name()
 execute sp_addextendedproperty 'MS_Description', 
-   '0:ÏÂ¼Ü
-   1:ÉÏ¼Ü',
+   '0:ä¸‹æ¶
+   1:ä¸Šæ¶',
    'user', @CurrentUser, 'table', 'User', 'column', 'State'
 go
 

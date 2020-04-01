@@ -24,61 +24,69 @@ namespace HST.Art.Web.Areas.manage.Controllers
         [HttpPost]
         public ActionResult GetJsonData(SearchDataTable dt, SearchViewModel svm)
         {
-            int totalNum = 0;
-            FilterEntityModel fillter = new FilterEntityModel();
-            fillter.PageIndex = dt.pageIndex;
-            fillter.PageSize = dt.length;
-            fillter.KeyValueList = new List<KeyValueObj>();
-
-            if (svm != null)
+            try
             {
-                if (!string.IsNullOrEmpty(svm.ReserveField))
-                {
-                    fillter.KeyValueReserves = new List<KeyValueObj>() { new KeyValueObj() { Key = "Section", Value = svm.ReserveField } };
-                }
+                int totalNum = 0;
+                FilterEntityModel fillter = new FilterEntityModel();
+                fillter.PageIndex = dt.pageIndex;
+                fillter.PageSize = dt.length;
+                fillter.KeyValueList = new List<KeyValueObj>();
 
-                if (!string.IsNullOrEmpty(svm.FilterKey) && !string.IsNullOrEmpty(svm.FilterVal))
+                if (svm != null)
                 {
-                    SearchType ftype = (SearchType)Convert.ToInt16(svm.FilterKey);
-                    KeyValueObj kvb = new KeyValueObj() { Value = svm.FilterVal };
-                    switch (ftype)
+                    if (!string.IsNullOrEmpty(svm.ReserveField))
                     {
-                        case SearchType.Title:
-                            kvb.Key = "Title";
-                            fillter.FilterType = FilterType.Like;
-                            break;
-                        case SearchType.State:
-                            kvb.Key = "State";
-                            break;
-                        case SearchType.Type:
-                            kvb.Key = "Category";
-                            break;
-                        case SearchType.Date:
-                            kvb.Key = "PublishDate";
-                            kvb.FieldType = FieldType.Date;
-                            fillter.FilterType = FilterType.Between;
-                            break;
+                        fillter.KeyValueReserves = new List<KeyValueObj>() { new KeyValueObj() { Key = "Section", Value = svm.ReserveField } };
                     }
 
-                    fillter.KeyValueList.Add(kvb);
+                    if (!string.IsNullOrEmpty(svm.FilterKey) && !string.IsNullOrEmpty(svm.FilterVal))
+                    {
+                        SearchType ftype = (SearchType)Convert.ToInt16(svm.FilterKey);
+                        KeyValueObj kvb = new KeyValueObj() { Value = svm.FilterVal };
+                        switch (ftype)
+                        {
+                            case SearchType.Title:
+                                kvb.Key = "Title";
+                                fillter.FilterType = FilterType.Like;
+                                break;
+                            case SearchType.State:
+                                kvb.Key = "State";
+                                break;
+                            case SearchType.Type:
+                                kvb.Key = "Category";
+                                break;
+                            case SearchType.Date:
+                                kvb.Key = "PublishDate";
+                                kvb.FieldType = FieldType.Date;
+                                fillter.FilterType = FilterType.Between;
+                                break;
+                        }
+
+                        fillter.KeyValueList.Add(kvb);
+                    }
+
                 }
 
+                List<Article> downList = articleService.GetPage(fillter, out totalNum);
+                ReturnPageResultIList<Article> data = new ReturnPageResultIList<Core.Article>(downList, totalNum);
+                IList<ArticleViewModel> gmList = new List<ArticleViewModel>();
+
+                if (data != null && data.DataT != null)
+                    gmList = data.DataT.Select(g => new ArticleViewModel() { Id = g.Id, UserId = g.UserId, Title = g.Title, CategoryName = !string.IsNullOrEmpty(g.ParCategoryName) ? g.ParCategoryName + "-" + g.CategoryName : g.CategoryName, State = (int)g.State, CreateTime = g.CreateDate.ToString("yyyy-MM-dd HH:mm"), PublishDate = g.PublishDate <= DateTime.MinValue ? "无发布日期" : g.PublishDate.ToString("yyyy-MM-dd HH:mm"), Category = g.Category, UserName = g.UserName, ParCategory = g.ParCategory, HeadImg = g.HeadImg, SmallHeadImg = GetThumb(g.HeadImg), Section = g.Section, ParCategoryName = g.ParCategoryName }).ToList();
+
+                return Json(new
+                {
+                    recordsFiltered = data.totalRecords,
+                    recordsTotal = data.totalPages,
+                    data = gmList
+                }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                AddLog("GetList",ex.ToString());
             }
 
-            List<Article> downList = articleService.GetPage(fillter, out totalNum);
-            ReturnPageResultIList<Article> data = new ReturnPageResultIList<Core.Article>(downList, totalNum);
-            IList<ArticleViewModel> gmList = new List<ArticleViewModel>();
-
-            if (data != null && data.DataT != null)
-                gmList = data.DataT.Select(g => new ArticleViewModel() { Id = g.Id, UserId = g.UserId, Title = g.Title, CategoryName = !string.IsNullOrEmpty(g.ParCategoryName) ? g.ParCategoryName + "-" + g.CategoryName : g.CategoryName, State = (int)g.State, CreateTime = g.CreateDate.ToString("yyyy-MM-dd HH:mm"), PublishDate = g.PublishDate <= DateTime.MinValue ? "无发布日期" : g.PublishDate.ToString("yyyy-MM-dd HH:mm"), Category = g.Category, UserName = g.UserName, ParCategory = g.ParCategory, HeadImg = g.HeadImg, SmallHeadImg = GetThumb(g.HeadImg), Section = g.Section, ParCategoryName = g.ParCategoryName }).ToList();
-
-            return Json(new
-            {
-                recordsFiltered = data.totalRecords,
-                recordsTotal = data.totalPages,
-                data = gmList
-            }, JsonRequestBehavior.AllowGet);
-
+            return EmptyJsonResult();
         }
 
 

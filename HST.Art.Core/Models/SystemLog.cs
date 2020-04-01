@@ -28,6 +28,7 @@ namespace HST.Art.Core
         public string ClientIp { get; set; }
         public string UserAgent { get; set; }
         public string ResultLog { get; set; }
+        public string ReqParameter { get; set; }
         public DateTime CreateDate { get; set; }
         #endregion Model
     }
