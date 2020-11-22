@@ -570,6 +570,7 @@
     <Content Include="Content\image\ajax-modal-loading.gif" />
     <Content Include="Content\image\caret.png" />
     <Content Include="Content\image\circle.png" />
+    <Content Include="Content\image\controls.png" />
     <Content Include="Content\image\datatable-row-openclose.png" />
     <Content Include="Content\image\img.jpg" />
     <Content Include="Content\image\index_ds_fl.jpg" />
@@ -604,10 +605,14 @@
     <Content Include="Content\image\xingxing.png" />
     <Content Include="Content\image\xingxingh.png" />
     <Content Include="Content\image\y.png" />
+    <Content Include="Content\image\y1.png" />
     <Content Include="Content\image\yy.png" />
+    <Content Include="Content\image\yy1.png" />
     <Content Include="Content\image\z.png" />
+    <Content Include="Content\image\z1.png" />
     <Content Include="Content\image\zhanwei_banner.jpg" />
     <Content Include="Content\image\zz.png" />
+    <Content Include="Content\image\zz1.png" />
     <Content Include="Content\js\jQuery.1.9.1.js" />
     <Content Include="Content\js\jquery.blockui.min.js" />
     <Content Include="Content\js\jquery.unobtrusive-ajax.js" />
@@ -2189,10 +2194,10 @@
     <Content Include="Content\lib\bootstrap-select\bootstrap-select.js.map" />
     <Content Include="Content\lib\uniform\css\uniform.default.scss" />
     <Content Include="WebClearCache.aspx" />
-    <Content Include="Areas\manage\Views\Home\Reminder.cshtml">
+    <None Include="Areas\manage\Views\Home\Reminder.cshtml">
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>Reminder.generated.cs</LastGenOutput>
-    </Content>
+    </None>
     <None Include="Areas\manage\Views\web.config" />
     <None Include="Areas\manage\Views\Teacher\Add.cshtml">
       <Generator>RazorGenerator</Generator>
