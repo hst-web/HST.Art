@@ -286,7 +286,7 @@ namespace HST.Art.Web.Controllers
                     viewModel.PageFilter = new PageViewModel()
                     {
                         Category = category,
-                        SectionType = SectionType.Examination
+                        SectionType = SectionType.Social
                     };
                     break;
                 case QSType.detail:

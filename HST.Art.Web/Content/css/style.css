@@ -153,8 +153,8 @@ h3 i{ width:3px; height:18px; background:#d9001b; display:inline-block; margin-r
 .list_fr_n span{ color:#7c7c7c;font-size: 12px}
 .list_div:hover{ background:#ececec}
 .list_list{ width:100%; padding: 12px; overflow: hidden; border: 1px solid #ececec; margin-bottom: 12px}
-.list_list .list_img{ width: 16%; }
-.list_list .list_img img{ width: 79px; height: 79px; display: block; margin: 0 auto}
+.list_list .list_img{ width: 16%;overflow:hidden }
+.list_list .list_img img{ width: auto; height: 79px; display: block; margin: 0 auto}
 .list_cons{ width:82%}
 .list_cons h6{ font-size: 18px; color: #2a2a2a; line-height: 35px;}
 .list_cons span{ font-size:12px; color: #aaa;margin: 8px auto 4px;display: inline-block;}
