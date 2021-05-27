@@ -72,7 +72,7 @@ namespace HST.Art.Web
         {
             get
             {
-                _integratedService = new  IntegratedService();
+                _integratedService = new IntegratedService();
                 return _integratedService;
             }
             set { _integratedService = value; }
@@ -88,7 +88,8 @@ namespace HST.Art.Web
                 if (string.IsNullOrEmpty(cookieStr))
                 {
                     string tmpRouteName = RouteData.GetRequiredString("controller");
-                    if (!tmpRouteName.Equals("Account", StringComparison.InvariantCultureIgnoreCase))
+                    string tmpActionName = RouteData.GetRequiredString("action");
+                    if (!tmpRouteName.Equals("account", StringComparison.InvariantCultureIgnoreCase) || (tmpRouteName.Equals("account", StringComparison.InvariantCultureIgnoreCase) && string.Equals(tmpActionName, "index", StringComparison.InvariantCultureIgnoreCase)))
                     {
                         //filterContext.Result = new RedirectResult("/Account/Login");
                         filterContext.Result = new EmptyResult();
@@ -195,7 +196,7 @@ namespace HST.Art.Web
         public ActionResult RedirectError()
         {
             return new RedirectResult("/Account/Login");
-           // return Redirect("/home/welcome");
+            // return Redirect("/home/welcome");
         }
         /// <summary>
         /// 清除认证信息
@@ -315,7 +316,7 @@ namespace HST.Art.Web
             PlatformAgent.Set(JsonConvert.SerializeObject(agent));
         }
 
-        protected void AddLog(string actionName, string resLog,string req="", LogType logType = LogType.Error, LogSource logSourece = LogSource.Admin)
+        protected void AddLog(string actionName, string resLog, string req = "", LogType logType = LogType.Error, LogSource logSourece = LogSource.Admin)
         {
             SystemLog sLog = new SystemLog();
             sLog.ActionName = actionName;

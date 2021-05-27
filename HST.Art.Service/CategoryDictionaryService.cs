@@ -50,6 +50,7 @@ namespace HST.Art.Service
         public List<CategoryDictionary> GetAll(List<CategoryType> categoryTypes)
         {
             FilterEntityModel filterModel = new FilterEntityModel();
+           // filterModel.SortDict.Key
             if (categoryTypes != null && categoryTypes.Count > 0)
             {
                 filterModel.FilterType = FilterType.In;

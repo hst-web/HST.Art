@@ -2,22 +2,22 @@
 
 namespace HST.Art.Web.Areas.manage
 {
-    public class manageAreaRegistration : AreaRegistration 
+    public class manageAreaRegistration : AreaRegistration
     {
-        public override string AreaName 
+        public override string AreaName
         {
-            get 
+            get
             {
                 return "manage";
             }
         }
 
-        public override void RegisterArea(AreaRegistrationContext context) 
+        public override void RegisterArea(AreaRegistrationContext context)
         {
             context.MapLowerCaseUrlRoute(
                 "manage_default",
                 "manage/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }, new string[] { "HST.Art.Web.Areas.manage.Controllers" }
+                new { controller = "Home", action = "Index", id = UrlParameter.Optional }, new string[] { "HST.Art.Web.Areas.manage.Controllers" }
             );
         }
     }

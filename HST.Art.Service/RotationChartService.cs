@@ -137,14 +137,14 @@ namespace HST.Art.Service
 
             try
             {
-                RotationSort bannerSort = sortList.Find(g => g.RotationType == RotationType.Banner);
-                RotationSort logoSort = sortList.Find(g => g.RotationType == RotationType.Logo);
+                RotationSort bannerSort = sortList.Find(g => g.RotationType == RotationType.Banner) ?? new RotationSort();
+                RotationSort logoSort = sortList.Find(g => g.RotationType == RotationType.Logo) ?? new RotationSort();
 
-                if (bannerSort != null && bannerSort.SortList.Count > 0)
+                if (bannerSort.SortList.Count > 0)
                 {
                     bannerSort.SortList.RemoveAll(g => g.Equals(id));
                 }
-                if (logoSort != null && logoSort.SortList.Count > 0)
+                if (logoSort.SortList.Count > 0)
                 {
                     logoSort.SortList.RemoveAll(g => g.Equals(id));
                 }

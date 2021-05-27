@@ -191,7 +191,7 @@ table.dataTable thead .sorting_asc, table.dataTable thead .sorting_desc, table.d
 .dataTables_wrapper .dataTables_paginate .paginate_button {border: 1px solid #ccc;cursor: pointer;display: inline-block;margin-left: 2px;text-align: center;text-decoration: none;color: #666;height: 28px;line-height: 26px;text-decoration: none;margin: 0 0px 6px 6px;padding: 0 10px;font-size:13px}
 .dataTables_wrapper .dataTables_paginate .paginate_button:hover,
 .dataTables_wrapper .dataTables_paginate .paginate_button.current,
-.dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {background:#f56c6c;color:#fff}
+.dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {background:#f56c6c;color:#fff;border-color:transparent}
 
 .dataTables_paginate a .icon-icon{ font-size:18px;}
 .dataTables_paginate a i.zuo{transform:rotate(180deg);-ms-transform:rotate(180deg);-moz-transform:rotate(180deg);-webkit-transform:rotate(180deg); -o-transform:rotate(180deg); display: inline-block}
