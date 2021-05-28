@@ -582,37 +582,36 @@ WriteLiteral("            ");
             
             #line default
             #line hidden
-WriteLiteral("\r\n        </div>\r\n    </div>\r\n    <footer>鲁ICP备19063185号-1</footer>\r\n    <script");
+WriteLiteral("\r\n        </div>\r\n    </div>\r\n    <footer>京ICP备20011563号-1</footer>\r\n    <script");
 
 WriteLiteral(" type=\"text/javascript\"");
 
 WriteLiteral(">\r\n        $(document).ready(function () {\r\n            var topMain = $(\"header\")" +
 ".height();\r\n            //var topNav = $(\"nav\").outerHeight();\r\n            //va" +
 "r topHeight = isMobile() ? topNav : topMain;\r\n            var nav = $(\"nav\");\r\n " +
-"           console.log(topMain);\r\n            if (!isMobile()) {\r\n              " +
-"  $(window).scroll(function () {\r\n                    if ($(window).scrollTop() " +
-"> topMain) {\r\n                        nav.addClass(\"nav_scroll\");\r\n\r\n           " +
-"         } else {\r\n                        nav.removeClass(\"nav_scroll\");\r\n     " +
-"               }\r\n                });\r\n            }\r\n        })\r\n\r\n        $(do" +
-"cument).click(function () {\r\n            $(\'.nav-list\').removeClass(\'open\')\r\n   " +
-"     })\r\n        $(\'.nav-menu,.nav-list\').click(function (e) { e.stopPropagation" +
-"() })\r\n        $(\'nav\').find(\'.nav-menu\').click(function (e) {\r\n            $(\'." +
-"nav-list\').toggleClass(\'open\')\r\n        })\r\n\r\n        function isMobile() {\r\n   " +
-"         var userAgentInfo = navigator.userAgent;\r\n            var mobileAgents " +
-"= [\"Android\", \"iPhone\", \"SymbianOS\", \"Windows Phone\", \"iPad\", \"iPod\"];\r\n        " +
-"    var mobile_flag = false;\r\n            //根据userAgent判断是否是手机\r\n            for " +
-"(var v = 0; v < mobileAgents.length; v++) {\r\n                if (userAgentInfo.i" +
-"ndexOf(mobileAgents[v]) > 0) {\r\n                    mobile_flag = true;\r\n       " +
-"             break;\r\n                }\r\n            }\r\n            var screen_wi" +
-"dth = window.screen.width;\r\n            // var screen_height = window.screen.hei" +
-"ght;\r\n            //根据屏幕分辨率判断是否是手机\r\n            if (screen_width < 996) {\r\n     " +
-"           mobile_flag = true;\r\n            }\r\n            return mobile_flag;\r\n" +
-"        }\r\n    </script>\r\n");
+"           if (!isMobile()) {\r\n                $(window).scroll(function () {\r\n " +
+"                   if ($(window).scrollTop() > topMain) {\r\n                     " +
+"   nav.addClass(\"nav_scroll\");\r\n                    } else {\r\n                  " +
+"      nav.removeClass(\"nav_scroll\");\r\n                    }\r\n                });" +
+"\r\n            }\r\n        })\r\n\r\n        $(document).click(function () {\r\n        " +
+"    $(\'.nav-list\').removeClass(\'open\')\r\n        })\r\n        $(\'.nav-menu,.nav-li" +
+"st\').click(function (e) { e.stopPropagation() })\r\n        $(\'nav\').find(\'.nav-me" +
+"nu\').click(function (e) {\r\n            $(\'.nav-list\').toggleClass(\'open\')\r\n     " +
+"   })\r\n\r\n        function isMobile() {\r\n            var userAgentInfo = navigato" +
+"r.userAgent;\r\n            var mobileAgents = [\"Android\", \"iPhone\", \"SymbianOS\", " +
+"\"Windows Phone\", \"iPad\", \"iPod\"];\r\n            var mobile_flag = false;\r\n       " +
+"     //根据userAgent判断是否是手机\r\n            for (var v = 0; v < mobileAgents.length; " +
+"v++) {\r\n                if (userAgentInfo.indexOf(mobileAgents[v]) > 0) {\r\n     " +
+"               mobile_flag = true;\r\n                    break;\r\n                " +
+"}\r\n            }\r\n            var screen_width = window.screen.width;\r\n         " +
+"   // var screen_height = window.screen.height;\r\n            //根据屏幕分辨率判断是否是手机\r\n " +
+"           if (screen_width < 996) {\r\n                mobile_flag = true;\r\n     " +
+"       }\r\n            return mobile_flag;\r\n        }\r\n    </script>\r\n");
 
 WriteLiteral("    ");
 
             
-            #line 141 "..\..\Views\Shared\_Layout.cshtml"
+            #line 139 "..\..\Views\Shared\_Layout.cshtml"
 Write(RenderSection("Scripts", required: false));
 
             

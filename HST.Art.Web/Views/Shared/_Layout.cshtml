@@ -90,19 +90,17 @@
             @Html.Action("Footer", "Home")
         </div>
     </div>
-    <footer>鲁ICP备19063185号-1</footer>
+    <footer>京ICP备20011563号-1</footer>
     <script type="text/javascript">
         $(document).ready(function () {
             var topMain = $("header").height();
             //var topNav = $("nav").outerHeight();
             //var topHeight = isMobile() ? topNav : topMain;
             var nav = $("nav");
-            console.log(topMain);
             if (!isMobile()) {
                 $(window).scroll(function () {
                     if ($(window).scrollTop() > topMain) {
                         nav.addClass("nav_scroll");
-
                     } else {
                         nav.removeClass("nav_scroll");
                     }
