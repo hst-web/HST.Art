@@ -47,8 +47,8 @@ h3 i{ width:3px; height:18px; background:#d9001b; display:inline-block; margin-r
 .item { text-align:center}
 .item img{ margin:0 10px}
 .owl-carousel .iconfont{ display:none !important}
-.owl-item img{width:100%;padding:5px}
-.owl-item a{display: table-cell;vertical-align: middle;}
+.owl-item img{width:100%;box-shadow:1px 1px 5px rgba(0, 0, 0, .3)}
+.owl-item a{display: table-cell;vertical-align: middle;padding:9px;}
 .owl-carousel.owl-loaded{padding:0 20px}
 .owl-dots{ display:none !important}
 /*查询*/

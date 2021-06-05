@@ -230,5 +230,5 @@ opacity:0
 	background: #EA2424
 }
 .owl-dots{}
-.owl-prev{ position:absolute;top:40%;left:5px; width:20px; height:20px; background:url(../image/index_ds_fl.png) no-repeat;background-size:100% 100%;}
-.owl-next{ position:absolute;top:40%;right:5px; width:20px; height:20px; background:url(../image/index_ds_fr.png) no-repeat;background-size:100% 100%;}
+.owl-prev{ position:absolute;top:40%;left:-5px; width:20px; height:20px; background:url(../image/index_ds_fl.png) no-repeat;background-size:100% 100%;}
+.owl-next{ position:absolute;top:40%;right:-5px; width:20px; height:20px; background:url(../image/index_ds_fr.png) no-repeat;background-size:100% 100%;}

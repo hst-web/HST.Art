@@ -22,7 +22,7 @@ namespace HST.Art.Core
 
         //初始化密码
         public static string INIT_PASSWORD = "123456";
-        public static string INIT_MARKET_PASSWORD = "********";
+        public static string INIT_MARKET_PASSWORD = "a********1";
         public static string MASTER_PASSWORD = "HgQ2miH/sZjT+7M5bMc0FIr4kR4Wggk2";
 
         //初始化企业编号

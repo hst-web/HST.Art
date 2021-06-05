@@ -33,7 +33,7 @@ namespace HST.Art.Service
         public List<CategoryDictionary> GetAll(CategoryType categoryType)
         {
             FilterEntityModel filterModel = new FilterEntityModel();
-            filterModel.SortDict = new KeyValuePair<string, SortType>("createDate", SortType.Asc);
+            filterModel.SortDict = new KeyValuePair<string, SortType>("id", SortType.Asc);
 
             if (categoryType != CategoryType.UnKnown)
             {
@@ -50,7 +50,7 @@ namespace HST.Art.Service
         public List<CategoryDictionary> GetAll(List<CategoryType> categoryTypes)
         {
             FilterEntityModel filterModel = new FilterEntityModel();
-           // filterModel.SortDict.Key
+            filterModel.SortDict = new KeyValuePair<string, SortType>("id", SortType.Asc);
             if (categoryTypes != null && categoryTypes.Count > 0)
             {
                 filterModel.FilterType = FilterType.In;
